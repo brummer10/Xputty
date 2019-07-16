@@ -114,7 +114,8 @@ void configure_event(void *w_, void* user_data) {
         XSizeHints hints;
         memset(&hints, 0, sizeof(hints));
         long supplied;
-        for (int i = num_children -1; i >= 0; i--) {
+        int i = num_children -1;
+        for (; i >= 0; i--) {
             XGetWindowAttributes(wid->dpy, (Window)children[i], &attrs);
             XGetWMNormalHints(wid->dpy,(Window)children[i],&hints, &supplied);
             debug_print("Widget_t win_gravity = %i\n", hints.win_gravity);

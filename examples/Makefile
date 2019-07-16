@@ -8,10 +8,10 @@
 .PHONY : all  
 
 all: simple-example.c example.c example1.c example2.c ../xputty.c
-	$(CC) -o  $(LDFLAGS) simple-example.c ../xputty.c -o simple-example
-	$(CC) -o  $(LDFLAGS) example.c ../xputty.c -o example
-	$(CC) -o  $(LDFLAGS) example1.c ../xputty.c -o example1
-	$(CC) -o  $(LDFLAGS) example2.c ../xputty.c -o example2
+	$(CC) simple-example.c ../xputty.c -o simple-example $(LDFLAGS)
+	$(CC) example.c ../xputty.c -o example $(LDFLAGS)
+	$(CC) example1.c ../xputty.c -o example1 $(LDFLAGS)
+	$(CC) example2.c ../xputty.c -o example2 $(LDFLAGS)
 
 clean:
 	@rm -f simple-example example example1 example2
