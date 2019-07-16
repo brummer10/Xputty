@@ -1,0 +1,284 @@
+/*
+ * This is free and unencumbered software released into the public domain.
+
+ * Anyone is free to copy, modify, publish, use, compile, sell, or
+ * distribute this software, either in source code form or as a compiled
+ * binary, for any purpose, commercial or non-commercial, and by any
+ * means.
+
+ * In jurisdictions that recognize copyright laws, the author or authors
+ * of this software dedicate any and all copyright interest in the
+ * software to the public domain. We make this dedication for the benefit
+ * of the public at large and to the detriment of our heirs and
+ * successors. We intend this dedication to be an overt act of
+ * relinquishment in perpetuity of all present and future rights to this
+ * software under copyright law.
+
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+
+#include "xputty.h"
+
+typedef struct {
+    Widget_t *w;
+    Widget_t *w_ok;
+    Widget_t *w_ti;
+    bool run;
+} MyWindow;
+
+// draw a text input box
+static void draw_text_input(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    if (!w) return;
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    int width = attrs.width;
+    int height = attrs.height;
+    if (attrs.map_state != IsViewable) return;
+
+    cairo_push_group (w->cr);
+
+    cairo_set_source_rgb (w->cr, 0.6, 0.6, 0.6);
+    cairo_rectangle(w->cr,0,0,width,height);
+    cairo_fill_preserve (w->cr);
+    cairo_set_source_rgb (w->cr, 0.1, 0.1, 0.1);
+    cairo_set_line_width(w->cr, 2.0);
+    cairo_stroke(w->cr);
+
+    cairo_set_font_size (w->cr, 9.0);
+    cairo_select_font_face (w->cr, "Sans", CAIRO_FONT_SLANT_NORMAL,
+                               CAIRO_FONT_WEIGHT_BOLD);
+
+    cairo_move_to (w->cr, 2, 9);
+    cairo_show_text(w->cr, " ");
+
+    cairo_pop_group_to_source (w->cr);
+    cairo_paint (w->cr);
+}
+
+// draw add text to input box
+static void text_input_add_text(void  *w_, void *label_) {
+    Widget_t *w = (Widget_t*)w_;
+    if (!w) return;
+    char *label = (char*)label_;
+    if (!label) label = "";
+    draw_text_input(w,NULL);
+    cairo_text_extents_t extents;
+    cairo_set_source_rgb (w->cr, 0., 0.1, 0.1);
+    cairo_set_font_size (w->cr, 11.0);
+    if (strlen( w->input_label))
+         w->input_label[strlen( w->input_label)-1] = 0;
+    if (strlen( w->input_label)<30) {
+        if (strlen(label))
+        strcat( w->input_label, label);
+    }
+    strcat( w->input_label, "|");
+    cairo_set_font_size (w->cr, 12.0);
+    cairo_select_font_face (w->cr, "Sans", CAIRO_FONT_SLANT_NORMAL,
+                               CAIRO_FONT_WEIGHT_BOLD);
+    cairo_text_extents(w->cr, w->input_label , &extents);
+
+    cairo_move_to (w->cr, 2, 12.0+extents.height);
+    cairo_show_text(w->cr,  w->input_label);
+
+}
+
+// draw remove last character from input box
+static void text_input_clip(Widget_t *w) {
+    draw_text_input(w,NULL);
+    cairo_text_extents_t extents;
+    cairo_set_source_rgb (w->cr, 0., 0.1, 0.1);
+    cairo_set_font_size (w->cr, 11.0);
+    if (strlen( w->input_label)>=2) {
+         w->input_label[strlen( w->input_label)-2] = 0;
+        strcat( w->input_label, "|");
+    }
+    cairo_set_font_size (w->cr, 12.0);
+    cairo_select_font_face (w->cr, "Sans", CAIRO_FONT_SLANT_NORMAL,
+                               CAIRO_FONT_WEIGHT_BOLD);
+    cairo_text_extents(w->cr, w->input_label , &extents);
+
+    cairo_move_to (w->cr, 2, 12.0+extents.height);
+    cairo_show_text(w->cr,  w->input_label);
+
+}
+
+static void get_text(void *w_, void *key_, void *user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    if (!w) return;
+    XKeyEvent *key = (XKeyEvent*)key_;
+    if (!key) return;
+    KeySym keysym;
+    char buf[32];
+    int nk = key_mapping(w->dpy, key);
+    if (nk) {
+        switch (nk) {
+            case 1: ;
+            break;
+            case 2: ;
+            break;
+            case 3: ;
+            break;
+            case 4: ;
+            break;
+            case 5: ;
+            break;
+            case 6: ;
+            break;
+            case 7: ;
+            case 8: quit(w);
+            break;
+            case 9: text_input_clip(w);
+            break;
+            default:
+            break;
+            }
+        } else {
+        int n = XLookupString(key, buf, sizeof(buf),
+                    &keysym, NULL);
+        if(n) text_input_add_text(w, buf);
+    }
+}
+
+// draw a button
+static void draw_button(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    if (!w) return;
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    int width = attrs.width;
+    int height = attrs.height;
+    if (attrs.map_state != IsViewable) return;
+
+    cairo_push_group (w->cr);
+
+    cairo_set_source_rgb (w->cr, 0.0, 0.1, 0.1);
+    if(w->state==1)
+        cairo_set_source_rgb (w->cr, 0.05, 0.15, 0.15);
+    if(w->state==2)
+        cairo_set_source_rgb (w->cr, 0.2, 0.15, 0.15);
+    cairo_rectangle(w->cr,0,0,width,height);
+    cairo_fill_preserve (w->cr);
+    cairo_set_source_rgb (w->cr, 0.6, 0.6, 0.6);
+    if(w->state==1)
+        cairo_set_source_rgb (w->cr, 0.8, 0.8, 0.8);
+    cairo_set_line_width(w->cr, 1.0);
+    if(w->state==2) {
+        cairo_set_source_rgb (w->cr, 0.2, 0.8, 0.8);
+        cairo_set_line_width(w->cr, 2.0);
+    }
+    cairo_stroke(w->cr);
+
+    cairo_text_extents_t extents;
+    cairo_set_source_rgb (w->cr, 0.6, 0.6, 0.6);
+    if(w->state==1)
+        cairo_set_source_rgb (w->cr, 0.8, 0.8, 0.8);
+    if(w->state==2)
+        cairo_set_source_rgb (w->cr, 0.1, 0.8, 0.8);
+    cairo_set_font_size (w->cr, 12.0);
+    cairo_select_font_face (w->cr, "Sans", CAIRO_FONT_SLANT_NORMAL,
+                               CAIRO_FONT_WEIGHT_BOLD);
+    cairo_text_extents(w->cr,w->label , &extents);
+
+    cairo_move_to (w->cr, (width-extents.width)*0.5, (height+extents.height)*0.5);
+    cairo_show_text(w->cr, w->label);
+    cairo_new_path (w->cr);
+    
+    cairo_pop_group_to_source (w->cr);
+    cairo_paint (w->cr);
+}
+
+static void button_press(void *w_, void* button, void* user_data) {
+    draw_button(w_, user_data);
+}
+
+static void button_release(void *w_, void* button_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    draw_button(w_, NULL);
+    if (w->has_pointer){
+        quit(w);
+    }
+
+}
+
+static void draw_window(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    if (!w) return;
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    int width = attrs.width;
+    int height = attrs.height;
+    if (attrs.map_state != IsViewable) return;
+
+    cairo_push_group (w->cr);
+    cairo_set_source_rgb (w->cr, 0.05, 0.15, 0.15);
+    cairo_rectangle(w->cr,0,0,width,height);
+    cairo_fill_preserve (w->cr);
+    cairo_set_source_rgb (w->cr, 0.1, 0.1, 0.1);
+    cairo_set_line_width(w->cr, 4.0);
+    cairo_stroke(w->cr);
+
+    cairo_text_extents_t extents;
+    cairo_set_source_rgb (w->cr, 0.6, 0.6, 0.6);
+    cairo_set_font_size (w->cr, 10.0);
+    cairo_select_font_face (w->cr, "Sans", CAIRO_FONT_SLANT_NORMAL,
+                               CAIRO_FONT_WEIGHT_BOLD);
+    cairo_text_extents(w->cr,w->label , &extents);
+
+    cairo_move_to (w->cr, (width-extents.width)*0.5, (25-extents.height));
+    cairo_show_text(w->cr, w->label);
+   
+    cairo_pop_group_to_source (w->cr);
+    cairo_paint (w->cr);
+}
+
+int main (int argc, char ** argv)
+{
+    Display *dpy = XOpenDisplay(0);
+    XContext context =  XUniqueContext();
+    MyWindow mywindow;
+    
+    mywindow.w = create_window(dpy, DefaultRootWindow(dpy), context, 0, 0, 300, 200);
+    XStoreName(dpy, mywindow.w->widget, "Xputty Text Input");
+    mywindow.w->label = "move pointer to text-input and press key:";
+    mywindow.w->func.expose_callback = draw_window;
+
+    mywindow.w_ti = create_widget(dpy, mywindow.w->widget, context, 20, 20, 260, 100);
+    mywindow.w_ti->data = 1;
+    memset(mywindow.w_ti->input_label, 0, 32 * (sizeof mywindow.w_ti->input_label[0]) );
+    mywindow.w_ti->func.expose_callback = text_input_add_text;
+   // mywindow.w_ti->func.enter_callback = draw_text_input;
+    mywindow.w_ti->func.key_press_callback = get_text;
+    XSizeHints* win_size_hints;
+    win_size_hints = XAllocSizeHints();
+    win_size_hints->flags = PWinGravity;
+    win_size_hints->win_gravity = CenterGravity;
+    XSetWMNormalHints(dpy, mywindow.w_ti->widget, win_size_hints);
+    XFree(win_size_hints);
+
+    mywindow.w_ok = create_widget(dpy, mywindow.w->widget, context, 230, 170, 60, 20);
+    mywindow.w_ok->label = "Ok";
+    mywindow.w_ok->func.expose_callback = draw_button;
+    mywindow.w_ok->func.enter_callback = draw_button;
+    mywindow.w_ok->func.button_press_callback = button_press;
+    mywindow.w_ok->func.button_release_callback = button_release;
+    mywindow.w_ok->func.leave_callback = draw_button;
+
+    mywindow.run = true;
+    
+    loop(mywindow.w,context,&mywindow.run);
+
+    destroy_widget( mywindow.w_ok, context);
+    destroy_widget( mywindow.w, context);
+    
+    XCloseDisplay(dpy);
+
+    return 0;
+}
