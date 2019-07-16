@@ -1,6 +1,6 @@
 # Xputty
 
-![Puplic Domain](http://freedomdefined.org/upload/2/20/Pd-button.png)
+Do What The Fuck You Want To Public License (WTFPL) 
 
 A damn tiny abstraction Layer to create X11 window/widgets  with cairo surfaces 
 
