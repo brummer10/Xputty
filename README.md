@@ -10,7 +10,7 @@ Here is the usual hello world:
 
 produced  by this code:
 
-`
+```C
 #include "xputty.h"
 
 static void draw_window(void *w_, void* user_data) {
@@ -38,6 +38,6 @@ int main (int argc, char ** argv)
     XCloseDisplay(dpy);
     return 0;
 }
-`
+```
 
 check out the example folder for more examples.
