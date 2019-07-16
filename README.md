@@ -1,5 +1,6 @@
 # Xputty
 
+![WTFPL](http://www.wtfpl.net/wp-content/uploads/2012/12/logo-220x1601.png)
 Do What The Fuck You Want To Public License (WTFPL) 
 
 A damn tiny abstraction Layer to create X11 window/widgets  with cairo surfaces 
