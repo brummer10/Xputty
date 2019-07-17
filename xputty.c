@@ -81,6 +81,8 @@ int key_mapping(Display *dpy, XKeyEvent *xkey) {
 void destroy_widget(Widget_t * w, XContext Context) {
     XPointer w_;
     if(!XFindContext(w->dpy, w->widget, Context,  &w_)) {
+        w->adj_x = delete_adjustment(w->adj_x);
+        w->adj_y = delete_adjustment(w->adj_y);
         cairo_destroy(w->cr);
         cairo_surface_destroy(w->surface);
         XDeleteContext(w->dpy, w->widget, Context);
@@ -210,6 +212,8 @@ Widget_t *create_window(Display *dpy, Window win, XContext Context,
     w->height = height;
     w->scale_x = 1.0;
     w->scale_y = 1.0;
+    w->adj_x = NULL;
+    w->adj_y = NULL;
     w->event_callback = widget_event_loop;
     w->func.expose_callback = dummy_callback;
     w->func.configure_callback = configure_event;
@@ -273,6 +277,8 @@ Widget_t *create_widget(Display *dpy, Window win, XContext Context,
     w->height = height;
     w->scale_x = 1.0;
     w->scale_y = 1.0;
+    w->adj_x = NULL;
+    w->adj_y = NULL;
     w->event_callback = widget_event_loop;
     w->func.expose_callback = dummy_callback;
     w->func.configure_callback = configure_event;;
@@ -339,6 +345,7 @@ void widget_event_loop(void *w_, void* event, void* user_data) {
             wid->has_pointer = _has_pointer(wid, &xev->xbutton);
             wid->pos_x = xev->xbutton.x;
             wid->pos_y = xev->xbutton.y;
+            adj_set_start_value(wid);
             wid->func.button_press_callback(w_, &xev->xbutton, user_data);
             debug_print("Widget_t  ButtonPress %i\n", xev->xbutton.button);
         break;
@@ -377,6 +384,7 @@ void widget_event_loop(void *w_, void* event, void* user_data) {
         break;
 
         case MotionNotify:
+            adj_set_state(wid, xev->xmotion.x, xev->xmotion.y);
             wid->func.motion_callback(w_,&xev->xmotion, user_data);
             debug_print("Widget_t MotionNotify x = %i Y = %i \n",xev->xmotion.x,xev->xmotion.y );
         break;
@@ -435,3 +443,4 @@ void loop(Widget_t *w, XContext context, bool *run) {
         }
     }
 }
+

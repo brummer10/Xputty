@@ -37,6 +37,8 @@
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
 
+#include "xadjustment.h"
+
 /*---------------------------------------------------------------------
 -----------------------------------------------------------------------	
 					define debug print
@@ -130,6 +132,8 @@ typedef struct {
     int pos_x, pos_y;           /** mouse pointer position            */
     int width, height;          /** widget size                       */
     float scale_x, scale_y;     /** scaling factor                    */
+    Adjustment_t *adj_x;        /** pointer x axis          adjustment*/
+    Adjustment_t *adj_y;        /** pointer y axis          adjustment*/
 } Widget_t;
 
 
