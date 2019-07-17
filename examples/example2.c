@@ -142,7 +142,22 @@ static void draw_window(void *w_, void* user_data) {
 static void draw_motion(void *w_, void *motion_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
-    w->label = "";   
+    float x = adj_get_value(w->adj_x);
+    float y = adj_get_value(w->adj_y);
+    char s[10];
+    char sa[30];
+    
+    const char* format[] = {"%.1f", "%.2f", "%.3f"};
+    snprintf(s, 30, "%s", "x = ");
+    strcat(sa, s);
+    snprintf(s, 30, format[1-1], x);
+    strcat(sa, s);
+    snprintf(s, 30, "%s", " y = ");
+    strcat(sa, s);
+    snprintf(s, 30, format[1-1], y);
+    strcat(sa, s);
+    
+    w->label = sa;   
     draw_window(w_,NULL);
 }
 

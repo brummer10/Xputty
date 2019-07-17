@@ -20,7 +20,7 @@ clean:
 	@rm -f xputty.a xputty.o
 
 
-static-lib: xputty.a
+static-lib: ../xputty.c ../xadjustment.c
 	gcc -c ../xputty.c -o xputty.o $(LDFLAGS)
 	gcc -c ../xadjustment.c -o xadjustment.o $(LDFLAGS)
 	ar rcs xputty.a xputty.o xadjustment.o
