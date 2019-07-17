@@ -43,4 +43,5 @@ check out the example folder for more examples.
 
 ## License
 
+         0BSD 
 BSD Zero Clause License

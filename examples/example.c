@@ -1,4 +1,6 @@
 /*
+ *                           0BSD 
+ * 
  *                    BSD Zero Clause License
  * 
  *  Copyright (c) 2019 Hermann Meyer
@@ -15,6 +17,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  *
  */
+
 
 #include "xputty.h"
 
