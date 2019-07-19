@@ -19,7 +19,8 @@
  */
 
 
-#include "xputty.h"
+#include "xwidget.h"
+
 
 /**
  * @brief key_mapping       - modifier key's mapped to a integer value
@@ -34,21 +35,21 @@ int key_mapping(Display *dpy, XKeyEvent *xkey) {
     else if (xkey->keycode == XKeysymToKeycode(dpy,XK_Up))
         return 3;
     else if (xkey->keycode == XKeysymToKeycode(dpy,XK_Right))
-        return 3;
+        return 4;
     else if (xkey->keycode == XKeysymToKeycode(dpy,XK_Down))
-        return 4;
-    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_Left))
-        return 4;
-    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_Home))
         return 5;
-    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_Insert))
+    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_Left))
         return 6;
-    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_End))
+    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_Home))
         return 7;
-    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_Return))
+    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_Insert))
         return 8;
-    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_BackSpace))
+    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_End))
         return 9;
+    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_Return))
+        return 10;
+    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_BackSpace))
+        return 11;
     // keypad
     else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_Subtract))
         return 1;
@@ -57,17 +58,19 @@ int key_mapping(Display *dpy, XKeyEvent *xkey) {
     else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_Up))
         return 3;
     else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_Right))
-        return 3;
+        return 4;
     else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_Down))
-        return 4;
-    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_Left))
-        return 4;
-    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_Home))
         return 5;
-    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_Insert))
+    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_Left))
         return 6;
-    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_End))
+    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_Home))
         return 7;
+    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_Insert))
+        return 8;
+    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_End))
+        return 9;
+    else if (xkey->keycode == XKeysymToKeycode(dpy,XK_KP_Enter))
+        return 10;
     else return 0;
 }
 
@@ -81,14 +84,38 @@ int key_mapping(Display *dpy, XKeyEvent *xkey) {
 void destroy_widget(Widget_t * w, XContext Context) {
     XPointer w_;
     if(!XFindContext(w->dpy, w->widget, Context,  &w_)) {
-        w->adj_x = delete_adjustment(w->adj_x);
-        w->adj_y = delete_adjustment(w->adj_y);
+        delete_adjustment(w->adj_x);
+        delete_adjustment(w->adj_y);
+        childlist_destroy(w->childlist);
+        cairo_destroy(w->crb);
+        cairo_surface_destroy(w->buffer);
         cairo_destroy(w->cr);
         cairo_surface_destroy(w->surface);
         XDeleteContext(w->dpy, w->widget, Context);
         XUnmapWindow(w->dpy, w->widget);
         XDestroyWindow(w->dpy, w->widget);
+        free(w->childlist);
         free(w);
+    }
+}
+
+/**
+ * @brief _resize_surface    - intern check if surfaces needs resizing
+ * @param *wid               - pointer to the Widget_t receive the event
+ * @param width              - the new width
+ * @param height             - the new height
+ * @return void 
+ */
+
+static inline void _resize_surface(Widget_t *wid, int width, int height) {
+    if (wid->width != width || wid->height != height) {
+        wid->width = width;
+        wid->height = height;
+        cairo_xlib_surface_set_size( wid->surface, wid->width, wid->height);
+        cairo_destroy(wid->crb);
+        cairo_surface_destroy(wid->buffer);
+        wid->buffer = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, wid->width, wid->height);
+        wid->crb = cairo_create (wid->buffer);
     }
 }
 
@@ -103,14 +130,13 @@ void configure_event(void *w_, void* user_data) {
     Widget_t *wid = (Widget_t*)w_;
     XWindowAttributes attrs;
     XGetWindowAttributes(wid->dpy, (Window)wid->widget, &attrs);
-    int width = attrs.width;
-    int height = attrs.height;
-    wid->scale_x = (float)wid->width-width;
-    wid->scale_y = (float)wid->height-height;
-    wid->width = width;
-    wid->height = height;
-    debug_print("Widget_t configure callback width %i height %i\n", width, height);
-    cairo_xlib_surface_set_size( wid->surface, width, height);
+    wid->scale_x = (float)wid->width-attrs.width;
+    wid->scale_y = (float)wid->height-attrs.height;
+
+    _resize_surface(wid, attrs.width, attrs.height); 
+
+    debug_print("Widget_t configure callback width %i height %i\n", attrs.width, attrs.height);
+
     Window root, parent, *children;
     int num_children;
     int status = XQueryTree(wid->dpy, wid->widget, &root, &parent,
@@ -131,8 +157,8 @@ void configure_event(void *w_, void* user_data) {
             }
         }
         debug_print("Widget_t find %i\n ", num_children);
-        XFree(children);
     }
+    XFree(children);
 }
 
 /**
@@ -201,19 +227,29 @@ Widget_t *create_window(Display *dpy, Window win, XContext Context,
                   DefaultVisual(dpy, DefaultScreen(dpy)), width, height);
 
     w->cr = cairo_create(w->surface);
+
+    w->buffer = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, width, height);
+    w->crb = cairo_create (w->buffer);
+
     if(XSaveContext(dpy, w->widget, Context, (XPointer) w)) {
         debug_print("contex save faild\n");
     }
     w->dpy = dpy;
+    w->parent = &win;
     w->label = NULL;
     w->state = 0;
     w->data = 0;
+    w->x = x;
+    w->y = y;
     w->width = width;
     w->height = height;
     w->scale_x = 1.0;
     w->scale_y = 1.0;
+    w->transparency = false;
     w->adj_x = NULL;
     w->adj_y = NULL;
+    w->childlist = (Childlist_t*)malloc(sizeof(Childlist_t));
+    childlist_init(w->childlist);
     w->event_callback = widget_event_loop;
     w->func.expose_callback = dummy_callback;
     w->func.configure_callback = configure_event;
@@ -233,13 +269,13 @@ Widget_t *create_window(Display *dpy, Window win, XContext Context,
 /**
  * @brief *create_widget      - create a widget
  * @param *dpy                - pointer to the Display to use
- * @param *win                - pointer to the Parrent Window 
+ * @param *parent             - pointer to the Parrent Widget_t
  * @param Context             - a XContext to store Window informations
  * @param x,y,width,height    - the position/geometry to create the widget
  * @return Widget_t*          - pointer to the Widget_t struct
  */
 
-Widget_t *create_widget(Display *dpy, Window win, XContext Context,
+Widget_t *create_widget(Display *dpy, Widget_t *parent, XContext Context,
                           int x, int y, int width, int height) {
 
     Widget_t *w = (Widget_t*)malloc(sizeof(Widget_t));
@@ -255,7 +291,7 @@ Widget_t *create_widget(Display *dpy, Window win, XContext Context,
 
 
 
-    w->widget = XCreateWindow(dpy, win , x, y, width, height, 0,
+    w->widget = XCreateWindow(dpy, parent->widget , x, y, width, height, 0,
                             CopyFromParent, InputOutput, CopyFromParent,
                             CopyFromParent|CWOverrideRedirect, &attributes);
     debug_print("XCreateWindow\n");
@@ -266,19 +302,30 @@ Widget_t *create_widget(Display *dpy, Window win, XContext Context,
                   DefaultVisual(dpy, DefaultScreen(dpy)), width, height);
 
     w->cr = cairo_create(w->surface);
+
+    w->buffer = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, width, height);
+    w->crb = cairo_create (w->buffer);
+
     if(XSaveContext(dpy, w->widget, Context, (XPointer) w)) {
         debug_print("contex save faild\n");
     }
     w->dpy = dpy;
+    w->parent = parent;
     w->label = NULL;
     w->state = 0;
     w->data = 0;
+    w->x = x;
+    w->y = y;
     w->width = width;
     w->height = height;
     w->scale_x = 1.0;
     w->scale_y = 1.0;
+    w->transparency = true;
     w->adj_x = NULL;
     w->adj_y = NULL;
+    w->childlist = (Childlist_t*)malloc(sizeof(Childlist_t));
+    childlist_init(w->childlist);
+    childlist_add_child(parent->childlist, w);
     w->event_callback = widget_event_loop;
     w->func.expose_callback = dummy_callback;
     w->func.configure_callback = configure_event;;
@@ -316,6 +363,120 @@ static inline bool _has_pointer(Widget_t *w, XButtonEvent *button) {
 }
 
 /**
+ * @brief _set_adj_value    - set value to adjustment from key event
+ * @param *w                - pointer to the Widget_t receiving the event
+ * @param x                 - use x or y-axis
+ * @return void
+ */
+
+static inline void _set_adj_value(void *w_, bool x, int direction) {
+    Widget_t *wid = (Widget_t*)w_;
+    if (x && wid->adj_x) {
+        wid->adj_x->value = min(wid->adj_x->max_value,max(wid->adj_x->min_value, 
+        wid->adj_x->value + (wid->adj_x->step * direction)));
+        wid->func.expose_callback(w_, NULL);
+    } else if (!x && wid->adj_y) {
+        wid->adj_y->value = min(wid->adj_y->max_value,max(wid->adj_y->min_value, 
+        wid->adj_y->value + (wid->adj_y->step * direction)));
+        wid->func.expose_callback(w_, NULL);
+    }
+}
+
+/**
+ * @brief _check_keymap     - check if key is in map, send requests if so 
+ * @param *w                - pointer to the Widget_t receiving the event
+ * @param xkey              - the XKeyEvent to check
+ * @return void
+ */
+
+static inline void _check_keymap (void *w_ ,XKeyEvent xkey) {
+    Widget_t *wid = (Widget_t*)w_;
+
+    int nk = key_mapping(wid->dpy, &xkey);
+    if (nk) {
+        switch (nk) {
+            case 3: _set_adj_value(w_, false, 1);
+            break;
+            case 4: _set_adj_value(w_, true, 1);
+            break;
+            case 5: _set_adj_value(w_, false, -1);
+            break;
+            case 6: _set_adj_value(w_, true, -1);
+            break;
+            default:
+            break;
+        }
+    }
+}
+
+/**
+ * @brief _expose_childs    - send expose expose event to window
+ * @param w                 - the Window receive the event
+ * @param *dpy              - pointer to the Display in use
+ * @return void 
+ */
+
+static inline void _expose_child(Window w, Display *dpy) {
+    XEvent exp;
+    memset(&exp, 0, sizeof(exp));
+    exp.type = Expose;
+    exp.xexpose.window = w;
+    XSendEvent(dpy, w, False, ExposureMask, (XEvent *)&exp);
+}
+
+/**
+ * @brief _propagate_childs - send expose to child window
+ * @param *wid              - pointer to the Widget_t send the event
+ * @return void 
+ */
+
+static inline void _propagate_childs(Widget_t *wid) {
+    Window root, parent, *children;
+    int num_children;
+    int status = XQueryTree(wid->dpy, wid->widget, &root, &parent,
+                            &children, &num_children);
+    if (status) {
+        int i = num_children -1;
+        for (; i >= 0; i--) {
+            _expose_child(children[i], wid->dpy);
+        }
+        debug_print("Widget_t find %i\n ", num_children);
+    }
+    XFree(children);
+}
+
+/**
+ * @brief transparent_draw  - copy parent surface to child surface
+ * @param *wid              - pointer to the Widget_t receiving a event
+ * @param *user_data        - void pointer to attached user_data
+ * @return void 
+ */
+
+void transparent_draw(void * w_, void* user_data) {
+    Widget_t *wid = (Widget_t*)w_;
+
+    cairo_push_group (wid->cr);
+
+    if (wid->transparency) {
+        Widget_t *parent = (Widget_t*)wid->parent;
+        XWindowAttributes attrs;
+        XGetWindowAttributes(wid->dpy, wid->widget, &attrs);
+
+        debug_print("Widget_t _transparency \n");
+        cairo_set_source_surface (wid->crb, parent->buffer, -attrs.x, -attrs.y);
+        cairo_paint (wid->crb);
+        cairo_set_source_surface (wid->cr, wid->buffer,0,0);
+        cairo_paint (wid->cr);
+    }
+
+    wid->func.expose_callback(wid, user_data);
+    cairo_pop_group_to_source (wid->cr);
+    cairo_paint (wid->cr);
+    if(childlist_has_child(wid->childlist))
+        _propagate_childs(wid);
+}
+
+/**
  * @brief widget_event_loop - the internal widget event loop
  * @param *w                - pointer to the Widget_t receiving a event
  * @param *event            - void pointer to the XEvent
@@ -330,12 +491,13 @@ void widget_event_loop(void *w_, void* event, void* user_data) {
     switch(xev->type) {
         case ConfigureNotify:
             wid->func.configure_callback(w_, user_data);
+            transparent_draw(w_, user_data);
             debug_print("Widget_t ConfigureNotify \n");
         break;
 
         case Expose:
             if (xev->xexpose.count == 0) {
-                wid->func.expose_callback(w_, user_data);
+                transparent_draw(w_, user_data);
                 debug_print("Widget_t Expose \n");
             }
         break;
@@ -358,6 +520,7 @@ void widget_event_loop(void *w_, void* event, void* user_data) {
         break;
 
         case KeyPress:
+            _check_keymap(wid, xev->xkey);
             wid->func.key_press_callback(w_, &xev->xkey, user_data);
             debug_print("Widget_t KeyPress %u\n", xev->xkey.keycode);
         break;

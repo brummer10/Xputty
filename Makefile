@@ -1,6 +1,7 @@
 
 SUBDIR := $(wildcard */)
-#SUBDIR := $(filter-out  debian/, $(SUBDIR))
+SUBDIR := $(filter-out  libxputty/, $(SUBDIR))
+SUBDIR := $(filter-out  header/, $(SUBDIR))
 
 .PHONY: $(SUBDIR) recurse
 

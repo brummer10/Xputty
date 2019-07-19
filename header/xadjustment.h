@@ -24,6 +24,22 @@
 #ifndef XADJUSTMENT_H_
 #define XADJUSTMENT_H_
 
+#include "xputty.h"
+
+
+/**
+ * 
+ * @brief enum           - type of controller adjustment
+ * 
+ */
+
+enum {
+    CL_NONE         = 0x0001,
+    CL_CONTINUOS    = 0x0002,
+    CL_TOGGLE       = 0x0004,
+    CL_BUTTON       = 0x0008,
+    CL_ENUM         = 0x0010,
+};
 
 /**
  * 
@@ -31,14 +47,15 @@
  * 
  */
 
-typedef struct {
-	float std_value;
-	float value;
-	float min_value;
-	float max_value;
-	float step;
+struct  Adjustment_t {
+    float std_value;
+    float value;
+    float min_value;
+    float max_value;
+    float step;
     float start_value;
-} Adjustment_t;
+    int type;
+};
 
 /**
  * @brief *add_adjustment    - adding a adjustment to the widget
@@ -48,11 +65,12 @@ typedef struct {
  * @param min_value          - minimum value of the adjustment
  * @param max_value          - maximal value of the adjustment
  * @param step               - step to increase/decrease the adjustment
+ * @param start_value        - value at start of motion (Button press)
  * @return *adj              - pointer to adjustment
  */
 
 Adjustment_t *add_adjustment(void *w_, float std_value, float value,
-                     float min_value,float max_value, float step);
+                     float min_value,float max_value, float step, int type);
 
 
 /**
@@ -82,6 +100,7 @@ float adj_get_value(Adjustment_t *adj);
 /**
  * @brief adj_set_value      - set the current value of the adjustment
  * @param *adj               - pointer to the Adjustment to free 
+ * @param v                  - value set the Adjustment to 
  * @return void
  */
 
@@ -98,6 +117,8 @@ void adj_set_start_value(void *w);
 /**
  * @brief adj_set_state      - set value of the adjustment
  * @param *adj               - pointer to Widget_t containing the adjustment
+ * @param x                  - value for the xaxis
+ * @param y                  - value for the yaxis
  * @return void
  */
 

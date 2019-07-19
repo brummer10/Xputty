@@ -100,7 +100,7 @@ int main (int argc, char ** argv)
     w->label = "How are you?";
     w->func.expose_callback = draw_window;
 
-    w_quit = create_widget(dpy, w->widget, context, 230, 170, 60, 20);
+    w_quit = create_widget(dpy, w, context, 230, 170, 60, 20);
     w_quit->label = "OK";
     w_quit->func.expose_callback = draw_button;
     w_quit->func.enter_callback = draw_button;

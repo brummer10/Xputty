@@ -21,49 +21,10 @@
 
 #pragma once
 
-#ifndef XPUTTY_H_
-#define XPUTTY_H_
+#ifndef XWIDGET_H
+#define XWIDGET_H
 
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <stddef.h>
-#include <assert.h>
-
-#include <math.h>
-#include <cairo.h>
-#include <cairo-xlib.h>
-#include <X11/Xutil.h>
-#include <X11/keysym.h>
-
-#include "xadjustment.h"
-
-/*---------------------------------------------------------------------
------------------------------------------------------------------------	
-					define debug print
------------------------------------------------------------------------
-----------------------------------------------------------------------*/
-
-#ifndef DEBUG
-#define DEBUG 0
-#endif
-#define debug_print(...) \
-            ((void)((DEBUG) ? fprintf(stderr, __VA_ARGS__) : 0))
-
-/*---------------------------------------------------------------------
------------------------------------------------------------------------	
-				define min/max if not defined already
------------------------------------------------------------------------
-----------------------------------------------------------------------*/
-
-#ifndef min
-#define min(x, y) ((x) < (y) ? (x) : (y))
-#endif
-#ifndef max
-#define max(x, y) ((x) < (y) ? (y) : (x))
-#endif
-
+#include "xputty.h"
 
 /*---------------------------------------------------------------------
 -----------------------------------------------------------------------	
@@ -117,25 +78,30 @@ typedef struct {
  * 
  */
 
-typedef struct {
+struct Widget_t {
     Display *dpy;               /** pointer to the Display in use     */
     Window widget;              /** pointer to the X11 Window         */
+    void *parent;               /** pointer to the Parent Window      */
     evfunc event_callback;      /** the event main callback           */
     Func_t func;                /** struct holding the event callbacks*/
     cairo_surface_t *surface;   /** pointer to the cairo surface      */
     cairo_t *cr;                /** pointer to the cairo context      */
+    cairo_surface_t *buffer;    /** pointer to the buffer surface     */
+    cairo_t *crb;               /** pointer to the buffer context     */
     int data;                   /** int to hold user data             */
     const char* label;          /** pointer to the widget label       */
     char input_label[32];       /** char array the widget input label */
     int state;                  /** int to hold the widget state      */
     bool has_pointer;           /** is mouse pointer in widget        */
     int pos_x, pos_y;           /** mouse pointer position            */
+    int x, y;                   /** widget position                   */
     int width, height;          /** widget size                       */
     float scale_x, scale_y;     /** scaling factor                    */
+    bool transparency;          /** flag to check transperency        */
     Adjustment_t *adj_x;        /** pointer x axis          adjustment*/
     Adjustment_t *adj_y;        /** pointer y axis          adjustment*/
-} Widget_t;
-
+    Childlist_t *childlist;     /** pointer to Widget_t child list    */
+};
 
 
 /**
@@ -153,13 +119,13 @@ Widget_t *create_window(Display *dpy, Window win, XContext Context,
 /**
  * @brief *create_widget      - create a widget
  * @param *dpy                - pointer to the Display to use
- * @param *win                - pointer to the Parrent Window 
+ * @param *parent             - pointer to the Parrent Widget_t
  * @param Context             - a XContext to store Window informations
  * @param x,y,width,height    - the position/geometry to create the widget
  * @return Widget_t*          - pointer to the Widget_t struct
  */
 
-Widget_t *create_widget(Display *dpy, Window win, XContext Context,
+Widget_t *create_widget(Display *dpy, Widget_t *win, XContext Context,
                           int x, int y, int width, int height);
 
 /**
@@ -169,6 +135,15 @@ Widget_t *create_widget(Display *dpy, Window win, XContext Context,
  */
 
 void quit(Widget_t *w);
+
+/**
+ * @brief _transparency     - copy parent surface to child surface
+ * @param *wid              - pointer to the Widget_t receiving a event
+ * @param *user_data        - void pointer to attached user_data
+ * @return void 
+ */
+
+void transparent_draw(void * wid, void* user_data);
 
 /**
  * @brief destroy_widget    - destroy a widget and remove it from the Context
@@ -209,5 +184,5 @@ void loop(Widget_t *w, XContext Context, bool *run);
 int key_mapping(Display *dpy, XKeyEvent *xkey);
 
 
-#endif //XPUTTY_H_
+#endif //XWIDGET_H
 

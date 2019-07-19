@@ -18,7 +18,7 @@
  *
  */
 
-#include "xputty.h"
+#include "xadjustment.h"
 
 
 /**
@@ -33,10 +33,10 @@
  */
 
 Adjustment_t *add_adjustment(void *w_, float std_value, float value,
-                     float min_value,float max_value, float step) {
+                float min_value,float max_value, float step, int type) {
     Adjustment_t *adj = (Adjustment_t*)malloc(sizeof(Adjustment_t));
     assert(adj);
-    *(adj) = (Adjustment_t){std_value, value, min_value, max_value, step, value};
+    *(adj) = (Adjustment_t){std_value, value, min_value, max_value, step, value, type};
     
     
     debug_print("Widget_t add adjustment\n");
@@ -83,6 +83,7 @@ float adj_get_value(Adjustment_t *adj) {
 /**
  * @brief adj_set_value      - set the current value of the adjustment
  * @param *adj               - pointer to the Adjustment to free 
+ * @param v                  - value set the Adjustment to 
  * @return void
  */
 
@@ -104,8 +105,10 @@ void adj_set_start_value(void *w) {
 }
 
 /**
- * @brief adj_set_state      - set value of the adjustment
+ * @brief adj_set_state      - set value/state of the adjustment
  * @param *adj               - pointer to Widget_t containing the adjustment
+ * @param x                  - value for the xaxis
+ * @param y                  - value for the yaxis
  * @return void
  */
 
@@ -113,18 +116,40 @@ void adj_set_state(void *w, float x, float y) {
     Widget_t * wid = (Widget_t*)w;
     const float scaling = 0.5;
     if(wid->adj_x) {
-        float state = (wid->adj_x->start_value - wid->adj_x->min_value) / 
-            (wid->adj_x->max_value - wid->adj_x->min_value);
-        float nsteps = wid->adj_x->step / (wid->adj_x->max_value - wid->adj_x->min_value);
-        float nvalue = min(1.0,max(0.0,state + ((float)(x - wid->pos_x)*scaling *nsteps)));
-        wid->adj_x->value = nvalue * (wid->adj_x->max_value - wid->adj_x->min_value) + wid->adj_x->min_value;
+        switch(wid->adj_x->type) {
+            case (CL_CONTINUOS):
+            {
+                float state = (wid->adj_x->start_value - wid->adj_x->min_value) / 
+                    (wid->adj_x->max_value - wid->adj_x->min_value);
+                float nsteps = wid->adj_x->step / (wid->adj_x->max_value - wid->adj_x->min_value);
+                float nvalue = min(1.0,max(0.0,state + ((float)(x - wid->pos_x)*scaling *nsteps)));
+                wid->adj_x->value = nvalue * (wid->adj_x->max_value - wid->adj_x->min_value) + wid->adj_x->min_value;
+            }
+            break;
+            case (CL_TOGGLE):
+                wid->adj_x->value = wid->adj_x->value ? 0.0 : 1.0;
+            break;
+            default:
+            break;
+        }
     }
     if(wid->adj_y) {
-        float state = (wid->adj_y->start_value - wid->adj_y->min_value) / 
-            (wid->adj_y->max_value - wid->adj_y->min_value);
-        float nsteps = wid->adj_y->step / (wid->adj_y->max_value - wid->adj_y->min_value);
-        float nvalue = min(1.0,max(0.0,state + ((float)(wid->pos_y - y)*scaling *nsteps)));
-        wid->adj_y->value = nvalue * (wid->adj_y->max_value - wid->adj_y->min_value) + wid->adj_y->min_value;
+        switch(wid->adj_y->type) {
+            case (CL_CONTINUOS):
+            {
+                float state = (wid->adj_y->start_value - wid->adj_y->min_value) / 
+                    (wid->adj_y->max_value - wid->adj_y->min_value);
+                float nsteps = wid->adj_y->step / (wid->adj_y->max_value - wid->adj_y->min_value);
+                float nvalue = min(1.0,max(0.0,state + ((float)(wid->pos_y - y)*scaling *nsteps)));
+                wid->adj_y->value = nvalue * (wid->adj_y->max_value - wid->adj_y->min_value) + wid->adj_y->min_value;
+            }
+            break;
+            case (CL_TOGGLE):
+                wid->adj_y->value = wid->adj_y->value ? 0.0 : 1.0;
+            break;
+            default:
+            break;
+        }
     }
 
 }

@@ -128,9 +128,10 @@ static void get_text(void *w_, void *key_, void *user_data) {
             case 6: ;
             break;
             case 7: ;
-            case 8: quit(w);
             break;
-            case 9: text_input_clip(w);
+            case 10: quit(w);
+            break;
+            case 11: text_input_clip(w);
             break;
             default:
             break;
@@ -245,7 +246,7 @@ int main (int argc, char ** argv)
     mywindow.w->label = "move pointer to text-input and press key:";
     mywindow.w->func.expose_callback = draw_window;
 
-    mywindow.w_ti = create_widget(dpy, mywindow.w->widget, context, 20, 20, 260, 100);
+    mywindow.w_ti = create_widget(dpy, mywindow.w, context, 20, 20, 260, 100);
     mywindow.w_ti->data = 1;
     memset(mywindow.w_ti->input_label, 0, 32 * (sizeof mywindow.w_ti->input_label[0]) );
     mywindow.w_ti->func.expose_callback = text_input_add_text;
@@ -258,7 +259,7 @@ int main (int argc, char ** argv)
     XSetWMNormalHints(dpy, mywindow.w_ti->widget, win_size_hints);
     XFree(win_size_hints);
 
-    mywindow.w_ok = create_widget(dpy, mywindow.w->widget, context, 230, 170, 60, 20);
+    mywindow.w_ok = create_widget(dpy, mywindow.w, context, 230, 170, 60, 20);
     mywindow.w_ok->label = "Ok";
     mywindow.w_ok->func.expose_callback = draw_button;
     mywindow.w_ok->func.enter_callback = draw_button;
