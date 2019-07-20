@@ -41,6 +41,10 @@ int main (int argc, char ** argv)
 
 check out the example folder for more examples.
 
+## Documentation:
+
+[Documentation](https://brummer10.github.io/Xputty/html/index.html)
+
 ## License
 
          0BSD 
