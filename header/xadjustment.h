@@ -88,6 +88,7 @@ struct  Adjustment_t {
  * @param max_value          - maximal value of the adjustment
  * @param step               - step to increase/decrease the adjustment
  * @param start_value        - value at start of motion (Button press)
+ * @param type               - set CL_type of adjustment
  * @return *adj              - pointer to adjustment
  */
 

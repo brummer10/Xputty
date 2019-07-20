@@ -29,6 +29,7 @@
  * @param min_value          - minimum value of the adjustment
  * @param max_value          - maximal value of the adjustment
  * @param step               - step to increase/decrease the adjustment
+ * @param type               - set CL_type of adjustment
  * @return *adj              - pointer to adjustment
  */
 
