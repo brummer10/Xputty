@@ -1,0 +1,170 @@
+\hypertarget{xchildlist_8h}{}\section{xchildlist.\+h File Reference}
+\label{xchildlist_8h}\index{xchildlist.\+h@{xchildlist.\+h}}
+{\ttfamily \#include \char`\"{}xputty.\+h\char`\"{}}\newline
+Include dependency graph for xchildlist.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xchildlist_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{xchildlist_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structChildlist__t}{Childlist\+\_\+t}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structChildlist__t}{Childlist\+\_\+t} -\/ struct to hold a \hyperlink{structWidget__t}{Widget\+\_\+t} child list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{xchildlist_8h_a396cfc2326c57bf038fc8b40d1fc7630}{X\+C\+H\+I\+L\+D\+L\+I\+S\+T\+\_\+\+H\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{xchildlist_8h_ad47bf3695fdf0c67bc059e4ce25c4639}{childlist\+\_\+init} (\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$childlist)
+\begin{DoxyCompactList}\small\item\em childlist\+\_\+init -\/ allocate the array to min size \end{DoxyCompactList}\item 
+void \hyperlink{xchildlist_8h_a57256a97c272561094da1b7ae5c57638}{childlist\+\_\+destroy} (\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$childlist)
+\begin{DoxyCompactList}\small\item\em childlist\+\_\+destroy -\/ free the childlist \end{DoxyCompactList}\item 
+void \hyperlink{xchildlist_8h_a4515e80317c76cbfa903c50ddfcfbf58}{childlist\+\_\+add\+\_\+child} (\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$childlist, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$child)
+\begin{DoxyCompactList}\small\item\em childlist\+\_\+add\+\_\+child -\/ add a child to the childlist \end{DoxyCompactList}\item 
+void \hyperlink{xchildlist_8h_a6cdf6afd4fdf75550b6aca31ac42379c}{childlist\+\_\+remove\+\_\+child} (\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$childlist, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$child)
+\begin{DoxyCompactList}\small\item\em childlist\+\_\+add\+\_\+child -\/ remove a child from the childlist \end{DoxyCompactList}\item 
+int \hyperlink{xchildlist_8h_a54b8a01a41d48965bd02c5269d0f2103}{childlist\+\_\+find\+\_\+child} (\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$childlist, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$child)
+\begin{DoxyCompactList}\small\item\em childlist\+\_\+find\+\_\+child -\/ find a child in a the childlist \end{DoxyCompactList}\item 
+int \hyperlink{xchildlist_8h_af130af096a2f8b3a807e7e2dcf0ee6c0}{childlist\+\_\+has\+\_\+child} (\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$childlist)
+\begin{DoxyCompactList}\small\item\em childlist\+\_\+has\+\_\+child -\/ check if childlist contain a child \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{xchildlist_8h_a396cfc2326c57bf038fc8b40d1fc7630}\label{xchildlist_8h_a396cfc2326c57bf038fc8b40d1fc7630}} 
+\index{xchildlist.\+h@{xchildlist.\+h}!X\+C\+H\+I\+L\+D\+L\+I\+S\+T\+\_\+\+H\+\_\+@{X\+C\+H\+I\+L\+D\+L\+I\+S\+T\+\_\+\+H\+\_\+}}
+\index{X\+C\+H\+I\+L\+D\+L\+I\+S\+T\+\_\+\+H\+\_\+@{X\+C\+H\+I\+L\+D\+L\+I\+S\+T\+\_\+\+H\+\_\+}!xchildlist.\+h@{xchildlist.\+h}}
+\subsubsection{\texorpdfstring{X\+C\+H\+I\+L\+D\+L\+I\+S\+T\+\_\+\+H\+\_\+}{XCHILDLIST\_H\_}}
+{\footnotesize\ttfamily \#define X\+C\+H\+I\+L\+D\+L\+I\+S\+T\+\_\+\+H\+\_\+}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xchildlist_8h_a4515e80317c76cbfa903c50ddfcfbf58}\label{xchildlist_8h_a4515e80317c76cbfa903c50ddfcfbf58}} 
+\index{xchildlist.\+h@{xchildlist.\+h}!childlist\+\_\+add\+\_\+child@{childlist\+\_\+add\+\_\+child}}
+\index{childlist\+\_\+add\+\_\+child@{childlist\+\_\+add\+\_\+child}!xchildlist.\+h@{xchildlist.\+h}}
+\subsubsection{\texorpdfstring{childlist\+\_\+add\+\_\+child()}{childlist\_add\_child()}}
+{\footnotesize\ttfamily void childlist\+\_\+add\+\_\+child (\begin{DoxyParamCaption}\item[{\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$}]{childlist,  }\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{child }\end{DoxyParamCaption})}
+
+
+
+childlist\+\_\+add\+\_\+child -\/ add a child to the childlist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$childlist} & -\/ pointer to the \hyperlink{structChildlist__t}{Childlist\+\_\+t} \\
+\hline
+{\em $\ast$child} & -\/ pointer to the child to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xchildlist_8h_a57256a97c272561094da1b7ae5c57638}\label{xchildlist_8h_a57256a97c272561094da1b7ae5c57638}} 
+\index{xchildlist.\+h@{xchildlist.\+h}!childlist\+\_\+destroy@{childlist\+\_\+destroy}}
+\index{childlist\+\_\+destroy@{childlist\+\_\+destroy}!xchildlist.\+h@{xchildlist.\+h}}
+\subsubsection{\texorpdfstring{childlist\+\_\+destroy()}{childlist\_destroy()}}
+{\footnotesize\ttfamily void childlist\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$}]{childlist }\end{DoxyParamCaption})}
+
+
+
+childlist\+\_\+destroy -\/ free the childlist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$childlist} & -\/ pointer to the \hyperlink{structChildlist__t}{Childlist\+\_\+t} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xchildlist_8h_a54b8a01a41d48965bd02c5269d0f2103}\label{xchildlist_8h_a54b8a01a41d48965bd02c5269d0f2103}} 
+\index{xchildlist.\+h@{xchildlist.\+h}!childlist\+\_\+find\+\_\+child@{childlist\+\_\+find\+\_\+child}}
+\index{childlist\+\_\+find\+\_\+child@{childlist\+\_\+find\+\_\+child}!xchildlist.\+h@{xchildlist.\+h}}
+\subsubsection{\texorpdfstring{childlist\+\_\+find\+\_\+child()}{childlist\_find\_child()}}
+{\footnotesize\ttfamily int childlist\+\_\+find\+\_\+child (\begin{DoxyParamCaption}\item[{\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$}]{childlist,  }\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{child }\end{DoxyParamCaption})}
+
+
+
+childlist\+\_\+find\+\_\+child -\/ find a child in a the childlist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$childlist} & -\/ pointer to the \hyperlink{structChildlist__t}{Childlist\+\_\+t} \\
+\hline
+{\em $\ast$child} & -\/ pointer to the child to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ return position in childlist or -\/1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xchildlist_8h_af130af096a2f8b3a807e7e2dcf0ee6c0}\label{xchildlist_8h_af130af096a2f8b3a807e7e2dcf0ee6c0}} 
+\index{xchildlist.\+h@{xchildlist.\+h}!childlist\+\_\+has\+\_\+child@{childlist\+\_\+has\+\_\+child}}
+\index{childlist\+\_\+has\+\_\+child@{childlist\+\_\+has\+\_\+child}!xchildlist.\+h@{xchildlist.\+h}}
+\subsubsection{\texorpdfstring{childlist\+\_\+has\+\_\+child()}{childlist\_has\_child()}}
+{\footnotesize\ttfamily int childlist\+\_\+has\+\_\+child (\begin{DoxyParamCaption}\item[{\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$}]{childlist }\end{DoxyParamCaption})}
+
+
+
+childlist\+\_\+has\+\_\+child -\/ check if childlist contain a child 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$childlist} & -\/ pointer to the \hyperlink{structChildlist__t}{Childlist\+\_\+t} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ return element counter value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xchildlist_8h_ad47bf3695fdf0c67bc059e4ce25c4639}\label{xchildlist_8h_ad47bf3695fdf0c67bc059e4ce25c4639}} 
+\index{xchildlist.\+h@{xchildlist.\+h}!childlist\+\_\+init@{childlist\+\_\+init}}
+\index{childlist\+\_\+init@{childlist\+\_\+init}!xchildlist.\+h@{xchildlist.\+h}}
+\subsubsection{\texorpdfstring{childlist\+\_\+init()}{childlist\_init()}}
+{\footnotesize\ttfamily void childlist\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$}]{childlist }\end{DoxyParamCaption})}
+
+
+
+childlist\+\_\+init -\/ allocate the array to min size 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$childlist} & -\/ pointer to the \hyperlink{structChildlist__t}{Childlist\+\_\+t} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xchildlist_8h_a6cdf6afd4fdf75550b6aca31ac42379c}\label{xchildlist_8h_a6cdf6afd4fdf75550b6aca31ac42379c}} 
+\index{xchildlist.\+h@{xchildlist.\+h}!childlist\+\_\+remove\+\_\+child@{childlist\+\_\+remove\+\_\+child}}
+\index{childlist\+\_\+remove\+\_\+child@{childlist\+\_\+remove\+\_\+child}!xchildlist.\+h@{xchildlist.\+h}}
+\subsubsection{\texorpdfstring{childlist\+\_\+remove\+\_\+child()}{childlist\_remove\_child()}}
+{\footnotesize\ttfamily void childlist\+\_\+remove\+\_\+child (\begin{DoxyParamCaption}\item[{\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$}]{childlist,  }\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{child }\end{DoxyParamCaption})}
+
+
+
+childlist\+\_\+add\+\_\+child -\/ remove a child from the childlist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$childlist} & -\/ pointer to the \hyperlink{structChildlist__t}{Childlist\+\_\+t} \\
+\hline
+{\em $\ast$child} & -\/ pointer to the child to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

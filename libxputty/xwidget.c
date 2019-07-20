@@ -186,7 +186,7 @@ static inline void dummy_callback(void *w_, void* user_data) {
 /**
  * @brief *create_window     - create a Window 
  * @param *dpy               - pointer to the Display to use
- * @param *win               - pointer to the Parrent Window (may be Root)
+ * @param win               - pointer to the Parrent Window (may be Root)
  * @param Context            - a XContext to store Window informations
  * @param x,y,width,height   - the position/geometry to create the window
  * @return Widget_t*         - pointer to the Widget_t struct

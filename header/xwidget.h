@@ -74,33 +74,88 @@ typedef struct {
 
 /**
  * 
- * @brief Widget_t     - struct to hold the basic widget info
- * 
+ * @brief Widget_t           - struct to hold the basic widget info
+ * @param *dpy               - pointer to the Display to use
+ * @param widget             - the X11 Window
+ * @param *parent            - pointer to the Parent Window or Widget_t
+ * @param event_callback     - the main XEvent callback
+ * @param func               - struct holding the event callbacks
+ * @param *surface           - pointer to the cairo xlib surface
+ * @param *cr                - pointer to the cairo xlib surface context
+ * @param *buffer            - pointer to the cairo buffer surface
+ * @param *crb               - pointer to the cairo buffer surface context
+ * @param data               - int to hold user data 
+ * @param *label             - pointer to the widget label
+ * @param input_label        - char array the widget input label
+ * @param state              - int to hold the widget state
+ * @param has_pointer        - is mouse pointer in widget
+ * @param pos_x              - mouse pointer x position on button press
+ * @param pos_y              - mouse pointer y position on button press
+ * @param x                  - x position of Window on Parent
+ * @param y                  - y position of Window on Parent
+ * @param width              - widget width
+ * @param height             - widget height
+ * @param scale_x            - scaling factor on x axis
+ * @param scale_y            - scaling factor on y axis
+ * @param transparency       - flag to set/check transparent drawing
+ * @param *adj_x             - pointer to the x axis adjustment
+ * @param *adj_y             - pointer to the y axis adjustment
+ * @param *childlist         - pointer to Widget_t child list
  */
 
 struct Widget_t {
-    Display *dpy;               /** pointer to the Display in use     */
-    Window widget;              /** pointer to the X11 Window         */
-    void *parent;               /** pointer to the Parent Window      */
-    evfunc event_callback;      /** the event main callback           */
-    Func_t func;                /** struct holding the event callbacks*/
-    cairo_surface_t *surface;   /** pointer to the cairo surface      */
-    cairo_t *cr;                /** pointer to the cairo context      */
-    cairo_surface_t *buffer;    /** pointer to the buffer surface     */
-    cairo_t *crb;               /** pointer to the buffer context     */
-    int data;                   /** int to hold user data             */
-    const char* label;          /** pointer to the widget label       */
-    char input_label[32];       /** char array the widget input label */
-    int state;                  /** int to hold the widget state      */
-    bool has_pointer;           /** is mouse pointer in widget        */
-    int pos_x, pos_y;           /** mouse pointer position            */
-    int x, y;                   /** widget position                   */
-    int width, height;          /** widget size                       */
-    float scale_x, scale_y;     /** scaling factor                    */
-    bool transparency;          /** flag to check transperency        */
-    Adjustment_t *adj_x;        /** pointer x axis          adjustment*/
-    Adjustment_t *adj_y;        /** pointer y axis          adjustment*/
-    Childlist_t *childlist;     /** pointer to Widget_t child list    */
+/** pointer to the Display to use */
+    Display *dpy;
+/** the X11 newly created Window */
+    Window widget;
+/** pointer to the Parent Window or Widget_t */
+    void *parent;
+/** the main XEvent callback */
+    evfunc event_callback;
+/** struct holding the event callbacks */
+    Func_t func;
+/** pointer to the cairo xlib surface */
+    cairo_surface_t *surface;
+/** pointer to the cairo xlib surface context */
+    cairo_t *cr;
+/** pointer to the cairo buffer surface used for transparency */
+    cairo_surface_t *buffer;
+/** pointer to the cairo buffer surface context */
+    cairo_t *crb;
+/** int to hold user data */
+    int data;
+/** pointer to the widget label */
+    const char* label;
+/** char array to hold user input */
+    char input_label[32];
+/** int to hold the widget state default = 0 */
+    int state;
+/** indicate if mouse pointer is in widget */
+    bool has_pointer;
+/** mouse pointer x position on button press */
+    int pos_x;
+/** mouse pointer y position on button press */
+    int pos_y;
+/** x position of Window related to the Parent */
+    int x;
+/** y position of Window related to the Parent */
+    int y;
+/** the widget size x-axis */
+    int width;
+/** the widget size y-axis */
+    int height;
+/** the x scaling factor used to resize child widgets */
+    float scale_x;
+/** the y scaling factor used to resize child widgets */
+    float scale_y;
+/** indicaate if the widget use transparent drawing, default = true */
+    bool transparency;
+/** pointer to the x axis adjustment */
+    Adjustment_t *adj_x;
+/** pointer to the y axis adjustment */
+    Adjustment_t *adj_y;
+/** pointer to Widget_t child list */
+    Childlist_t *childlist;
 };
 
 

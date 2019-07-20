@@ -1,0 +1,292 @@
+\hypertarget{xadjustment_8h}{}\section{xadjustment.\+h File Reference}
+\label{xadjustment_8h}\index{xadjustment.\+h@{xadjustment.\+h}}
+{\ttfamily \#include \char`\"{}xputty.\+h\char`\"{}}\newline
+Include dependency graph for xadjustment.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xadjustment_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{xadjustment_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structAdjustment__t}{Adjustment\+\_\+t}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} -\/ struct to hold a controller adjustment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{xadjustment_8h_a32f69912c546bd28e73b2f48cc99a99d}{X\+A\+D\+J\+U\+S\+T\+M\+E\+N\+T\+\_\+\+H\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\hyperlink{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55ba6dc58bda20e0018d54f1cb94df78119e}{C\+L\+\_\+\+N\+O\+NE} = 0x0001, 
+\hyperlink{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55ba62a789a6ef19826f17aefdceba303647}{C\+L\+\_\+\+C\+O\+N\+T\+I\+N\+U\+OS} = 0x0002, 
+\hyperlink{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55ba08e7c21e78e2617f5f20de6b919b0e6c}{C\+L\+\_\+\+T\+O\+G\+G\+LE} = 0x0004, 
+\hyperlink{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55babc74a250346d4b52e2fa55dbf4da1ef0}{C\+L\+\_\+\+B\+U\+T\+T\+ON} = 0x0008, 
+\newline
+\hyperlink{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55ba86ad020137af474591a13badc9e3bf78}{C\+L\+\_\+\+E\+N\+UM} = 0x0010
+ \}\begin{DoxyCompactList}\small\item\em enum -\/ type of controller adjustment \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{xadjustment_8h_ac53045d086e408e698babb4f4c931f44}{add\+\_\+adjustment} (void $\ast$w\+\_\+, float std\+\_\+value, float value, float min\+\_\+value, float max\+\_\+value, float step, int type)
+\begin{DoxyCompactList}\small\item\em $\ast$add\+\_\+adjustment -\/ adding a adjustment to the widget \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{xadjustment_8h_af8186d7e68d37007f6e38814225e6ee3}{delete\+\_\+adjustment} (\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$adj)
+\begin{DoxyCompactList}\small\item\em delete\+\_\+adjustment -\/ freeing the memory of the adjustment \end{DoxyCompactList}\item 
+float \hyperlink{xadjustment_8h_af1f74e9733cffbb287e4912fc8ab37cd}{adj\+\_\+get\+\_\+state} (\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$adj)
+\begin{DoxyCompactList}\small\item\em adj\+\_\+get\+\_\+state -\/ freeing the memory of the adjustment \end{DoxyCompactList}\item 
+float \hyperlink{xadjustment_8h_a5a78c30051a7a9c3dc0ce84c3482c530}{adj\+\_\+get\+\_\+value} (\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$adj)
+\begin{DoxyCompactList}\small\item\em adj\+\_\+get\+\_\+value -\/ get the current value of the adjustment \end{DoxyCompactList}\item 
+void \hyperlink{xadjustment_8h_afbe410bb3efb6e78941a4f938d1c67ca}{adj\+\_\+set\+\_\+value} (\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$adj, float v)
+\begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+value -\/ set the current value of the adjustment \end{DoxyCompactList}\item 
+void \hyperlink{xadjustment_8h_a670e06d916d1d6fd1f2968fb171c29aa}{adj\+\_\+set\+\_\+start\+\_\+value} (void $\ast$w)
+\begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+start\+\_\+value-\/ set start value of the adjustment \end{DoxyCompactList}\item 
+void \hyperlink{xadjustment_8h_aaeeb13f45a95f6e2f585641b212eca11}{adj\+\_\+set\+\_\+state} (void $\ast$w, float x, float y)
+\begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+state -\/ set value of the adjustment \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{xadjustment_8h_a32f69912c546bd28e73b2f48cc99a99d}\label{xadjustment_8h_a32f69912c546bd28e73b2f48cc99a99d}} 
+\index{xadjustment.\+h@{xadjustment.\+h}!X\+A\+D\+J\+U\+S\+T\+M\+E\+N\+T\+\_\+\+H\+\_\+@{X\+A\+D\+J\+U\+S\+T\+M\+E\+N\+T\+\_\+\+H\+\_\+}}
+\index{X\+A\+D\+J\+U\+S\+T\+M\+E\+N\+T\+\_\+\+H\+\_\+@{X\+A\+D\+J\+U\+S\+T\+M\+E\+N\+T\+\_\+\+H\+\_\+}!xadjustment.\+h@{xadjustment.\+h}}
+\subsubsection{\texorpdfstring{X\+A\+D\+J\+U\+S\+T\+M\+E\+N\+T\+\_\+\+H\+\_\+}{XADJUSTMENT\_H\_}}
+{\footnotesize\ttfamily \#define X\+A\+D\+J\+U\+S\+T\+M\+E\+N\+T\+\_\+\+H\+\_\+}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55b}\label{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55b}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+
+
+enum -\/ type of controller adjustment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em C\+L\+\_\+\+N\+O\+NE} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} didn\textquotesingle{}t request a adjustment \\
+\hline
+{\em C\+L\+\_\+\+C\+O\+N\+T\+I\+N\+U\+OS} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} request a continuos adjustment \\
+\hline
+{\em C\+L\+\_\+\+T\+O\+G\+G\+LE} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} request a toggle adjustment \\
+\hline
+{\em C\+L\+\_\+\+B\+U\+T\+T\+ON} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} request a button adjustment \\
+\hline
+{\em C\+L\+\_\+\+E\+N\+UM} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} request a enum adjustment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+L\+\_\+\+N\+O\+NE@{C\+L\+\_\+\+N\+O\+NE}!xadjustment.\+h@{xadjustment.\+h}}\index{xadjustment.\+h@{xadjustment.\+h}!C\+L\+\_\+\+N\+O\+NE@{C\+L\+\_\+\+N\+O\+NE}}}\mbox{\Hypertarget{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55ba6dc58bda20e0018d54f1cb94df78119e}\label{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55ba6dc58bda20e0018d54f1cb94df78119e}} 
+C\+L\+\_\+\+N\+O\+NE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+L\+\_\+\+C\+O\+N\+T\+I\+N\+U\+OS@{C\+L\+\_\+\+C\+O\+N\+T\+I\+N\+U\+OS}!xadjustment.\+h@{xadjustment.\+h}}\index{xadjustment.\+h@{xadjustment.\+h}!C\+L\+\_\+\+C\+O\+N\+T\+I\+N\+U\+OS@{C\+L\+\_\+\+C\+O\+N\+T\+I\+N\+U\+OS}}}\mbox{\Hypertarget{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55ba62a789a6ef19826f17aefdceba303647}\label{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55ba62a789a6ef19826f17aefdceba303647}} 
+C\+L\+\_\+\+C\+O\+N\+T\+I\+N\+U\+OS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+L\+\_\+\+T\+O\+G\+G\+LE@{C\+L\+\_\+\+T\+O\+G\+G\+LE}!xadjustment.\+h@{xadjustment.\+h}}\index{xadjustment.\+h@{xadjustment.\+h}!C\+L\+\_\+\+T\+O\+G\+G\+LE@{C\+L\+\_\+\+T\+O\+G\+G\+LE}}}\mbox{\Hypertarget{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55ba08e7c21e78e2617f5f20de6b919b0e6c}\label{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55ba08e7c21e78e2617f5f20de6b919b0e6c}} 
+C\+L\+\_\+\+T\+O\+G\+G\+LE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+L\+\_\+\+B\+U\+T\+T\+ON@{C\+L\+\_\+\+B\+U\+T\+T\+ON}!xadjustment.\+h@{xadjustment.\+h}}\index{xadjustment.\+h@{xadjustment.\+h}!C\+L\+\_\+\+B\+U\+T\+T\+ON@{C\+L\+\_\+\+B\+U\+T\+T\+ON}}}\mbox{\Hypertarget{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55babc74a250346d4b52e2fa55dbf4da1ef0}\label{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55babc74a250346d4b52e2fa55dbf4da1ef0}} 
+C\+L\+\_\+\+B\+U\+T\+T\+ON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+L\+\_\+\+E\+N\+UM@{C\+L\+\_\+\+E\+N\+UM}!xadjustment.\+h@{xadjustment.\+h}}\index{xadjustment.\+h@{xadjustment.\+h}!C\+L\+\_\+\+E\+N\+UM@{C\+L\+\_\+\+E\+N\+UM}}}\mbox{\Hypertarget{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55ba86ad020137af474591a13badc9e3bf78}\label{xadjustment_8h_a06fc87d81c62e9abb8790b6e5713c55ba86ad020137af474591a13badc9e3bf78}} 
+C\+L\+\_\+\+E\+N\+UM&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xadjustment_8h_ac53045d086e408e698babb4f4c931f44}\label{xadjustment_8h_ac53045d086e408e698babb4f4c931f44}} 
+\index{xadjustment.\+h@{xadjustment.\+h}!add\+\_\+adjustment@{add\+\_\+adjustment}}
+\index{add\+\_\+adjustment@{add\+\_\+adjustment}!xadjustment.\+h@{xadjustment.\+h}}
+\subsubsection{\texorpdfstring{add\+\_\+adjustment()}{add\_adjustment()}}
+{\footnotesize\ttfamily \hyperlink{structAdjustment__t}{Adjustment\+\_\+t}$\ast$ add\+\_\+adjustment (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{float}]{std\+\_\+value,  }\item[{float}]{value,  }\item[{float}]{min\+\_\+value,  }\item[{float}]{max\+\_\+value,  }\item[{float}]{step,  }\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+$\ast$add\+\_\+adjustment -\/ adding a adjustment to the widget 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} request a adjustment \\
+\hline
+{\em std\+\_\+value} & -\/ standard value of the adjustment \\
+\hline
+{\em value} & -\/ current value of the adjustment \\
+\hline
+{\em min\+\_\+value} & -\/ minimum value of the adjustment \\
+\hline
+{\em max\+\_\+value} & -\/ maximal value of the adjustment \\
+\hline
+{\em step} & -\/ step to increase/decrease the adjustment \\
+\hline
+{\em start\+\_\+value} & -\/ value at start of motion (Button press) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$\ast$adj -\/ pointer to adjustment
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} request a adjustment \\
+\hline
+{\em std\+\_\+value} & -\/ standard value of the adjustment \\
+\hline
+{\em value} & -\/ current value of the adjustment \\
+\hline
+{\em min\+\_\+value} & -\/ minimum value of the adjustment \\
+\hline
+{\em max\+\_\+value} & -\/ maximal value of the adjustment \\
+\hline
+{\em step} & -\/ step to increase/decrease the adjustment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$\ast$adj -\/ pointer to adjustment 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xadjustment_8h_af1f74e9733cffbb287e4912fc8ab37cd}\label{xadjustment_8h_af1f74e9733cffbb287e4912fc8ab37cd}} 
+\index{xadjustment.\+h@{xadjustment.\+h}!adj\+\_\+get\+\_\+state@{adj\+\_\+get\+\_\+state}}
+\index{adj\+\_\+get\+\_\+state@{adj\+\_\+get\+\_\+state}!xadjustment.\+h@{xadjustment.\+h}}
+\subsubsection{\texorpdfstring{adj\+\_\+get\+\_\+state()}{adj\_get\_state()}}
+{\footnotesize\ttfamily float adj\+\_\+get\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$}]{adj }\end{DoxyParamCaption})}
+
+
+
+adj\+\_\+get\+\_\+state -\/ freeing the memory of the adjustment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$adj} & -\/ pointer to the Adjustment to free \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/ return the adjustment state (0$<$-\/$>$1) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xadjustment_8h_a5a78c30051a7a9c3dc0ce84c3482c530}\label{xadjustment_8h_a5a78c30051a7a9c3dc0ce84c3482c530}} 
+\index{xadjustment.\+h@{xadjustment.\+h}!adj\+\_\+get\+\_\+value@{adj\+\_\+get\+\_\+value}}
+\index{adj\+\_\+get\+\_\+value@{adj\+\_\+get\+\_\+value}!xadjustment.\+h@{xadjustment.\+h}}
+\subsubsection{\texorpdfstring{adj\+\_\+get\+\_\+value()}{adj\_get\_value()}}
+{\footnotesize\ttfamily float adj\+\_\+get\+\_\+value (\begin{DoxyParamCaption}\item[{\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$}]{adj }\end{DoxyParamCaption})}
+
+
+
+adj\+\_\+get\+\_\+value -\/ get the current value of the adjustment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$adj} & -\/ pointer to the Adjustment to free \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/ return the adjustment value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xadjustment_8h_a670e06d916d1d6fd1f2968fb171c29aa}\label{xadjustment_8h_a670e06d916d1d6fd1f2968fb171c29aa}} 
+\index{xadjustment.\+h@{xadjustment.\+h}!adj\+\_\+set\+\_\+start\+\_\+value@{adj\+\_\+set\+\_\+start\+\_\+value}}
+\index{adj\+\_\+set\+\_\+start\+\_\+value@{adj\+\_\+set\+\_\+start\+\_\+value}!xadjustment.\+h@{xadjustment.\+h}}
+\subsubsection{\texorpdfstring{adj\+\_\+set\+\_\+start\+\_\+value()}{adj\_set\_start\_value()}}
+{\footnotesize\ttfamily void adj\+\_\+set\+\_\+start\+\_\+value (\begin{DoxyParamCaption}\item[{void $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+adj\+\_\+set\+\_\+start\+\_\+value-\/ set start value of the adjustment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to \hyperlink{structWidget__t}{Widget\+\_\+t} containing the adjustment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xadjustment_8h_aaeeb13f45a95f6e2f585641b212eca11}\label{xadjustment_8h_aaeeb13f45a95f6e2f585641b212eca11}} 
+\index{xadjustment.\+h@{xadjustment.\+h}!adj\+\_\+set\+\_\+state@{adj\+\_\+set\+\_\+state}}
+\index{adj\+\_\+set\+\_\+state@{adj\+\_\+set\+\_\+state}!xadjustment.\+h@{xadjustment.\+h}}
+\subsubsection{\texorpdfstring{adj\+\_\+set\+\_\+state()}{adj\_set\_state()}}
+{\footnotesize\ttfamily void adj\+\_\+set\+\_\+state (\begin{DoxyParamCaption}\item[{void $\ast$}]{w,  }\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+adj\+\_\+set\+\_\+state -\/ set value of the adjustment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$adj} & -\/ pointer to \hyperlink{structWidget__t}{Widget\+\_\+t} containing the adjustment \\
+\hline
+{\em x} & -\/ value for the xaxis \\
+\hline
+{\em y} & -\/ value for the yaxis \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+adj\+\_\+set\+\_\+state -\/ set value of the adjustment
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$adj} & -\/ pointer to \hyperlink{structWidget__t}{Widget\+\_\+t} containing the adjustment \\
+\hline
+{\em x} & -\/ value for the xaxis \\
+\hline
+{\em y} & -\/ value for the yaxis \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xadjustment_8h_afbe410bb3efb6e78941a4f938d1c67ca}\label{xadjustment_8h_afbe410bb3efb6e78941a4f938d1c67ca}} 
+\index{xadjustment.\+h@{xadjustment.\+h}!adj\+\_\+set\+\_\+value@{adj\+\_\+set\+\_\+value}}
+\index{adj\+\_\+set\+\_\+value@{adj\+\_\+set\+\_\+value}!xadjustment.\+h@{xadjustment.\+h}}
+\subsubsection{\texorpdfstring{adj\+\_\+set\+\_\+value()}{adj\_set\_value()}}
+{\footnotesize\ttfamily void adj\+\_\+set\+\_\+value (\begin{DoxyParamCaption}\item[{\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$}]{adj,  }\item[{float}]{v }\end{DoxyParamCaption})}
+
+
+
+adj\+\_\+set\+\_\+value -\/ set the current value of the adjustment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$adj} & -\/ pointer to the Adjustment to free \\
+\hline
+{\em v} & -\/ value set the Adjustment to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xadjustment_8h_af8186d7e68d37007f6e38814225e6ee3}\label{xadjustment_8h_af8186d7e68d37007f6e38814225e6ee3}} 
+\index{xadjustment.\+h@{xadjustment.\+h}!delete\+\_\+adjustment@{delete\+\_\+adjustment}}
+\index{delete\+\_\+adjustment@{delete\+\_\+adjustment}!xadjustment.\+h@{xadjustment.\+h}}
+\subsubsection{\texorpdfstring{delete\+\_\+adjustment()}{delete\_adjustment()}}
+{\footnotesize\ttfamily void$\ast$ delete\+\_\+adjustment (\begin{DoxyParamCaption}\item[{\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$}]{adj }\end{DoxyParamCaption})}
+
+
+
+delete\+\_\+adjustment -\/ freeing the memory of the adjustment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$adj} & -\/ pointer to the Adjustment to free \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$\ast$void -\/ return N\+U\+LL 
+\end{DoxyReturn}

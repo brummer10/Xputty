@@ -1,0 +1,108 @@
+\hypertarget{xputty_8h}{}\section{xputty.\+h File Reference}
+\label{xputty_8h}\index{xputty.\+h@{xputty.\+h}}
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$cairo.\+h$>$}\newline
+{\ttfamily \#include $<$cairo-\/xlib.\+h$>$}\newline
+{\ttfamily \#include $<$X11/\+Xutil.\+h$>$}\newline
+{\ttfamily \#include $<$X11/keysym.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}xwidget.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xadjustment.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xchildlist.\+h\char`\"{}}\newline
+Include dependency graph for xputty.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xputty_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{xputty_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{xputty_8h_accb46852f2244dde7d0e696c1380263e}{X\+P\+U\+T\+T\+Y1\+\_\+\+H\+\_\+}
+\item 
+\#define \hyperlink{xputty_8h_ad72dbcf6d0153db1b8d8a58001feed83}{D\+E\+B\+UG}~0
+\item 
+\#define \hyperlink{xputty_8h_ac9e7326b4569847122754061b96c42d0}{debug\+\_\+print}(...)~((void)((\hyperlink{xputty_8h_ad72dbcf6d0153db1b8d8a58001feed83}{D\+E\+B\+UG}) ? fprintf(stderr, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+) \+: 0))
+\item 
+\#define \hyperlink{xputty_8h_abb702d8b501669a23aa0ab3b281b9384}{min}(x,  y)~((x) $<$ (y) ? (x) \+: (y))
+\item 
+\#define \hyperlink{xputty_8h_ac39d9cef6a5e030ba8d9e11121054268}{max}(x,  y)~((x) $<$ (y) ? (y) \+: (x))
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structChildlist__t}{Childlist\+\_\+t} \hyperlink{xputty_8h_a972f6c1b2363cd41766d32dc7d3a93d0}{Childlist\+\_\+t}
+\item 
+typedef struct \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} \hyperlink{xputty_8h_a68965e5ced4b615cf52922868c4b159c}{Adjustment\+\_\+t}
+\item 
+typedef struct \hyperlink{structWidget__t}{Widget\+\_\+t} \hyperlink{xputty_8h_a6b3e8ecb43e49de5de9dc7ab79404014}{Widget\+\_\+t}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{xputty_8h_ad72dbcf6d0153db1b8d8a58001feed83}\label{xputty_8h_ad72dbcf6d0153db1b8d8a58001feed83}} 
+\index{xputty.\+h@{xputty.\+h}!D\+E\+B\+UG@{D\+E\+B\+UG}}
+\index{D\+E\+B\+UG@{D\+E\+B\+UG}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{D\+E\+B\+UG}{DEBUG}}
+{\footnotesize\ttfamily \#define D\+E\+B\+UG~0}
+
+\mbox{\Hypertarget{xputty_8h_ac9e7326b4569847122754061b96c42d0}\label{xputty_8h_ac9e7326b4569847122754061b96c42d0}} 
+\index{xputty.\+h@{xputty.\+h}!debug\+\_\+print@{debug\+\_\+print}}
+\index{debug\+\_\+print@{debug\+\_\+print}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{debug\+\_\+print}{debug\_print}}
+{\footnotesize\ttfamily \#define debug\+\_\+print(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~((void)((\hyperlink{xputty_8h_ad72dbcf6d0153db1b8d8a58001feed83}{D\+E\+B\+UG}) ? fprintf(stderr, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+) \+: 0))}
+
+\mbox{\Hypertarget{xputty_8h_ac39d9cef6a5e030ba8d9e11121054268}\label{xputty_8h_ac39d9cef6a5e030ba8d9e11121054268}} 
+\index{xputty.\+h@{xputty.\+h}!max@{max}}
+\index{max@{max}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{max}{max}}
+{\footnotesize\ttfamily \#define max(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~((x) $<$ (y) ? (y) \+: (x))}
+
+\mbox{\Hypertarget{xputty_8h_abb702d8b501669a23aa0ab3b281b9384}\label{xputty_8h_abb702d8b501669a23aa0ab3b281b9384}} 
+\index{xputty.\+h@{xputty.\+h}!min@{min}}
+\index{min@{min}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{min}{min}}
+{\footnotesize\ttfamily \#define min(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~((x) $<$ (y) ? (x) \+: (y))}
+
+\mbox{\Hypertarget{xputty_8h_accb46852f2244dde7d0e696c1380263e}\label{xputty_8h_accb46852f2244dde7d0e696c1380263e}} 
+\index{xputty.\+h@{xputty.\+h}!X\+P\+U\+T\+T\+Y1\+\_\+\+H\+\_\+@{X\+P\+U\+T\+T\+Y1\+\_\+\+H\+\_\+}}
+\index{X\+P\+U\+T\+T\+Y1\+\_\+\+H\+\_\+@{X\+P\+U\+T\+T\+Y1\+\_\+\+H\+\_\+}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{X\+P\+U\+T\+T\+Y1\+\_\+\+H\+\_\+}{XPUTTY1\_H\_}}
+{\footnotesize\ttfamily \#define X\+P\+U\+T\+T\+Y1\+\_\+\+H\+\_\+}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{xputty_8h_a68965e5ced4b615cf52922868c4b159c}\label{xputty_8h_a68965e5ced4b615cf52922868c4b159c}} 
+\index{xputty.\+h@{xputty.\+h}!Adjustment\+\_\+t@{Adjustment\+\_\+t}}
+\index{Adjustment\+\_\+t@{Adjustment\+\_\+t}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{Adjustment\+\_\+t}{Adjustment\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} \hyperlink{structAdjustment__t}{Adjustment\+\_\+t}}
+
+\mbox{\Hypertarget{xputty_8h_a972f6c1b2363cd41766d32dc7d3a93d0}\label{xputty_8h_a972f6c1b2363cd41766d32dc7d3a93d0}} 
+\index{xputty.\+h@{xputty.\+h}!Childlist\+\_\+t@{Childlist\+\_\+t}}
+\index{Childlist\+\_\+t@{Childlist\+\_\+t}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{Childlist\+\_\+t}{Childlist\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structChildlist__t}{Childlist\+\_\+t} \hyperlink{structChildlist__t}{Childlist\+\_\+t}}
+
+\mbox{\Hypertarget{xputty_8h_a6b3e8ecb43e49de5de9dc7ab79404014}\label{xputty_8h_a6b3e8ecb43e49de5de9dc7ab79404014}} 
+\index{xputty.\+h@{xputty.\+h}!Widget\+\_\+t@{Widget\+\_\+t}}
+\index{Widget\+\_\+t@{Widget\+\_\+t}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{Widget\+\_\+t}{Widget\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structWidget__t}{Widget\+\_\+t} \hyperlink{structWidget__t}{Widget\+\_\+t}}
+

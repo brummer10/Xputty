@@ -1,0 +1,227 @@
+\hypertarget{xwidget_8c}{}\section{xwidget.\+c File Reference}
+\label{xwidget_8c}\index{xwidget.\+c@{xwidget.\+c}}
+{\ttfamily \#include \char`\"{}xwidget.\+h\char`\"{}}\newline
+Include dependency graph for xwidget.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xwidget_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{xwidget_8c_a1607cf4a642a38ea235a007ea9579403}{key\+\_\+mapping} (Display $\ast$dpy, X\+Key\+Event $\ast$xkey)
+\begin{DoxyCompactList}\small\item\em key\+\_\+mapping -\/ modifier key\textquotesingle{}s mapped to a integer value \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a540b0eefd6f19f487aa71d4c1798ac8c}{destroy\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, X\+Context Context)
+\begin{DoxyCompactList}\small\item\em destroy\+\_\+widget -\/ destroy a widget and remove it from the Context \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_acf8c7ef79c60253a687116d3783e1c67}{configure\+\_\+event} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em configure\+\_\+event -\/ default callback when a widget receive a Configure\+Notify \end{DoxyCompactList}\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8c_a9c5b8eaf662ac4fb7d2674bf7e89ab8c}{create\+\_\+window} (Display $\ast$dpy, Window win, X\+Context Context, int x, int y, int width, int height)
+\begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+window -\/ create a Window \end{DoxyCompactList}\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8c_a2eadb62cb8f0794ffa6251be77f8d1a1}{create\+\_\+widget} (Display $\ast$dpy, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, X\+Context Context, int x, int y, int width, int height)
+\begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+widget -\/ create a widget \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a0e801c1a701cc8526b198371ce2ff692}{transparent\+\_\+draw} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em transparent\+\_\+draw -\/ copy parent surface to child surface \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_af3ecce0332b5f13b590d024db28aec5a}{widget\+\_\+event\+\_\+loop} (void $\ast$w\+\_\+, void $\ast$event, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em widget\+\_\+event\+\_\+loop -\/ the internal widget event loop \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a4d835af5b56eb13ed7bd4602ce7ccd92}{quit} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em quit -\/ exit the main loop \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a5dc619d89042819195db7e744dcd5f7d}{loop} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, X\+Context context, bool $\ast$run)
+\begin{DoxyCompactList}\small\item\em loop -\/ the event loop \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xwidget_8c_acf8c7ef79c60253a687116d3783e1c67}\label{xwidget_8c_acf8c7ef79c60253a687116d3783e1c67}} 
+\index{xwidget.\+c@{xwidget.\+c}!configure\+\_\+event@{configure\+\_\+event}}
+\index{configure\+\_\+event@{configure\+\_\+event}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{configure\+\_\+event()}{configure\_event()}}
+{\footnotesize\ttfamily void configure\+\_\+event (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+configure\+\_\+event -\/ default callback when a widget receive a Configure\+Notify 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} receive the event \\
+\hline
+{\em user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a2eadb62cb8f0794ffa6251be77f8d1a1}\label{xwidget_8c_a2eadb62cb8f0794ffa6251be77f8d1a1}} 
+\index{xwidget.\+c@{xwidget.\+c}!create\+\_\+widget@{create\+\_\+widget}}
+\index{create\+\_\+widget@{create\+\_\+widget}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{create\+\_\+widget()}{create\_widget()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ create\+\_\+widget (\begin{DoxyParamCaption}\item[{Display $\ast$}]{dpy,  }\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{X\+Context}]{Context,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+$\ast$create\+\_\+widget -\/ create a widget 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$dpy} & -\/ pointer to the Display to use \\
+\hline
+{\em $\ast$parent} & -\/ pointer to the Parrent \hyperlink{structWidget__t}{Widget\+\_\+t} \\
+\hline
+{\em Context} & -\/ a X\+Context to store Window informations \\
+\hline
+{\em x,y,width,height} & -\/ the position/geometry to create the widget \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a9c5b8eaf662ac4fb7d2674bf7e89ab8c}\label{xwidget_8c_a9c5b8eaf662ac4fb7d2674bf7e89ab8c}} 
+\index{xwidget.\+c@{xwidget.\+c}!create\+\_\+window@{create\+\_\+window}}
+\index{create\+\_\+window@{create\+\_\+window}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{create\+\_\+window()}{create\_window()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ create\+\_\+window (\begin{DoxyParamCaption}\item[{Display $\ast$}]{dpy,  }\item[{Window}]{win,  }\item[{X\+Context}]{Context,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+$\ast$create\+\_\+window -\/ create a Window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$dpy} & -\/ pointer to the Display to use \\
+\hline
+{\em win} & -\/ pointer to the Parrent Window (may be Root) \\
+\hline
+{\em Context} & -\/ a X\+Context to store Window informations \\
+\hline
+{\em x,y,width,height} & -\/ the position/geometry to create the window \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a540b0eefd6f19f487aa71d4c1798ac8c}\label{xwidget_8c_a540b0eefd6f19f487aa71d4c1798ac8c}} 
+\index{xwidget.\+c@{xwidget.\+c}!destroy\+\_\+widget@{destroy\+\_\+widget}}
+\index{destroy\+\_\+widget@{destroy\+\_\+widget}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{destroy\+\_\+widget()}{destroy\_widget()}}
+{\footnotesize\ttfamily void destroy\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{X\+Context}]{Context }\end{DoxyParamCaption})}
+
+
+
+destroy\+\_\+widget -\/ destroy a widget and remove it from the Context 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
+\hline
+{\em Context} & -\/ the Context holding the widget info \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a1607cf4a642a38ea235a007ea9579403}\label{xwidget_8c_a1607cf4a642a38ea235a007ea9579403}} 
+\index{xwidget.\+c@{xwidget.\+c}!key\+\_\+mapping@{key\+\_\+mapping}}
+\index{key\+\_\+mapping@{key\+\_\+mapping}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{key\+\_\+mapping()}{key\_mapping()}}
+{\footnotesize\ttfamily int key\+\_\+mapping (\begin{DoxyParamCaption}\item[{Display $\ast$}]{dpy,  }\item[{X\+Key\+Event $\ast$}]{xkey }\end{DoxyParamCaption})}
+
+
+
+key\+\_\+mapping -\/ modifier key\textquotesingle{}s mapped to a integer value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$dpy} & -\/ pointer to the Display in use \\
+\hline
+{\em $\ast$xkey} & -\/ the key to map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ value (1-\/10) or 0 when not mapped 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a5dc619d89042819195db7e744dcd5f7d}\label{xwidget_8c_a5dc619d89042819195db7e744dcd5f7d}} 
+\index{xwidget.\+c@{xwidget.\+c}!loop@{loop}}
+\index{loop@{loop}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{X\+Context}]{context,  }\item[{bool $\ast$}]{run }\end{DoxyParamCaption})}
+
+
+
+loop -\/ the event loop 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the main Window \\
+\hline
+{\em Context} & -\/ the Context holding all the widget infos \\
+\hline
+{\em $\ast$run} & -\/ pointer to bool used to quit the loop \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a4d835af5b56eb13ed7bd4602ce7ccd92}\label{xwidget_8c_a4d835af5b56eb13ed7bd4602ce7ccd92}} 
+\index{xwidget.\+c@{xwidget.\+c}!quit@{quit}}
+\index{quit@{quit}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{quit()}{quit()}}
+{\footnotesize\ttfamily void quit (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+quit -\/ exit the main loop 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a0e801c1a701cc8526b198371ce2ff692}\label{xwidget_8c_a0e801c1a701cc8526b198371ce2ff692}} 
+\index{xwidget.\+c@{xwidget.\+c}!transparent\+\_\+draw@{transparent\+\_\+draw}}
+\index{transparent\+\_\+draw@{transparent\+\_\+draw}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{transparent\+\_\+draw()}{transparent\_draw()}}
+{\footnotesize\ttfamily void transparent\+\_\+draw (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+transparent\+\_\+draw -\/ copy parent surface to child surface 
+
+\+\_\+transparency -\/ copy parent surface to child surface
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$wid} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} receiving a event \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_af3ecce0332b5f13b590d024db28aec5a}\label{xwidget_8c_af3ecce0332b5f13b590d024db28aec5a}} 
+\index{xwidget.\+c@{xwidget.\+c}!widget\+\_\+event\+\_\+loop@{widget\+\_\+event\+\_\+loop}}
+\index{widget\+\_\+event\+\_\+loop@{widget\+\_\+event\+\_\+loop}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{widget\+\_\+event\+\_\+loop()}{widget\_event\_loop()}}
+{\footnotesize\ttfamily void widget\+\_\+event\+\_\+loop (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{event,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+widget\+\_\+event\+\_\+loop -\/ the internal widget event loop 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} receiving a event \\
+\hline
+{\em $\ast$event} & -\/ void pointer to the X\+Event \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

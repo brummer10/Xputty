@@ -30,7 +30,11 @@
 /**
  * 
  * @brief enum           - type of controller adjustment
- * 
+ * @param CL_NONE        - Widget_t didn't request a adjustment
+ * @param CL_CONTINUOS   - Widget_t request a continuos adjustment
+ * @param CL_TOGGLE      - Widget_t request a toggle adjustment
+ * @param CL_BUTTON      - Widget_t request a button adjustment
+ * @param CL_ENUM        - Widget_t request a enum adjustment
  */
 
 enum {
@@ -44,7 +48,13 @@ enum {
 /**
  * 
  * @brief Adjustment_t     - struct to hold a controller adjustment
- * 
+ * @param std_value        - the standart value for the adjustment
+ * @param value            - the current value of the adjustment
+ * @param min_value        - the minimal value of the adjustment
+ * @param max_value        - the maximal value of the adjustment
+ * @param step             - the step to increase/decrease the adjustment
+ * @param start_value      - the value of init the adjustment with
+ * @param type             - should be on of the CL_ types
  */
 
 struct  Adjustment_t {

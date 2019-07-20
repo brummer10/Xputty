@@ -1,0 +1,47 @@
+A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces
+
+Here is the usual hello world\+:
+
+
+
+produced by this code\+:
+
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include "\hyperlink{xputty_8h}{xputty.h}"}
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{void} draw\_window(\textcolor{keywordtype}{void} *w\_, \textcolor{keywordtype}{void}* user\_data) \{
+    \hyperlink{structWidget__t}{Widget\_t} *w = (\hyperlink{structWidget__t}{Widget\_t}*)w\_;
+    cairo\_push\_group (w->\hyperlink{structWidget__t_a26594f6ffabe98fc08f9207150fc9417}{cr});
+    cairo\_set\_source\_rgb (w->\hyperlink{structWidget__t_a26594f6ffabe98fc08f9207150fc9417}{cr}, 1, 1, 1);
+    cairo\_paint (w->\hyperlink{structWidget__t_a26594f6ffabe98fc08f9207150fc9417}{cr});
+    cairo\_pop\_group\_to\_source (w->\hyperlink{structWidget__t_a26594f6ffabe98fc08f9207150fc9417}{cr});
+    cairo\_paint (w->\hyperlink{structWidget__t_a26594f6ffabe98fc08f9207150fc9417}{cr});
+\}
+
+\textcolor{keywordtype}{int} main (\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} ** argv)
+\{
+    Display *dpy = XOpenDisplay(0);
+    XContext context =  XUniqueContext();
+    \hyperlink{structWidget__t}{Widget\_t} *w;
+
+    w = \hyperlink{xwidget_8c_a9c5b8eaf662ac4fb7d2674bf7e89ab8c}{create\_window}(dpy, DefaultRootWindow(dpy), context, 0, 0, 300, 200);
+    XStoreName(dpy, w->\hyperlink{structWidget__t_acb2bfb41674371ee1220a9d6a2d89fb1}{widget}, \textcolor{stringliteral}{"Xputty Hello world"});
+    w->\hyperlink{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}{label} = \textcolor{stringliteral}{"How are you?"};
+    w->\hyperlink{structWidget__t_a225b9a175e132994a5aa73b59a2911ad}{func}.\hyperlink{structFunc__t_ae4ba307ec29bfea83e1197aa750c1396}{expose\_callback} = draw\_window;
+    \textcolor{keywordtype}{bool} run = \textcolor{keyword}{true};
+    \hyperlink{xwidget_8c_a5dc619d89042819195db7e744dcd5f7d}{loop}(w,context,&run);
+    \hyperlink{xwidget_8c_a540b0eefd6f19f487aa71d4c1798ac8c}{destroy\_widget}( w, context);
+    XCloseDisplay(dpy);
+    \textcolor{keywordflow}{return} 0;
+\}
+\end{DoxyCode}
+
+
+check out the example folder for more examples.
+
+\subsection*{License}
+
+\begin{DoxyVerb}     0BSD 
+\end{DoxyVerb}
+ B\+SD Zero Clause License 
