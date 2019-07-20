@@ -29,7 +29,7 @@
 
 /**
  * 
- * @brief Childlist_t      - struct to hold a Widget_t child list
+ * @brief Childlist_t       - struct to hold a Widget_t child list
  * @param **childs          - dynamic array to hold pointers to the childs
  * @param size              - current size of array
  * @param cap               - current capacity of the array
@@ -37,9 +37,13 @@
  */
 
 struct Childlist_t {
+/** dynamic array to hold pointers to the childs */
     Widget_t **childs;
+/** current size of array */
     size_t size;
+/** current capacity of the array */
     int cap;
+/** current elements in the array  */
     int elem;
 };
 

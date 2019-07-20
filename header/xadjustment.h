@@ -38,10 +38,15 @@
  */
 
 enum {
+/** Widget_t didn't request a adjustment */
     CL_NONE         = 0x0001,
+/** Widget_t request a continuos adjustment */
     CL_CONTINUOS    = 0x0002,
+/** Widget_t request a toggle adjustment */
     CL_TOGGLE       = 0x0004,
+/** Widget_t request a button adjustment */
     CL_BUTTON       = 0x0008,
+/** Widget_t request a enum adjustment */
     CL_ENUM         = 0x0010,
 };
 
@@ -58,12 +63,19 @@ enum {
  */
 
 struct  Adjustment_t {
+/** the standart value for the adjustment */
     float std_value;
+/** the current value of the adjustment */
     float value;
+/** the minimal value of the adjustment */
     float min_value;
+/** the maximal value of the adjustment */
     float max_value;
+/** the step to increase/decrease the adjustment */
     float step;
+/** the value of init the adjustment with */
     float start_value;
+/** should be on of the CL_ types */
     int type;
 };
 
@@ -92,7 +104,7 @@ Adjustment_t *add_adjustment(void *w_, float std_value, float value,
 void *delete_adjustment(Adjustment_t *adj);
 
 /**
- * @brief adj_get_state      - freeing the memory of the adjustment
+ * @brief adj_get_state      - get the current state of the adjustment
  * @param *adj               - pointer to the Adjustment to free 
  * @return float             - return the adjustment state (0<->1)
  */

@@ -58,7 +58,7 @@ void *delete_adjustment(Adjustment_t *adj) {
 }
 
 /**
- * @brief adj_get_state      - freeing the memory of the adjustment
+ * @brief adj_get_state      - get the current state of the adjustment
  * @param *adj               - pointer to the Adjustment to free 
  * @return float             - return the adjustment state (0<->1)
  */
