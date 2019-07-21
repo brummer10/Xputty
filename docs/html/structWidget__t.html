@@ -76,9 +76,10 @@ Collaboration diagram for Widget_t:</div>
 <div class="dyncontent">
 <div class="center"><img src="structWidget__t__coll__graph.png" border="0" usemap="#Widget__t_coll__map" alt="Collaboration graph"/></div>
 <map name="Widget__t_coll__map" id="Widget__t_coll__map">
-<area shape="rect" id="node2" href="structChildlist__t.html" title="Childlist_t &#45; struct to hold a Widget_t child list. " alt="" coords="67,199,147,225"/>
+<area shape="rect" id="node2" href="structChildlist__t.html" title="Childlist_t &#45; struct to hold a Widget_t child list. " alt="" coords="120,199,200,225"/>
 <area shape="rect" id="node3" href="structAdjustment__t.html" title="Adjustment_t &#45; struct to hold a controller adjustment. " alt="" coords="5,5,104,32"/>
 <area shape="rect" id="node4" href="structFunc__t.html" title="Func_t &#45; struct to hold all supported event callbacks. " alt="" coords="129,5,191,32"/>
+<area shape="rect" id="node5" href="structResize__t.html" title="Resize_t &#45; struct used to resize child widgets. " alt="" coords="216,5,291,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -124,12 +125,10 @@ Data Fields</h2></td></tr>
 <tr class="separator:a3204c88196ed5793250b3530dd719037"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1def6d2237743e75a0b84ca0c34a6834"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a1def6d2237743e75a0b84ca0c34a6834">height</a></td></tr>
 <tr class="separator:a1def6d2237743e75a0b84ca0c34a6834"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cdb2a1939c70bf079a0c95dc0d42868"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a4cdb2a1939c70bf079a0c95dc0d42868">scale_x</a></td></tr>
-<tr class="separator:a4cdb2a1939c70bf079a0c95dc0d42868"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42aeb0bc5c13eae6d04ee359235433b9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a42aeb0bc5c13eae6d04ee359235433b9">scale_y</a></td></tr>
-<tr class="separator:a42aeb0bc5c13eae6d04ee359235433b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42a597c21eca964c0296fc7026feb43b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a42a597c21eca964c0296fc7026feb43b">transparency</a></td></tr>
 <tr class="separator:a42a597c21eca964c0296fc7026feb43b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a2d5b53f40f5bf3914fc0694027d7ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structResize__t.html">Resize_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a9a2d5b53f40f5bf3914fc0694027d7ec">scale</a></td></tr>
+<tr class="separator:a9a2d5b53f40f5bf3914fc0694027d7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabc05e0a46c85d24483fae36127b45dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAdjustment__t.html">Adjustment_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a></td></tr>
 <tr class="separator:aabc05e0a46c85d24483fae36127b45dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abde95d3fb49faff5dd852f16810115e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAdjustment__t.html">Adjustment_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a></td></tr>
@@ -161,9 +160,8 @@ Data Fields</h2></td></tr>
     <tr><td class="paramname">y</td><td>- y position of Window on Parent </td></tr>
     <tr><td class="paramname">width</td><td>- widget width </td></tr>
     <tr><td class="paramname">height</td><td>- widget height </td></tr>
-    <tr><td class="paramname">scale_x</td><td>- scaling factor on x axis </td></tr>
-    <tr><td class="paramname">scale_y</td><td>- scaling factor on y axis </td></tr>
     <tr><td class="paramname">transparency</td><td>- flag to set/check transparent drawing </td></tr>
+    <tr><td class="paramname">scale</td><td>- struct used to resize child widgets </td></tr>
     <tr><td class="paramname">*adj_x</td><td>- pointer to the x axis adjustment </td></tr>
     <tr><td class="paramname">*adj_y</td><td>- pointer to the y axis adjustment </td></tr>
     <tr><td class="paramname">*childlist</td><td>- pointer to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> child list </td></tr>
@@ -426,33 +424,18 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="a4cdb2a1939c70bf079a0c95dc0d42868"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4cdb2a1939c70bf079a0c95dc0d42868">&#9670;&nbsp;</a></span>scale_x</h2>
+<a id="a9a2d5b53f40f5bf3914fc0694027d7ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a2d5b53f40f5bf3914fc0694027d7ec">&#9670;&nbsp;</a></span>scale</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Widget_t::scale_x</td>
+          <td class="memname"><a class="el" href="structResize__t.html">Resize_t</a> Widget_t::scale</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the x scaling factor used to resize child widgets </p>
-
-</div>
-</div>
-<a id="a42aeb0bc5c13eae6d04ee359235433b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42aeb0bc5c13eae6d04ee359235433b9">&#9670;&nbsp;</a></span>scale_y</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Widget_t::scale_y</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>the y scaling factor used to resize child widgets </p>
+<p>struct used to resize child widgets </p>
 
 </div>
 </div>

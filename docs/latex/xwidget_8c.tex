@@ -22,6 +22,8 @@ void \hyperlink{xwidget_8c_acf8c7ef79c60253a687116d3783e1c67}{configure\+\_\+eve
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+window -\/ create a Window \end{DoxyCompactList}\item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8c_a2eadb62cb8f0794ffa6251be77f8d1a1}{create\+\_\+widget} (Display $\ast$dpy, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, X\+Context Context, int x, int y, int width, int height)
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+widget -\/ create a widget \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a17f2f3effd46532c596511abcfb5058e}{expose\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em expose\+\_\+widgets -\/ send expose expose event to window \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a0e801c1a701cc8526b198371ce2ff692}{transparent\+\_\+draw} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em transparent\+\_\+draw -\/ copy parent surface to child surface \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_af3ecce0332b5f13b590d024db28aec5a}{widget\+\_\+event\+\_\+loop} (void $\ast$w\+\_\+, void $\ast$event, void $\ast$user\+\_\+data)
@@ -116,6 +118,24 @@ destroy\+\_\+widget -\/ destroy a widget and remove it from the Context
 {\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
 \hline
 {\em Context} & -\/ the Context holding the widget info \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a17f2f3effd46532c596511abcfb5058e}\label{xwidget_8c_a17f2f3effd46532c596511abcfb5058e}} 
+\index{xwidget.\+c@{xwidget.\+c}!expose\+\_\+widget@{expose\+\_\+widget}}
+\index{expose\+\_\+widget@{expose\+\_\+widget}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{expose\+\_\+widget()}{expose\_widget()}}
+{\footnotesize\ttfamily void expose\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+expose\+\_\+widgets -\/ send expose expose event to window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

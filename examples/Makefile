@@ -44,3 +44,5 @@ $(EXEC_FILES): $(OBJECTS)
 	$(CC) example1.o -L. libxputty.a -o example1 $(LDFLAGS)
 	$(CC) example2.o -L. libxputty.a -o example2 $(LDFLAGS)
 
+doc:
+

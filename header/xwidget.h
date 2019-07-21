@@ -74,6 +74,72 @@ typedef struct {
 
 /**
  * 
+ * @brief Gravity              - enum to indicate how to resize a widget
+ * @param NORTHWEST            - Widget_t adjust nord/west
+ * @param NORTHEAST            - Widget_t adjust nord/east
+ * @param SOUTHWEST            - Widget_t adjust south/west
+ * @param SOUTHEAST            - Widget_t adjust south/east
+ * @param CENTER               - Widget_t adjust centered
+ * @param ASPECT               - Widget_t adjust in a aspect frame
+ * @param NONE                 - Widget_t request no adjustment in frame
+ */
+
+typedef enum {
+/** Widget_t adjust nord/west */
+    NORTHWEST    = 0x0001,
+/** Widget_t adjust nord/east */
+    NORTHEAST    = 0x0002,
+/** Widget_t adjust south/west */
+    SOUTHWEST     = 0x0004,
+/** Widget_t adjust south/east */
+    SOUTHEAST     = 0x0008,
+/** Widget_t adjust centered */
+    CENTER        = 0x0016,
+/** Widget_t adjust in a aspect frame */
+    ASPECT        = 0x0032,
+/** Widget_t request no adjustment in frame */
+    NONE          = 0x10000   
+}Gravity;
+
+/**
+ * 
+ * @brief Resize_t             - struct used to resize child widgets
+ * @param init_x               - initial x position on Parent
+ * @param init_y               - initial y position on Parent
+ * @param init_width           - initial width
+ * @param init_height          - initial height
+ * @param scale_x              - scalling size of the x axsis
+ * @param scale_y              - scalling size of the y axsis
+ * @param cscale_x             - scalling factor of the x axsis
+ * @param cscale_y             - scalling factor of the y axsis
+ * @param ascale               - scalling factor for aspect scalling
+ */
+
+typedef struct {
+/** indicate how the widget wish to be resized */
+    Gravity gravity;
+/** initial x position on Parent */
+    int init_x;
+/** initial y position on Parent */
+    int init_y;
+/** initial width */
+    int init_width;
+/** initial height */
+    int init_height;
+/** scalling size of the x axsis */
+    float scale_x;
+/** scalling size of the y axsis */
+    float scale_y;
+/** scalling factor of the x axsis */
+    float cscale_x;
+/** scalling factor of the y axsis */
+    float cscale_y;
+/** scalling factor for aspect scalling */
+    float ascale;
+} Resize_t;
+
+/**
+ * 
  * @brief Widget_t           - struct to hold the basic widget info
  * @param *dpy               - pointer to the Display to use
  * @param widget             - the X11 Window
@@ -95,9 +161,8 @@ typedef struct {
  * @param y                  - y position of Window on Parent
  * @param width              - widget width
  * @param height             - widget height
- * @param scale_x            - scaling factor on x axis
- * @param scale_y            - scaling factor on y axis
  * @param transparency       - flag to set/check transparent drawing
+ * @param scale              - struct used to resize child widgets
  * @param *adj_x             - pointer to the x axis adjustment
  * @param *adj_y             - pointer to the y axis adjustment
  * @param *childlist         - pointer to Widget_t child list
@@ -144,12 +209,10 @@ struct Widget_t {
     int width;
 /** the widget size y-axis */
     int height;
-/** the x scaling factor used to resize child widgets */
-    float scale_x;
-/** the y scaling factor used to resize child widgets */
-    float scale_y;
 /** indicaate if the widget use transparent drawing, default = true */
     bool transparency;
+/** struct used to resize child widgets */
+    Resize_t scale;
 /** pointer to the x axis adjustment */
     Adjustment_t *adj_x;
 /** pointer to the y axis adjustment */
@@ -218,6 +281,14 @@ void destroy_widget(Widget_t *w, XContext Context);
  */
 
 void widget_event_loop(void *w_, void* event, void* user_data);
+
+/**
+ * @brief expose_widgets    - send expose expose event to window
+ * @param w                 - the Widget_t to send the event to
+ * @return void 
+ */
+
+void expose_widget(Widget_t *w);
 
 /**
  * @brief loop              - the event loop

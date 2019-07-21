@@ -29,7 +29,7 @@
 
 /**
  * 
- * @brief enum           - type of controller adjustment
+ * @brief CL_type        - enum type of controller adjustment
  * @param CL_NONE        - Widget_t didn't request a adjustment
  * @param CL_CONTINUOS   - Widget_t request a continuos adjustment
  * @param CL_TOGGLE      - Widget_t request a toggle adjustment
@@ -37,7 +37,7 @@
  * @param CL_ENUM        - Widget_t request a enum adjustment
  */
 
-enum {
+typedef enum {
 /** Widget_t didn't request a adjustment */
     CL_NONE         = 0x0001,
 /** Widget_t request a continuos adjustment */
@@ -47,8 +47,8 @@ enum {
 /** Widget_t request a button adjustment */
     CL_BUTTON       = 0x0008,
 /** Widget_t request a enum adjustment */
-    CL_ENUM         = 0x0010,
-};
+    CL_ENUM         = 0x0010
+}CL_type;
 
 /**
  * 
@@ -59,7 +59,7 @@ enum {
  * @param max_value        - the maximal value of the adjustment
  * @param step             - the step to increase/decrease the adjustment
  * @param start_value      - the value of init the adjustment with
- * @param type             - should be on of the CL_ types
+ * @param type             - should be on of the CL_types
  */
 
 struct  Adjustment_t {
@@ -76,7 +76,7 @@ struct  Adjustment_t {
 /** the value of init the adjustment with */
     float start_value;
 /** should be on of the CL_ types */
-    int type;
+    CL_type type;
 };
 
 /**
@@ -93,7 +93,7 @@ struct  Adjustment_t {
  */
 
 Adjustment_t *add_adjustment(void *w_, float std_value, float value,
-                     float min_value,float max_value, float step, int type);
+                     float min_value,float max_value, float step, CL_type type);
 
 
 /**

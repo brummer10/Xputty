@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loop',['loop',['../xwidget_8c.html#a5dc619d89042819195db7e744dcd5f7d',1,'loop(Widget_t *w, XContext context, bool *run):&#160;xwidget.c'],['../xwidget_8h.html#a2dcfec5924929a2a601ec63a27d0db32',1,'loop(Widget_t *w, XContext Context, bool *run):&#160;xwidget.c']]]
+  ['key_5fmapping',['key_mapping',['../xwidget_8c.html#a1607cf4a642a38ea235a007ea9579403',1,'key_mapping(Display *dpy, XKeyEvent *xkey):&#160;xwidget.c'],['../xwidget_8h.html#a1607cf4a642a38ea235a007ea9579403',1,'key_mapping(Display *dpy, XKeyEvent *xkey):&#160;xwidget.c']]]
 ];

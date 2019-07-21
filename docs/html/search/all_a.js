@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['max',['max',['../xputty_8h.html#ac39d9cef6a5e030ba8d9e11121054268',1,'xputty.h']]],
-  ['max_5fvalue',['max_value',['../structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a',1,'Adjustment_t']]],
-  ['min',['min',['../xputty_8h.html#abb702d8b501669a23aa0ab3b281b9384',1,'xputty.h']]],
-  ['min_5fvalue',['min_value',['../structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3',1,'Adjustment_t']]],
-  ['motion_5fcallback',['motion_callback',['../structFunc__t.html#ac2842c834907f4aeace8f404c6cc7621',1,'Func_t']]]
+  ['label',['label',['../structWidget__t.html#a952020107ac1f6d9a37b4f978f77b61c',1,'Widget_t']]],
+  ['leave_5fcallback',['leave_callback',['../structFunc__t.html#a1801ba902bd7efc706d474312f960d0a',1,'Func_t']]],
+  ['loop',['loop',['../xwidget_8c.html#a5dc619d89042819195db7e744dcd5f7d',1,'loop(Widget_t *w, XContext context, bool *run):&#160;xwidget.c'],['../xwidget_8h.html#a2dcfec5924929a2a601ec63a27d0db32',1,'loop(Widget_t *w, XContext Context, bool *run):&#160;xwidget.c']]]
 ];

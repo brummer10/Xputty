@@ -108,14 +108,70 @@ void destroy_widget(Widget_t * w, XContext Context) {
  */
 
 static inline void _resize_surface(Widget_t *wid, int width, int height) {
-    if (wid->width != width || wid->height != height) {
-        wid->width = width;
-        wid->height = height;
-        cairo_xlib_surface_set_size( wid->surface, wid->width, wid->height);
-        cairo_destroy(wid->crb);
-        cairo_surface_destroy(wid->buffer);
-        wid->buffer = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, wid->width, wid->height);
-        wid->crb = cairo_create (wid->buffer);
+    wid->width = width;
+    wid->height = height;
+    cairo_xlib_surface_set_size( wid->surface, wid->width, wid->height);
+    cairo_destroy(wid->crb);
+    cairo_surface_destroy(wid->buffer);
+    wid->buffer = cairo_surface_create_similar (wid->surface, 
+                        CAIRO_CONTENT_COLOR_ALPHA, width, height);
+    wid->crb = cairo_create (wid->buffer);
+}
+
+/**
+ * @brief _resize_childs     - intern check if child widgets needs resizing
+ * @param *wid               - pointer to the Widget_t receive the event
+ * @return void 
+ */
+
+static inline void _resize_childs(Widget_t *wid) {
+    if(!childlist_has_child(wid->childlist)) return;
+    int i = 0;
+    for(;i<wid->childlist->elem;i++) {
+        Widget_t *w = wid->childlist->childs[i];
+        switch(w->scale.gravity) {
+            case(NORTHWEST):
+                XResizeWindow (w->dpy, w->widget, max(1,
+                    w->scale.init_width - (wid->scale.scale_x)), 
+                    max(1,w->scale.init_height - (wid->scale.scale_y)));
+            break;
+            case(NORTHEAST):
+                XResizeWindow (w->dpy, w->widget, max(1,
+                    w->scale.init_width - (wid->scale.scale_x)), w->scale.init_height);
+            break;
+            case(SOUTHWEST):
+
+            XMoveWindow(wid->dpy,w->widget,w->scale.init_x,
+                                        w->scale.init_y-wid->scale.scale_y);
+            
+            break;
+            case(SOUTHEAST):
+                XMoveWindow(wid->dpy,w->widget,w->scale.init_x,
+                                            w->scale.init_y-wid->scale.scale_y);
+            break;
+            case(CENTER):
+                XMoveWindow(w->dpy,w->widget,w->scale.init_x /
+                    wid->scale.cscale_x,w->scale.init_y / wid->scale.cscale_y);
+                XResizeWindow (w->dpy, w->widget, max(1,
+                    w->scale.init_width / (wid->scale.cscale_x)), 
+                    max(1,w->scale.init_height / (wid->scale.cscale_y)));
+            break;
+            case(ASPECT):
+                XMoveWindow(w->dpy,w->widget,w->scale.init_x /
+                    wid->scale.ascale,w->scale.init_y / wid->scale.ascale);
+                XResizeWindow (w->dpy, w->widget, max(1,
+                    w->scale.init_width / (wid->scale.ascale)), 
+                    max(1,w->scale.init_height / (wid->scale.ascale)));
+            
+            break;
+            case(NONE):
+            XMoveWindow(wid->dpy,w->widget,w->scale.init_x-wid->scale.scale_x,
+                                        w->scale.init_y-wid->scale.scale_y);
+            break;
+            default:
+            break;
+        }
+        
     }
 }
 
@@ -130,35 +186,20 @@ void configure_event(void *w_, void* user_data) {
     Widget_t *wid = (Widget_t*)w_;
     XWindowAttributes attrs;
     XGetWindowAttributes(wid->dpy, (Window)wid->widget, &attrs);
-    wid->scale_x = (float)wid->width-attrs.width;
-    wid->scale_y = (float)wid->height-attrs.height;
+    if (wid->width != attrs.width || wid->height != attrs.height) {
+        wid->scale.scale_x    = (float)wid->scale.init_width - attrs.width;
+        wid->scale.scale_y    = (float)wid->scale.init_height - attrs.height;
+        wid->scale.cscale_x   = (float)(((float)wid->scale.init_width/(float)attrs.width));
+        wid->scale.cscale_y   = (float)(((float)wid->scale.init_height/(float)attrs.height));
+        wid->scale.ascale     = wid->scale.cscale_x < wid->scale.cscale_y ? 
+                                wid->scale.cscale_y : wid->scale.cscale_x;
 
-    _resize_surface(wid, attrs.width, attrs.height); 
+        _resize_surface(wid, attrs.width, attrs.height); 
 
-    debug_print("Widget_t configure callback width %i height %i\n", attrs.width, attrs.height);
+        debug_print("Widget_t configure callback width %i height %i\n", attrs.width, attrs.height);
 
-    Window root, parent, *children;
-    int num_children;
-    int status = XQueryTree(wid->dpy, wid->widget, &root, &parent,
-                            &children, &num_children);
-    if (status) {
-        XSizeHints hints;
-        memset(&hints, 0, sizeof(hints));
-        long supplied;
-        int i = num_children -1;
-        for (; i >= 0; i--) {
-            XGetWindowAttributes(wid->dpy, (Window)children[i], &attrs);
-            XGetWMNormalHints(wid->dpy,(Window)children[i],&hints, &supplied);
-            debug_print("Widget_t win_gravity = %i\n", hints.win_gravity);
-            if(hints.win_gravity == CenterGravity) {
-                XResizeWindow (wid->dpy, children[i], max(max(1,hints.min_width),attrs.width-(wid->scale_x)), max(max(1,hints.min_height),attrs.height-(wid->scale_y)));
-            } else {
-                XMoveWindow(wid->dpy,children[i],attrs.x-wid->scale_x,attrs.y-wid->scale_y);
-            }
-        }
-        debug_print("Widget_t find %i\n ", num_children);
+        _resize_childs(wid);
     }
-    XFree(children);
 }
 
 /**
@@ -228,7 +269,8 @@ Widget_t *create_window(Display *dpy, Window win, XContext Context,
 
     w->cr = cairo_create(w->surface);
 
-    w->buffer = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, width, height);
+    w->buffer = cairo_surface_create_similar (w->surface, 
+                        CAIRO_CONTENT_COLOR_ALPHA, width, height);
     w->crb = cairo_create (w->buffer);
 
     if(XSaveContext(dpy, w->widget, Context, (XPointer) w)) {
@@ -243,8 +285,16 @@ Widget_t *create_window(Display *dpy, Window win, XContext Context,
     w->y = y;
     w->width = width;
     w->height = height;
-    w->scale_x = 1.0;
-    w->scale_y = 1.0;
+    w->scale.init_x = x;
+    w->scale.init_y = y;
+    w->scale.init_width = width;
+    w->scale.init_height = height;
+    w->scale.scale_x  = 0.0;
+    w->scale.scale_y  = 0.0;
+    w->scale.cscale_x = 1.0;
+    w->scale.cscale_y = 1.0;
+    w->scale.ascale   = 1.0;
+    w->scale.gravity  = NONE;
     w->transparency = false;
     w->adj_x = NULL;
     w->adj_y = NULL;
@@ -303,7 +353,9 @@ Widget_t *create_widget(Display *dpy, Widget_t *parent, XContext Context,
 
     w->cr = cairo_create(w->surface);
 
-    w->buffer = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, width, height);
+    w->buffer = cairo_surface_create_similar (w->surface, 
+                        CAIRO_CONTENT_COLOR_ALPHA, width, height);
+    
     w->crb = cairo_create (w->buffer);
 
     if(XSaveContext(dpy, w->widget, Context, (XPointer) w)) {
@@ -318,8 +370,16 @@ Widget_t *create_widget(Display *dpy, Widget_t *parent, XContext Context,
     w->y = y;
     w->width = width;
     w->height = height;
-    w->scale_x = 1.0;
-    w->scale_y = 1.0;
+    w->scale.gravity = CENTER;
+    w->scale.init_width = width;
+    w->scale.init_height = height;
+    w->scale.init_x   = x;
+    w->scale.init_y   = y;
+    w->scale.scale_x  = 0.0;
+    w->scale.scale_y  = 0.0;
+    w->scale.cscale_x = 1.0;
+    w->scale.cscale_y = 1.0;
+    w->scale.ascale   = 1.0;
     w->transparency = true;
     w->adj_x = NULL;
     w->adj_y = NULL;
@@ -374,11 +434,11 @@ static inline void _set_adj_value(void *w_, bool x, int direction) {
     if (x && wid->adj_x) {
         wid->adj_x->value = min(wid->adj_x->max_value,max(wid->adj_x->min_value, 
         wid->adj_x->value + (wid->adj_x->step * direction)));
-        wid->func.expose_callback(w_, NULL);
+        expose_widget(wid);
     } else if (!x && wid->adj_y) {
         wid->adj_y->value = min(wid->adj_y->max_value,max(wid->adj_y->min_value, 
         wid->adj_y->value + (wid->adj_y->step * direction)));
-        wid->func.expose_callback(w_, NULL);
+        expose_widget(wid);
     }
 }
 
@@ -410,39 +470,37 @@ static inline void _check_keymap (void *w_ ,XKeyEvent xkey) {
 }
 
 /**
- * @brief _expose_childs    - send expose expose event to window
- * @param w                 - the Window receive the event
- * @param *dpy              - pointer to the Display in use
+ * @brief expose_widgets    - send expose expose event to window
+ * @param w                 - the Widget_t to send the event to
  * @return void 
  */
 
-static inline void _expose_child(Window w, Display *dpy) {
+void expose_widget(Widget_t *w) {
     XEvent exp;
     memset(&exp, 0, sizeof(exp));
     exp.type = Expose;
-    exp.xexpose.window = w;
-    XSendEvent(dpy, w, False, ExposureMask, (XEvent *)&exp);
+    exp.xexpose.window = w->widget;
+    XSendEvent(w->dpy, w->widget, False, ExposureMask, (XEvent *)&exp);
 }
 
 /**
  * @brief _propagate_childs - send expose to child window
- * @param *wid              - pointer to the Widget_t send the event
+ * @param *wid              - pointer to the Widget_t send the event	ui->rescale.x  = (double)ui->width/ui->init_width;
+	ui->rescale.y  = (double)ui->height/ui->init_height;
+
  * @return void 
  */
 
-static inline void _propagate_childs(Widget_t *wid) {
-    Window root, parent, *children;
-    int num_children;
-    int status = XQueryTree(wid->dpy, wid->widget, &root, &parent,
-                            &children, &num_children);
-    if (status) {
-        int i = num_children -1;
-        for (; i >= 0; i--) {
-            _expose_child(children[i], wid->dpy);
+static inline void _propagate_child_expose(Widget_t *wid) {
+
+    if (childlist_has_child(wid->childlist)) {
+        int i = 0;
+        for(;i<wid->childlist->elem;i++) {
+            Widget_t *w = wid->childlist->childs[i];
+            if (w->transparency)
+                expose_widget(w);
         }
-        debug_print("Widget_t find %i\n ", num_children);
-    }
-    XFree(children);
+    }      
 }
 
 /**
@@ -472,8 +530,7 @@ void transparent_draw(void * w_, void* user_data) {
     wid->func.expose_callback(wid, user_data);
     cairo_pop_group_to_source (wid->cr);
     cairo_paint (wid->cr);
-    if(childlist_has_child(wid->childlist))
-        _propagate_childs(wid);
+    _propagate_child_expose(wid);
 }
 
 /**

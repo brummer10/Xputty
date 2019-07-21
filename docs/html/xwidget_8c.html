@@ -100,6 +100,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a2eadb62cb8f0794ffa6251be77f8d1a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a2eadb62cb8f0794ffa6251be77f8d1a1">create_widget</a> (Display *dpy, <a class="el" href="structWidget__t.html">Widget_t</a> *parent, XContext Context, int x, int y, int width, int height)</td></tr>
 <tr class="memdesc:a2eadb62cb8f0794ffa6251be77f8d1a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">*create_widget - create a widget  <a href="#a2eadb62cb8f0794ffa6251be77f8d1a1">More...</a><br /></td></tr>
 <tr class="separator:a2eadb62cb8f0794ffa6251be77f8d1a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17f2f3effd46532c596511abcfb5058e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a17f2f3effd46532c596511abcfb5058e">expose_widget</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w)</td></tr>
+<tr class="memdesc:a17f2f3effd46532c596511abcfb5058e"><td class="mdescLeft">&#160;</td><td class="mdescRight">expose_widgets - send expose expose event to window  <a href="#a17f2f3effd46532c596511abcfb5058e">More...</a><br /></td></tr>
+<tr class="separator:a17f2f3effd46532c596511abcfb5058e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e801c1a701cc8526b198371ce2ff692"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a0e801c1a701cc8526b198371ce2ff692">transparent_draw</a> (void *w_, void *user_data)</td></tr>
 <tr class="memdesc:a0e801c1a701cc8526b198371ce2ff692"><td class="mdescLeft">&#160;</td><td class="mdescRight">transparent_draw - copy parent surface to child surface  <a href="#a0e801c1a701cc8526b198371ce2ff692">More...</a><br /></td></tr>
 <tr class="separator:a0e801c1a701cc8526b198371ce2ff692"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -323,6 +326,33 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> sending the request </td></tr>
     <tr><td class="paramname">Context</td><td>- the Context holding the widget info </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a17f2f3effd46532c596511abcfb5058e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17f2f3effd46532c596511abcfb5058e">&#9670;&nbsp;</a></span>expose_widget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void expose_widget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>expose_widgets - send expose expose event to window </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>- the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> to send the event to </td></tr>
   </table>
   </dd>
 </dl>

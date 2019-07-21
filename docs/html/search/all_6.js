@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['has_5fpointer',['has_pointer',['../structWidget__t.html#ac8c396c698d816afad49fa751c3ca2c8',1,'Widget_t']]],
-  ['height',['height',['../structWidget__t.html#a1def6d2237743e75a0b84ca0c34a6834',1,'Widget_t']]]
+  ['gravity',['gravity',['../structResize__t.html#a20c3835bb7bf53474f4d54447ffcd191',1,'Resize_t::gravity()'],['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391ade',1,'Gravity():&#160;xwidget.h']]]
 ];

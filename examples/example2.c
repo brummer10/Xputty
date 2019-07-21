@@ -102,6 +102,7 @@ static void draw_window(void *w_, void* user_data) {
     double pos_x2 = width/2. + ((width/3.2) * (state_x-0.5));
     double pos_y2 = height/2 - ((width/3.2) * (state_y-0.5));
 
+    cairo_push_group (w->cr);
     cairo_pattern_t *pat;
 
     pat = cairo_pattern_create_linear (0.0, 0.0,  0.0+pos_y1, width+pos_x1);
@@ -132,9 +133,10 @@ static void draw_window(void *w_, void* user_data) {
     cairo_show_text(w->crb, w->label);
 
     cairo_set_source_surface (w->cr, w->buffer,0,0);
-    cairo_set_operator (w->cr, CAIRO_OPERATOR_SOURCE);
     cairo_paint (w->cr);
 
+    cairo_pop_group_to_source (w->cr);
+    cairo_paint (w->cr);
 }
 
 static void draw_motion(void *w_, void *motion_, void* user_data) {
@@ -191,6 +193,7 @@ int main (int argc, char ** argv)
 
     mywindow.w_quit = create_widget(dpy, mywindow.w, context, 260, 170, 60, 20);
     mywindow.w_quit->label = "Quit";
+    mywindow.w_quit->scale.gravity = NONE;
     mywindow.w_quit->func.expose_callback = draw_button;
     mywindow.w_quit->func.enter_callback = transparent_draw;
     mywindow.w_quit->func.button_press_callback = button_press;

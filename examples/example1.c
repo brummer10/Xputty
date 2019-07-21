@@ -252,12 +252,7 @@ int main (int argc, char ** argv)
     mywindow.w_ti->func.expose_callback = text_input_add_text;
    // mywindow.w_ti->func.enter_callback = draw_text_input;
     mywindow.w_ti->func.key_press_callback = get_text;
-    XSizeHints* win_size_hints;
-    win_size_hints = XAllocSizeHints();
-    win_size_hints->flags = PWinGravity;
-    win_size_hints->win_gravity = CenterGravity;
-    XSetWMNormalHints(dpy, mywindow.w_ti->widget, win_size_hints);
-    XFree(win_size_hints);
+    mywindow.w_ti->scale.gravity = NORTHWEST;
 
     mywindow.w_ok = create_widget(dpy, mywindow.w, context, 230, 170, 60, 20);
     mywindow.w_ok->label = "Ok";
@@ -266,6 +261,7 @@ int main (int argc, char ** argv)
     mywindow.w_ok->func.button_press_callback = button_press;
     mywindow.w_ok->func.button_release_callback = button_release;
     mywindow.w_ok->func.leave_callback = draw_button;
+    mywindow.w_ok->scale.gravity = NONE;
 
     mywindow.run = true;
     

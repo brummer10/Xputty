@@ -34,7 +34,7 @@
  */
 
 Adjustment_t *add_adjustment(void *w_, float std_value, float value,
-                float min_value,float max_value, float step, int type) {
+                float min_value,float max_value, float step, CL_type type) {
     Adjustment_t *adj = (Adjustment_t*)malloc(sizeof(Adjustment_t));
     assert(adj);
     *(adj) = (Adjustment_t){std_value, value, min_value, max_value, step, value, type};

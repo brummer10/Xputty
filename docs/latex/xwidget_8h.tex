@@ -22,6 +22,8 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 struct \hyperlink{structFunc__t}{Func\+\_\+t}
 \begin{DoxyCompactList}\small\item\em \hyperlink{structFunc__t}{Func\+\_\+t} -\/ struct to hold all supported event callbacks. \end{DoxyCompactList}\item 
+struct \hyperlink{structResize__t}{Resize\+\_\+t}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structResize__t}{Resize\+\_\+t} -\/ struct used to resize child widgets. \end{DoxyCompactList}\item 
 struct \hyperlink{structWidget__t}{Widget\+\_\+t}
 \begin{DoxyCompactList}\small\item\em \hyperlink{structWidget__t}{Widget\+\_\+t} -\/ struct to hold the basic widget info. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
@@ -36,6 +38,20 @@ typedef void($\ast$ \hyperlink{xwidget_8h_ab4ae973f86a383c8c0f92b709044520a}{evf
 \begin{DoxyCompactList}\small\item\em $\ast$evfunc -\/ function pointer to connect Xevents from the widgets \end{DoxyCompactList}\item 
 typedef void($\ast$ \hyperlink{xwidget_8h_a9ef0263424a7f5f8f6b02055fca67ddd}{xevfunc}) (void $\ast$widget, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em $\ast$xevfunc -\/ function pointer to connect X\+Events from the widgets \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391ade}{Gravity} \{ \newline
+\hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391adeac8aee466c121a3c3c942f58e1d8864d4}{N\+O\+R\+T\+H\+W\+E\+ST} = 0x0001, 
+\hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391adeaa6671505783298e4cb967931c1c1ac5b}{N\+O\+R\+T\+H\+E\+A\+ST} = 0x0002, 
+\hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391adea6aa90951b336be999de204e61dd366d4}{S\+O\+U\+T\+H\+W\+E\+ST} = 0x0004, 
+\hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391adea16c2c7abfbd3bad3343b0dcaa858bb49}{S\+O\+U\+T\+H\+E\+A\+ST} = 0x0008, 
+\newline
+\hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391adea2159ffbd3a68037511ab5ab4dd35ace7}{C\+E\+N\+T\+ER} = 0x0016, 
+\hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391adea8c0a044902c54374c3761b1e06152a1f}{A\+S\+P\+E\+CT} = 0x0032, 
+\hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391adeac157bdf0b85a40d2619cbc8bc1ae5fe2}{N\+O\+NE} = 0x10000
+ \}\begin{DoxyCompactList}\small\item\em Gravity -\/ enum to indicate how to resize a widget. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,6 +67,8 @@ void \hyperlink{xwidget_8h_a540b0eefd6f19f487aa71d4c1798ac8c}{destroy\+\_\+widge
 \begin{DoxyCompactList}\small\item\em destroy\+\_\+widget -\/ destroy a widget and remove it from the Context \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_af3ecce0332b5f13b590d024db28aec5a}{widget\+\_\+event\+\_\+loop} (void $\ast$w\+\_\+, void $\ast$event, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em widget\+\_\+event\+\_\+loop -\/ the internal widget event loop \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8h_a17f2f3effd46532c596511abcfb5058e}{expose\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em expose\+\_\+widgets -\/ send expose expose event to window \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_a2dcfec5924929a2a601ec63a27d0db32}{loop} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, X\+Context Context, bool $\ast$run)
 \begin{DoxyCompactList}\small\item\em loop -\/ the event loop \end{DoxyCompactList}\item 
 int \hyperlink{xwidget_8h_a1607cf4a642a38ea235a007ea9579403}{key\+\_\+mapping} (Display $\ast$dpy, X\+Key\+Event $\ast$xkey)
@@ -109,6 +127,66 @@ $\ast$xevfunc -\/ function pointer to connect X\+Events from the widgets
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{xwidget_8h_a5b77df25933eae1169c9efbc78391ade}\label{xwidget_8h_a5b77df25933eae1169c9efbc78391ade}} 
+\index{xwidget.\+h@{xwidget.\+h}!Gravity@{Gravity}}
+\index{Gravity@{Gravity}!xwidget.\+h@{xwidget.\+h}}
+\subsubsection{\texorpdfstring{Gravity}{Gravity}}
+{\footnotesize\ttfamily enum \hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391ade}{Gravity}}
+
+
+
+Gravity -\/ enum to indicate how to resize a widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+O\+R\+T\+H\+W\+E\+ST} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} adjust nord/west \\
+\hline
+{\em N\+O\+R\+T\+H\+E\+A\+ST} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} adjust nord/east \\
+\hline
+{\em S\+O\+U\+T\+H\+W\+E\+ST} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} adjust south/west \\
+\hline
+{\em S\+O\+U\+T\+H\+E\+A\+ST} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} adjust south/east \\
+\hline
+{\em C\+E\+N\+T\+ER} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} adjust centered \\
+\hline
+{\em A\+S\+P\+E\+CT} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} adjust in a aspect frame \\
+\hline
+{\em N\+O\+NE} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} request no adjustment in frame \\
+\hline
+\end{DoxyParams}
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\+O\+R\+T\+H\+W\+E\+ST@{N\+O\+R\+T\+H\+W\+E\+ST}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!N\+O\+R\+T\+H\+W\+E\+ST@{N\+O\+R\+T\+H\+W\+E\+ST}}}\mbox{\Hypertarget{xwidget_8h_a5b77df25933eae1169c9efbc78391adeac8aee466c121a3c3c942f58e1d8864d4}\label{xwidget_8h_a5b77df25933eae1169c9efbc78391adeac8aee466c121a3c3c942f58e1d8864d4}} 
+N\+O\+R\+T\+H\+W\+E\+ST&\hyperlink{structWidget__t}{Widget\+\_\+t} adjust nord/west \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\+O\+R\+T\+H\+E\+A\+ST@{N\+O\+R\+T\+H\+E\+A\+ST}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!N\+O\+R\+T\+H\+E\+A\+ST@{N\+O\+R\+T\+H\+E\+A\+ST}}}\mbox{\Hypertarget{xwidget_8h_a5b77df25933eae1169c9efbc78391adeaa6671505783298e4cb967931c1c1ac5b}\label{xwidget_8h_a5b77df25933eae1169c9efbc78391adeaa6671505783298e4cb967931c1c1ac5b}} 
+N\+O\+R\+T\+H\+E\+A\+ST&\hyperlink{structWidget__t}{Widget\+\_\+t} adjust nord/east \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+O\+U\+T\+H\+W\+E\+ST@{S\+O\+U\+T\+H\+W\+E\+ST}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!S\+O\+U\+T\+H\+W\+E\+ST@{S\+O\+U\+T\+H\+W\+E\+ST}}}\mbox{\Hypertarget{xwidget_8h_a5b77df25933eae1169c9efbc78391adea6aa90951b336be999de204e61dd366d4}\label{xwidget_8h_a5b77df25933eae1169c9efbc78391adea6aa90951b336be999de204e61dd366d4}} 
+S\+O\+U\+T\+H\+W\+E\+ST&\hyperlink{structWidget__t}{Widget\+\_\+t} adjust south/west \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+O\+U\+T\+H\+E\+A\+ST@{S\+O\+U\+T\+H\+E\+A\+ST}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!S\+O\+U\+T\+H\+E\+A\+ST@{S\+O\+U\+T\+H\+E\+A\+ST}}}\mbox{\Hypertarget{xwidget_8h_a5b77df25933eae1169c9efbc78391adea16c2c7abfbd3bad3343b0dcaa858bb49}\label{xwidget_8h_a5b77df25933eae1169c9efbc78391adea16c2c7abfbd3bad3343b0dcaa858bb49}} 
+S\+O\+U\+T\+H\+E\+A\+ST&\hyperlink{structWidget__t}{Widget\+\_\+t} adjust south/east \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+E\+N\+T\+ER@{C\+E\+N\+T\+ER}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!C\+E\+N\+T\+ER@{C\+E\+N\+T\+ER}}}\mbox{\Hypertarget{xwidget_8h_a5b77df25933eae1169c9efbc78391adea2159ffbd3a68037511ab5ab4dd35ace7}\label{xwidget_8h_a5b77df25933eae1169c9efbc78391adea2159ffbd3a68037511ab5ab4dd35ace7}} 
+C\+E\+N\+T\+ER&\hyperlink{structWidget__t}{Widget\+\_\+t} adjust centered \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{A\+S\+P\+E\+CT@{A\+S\+P\+E\+CT}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!A\+S\+P\+E\+CT@{A\+S\+P\+E\+CT}}}\mbox{\Hypertarget{xwidget_8h_a5b77df25933eae1169c9efbc78391adea8c0a044902c54374c3761b1e06152a1f}\label{xwidget_8h_a5b77df25933eae1169c9efbc78391adea8c0a044902c54374c3761b1e06152a1f}} 
+A\+S\+P\+E\+CT&\hyperlink{structWidget__t}{Widget\+\_\+t} adjust in a aspect frame \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\+O\+NE@{N\+O\+NE}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!N\+O\+NE@{N\+O\+NE}}}\mbox{\Hypertarget{xwidget_8h_a5b77df25933eae1169c9efbc78391adeac157bdf0b85a40d2619cbc8bc1ae5fe2}\label{xwidget_8h_a5b77df25933eae1169c9efbc78391adeac157bdf0b85a40d2619cbc8bc1ae5fe2}} 
+N\+O\+NE&\hyperlink{structWidget__t}{Widget\+\_\+t} request no adjustment in frame \\
+\hline
+
+\end{DoxyEnumFields}
 
 
 \subsection{Function Documentation}
@@ -189,6 +267,24 @@ destroy\+\_\+widget -\/ destroy a widget and remove it from the Context
 {\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
 \hline
 {\em Context} & -\/ the Context holding the widget info \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8h_a17f2f3effd46532c596511abcfb5058e}\label{xwidget_8h_a17f2f3effd46532c596511abcfb5058e}} 
+\index{xwidget.\+h@{xwidget.\+h}!expose\+\_\+widget@{expose\+\_\+widget}}
+\index{expose\+\_\+widget@{expose\+\_\+widget}!xwidget.\+h@{xwidget.\+h}}
+\subsubsection{\texorpdfstring{expose\+\_\+widget()}{expose\_widget()}}
+{\footnotesize\ttfamily void expose\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+expose\+\_\+widgets -\/ send expose expose event to window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

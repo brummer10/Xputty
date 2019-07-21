@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['key_5fmapping',['key_mapping',['../xwidget_8c.html#a1607cf4a642a38ea235a007ea9579403',1,'key_mapping(Display *dpy, XKeyEvent *xkey):&#160;xwidget.c'],['../xwidget_8h.html#a1607cf4a642a38ea235a007ea9579403',1,'key_mapping(Display *dpy, XKeyEvent *xkey):&#160;xwidget.c']]]
+  ['expose_5fwidget',['expose_widget',['../xwidget_8c.html#a17f2f3effd46532c596511abcfb5058e',1,'expose_widget(Widget_t *w):&#160;xwidget.c'],['../xwidget_8h.html#a17f2f3effd46532c596511abcfb5058e',1,'expose_widget(Widget_t *w):&#160;xwidget.c']]]
 ];

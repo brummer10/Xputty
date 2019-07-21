@@ -16,7 +16,7 @@ Collaboration diagram for Widget\+\_\+t\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=220pt]{structWidget__t__coll__graph}
+\includegraphics[width=294pt]{structWidget__t__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Data Fields}
@@ -62,11 +62,9 @@ int \hyperlink{structWidget__t_a3204c88196ed5793250b3530dd719037}{width}
 \item 
 int \hyperlink{structWidget__t_a1def6d2237743e75a0b84ca0c34a6834}{height}
 \item 
-float \hyperlink{structWidget__t_a4cdb2a1939c70bf079a0c95dc0d42868}{scale\+\_\+x}
-\item 
-float \hyperlink{structWidget__t_a42aeb0bc5c13eae6d04ee359235433b9}{scale\+\_\+y}
-\item 
 bool \hyperlink{structWidget__t_a42a597c21eca964c0296fc7026feb43b}{transparency}
+\item 
+\hyperlink{structResize__t}{Resize\+\_\+t} \hyperlink{structWidget__t_a9a2d5b53f40f5bf3914fc0694027d7ec}{scale}
 \item 
 \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{structWidget__t_aabc05e0a46c85d24483fae36127b45dd}{adj\+\_\+x}
 \item 
@@ -121,11 +119,9 @@ bool \hyperlink{structWidget__t_a42a597c21eca964c0296fc7026feb43b}{transparency}
 \hline
 {\em height} & -\/ widget height \\
 \hline
-{\em scale\+\_\+x} & -\/ scaling factor on x axis \\
-\hline
-{\em scale\+\_\+y} & -\/ scaling factor on y axis \\
-\hline
 {\em transparency} & -\/ flag to set/check transparent drawing \\
+\hline
+{\em scale} & -\/ struct used to resize child widgets \\
 \hline
 {\em $\ast$adj\+\_\+x} & -\/ pointer to the x axis adjustment \\
 \hline
@@ -239,19 +235,13 @@ mouse pointer x position on button press \mbox{\Hypertarget{structWidget__t_a9b1
 \subsubsection{\texorpdfstring{pos\+\_\+y}{pos\_y}}
 {\footnotesize\ttfamily int Widget\+\_\+t\+::pos\+\_\+y}
 
-mouse pointer y position on button press \mbox{\Hypertarget{structWidget__t_a4cdb2a1939c70bf079a0c95dc0d42868}\label{structWidget__t_a4cdb2a1939c70bf079a0c95dc0d42868}} 
-\index{Widget\+\_\+t@{Widget\+\_\+t}!scale\+\_\+x@{scale\+\_\+x}}
-\index{scale\+\_\+x@{scale\+\_\+x}!Widget\+\_\+t@{Widget\+\_\+t}}
-\subsubsection{\texorpdfstring{scale\+\_\+x}{scale\_x}}
-{\footnotesize\ttfamily float Widget\+\_\+t\+::scale\+\_\+x}
+mouse pointer y position on button press \mbox{\Hypertarget{structWidget__t_a9a2d5b53f40f5bf3914fc0694027d7ec}\label{structWidget__t_a9a2d5b53f40f5bf3914fc0694027d7ec}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!scale@{scale}}
+\index{scale@{scale}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{scale}{scale}}
+{\footnotesize\ttfamily \hyperlink{structResize__t}{Resize\+\_\+t} Widget\+\_\+t\+::scale}
 
-the x scaling factor used to resize child widgets \mbox{\Hypertarget{structWidget__t_a42aeb0bc5c13eae6d04ee359235433b9}\label{structWidget__t_a42aeb0bc5c13eae6d04ee359235433b9}} 
-\index{Widget\+\_\+t@{Widget\+\_\+t}!scale\+\_\+y@{scale\+\_\+y}}
-\index{scale\+\_\+y@{scale\+\_\+y}!Widget\+\_\+t@{Widget\+\_\+t}}
-\subsubsection{\texorpdfstring{scale\+\_\+y}{scale\_y}}
-{\footnotesize\ttfamily float Widget\+\_\+t\+::scale\+\_\+y}
-
-the y scaling factor used to resize child widgets \mbox{\Hypertarget{structWidget__t_aaa935b64805fdeb78acb015c67d6638c}\label{structWidget__t_aaa935b64805fdeb78acb015c67d6638c}} 
+struct used to resize child widgets \mbox{\Hypertarget{structWidget__t_aaa935b64805fdeb78acb015c67d6638c}\label{structWidget__t_aaa935b64805fdeb78acb015c67d6638c}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!state@{state}}
 \index{state@{state}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{state}{state}}

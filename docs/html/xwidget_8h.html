@@ -68,6 +68,7 @@ $(function() {
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">xwidget.h File Reference</div>  </div>
@@ -105,6 +106,9 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFunc__t.html">Func_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structFunc__t.html" title="Func_t - struct to hold all supported event callbacks. ">Func_t</a> - struct to hold all supported event callbacks.  <a href="structFunc__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structResize__t.html">Resize_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structResize__t.html" title="Resize_t - struct used to resize child widgets. ">Resize_t</a> - struct used to resize child widgets.  <a href="structResize__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html">Widget_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> - struct to hold the basic widget info.  <a href="structWidget__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,6 +126,22 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a9ef0263424a7f5f8f6b02055fca67ddd"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#a9ef0263424a7f5f8f6b02055fca67ddd">xevfunc</a>) (void *widget, void *user_data)</td></tr>
 <tr class="memdesc:a9ef0263424a7f5f8f6b02055fca67ddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">*xevfunc - function pointer to connect XEvents from the widgets  <a href="#a9ef0263424a7f5f8f6b02055fca67ddd">More...</a><br /></td></tr>
 <tr class="separator:a9ef0263424a7f5f8f6b02055fca67ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a5b77df25933eae1169c9efbc78391ade"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#a5b77df25933eae1169c9efbc78391ade">Gravity</a> { <br />
+&#160;&#160;<a class="el" href="xwidget_8h.html#a5b77df25933eae1169c9efbc78391adeac8aee466c121a3c3c942f58e1d8864d4">NORTHWEST</a> = 0x0001, 
+<a class="el" href="xwidget_8h.html#a5b77df25933eae1169c9efbc78391adeaa6671505783298e4cb967931c1c1ac5b">NORTHEAST</a> = 0x0002, 
+<a class="el" href="xwidget_8h.html#a5b77df25933eae1169c9efbc78391adea6aa90951b336be999de204e61dd366d4">SOUTHWEST</a> = 0x0004, 
+<a class="el" href="xwidget_8h.html#a5b77df25933eae1169c9efbc78391adea16c2c7abfbd3bad3343b0dcaa858bb49">SOUTHEAST</a> = 0x0008, 
+<br />
+&#160;&#160;<a class="el" href="xwidget_8h.html#a5b77df25933eae1169c9efbc78391adea2159ffbd3a68037511ab5ab4dd35ace7">CENTER</a> = 0x0016, 
+<a class="el" href="xwidget_8h.html#a5b77df25933eae1169c9efbc78391adea8c0a044902c54374c3761b1e06152a1f">ASPECT</a> = 0x0032, 
+<a class="el" href="xwidget_8h.html#a5b77df25933eae1169c9efbc78391adeac157bdf0b85a40d2619cbc8bc1ae5fe2">NONE</a> = 0x10000
+<br />
+ }<tr class="memdesc:a5b77df25933eae1169c9efbc78391ade"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gravity - enum to indicate how to resize a widget.  <a href="xwidget_8h.html#a5b77df25933eae1169c9efbc78391ade">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:a5b77df25933eae1169c9efbc78391ade"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -143,6 +163,9 @@ Functions</h2></td></tr>
 <tr class="memitem:af3ecce0332b5f13b590d024db28aec5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#af3ecce0332b5f13b590d024db28aec5a">widget_event_loop</a> (void *w_, void *event, void *user_data)</td></tr>
 <tr class="memdesc:af3ecce0332b5f13b590d024db28aec5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget_event_loop - the internal widget event loop  <a href="#af3ecce0332b5f13b590d024db28aec5a">More...</a><br /></td></tr>
 <tr class="separator:af3ecce0332b5f13b590d024db28aec5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17f2f3effd46532c596511abcfb5058e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#a17f2f3effd46532c596511abcfb5058e">expose_widget</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w)</td></tr>
+<tr class="memdesc:a17f2f3effd46532c596511abcfb5058e"><td class="mdescLeft">&#160;</td><td class="mdescRight">expose_widgets - send expose expose event to window  <a href="#a17f2f3effd46532c596511abcfb5058e">More...</a><br /></td></tr>
+<tr class="separator:a17f2f3effd46532c596511abcfb5058e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2dcfec5924929a2a601ec63a27d0db32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#a2dcfec5924929a2a601ec63a27d0db32">loop</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, XContext Context, bool *run)</td></tr>
 <tr class="memdesc:a2dcfec5924929a2a601ec63a27d0db32"><td class="mdescLeft">&#160;</td><td class="mdescRight">loop - the event loop  <a href="#a2dcfec5924929a2a601ec63a27d0db32">More...</a><br /></td></tr>
 <tr class="separator:a2dcfec5924929a2a601ec63a27d0db32"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,6 +235,51 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a5b77df25933eae1169c9efbc78391ade"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b77df25933eae1169c9efbc78391ade">&#9670;&nbsp;</a></span>Gravity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="xwidget_8h.html#a5b77df25933eae1169c9efbc78391ade">Gravity</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gravity - enum to indicate how to resize a widget. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">NORTHWEST</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> adjust nord/west </td></tr>
+    <tr><td class="paramname">NORTHEAST</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> adjust nord/east </td></tr>
+    <tr><td class="paramname">SOUTHWEST</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> adjust south/west </td></tr>
+    <tr><td class="paramname">SOUTHEAST</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> adjust south/east </td></tr>
+    <tr><td class="paramname">CENTER</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> adjust centered </td></tr>
+    <tr><td class="paramname">ASPECT</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> adjust in a aspect frame </td></tr>
+    <tr><td class="paramname">NONE</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request no adjustment in frame </td></tr>
+  </table>
+  </dd>
+</dl>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5b77df25933eae1169c9efbc78391adeac8aee466c121a3c3c942f58e1d8864d4"></a>NORTHWEST&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> adjust nord/west </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5b77df25933eae1169c9efbc78391adeaa6671505783298e4cb967931c1c1ac5b"></a>NORTHEAST&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> adjust nord/east </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5b77df25933eae1169c9efbc78391adea6aa90951b336be999de204e61dd366d4"></a>SOUTHWEST&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> adjust south/west </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5b77df25933eae1169c9efbc78391adea16c2c7abfbd3bad3343b0dcaa858bb49"></a>SOUTHEAST&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> adjust south/east </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5b77df25933eae1169c9efbc78391adea2159ffbd3a68037511ab5ab4dd35ace7"></a>CENTER&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> adjust centered </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5b77df25933eae1169c9efbc78391adea8c0a044902c54374c3761b1e06152a1f"></a>ASPECT&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> adjust in a aspect frame </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5b77df25933eae1169c9efbc78391adeac157bdf0b85a40d2619cbc8bc1ae5fe2"></a>NONE&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request no adjustment in frame </p>
+</td></tr>
+</table>
 
 </div>
 </div>
@@ -397,6 +465,33 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> sending the request </td></tr>
     <tr><td class="paramname">Context</td><td>- the Context holding the widget info </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a17f2f3effd46532c596511abcfb5058e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17f2f3effd46532c596511abcfb5058e">&#9670;&nbsp;</a></span>expose_widget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void expose_widget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>expose_widgets - send expose expose event to window </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>- the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> to send the event to </td></tr>
   </table>
   </dd>
 </dl>

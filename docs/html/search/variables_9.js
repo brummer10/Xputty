@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['label',['label',['../structWidget__t.html#a952020107ac1f6d9a37b4f978f77b61c',1,'Widget_t']]],
-  ['leave_5fcallback',['leave_callback',['../structFunc__t.html#a1801ba902bd7efc706d474312f960d0a',1,'Func_t']]]
+  ['key_5fpress_5fcallback',['key_press_callback',['../structFunc__t.html#a024ea4919029156d9415f1501cd8b0bf',1,'Func_t']]],
+  ['key_5frelease_5fcallback',['key_release_callback',['../structFunc__t.html#a8c7138616caa404a9af064d673d7e0f8',1,'Func_t']]]
 ];
