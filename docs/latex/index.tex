@@ -10,29 +10,22 @@ produced by this code\+:
 \begin{DoxyCode}
 \textcolor{preprocessor}{#include "\hyperlink{xputty_8h}{xputty.h}"}
 
-\textcolor{keyword}{static} \textcolor{keywordtype}{void} draw\_window(\textcolor{keywordtype}{void} *w\_, \textcolor{keywordtype}{void}* user\_data) \{
-    \hyperlink{structWidget__t}{Widget\_t} *w = (\hyperlink{structWidget__t}{Widget\_t}*)w\_;
-    cairo\_push\_group (w->\hyperlink{structWidget__t_a26594f6ffabe98fc08f9207150fc9417}{cr});
-    cairo\_set\_source\_rgb (w->\hyperlink{structWidget__t_a26594f6ffabe98fc08f9207150fc9417}{cr}, 1, 1, 1);
-    cairo\_paint (w->\hyperlink{structWidget__t_a26594f6ffabe98fc08f9207150fc9417}{cr});
-    cairo\_pop\_group\_to\_source (w->\hyperlink{structWidget__t_a26594f6ffabe98fc08f9207150fc9417}{cr});
-    cairo\_paint (w->\hyperlink{structWidget__t_a26594f6ffabe98fc08f9207150fc9417}{cr});
+\textcolor{keyword}{static} \textcolor{keywordtype}{void} draw\_window(\textcolor{keywordtype}{void} *w\_, \textcolor{keywordtype}{void}* buffer\_context) \{
+    cairo\_t * cr = (cairo\_t*) buffer\_context;
+    cairo\_set\_source\_rgb (cr, 1, 1, 1);
+    cairo\_paint (cr);
 \}
 
 \textcolor{keywordtype}{int} main (\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} ** argv)
 \{
-    Display *dpy = XOpenDisplay(0);
-    XContext context =  XUniqueContext();
-    \hyperlink{structWidget__t}{Widget\_t} *w;
-
-    w = \hyperlink{xwidget_8c_a9c5b8eaf662ac4fb7d2674bf7e89ab8c}{create\_window}(dpy, DefaultRootWindow(dpy), context, 0, 0, 300, 200);
-    XStoreName(dpy, w->\hyperlink{structWidget__t_acb2bfb41674371ee1220a9d6a2d89fb1}{widget}, \textcolor{stringliteral}{"Xputty Hello world"});
-    w->\hyperlink{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}{label} = \textcolor{stringliteral}{"How are you?"};
+    \hyperlink{structXputty}{Xputty} app;
+    \hyperlink{xputty_8c_a484645d624d9e9eff0288f8d5583ff5e}{main\_init}(&app);
+    \hyperlink{structWidget__t}{Widget\_t} *w = \hyperlink{xwidget_8c_a5528f841e6b5f2ef62b3b10bfa8bf20f}{create\_window}(&app, DefaultRootWindow(app.
+      \hyperlink{structXputty_ab185ae4fd00ee1930c61e0440734878f}{dpy}), 0, 0, 300, 200);
+    XStoreName(app.\hyperlink{structXputty_ab185ae4fd00ee1930c61e0440734878f}{dpy}, w->\hyperlink{structWidget__t_acb2bfb41674371ee1220a9d6a2d89fb1}{widget}, \textcolor{stringliteral}{"Hello world"});
     w->\hyperlink{structWidget__t_a225b9a175e132994a5aa73b59a2911ad}{func}.\hyperlink{structFunc__t_ae4ba307ec29bfea83e1197aa750c1396}{expose\_callback} = draw\_window;
-    \textcolor{keywordtype}{bool} run = \textcolor{keyword}{true};
-    \hyperlink{xwidget_8c_a5dc619d89042819195db7e744dcd5f7d}{loop}(w,context,&run);
-    \hyperlink{xwidget_8c_a540b0eefd6f19f487aa71d4c1798ac8c}{destroy\_widget}( w, context);
-    XCloseDisplay(dpy);
+    \hyperlink{xputty_8c_abb548ea64f852a7c94473a595e67d69f}{main\_run}(&app);
+    \hyperlink{xputty_8c_a0d4eda902b4de6f7a30e8d869f842fda}{main\_quit}(&app);
     \textcolor{keywordflow}{return} 0;
 \}
 \end{DoxyCode}

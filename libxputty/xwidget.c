@@ -21,7 +21,6 @@
 
 #include "xwidget.h"
 
-
 /**
  * @brief key_mapping       - modifier key's mapped to a integer value
  * @param *dpy              - pointer to the Display in use
@@ -233,7 +232,7 @@ static inline void dummy_callback(void *w_, void* user_data) {
  * @return Widget_t*         - pointer to the Widget_t struct
  */
 
-Widget_t *create_window(Display *dpy, Window win, XContext Context,
+Widget_t *create_window(Xputty *app, Window win,
                           int x, int y, int width, int height) {
 
     Widget_t *w = (Widget_t*)malloc(sizeof(Widget_t));
@@ -249,23 +248,23 @@ Widget_t *create_window(Display *dpy, Window win, XContext Context,
 
 
 
-    w->widget = XCreateWindow(dpy, win , x, y, width, height, 0,
+    w->widget = XCreateWindow(app->dpy, win , x, y, width, height, 0,
                             CopyFromParent, InputOutput, CopyFromParent,
                             CopyFromParent, &attributes);
     debug_print("XCreateWindow\n");
 
-    XSelectInput(dpy, w->widget, event_mask);
+    XSelectInput(app->dpy, w->widget, event_mask);
 
     XSizeHints* win_size_hints;
     win_size_hints = XAllocSizeHints();
     win_size_hints->flags =  PMinSize;
     win_size_hints->min_width = width/2;
     win_size_hints->min_height = height/2;
-    XSetWMNormalHints(dpy, w->widget, win_size_hints);
+    XSetWMNormalHints(app->dpy, w->widget, win_size_hints);
     XFree(win_size_hints);
 
-    w->surface =  cairo_xlib_surface_create (dpy, w->widget,  
-                  DefaultVisual(dpy, DefaultScreen(dpy)), width, height);
+    w->surface =  cairo_xlib_surface_create (app->dpy, w->widget,  
+                  DefaultVisual(app->dpy, DefaultScreen(app->dpy)), width, height);
 
     w->cr = cairo_create(w->surface);
 
@@ -273,10 +272,10 @@ Widget_t *create_window(Display *dpy, Window win, XContext Context,
                         CAIRO_CONTENT_COLOR_ALPHA, width, height);
     w->crb = cairo_create (w->buffer);
 
-    if(XSaveContext(dpy, w->widget, Context, (XPointer) w)) {
+    if(XSaveContext(app->dpy, w->widget, app->context, (XPointer) w)) {
         debug_print("contex save faild\n");
     }
-    w->dpy = dpy;
+    w->dpy = app->dpy;
     w->parent = &win;
     w->label = NULL;
     w->state = 0;
@@ -312,7 +311,8 @@ Widget_t *create_window(Display *dpy, Window win, XContext Context,
     w->func.leave_callback = dummy_callback;
     w->func.user_callback = dummy_callback;
 
-    XMapWindow(dpy, w->widget);
+    childlist_add_child(app->childlist,w);
+    XMapWindow(app->dpy, w->widget);
     return w;
 }
 
@@ -325,7 +325,7 @@ Widget_t *create_window(Display *dpy, Window win, XContext Context,
  * @return Widget_t*          - pointer to the Widget_t struct
  */
 
-Widget_t *create_widget(Display *dpy, Widget_t *parent, XContext Context,
+Widget_t *create_widget(Xputty *app, Widget_t *parent,
                           int x, int y, int width, int height) {
 
     Widget_t *w = (Widget_t*)malloc(sizeof(Widget_t));
@@ -341,15 +341,15 @@ Widget_t *create_widget(Display *dpy, Widget_t *parent, XContext Context,
 
 
 
-    w->widget = XCreateWindow(dpy, parent->widget , x, y, width, height, 0,
+    w->widget = XCreateWindow(app->dpy, parent->widget , x, y, width, height, 0,
                             CopyFromParent, InputOutput, CopyFromParent,
                             CopyFromParent|CWOverrideRedirect, &attributes);
     debug_print("XCreateWindow\n");
 
-    XSelectInput(dpy, w->widget, event_mask);
+    XSelectInput(app->dpy, w->widget, event_mask);
 
-    w->surface =  cairo_xlib_surface_create (dpy, w->widget,  
-                  DefaultVisual(dpy, DefaultScreen(dpy)), width, height);
+    w->surface =  cairo_xlib_surface_create (app->dpy, w->widget,  
+                  DefaultVisual(app->dpy, DefaultScreen(app->dpy)), width, height);
 
     w->cr = cairo_create(w->surface);
 
@@ -358,10 +358,10 @@ Widget_t *create_widget(Display *dpy, Widget_t *parent, XContext Context,
     
     w->crb = cairo_create (w->buffer);
 
-    if(XSaveContext(dpy, w->widget, Context, (XPointer) w)) {
+    if(XSaveContext(app->dpy, w->widget, app->context, (XPointer) w)) {
         debug_print("contex save faild\n");
     }
-    w->dpy = dpy;
+    w->dpy = app->dpy;
     w->parent = parent;
     w->label = NULL;
     w->state = 0;
@@ -398,7 +398,8 @@ Widget_t *create_widget(Display *dpy, Widget_t *parent, XContext Context,
     w->func.leave_callback = dummy_callback;
     w->func.user_callback = dummy_callback;
 
-    XMapWindow(dpy, w->widget);
+    childlist_add_child(app->childlist,w);
+    XMapWindow(app->dpy, w->widget);
     return w;
 }
 
@@ -485,9 +486,7 @@ void expose_widget(Widget_t *w) {
 
 /**
  * @brief _propagate_childs - send expose to child window
- * @param *wid              - pointer to the Widget_t send the event	ui->rescale.x  = (double)ui->width/ui->init_width;
-	ui->rescale.y  = (double)ui->height/ui->init_height;
-
+ * @param *wid              - pointer to the Widget_t send the event
  * @return void 
  */
 
@@ -523,11 +522,16 @@ void transparent_draw(void * w_, void* user_data) {
         debug_print("Widget_t _transparency \n");
         cairo_set_source_surface (wid->crb, parent->buffer, -attrs.x, -attrs.y);
         cairo_paint (wid->crb);
-        cairo_set_source_surface (wid->cr, wid->buffer,0,0);
-        cairo_paint (wid->cr);
     }
 
-    wid->func.expose_callback(wid, user_data);
+    cairo_push_group (wid->crb);
+    wid->func.expose_callback(wid, wid->crb);
+    cairo_pop_group_to_source (wid->crb);
+    cairo_paint (wid->crb);
+
+    cairo_set_source_surface (wid->cr, wid->buffer,0,0);
+    cairo_paint (wid->cr);
+
     cairo_pop_group_to_source (wid->cr);
     cairo_paint (wid->cr);
     _propagate_child_expose(wid);
@@ -630,37 +634,5 @@ void quit(Widget_t *w) {
     xevent.format = 16;
     xevent.data.l[0] = WM_DELETE_WINDOW;
     XSendEvent(w->dpy, w->widget, 0, 0, (XEvent *)&xevent);
-}
-
-/**
- * @brief loop              - the event loop
- * @param *w                - pointer to the main Window
- * @param Context           - the Context holding all the widget infos
- * @param *run              - pointer to bool used to quit the loop
- * @return void 
- */
-
-void loop(Widget_t *w, XContext context, bool *run) {
-    Widget_t * wid = (Widget_t*)w;
-    Atom WM_DELETE_WINDOW;
-    WM_DELETE_WINDOW = XInternAtom(wid->dpy, "WM_DELETE_WINDOW", True);
-    XSetWMProtocols(wid->dpy, wid->widget, &WM_DELETE_WINDOW, 1);
-
-    XEvent xev;
-    XPointer w_;
-    while (*run && (XNextEvent(wid->dpy, &xev)>=0)) {
-        if(!XFindContext(wid->dpy, xev.xany.window, context,  &w_)) {
-            Widget_t * wid = (Widget_t*)w_;
-            wid->event_callback(wid,&xev,NULL);
-        }
-    
-    switch (xev.type) {
-        case ClientMessage:
-        /* delete window event */
-        if (xev.xclient.data.l[0] == WM_DELETE_WINDOW)
-          (*run) = false;
-          break;
-        }
-    }
 }
 

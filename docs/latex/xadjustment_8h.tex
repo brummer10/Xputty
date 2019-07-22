@@ -14,7 +14,7 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=273pt]{xadjustment_8h__dep__incl}
+\includegraphics[width=313pt]{xadjustment_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Data Structures}
@@ -42,7 +42,7 @@ enum \hyperlink{xadjustment_8h_aefe5e135b1a0eab4675337a0967a7743}{C\+L\+\_\+type
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{xadjustment_8h_a246f9905ac3b01b2a171ef36a6fc976b}{add\+\_\+adjustment} (void $\ast$w\+\_\+, float std\+\_\+value, float value, float min\+\_\+value, float max\+\_\+value, float step, \hyperlink{xadjustment_8h_aefe5e135b1a0eab4675337a0967a7743}{C\+L\+\_\+type} type)
+\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{xadjustment_8h_afd8595365c53be47a55fecec996347a7}{add\+\_\+adjustment} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, float std\+\_\+value, float value, float min\+\_\+value, float max\+\_\+value, float step, \hyperlink{xadjustment_8h_aefe5e135b1a0eab4675337a0967a7743}{C\+L\+\_\+type} type)
 \begin{DoxyCompactList}\small\item\em $\ast$add\+\_\+adjustment -\/ adding a adjustment to the widget \end{DoxyCompactList}\item 
 void $\ast$ \hyperlink{xadjustment_8h_af8186d7e68d37007f6e38814225e6ee3}{delete\+\_\+adjustment} (\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$adj)
 \begin{DoxyCompactList}\small\item\em delete\+\_\+adjustment -\/ freeing the memory of the adjustment \end{DoxyCompactList}\item 
@@ -53,7 +53,7 @@ float \hyperlink{xadjustment_8h_a5a78c30051a7a9c3dc0ce84c3482c530}{adj\+\_\+get\
 void \hyperlink{xadjustment_8h_afbe410bb3efb6e78941a4f938d1c67ca}{adj\+\_\+set\+\_\+value} (\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$adj, float v)
 \begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+value -\/ set the current value of the adjustment \end{DoxyCompactList}\item 
 void \hyperlink{xadjustment_8h_a670e06d916d1d6fd1f2968fb171c29aa}{adj\+\_\+set\+\_\+start\+\_\+value} (void $\ast$w)
-\begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+start\+\_\+value-\/ set start value of the adjustment \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+start\+\_\+value -\/ set start value of the adjustment \end{DoxyCompactList}\item 
 void \hyperlink{xadjustment_8h_aaeeb13f45a95f6e2f585641b212eca11}{adj\+\_\+set\+\_\+state} (void $\ast$w, float x, float y)
 \begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+state -\/ set value of the adjustment \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -116,11 +116,11 @@ C\+L\+\_\+\+E\+N\+UM&\hyperlink{structWidget__t}{Widget\+\_\+t} request a enum a
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{xadjustment_8h_a246f9905ac3b01b2a171ef36a6fc976b}\label{xadjustment_8h_a246f9905ac3b01b2a171ef36a6fc976b}} 
+\mbox{\Hypertarget{xadjustment_8h_afd8595365c53be47a55fecec996347a7}\label{xadjustment_8h_afd8595365c53be47a55fecec996347a7}} 
 \index{xadjustment.\+h@{xadjustment.\+h}!add\+\_\+adjustment@{add\+\_\+adjustment}}
 \index{add\+\_\+adjustment@{add\+\_\+adjustment}!xadjustment.\+h@{xadjustment.\+h}}
 \subsubsection{\texorpdfstring{add\+\_\+adjustment()}{add\_adjustment()}}
-{\footnotesize\ttfamily \hyperlink{structAdjustment__t}{Adjustment\+\_\+t}$\ast$ add\+\_\+adjustment (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{float}]{std\+\_\+value,  }\item[{float}]{value,  }\item[{float}]{min\+\_\+value,  }\item[{float}]{max\+\_\+value,  }\item[{float}]{step,  }\item[{\hyperlink{xadjustment_8h_aefe5e135b1a0eab4675337a0967a7743}{C\+L\+\_\+type}}]{type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{structAdjustment__t}{Adjustment\+\_\+t}$\ast$ add\+\_\+adjustment (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{float}]{std\+\_\+value,  }\item[{float}]{value,  }\item[{float}]{min\+\_\+value,  }\item[{float}]{max\+\_\+value,  }\item[{float}]{step,  }\item[{\hyperlink{xadjustment_8h_aefe5e135b1a0eab4675337a0967a7743}{C\+L\+\_\+type}}]{type }\end{DoxyParamCaption})}
 
 
 
@@ -212,7 +212,17 @@ float -\/ return the adjustment value
 
 
 
-adj\+\_\+set\+\_\+start\+\_\+value-\/ set start value of the adjustment 
+adj\+\_\+set\+\_\+start\+\_\+value -\/ set start value of the adjustment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to \hyperlink{structWidget__t}{Widget\+\_\+t} containing the adjustment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+adj\+\_\+set\+\_\+start\+\_\+value -\/ set start value of the adjustment
 
 
 \begin{DoxyParams}{Parameters}

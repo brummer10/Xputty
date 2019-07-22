@@ -27,9 +27,14 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=317pt]{xputty_8h__dep__incl}
+\includegraphics[width=350pt]{xputty_8h__dep__incl}
 \end{center}
 \end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structXputty}{Xputty}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structXputty}{Xputty} -\/ the main struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,7 +56,18 @@ typedef struct \hyperlink{structChildlist__t}{Childlist\+\_\+t} \hyperlink{xputt
 typedef struct \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} \hyperlink{xputty_8h_a68965e5ced4b615cf52922868c4b159c}{Adjustment\+\_\+t}
 \item 
 typedef struct \hyperlink{structWidget__t}{Widget\+\_\+t} \hyperlink{xputty_8h_a6b3e8ecb43e49de5de9dc7ab79404014}{Widget\+\_\+t}
+\item 
+typedef struct \hyperlink{structXputty}{Xputty} \hyperlink{xputty_8h_a640738d2c0bf1af308958da6468c829f}{Xputty}
 \end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{xputty_8h_a484645d624d9e9eff0288f8d5583ff5e}{main\+\_\+init} (\hyperlink{structXputty}{Xputty} $\ast$main)
+\begin{DoxyCompactList}\small\item\em main\+\_\+init -\/ init the \hyperlink{structXputty}{Xputty} struct \end{DoxyCompactList}\item 
+void \hyperlink{xputty_8h_abb548ea64f852a7c94473a595e67d69f}{main\+\_\+run} (\hyperlink{structXputty}{Xputty} $\ast$main)
+\begin{DoxyCompactList}\small\item\em main\+\_\+run -\/ the main event loop \end{DoxyCompactList}\item 
+void \hyperlink{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit} (\hyperlink{structXputty}{Xputty} $\ast$main)
+\begin{DoxyCompactList}\small\item\em main\+\_\+quit -\/ clean up afterr quiting the main loop \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
@@ -106,3 +122,76 @@ typedef struct \hyperlink{structWidget__t}{Widget\+\_\+t} \hyperlink{xputty_8h_a
 \subsubsection{\texorpdfstring{Widget\+\_\+t}{Widget\_t}}
 {\footnotesize\ttfamily typedef struct \hyperlink{structWidget__t}{Widget\+\_\+t} \hyperlink{structWidget__t}{Widget\+\_\+t}}
 
+\mbox{\Hypertarget{xputty_8h_a640738d2c0bf1af308958da6468c829f}\label{xputty_8h_a640738d2c0bf1af308958da6468c829f}} 
+\index{xputty.\+h@{xputty.\+h}!Xputty@{Xputty}}
+\index{Xputty@{Xputty}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{Xputty}{Xputty}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structXputty}{Xputty} \hyperlink{structXputty}{Xputty}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xputty_8h_a484645d624d9e9eff0288f8d5583ff5e}\label{xputty_8h_a484645d624d9e9eff0288f8d5583ff5e}} 
+\index{xputty.\+h@{xputty.\+h}!main\+\_\+init@{main\+\_\+init}}
+\index{main\+\_\+init@{main\+\_\+init}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{main\+\_\+init()}{main\_init()}}
+{\footnotesize\ttfamily void main\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structXputty}{Xputty} $\ast$}]{main }\end{DoxyParamCaption})}
+
+
+
+main\+\_\+init -\/ init the \hyperlink{structXputty}{Xputty} struct 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$main} & -\/ pointer to the main \hyperlink{structXputty}{Xputty} struct \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}\label{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}} 
+\index{xputty.\+h@{xputty.\+h}!main\+\_\+quit@{main\+\_\+quit}}
+\index{main\+\_\+quit@{main\+\_\+quit}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{main\+\_\+quit()}{main\_quit()}}
+{\footnotesize\ttfamily void main\+\_\+quit (\begin{DoxyParamCaption}\item[{\hyperlink{structXputty}{Xputty} $\ast$}]{main }\end{DoxyParamCaption})}
+
+
+
+main\+\_\+quit -\/ clean up afterr quiting the main loop 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$main} & -\/ pointer to the main \hyperlink{structXputty}{Xputty} struct \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xputty_8h_abb548ea64f852a7c94473a595e67d69f}\label{xputty_8h_abb548ea64f852a7c94473a595e67d69f}} 
+\index{xputty.\+h@{xputty.\+h}!main\+\_\+run@{main\+\_\+run}}
+\index{main\+\_\+run@{main\+\_\+run}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{main\+\_\+run()}{main\_run()}}
+{\footnotesize\ttfamily void main\+\_\+run (\begin{DoxyParamCaption}\item[{\hyperlink{structXputty}{Xputty} $\ast$}]{main }\end{DoxyParamCaption})}
+
+
+
+main\+\_\+run -\/ the main event loop 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$main} & -\/ pointer to the main \hyperlink{structXputty}{Xputty} struct \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+main\+\_\+run -\/ the main event loop
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$main} & -\/ pointer to the main \hyperlink{structXputty}{Xputty} struct \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

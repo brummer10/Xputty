@@ -88,12 +88,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="xchildlist_8h__dep__incl.png" border="0" usemap="#xchildlist_8hdep" alt=""/></div>
 <map name="xchildlist_8hdep" id="xchildlist_8hdep">
-<area shape="rect" id="node2" href="xchildlist_8c.html" title="xchildlist.c" alt="" coords="5,80,89,107"/>
-<area shape="rect" id="node3" href="xputty_8h.html" title="xputty.h" alt="" coords="114,80,183,107"/>
-<area shape="rect" id="node4" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="38,155,142,181"/>
-<area shape="rect" id="node6" href="xwidget_8h.html" title="xwidget.h" alt="" coords="167,155,245,181"/>
-<area shape="rect" id="node5" href="xadjustment_8c.html" title="xadjustment.c" alt="" coords="38,229,142,256"/>
-<area shape="rect" id="node7" href="xwidget_8c.html" title="xwidget.c" alt="" coords="167,229,245,256"/>
+<area shape="rect" id="node2" href="xchildlist_8c.html" title="xchildlist.c" alt="" coords="7,80,91,107"/>
+<area shape="rect" id="node3" href="xputty_8h.html" title="xputty.h" alt="" coords="116,80,185,107"/>
+<area shape="rect" id="node4" href="xputty_8c.html" title="xputty.c" alt="" coords="5,155,75,181"/>
+<area shape="rect" id="node5" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="99,155,203,181"/>
+<area shape="rect" id="node7" href="xwidget_8h.html" title="xwidget.h" alt="" coords="227,155,306,181"/>
+<area shape="rect" id="node6" href="xadjustment_8c.html" title="xadjustment.c" alt="" coords="99,229,203,256"/>
+<area shape="rect" id="node8" href="xwidget_8c.html" title="xwidget.c" alt="" coords="227,229,306,256"/>
 </map>
 </div>
 </div>
@@ -127,6 +128,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a54b8a01a41d48965bd02c5269d0f2103"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8h.html#a54b8a01a41d48965bd02c5269d0f2103">childlist_find_child</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist, <a class="el" href="structWidget__t.html">Widget_t</a> *child)</td></tr>
 <tr class="memdesc:a54b8a01a41d48965bd02c5269d0f2103"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_find_child - find a child in a the childlist  <a href="#a54b8a01a41d48965bd02c5269d0f2103">More...</a><br /></td></tr>
 <tr class="separator:a54b8a01a41d48965bd02c5269d0f2103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11e7045a40b8fea2df768b77936f412c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8h.html#a11e7045a40b8fea2df768b77936f412c">childlist_find_widget</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist, Window child_window, int *a)</td></tr>
+<tr class="memdesc:a11e7045a40b8fea2df768b77936f412c"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_find_widget - find a child <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> in a the childlist  <a href="#a11e7045a40b8fea2df768b77936f412c">More...</a><br /></td></tr>
+<tr class="separator:a11e7045a40b8fea2df768b77936f412c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af130af096a2f8b3a807e7e2dcf0ee6c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8h.html#af130af096a2f8b3a807e7e2dcf0ee6c0">childlist_has_child</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist)</td></tr>
 <tr class="memdesc:af130af096a2f8b3a807e7e2dcf0ee6c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_has_child - check if childlist contain a child  <a href="#af130af096a2f8b3a807e7e2dcf0ee6c0">More...</a><br /></td></tr>
 <tr class="separator:af130af096a2f8b3a807e7e2dcf0ee6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -247,6 +251,50 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int - return position in childlist or -1 </dd></dl>
+
+</div>
+</div>
+<a id="a11e7045a40b8fea2df768b77936f412c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11e7045a40b8fea2df768b77936f412c">&#9670;&nbsp;</a></span>childlist_find_widget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int childlist_find_widget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structChildlist__t.html">Childlist_t</a> *&#160;</td>
+          <td class="paramname"><em>childlist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Window&#160;</td>
+          <td class="paramname"><em>child_window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>a</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>childlist_find_widget - find a child <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> in a the childlist </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list. ">Childlist_t</a> </td></tr>
+    <tr><td class="paramname">child_window</td><td>- the window to find the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Widget_t* - return pointer to WiDget or NULL </dd></dl>
 
 </div>
 </div>

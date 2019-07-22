@@ -72,6 +72,7 @@
 typedef struct Childlist_t Childlist_t;
 typedef struct Adjustment_t Adjustment_t ;
 typedef struct Widget_t Widget_t;
+typedef struct Xputty Xputty;
 
 /*---------------------------------------------------------------------
 -----------------------------------------------------------------------	
@@ -83,6 +84,49 @@ typedef struct Widget_t Widget_t;
 #include "xadjustment.h"
 #include "xchildlist.h"
 
+
+/**
+ * @brief Xputty             - the main struct
+ * @param *childlist         - pointer to the main childlist
+ * @param *dpy               - pointer to the display in use
+ * @param *context           - pointer to the main context
+ * @param run                - bool to quit the main loop
+ */
+
+struct Xputty{
+/** pointer to the main childlist */
+    Childlist_t *childlist;
+/** pointer to the display in use */
+    Display *dpy;
+/** the main context */
+    XContext context;
+/** bool to quit the main loop */
+    bool run;
+};
+
+/**
+ * @brief main_init         - init the Xputty struct
+ * @param *main             - pointer to the main Xputty struct
+ * @return void 
+ */
+
+void main_init(Xputty *main);
+
+/**
+ * @brief main_run         - the main event loop
+ * @param *main             - pointer to the main Xputty struct
+ * @return void 
+ */
+
+void main_run(Xputty *main);
+
+/**
+ * @brief main_quit         - clean up afterr quiting the main loop
+ * @param *main             - pointer to the main Xputty struct
+ * @return void 
+ */
+
+void main_quit(Xputty *main);
 
 #endif //XPUTTY_H_
 

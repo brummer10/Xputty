@@ -3,7 +3,7 @@
 	NAME = Xputty
 	VER = 0.1
 	# set link flags
-	LDFLAGS += -I. -I../header `pkg-config --static --cflags --libs cairo` -L/usr/X11/lib -lX11 -lm
+	LDFLAGS += -g -I. -I../header `pkg-config --static --cflags --libs cairo` -L/usr/X11/lib -lX11 -lm
 	LD_DBUGFLAGS += -I. -I../header  -D DEBUG `pkg-config --static --cflags --libs cairo` -L/usr/X11/lib -lX11 -lm
 	SRC=$(wildcard *.c)
 	LIB_SOURCES=$(wildcard ../libxputty/*.c)
@@ -30,7 +30,8 @@ libxputty.a: $(LIB_SOURCES)
 	$(CC) -c ../libxputty/xwidget.c -o xwidget.o $(LDFLAGS)
 	$(CC) -c ../libxputty/xadjustment.c -o xadjustment.o $(LDFLAGS)
 	$(CC) -c ../libxputty/xchildlist.c -o xchildlist.o $(LDFLAGS)
-	ar rcs libxputty.a xwidget.o xadjustment.o xchildlist.o
+	$(CC) -c ../libxputty/xputty.c -o xputty.o $(LDFLAGS)
+	ar rcs libxputty.a xwidget.o xadjustment.o xchildlist.o xputty.o
 
 $(OBJECTS): $(EXAMPLE_SOURCES) libxputty.a
 	$(CC) -c simple-example.c -o simple-example.o $(LDFLAGS)
@@ -45,4 +46,3 @@ $(EXEC_FILES): $(OBJECTS)
 	$(CC) example2.o -L. libxputty.a -o example2 $(LDFLAGS)
 
 doc:
-

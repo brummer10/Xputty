@@ -21,28 +21,20 @@
 
 #include "xputty.h"
 
-static void draw_window(void *w_, void* user_data) {
-    Widget_t *w = (Widget_t*)w_;
-    cairo_push_group (w->cr);
-    cairo_set_source_rgb (w->cr, 1, 1, 1);
-    cairo_paint (w->cr);
-    cairo_pop_group_to_source (w->cr);
-    cairo_paint (w->cr);
+static void draw_window(void *w_, void* buffer_context) {
+    cairo_t * cr = (cairo_t*) buffer_context;
+    cairo_set_source_rgb (cr, 1, 1, 1);
+    cairo_paint (cr);
 }
 
 int main (int argc, char ** argv)
 {
-    Display *dpy = XOpenDisplay(0);
-    XContext context =  XUniqueContext();
-    Widget_t *w;
-
-    w = create_window(dpy, DefaultRootWindow(dpy), context, 0, 0, 300, 200);
-    XStoreName(dpy, w->widget, "Xputty Hello world");
-    w->label = "How are you?";
+    Xputty app;
+    main_init(&app);
+    Widget_t *w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 200);
+    XStoreName(app.dpy, w->widget, "Hello world");
     w->func.expose_callback = draw_window;
-    bool run = true;
-    loop(w,context,&run);
-    destroy_widget( w, context);
-    XCloseDisplay(dpy);
+    main_run(&app);
+    main_quit(&app);
     return 0;
 }

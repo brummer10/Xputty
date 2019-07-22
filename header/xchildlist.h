@@ -91,6 +91,15 @@ void childlist_remove_child(Childlist_t *childlist, Widget_t *child);
 int childlist_find_child(Childlist_t *childlist, Widget_t *child);
 
 /**
+ * @brief childlist_find_widget - find a child Widget_t in a the childlist
+ * @param *childlist            - pointer to the Childlist_t
+ * @param child_window          - the window to find the Widget_t for
+ * @return Widget_t*            - return pointer to WiDget or NULL
+ */
+
+int childlist_find_widget(Childlist_t *childlist, Window child_window, int *a);
+
+/**
  * @brief childlist_has_child  - check if childlist contain a child
  * @param *childlist           - pointer to the Childlist_t
  * @return int                 - return element counter value

@@ -33,11 +33,11 @@
  * @return *adj              - pointer to adjustment
  */
 
-Adjustment_t *add_adjustment(void *w_, float std_value, float value,
+Adjustment_t *add_adjustment(Widget_t *w, float std_value, float value,
                 float min_value,float max_value, float step, CL_type type) {
     Adjustment_t *adj = (Adjustment_t*)malloc(sizeof(Adjustment_t));
     assert(adj);
-    *(adj) = (Adjustment_t){std_value, value, min_value, max_value, step, value, type};
+    *(adj) = (Adjustment_t){w, std_value, value, min_value, max_value, step, value, type};
     
     
     debug_print("Widget_t add adjustment\n");
@@ -91,6 +91,7 @@ float adj_get_value(Adjustment_t *adj) {
 void adj_set_value(Adjustment_t *adj, float v) {
     if (!adj) return;
     adj->value = v;
+    expose_widget(adj->w);
 }
 
 /**
@@ -152,5 +153,5 @@ void adj_set_state(void *w, float x, float y) {
             break;
         }
     }
-
+    if(wid->adj_x || wid->adj_y) expose_widget(wid);
 }

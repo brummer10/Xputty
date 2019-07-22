@@ -90,17 +90,17 @@ static void button_release(void *w_, void* button_, void* user_data) {
 
 int main (int argc, char ** argv)
 {
-    Display *dpy = XOpenDisplay(0);
-    XContext context =  XUniqueContext();
+    Xputty app;
+    main_init(&app);
     Widget_t *w;
     Widget_t *w_quit;
     
-    w = create_window(dpy, DefaultRootWindow(dpy), context, 0, 0, 300, 200);
-    XStoreName(dpy, w->widget, "Xputty Hello world");
+    w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 200);
+    XStoreName(app.dpy, w->widget, "Xputty Hello world");
     w->label = "How are you?";
     w->func.expose_callback = draw_window;
 
-    w_quit = create_widget(dpy, w, context, 230, 170, 60, 20);
+    w_quit = create_widget(&app, w, 230, 170, 60, 20);
     w_quit->label = "OK";
     w_quit->func.expose_callback = draw_button;
     w_quit->func.enter_callback = draw_button;
@@ -110,12 +110,9 @@ int main (int argc, char ** argv)
 
     bool run = true;
     
-    loop(w,context,&run);
-
-    destroy_widget( w_quit, context);
-    destroy_widget( w, context);
-    
-    XCloseDisplay(dpy);
+    main_run(&app);
+   
+    main_quit(&app);
 
     return 0;
     

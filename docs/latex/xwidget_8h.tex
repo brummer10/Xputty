@@ -14,7 +14,7 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=259pt]{xwidget_8h__dep__incl}
+\includegraphics[width=310pt]{xwidget_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Data Structures}
@@ -55,9 +55,9 @@ enum \hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391ade}{Gravity} \{ \newli
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8h_a9c5b8eaf662ac4fb7d2674bf7e89ab8c}{create\+\_\+window} (Display $\ast$dpy, Window win, X\+Context Context, int x, int y, int width, int height)
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8h_a5528f841e6b5f2ef62b3b10bfa8bf20f}{create\+\_\+window} (\hyperlink{structXputty}{Xputty} $\ast$app, Window win, int x, int y, int width, int height)
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+window -\/ create a Window \end{DoxyCompactList}\item 
-\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8h_af2044fca6d4caf9e62a8333563e1b777}{create\+\_\+widget} (Display $\ast$dpy, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$win, X\+Context Context, int x, int y, int width, int height)
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8h_a2376b5590243f7f4cfd51168af697227}{create\+\_\+widget} (\hyperlink{structXputty}{Xputty} $\ast$app, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$win, int x, int y, int width, int height)
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+widget -\/ create a widget \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_a4d835af5b56eb13ed7bd4602ce7ccd92}{quit} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em quit -\/ exit the main loop \end{DoxyCompactList}\item 
@@ -69,8 +69,6 @@ void \hyperlink{xwidget_8h_af3ecce0332b5f13b590d024db28aec5a}{widget\+\_\+event\
 \begin{DoxyCompactList}\small\item\em widget\+\_\+event\+\_\+loop -\/ the internal widget event loop \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_a17f2f3effd46532c596511abcfb5058e}{expose\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em expose\+\_\+widgets -\/ send expose expose event to window \end{DoxyCompactList}\item 
-void \hyperlink{xwidget_8h_a2dcfec5924929a2a601ec63a27d0db32}{loop} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, X\+Context Context, bool $\ast$run)
-\begin{DoxyCompactList}\small\item\em loop -\/ the event loop \end{DoxyCompactList}\item 
 int \hyperlink{xwidget_8h_a1607cf4a642a38ea235a007ea9579403}{key\+\_\+mapping} (Display $\ast$dpy, X\+Key\+Event $\ast$xkey)
 \begin{DoxyCompactList}\small\item\em key\+\_\+mapping -\/ modifier key\textquotesingle{}s mapped to a integer value \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -190,11 +188,11 @@ N\+O\+NE&\hyperlink{structWidget__t}{Widget\+\_\+t} request no adjustment in fra
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{xwidget_8h_af2044fca6d4caf9e62a8333563e1b777}\label{xwidget_8h_af2044fca6d4caf9e62a8333563e1b777}} 
+\mbox{\Hypertarget{xwidget_8h_a2376b5590243f7f4cfd51168af697227}\label{xwidget_8h_a2376b5590243f7f4cfd51168af697227}} 
 \index{xwidget.\+h@{xwidget.\+h}!create\+\_\+widget@{create\+\_\+widget}}
 \index{create\+\_\+widget@{create\+\_\+widget}!xwidget.\+h@{xwidget.\+h}}
 \subsubsection{\texorpdfstring{create\+\_\+widget()}{create\_widget()}}
-{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ create\+\_\+widget (\begin{DoxyParamCaption}\item[{Display $\ast$}]{dpy,  }\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{X\+Context}]{Context,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ create\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structXputty}{Xputty} $\ast$}]{app,  }\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
 
 
 
@@ -214,11 +212,11 @@ $\ast$create\+\_\+widget -\/ create a widget
 \begin{DoxyReturn}{Returns}
 Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xwidget_8h_a9c5b8eaf662ac4fb7d2674bf7e89ab8c}\label{xwidget_8h_a9c5b8eaf662ac4fb7d2674bf7e89ab8c}} 
+\mbox{\Hypertarget{xwidget_8h_a5528f841e6b5f2ef62b3b10bfa8bf20f}\label{xwidget_8h_a5528f841e6b5f2ef62b3b10bfa8bf20f}} 
 \index{xwidget.\+h@{xwidget.\+h}!create\+\_\+window@{create\+\_\+window}}
 \index{create\+\_\+window@{create\+\_\+window}!xwidget.\+h@{xwidget.\+h}}
 \subsubsection{\texorpdfstring{create\+\_\+window()}{create\_window()}}
-{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ create\+\_\+window (\begin{DoxyParamCaption}\item[{Display $\ast$}]{dpy,  }\item[{Window}]{win,  }\item[{X\+Context}]{Context,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ create\+\_\+window (\begin{DoxyParamCaption}\item[{\hyperlink{structXputty}{Xputty} $\ast$}]{app,  }\item[{Window}]{win,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
 
 
 
@@ -309,28 +307,6 @@ key\+\_\+mapping -\/ modifier key\textquotesingle{}s mapped to a integer value
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 int -\/ value (1-\/10) or 0 when not mapped 
-\end{DoxyReturn}
-\mbox{\Hypertarget{xwidget_8h_a2dcfec5924929a2a601ec63a27d0db32}\label{xwidget_8h_a2dcfec5924929a2a601ec63a27d0db32}} 
-\index{xwidget.\+h@{xwidget.\+h}!loop@{loop}}
-\index{loop@{loop}!xwidget.\+h@{xwidget.\+h}}
-\subsubsection{\texorpdfstring{loop()}{loop()}}
-{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{X\+Context}]{context,  }\item[{bool $\ast$}]{run }\end{DoxyParamCaption})}
-
-
-
-loop -\/ the event loop 
-
-
-\begin{DoxyParams}{Parameters}
-{\em $\ast$w} & -\/ pointer to the main Window \\
-\hline
-{\em Context} & -\/ the Context holding all the widget infos \\
-\hline
-{\em $\ast$run} & -\/ pointer to bool used to quit the loop \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void 
 \end{DoxyReturn}
 \mbox{\Hypertarget{xwidget_8h_a4d835af5b56eb13ed7bd4602ce7ccd92}\label{xwidget_8h_a4d835af5b56eb13ed7bd4602ce7ccd92}} 
 \index{xwidget.\+h@{xwidget.\+h}!quit@{quit}}

@@ -53,6 +53,7 @@ typedef enum {
 /**
  * 
  * @brief Adjustment_t     - struct to hold a controller adjustment
+ * @param *w               - pointer to the Widget_t contain the adjustment
  * @param std_value        - the standart value for the adjustment
  * @param value            - the current value of the adjustment
  * @param min_value        - the minimal value of the adjustment
@@ -63,6 +64,8 @@ typedef enum {
  */
 
 struct  Adjustment_t {
+/** pointer to the Widget_t contain the adjustment */
+    Widget_t *w;
 /** the standart value for the adjustment */
     float std_value;
 /** the current value of the adjustment */
@@ -92,7 +95,7 @@ struct  Adjustment_t {
  * @return *adj              - pointer to adjustment
  */
 
-Adjustment_t *add_adjustment(void *w_, float std_value, float value,
+Adjustment_t *add_adjustment(Widget_t *w, float std_value, float value,
                      float min_value,float max_value, float step, CL_type type);
 
 
@@ -130,8 +133,8 @@ float adj_get_value(Adjustment_t *adj);
 void adj_set_value(Adjustment_t *adj, float v);
 
 /**
- * @brief adj_set_start_value- set start value of the adjustment
- * @param *w               - pointer to Widget_t containing the adjustment 
+ * @brief adj_set_start_value - set start value of the adjustment
+ * @param *w                  - pointer to Widget_t containing the adjustment 
  * @return void
  */
 

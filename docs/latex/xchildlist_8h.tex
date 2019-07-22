@@ -14,7 +14,7 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=260pt]{xchildlist_8h__dep__incl}
+\includegraphics[width=306pt]{xchildlist_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Data Structures}
@@ -40,6 +40,8 @@ void \hyperlink{xchildlist_8h_a6cdf6afd4fdf75550b6aca31ac42379c}{childlist\+\_\+
 \begin{DoxyCompactList}\small\item\em childlist\+\_\+add\+\_\+child -\/ remove a child from the childlist \end{DoxyCompactList}\item 
 int \hyperlink{xchildlist_8h_a54b8a01a41d48965bd02c5269d0f2103}{childlist\+\_\+find\+\_\+child} (\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$childlist, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$child)
 \begin{DoxyCompactList}\small\item\em childlist\+\_\+find\+\_\+child -\/ find a child in a the childlist \end{DoxyCompactList}\item 
+int \hyperlink{xchildlist_8h_a11e7045a40b8fea2df768b77936f412c}{childlist\+\_\+find\+\_\+widget} (\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$childlist, Window child\+\_\+window, int $\ast$a)
+\begin{DoxyCompactList}\small\item\em childlist\+\_\+find\+\_\+widget -\/ find a child \hyperlink{structWidget__t}{Widget\+\_\+t} in a the childlist \end{DoxyCompactList}\item 
 int \hyperlink{xchildlist_8h_af130af096a2f8b3a807e7e2dcf0ee6c0}{childlist\+\_\+has\+\_\+child} (\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$childlist)
 \begin{DoxyCompactList}\small\item\em childlist\+\_\+has\+\_\+child -\/ check if childlist contain a child \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -111,6 +113,26 @@ childlist\+\_\+find\+\_\+child -\/ find a child in a the childlist
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 int -\/ return position in childlist or -\/1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xchildlist_8h_a11e7045a40b8fea2df768b77936f412c}\label{xchildlist_8h_a11e7045a40b8fea2df768b77936f412c}} 
+\index{xchildlist.\+h@{xchildlist.\+h}!childlist\+\_\+find\+\_\+widget@{childlist\+\_\+find\+\_\+widget}}
+\index{childlist\+\_\+find\+\_\+widget@{childlist\+\_\+find\+\_\+widget}!xchildlist.\+h@{xchildlist.\+h}}
+\subsubsection{\texorpdfstring{childlist\+\_\+find\+\_\+widget()}{childlist\_find\_widget()}}
+{\footnotesize\ttfamily int childlist\+\_\+find\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$}]{childlist,  }\item[{Window}]{child\+\_\+window,  }\item[{int $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+childlist\+\_\+find\+\_\+widget -\/ find a child \hyperlink{structWidget__t}{Widget\+\_\+t} in a the childlist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$childlist} & -\/ pointer to the \hyperlink{structChildlist__t}{Childlist\+\_\+t} \\
+\hline
+{\em child\+\_\+window} & -\/ the window to find the \hyperlink{structWidget__t}{Widget\+\_\+t} for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ return pointer to Wi\+Dget or N\+U\+LL 
 \end{DoxyReturn}
 \mbox{\Hypertarget{xchildlist_8h_af130af096a2f8b3a807e7e2dcf0ee6c0}\label{xchildlist_8h_af130af096a2f8b3a807e7e2dcf0ee6c0}} 
 \index{xchildlist.\+h@{xchildlist.\+h}!childlist\+\_\+has\+\_\+child@{childlist\+\_\+has\+\_\+child}}

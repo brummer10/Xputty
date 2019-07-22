@@ -12,7 +12,7 @@ Include dependency graph for xadjustment.\+c\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{xadjustment_8c_a246f9905ac3b01b2a171ef36a6fc976b}{add\+\_\+adjustment} (void $\ast$w\+\_\+, float std\+\_\+value, float value, float min\+\_\+value, float max\+\_\+value, float step, \hyperlink{xadjustment_8h_aefe5e135b1a0eab4675337a0967a7743}{C\+L\+\_\+type} type)
+\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{xadjustment_8c_afd8595365c53be47a55fecec996347a7}{add\+\_\+adjustment} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, float std\+\_\+value, float value, float min\+\_\+value, float max\+\_\+value, float step, \hyperlink{xadjustment_8h_aefe5e135b1a0eab4675337a0967a7743}{C\+L\+\_\+type} type)
 \begin{DoxyCompactList}\small\item\em $\ast$add\+\_\+adjustment -\/ adding a adjustment to the widget \end{DoxyCompactList}\item 
 void $\ast$ \hyperlink{xadjustment_8c_af8186d7e68d37007f6e38814225e6ee3}{delete\+\_\+adjustment} (\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$adj)
 \begin{DoxyCompactList}\small\item\em delete\+\_\+adjustment -\/ freeing the memory of the adjustment \end{DoxyCompactList}\item 
@@ -29,11 +29,11 @@ void \hyperlink{xadjustment_8c_aaeeb13f45a95f6e2f585641b212eca11}{adj\+\_\+set\+
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{xadjustment_8c_a246f9905ac3b01b2a171ef36a6fc976b}\label{xadjustment_8c_a246f9905ac3b01b2a171ef36a6fc976b}} 
+\mbox{\Hypertarget{xadjustment_8c_afd8595365c53be47a55fecec996347a7}\label{xadjustment_8c_afd8595365c53be47a55fecec996347a7}} 
 \index{xadjustment.\+c@{xadjustment.\+c}!add\+\_\+adjustment@{add\+\_\+adjustment}}
 \index{add\+\_\+adjustment@{add\+\_\+adjustment}!xadjustment.\+c@{xadjustment.\+c}}
 \subsubsection{\texorpdfstring{add\+\_\+adjustment()}{add\_adjustment()}}
-{\footnotesize\ttfamily \hyperlink{structAdjustment__t}{Adjustment\+\_\+t}$\ast$ add\+\_\+adjustment (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{float}]{std\+\_\+value,  }\item[{float}]{value,  }\item[{float}]{min\+\_\+value,  }\item[{float}]{max\+\_\+value,  }\item[{float}]{step,  }\item[{\hyperlink{xadjustment_8h_aefe5e135b1a0eab4675337a0967a7743}{C\+L\+\_\+type}}]{type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{structAdjustment__t}{Adjustment\+\_\+t}$\ast$ add\+\_\+adjustment (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{float}]{std\+\_\+value,  }\item[{float}]{value,  }\item[{float}]{min\+\_\+value,  }\item[{float}]{max\+\_\+value,  }\item[{float}]{step,  }\item[{\hyperlink{xadjustment_8h_aefe5e135b1a0eab4675337a0967a7743}{C\+L\+\_\+type}}]{type }\end{DoxyParamCaption})}
 
 
 
@@ -104,6 +104,8 @@ float -\/ return the adjustment value
 
 
 adj\+\_\+set\+\_\+start\+\_\+value-\/ set start value of the adjustment 
+
+adj\+\_\+set\+\_\+start\+\_\+value -\/ set start value of the adjustment
 
 
 \begin{DoxyParams}{Parameters}

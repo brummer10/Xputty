@@ -9,6 +9,8 @@ var searchData=
   ['xchildlist_2eh',['xchildlist.h',['../xchildlist_8h.html',1,'']]],
   ['xchildlist_5fh_5f',['XCHILDLIST_H_',['../xchildlist_8h.html#a396cfc2326c57bf038fc8b40d1fc7630',1,'xchildlist.h']]],
   ['xevfunc',['xevfunc',['../xwidget_8h.html#a9ef0263424a7f5f8f6b02055fca67ddd',1,'xwidget.h']]],
+  ['xputty',['Xputty',['../structXputty.html',1,'Xputty'],['../xputty_8h.html#a640738d2c0bf1af308958da6468c829f',1,'Xputty():&#160;xputty.h']]],
+  ['xputty_2ec',['xputty.c',['../xputty_8c.html',1,'']]],
   ['xputty_2eh',['xputty.h',['../xputty_8h.html',1,'']]],
   ['xputty1_5fh_5f',['XPUTTY1_H_',['../xputty_8h.html#accb46852f2244dde7d0e696c1380263e',1,'xputty.h']]],
   ['xwidget_2ec',['xwidget.c',['../xwidget_8c.html',1,'']]],

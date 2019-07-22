@@ -45,7 +45,7 @@ void childlist_init(Childlist_t *childlist) {
     memset(childlist->childs, 0, 4 * sizeof(Widget_t*));
     childlist->cap =4;
     childlist->size = sizeof(childlist);
-    childlist->elem = 0;  
+    childlist->elem = 0;
 }
 
 /**
@@ -104,6 +104,24 @@ int childlist_find_child(Childlist_t *childlist, Widget_t *child) {
     for(;i<childlist->elem;i++) {
         if(childlist->childs[i] = child)
         return i;
+    }
+    return -1;
+}
+
+/**
+ * @brief childlist_find_widget - find a child Widget_t in a the childlist
+ * @param *childlist            - pointer to the Childlist_t
+ * @param child_window          - the window to find the Widget_t for
+ * @return Widget_t*            - return pointer to WiDget or NULL
+ */
+
+int childlist_find_widget(Childlist_t *childlist, Window child_window, int *a) {
+    int i = childlist->elem-1;
+    for(;i>-1;i--) {
+        if(childlist->childs[i]->widget = child_window) {
+            *(a) = i;
+            return i;
+        }
     }
     return -1;
 }

@@ -171,6 +171,8 @@ typedef struct {
 struct Widget_t {
 /** pointer to the Display to use */
     Display *dpy;
+
+    Xputty *app;
 /** the X11 newly created Window */
     Window widget;
 /** pointer to the Parent Window or Widget_t */
@@ -231,7 +233,7 @@ struct Widget_t {
  * @return Widget_t*         - pointer to the Widget_t struct
  */
 
-Widget_t *create_window(Display *dpy, Window win, XContext Context,
+Widget_t *create_window(Xputty *app, Window win,
                           int x, int y, int width, int height);
 
 /**
@@ -243,7 +245,7 @@ Widget_t *create_window(Display *dpy, Window win, XContext Context,
  * @return Widget_t*          - pointer to the Widget_t struct
  */
 
-Widget_t *create_widget(Display *dpy, Widget_t *win, XContext Context,
+Widget_t *create_widget(Xputty *app, Widget_t *win,
                           int x, int y, int width, int height);
 
 /**
@@ -289,16 +291,6 @@ void widget_event_loop(void *w_, void* event, void* user_data);
  */
 
 void expose_widget(Widget_t *w);
-
-/**
- * @brief loop              - the event loop
- * @param *w                - pointer to the main Window
- * @param Context           - the Context holding all the widget infos
- * @param *run              - pointer to bool used to quit the loop
- * @return void 
- */
-
-void loop(Widget_t *w, XContext Context, bool *run);
 
 /**
  * @brief key_mapping       - modifier key's mapped to a integer value

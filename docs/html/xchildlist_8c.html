@@ -100,6 +100,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a54b8a01a41d48965bd02c5269d0f2103"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8c.html#a54b8a01a41d48965bd02c5269d0f2103">childlist_find_child</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist, <a class="el" href="structWidget__t.html">Widget_t</a> *child)</td></tr>
 <tr class="memdesc:a54b8a01a41d48965bd02c5269d0f2103"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_find_child - find a child in a the childlist  <a href="#a54b8a01a41d48965bd02c5269d0f2103">More...</a><br /></td></tr>
 <tr class="separator:a54b8a01a41d48965bd02c5269d0f2103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11e7045a40b8fea2df768b77936f412c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8c.html#a11e7045a40b8fea2df768b77936f412c">childlist_find_widget</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist, Window child_window, int *a)</td></tr>
+<tr class="memdesc:a11e7045a40b8fea2df768b77936f412c"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_find_widget - find a child <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> in a the childlist  <a href="#a11e7045a40b8fea2df768b77936f412c">More...</a><br /></td></tr>
+<tr class="separator:a11e7045a40b8fea2df768b77936f412c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af130af096a2f8b3a807e7e2dcf0ee6c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8c.html#af130af096a2f8b3a807e7e2dcf0ee6c0">childlist_has_child</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist)</td></tr>
 <tr class="memdesc:af130af096a2f8b3a807e7e2dcf0ee6c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_has_child - check if childlist contain a child  <a href="#af130af096a2f8b3a807e7e2dcf0ee6c0">More...</a><br /></td></tr>
 <tr class="separator:af130af096a2f8b3a807e7e2dcf0ee6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -205,6 +208,50 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int - return position in childlist or -1 </dd></dl>
+
+</div>
+</div>
+<a id="a11e7045a40b8fea2df768b77936f412c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11e7045a40b8fea2df768b77936f412c">&#9670;&nbsp;</a></span>childlist_find_widget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int childlist_find_widget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structChildlist__t.html">Childlist_t</a> *&#160;</td>
+          <td class="paramname"><em>childlist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Window&#160;</td>
+          <td class="paramname"><em>child_window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>a</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>childlist_find_widget - find a child <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> in a the childlist </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list. ">Childlist_t</a> </td></tr>
+    <tr><td class="paramname">child_window</td><td>- the window to find the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Widget_t* - return pointer to WiDget or NULL </dd></dl>
 
 </div>
 </div>

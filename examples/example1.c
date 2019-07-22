@@ -237,16 +237,16 @@ static void draw_window(void *w_, void* user_data) {
 
 int main (int argc, char ** argv)
 {
-    Display *dpy = XOpenDisplay(0);
-    XContext context =  XUniqueContext();
+    Xputty app;
+    main_init(&app);
     MyWindow mywindow;
     
-    mywindow.w = create_window(dpy, DefaultRootWindow(dpy), context, 0, 0, 300, 200);
-    XStoreName(dpy, mywindow.w->widget, "Xputty Text Input");
+    mywindow.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 200);
+    XStoreName(app.dpy, mywindow.w->widget, "Xputty Text Input");
     mywindow.w->label = "move pointer to text-input and press key:";
     mywindow.w->func.expose_callback = draw_window;
 
-    mywindow.w_ti = create_widget(dpy, mywindow.w, context, 20, 20, 260, 100);
+    mywindow.w_ti = create_widget(&app, mywindow.w, 20, 20, 260, 100);
     mywindow.w_ti->data = 1;
     memset(mywindow.w_ti->input_label, 0, 32 * (sizeof mywindow.w_ti->input_label[0]) );
     mywindow.w_ti->func.expose_callback = text_input_add_text;
@@ -254,7 +254,7 @@ int main (int argc, char ** argv)
     mywindow.w_ti->func.key_press_callback = get_text;
     mywindow.w_ti->scale.gravity = NORTHWEST;
 
-    mywindow.w_ok = create_widget(dpy, mywindow.w, context, 230, 170, 60, 20);
+    mywindow.w_ok = create_widget(&app, mywindow.w, 230, 170, 60, 20);
     mywindow.w_ok->label = "Ok";
     mywindow.w_ok->func.expose_callback = draw_button;
     mywindow.w_ok->func.enter_callback = draw_button;
@@ -264,13 +264,10 @@ int main (int argc, char ** argv)
     mywindow.w_ok->scale.gravity = NONE;
 
     mywindow.run = true;
-    
-    loop(mywindow.w,context,&mywindow.run);
 
-    destroy_widget( mywindow.w_ok, context);
-    destroy_widget( mywindow.w, context);
-    
-    XCloseDisplay(dpy);
+    main_run(&app);
+
+    main_quit(&app);
 
     return 0;
 }
