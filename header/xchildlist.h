@@ -97,7 +97,7 @@ int childlist_find_child(Childlist_t *childlist, Widget_t *child);
  * @return Widget_t*            - return pointer to WiDget or NULL
  */
 
-int childlist_find_widget(Childlist_t *childlist, Window child_window, int *a);
+int childlist_find_widget(Childlist_t *childlist, Window child_window);
 
 /**
  * @brief childlist_has_child  - check if childlist contain a child

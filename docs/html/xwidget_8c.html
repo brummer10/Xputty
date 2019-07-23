@@ -88,9 +88,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a1607cf4a642a38ea235a007ea9579403"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a1607cf4a642a38ea235a007ea9579403">key_mapping</a> (Display *dpy, XKeyEvent *xkey)</td></tr>
 <tr class="memdesc:a1607cf4a642a38ea235a007ea9579403"><td class="mdescLeft">&#160;</td><td class="mdescRight">key_mapping - modifier key's mapped to a integer value  <a href="#a1607cf4a642a38ea235a007ea9579403">More...</a><br /></td></tr>
 <tr class="separator:a1607cf4a642a38ea235a007ea9579403"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a540b0eefd6f19f487aa71d4c1798ac8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a540b0eefd6f19f487aa71d4c1798ac8c">destroy_widget</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, XContext Context)</td></tr>
-<tr class="memdesc:a540b0eefd6f19f487aa71d4c1798ac8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy_widget - destroy a widget and remove it from the Context  <a href="#a540b0eefd6f19f487aa71d4c1798ac8c">More...</a><br /></td></tr>
-<tr class="separator:a540b0eefd6f19f487aa71d4c1798ac8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdabca284aa8866f1f242b6857312e3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#abdabca284aa8866f1f242b6857312e3b">destroy_widget</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, <a class="el" href="structXputty.html">Xputty</a> *main)</td></tr>
+<tr class="memdesc:abdabca284aa8866f1f242b6857312e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy_widget - destroy a widget and remove it from the Context  <a href="#abdabca284aa8866f1f242b6857312e3b">More...</a><br /></td></tr>
+<tr class="separator:abdabca284aa8866f1f242b6857312e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf8c7ef79c60253a687116d3783e1c67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#acf8c7ef79c60253a687116d3783e1c67">configure_event</a> (void *w_, void *user_data)</td></tr>
 <tr class="memdesc:acf8c7ef79c60253a687116d3783e1c67"><td class="mdescLeft">&#160;</td><td class="mdescRight">configure_event - default callback when a widget receive a ConfigureNotify  <a href="#acf8c7ef79c60253a687116d3783e1c67">More...</a><br /></td></tr>
 <tr class="separator:acf8c7ef79c60253a687116d3783e1c67"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,6 +112,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a4d835af5b56eb13ed7bd4602ce7ccd92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a4d835af5b56eb13ed7bd4602ce7ccd92">quit</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w)</td></tr>
 <tr class="memdesc:a4d835af5b56eb13ed7bd4602ce7ccd92"><td class="mdescLeft">&#160;</td><td class="mdescRight">quit - exit the main loop  <a href="#a4d835af5b56eb13ed7bd4602ce7ccd92">More...</a><br /></td></tr>
 <tr class="separator:a4d835af5b56eb13ed7bd4602ce7ccd92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e367c7f3e7dcd71fbbb6125fc1b227a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a1e367c7f3e7dcd71fbbb6125fc1b227a">quit_widget</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w)</td></tr>
+<tr class="memdesc:a1e367c7f3e7dcd71fbbb6125fc1b227a"><td class="mdescLeft">&#160;</td><td class="mdescRight">quit_widget - remove a widget from the processing loop  <a href="#a1e367c7f3e7dcd71fbbb6125fc1b227a">More...</a><br /></td></tr>
+<tr class="separator:a1e367c7f3e7dcd71fbbb6125fc1b227a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="acf8c7ef79c60253a687116d3783e1c67"></a>
@@ -207,7 +210,6 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">*dpy</td><td>- pointer to the Display to use </td></tr>
     <tr><td class="paramname">*parent</td><td>- pointer to the Parrent <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </td></tr>
-    <tr><td class="paramname">Context</td><td>- a XContext to store Window informations </td></tr>
     <tr><td class="paramname">x,y,width,height</td><td>- the position/geometry to create the widget </td></tr>
   </table>
   </dd>
@@ -271,7 +273,6 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">*dpy</td><td>- pointer to the Display to use </td></tr>
     <tr><td class="paramname">win</td><td>- pointer to the Parrent Window (may be Root) </td></tr>
-    <tr><td class="paramname">Context</td><td>- a XContext to store Window informations </td></tr>
     <tr><td class="paramname">x,y,width,height</td><td>- the position/geometry to create the window </td></tr>
   </table>
   </dd>
@@ -280,8 +281,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a540b0eefd6f19f487aa71d4c1798ac8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a540b0eefd6f19f487aa71d4c1798ac8c">&#9670;&nbsp;</a></span>destroy_widget()</h2>
+<a id="abdabca284aa8866f1f242b6857312e3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdabca284aa8866f1f242b6857312e3b">&#9670;&nbsp;</a></span>destroy_widget()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -295,8 +296,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">XContext&#160;</td>
-          <td class="paramname"><em>Context</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structXputty.html">Xputty</a> *&#160;</td>
+          <td class="paramname"><em>main</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -307,10 +308,11 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>destroy_widget - destroy a widget and remove it from the Context </p>
+<p>destroy_widget - destroy a widget</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> sending the request </td></tr>
-    <tr><td class="paramname">Context</td><td>- the Context holding the widget info </td></tr>
+    <tr><td class="paramname">*main</td><td>- pointer to main struct </td></tr>
   </table>
   </dd>
 </dl>
@@ -400,6 +402,33 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>quit - exit the main loop </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> sending the request </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a1e367c7f3e7dcd71fbbb6125fc1b227a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e367c7f3e7dcd71fbbb6125fc1b227a">&#9670;&nbsp;</a></span>quit_widget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quit_widget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>quit_widget - remove a widget from the processing loop </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> sending the request </td></tr>

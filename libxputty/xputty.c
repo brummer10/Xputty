@@ -31,7 +31,6 @@
 void main_init(Xputty *main) {
     main->dpy = XOpenDisplay(0);
     assert(main->dpy);
-    main->context =  XUniqueContext();
     main->childlist = (Childlist_t*)malloc(sizeof(Childlist_t));
     assert(main->childlist);
     childlist_init(main->childlist);
@@ -39,8 +38,8 @@ void main_init(Xputty *main) {
 }
 
 /**
- * @brief main_run          - the event loop
- * @param *main               - pointer to the main Xputty struct
+ * @brief main_run           - the event loop
+ * @param *main              - pointer to the main Xputty struct
  * @return void 
  */
 
@@ -52,19 +51,21 @@ void main_run(Xputty *main) {
 
     XEvent xev;
     XPointer w_;
-    int a;
+    int ew;
+
     while (main->run && (XNextEvent(wid->dpy, &xev)>=0)) {
-        if(!XFindContext(wid->dpy, xev.xany.window, main->context,  &w_)) {
-            Widget_t * wid = (Widget_t*)w_;
-            wid->event_callback(wid,&xev,NULL);
+        ew = childlist_find_widget(main->childlist, xev.xany.window);
+        if(ew  >= 0) {
+            Widget_t * w = main->childlist->childs[ew];
+            w->event_callback(w,&xev,NULL);
         }
-    
-    switch (xev.type) {
-        case ClientMessage:
-        /* delete window event */
-        if (xev.xclient.data.l[0] == WM_DELETE_WINDOW)
-          main->run = false;
-          break;
+
+        switch (xev.type) {
+            case ClientMessage:
+                /* delete window event */
+                if (xev.xclient.data.l[0] == WM_DELETE_WINDOW)
+                    main->run = false;
+            break;
         }
     }
 }
@@ -79,22 +80,10 @@ void main_quit(Xputty *main) {
     int i = main->childlist->elem-1;
     for(;i>-1;i--) {
         Widget_t *w = main->childlist->childs[i];
-        delete_adjustment(w->adj_x);
-        delete_adjustment(w->adj_y);
-        childlist_destroy(w->childlist);
-        cairo_destroy(w->crb);
-        cairo_surface_destroy(w->buffer);
-        cairo_destroy(w->cr);
-        cairo_surface_destroy(w->surface);
-        XDeleteContext(w->dpy, w->widget, main->context);
-        XUnmapWindow(w->dpy, w->widget);
-        XDestroyWindow(w->dpy, w->widget);
-        free(w->childlist);
-        free(w);
-        debug_print("quit\n");
+        destroy_widget(w, main);
     }
     childlist_destroy(main->childlist);
     free(main->childlist);
     XCloseDisplay(main->dpy);
-    
+    debug_print("quit\n");
 }

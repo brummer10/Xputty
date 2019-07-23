@@ -76,13 +76,20 @@ int key_mapping(Display *dpy, XKeyEvent *xkey) {
 /**
  * @brief destroy_widget    - destroy a widget and remove it from the Context
  * @param *w                - pointer to the Widget_t sending the request
- * @param Context           - the Context holding the widget info
+ * @param *main             - pointer to main struct
  * @return void 
  */
 
-void destroy_widget(Widget_t * w, XContext Context) {
-    XPointer w_;
-    if(!XFindContext(w->dpy, w->widget, Context,  &w_)) {
+void destroy_widget(Widget_t * w, Xputty *main) {
+    int count = childlist_find_child(main->childlist, w);
+    if (count == 0 && main->run == true) {
+        quit(w);
+    } else if(childlist_find_child(main->childlist, w)>=0) {
+        childlist_remove_child(main->childlist, w);
+        if(w->is_widget) {
+            Widget_t *p = (Widget_t *) w->parent;
+            childlist_remove_child(p->childlist, w);
+        }
         delete_adjustment(w->adj_x);
         delete_adjustment(w->adj_y);
         childlist_destroy(w->childlist);
@@ -90,7 +97,9 @@ void destroy_widget(Widget_t * w, XContext Context) {
         cairo_surface_destroy(w->buffer);
         cairo_destroy(w->cr);
         cairo_surface_destroy(w->surface);
-        XDeleteContext(w->dpy, w->widget, Context);
+        
+        XDestroyIC(w->xic);
+        XCloseIM(w->xim);
         XUnmapWindow(w->dpy, w->widget);
         XDestroyWindow(w->dpy, w->widget);
         free(w->childlist);
@@ -227,7 +236,6 @@ static inline void dummy_callback(void *w_, void* user_data) {
  * @brief *create_window     - create a Window 
  * @param *dpy               - pointer to the Display to use
  * @param win               - pointer to the Parrent Window (may be Root)
- * @param Context            - a XContext to store Window informations
  * @param x,y,width,height   - the position/geometry to create the window
  * @return Widget_t*         - pointer to the Widget_t struct
  */
@@ -236,7 +244,7 @@ Widget_t *create_window(Xputty *app, Window win,
                           int x, int y, int width, int height) {
 
     Widget_t *w = (Widget_t*)malloc(sizeof(Widget_t));
-    assert(w);
+    assert(w != NULL);
     debug_print("assert(w)\n");
     XSetWindowAttributes attributes;
     attributes.save_under = True;
@@ -252,6 +260,18 @@ Widget_t *create_window(Xputty *app, Window win,
                             CopyFromParent, InputOutput, CopyFromParent,
                             CopyFromParent, &attributes);
     debug_print("XCreateWindow\n");
+
+    XSetLocaleModifiers("");
+    w->xim = XOpenIM(app->dpy, 0, 0, 0);
+    if(!w->xim){
+        XSetLocaleModifiers("@im=none");
+        w->xim = XOpenIM(app->dpy, 0, 0, 0);
+    }
+
+    w->xic = XCreateIC(w->xim, XNInputStyle, XIMPreeditNothing | XIMStatusNothing,
+                    XNClientWindow, w->widget, XNFocusWindow,  w->widget, NULL);
+
+    XSetICFocus(w->xic);
 
     XSelectInput(app->dpy, w->widget, event_mask);
 
@@ -272,9 +292,7 @@ Widget_t *create_window(Xputty *app, Window win,
                         CAIRO_CONTENT_COLOR_ALPHA, width, height);
     w->crb = cairo_create (w->buffer);
 
-    if(XSaveContext(app->dpy, w->widget, app->context, (XPointer) w)) {
-        debug_print("contex save faild\n");
-    }
+    w->is_widget = false;
     w->dpy = app->dpy;
     w->parent = &win;
     w->label = NULL;
@@ -298,6 +316,7 @@ Widget_t *create_window(Xputty *app, Window win,
     w->adj_x = NULL;
     w->adj_y = NULL;
     w->childlist = (Childlist_t*)malloc(sizeof(Childlist_t));
+    assert(w->childlist != NULL);
     childlist_init(w->childlist);
     w->event_callback = widget_event_loop;
     w->func.expose_callback = dummy_callback;
@@ -320,7 +339,6 @@ Widget_t *create_window(Xputty *app, Window win,
  * @brief *create_widget      - create a widget
  * @param *dpy                - pointer to the Display to use
  * @param *parent             - pointer to the Parrent Widget_t
- * @param Context             - a XContext to store Window informations
  * @param x,y,width,height    - the position/geometry to create the widget
  * @return Widget_t*          - pointer to the Widget_t struct
  */
@@ -329,7 +347,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
                           int x, int y, int width, int height) {
 
     Widget_t *w = (Widget_t*)malloc(sizeof(Widget_t));
-    assert(w);
+    assert(w != NULL);
     debug_print("assert(w)\n");
     XSetWindowAttributes attributes;
     attributes.save_under = True;
@@ -346,6 +364,18 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
                             CopyFromParent|CWOverrideRedirect, &attributes);
     debug_print("XCreateWindow\n");
 
+    XSetLocaleModifiers("");
+    w->xim = XOpenIM(app->dpy, 0, 0, 0);
+    if(!w->xim){
+        XSetLocaleModifiers("@im=none");
+        w->xim = XOpenIM(app->dpy, 0, 0, 0);
+    }
+
+    w->xic = XCreateIC(w->xim, XNInputStyle, XIMPreeditNothing | XIMStatusNothing,
+                    XNClientWindow, w->widget, XNFocusWindow,  w->widget, NULL);
+
+    XSetICFocus(w->xic);
+
     XSelectInput(app->dpy, w->widget, event_mask);
 
     w->surface =  cairo_xlib_surface_create (app->dpy, w->widget,  
@@ -358,9 +388,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     
     w->crb = cairo_create (w->buffer);
 
-    if(XSaveContext(app->dpy, w->widget, app->context, (XPointer) w)) {
-        debug_print("contex save faild\n");
-    }
+    w->is_widget = true;
     w->dpy = app->dpy;
     w->parent = parent;
     w->label = NULL;
@@ -384,6 +412,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->adj_x = NULL;
     w->adj_y = NULL;
     w->childlist = (Childlist_t*)malloc(sizeof(Childlist_t));
+    assert(w->childlist != NULL);
     childlist_init(w->childlist);
     childlist_add_child(parent->childlist, w);
     w->event_callback = widget_event_loop;
@@ -435,11 +464,11 @@ static inline void _set_adj_value(void *w_, bool x, int direction) {
     if (x && wid->adj_x) {
         wid->adj_x->value = min(wid->adj_x->max_value,max(wid->adj_x->min_value, 
         wid->adj_x->value + (wid->adj_x->step * direction)));
-        expose_widget(wid);
+       // expose_widget(wid);
     } else if (!x && wid->adj_y) {
         wid->adj_y->value = min(wid->adj_y->max_value,max(wid->adj_y->min_value, 
         wid->adj_y->value + (wid->adj_y->step * direction)));
-        expose_widget(wid);
+      //  expose_widget(wid);
     }
 }
 
@@ -525,7 +554,7 @@ void transparent_draw(void * w_, void* user_data) {
     }
 
     cairo_push_group (wid->crb);
-    wid->func.expose_callback(wid, wid->crb);
+    wid->func.expose_callback(wid, user_data);
     cairo_pop_group_to_source (wid->crb);
     cairo_paint (wid->crb);
 
@@ -613,6 +642,12 @@ void widget_event_loop(void *w_, void* event, void* user_data) {
             debug_print("Widget_t MotionNotify x = %i Y = %i \n",xev->xmotion.x,xev->xmotion.y );
         break;
 
+        case ClientMessage:
+            if (xev->xclient.message_type == XInternAtom(wid->dpy, "WIDGET_DESTROY", 1)) {
+                destroy_widget(wid,user_data);
+            }
+        break;
+
         default:
         break;
     }
@@ -633,6 +668,24 @@ void quit(Widget_t *w) {
     xevent.window = w->widget;
     xevent.format = 16;
     xevent.data.l[0] = WM_DELETE_WINDOW;
+    XSendEvent(w->dpy, w->widget, 0, 0, (XEvent *)&xevent);
+}
+
+/**
+ * @brief quit_widget       - remove a widget from the processing loop
+ * @param *w                - pointer to the Widget_t sending the request
+ * @return void 
+ */
+
+void quit_widget(Widget_t *w) {
+    Atom QUIT_WIDGET = XInternAtom(w->dpy, "WIDGET_DESTROY", False);
+    XClientMessageEvent xevent;
+    xevent.type = ClientMessage;
+    xevent.message_type = QUIT_WIDGET;
+    xevent.display = w->dpy;
+    xevent.window = w->widget;
+    xevent.format = 16;
+    xevent.data.l[0] = 1;
     XSendEvent(w->dpy, w->widget, 0, 0, (XEvent *)&xevent);
 }
 

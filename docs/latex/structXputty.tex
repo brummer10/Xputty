@@ -2,7 +2,7 @@
 \label{structXputty}\index{Xputty@{Xputty}}
 
 
-\hyperlink{structXputty}{Xputty} -\/ the main struct.  
+\hyperlink{structXputty}{Xputty} -\/ the main struct. It should be declared before any other call to a \hyperlink{structXputty}{Xputty} function. Example\+: \hyperlink{structXputty}{Xputty} main;.  
 
 
 
@@ -26,22 +26,18 @@ Collaboration diagram for Xputty\+:
 \item 
 Display $\ast$ \hyperlink{structXputty_ab185ae4fd00ee1930c61e0440734878f}{dpy}
 \item 
-X\+Context \hyperlink{structXputty_a554049ce1c045bd3e7ce972205d7a1a2}{context}
-\item 
 bool \hyperlink{structXputty_a3a8e0381e77ae9fae69aab5dda8e7e7a}{run}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-\hyperlink{structXputty}{Xputty} -\/ the main struct. 
+\hyperlink{structXputty}{Xputty} -\/ the main struct. It should be declared before any other call to a \hyperlink{structXputty}{Xputty} function. Example\+: \hyperlink{structXputty}{Xputty} main;. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em $\ast$childlist} & -\/ pointer to the main childlist \\
 \hline
 {\em $\ast$dpy} & -\/ pointer to the display in use \\
-\hline
-{\em $\ast$context} & -\/ pointer to the main context \\
 \hline
 {\em run} & -\/ bool to quit the main loop \\
 \hline
@@ -55,13 +51,7 @@ bool \hyperlink{structXputty_a3a8e0381e77ae9fae69aab5dda8e7e7a}{run}
 \subsubsection{\texorpdfstring{childlist}{childlist}}
 {\footnotesize\ttfamily \hyperlink{structChildlist__t}{Childlist\+\_\+t}$\ast$ Xputty\+::childlist}
 
-pointer to the main childlist \mbox{\Hypertarget{structXputty_a554049ce1c045bd3e7ce972205d7a1a2}\label{structXputty_a554049ce1c045bd3e7ce972205d7a1a2}} 
-\index{Xputty@{Xputty}!context@{context}}
-\index{context@{context}!Xputty@{Xputty}}
-\subsubsection{\texorpdfstring{context}{context}}
-{\footnotesize\ttfamily X\+Context Xputty\+::context}
-
-the main context \mbox{\Hypertarget{structXputty_ab185ae4fd00ee1930c61e0440734878f}\label{structXputty_ab185ae4fd00ee1930c61e0440734878f}} 
+pointer to the main childlist \mbox{\Hypertarget{structXputty_ab185ae4fd00ee1930c61e0440734878f}\label{structXputty_ab185ae4fd00ee1930c61e0440734878f}} 
 \index{Xputty@{Xputty}!dpy@{dpy}}
 \index{dpy@{dpy}!Xputty@{Xputty}}
 \subsubsection{\texorpdfstring{dpy}{dpy}}

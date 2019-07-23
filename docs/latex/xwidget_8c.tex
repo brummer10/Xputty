@@ -14,7 +14,7 @@ Include dependency graph for xwidget.\+c\+:
 \item 
 int \hyperlink{xwidget_8c_a1607cf4a642a38ea235a007ea9579403}{key\+\_\+mapping} (Display $\ast$dpy, X\+Key\+Event $\ast$xkey)
 \begin{DoxyCompactList}\small\item\em key\+\_\+mapping -\/ modifier key\textquotesingle{}s mapped to a integer value \end{DoxyCompactList}\item 
-void \hyperlink{xwidget_8c_a540b0eefd6f19f487aa71d4c1798ac8c}{destroy\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, X\+Context Context)
+void \hyperlink{xwidget_8c_abdabca284aa8866f1f242b6857312e3b}{destroy\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{structXputty}{Xputty} $\ast$main)
 \begin{DoxyCompactList}\small\item\em destroy\+\_\+widget -\/ destroy a widget and remove it from the Context \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_acf8c7ef79c60253a687116d3783e1c67}{configure\+\_\+event} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em configure\+\_\+event -\/ default callback when a widget receive a Configure\+Notify \end{DoxyCompactList}\item 
@@ -29,7 +29,9 @@ void \hyperlink{xwidget_8c_a0e801c1a701cc8526b198371ce2ff692}{transparent\+\_\+d
 void \hyperlink{xwidget_8c_af3ecce0332b5f13b590d024db28aec5a}{widget\+\_\+event\+\_\+loop} (void $\ast$w\+\_\+, void $\ast$event, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em widget\+\_\+event\+\_\+loop -\/ the internal widget event loop \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a4d835af5b56eb13ed7bd4602ce7ccd92}{quit} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
-\begin{DoxyCompactList}\small\item\em quit -\/ exit the main loop \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em quit -\/ exit the main loop \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em quit\+\_\+widget -\/ remove a widget from the processing loop \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -69,8 +71,6 @@ $\ast$create\+\_\+widget -\/ create a widget
 \hline
 {\em $\ast$parent} & -\/ pointer to the Parrent \hyperlink{structWidget__t}{Widget\+\_\+t} \\
 \hline
-{\em Context} & -\/ a X\+Context to store Window informations \\
-\hline
 {\em x,y,width,height} & -\/ the position/geometry to create the widget \\
 \hline
 \end{DoxyParams}
@@ -93,29 +93,29 @@ $\ast$create\+\_\+window -\/ create a Window
 \hline
 {\em win} & -\/ pointer to the Parrent Window (may be Root) \\
 \hline
-{\em Context} & -\/ a X\+Context to store Window informations \\
-\hline
 {\em x,y,width,height} & -\/ the position/geometry to create the window \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xwidget_8c_a540b0eefd6f19f487aa71d4c1798ac8c}\label{xwidget_8c_a540b0eefd6f19f487aa71d4c1798ac8c}} 
+\mbox{\Hypertarget{xwidget_8c_abdabca284aa8866f1f242b6857312e3b}\label{xwidget_8c_abdabca284aa8866f1f242b6857312e3b}} 
 \index{xwidget.\+c@{xwidget.\+c}!destroy\+\_\+widget@{destroy\+\_\+widget}}
 \index{destroy\+\_\+widget@{destroy\+\_\+widget}!xwidget.\+c@{xwidget.\+c}}
 \subsubsection{\texorpdfstring{destroy\+\_\+widget()}{destroy\_widget()}}
-{\footnotesize\ttfamily void destroy\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{X\+Context}]{Context }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void destroy\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{structXputty}{Xputty} $\ast$}]{main }\end{DoxyParamCaption})}
 
 
 
 destroy\+\_\+widget -\/ destroy a widget and remove it from the Context 
 
+destroy\+\_\+widget -\/ destroy a widget
+
 
 \begin{DoxyParams}{Parameters}
 {\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
 \hline
-{\em Context} & -\/ the Context holding the widget info \\
+{\em $\ast$main} & -\/ pointer to main struct \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -168,6 +168,24 @@ int -\/ value (1-\/10) or 0 when not mapped
 
 
 quit -\/ exit the main loop 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a1e367c7f3e7dcd71fbbb6125fc1b227a}\label{xwidget_8c_a1e367c7f3e7dcd71fbbb6125fc1b227a}} 
+\index{xwidget.\+c@{xwidget.\+c}!quit\+\_\+widget@{quit\+\_\+widget}}
+\index{quit\+\_\+widget@{quit\+\_\+widget}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{quit\+\_\+widget()}{quit\_widget()}}
+{\footnotesize\ttfamily void quit\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+quit\+\_\+widget -\/ remove a widget from the processing loop 
 
 
 \begin{DoxyParams}{Parameters}

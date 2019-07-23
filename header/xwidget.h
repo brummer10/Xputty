@@ -142,6 +142,7 @@ typedef struct {
  * 
  * @brief Widget_t           - struct to hold the basic widget info
  * @param *dpy               - pointer to the Display to use
+ * @param *app               - pointer to the main struct
  * @param widget             - the X11 Window
  * @param *parent            - pointer to the Parent Window or Widget_t
  * @param event_callback     - the main XEvent callback
@@ -161,17 +162,20 @@ typedef struct {
  * @param y                  - y position of Window on Parent
  * @param width              - widget width
  * @param height             - widget height
+ * @param is_widget          - set/check if the parent is Widget_t
  * @param transparency       - flag to set/check transparent drawing
  * @param scale              - struct used to resize child widgets
  * @param *adj_x             - pointer to the x axis adjustment
  * @param *adj_y             - pointer to the y axis adjustment
  * @param *childlist         - pointer to Widget_t child list
+ * @param xic                - Locale and UTF 8 support interface
+ * @param xim                - Context to Locale and UTF 8 support
  */
 
 struct Widget_t {
 /** pointer to the Display to use */
     Display *dpy;
-
+/** pointer to the main struct */
     Xputty *app;
 /** the X11 newly created Window */
     Window widget;
@@ -211,6 +215,8 @@ struct Widget_t {
     int width;
 /** the widget size y-axis */
     int height;
+/** indicaate if the widget has parent Widget_t or XWindow */
+    bool is_widget;
 /** indicaate if the widget use transparent drawing, default = true */
     bool transparency;
 /** struct used to resize child widgets */
@@ -221,6 +227,10 @@ struct Widget_t {
     Adjustment_t *adj_y;
 /** pointer to Widget_t child list */
     Childlist_t *childlist;
+/** Locale and UTF 8 support */
+    XIC xic;
+/** Context to Locale and UTF 8 support */
+    XIM xim;
 };
 
 
@@ -228,7 +238,6 @@ struct Widget_t {
  * @brief *create_window     - create a Window 
  * @param *dpy               - pointer to the Display to use
  * @param *win               - pointer to the Parrent Window (may be Root)
- * @param Context            - a XContext to store Window informations
  * @param x,y,width,height   - the position/geometry to create the window
  * @return Widget_t*         - pointer to the Widget_t struct
  */
@@ -240,7 +249,6 @@ Widget_t *create_window(Xputty *app, Window win,
  * @brief *create_widget      - create a widget
  * @param *dpy                - pointer to the Display to use
  * @param *parent             - pointer to the Parrent Widget_t
- * @param Context             - a XContext to store Window informations
  * @param x,y,width,height    - the position/geometry to create the widget
  * @return Widget_t*          - pointer to the Widget_t struct
  */
@@ -257,6 +265,14 @@ Widget_t *create_widget(Xputty *app, Widget_t *win,
 void quit(Widget_t *w);
 
 /**
+ * @brief quit_widget       - remove a widget from the processing loop
+ * @param *w                - pointer to the Widget_t sending the request
+ * @return void 
+ */
+
+void quit_widget(Widget_t *w);
+
+/**
  * @brief _transparency     - copy parent surface to child surface
  * @param *wid              - pointer to the Widget_t receiving a event
  * @param *user_data        - void pointer to attached user_data
@@ -266,13 +282,13 @@ void quit(Widget_t *w);
 void transparent_draw(void * wid, void* user_data);
 
 /**
- * @brief destroy_widget    - destroy a widget and remove it from the Context
+ * @brief destroy_widget    - destroy a widget
  * @param *w                - pointer to the Widget_t sending the request
- * @param Context           - the Context holding the widget info
+ * @param *main             - pointer to main struct
  * @return void 
  */
 
-void destroy_widget(Widget_t *w, XContext Context);
+void destroy_widget(Widget_t *w, Xputty *main);
 
 /**
  * @brief widget_event_loop - the internal widget event loop

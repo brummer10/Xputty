@@ -78,7 +78,7 @@ Collaboration diagram for Widget_t:</div>
 <map name="Widget__t_coll__map" id="Widget__t_coll__map">
 <area shape="rect" id="node2" href="structChildlist__t.html" title="Childlist_t &#45; struct to hold a Widget_t child list. " alt="" coords="5,199,85,225"/>
 <area shape="rect" id="node3" href="structAdjustment__t.html" title="Adjustment_t &#45; struct to hold a controller adjustment. " alt="" coords="109,199,208,225"/>
-<area shape="rect" id="node6" href="structXputty.html" title="Xputty &#45; the main struct. " alt="" coords="121,288,181,315"/>
+<area shape="rect" id="node6" href="structXputty.html" title="Xputty &#45; the main struct. It should be declared before any other call to a Xputty function..." alt="" coords="121,288,181,315"/>
 <area shape="rect" id="node4" href="structFunc__t.html" title="Func_t &#45; struct to hold all supported event callbacks. " alt="" coords="77,5,139,32"/>
 <area shape="rect" id="node5" href="structResize__t.html" title="Resize_t &#45; struct used to resize child widgets. " alt="" coords="164,5,239,32"/>
 </map>
@@ -128,6 +128,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:a3204c88196ed5793250b3530dd719037"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1def6d2237743e75a0b84ca0c34a6834"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a1def6d2237743e75a0b84ca0c34a6834">height</a></td></tr>
 <tr class="separator:a1def6d2237743e75a0b84ca0c34a6834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff0b7ecbf87b995342d13e2efe79dfca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#aff0b7ecbf87b995342d13e2efe79dfca">is_widget</a></td></tr>
+<tr class="separator:aff0b7ecbf87b995342d13e2efe79dfca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42a597c21eca964c0296fc7026feb43b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a42a597c21eca964c0296fc7026feb43b">transparency</a></td></tr>
 <tr class="separator:a42a597c21eca964c0296fc7026feb43b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a2d5b53f40f5bf3914fc0694027d7ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structResize__t.html">Resize_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a9a2d5b53f40f5bf3914fc0694027d7ec">scale</a></td></tr>
@@ -138,12 +140,17 @@ Data Fields</h2></td></tr>
 <tr class="separator:abde95d3fb49faff5dd852f16810115e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac203ccbc58958a7c205897d4aba197e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structChildlist__t.html">Childlist_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#ac203ccbc58958a7c205897d4aba197e9">childlist</a></td></tr>
 <tr class="separator:ac203ccbc58958a7c205897d4aba197e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adafb1b98ea551ef726be6c726ac2e817"><td class="memItemLeft" align="right" valign="top">XIC&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#adafb1b98ea551ef726be6c726ac2e817">xic</a></td></tr>
+<tr class="separator:adafb1b98ea551ef726be6c726ac2e817"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81aa76d336043a7230844d09a92113e2"><td class="memItemLeft" align="right" valign="top">XIM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a81aa76d336043a7230844d09a92113e2">xim</a></td></tr>
+<tr class="separator:a81aa76d336043a7230844d09a92113e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> - struct to hold the basic widget info. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*dpy</td><td>- pointer to the Display to use </td></tr>
+    <tr><td class="paramname">*app</td><td>- pointer to the main struct </td></tr>
     <tr><td class="paramname">widget</td><td>- the X11 Window </td></tr>
     <tr><td class="paramname">*parent</td><td>- pointer to the Parent Window or <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </td></tr>
     <tr><td class="paramname">event_callback</td><td>- the main XEvent callback </td></tr>
@@ -163,11 +170,14 @@ Data Fields</h2></td></tr>
     <tr><td class="paramname">y</td><td>- y position of Window on Parent </td></tr>
     <tr><td class="paramname">width</td><td>- widget width </td></tr>
     <tr><td class="paramname">height</td><td>- widget height </td></tr>
+    <tr><td class="paramname">is_widget</td><td>- set/check if the parent is <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </td></tr>
     <tr><td class="paramname">transparency</td><td>- flag to set/check transparent drawing </td></tr>
     <tr><td class="paramname">scale</td><td>- struct used to resize child widgets </td></tr>
     <tr><td class="paramname">*adj_x</td><td>- pointer to the x axis adjustment </td></tr>
     <tr><td class="paramname">*adj_y</td><td>- pointer to the y axis adjustment </td></tr>
     <tr><td class="paramname">*childlist</td><td>- pointer to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> child list </td></tr>
+    <tr><td class="paramname">xic</td><td>- Locale and UTF 8 support interface </td></tr>
+    <tr><td class="paramname">xim</td><td>- Context to Locale and UTF 8 support </td></tr>
   </table>
   </dd>
 </dl>
@@ -213,6 +223,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>pointer to the main struct </p>
 
 </div>
 </div>
@@ -381,6 +392,21 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a id="aff0b7ecbf87b995342d13e2efe79dfca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff0b7ecbf87b995342d13e2efe79dfca">&#9670;&nbsp;</a></span>is_widget</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Widget_t::is_widget</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>indicaate if the widget has parent <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> or XWindow </p>
+
+</div>
+</div>
 <a id="a952020107ac1f6d9a37b4f978f77b61c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a952020107ac1f6d9a37b4f978f77b61c">&#9670;&nbsp;</a></span>label</h2>
 
@@ -543,6 +569,36 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>x position of Window related to the Parent </p>
+
+</div>
+</div>
+<a id="adafb1b98ea551ef726be6c726ac2e817"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adafb1b98ea551ef726be6c726ac2e817">&#9670;&nbsp;</a></span>xic</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">XIC Widget_t::xic</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Locale and UTF 8 support </p>
+
+</div>
+</div>
+<a id="a81aa76d336043a7230844d09a92113e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81aa76d336043a7230844d09a92113e2">&#9670;&nbsp;</a></span>xim</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">XIM Widget_t::xim</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Context to Locale and UTF 8 support </p>
 
 </div>
 </div>

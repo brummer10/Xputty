@@ -3,13 +3,16 @@
 	NAME = Xputty
 	VER = 0.1
 	# set link flags
-	LDFLAGS += -g -I. -I../header `pkg-config --static --cflags --libs cairo` -L/usr/X11/lib -lX11 -lm
-	LD_DBUGFLAGS += -I. -I../header  -D DEBUG `pkg-config --static --cflags --libs cairo` -L/usr/X11/lib -lX11 -lm
+	LDFLAGS += -I. -I../header `pkg-config --static --cflags --libs cairo` -L/usr/X11/lib -lX11 -lm
+	LD_DBUGFLAGS += -I. -I../header -g -D DEBUG `pkg-config --static --cflags --libs cairo` -L/usr/X11/lib -lX11 -lm
 	SRC=$(wildcard *.c)
-	LIB_SOURCES=$(wildcard ../libxputty/*.c)
-	EXAMPLE_SOURCES=$(wildcard *.c)
-	OBJECTS=simple-example.o example.o example1.o example2.o 
-	EXEC_FILES=simple-example example example1 example2
+	LIB_DIR := ../libxputty/
+	OBJ_DIR := 
+	LIB_SOURCES := $(wildcard $(LIB_DIR)/*.c)
+	LIB_OBJ := $(notdir $(patsubst %.c,%.o,$(LIB_SOURCES)))
+	EXAMPLE_SOURCES := $(wildcard *.c)
+	OBJECTS := $(patsubst %.c,%.o,$(EXAMPLE_SOURCES))
+	EXEC_FILES := $(patsubst %.c,%,$(EXAMPLE_SOURCES))
 
 .PHONY : all build-static clean
 
@@ -22,27 +25,19 @@ all: $(LIB_SOURCES) $(EXAMPLE_SOURCES)
 build-static: $(EXEC_FILES)
 
 clean:
-	@rm -f simple-example.o example.o example1.o example2.o
-	@rm -f simple-example example example1 example2
-	@rm -f libxputty.a xputty.o
+	@rm -f $(OBJECTS) $(EXEC_FILES)
+	@rm -f libxputty.a $(LIB_OBJ)
 
-libxputty.a: $(LIB_SOURCES)
-	$(CC) -c ../libxputty/xwidget.c -o xwidget.o $(LDFLAGS)
-	$(CC) -c ../libxputty/xadjustment.c -o xadjustment.o $(LDFLAGS)
-	$(CC) -c ../libxputty/xchildlist.c -o xchildlist.o $(LDFLAGS)
-	$(CC) -c ../libxputty/xputty.c -o xputty.o $(LDFLAGS)
+$(LIB_OBJ): $(LIB_SOURCES)
+	$(CC) -c $(addprefix $(LIB_DIR),$(patsubst %.o,%.c,$@)) -o $@ $(LDFLAGS)
+
+libxputty.a: $(LIB_OBJ)
 	ar rcs libxputty.a xwidget.o xadjustment.o xchildlist.o xputty.o
 
 $(OBJECTS): $(EXAMPLE_SOURCES) libxputty.a
-	$(CC) -c simple-example.c -o simple-example.o $(LDFLAGS)
-	$(CC) -c example.c -o example.o $(LDFLAGS)
-	$(CC) -c example1.c -o example1.o $(LDFLAGS)
-	$(CC) -c example2.c -o example2.o $(LDFLAGS)
+	$(CC) -c $(patsubst %.o,%.c,$@) -o $@  $(LDFLAGS)
 
 $(EXEC_FILES): $(OBJECTS)
-	$(CC) simple-example.o -L. libxputty.a -o simple-example $(LDFLAGS)
-	$(CC) example.o -L. libxputty.a -o example $(LDFLAGS)
-	$(CC) example1.o -L. libxputty.a -o example1 $(LDFLAGS)
-	$(CC) example2.o -L. libxputty.a -o example2 $(LDFLAGS)
+	$(CC)  $(patsubst %,%.c,$@) -L. libxputty.a -o $@  $(LDFLAGS)
 
 doc:

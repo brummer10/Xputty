@@ -27,10 +27,14 @@
  */
 
 static inline void _childlist_add_elem(Childlist_t *childlist) {
-    childlist->childs = realloc(childlist->childs, childlist->size + sizeof(Widget_t*) * 4);
-    assert(childlist->childs);
+    childlist->childs = realloc(childlist->childs, sizeof(Widget_t*) * (4+childlist->cap));
+    assert(childlist->childs != NULL);
     childlist->cap +=4;
     childlist->size = sizeof(childlist);
+    int i = childlist->elem;
+    for(;i<childlist->cap;i++) {
+        childlist->childs[i] = NULL;
+    }
 }
 
 /**
@@ -41,11 +45,15 @@ static inline void _childlist_add_elem(Childlist_t *childlist) {
 
 void childlist_init(Childlist_t *childlist) {
     childlist->childs = (Widget_t**)malloc(sizeof(Widget_t*) * 4);
-    assert(childlist->childs);
+    assert(childlist->childs != NULL);
     memset(childlist->childs, 0, 4 * sizeof(Widget_t*));
     childlist->cap =4;
     childlist->size = sizeof(childlist);
     childlist->elem = 0;
+    int i = 0;
+    for(;i<childlist->cap;i++) {
+        childlist->childs[i] = NULL;
+    }
 }
 
 /**
@@ -69,7 +77,7 @@ void childlist_add_child(Childlist_t *childlist, Widget_t *child) {
     if(!childlist) childlist_init(childlist);
     if(childlist->cap <= childlist->elem-1) _childlist_add_elem(childlist);
     childlist->childs[childlist->elem] = child;
-    childlist->elem++;
+    childlist->elem +=1;
 }
 
 /**
@@ -87,8 +95,9 @@ void childlist_remove_child(Childlist_t *childlist, Widget_t *child) {
         childlist->elem--;
         int i = it;
         for(;i<childlist->elem;i++) {
-            *childlist->childs[i] = *childlist->childs[i+1];
+            childlist->childs[i] = childlist->childs[i+1];
         }
+        childlist->childs[childlist->elem+1] = NULL;
     }
 }
 
@@ -102,8 +111,9 @@ void childlist_remove_child(Childlist_t *childlist, Widget_t *child) {
 int childlist_find_child(Childlist_t *childlist, Widget_t *child) {
     int i = 0;
     for(;i<childlist->elem;i++) {
-        if(childlist->childs[i] = child)
-        return i;
+        if(childlist->childs[i] == child) {
+            return i;
+        }
     }
     return -1;
 }
@@ -115,11 +125,10 @@ int childlist_find_child(Childlist_t *childlist, Widget_t *child) {
  * @return Widget_t*            - return pointer to WiDget or NULL
  */
 
-int childlist_find_widget(Childlist_t *childlist, Window child_window, int *a) {
+int childlist_find_widget(Childlist_t *childlist, Window child_window) {
     int i = childlist->elem-1;
     for(;i>-1;i--) {
-        if(childlist->childs[i]->widget = child_window) {
-            *(a) = i;
+        if(childlist->childs[i]->widget == child_window) {
             return i;
         }
     }

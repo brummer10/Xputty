@@ -21,10 +21,10 @@
 
 #include "xputty.h"
 
-static void draw_window(void *w_, void* buffer_context) {
-    cairo_t * cr = (cairo_t*) buffer_context;
-    cairo_set_source_rgb (cr, 1, 1, 1);
-    cairo_paint (cr);
+static void draw_window(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    cairo_set_source_rgb (w->crb, 1, 1, 1);
+    cairo_paint (w->crb);
 }
 
 int main (int argc, char ** argv)

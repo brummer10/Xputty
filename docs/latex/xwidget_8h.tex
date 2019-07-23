@@ -61,10 +61,12 @@ enum \hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391ade}{Gravity} \{ \newli
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+widget -\/ create a widget \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_a4d835af5b56eb13ed7bd4602ce7ccd92}{quit} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em quit -\/ exit the main loop \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8h_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em quit\+\_\+widget -\/ remove a widget from the processing loop \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_ab45a54d3dee60783a5afe9c236f54a04}{transparent\+\_\+draw} (void $\ast$wid, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em \+\_\+transparency -\/ copy parent surface to child surface \end{DoxyCompactList}\item 
-void \hyperlink{xwidget_8h_a540b0eefd6f19f487aa71d4c1798ac8c}{destroy\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, X\+Context Context)
-\begin{DoxyCompactList}\small\item\em destroy\+\_\+widget -\/ destroy a widget and remove it from the Context \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8h_abdabca284aa8866f1f242b6857312e3b}{destroy\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{structXputty}{Xputty} $\ast$main)
+\begin{DoxyCompactList}\small\item\em destroy\+\_\+widget -\/ destroy a widget \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_af3ecce0332b5f13b590d024db28aec5a}{widget\+\_\+event\+\_\+loop} (void $\ast$w\+\_\+, void $\ast$event, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em widget\+\_\+event\+\_\+loop -\/ the internal widget event loop \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_a17f2f3effd46532c596511abcfb5058e}{expose\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
@@ -204,8 +206,6 @@ $\ast$create\+\_\+widget -\/ create a widget
 \hline
 {\em $\ast$parent} & -\/ pointer to the Parrent \hyperlink{structWidget__t}{Widget\+\_\+t} \\
 \hline
-{\em Context} & -\/ a X\+Context to store Window informations \\
-\hline
 {\em x,y,width,height} & -\/ the position/geometry to create the widget \\
 \hline
 \end{DoxyParams}
@@ -228,8 +228,6 @@ $\ast$create\+\_\+window -\/ create a Window
 \hline
 {\em $\ast$win} & -\/ pointer to the Parrent Window (may be Root) \\
 \hline
-{\em Context} & -\/ a X\+Context to store Window informations \\
-\hline
 {\em x,y,width,height} & -\/ the position/geometry to create the window \\
 \hline
 \end{DoxyParams}
@@ -242,29 +240,39 @@ Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t
 \hline
 {\em win} & -\/ pointer to the Parrent Window (may be Root) \\
 \hline
-{\em Context} & -\/ a X\+Context to store Window informations \\
-\hline
 {\em x,y,width,height} & -\/ the position/geometry to create the window \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xwidget_8h_a540b0eefd6f19f487aa71d4c1798ac8c}\label{xwidget_8h_a540b0eefd6f19f487aa71d4c1798ac8c}} 
+\mbox{\Hypertarget{xwidget_8h_abdabca284aa8866f1f242b6857312e3b}\label{xwidget_8h_abdabca284aa8866f1f242b6857312e3b}} 
 \index{xwidget.\+h@{xwidget.\+h}!destroy\+\_\+widget@{destroy\+\_\+widget}}
 \index{destroy\+\_\+widget@{destroy\+\_\+widget}!xwidget.\+h@{xwidget.\+h}}
 \subsubsection{\texorpdfstring{destroy\+\_\+widget()}{destroy\_widget()}}
-{\footnotesize\ttfamily void destroy\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{X\+Context}]{Context }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void destroy\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{structXputty}{Xputty} $\ast$}]{main }\end{DoxyParamCaption})}
 
 
 
-destroy\+\_\+widget -\/ destroy a widget and remove it from the Context 
+destroy\+\_\+widget -\/ destroy a widget 
 
 
 \begin{DoxyParams}{Parameters}
 {\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
 \hline
-{\em Context} & -\/ the Context holding the widget info \\
+{\em $\ast$main} & -\/ pointer to main struct \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+destroy\+\_\+widget -\/ destroy a widget
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
+\hline
+{\em $\ast$main} & -\/ pointer to main struct \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -317,6 +325,24 @@ int -\/ value (1-\/10) or 0 when not mapped
 
 
 quit -\/ exit the main loop 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8h_a1e367c7f3e7dcd71fbbb6125fc1b227a}\label{xwidget_8h_a1e367c7f3e7dcd71fbbb6125fc1b227a}} 
+\index{xwidget.\+h@{xwidget.\+h}!quit\+\_\+widget@{quit\+\_\+widget}}
+\index{quit\+\_\+widget@{quit\+\_\+widget}!xwidget.\+h@{xwidget.\+h}}
+\subsubsection{\texorpdfstring{quit\+\_\+widget()}{quit\_widget()}}
+{\footnotesize\ttfamily void quit\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+quit\+\_\+widget -\/ remove a widget from the processing loop 
 
 
 \begin{DoxyParams}{Parameters}

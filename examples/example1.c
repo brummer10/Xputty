@@ -63,7 +63,9 @@ static void text_input_add_text(void  *w_, void *label_) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
     char *label = (char*)label_;
-    if (!label) label = "";
+    if (!label) {
+        label = "";
+    }
     draw_text_input(w,NULL);
     cairo_text_extents_t extents;
     cairo_set_source_rgb (w->cr, 0., 0.1, 0.1);
@@ -91,8 +93,23 @@ static void text_input_clip(Widget_t *w) {
     cairo_text_extents_t extents;
     cairo_set_source_rgb (w->cr, 0., 0.1, 0.1);
     cairo_set_font_size (w->cr, 11.0);
+
+    // check for UTF 8 char
     if (strlen( w->input_label)>=2) {
-         w->input_label[strlen( w->input_label)-2] = 0;
+        int i = strlen( w->input_label)-1;
+        int j = 0;
+        int u = 0;
+        for(;i>0;i--) {
+            if(IS_UTF8(w->input_label[i])) {
+                 u++;
+            }
+            j++;
+            if (u == 1) break;
+            if (j>2) break;
+        }
+        if (!u) j =2;
+
+        memset(&w->input_label[strlen( w->input_label)-(sizeof(char)*(j))],0,sizeof(char)*(j));
         strcat( w->input_label, "|");
     }
     cairo_set_font_size (w->cr, 12.0);
@@ -110,8 +127,6 @@ static void get_text(void *w_, void *key_, void *user_data) {
     if (!w) return;
     XKeyEvent *key = (XKeyEvent*)key_;
     if (!key) return;
-    KeySym keysym;
-    char buf[32];
     int nk = key_mapping(w->dpy, key);
     if (nk) {
         switch (nk) {
@@ -129,17 +144,27 @@ static void get_text(void *w_, void *key_, void *user_data) {
             break;
             case 7: ;
             break;
+            case 8: ;
+            break;
+            case 9: ;
+            break;
             case 10: quit(w);
             break;
             case 11: text_input_clip(w);
             break;
             default:
             break;
-            }
-        } else {
-        int n = XLookupString(key, buf, sizeof(buf),
-                    &keysym, NULL);
-        if(n) text_input_add_text(w, buf);
+        }
+    } else {
+        Status status;
+        KeySym keysym;
+        char buf[32];
+        Xutf8LookupString(w->xic, key, buf, sizeof(buf) - 1, &keysym, &status);
+        if(status == XLookupChars || status == XLookupBoth){
+            text_input_add_text(w, buf);
+        }
+            
+       // if(n) text_input_add_text(w, buf);
     }
 }
 

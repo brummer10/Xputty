@@ -153,5 +153,5 @@ void adj_set_state(void *w, float x, float y) {
             break;
         }
     }
-    if(wid->adj_x || wid->adj_y) expose_widget(wid);
+   // if(wid->adj_x || wid->adj_y) expose_widget(wid);
 }

@@ -64,6 +64,8 @@ int \hyperlink{structWidget__t_a3204c88196ed5793250b3530dd719037}{width}
 \item 
 int \hyperlink{structWidget__t_a1def6d2237743e75a0b84ca0c34a6834}{height}
 \item 
+bool \hyperlink{structWidget__t_aff0b7ecbf87b995342d13e2efe79dfca}{is\+\_\+widget}
+\item 
 bool \hyperlink{structWidget__t_a42a597c21eca964c0296fc7026feb43b}{transparency}
 \item 
 \hyperlink{structResize__t}{Resize\+\_\+t} \hyperlink{structWidget__t_a9a2d5b53f40f5bf3914fc0694027d7ec}{scale}
@@ -73,6 +75,10 @@ bool \hyperlink{structWidget__t_a42a597c21eca964c0296fc7026feb43b}{transparency}
 \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{structWidget__t_abde95d3fb49faff5dd852f16810115e7}{adj\+\_\+y}
 \item 
 \hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$ \hyperlink{structWidget__t_ac203ccbc58958a7c205897d4aba197e9}{childlist}
+\item 
+X\+IC \hyperlink{structWidget__t_adafb1b98ea551ef726be6c726ac2e817}{xic}
+\item 
+X\+IM \hyperlink{structWidget__t_a81aa76d336043a7230844d09a92113e2}{xim}
 \end{DoxyCompactItemize}
 
 
@@ -82,6 +88,8 @@ bool \hyperlink{structWidget__t_a42a597c21eca964c0296fc7026feb43b}{transparency}
 
 \begin{DoxyParams}{Parameters}
 {\em $\ast$dpy} & -\/ pointer to the Display to use \\
+\hline
+{\em $\ast$app} & -\/ pointer to the main struct \\
 \hline
 {\em widget} & -\/ the X11 Window \\
 \hline
@@ -121,6 +129,8 @@ bool \hyperlink{structWidget__t_a42a597c21eca964c0296fc7026feb43b}{transparency}
 \hline
 {\em height} & -\/ widget height \\
 \hline
+{\em is\+\_\+widget} & -\/ set/check if the parent is \hyperlink{structWidget__t}{Widget\+\_\+t} \\
+\hline
 {\em transparency} & -\/ flag to set/check transparent drawing \\
 \hline
 {\em scale} & -\/ struct used to resize child widgets \\
@@ -130,6 +140,10 @@ bool \hyperlink{structWidget__t_a42a597c21eca964c0296fc7026feb43b}{transparency}
 {\em $\ast$adj\+\_\+y} & -\/ pointer to the y axis adjustment \\
 \hline
 {\em $\ast$childlist} & -\/ pointer to \hyperlink{structWidget__t}{Widget\+\_\+t} child list \\
+\hline
+{\em xic} & -\/ Locale and U\+TF 8 support interface \\
+\hline
+{\em xim} & -\/ Context to Locale and U\+TF 8 support \\
 \hline
 \end{DoxyParams}
 
@@ -153,7 +167,7 @@ pointer to the y axis adjustment \mbox{\Hypertarget{structWidget__t_a06eaa5b134c
 \subsubsection{\texorpdfstring{app}{app}}
 {\footnotesize\ttfamily \hyperlink{structXputty}{Xputty}$\ast$ Widget\+\_\+t\+::app}
 
-\mbox{\Hypertarget{structWidget__t_a84d225e7b261d67daa764b47c8c62107}\label{structWidget__t_a84d225e7b261d67daa764b47c8c62107}} 
+pointer to the main struct \mbox{\Hypertarget{structWidget__t_a84d225e7b261d67daa764b47c8c62107}\label{structWidget__t_a84d225e7b261d67daa764b47c8c62107}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!buffer@{buffer}}
 \index{buffer@{buffer}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{buffer}{buffer}}
@@ -219,7 +233,13 @@ the widget size y-\/axis \mbox{\Hypertarget{structWidget__t_ac5cb454301472edeb16
 \subsubsection{\texorpdfstring{input\+\_\+label}{input\_label}}
 {\footnotesize\ttfamily char Widget\+\_\+t\+::input\+\_\+label\mbox{[}32\mbox{]}}
 
-char array to hold user input \mbox{\Hypertarget{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}\label{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}} 
+char array to hold user input \mbox{\Hypertarget{structWidget__t_aff0b7ecbf87b995342d13e2efe79dfca}\label{structWidget__t_aff0b7ecbf87b995342d13e2efe79dfca}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!is\+\_\+widget@{is\+\_\+widget}}
+\index{is\+\_\+widget@{is\+\_\+widget}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{is\+\_\+widget}{is\_widget}}
+{\footnotesize\ttfamily bool Widget\+\_\+t\+::is\+\_\+widget}
+
+indicaate if the widget has parent \hyperlink{structWidget__t}{Widget\+\_\+t} or X\+Window \mbox{\Hypertarget{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}\label{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!label@{label}}
 \index{label@{label}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{label}{label}}
@@ -285,7 +305,19 @@ the widget size x-\/axis \mbox{\Hypertarget{structWidget__t_aac6ce7621b682bb4ce8
 \subsubsection{\texorpdfstring{x}{x}}
 {\footnotesize\ttfamily int Widget\+\_\+t\+::x}
 
-x position of Window related to the Parent \mbox{\Hypertarget{structWidget__t_acb9402de44e47837e1821b93fc052b38}\label{structWidget__t_acb9402de44e47837e1821b93fc052b38}} 
+x position of Window related to the Parent \mbox{\Hypertarget{structWidget__t_adafb1b98ea551ef726be6c726ac2e817}\label{structWidget__t_adafb1b98ea551ef726be6c726ac2e817}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!xic@{xic}}
+\index{xic@{xic}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{xic}{xic}}
+{\footnotesize\ttfamily X\+IC Widget\+\_\+t\+::xic}
+
+Locale and U\+TF 8 support \mbox{\Hypertarget{structWidget__t_a81aa76d336043a7230844d09a92113e2}\label{structWidget__t_a81aa76d336043a7230844d09a92113e2}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!xim@{xim}}
+\index{xim@{xim}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{xim}{xim}}
+{\footnotesize\ttfamily X\+IM Widget\+\_\+t\+::xim}
+
+Context to Locale and U\+TF 8 support \mbox{\Hypertarget{structWidget__t_acb9402de44e47837e1821b93fc052b38}\label{structWidget__t_acb9402de44e47837e1821b93fc052b38}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!y@{y}}
 \index{y@{y}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{y}{y}}
