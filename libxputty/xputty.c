@@ -57,7 +57,7 @@ void main_run(Xputty *main) {
         ew = childlist_find_widget(main->childlist, xev.xany.window);
         if(ew  >= 0) {
             Widget_t * w = main->childlist->childs[ew];
-            w->event_callback(w,&xev,NULL);
+            w->event_callback(w, &xev, main, NULL);
         }
 
         switch (xev.type) {

@@ -574,7 +574,7 @@ void transparent_draw(void * w_, void* user_data) {
  * @return void 
  */
 
-void widget_event_loop(void *w_, void* event, void* user_data) {
+void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
     Widget_t *wid = (Widget_t*)w_;
     XEvent *xev = (XEvent*)event;
     
@@ -644,7 +644,7 @@ void widget_event_loop(void *w_, void* event, void* user_data) {
 
         case ClientMessage:
             if (xev->xclient.message_type == XInternAtom(wid->dpy, "WIDGET_DESTROY", 1)) {
-                destroy_widget(wid,user_data);
+                destroy_widget(wid,main);
             }
         break;
 

@@ -88,6 +88,17 @@ static void button_release(void *w_, void* button_, void* user_data) {
 
 }
 
+static void button1_release(void *w_, void* button_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    draw_button(w_, NULL);
+    if (w->has_pointer){
+        Widget_t *p = (Widget_t*)w->parent;
+        quit_widget(w);
+        quit_widget(p);
+    }
+
+}
+
 int main (int argc, char ** argv)
 {
     Xputty app;
@@ -101,11 +112,25 @@ int main (int argc, char ** argv)
     w->func.expose_callback = draw_window;
 
     w_quit = create_widget(&app, w, 230, 170, 60, 20);
-    w_quit->label = "OK";
+    w_quit->label = "Quit";
     w_quit->func.expose_callback = draw_button;
     w_quit->func.enter_callback = draw_button;
     w_quit->func.button_press_callback = button_press;
     w_quit->func.button_release_callback = button_release;
+    w_quit->func.leave_callback = draw_button;
+    
+    w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 200);
+    XStoreName(app.dpy, w->widget, "Xputty Message Box");
+    w->label = "This is a message";
+    w->func.expose_callback = draw_window;
+    XMoveWindow(w->dpy,w->widget,400, 400);
+
+    w_quit = create_widget(&app, w, 230, 170, 60, 20);
+    w_quit->label = "OK";
+    w_quit->func.expose_callback = draw_button;
+    w_quit->func.enter_callback = draw_button;
+    w_quit->func.button_press_callback = button_press;
+    w_quit->func.button_release_callback = button1_release;
     w_quit->func.leave_callback = draw_button;
 
     bool run = true;

@@ -35,6 +35,17 @@
 /**
  * @brief *evfunc     - function pointer to connect Xevents from the widgets
  * @param *widget     - void pointer to the widget
+ * @param *main       - pointer to Xputty main struct
+ * @param *event      - void pointer to the XEvent
+ * @param *user_data  - void pointer to attached user_data
+ * @return void
+ */
+
+typedef void (*vfunc)(void * widget, void * event, Xputty *main, void* user_data);
+
+/**
+ * @brief *evfunc     - function pointer to connect Xevents from the widgets
+ * @param *widget     - void pointer to the widget
  * @param *event      -  void pointer to the XEvent
  * @param *user_data  -  void pointer to attached user_data
  * @return void
@@ -182,7 +193,7 @@ struct Widget_t {
 /** pointer to the Parent Window or Widget_t */
     void *parent;
 /** the main XEvent callback */
-    evfunc event_callback;
+    vfunc event_callback;
 /** struct holding the event callbacks */
     Func_t func;
 /** pointer to the cairo xlib surface */
@@ -298,7 +309,7 @@ void destroy_widget(Widget_t *w, Xputty *main);
  * @return void 
  */
 
-void widget_event_loop(void *w_, void* event, void* user_data);
+void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data);
 
 /**
  * @brief expose_widgets    - send expose expose event to window
