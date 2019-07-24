@@ -95,8 +95,8 @@ void adj_set_value(Adjustment_t *adj, float v) {
 }
 
 /**
- * @brief adj_set_start_value- set start value of the adjustment
- * @param *w               - pointer to Widget_t containing the adjustment 
+ * @brief adj_set_start_value - set start value of the adjustment
+ * @param *w                  - pointer to Widget_t containing the adjustment 
  * @return void
  */
 

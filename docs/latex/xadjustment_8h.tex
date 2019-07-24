@@ -55,7 +55,7 @@ void \hyperlink{xadjustment_8h_afbe410bb3efb6e78941a4f938d1c67ca}{adj\+\_\+set\+
 void \hyperlink{xadjustment_8h_a670e06d916d1d6fd1f2968fb171c29aa}{adj\+\_\+set\+\_\+start\+\_\+value} (void $\ast$w)
 \begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+start\+\_\+value -\/ set start value of the adjustment \end{DoxyCompactList}\item 
 void \hyperlink{xadjustment_8h_aaeeb13f45a95f6e2f585641b212eca11}{adj\+\_\+set\+\_\+state} (void $\ast$w, float x, float y)
-\begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+state -\/ set value of the adjustment \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+state -\/ set value/state of the adjustment \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
@@ -140,28 +140,6 @@ $\ast$add\+\_\+adjustment -\/ adding a adjustment to the widget
 \hline
 {\em step} & -\/ step to increase/decrease the adjustment \\
 \hline
-{\em start\+\_\+value} & -\/ value at start of motion (Button press) \\
-\hline
-{\em type} & -\/ set C\+L\+\_\+type of adjustment \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-$\ast$adj -\/ pointer to adjustment
-\end{DoxyReturn}
-
-\begin{DoxyParams}{Parameters}
-{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} request a adjustment \\
-\hline
-{\em std\+\_\+value} & -\/ standard value of the adjustment \\
-\hline
-{\em value} & -\/ current value of the adjustment \\
-\hline
-{\em min\+\_\+value} & -\/ minimum value of the adjustment \\
-\hline
-{\em max\+\_\+value} & -\/ maximal value of the adjustment \\
-\hline
-{\em step} & -\/ step to increase/decrease the adjustment \\
-\hline
 {\em type} & -\/ set C\+L\+\_\+type of adjustment \\
 \hline
 \end{DoxyParams}
@@ -220,16 +198,6 @@ adj\+\_\+set\+\_\+start\+\_\+value -\/ set start value of the adjustment
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-void
-\end{DoxyReturn}
-adj\+\_\+set\+\_\+start\+\_\+value -\/ set start value of the adjustment
-
-
-\begin{DoxyParams}{Parameters}
-{\em $\ast$w} & -\/ pointer to \hyperlink{structWidget__t}{Widget\+\_\+t} containing the adjustment \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
 \mbox{\Hypertarget{xadjustment_8h_aaeeb13f45a95f6e2f585641b212eca11}\label{xadjustment_8h_aaeeb13f45a95f6e2f585641b212eca11}} 
@@ -240,21 +208,7 @@ void
 
 
 
-adj\+\_\+set\+\_\+state -\/ set value of the adjustment 
-
-
-\begin{DoxyParams}{Parameters}
-{\em $\ast$adj} & -\/ pointer to \hyperlink{structWidget__t}{Widget\+\_\+t} containing the adjustment \\
-\hline
-{\em x} & -\/ value for the xaxis \\
-\hline
-{\em y} & -\/ value for the yaxis \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void
-\end{DoxyReturn}
-adj\+\_\+set\+\_\+state -\/ set value of the adjustment
+adj\+\_\+set\+\_\+state -\/ set value/state of the adjustment 
 
 
 \begin{DoxyParams}{Parameters}

@@ -117,7 +117,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structXputty.html">Xputty</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> - the main struct. It should be declared before any other call to a <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> function. Example: <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> main;.  <a href="structXputty.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> - the main struct. It should be declared before any other call to a <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> function.  <a href="structXputty.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -127,35 +127,43 @@ Macros</h2></td></tr>
 <tr class="memitem:ad72dbcf6d0153db1b8d8a58001feed83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#ad72dbcf6d0153db1b8d8a58001feed83">DEBUG</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:ad72dbcf6d0153db1b8d8a58001feed83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9e7326b4569847122754061b96c42d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#ac9e7326b4569847122754061b96c42d0">debug_print</a>(...)&#160;&#160;&#160;((void)((<a class="el" href="xputty_8h.html#ad72dbcf6d0153db1b8d8a58001feed83">DEBUG</a>) ? fprintf(stderr, __VA_ARGS__) : 0))</td></tr>
+<tr class="memdesc:ac9e7326b4569847122754061b96c42d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">debug_print - print out state messages when compiled with the -DDEBUG flag  <a href="#ac9e7326b4569847122754061b96c42d0">More...</a><br /></td></tr>
 <tr class="separator:ac9e7326b4569847122754061b96c42d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb702d8b501669a23aa0ab3b281b9384"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#abb702d8b501669a23aa0ab3b281b9384">min</a>(x,  y)&#160;&#160;&#160;((x) &lt; (y) ? (x) : (y))</td></tr>
+<tr class="memdesc:abb702d8b501669a23aa0ab3b281b9384"><td class="mdescLeft">&#160;</td><td class="mdescRight">min - set a minimal value as return value  <a href="#abb702d8b501669a23aa0ab3b281b9384">More...</a><br /></td></tr>
 <tr class="separator:abb702d8b501669a23aa0ab3b281b9384"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac39d9cef6a5e030ba8d9e11121054268"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#ac39d9cef6a5e030ba8d9e11121054268">max</a>(x,  y)&#160;&#160;&#160;((x) &lt; (y) ? (y) : (x))</td></tr>
+<tr class="memdesc:ac39d9cef6a5e030ba8d9e11121054268"><td class="mdescLeft">&#160;</td><td class="mdescRight">max - set a maximal value as return value  <a href="#ac39d9cef6a5e030ba8d9e11121054268">More...</a><br /></td></tr>
 <tr class="separator:ac39d9cef6a5e030ba8d9e11121054268"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b4e4f21ac252ef0b97fe32f026bd284"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#a4b4e4f21ac252ef0b97fe32f026bd284">IS_UTF8</a>(c)&#160;&#160;&#160;(((c)&amp;0xc0)==0xc0)</td></tr>
+<tr class="memdesc:a4b4e4f21ac252ef0b97fe32f026bd284"><td class="mdescLeft">&#160;</td><td class="mdescRight">IS_UTF8 - check if a char contain UTF 8 formated signs.  <a href="#a4b4e4f21ac252ef0b97fe32f026bd284">More...</a><br /></td></tr>
 <tr class="separator:a4b4e4f21ac252ef0b97fe32f026bd284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a972f6c1b2363cd41766d32dc7d3a93d0"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structChildlist__t.html">Childlist_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#a972f6c1b2363cd41766d32dc7d3a93d0">Childlist_t</a></td></tr>
+<tr class="memdesc:a972f6c1b2363cd41766d32dc7d3a93d0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list. ">Childlist_t</a> - maintain a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> list of childs for a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>.  <a href="#a972f6c1b2363cd41766d32dc7d3a93d0">More...</a><br /></td></tr>
 <tr class="separator:a972f6c1b2363cd41766d32dc7d3a93d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68965e5ced4b615cf52922868c4b159c"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structAdjustment__t.html">Adjustment_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#a68965e5ced4b615cf52922868c4b159c">Adjustment_t</a></td></tr>
+<tr class="memdesc:a68965e5ced4b615cf52922868c4b159c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> - <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> for a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>.  <a href="#a68965e5ced4b615cf52922868c4b159c">More...</a><br /></td></tr>
 <tr class="separator:a68965e5ced4b615cf52922868c4b159c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b3e8ecb43e49de5de9dc7ab79404014"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structWidget__t.html">Widget_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#a6b3e8ecb43e49de5de9dc7ab79404014">Widget_t</a></td></tr>
+<tr class="memdesc:a6b3e8ecb43e49de5de9dc7ab79404014"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> - the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> base struct.  <a href="#a6b3e8ecb43e49de5de9dc7ab79404014">More...</a><br /></td></tr>
 <tr class="separator:a6b3e8ecb43e49de5de9dc7ab79404014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a640738d2c0bf1af308958da6468c829f"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structXputty.html">Xputty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#a640738d2c0bf1af308958da6468c829f">Xputty</a></td></tr>
+<tr class="memdesc:a640738d2c0bf1af308958da6468c829f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> - the main struct.It should be declared before any other call to a <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> function.  <a href="#a640738d2c0bf1af308958da6468c829f">More...</a><br /></td></tr>
 <tr class="separator:a640738d2c0bf1af308958da6468c829f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a484645d624d9e9eff0288f8d5583ff5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#a484645d624d9e9eff0288f8d5583ff5e">main_init</a> (<a class="el" href="structXputty.html">Xputty</a> *main)</td></tr>
-<tr class="memdesc:a484645d624d9e9eff0288f8d5583ff5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">main_init - open the Display and init the main-&gt;childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. <a class="el" href="xputty_8h.html#a484645d624d9e9eff0288f8d5583ff5e" title="main_init - open the Display and init the main-&gt;childlist. Also it set the bool run to true...">main_init()</a> should be called directly after declaration of <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a>. Example: main_init(&amp;main); Any <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> which would be created afterwards will be added to the list. This list is used to check if a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is valid. When a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> call <a class="el" href="xwidget_8c.html#a1e367c7f3e7dcd71fbbb6125fc1b227a" title="quit_widget - remove a widget from the processing loop ">quit_widget()</a> it will be removed from the list. On <a class="el" href="xputty_8h.html#a0d4eda902b4de6f7a30e8d869f842fda" title="main_quit - destroy all remaining Widget_t&#39;s from the main-&gt;childlist. Free all resources which may b...">main_quit()</a> any remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a XEvent.  <a href="#a484645d624d9e9eff0288f8d5583ff5e">More...</a><br /></td></tr>
+<tr class="memdesc:a484645d624d9e9eff0288f8d5583ff5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">main_init - open the Display and init the main-&gt;childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. <a class="el" href="xputty_8h.html#a484645d624d9e9eff0288f8d5583ff5e" title="main_init - open the Display and init the main-&gt;childlist. Also it set the bool run to true...">main_init()</a> should be called directly after declaration of <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a>. Any <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> which would be created afterwards will be added to the list. This list is used to check if a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is valid. When a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> call <a class="el" href="xwidget_8c.html#a1e367c7f3e7dcd71fbbb6125fc1b227a" title="quit_widget - remove a widget from the processing loop ">quit_widget()</a> it will be removed from the list. On <a class="el" href="xputty_8h.html#a0d4eda902b4de6f7a30e8d869f842fda" title="main_quit - destroy all remaining Widget_t&#39;s from the main-&gt;childlist. Free all resources which may b...">main_quit()</a> any remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a XEvent.  <a href="#a484645d624d9e9eff0288f8d5583ff5e">More...</a><br /></td></tr>
 <tr class="separator:a484645d624d9e9eff0288f8d5583ff5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb548ea64f852a7c94473a595e67d69f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#abb548ea64f852a7c94473a595e67d69f">main_run</a> (<a class="el" href="structXputty.html">Xputty</a> *main)</td></tr>
-<tr class="memdesc:abb548ea64f852a7c94473a595e67d69f"><td class="mdescLeft">&#160;</td><td class="mdescRight">main_run - the main event loop. I should be start after your Widget_s been created. You could create and destroy additional Widget_s at any time later during run. Eample: main_run(&amp;main);  <a href="#abb548ea64f852a7c94473a595e67d69f">More...</a><br /></td></tr>
+<tr class="memdesc:abb548ea64f852a7c94473a595e67d69f"><td class="mdescLeft">&#160;</td><td class="mdescRight">main_run - the main event loop. I should be start after your Widget_s been created. You could create and destroy additional Widget_s at any time later during run.  <a href="#abb548ea64f852a7c94473a595e67d69f">More...</a><br /></td></tr>
 <tr class="separator:abb548ea64f852a7c94473a595e67d69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d4eda902b4de6f7a30e8d869f842fda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#a0d4eda902b4de6f7a30e8d869f842fda">main_quit</a> (<a class="el" href="structXputty.html">Xputty</a> *main)</td></tr>
-<tr class="memdesc:a0d4eda902b4de6f7a30e8d869f842fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">main_quit - destroy all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s from the main-&gt;childlist. Free all resources which may be allocated between init and quit. It should be called after <a class="el" href="xputty_8h.html#abb548ea64f852a7c94473a595e67d69f" title="main_run - the main event loop. I should be start after your Widget_s been created. You could create and destroy additional Widget_s at any time later during run. Eample: main_run(&amp;main); ">main_run()</a>; Example: main_quit(&amp;main);  <a href="#a0d4eda902b4de6f7a30e8d869f842fda">More...</a><br /></td></tr>
+<tr class="memdesc:a0d4eda902b4de6f7a30e8d869f842fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">main_quit - destroy all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s from the main-&gt;childlist. Free all resources which may be allocated between init and quit. It should be called after <a class="el" href="xputty_8h.html#abb548ea64f852a7c94473a595e67d69f" title="main_run - the main event loop. I should be start after your Widget_s been created. You could create and destroy additional Widget_s at any time later during run. ">main_run()</a>;  <a href="#a0d4eda902b4de6f7a30e8d869f842fda">More...</a><br /></td></tr>
 <tr class="separator:a0d4eda902b4de6f7a30e8d869f842fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -189,6 +197,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>debug_print - print out state messages when compiled with the -DDEBUG flag </p>
+
 </div>
 </div>
 <a id="a4b4e4f21ac252ef0b97fe32f026bd284"></a>
@@ -206,10 +216,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2>------------------------------------------------------------------&mdash; </h2>
-<h2>define check if char holds UTF 8 string </h2>
-<hr/>
- 
+
+<p>IS_UTF8 - check if a char contain UTF 8 formated signs. </p>
+
 </div>
 </div>
 <a id="ac39d9cef6a5e030ba8d9e11121054268"></a>
@@ -238,6 +247,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>max - set a maximal value as return value </p>
+
 </div>
 </div>
 <a id="abb702d8b501669a23aa0ab3b281b9384"></a>
@@ -265,6 +276,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>min - set a minimal value as return value </p>
 
 </div>
 </div>
@@ -295,6 +308,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p><a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> - <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> for a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>. </p>
+
 </div>
 </div>
 <a id="a972f6c1b2363cd41766d32dc7d3a93d0"></a>
@@ -308,10 +323,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2>------------------------------------------------------------------&mdash; </h2>
-<h2>forward declareted structs </h2>
-<hr/>
- 
+
+<p><a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list. ">Childlist_t</a> - maintain a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> list of childs for a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>. </p>
+
 </div>
 </div>
 <a id="a6b3e8ecb43e49de5de9dc7ab79404014"></a>
@@ -326,6 +340,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> - the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> base struct. </p>
+
 </div>
 </div>
 <a id="a640738d2c0bf1af308958da6468c829f"></a>
@@ -339,6 +355,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> - the main struct.It should be declared before any other call to a <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> function. </p>
 
 </div>
 </div>
@@ -359,15 +377,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>main_init - open the Display and init the main-&gt;childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. <a class="el" href="xputty_8h.html#a484645d624d9e9eff0288f8d5583ff5e" title="main_init - open the Display and init the main-&gt;childlist. Also it set the bool run to true...">main_init()</a> should be called directly after declaration of <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a>. Example: main_init(&amp;main); Any <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> which would be created afterwards will be added to the list. This list is used to check if a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is valid. When a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> call <a class="el" href="xwidget_8c.html#a1e367c7f3e7dcd71fbbb6125fc1b227a" title="quit_widget - remove a widget from the processing loop ">quit_widget()</a> it will be removed from the list. On <a class="el" href="xputty_8h.html#a0d4eda902b4de6f7a30e8d869f842fda" title="main_quit - destroy all remaining Widget_t&#39;s from the main-&gt;childlist. Free all resources which may b...">main_quit()</a> any remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a XEvent. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">*main</td><td>- pointer to the main <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> struct </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void</dd></dl>
-<p>main_init - open the Display and init the main-&gt;childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. <a class="el" href="xputty_8h.html#a484645d624d9e9eff0288f8d5583ff5e" title="main_init - open the Display and init the main-&gt;childlist. Also it set the bool run to true...">main_init()</a> should be called directly after declaration of <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a>. Example: main_init(&amp;main); Any <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> which would be created afterwards will be added to the list. This list is used to check if a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is valid. When a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> call <a class="el" href="xwidget_8c.html#a1e367c7f3e7dcd71fbbb6125fc1b227a" title="quit_widget - remove a widget from the processing loop ">quit_widget()</a> it will be removed from the list. On <a class="el" href="xputty_8h.html#a0d4eda902b4de6f7a30e8d869f842fda" title="main_quit - destroy all remaining Widget_t&#39;s from the main-&gt;childlist. Free all resources which may b...">main_quit()</a> any remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a XEvent.</p>
+<p>main_init - open the Display and init the main-&gt;childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. <a class="el" href="xputty_8h.html#a484645d624d9e9eff0288f8d5583ff5e" title="main_init - open the Display and init the main-&gt;childlist. Also it set the bool run to true...">main_init()</a> should be called directly after declaration of <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a>. Any <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> which would be created afterwards will be added to the list. This list is used to check if a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is valid. When a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> call <a class="el" href="xwidget_8c.html#a1e367c7f3e7dcd71fbbb6125fc1b227a" title="quit_widget - remove a widget from the processing loop ">quit_widget()</a> it will be removed from the list. On <a class="el" href="xputty_8h.html#a0d4eda902b4de6f7a30e8d869f842fda" title="main_quit - destroy all remaining Widget_t&#39;s from the main-&gt;childlist. Free all resources which may b...">main_quit()</a> any remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a XEvent. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*main</td><td>- pointer to the main <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> struct </td></tr>
@@ -394,15 +404,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>main_quit - destroy all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s from the main-&gt;childlist. Free all resources which may be allocated between init and quit. It should be called after <a class="el" href="xputty_8h.html#abb548ea64f852a7c94473a595e67d69f" title="main_run - the main event loop. I should be start after your Widget_s been created. You could create and destroy additional Widget_s at any time later during run. Eample: main_run(&amp;main); ">main_run()</a>; Example: main_quit(&amp;main); </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">*main</td><td>- pointer to the main <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> struct </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void</dd></dl>
-<p>main_quit - destroy all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s from the main-&gt;childlist. Free all resources which may be allocated between init and quit. It should be called after <a class="el" href="xputty_8h.html#abb548ea64f852a7c94473a595e67d69f" title="main_run - the main event loop. I should be start after your Widget_s been created. You could create and destroy additional Widget_s at any time later during run. Eample: main_run(&amp;main); ">main_run()</a>; Example: main_quit(&amp;main);</p>
+<p>main_quit - destroy all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s from the main-&gt;childlist. Free all resources which may be allocated between init and quit. It should be called after <a class="el" href="xputty_8h.html#abb548ea64f852a7c94473a595e67d69f" title="main_run - the main event loop. I should be start after your Widget_s been created. You could create and destroy additional Widget_s at any time later during run. ">main_run()</a>; </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*main</td><td>- pointer to the main <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> struct </td></tr>
@@ -429,15 +431,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>main_run - the main event loop. I should be start after your Widget_s been created. You could create and destroy additional Widget_s at any time later during run. Eample: main_run(&amp;main); </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">*main</td><td>- pointer to the main <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> struct </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void</dd></dl>
-<p>main_run - the main event loop. I should be start after your Widget_s been created. You could create and destroy additional Widget_s at any time later during run. Eample: main_run(&amp;main);</p>
+<p>main_run - the main event loop. I should be start after your Widget_s been created. You could create and destroy additional Widget_s at any time later during run. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*main</td><td>- pointer to the main <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> struct </td></tr>

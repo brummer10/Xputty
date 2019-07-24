@@ -74,7 +74,7 @@ int key_mapping(Display *dpy, XKeyEvent *xkey) {
 }
 
 /**
- * @brief destroy_widget    - destroy a widget and remove it from the Context
+ * @brief destroy_widget    - destroy a widget
  * @param *w                - pointer to the Widget_t sending the request
  * @param *main             - pointer to main struct
  * @return void 
@@ -235,9 +235,9 @@ static inline void dummy_callback(void *w_, void* user_data) {
 /**
  * @brief *create_window     - create a Window 
  * @param *dpy               - pointer to the Display to use
- * @param win               - pointer to the Parrent Window (may be Root)
+ * @param win                - pointer to the Parrent Window (may be Root)
  * @param x,y,width,height   - the position/geometry to create the window
- * @return Widget_t*         - pointer to the Widget_t struct
+ * @return Widget_t *        - pointer to the Widget_t struct
  */
 
 Widget_t *create_window(Xputty *app, Window win,
@@ -568,6 +568,82 @@ void transparent_draw(void * w_, void* user_data) {
 }
 
 /**
+ * @brief _scroll_event     - internal check which adjustment needs update
+ * @param *wid              - pointer to the Widget_t receiving a event
+ * @param direction         - up/down scroll diretion
+ * @return void 
+ */
+
+static inline void _scroll_event(Widget_t * wid, int direction) {
+    if (wid->adj_y) {
+        switch(wid->adj_y->type) {
+            case (CL_CONTINUOS):
+                 wid->adj_y->value = min(wid->adj_y->max_value,max(wid->adj_y->min_value, 
+                  wid->adj_y->value + (wid->adj_y->step * direction)));
+                expose_widget(wid);
+            break;
+            case (CL_TOGGLE):
+                wid->adj_x->value = wid->adj_x->value ? 0.0 : 1.0;
+                expose_widget(wid);
+            break;
+            default:
+            break;
+        }
+    } else if(wid->adj_x) {
+        switch(wid->adj_x->type) {
+            case (CL_CONTINUOS):
+                wid->adj_x->value = min(wid->adj_x->max_value,max(wid->adj_x->min_value, 
+                  wid->adj_x->value + (wid->adj_x->step * direction)));
+                expose_widget(wid);
+            break;
+            case (CL_TOGGLE):
+                wid->adj_y->value = wid->adj_y->value ? 0.0 : 1.0;
+                expose_widget(wid);
+            break;
+            default:
+            break;
+            
+        }
+    } 
+}
+
+
+/**
+ * @brief _button_press     - internal check which button is pressed
+ * @param *wid              - pointer to the Widget_t receiving a event
+ * @param *xbutton          - pointer to the XButtonEvent
+ * @param *user_data        - void pointer to attached user_data
+ * @return void 
+ */
+
+static inline void _button_press(Widget_t * wid, XButtonEvent *xbutton, void* user_data) {
+    switch(xbutton->button) {
+        case Button1:
+            wid->state = 2;
+            wid->has_pointer = _has_pointer(wid, xbutton);
+            wid->pos_x = xbutton->x;
+            wid->pos_y = xbutton->y;
+            adj_set_start_value(wid);
+            wid->func.button_press_callback(wid, xbutton, user_data);
+        break;
+        case Button2:
+            debug_print("Button2 \n");
+        break;
+        case Button3:
+            debug_print("Button3 \n");
+        break;
+        case  Button4:
+            _scroll_event(wid, 1);
+        break;
+        case Button5:
+            _scroll_event(wid, -1);
+        break;
+        default:
+        break;
+    }
+}
+
+/**
  * @brief widget_event_loop - the internal widget event loop
  * @param *w                - pointer to the Widget_t receiving a event
  * @param *event            - void pointer to the XEvent
@@ -594,12 +670,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         break;
 
         case ButtonPress:
-            wid->state = 2;
-            wid->has_pointer = _has_pointer(wid, &xev->xbutton);
-            wid->pos_x = xev->xbutton.x;
-            wid->pos_y = xev->xbutton.y;
-            adj_set_start_value(wid);
-            wid->func.button_press_callback(w_, &xev->xbutton, user_data);
+            _button_press(wid, &xev->xbutton, user_data);
             debug_print("Widget_t  ButtonPress %i\n", xev->xbutton.button);
         break;
 

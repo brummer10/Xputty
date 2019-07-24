@@ -15,7 +15,7 @@ Include dependency graph for xwidget.\+c\+:
 int \hyperlink{xwidget_8c_a1607cf4a642a38ea235a007ea9579403}{key\+\_\+mapping} (Display $\ast$dpy, X\+Key\+Event $\ast$xkey)
 \begin{DoxyCompactList}\small\item\em key\+\_\+mapping -\/ modifier key\textquotesingle{}s mapped to a integer value \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_abdabca284aa8866f1f242b6857312e3b}{destroy\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{structXputty}{Xputty} $\ast$main)
-\begin{DoxyCompactList}\small\item\em destroy\+\_\+widget -\/ destroy a widget and remove it from the Context \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em destroy\+\_\+widget -\/ destroy a widget \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_acf8c7ef79c60253a687116d3783e1c67}{configure\+\_\+event} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em configure\+\_\+event -\/ default callback when a widget receive a Configure\+Notify \end{DoxyCompactList}\item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8c_a5528f841e6b5f2ef62b3b10bfa8bf20f}{create\+\_\+window} (\hyperlink{structXputty}{Xputty} $\ast$app, Window win, int x, int y, int width, int height)
@@ -97,7 +97,7 @@ $\ast$create\+\_\+window -\/ create a Window
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
 \end{DoxyReturn}
 \mbox{\Hypertarget{xwidget_8c_abdabca284aa8866f1f242b6857312e3b}\label{xwidget_8c_abdabca284aa8866f1f242b6857312e3b}} 
 \index{xwidget.\+c@{xwidget.\+c}!destroy\+\_\+widget@{destroy\+\_\+widget}}
@@ -107,9 +107,7 @@ Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t
 
 
 
-destroy\+\_\+widget -\/ destroy a widget and remove it from the Context 
-
-destroy\+\_\+widget -\/ destroy a widget
+destroy\+\_\+widget -\/ destroy a widget 
 
 
 \begin{DoxyParams}{Parameters}
@@ -204,8 +202,6 @@ void
 
 
 transparent\+\_\+draw -\/ copy parent surface to child surface 
-
-\+\_\+transparency -\/ copy parent surface to child surface
 
 
 \begin{DoxyParams}{Parameters}

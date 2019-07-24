@@ -248,9 +248,9 @@ struct Widget_t {
 /**
  * @brief *create_window     - create a Window 
  * @param *dpy               - pointer to the Display to use
- * @param *win               - pointer to the Parrent Window (may be Root)
+ * @param win                - pointer to the Parrent Window (may be Root)
  * @param x,y,width,height   - the position/geometry to create the window
- * @return Widget_t*         - pointer to the Widget_t struct
+ * @return Widget_t *        - pointer to the Widget_t struct
  */
 
 Widget_t *create_window(Xputty *app, Window win,
@@ -284,7 +284,7 @@ void quit(Widget_t *w);
 void quit_widget(Widget_t *w);
 
 /**
- * @brief _transparency     - copy parent surface to child surface
+ * @brief transparent_draw  - copy parent surface to child surface
  * @param *wid              - pointer to the Widget_t receiving a event
  * @param *user_data        - void pointer to attached user_data
  * @return void 

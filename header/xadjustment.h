@@ -90,7 +90,6 @@ struct  Adjustment_t {
  * @param min_value          - minimum value of the adjustment
  * @param max_value          - maximal value of the adjustment
  * @param step               - step to increase/decrease the adjustment
- * @param start_value        - value at start of motion (Button press)
  * @param type               - set CL_type of adjustment
  * @return *adj              - pointer to adjustment
  */
@@ -141,7 +140,7 @@ void adj_set_value(Adjustment_t *adj, float v);
 void adj_set_start_value(void *w);
 
 /**
- * @brief adj_set_state      - set value of the adjustment
+ * @brief adj_set_state      - set value/state of the adjustment
  * @param *adj               - pointer to Widget_t containing the adjustment
  * @param x                  - value for the xaxis
  * @param y                  - value for the yaxis

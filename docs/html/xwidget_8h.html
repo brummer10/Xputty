@@ -162,7 +162,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a1e367c7f3e7dcd71fbbb6125fc1b227a"><td class="mdescLeft">&#160;</td><td class="mdescRight">quit_widget - remove a widget from the processing loop  <a href="#a1e367c7f3e7dcd71fbbb6125fc1b227a">More...</a><br /></td></tr>
 <tr class="separator:a1e367c7f3e7dcd71fbbb6125fc1b227a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab45a54d3dee60783a5afe9c236f54a04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#ab45a54d3dee60783a5afe9c236f54a04">transparent_draw</a> (void *wid, void *user_data)</td></tr>
-<tr class="memdesc:ab45a54d3dee60783a5afe9c236f54a04"><td class="mdescLeft">&#160;</td><td class="mdescRight">_transparency - copy parent surface to child surface  <a href="#ab45a54d3dee60783a5afe9c236f54a04">More...</a><br /></td></tr>
+<tr class="memdesc:ab45a54d3dee60783a5afe9c236f54a04"><td class="mdescLeft">&#160;</td><td class="mdescRight">transparent_draw - copy parent surface to child surface  <a href="#ab45a54d3dee60783a5afe9c236f54a04">More...</a><br /></td></tr>
 <tr class="separator:ab45a54d3dee60783a5afe9c236f54a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdabca284aa8866f1f242b6857312e3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#abdabca284aa8866f1f242b6857312e3b">destroy_widget</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, <a class="el" href="structXputty.html">Xputty</a> *main)</td></tr>
 <tr class="memdesc:abdabca284aa8866f1f242b6857312e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy_widget - destroy a widget  <a href="#abdabca284aa8866f1f242b6857312e3b">More...</a><br /></td></tr>
@@ -431,21 +431,12 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*dpy</td><td>- pointer to the Display to use </td></tr>
-    <tr><td class="paramname">*win</td><td>- pointer to the Parrent Window (may be Root) </td></tr>
-    <tr><td class="paramname">x,y,width,height</td><td>- the position/geometry to create the window </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Widget_t* - pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> struct</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">*dpy</td><td>- pointer to the Display to use </td></tr>
     <tr><td class="paramname">win</td><td>- pointer to the Parrent Window (may be Root) </td></tr>
     <tr><td class="paramname">x,y,width,height</td><td>- the position/geometry to create the window </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Widget_t* - pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> struct </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> * - pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> struct </dd></dl>
 
 </div>
 </div>
@@ -476,15 +467,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>destroy_widget - destroy a widget </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> sending the request </td></tr>
-    <tr><td class="paramname">*main</td><td>- pointer to main struct </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void</dd></dl>
-<p>destroy_widget - destroy a widget</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> sending the request </td></tr>
@@ -641,16 +623,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>_transparency - copy parent surface to child surface </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">*wid</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> receiving a event </td></tr>
-    <tr><td class="paramname">*user_data</td><td>- void pointer to attached user_data </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void</dd></dl>
-<p>_transparency - copy parent surface to child surface</p>
+<p>transparent_draw - copy parent surface to child surface </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*wid</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> receiving a event </td></tr>

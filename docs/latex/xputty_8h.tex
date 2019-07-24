@@ -34,7 +34,7 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{structXputty}{Xputty}
-\begin{DoxyCompactList}\small\item\em \hyperlink{structXputty}{Xputty} -\/ the main struct. It should be declared before any other call to a \hyperlink{structXputty}{Xputty} function. Example\+: \hyperlink{structXputty}{Xputty} main;. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structXputty}{Xputty} -\/ the main struct. It should be declared before any other call to a \hyperlink{structXputty}{Xputty} function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,33 +43,33 @@ struct \hyperlink{structXputty}{Xputty}
 \#define \hyperlink{xputty_8h_ad72dbcf6d0153db1b8d8a58001feed83}{D\+E\+B\+UG}~0
 \item 
 \#define \hyperlink{xputty_8h_ac9e7326b4569847122754061b96c42d0}{debug\+\_\+print}(...)~((void)((\hyperlink{xputty_8h_ad72dbcf6d0153db1b8d8a58001feed83}{D\+E\+B\+UG}) ? fprintf(stderr, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+) \+: 0))
-\item 
+\begin{DoxyCompactList}\small\item\em debug\+\_\+print -\/ print out state messages when compiled with the -\/\+D\+D\+E\+B\+UG flag \end{DoxyCompactList}\item 
 \#define \hyperlink{xputty_8h_abb702d8b501669a23aa0ab3b281b9384}{min}(x,  y)~((x) $<$ (y) ? (x) \+: (y))
-\item 
+\begin{DoxyCompactList}\small\item\em min -\/ set a minimal value as return value \end{DoxyCompactList}\item 
 \#define \hyperlink{xputty_8h_ac39d9cef6a5e030ba8d9e11121054268}{max}(x,  y)~((x) $<$ (y) ? (y) \+: (x))
-\item 
+\begin{DoxyCompactList}\small\item\em max -\/ set a maximal value as return value \end{DoxyCompactList}\item 
 \#define \hyperlink{xputty_8h_a4b4e4f21ac252ef0b97fe32f026bd284}{I\+S\+\_\+\+U\+T\+F8}(c)~(((c)\&0xc0)==0xc0)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em I\+S\+\_\+\+U\+T\+F8 -\/ check if a char contain U\+TF 8 formated signs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 typedef struct \hyperlink{structChildlist__t}{Childlist\+\_\+t} \hyperlink{xputty_8h_a972f6c1b2363cd41766d32dc7d3a93d0}{Childlist\+\_\+t}
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{structChildlist__t}{Childlist\+\_\+t} -\/ maintain a \hyperlink{structWidget__t}{Widget\+\_\+t} list of childs for a \hyperlink{structWidget__t}{Widget\+\_\+t}. \end{DoxyCompactList}\item 
 typedef struct \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} \hyperlink{xputty_8h_a68965e5ced4b615cf52922868c4b159c}{Adjustment\+\_\+t}
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} -\/ \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} for a \hyperlink{structWidget__t}{Widget\+\_\+t}. \end{DoxyCompactList}\item 
 typedef struct \hyperlink{structWidget__t}{Widget\+\_\+t} \hyperlink{xputty_8h_a6b3e8ecb43e49de5de9dc7ab79404014}{Widget\+\_\+t}
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{structWidget__t}{Widget\+\_\+t} -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} base struct. \end{DoxyCompactList}\item 
 typedef struct \hyperlink{structXputty}{Xputty} \hyperlink{xputty_8h_a640738d2c0bf1af308958da6468c829f}{Xputty}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structXputty}{Xputty} -\/ the main struct.\+It should be declared before any other call to a \hyperlink{structXputty}{Xputty} function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{xputty_8h_a484645d624d9e9eff0288f8d5583ff5e}{main\+\_\+init} (\hyperlink{structXputty}{Xputty} $\ast$main)
-\begin{DoxyCompactList}\small\item\em main\+\_\+init -\/ open the Display and init the main-\/$>$childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. \hyperlink{xputty_8h_a484645d624d9e9eff0288f8d5583ff5e}{main\+\_\+init()} should be called directly after declaration of \hyperlink{structXputty}{Xputty}. Example\+: main\+\_\+init(\&main); Any \hyperlink{structWidget__t}{Widget\+\_\+t} which would be created afterwards will be added to the list. This list is used to check if a \hyperlink{structWidget__t}{Widget\+\_\+t} is valid. When a \hyperlink{structWidget__t}{Widget\+\_\+t} call \hyperlink{xwidget_8c_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget()} it will be removed from the list. On \hyperlink{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit()} any remaining \hyperlink{structWidget__t}{Widget\+\_\+t} from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a X\+Event. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em main\+\_\+init -\/ open the Display and init the main-\/$>$childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. \hyperlink{xputty_8h_a484645d624d9e9eff0288f8d5583ff5e}{main\+\_\+init()} should be called directly after declaration of \hyperlink{structXputty}{Xputty}. Any \hyperlink{structWidget__t}{Widget\+\_\+t} which would be created afterwards will be added to the list. This list is used to check if a \hyperlink{structWidget__t}{Widget\+\_\+t} is valid. When a \hyperlink{structWidget__t}{Widget\+\_\+t} call \hyperlink{xwidget_8c_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget()} it will be removed from the list. On \hyperlink{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit()} any remaining \hyperlink{structWidget__t}{Widget\+\_\+t} from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a X\+Event. \end{DoxyCompactList}\item 
 void \hyperlink{xputty_8h_abb548ea64f852a7c94473a595e67d69f}{main\+\_\+run} (\hyperlink{structXputty}{Xputty} $\ast$main)
-\begin{DoxyCompactList}\small\item\em main\+\_\+run -\/ the main event loop. I should be start after your Widget\+\_\+s been created. You could create and destroy additional Widget\+\_\+s at any time later during run. Eample\+: main\+\_\+run(\&main); \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em main\+\_\+run -\/ the main event loop. I should be start after your Widget\+\_\+s been created. You could create and destroy additional Widget\+\_\+s at any time later during run. \end{DoxyCompactList}\item 
 void \hyperlink{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit} (\hyperlink{structXputty}{Xputty} $\ast$main)
-\begin{DoxyCompactList}\small\item\em main\+\_\+quit -\/ destroy all remaining \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s from the main-\/$>$childlist. Free all resources which may be allocated between init and quit. It should be called after \hyperlink{xputty_8h_abb548ea64f852a7c94473a595e67d69f}{main\+\_\+run()}; Example\+: main\+\_\+quit(\&main); \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em main\+\_\+quit -\/ destroy all remaining \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s from the main-\/$>$childlist. Free all resources which may be allocated between init and quit. It should be called after \hyperlink{xputty_8h_abb548ea64f852a7c94473a595e67d69f}{main\+\_\+run()}; \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
@@ -85,29 +85,39 @@ void \hyperlink{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit} (\h
 \subsubsection{\texorpdfstring{debug\+\_\+print}{debug\_print}}
 {\footnotesize\ttfamily \#define debug\+\_\+print(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~((void)((\hyperlink{xputty_8h_ad72dbcf6d0153db1b8d8a58001feed83}{D\+E\+B\+UG}) ? fprintf(stderr, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+) \+: 0))}
 
+
+
+debug\+\_\+print -\/ print out state messages when compiled with the -\/\+D\+D\+E\+B\+UG flag 
+
 \mbox{\Hypertarget{xputty_8h_a4b4e4f21ac252ef0b97fe32f026bd284}\label{xputty_8h_a4b4e4f21ac252ef0b97fe32f026bd284}} 
 \index{xputty.\+h@{xputty.\+h}!I\+S\+\_\+\+U\+T\+F8@{I\+S\+\_\+\+U\+T\+F8}}
 \index{I\+S\+\_\+\+U\+T\+F8@{I\+S\+\_\+\+U\+T\+F8}!xputty.\+h@{xputty.\+h}}
 \subsubsection{\texorpdfstring{I\+S\+\_\+\+U\+T\+F8}{IS\_UTF8}}
 {\footnotesize\ttfamily \#define I\+S\+\_\+\+U\+T\+F8(\begin{DoxyParamCaption}\item[{}]{c }\end{DoxyParamCaption})~(((c)\&0xc0)==0xc0)}
 
-\subsubsection*{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/--- }
-
-\subsubsection*{define check if char holds U\+TF 8 string }
 
 
+I\+S\+\_\+\+U\+T\+F8 -\/ check if a char contain U\+TF 8 formated signs. 
 
- \mbox{\Hypertarget{xputty_8h_ac39d9cef6a5e030ba8d9e11121054268}\label{xputty_8h_ac39d9cef6a5e030ba8d9e11121054268}} 
+\mbox{\Hypertarget{xputty_8h_ac39d9cef6a5e030ba8d9e11121054268}\label{xputty_8h_ac39d9cef6a5e030ba8d9e11121054268}} 
 \index{xputty.\+h@{xputty.\+h}!max@{max}}
 \index{max@{max}!xputty.\+h@{xputty.\+h}}
 \subsubsection{\texorpdfstring{max}{max}}
 {\footnotesize\ttfamily \#define max(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~((x) $<$ (y) ? (y) \+: (x))}
+
+
+
+max -\/ set a maximal value as return value 
 
 \mbox{\Hypertarget{xputty_8h_abb702d8b501669a23aa0ab3b281b9384}\label{xputty_8h_abb702d8b501669a23aa0ab3b281b9384}} 
 \index{xputty.\+h@{xputty.\+h}!min@{min}}
 \index{min@{min}!xputty.\+h@{xputty.\+h}}
 \subsubsection{\texorpdfstring{min}{min}}
 {\footnotesize\ttfamily \#define min(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~((x) $<$ (y) ? (x) \+: (y))}
+
+
+
+min -\/ set a minimal value as return value 
 
 \mbox{\Hypertarget{xputty_8h_accb46852f2244dde7d0e696c1380263e}\label{xputty_8h_accb46852f2244dde7d0e696c1380263e}} 
 \index{xputty.\+h@{xputty.\+h}!X\+P\+U\+T\+T\+Y1\+\_\+\+H\+\_\+@{X\+P\+U\+T\+T\+Y1\+\_\+\+H\+\_\+}}
@@ -124,29 +134,39 @@ void \hyperlink{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit} (\h
 \subsubsection{\texorpdfstring{Adjustment\+\_\+t}{Adjustment\_t}}
 {\footnotesize\ttfamily typedef struct \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} \hyperlink{structAdjustment__t}{Adjustment\+\_\+t}}
 
+
+
+\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} -\/ \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} for a \hyperlink{structWidget__t}{Widget\+\_\+t}. 
+
 \mbox{\Hypertarget{xputty_8h_a972f6c1b2363cd41766d32dc7d3a93d0}\label{xputty_8h_a972f6c1b2363cd41766d32dc7d3a93d0}} 
 \index{xputty.\+h@{xputty.\+h}!Childlist\+\_\+t@{Childlist\+\_\+t}}
 \index{Childlist\+\_\+t@{Childlist\+\_\+t}!xputty.\+h@{xputty.\+h}}
 \subsubsection{\texorpdfstring{Childlist\+\_\+t}{Childlist\_t}}
 {\footnotesize\ttfamily typedef struct \hyperlink{structChildlist__t}{Childlist\+\_\+t} \hyperlink{structChildlist__t}{Childlist\+\_\+t}}
 
-\subsubsection*{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/--- }
-
-\subsubsection*{forward declareted structs }
 
 
+\hyperlink{structChildlist__t}{Childlist\+\_\+t} -\/ maintain a \hyperlink{structWidget__t}{Widget\+\_\+t} list of childs for a \hyperlink{structWidget__t}{Widget\+\_\+t}. 
 
- \mbox{\Hypertarget{xputty_8h_a6b3e8ecb43e49de5de9dc7ab79404014}\label{xputty_8h_a6b3e8ecb43e49de5de9dc7ab79404014}} 
+\mbox{\Hypertarget{xputty_8h_a6b3e8ecb43e49de5de9dc7ab79404014}\label{xputty_8h_a6b3e8ecb43e49de5de9dc7ab79404014}} 
 \index{xputty.\+h@{xputty.\+h}!Widget\+\_\+t@{Widget\+\_\+t}}
 \index{Widget\+\_\+t@{Widget\+\_\+t}!xputty.\+h@{xputty.\+h}}
 \subsubsection{\texorpdfstring{Widget\+\_\+t}{Widget\_t}}
 {\footnotesize\ttfamily typedef struct \hyperlink{structWidget__t}{Widget\+\_\+t} \hyperlink{structWidget__t}{Widget\+\_\+t}}
+
+
+
+\hyperlink{structWidget__t}{Widget\+\_\+t} -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} base struct. 
 
 \mbox{\Hypertarget{xputty_8h_a640738d2c0bf1af308958da6468c829f}\label{xputty_8h_a640738d2c0bf1af308958da6468c829f}} 
 \index{xputty.\+h@{xputty.\+h}!Xputty@{Xputty}}
 \index{Xputty@{Xputty}!xputty.\+h@{xputty.\+h}}
 \subsubsection{\texorpdfstring{Xputty}{Xputty}}
 {\footnotesize\ttfamily typedef struct \hyperlink{structXputty}{Xputty} \hyperlink{structXputty}{Xputty}}
+
+
+
+\hyperlink{structXputty}{Xputty} -\/ the main struct.\+It should be declared before any other call to a \hyperlink{structXputty}{Xputty} function. 
 
 
 
@@ -159,17 +179,7 @@ void \hyperlink{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit} (\h
 
 
 
-main\+\_\+init -\/ open the Display and init the main-\/$>$childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. \hyperlink{xputty_8h_a484645d624d9e9eff0288f8d5583ff5e}{main\+\_\+init()} should be called directly after declaration of \hyperlink{structXputty}{Xputty}. Example\+: main\+\_\+init(\&main); Any \hyperlink{structWidget__t}{Widget\+\_\+t} which would be created afterwards will be added to the list. This list is used to check if a \hyperlink{structWidget__t}{Widget\+\_\+t} is valid. When a \hyperlink{structWidget__t}{Widget\+\_\+t} call \hyperlink{xwidget_8c_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget()} it will be removed from the list. On \hyperlink{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit()} any remaining \hyperlink{structWidget__t}{Widget\+\_\+t} from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a X\+Event. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em $\ast$main} & -\/ pointer to the main \hyperlink{structXputty}{Xputty} struct \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void
-\end{DoxyReturn}
-main\+\_\+init -\/ open the Display and init the main-\/$>$childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. \hyperlink{xputty_8h_a484645d624d9e9eff0288f8d5583ff5e}{main\+\_\+init()} should be called directly after declaration of \hyperlink{structXputty}{Xputty}. Example\+: main\+\_\+init(\&main); Any \hyperlink{structWidget__t}{Widget\+\_\+t} which would be created afterwards will be added to the list. This list is used to check if a \hyperlink{structWidget__t}{Widget\+\_\+t} is valid. When a \hyperlink{structWidget__t}{Widget\+\_\+t} call \hyperlink{xwidget_8c_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget()} it will be removed from the list. On \hyperlink{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit()} any remaining \hyperlink{structWidget__t}{Widget\+\_\+t} from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a X\+Event.
+main\+\_\+init -\/ open the Display and init the main-\/$>$childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. \hyperlink{xputty_8h_a484645d624d9e9eff0288f8d5583ff5e}{main\+\_\+init()} should be called directly after declaration of \hyperlink{structXputty}{Xputty}. Any \hyperlink{structWidget__t}{Widget\+\_\+t} which would be created afterwards will be added to the list. This list is used to check if a \hyperlink{structWidget__t}{Widget\+\_\+t} is valid. When a \hyperlink{structWidget__t}{Widget\+\_\+t} call \hyperlink{xwidget_8c_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget()} it will be removed from the list. On \hyperlink{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit()} any remaining \hyperlink{structWidget__t}{Widget\+\_\+t} from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a X\+Event. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -187,17 +197,7 @@ void
 
 
 
-main\+\_\+quit -\/ destroy all remaining \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s from the main-\/$>$childlist. Free all resources which may be allocated between init and quit. It should be called after \hyperlink{xputty_8h_abb548ea64f852a7c94473a595e67d69f}{main\+\_\+run()}; Example\+: main\+\_\+quit(\&main); 
-
-
-\begin{DoxyParams}{Parameters}
-{\em $\ast$main} & -\/ pointer to the main \hyperlink{structXputty}{Xputty} struct \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void
-\end{DoxyReturn}
-main\+\_\+quit -\/ destroy all remaining \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s from the main-\/$>$childlist. Free all resources which may be allocated between init and quit. It should be called after \hyperlink{xputty_8h_abb548ea64f852a7c94473a595e67d69f}{main\+\_\+run()}; Example\+: main\+\_\+quit(\&main);
+main\+\_\+quit -\/ destroy all remaining \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s from the main-\/$>$childlist. Free all resources which may be allocated between init and quit. It should be called after \hyperlink{xputty_8h_abb548ea64f852a7c94473a595e67d69f}{main\+\_\+run()}; 
 
 
 \begin{DoxyParams}{Parameters}
@@ -215,17 +215,7 @@ void
 
 
 
-main\+\_\+run -\/ the main event loop. I should be start after your Widget\+\_\+s been created. You could create and destroy additional Widget\+\_\+s at any time later during run. Eample\+: main\+\_\+run(\&main); 
-
-
-\begin{DoxyParams}{Parameters}
-{\em $\ast$main} & -\/ pointer to the main \hyperlink{structXputty}{Xputty} struct \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void
-\end{DoxyReturn}
-main\+\_\+run -\/ the main event loop. I should be start after your Widget\+\_\+s been created. You could create and destroy additional Widget\+\_\+s at any time later during run. Eample\+: main\+\_\+run(\&main);
+main\+\_\+run -\/ the main event loop. I should be start after your Widget\+\_\+s been created. You could create and destroy additional Widget\+\_\+s at any time later during run. 
 
 
 \begin{DoxyParams}{Parameters}

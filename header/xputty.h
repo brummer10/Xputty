@@ -47,6 +47,12 @@
 #ifndef DEBUG
 #define DEBUG 0
 #endif
+
+/**
+ * @brief debug_print         - print out state messages when compiled with
+ * the -DDEBUG flag
+ */
+
 #define debug_print(...) \
             ((void)((DEBUG) ? fprintf(stderr, __VA_ARGS__) : 0))
 
@@ -56,33 +62,66 @@
 -----------------------------------------------------------------------
 ----------------------------------------------------------------------*/
 
+/**
+ * @brief min         - set a minimal value as return value
+ */
+
 #ifndef min
 #define min(x, y) ((x) < (y) ? (x) : (y))
 #endif
+
+/**
+ * @brief max         - set a maximal value as return value
+ */
+
 #ifndef max
 #define max(x, y) ((x) < (y) ? (y) : (x))
 #endif
 
-/**---------------------------------------------------------------------
+/*---------------------------------------------------------------------
 -----------------------------------------------------------------------	
 					define check if char holds UTF 8 string
 -----------------------------------------------------------------------
 ----------------------------------------------------------------------*/
 
+/**
+ * @brief IS_UTF8         - check if a char contain UTF 8 formated signs
+ */
+
 #define IS_UTF8(c) (((c)&0xc0)==0xc0)
 
-/**---------------------------------------------------------------------
+/*---------------------------------------------------------------------
 -----------------------------------------------------------------------	
 				forward declareted structs
 -----------------------------------------------------------------------
 ----------------------------------------------------------------------*/
 
+/**
+ * @brief Childlist_t       - maintain a Widget_t list of childs for a Widget_t
+ */
+
 typedef struct Childlist_t Childlist_t;
+
+/**
+ * @brief Adjustment_t       - Adjustment_t for a Widget_t
+ */
+
 typedef struct Adjustment_t Adjustment_t ;
+
+/**
+ * @brief Widget_t           - the Widget_t base struct
+ */
+
 typedef struct Widget_t Widget_t;
+
+/**
+ * @brief  Xputty          - the main struct.It should be declared
+ * before any other call to a Xputty function.
+ */
+
 typedef struct Xputty Xputty;
 
-/**---------------------------------------------------------------------
+/*---------------------------------------------------------------------
 -----------------------------------------------------------------------	
 				xputty library headers
 -----------------------------------------------------------------------
@@ -96,8 +135,6 @@ typedef struct Xputty Xputty;
 /**
  * @brief Xputty             - the main struct. It should be declared
  * before any other call to a Xputty function.
- * Example: 
- * Xputty main;
  * @param *childlist         - pointer to the main childlist
  * @param *dpy               - pointer to the display in use
  * @param run                - bool to quit the main loop
@@ -117,8 +154,6 @@ struct Xputty{
  * main->childlist. Also it set the bool run to true. 
  * This one will be used to terminate the main event loop.
  * main_init() should be called directly after declaration of Xputty.
- * Example:
- * main_init(&main);
  * Any Widget_t which would be created afterwards will be added to the list.
  * This list is used to check if a Widget_t is valid.
  * When a Widget_t call quit_widget() it will be removed from the list.
@@ -135,8 +170,6 @@ void main_init(Xputty *main);
  * @brief main_run          - the main event loop. I should be start after 
  * your Widget_s been created. You could create and destroy additional Widget_s
  * at any time later during run. 
- * Eample:
- * main_run(&main);
  * @param *main             - pointer to the main Xputty struct
  * @return void 
  */
@@ -147,8 +180,6 @@ void main_run(Xputty *main);
  * @brief main_quit         - destroy all remaining Widget_t's from the
  * main->childlist. Free all resources which may be allocated between init
  * and quit. It should be called after main_run();
- * Example:
- * main_quit(&main);
  * @param *main             - pointer to the main Xputty struct
  * @return void 
  */

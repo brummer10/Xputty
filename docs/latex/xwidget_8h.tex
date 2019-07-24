@@ -66,7 +66,7 @@ void \hyperlink{xwidget_8h_a4d835af5b56eb13ed7bd4602ce7ccd92}{quit} (\hyperlink{
 void \hyperlink{xwidget_8h_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em quit\+\_\+widget -\/ remove a widget from the processing loop \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_ab45a54d3dee60783a5afe9c236f54a04}{transparent\+\_\+draw} (void $\ast$wid, void $\ast$user\+\_\+data)
-\begin{DoxyCompactList}\small\item\em \+\_\+transparency -\/ copy parent surface to child surface \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em transparent\+\_\+draw -\/ copy parent surface to child surface \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_abdabca284aa8866f1f242b6857312e3b}{destroy\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{structXputty}{Xputty} $\ast$main)
 \begin{DoxyCompactList}\small\item\em destroy\+\_\+widget -\/ destroy a widget \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_a4549cfc76e73a5d56b50f0d762287436}{widget\+\_\+event\+\_\+loop} (void $\ast$w\+\_\+, void $\ast$event, \hyperlink{structXputty}{Xputty} $\ast$main, void $\ast$user\+\_\+data)
@@ -252,25 +252,13 @@ $\ast$create\+\_\+window -\/ create a Window
 \begin{DoxyParams}{Parameters}
 {\em $\ast$dpy} & -\/ pointer to the Display to use \\
 \hline
-{\em $\ast$win} & -\/ pointer to the Parrent Window (may be Root) \\
-\hline
-{\em x,y,width,height} & -\/ the position/geometry to create the window \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct
-\end{DoxyReturn}
-
-\begin{DoxyParams}{Parameters}
-{\em $\ast$dpy} & -\/ pointer to the Display to use \\
-\hline
 {\em win} & -\/ pointer to the Parrent Window (may be Root) \\
 \hline
 {\em x,y,width,height} & -\/ the position/geometry to create the window \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
 \end{DoxyReturn}
 \mbox{\Hypertarget{xwidget_8h_abdabca284aa8866f1f242b6857312e3b}\label{xwidget_8h_abdabca284aa8866f1f242b6857312e3b}} 
 \index{xwidget.\+h@{xwidget.\+h}!destroy\+\_\+widget@{destroy\+\_\+widget}}
@@ -281,18 +269,6 @@ Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t
 
 
 destroy\+\_\+widget -\/ destroy a widget 
-
-
-\begin{DoxyParams}{Parameters}
-{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
-\hline
-{\em $\ast$main} & -\/ pointer to main struct \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void
-\end{DoxyReturn}
-destroy\+\_\+widget -\/ destroy a widget
 
 
 \begin{DoxyParams}{Parameters}
@@ -386,19 +362,7 @@ void
 
 
 
-\+\_\+transparency -\/ copy parent surface to child surface 
-
-
-\begin{DoxyParams}{Parameters}
-{\em $\ast$wid} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} receiving a event \\
-\hline
-{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void
-\end{DoxyReturn}
-\+\_\+transparency -\/ copy parent surface to child surface
+transparent\+\_\+draw -\/ copy parent surface to child surface 
 
 
 \begin{DoxyParams}{Parameters}
