@@ -78,7 +78,8 @@ static void button_release(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     expose_widget(w_);
     if (w->has_pointer){
-        quit(w);
+        Widget_t *p = (Widget_t*)w->parent;
+        quit(p);
     }
 
 }
