@@ -83,7 +83,8 @@ static void button_release(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     draw_button(w_, NULL);
     if (w->has_pointer){
-        quit(w);
+        Widget_t *p = (Widget_t*)w->parent;
+        quit(p);
     }
 
 }
@@ -111,6 +112,12 @@ int main (int argc, char ** argv)
     w->label = "How are you?";
     w->func.expose_callback = draw_window;
 
+
+    Screen *screen = ScreenOfDisplay(app.dpy,0);
+    int center_x = screen->width/2 - 150;
+    int center_y = screen->height/2 - 100; 
+    XMoveWindow(w->dpy,w->widget,center_x, center_y);
+
     w_quit = create_widget(&app, w, 230, 170, 60, 20);
     w_quit->label = "Quit";
     w_quit->func.expose_callback = draw_button;
@@ -123,7 +130,7 @@ int main (int argc, char ** argv)
     XStoreName(app.dpy, w->widget, "Xputty Message Box");
     w->label = "This is a message";
     w->func.expose_callback = draw_window;
-    XMoveWindow(w->dpy,w->widget,400, 400);
+    XMoveWindow(w->dpy,w->widget,center_x+30, center_y+30);
 
     w_quit = create_widget(&app, w, 230, 170, 60, 20);
     w_quit->label = "OK";

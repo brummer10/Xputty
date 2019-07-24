@@ -77,6 +77,11 @@ void childlist_add_child(Childlist_t *childlist, Widget_t *child) {
     if(!childlist) childlist_init(childlist);
     if(childlist->cap <= childlist->elem-1) _childlist_add_elem(childlist);
     childlist->childs[childlist->elem] = child;
+    if (!child->is_widget) {
+        Atom WM_DELETE_WINDOW;
+        WM_DELETE_WINDOW = XInternAtom(child->dpy, "WM_DELETE_WINDOW", True);
+        XSetWMProtocols(child->dpy, child->widget, &WM_DELETE_WINDOW, 1);
+    }
     childlist->elem +=1;
 }
 

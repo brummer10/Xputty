@@ -63,8 +63,13 @@ void main_run(Xputty *main) {
         switch (xev.type) {
             case ClientMessage:
                 /* delete window event */
-                if (xev.xclient.data.l[0] == WM_DELETE_WINDOW)
+                if (xev.xclient.data.l[0] == WM_DELETE_WINDOW &&
+                        xev.xclient.window == wid->widget) {
                     main->run = false;
+                } else {
+                    int i = childlist_find_widget(main->childlist, xev.xclient.window);
+                    if(i>1) quit_widget(main->childlist->childs[i]);
+                }
             break;
         }
     }

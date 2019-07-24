@@ -163,8 +163,6 @@ static void get_text(void *w_, void *key_, void *user_data) {
         if(status == XLookupChars || status == XLookupBoth){
             text_input_add_text(w, buf);
         }
-            
-       // if(n) text_input_add_text(w, buf);
     }
 }
 

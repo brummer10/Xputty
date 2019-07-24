@@ -277,9 +277,10 @@ Widget_t *create_window(Xputty *app, Window win,
 
     XSizeHints* win_size_hints;
     win_size_hints = XAllocSizeHints();
-    win_size_hints->flags =  PMinSize;
+    win_size_hints->flags =  PMinSize|PWinGravity;
     win_size_hints->min_width = width/2;
     win_size_hints->min_height = height/2;
+    win_size_hints->win_gravity = CenterGravity;
     XSetWMNormalHints(app->dpy, w->widget, win_size_hints);
     XFree(win_size_hints);
 
@@ -644,9 +645,17 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
 
         case ClientMessage:
             if (xev->xclient.message_type == XInternAtom(wid->dpy, "WIDGET_DESTROY", 1)) {
-                destroy_widget(wid,main);
+                int ch = childlist_has_child(wid->childlist);
+                if (ch) {
+                    int i = ch;
+                    for(;i>0;i--) {
+                        destroy_widget(wid->childlist->childs[i-1],main);
+                    }
+                    destroy_widget(wid,main);
+                } else {
+                    destroy_widget(wid,main);
+                }
             }
-        break;
 
         default:
         break;
