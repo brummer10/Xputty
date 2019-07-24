@@ -106,9 +106,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a0e801c1a701cc8526b198371ce2ff692"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a0e801c1a701cc8526b198371ce2ff692">transparent_draw</a> (void *w_, void *user_data)</td></tr>
 <tr class="memdesc:a0e801c1a701cc8526b198371ce2ff692"><td class="mdescLeft">&#160;</td><td class="mdescRight">transparent_draw - copy parent surface to child surface  <a href="#a0e801c1a701cc8526b198371ce2ff692">More...</a><br /></td></tr>
 <tr class="separator:a0e801c1a701cc8526b198371ce2ff692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3ecce0332b5f13b590d024db28aec5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#af3ecce0332b5f13b590d024db28aec5a">widget_event_loop</a> (void *w_, void *event, void *user_data)</td></tr>
-<tr class="memdesc:af3ecce0332b5f13b590d024db28aec5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget_event_loop - the internal widget event loop  <a href="#af3ecce0332b5f13b590d024db28aec5a">More...</a><br /></td></tr>
-<tr class="separator:af3ecce0332b5f13b590d024db28aec5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4549cfc76e73a5d56b50f0d762287436"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a4549cfc76e73a5d56b50f0d762287436">widget_event_loop</a> (void *w_, void *event, <a class="el" href="structXputty.html">Xputty</a> *main, void *user_data)</td></tr>
+<tr class="memdesc:a4549cfc76e73a5d56b50f0d762287436"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget_event_loop - the internal widget event loop  <a href="#a4549cfc76e73a5d56b50f0d762287436">More...</a><br /></td></tr>
+<tr class="separator:a4549cfc76e73a5d56b50f0d762287436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d835af5b56eb13ed7bd4602ce7ccd92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a4d835af5b56eb13ed7bd4602ce7ccd92">quit</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w)</td></tr>
 <tr class="memdesc:a4d835af5b56eb13ed7bd4602ce7ccd92"><td class="mdescLeft">&#160;</td><td class="mdescRight">quit - exit the main loop  <a href="#a4d835af5b56eb13ed7bd4602ce7ccd92">More...</a><br /></td></tr>
 <tr class="separator:a4d835af5b56eb13ed7bd4602ce7ccd92"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -478,8 +478,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af3ecce0332b5f13b590d024db28aec5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3ecce0332b5f13b590d024db28aec5a">&#9670;&nbsp;</a></span>widget_event_loop()</h2>
+<a id="a4549cfc76e73a5d56b50f0d762287436"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4549cfc76e73a5d56b50f0d762287436">&#9670;&nbsp;</a></span>widget_event_loop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -495,6 +495,12 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structXputty.html">Xputty</a> *&#160;</td>
+          <td class="paramname"><em>main</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

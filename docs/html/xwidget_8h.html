@@ -121,6 +121,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a6423c133fb634585762a77dda34befab"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#a6423c133fb634585762a77dda34befab">vfunc</a>) (void *widget, void *event, <a class="el" href="structXputty.html">Xputty</a> *main, void *user_data)</td></tr>
+<tr class="memdesc:a6423c133fb634585762a77dda34befab"><td class="mdescLeft">&#160;</td><td class="mdescRight">*evfunc - function pointer to connect Xevents from the widgets  <a href="#a6423c133fb634585762a77dda34befab">More...</a><br /></td></tr>
+<tr class="separator:a6423c133fb634585762a77dda34befab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4ae973f86a383c8c0f92b709044520a"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#ab4ae973f86a383c8c0f92b709044520a">evfunc</a>) (void *widget, void *event, void *user_data)</td></tr>
 <tr class="memdesc:ab4ae973f86a383c8c0f92b709044520a"><td class="mdescLeft">&#160;</td><td class="mdescRight">*evfunc - function pointer to connect Xevents from the widgets  <a href="#ab4ae973f86a383c8c0f92b709044520a">More...</a><br /></td></tr>
 <tr class="separator:ab4ae973f86a383c8c0f92b709044520a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,9 +167,9 @@ Functions</h2></td></tr>
 <tr class="memitem:abdabca284aa8866f1f242b6857312e3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#abdabca284aa8866f1f242b6857312e3b">destroy_widget</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, <a class="el" href="structXputty.html">Xputty</a> *main)</td></tr>
 <tr class="memdesc:abdabca284aa8866f1f242b6857312e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy_widget - destroy a widget  <a href="#abdabca284aa8866f1f242b6857312e3b">More...</a><br /></td></tr>
 <tr class="separator:abdabca284aa8866f1f242b6857312e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3ecce0332b5f13b590d024db28aec5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#af3ecce0332b5f13b590d024db28aec5a">widget_event_loop</a> (void *w_, void *event, void *user_data)</td></tr>
-<tr class="memdesc:af3ecce0332b5f13b590d024db28aec5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget_event_loop - the internal widget event loop  <a href="#af3ecce0332b5f13b590d024db28aec5a">More...</a><br /></td></tr>
-<tr class="separator:af3ecce0332b5f13b590d024db28aec5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4549cfc76e73a5d56b50f0d762287436"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#a4549cfc76e73a5d56b50f0d762287436">widget_event_loop</a> (void *w_, void *event, <a class="el" href="structXputty.html">Xputty</a> *main, void *user_data)</td></tr>
+<tr class="memdesc:a4549cfc76e73a5d56b50f0d762287436"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget_event_loop - the internal widget event loop  <a href="#a4549cfc76e73a5d56b50f0d762287436">More...</a><br /></td></tr>
+<tr class="separator:a4549cfc76e73a5d56b50f0d762287436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17f2f3effd46532c596511abcfb5058e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8h.html#a17f2f3effd46532c596511abcfb5058e">expose_widget</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w)</td></tr>
 <tr class="memdesc:a17f2f3effd46532c596511abcfb5058e"><td class="mdescLeft">&#160;</td><td class="mdescRight">expose_widgets - send expose expose event to window  <a href="#a17f2f3effd46532c596511abcfb5058e">More...</a><br /></td></tr>
 <tr class="separator:a17f2f3effd46532c596511abcfb5058e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,6 +209,32 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*widget</td><td>- void pointer to the widget </td></tr>
+    <tr><td class="paramname">*event</td><td>- void pointer to the XEvent </td></tr>
+    <tr><td class="paramname">*user_data</td><td>- void pointer to attached user_data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a6423c133fb634585762a77dda34befab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6423c133fb634585762a77dda34befab">&#9670;&nbsp;</a></span>vfunc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* vfunc) (void *widget, void *event, <a class="el" href="structXputty.html">Xputty</a> *main, void *user_data)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>*evfunc - function pointer to connect Xevents from the widgets </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*widget</td><td>- void pointer to the widget </td></tr>
+    <tr><td class="paramname">*main</td><td>- pointer to <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> main struct </td></tr>
     <tr><td class="paramname">*event</td><td>- void pointer to the XEvent </td></tr>
     <tr><td class="paramname">*user_data</td><td>- void pointer to attached user_data </td></tr>
   </table>
@@ -633,8 +662,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af3ecce0332b5f13b590d024db28aec5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3ecce0332b5f13b590d024db28aec5a">&#9670;&nbsp;</a></span>widget_event_loop()</h2>
+<a id="a4549cfc76e73a5d56b50f0d762287436"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4549cfc76e73a5d56b50f0d762287436">&#9670;&nbsp;</a></span>widget_event_loop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -650,6 +679,12 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structXputty.html">Xputty</a> *&#160;</td>
+          <td class="paramname"><em>main</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

@@ -34,6 +34,8 @@ struct \hyperlink{structWidget__t}{Widget\+\_\+t}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
+typedef void($\ast$ \hyperlink{xwidget_8h_a6423c133fb634585762a77dda34befab}{vfunc}) (void $\ast$widget, void $\ast$event, \hyperlink{structXputty}{Xputty} $\ast$main, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em $\ast$evfunc -\/ function pointer to connect Xevents from the widgets \end{DoxyCompactList}\item 
 typedef void($\ast$ \hyperlink{xwidget_8h_ab4ae973f86a383c8c0f92b709044520a}{evfunc}) (void $\ast$widget, void $\ast$event, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em $\ast$evfunc -\/ function pointer to connect Xevents from the widgets \end{DoxyCompactList}\item 
 typedef void($\ast$ \hyperlink{xwidget_8h_a9ef0263424a7f5f8f6b02055fca67ddd}{xevfunc}) (void $\ast$widget, void $\ast$user\+\_\+data)
@@ -67,7 +69,7 @@ void \hyperlink{xwidget_8h_ab45a54d3dee60783a5afe9c236f54a04}{transparent\+\_\+d
 \begin{DoxyCompactList}\small\item\em \+\_\+transparency -\/ copy parent surface to child surface \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_abdabca284aa8866f1f242b6857312e3b}{destroy\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{structXputty}{Xputty} $\ast$main)
 \begin{DoxyCompactList}\small\item\em destroy\+\_\+widget -\/ destroy a widget \end{DoxyCompactList}\item 
-void \hyperlink{xwidget_8h_af3ecce0332b5f13b590d024db28aec5a}{widget\+\_\+event\+\_\+loop} (void $\ast$w\+\_\+, void $\ast$event, void $\ast$user\+\_\+data)
+void \hyperlink{xwidget_8h_a4549cfc76e73a5d56b50f0d762287436}{widget\+\_\+event\+\_\+loop} (void $\ast$w\+\_\+, void $\ast$event, \hyperlink{structXputty}{Xputty} $\ast$main, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em widget\+\_\+event\+\_\+loop -\/ the internal widget event loop \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_a17f2f3effd46532c596511abcfb5058e}{expose\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em expose\+\_\+widgets -\/ send expose expose event to window \end{DoxyCompactList}\item 
@@ -98,6 +100,30 @@ $\ast$evfunc -\/ function pointer to connect Xevents from the widgets
 
 \begin{DoxyParams}{Parameters}
 {\em $\ast$widget} & -\/ void pointer to the widget \\
+\hline
+{\em $\ast$event} & -\/ void pointer to the X\+Event \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8h_a6423c133fb634585762a77dda34befab}\label{xwidget_8h_a6423c133fb634585762a77dda34befab}} 
+\index{xwidget.\+h@{xwidget.\+h}!vfunc@{vfunc}}
+\index{vfunc@{vfunc}!xwidget.\+h@{xwidget.\+h}}
+\subsubsection{\texorpdfstring{vfunc}{vfunc}}
+{\footnotesize\ttfamily typedef void($\ast$ vfunc) (void $\ast$widget, void $\ast$event, \hyperlink{structXputty}{Xputty} $\ast$main, void $\ast$user\+\_\+data)}
+
+
+
+$\ast$evfunc -\/ function pointer to connect Xevents from the widgets 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$widget} & -\/ void pointer to the widget \\
+\hline
+{\em $\ast$main} & -\/ pointer to \hyperlink{structXputty}{Xputty} main struct \\
 \hline
 {\em $\ast$event} & -\/ void pointer to the X\+Event \\
 \hline
@@ -384,11 +410,11 @@ void
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xwidget_8h_af3ecce0332b5f13b590d024db28aec5a}\label{xwidget_8h_af3ecce0332b5f13b590d024db28aec5a}} 
+\mbox{\Hypertarget{xwidget_8h_a4549cfc76e73a5d56b50f0d762287436}\label{xwidget_8h_a4549cfc76e73a5d56b50f0d762287436}} 
 \index{xwidget.\+h@{xwidget.\+h}!widget\+\_\+event\+\_\+loop@{widget\+\_\+event\+\_\+loop}}
 \index{widget\+\_\+event\+\_\+loop@{widget\+\_\+event\+\_\+loop}!xwidget.\+h@{xwidget.\+h}}
 \subsubsection{\texorpdfstring{widget\+\_\+event\+\_\+loop()}{widget\_event\_loop()}}
-{\footnotesize\ttfamily void widget\+\_\+event\+\_\+loop (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{event,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void widget\+\_\+event\+\_\+loop (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{event,  }\item[{\hyperlink{structXputty}{Xputty} $\ast$}]{main,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
 
 
 

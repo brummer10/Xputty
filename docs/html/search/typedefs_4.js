@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['xevfunc',['xevfunc',['../xwidget_8h.html#a9ef0263424a7f5f8f6b02055fca67ddd',1,'xwidget.h']]],
-  ['xputty',['Xputty',['../xputty_8h.html#a640738d2c0bf1af308958da6468c829f',1,'xputty.h']]]
+  ['widget_5ft',['Widget_t',['../xputty_8h.html#a6b3e8ecb43e49de5de9dc7ab79404014',1,'xputty.h']]]
 ];
