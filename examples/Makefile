@@ -7,9 +7,11 @@
 	LD_DBUGFLAGS += -I. -I../header -g -D DEBUG `pkg-config --static --cflags --libs cairo` -L/usr/X11/lib -lX11 -lm
 	SRC=$(wildcard *.c)
 	LIB_DIR := ../libxputty/
+	HEADER_DIR := ../header/
 	OBJ_DIR := 
 	LIB_SOURCES := $(wildcard $(LIB_DIR)/*.c)
 	LIB_OBJ := $(notdir $(patsubst %.c,%.o,$(LIB_SOURCES)))
+	DEP = $(LIB_OBJ:%.o=%.d)
 	EXAMPLE_SOURCES := $(wildcard *.c)
 	OBJECTS := $(patsubst %.c,%.o,$(EXAMPLE_SOURCES))
 	EXEC_FILES := $(patsubst %.c,%,$(EXAMPLE_SOURCES))
@@ -26,13 +28,15 @@ build-static: $(EXEC_FILES)
 
 clean:
 	@rm -f $(OBJECTS) $(EXEC_FILES)
-	@rm -f libxputty.a $(LIB_OBJ)
+	@rm -f libxputty.a $(LIB_OBJ) $(DEP)
 
 $(LIB_OBJ): $(LIB_SOURCES)
-	$(CC) -c $(addprefix $(LIB_DIR),$(patsubst %.o,%.c,$@)) -o $@ $(LDFLAGS)
+	$(CC) -MMD -c $(addprefix $(LIB_DIR),$(patsubst %.o,%.c,$@)) -o $@ $(LDFLAGS)
+
+-include $(DEP)
 
 libxputty.a: $(LIB_OBJ)
-	ar rcs libxputty.a xwidget.o xadjustment.o xchildlist.o xputty.o
+	ar rcs libxputty.a $(LIB_OBJ)
 
 $(OBJECTS): $(EXAMPLE_SOURCES) libxputty.a
 	$(CC) -c $(patsubst %.o,%.c,$@) -o $@  $(LDFLAGS)
@@ -41,3 +45,4 @@ $(EXEC_FILES): $(OBJECTS)
 	$(CC)  $(patsubst %,%.c,$@) -L. libxputty.a -o $@  $(LDFLAGS)
 
 doc:
+
