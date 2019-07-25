@@ -60,7 +60,7 @@ typedef enum {
  * @param max_value        - the maximal value of the adjustment
  * @param step             - the step to increase/decrease the adjustment
  * @param start_value      - the value of init the adjustment with
- * @param type             - should be on of the CL_types
+ * @param type             - should be on of the CL_type
  */
 
 struct  Adjustment_t {
@@ -78,7 +78,7 @@ struct  Adjustment_t {
     float step;
 /** the value of init the adjustment with */
     float start_value;
-/** should be on of the CL_ types */
+/** should be on of the CL_ type */
     CL_type type;
 };
 

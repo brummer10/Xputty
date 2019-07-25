@@ -15,7 +15,7 @@ Include dependency graph for xputty.\+c\+:
 void \hyperlink{xputty_8c_a484645d624d9e9eff0288f8d5583ff5e}{main\+\_\+init} (\hyperlink{structXputty}{Xputty} $\ast$main)
 \begin{DoxyCompactList}\small\item\em main\+\_\+init -\/ open the Display and init the main-\/$>$childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. \hyperlink{xputty_8c_a484645d624d9e9eff0288f8d5583ff5e}{main\+\_\+init()} should be called directly after declaration of \hyperlink{structXputty}{Xputty}. Any \hyperlink{structWidget__t}{Widget\+\_\+t} which would be created afterwards will be added to the list. This list is used to check if a \hyperlink{structWidget__t}{Widget\+\_\+t} is valid. When a \hyperlink{structWidget__t}{Widget\+\_\+t} call \hyperlink{xwidget_8c_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget()} it will be removed from the list. On \hyperlink{xputty_8c_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit()} any remaining \hyperlink{structWidget__t}{Widget\+\_\+t} from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a X\+Event. \end{DoxyCompactList}\item 
 void \hyperlink{xputty_8c_abb548ea64f852a7c94473a595e67d69f}{main\+\_\+run} (\hyperlink{structXputty}{Xputty} $\ast$main)
-\begin{DoxyCompactList}\small\item\em main\+\_\+run -\/ the main event loop. I should be start after your Widget\+\_\+s been created. You could create and destroy additional Widget\+\_\+s at any time later during run. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em main\+\_\+run -\/ the main event loop. I should be start after your \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s been created. You could create and destroy additional \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s at any time later during run. \end{DoxyCompactList}\item 
 void \hyperlink{xputty_8c_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit} (\hyperlink{structXputty}{Xputty} $\ast$main)
 \begin{DoxyCompactList}\small\item\em main\+\_\+quit -\/ destroy all remaining \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s from the main-\/$>$childlist. Free all resources which may be allocated between init and quit. It should be called after \hyperlink{xputty_8c_abb548ea64f852a7c94473a595e67d69f}{main\+\_\+run()}; \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -65,7 +65,7 @@ void
 
 
 
-main\+\_\+run -\/ the main event loop. I should be start after your Widget\+\_\+s been created. You could create and destroy additional Widget\+\_\+s at any time later during run. 
+main\+\_\+run -\/ the main event loop. I should be start after your \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s been created. You could create and destroy additional \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s at any time later during run. 
 
 
 \begin{DoxyParams}{Parameters}

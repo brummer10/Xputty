@@ -2,10 +2,16 @@ var searchData=
 [
   ['xadjustment_2ec',['xadjustment.c',['../xadjustment_8c.html',1,'']]],
   ['xadjustment_2eh',['xadjustment.h',['../xadjustment_8h.html',1,'']]],
+  ['xadjustment_5fprivate_2ec',['xadjustment_private.c',['../xadjustment__private_8c.html',1,'']]],
+  ['xadjustment_5fprivate_2eh',['xadjustment_private.h',['../xadjustment__private_8h.html',1,'']]],
   ['xchildlist_2ec',['xchildlist.c',['../xchildlist_8c.html',1,'']]],
   ['xchildlist_2eh',['xchildlist.h',['../xchildlist_8h.html',1,'']]],
+  ['xchildlist_5fprivate_2ec',['xchildlist_private.c',['../xchildlist__private_8c.html',1,'']]],
+  ['xchildlist_5fprivate_2eh',['xchildlist_private.h',['../xchildlist__private_8h.html',1,'']]],
   ['xputty_2ec',['xputty.c',['../xputty_8c.html',1,'']]],
   ['xputty_2eh',['xputty.h',['../xputty_8h.html',1,'']]],
   ['xwidget_2ec',['xwidget.c',['../xwidget_8c.html',1,'']]],
-  ['xwidget_2eh',['xwidget.h',['../xwidget_8h.html',1,'']]]
+  ['xwidget_2eh',['xwidget.h',['../xwidget_8h.html',1,'']]],
+  ['xwidget_5fprivate_2ec',['xwidget_private.c',['../xwidget__private_8c.html',1,'']]],
+  ['xwidget_5fprivate_2eh',['xwidget_private.h',['../xwidget__private_8h.html',1,'']]]
 ];

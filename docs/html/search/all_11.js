@@ -1,6 +1,14 @@
 var searchData=
 [
-  ['transparency',['transparency',['../structWidget__t.html#a42a597c21eca964c0296fc7026feb43b',1,'Widget_t']]],
-  ['transparent_5fdraw',['transparent_draw',['../xwidget_8c.html#a0e801c1a701cc8526b198371ce2ff692',1,'transparent_draw(void *w_, void *user_data):&#160;xwidget.c'],['../xwidget_8h.html#ab45a54d3dee60783a5afe9c236f54a04',1,'transparent_draw(void *wid, void *user_data):&#160;xwidget.c']]],
-  ['type',['type',['../structAdjustment__t.html#a1ec53b702dc4707522249f3cb5cbf6b3',1,'Adjustment_t']]]
+  ['scale',['scale',['../structWidget__t.html#a9a2d5b53f40f5bf3914fc0694027d7ec',1,'Widget_t']]],
+  ['scale_5fx',['scale_x',['../structResize__t.html#a66246e7c08afdbe8f576ec4224a4fd3c',1,'Resize_t']]],
+  ['scale_5fy',['scale_y',['../structResize__t.html#ab21caee367ce8e911c1e9b678d3d299e',1,'Resize_t']]],
+  ['size',['size',['../structChildlist__t.html#a3045339822c393689c6fac8b8a2a4457',1,'Childlist_t']]],
+  ['southeast',['SOUTHEAST',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adea16c2c7abfbd3bad3343b0dcaa858bb49',1,'xwidget.h']]],
+  ['southwest',['SOUTHWEST',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adea6aa90951b336be999de204e61dd366d4',1,'xwidget.h']]],
+  ['start_5fvalue',['start_value',['../structAdjustment__t.html#abec8df43db1df5d6fcc6b6619773dbc9',1,'Adjustment_t']]],
+  ['state',['state',['../structWidget__t.html#aaa935b64805fdeb78acb015c67d6638c',1,'Widget_t']]],
+  ['std_5fvalue',['std_value',['../structAdjustment__t.html#ab90ff6647e5933aa4919724d61e15e23',1,'Adjustment_t']]],
+  ['step',['step',['../structAdjustment__t.html#a0198d0a412f8642b3e8a308f9240d467',1,'Adjustment_t']]],
+  ['surface',['surface',['../structWidget__t.html#ae9b5979742ea31817ff7d7b34a56f88d',1,'Widget_t']]]
 ];

@@ -19,6 +19,7 @@
  */
 
 #include "xadjustment.h"
+#include "xadjustment_private.h"
 
 
 /**
@@ -65,7 +66,7 @@ void *delete_adjustment(Adjustment_t *adj) {
  */
 
 float adj_get_state(Adjustment_t *adj) {
-    if (!adj) return 0;
+    if (!adj) return 0.0;
     return (adj->value - adj->min_value) /
        (adj->max_value - adj->min_value);
 }
@@ -77,7 +78,7 @@ float adj_get_state(Adjustment_t *adj) {
  */
 
 float adj_get_value(Adjustment_t *adj) {
-    if (!adj) return 0;
+    if (!adj) return 0.0;
     return (adj->value);
 }
 
@@ -91,7 +92,7 @@ float adj_get_value(Adjustment_t *adj) {
 void adj_set_value(Adjustment_t *adj, float v) {
     if (!adj) return;
     adj->value = v;
-    expose_widget(adj->w);
+    adj->w->func.adj_callback(adj->w, NULL);
 }
 
 /**
@@ -118,6 +119,7 @@ void adj_set_state(void *w, float x, float y) {
     Widget_t * wid = (Widget_t*)w;
     const float scaling = 0.5;
     if(wid->adj_x) {
+        float value= wid->adj_x->value;
         switch(wid->adj_x->type) {
             case (CL_CONTINUOS):
             {
@@ -125,17 +127,19 @@ void adj_set_state(void *w, float x, float y) {
                     (wid->adj_x->max_value - wid->adj_x->min_value);
                 float nsteps = wid->adj_x->step / (wid->adj_x->max_value - wid->adj_x->min_value);
                 float nvalue = min(1.0,max(0.0,state + ((float)(x - wid->pos_x)*scaling *nsteps)));
-                wid->adj_x->value = nvalue * (wid->adj_x->max_value - wid->adj_x->min_value) + wid->adj_x->min_value;
+                value = nvalue * (wid->adj_x->max_value - wid->adj_x->min_value) + wid->adj_x->min_value;
             }
             break;
             case (CL_TOGGLE):
-                wid->adj_x->value = wid->adj_x->value ? 0.0 : 1.0;
+                value = wid->adj_x->value ? 0.0 : 1.0;
             break;
             default:
             break;
         }
+        _check_value_changed(wid->adj_x, &value);
     }
     if(wid->adj_y) {
+        float value = wid->adj_y->value;
         switch(wid->adj_y->type) {
             case (CL_CONTINUOS):
             {
@@ -143,15 +147,15 @@ void adj_set_state(void *w, float x, float y) {
                     (wid->adj_y->max_value - wid->adj_y->min_value);
                 float nsteps = wid->adj_y->step / (wid->adj_y->max_value - wid->adj_y->min_value);
                 float nvalue = min(1.0,max(0.0,state + ((float)(wid->pos_y - y)*scaling *nsteps)));
-                wid->adj_y->value = nvalue * (wid->adj_y->max_value - wid->adj_y->min_value) + wid->adj_y->min_value;
+                value = nvalue * (wid->adj_y->max_value - wid->adj_y->min_value) + wid->adj_y->min_value;
             }
             break;
             case (CL_TOGGLE):
-                wid->adj_y->value = wid->adj_y->value ? 0.0 : 1.0;
+                value = wid->adj_y->value ? 0.0 : 1.0;
             break;
             default:
             break;
         }
+        _check_value_changed(wid->adj_y, &value);
     }
-   // if(wid->adj_x || wid->adj_y) expose_widget(wid);
 }

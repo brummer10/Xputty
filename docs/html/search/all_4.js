@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['elem',['elem',['../structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f',1,'Childlist_t']]],
-  ['enter_5fcallback',['enter_callback',['../structFunc__t.html#a6ae24f219bf8eff4bd5fbdfa3f29c14d',1,'Func_t']]],
-  ['event_5fcallback',['event_callback',['../structWidget__t.html#af0adf855c1991d11f59c5b6f9a2c526a',1,'Widget_t']]],
-  ['evfunc',['evfunc',['../xwidget_8h.html#ab4ae973f86a383c8c0f92b709044520a',1,'xwidget.h']]],
-  ['expose_5fcallback',['expose_callback',['../structFunc__t.html#ae4ba307ec29bfea83e1197aa750c1396',1,'Func_t']]],
-  ['expose_5fwidget',['expose_widget',['../xwidget_8c.html#a17f2f3effd46532c596511abcfb5058e',1,'expose_widget(Widget_t *w):&#160;xwidget.c'],['../xwidget_8h.html#a17f2f3effd46532c596511abcfb5058e',1,'expose_widget(Widget_t *w):&#160;xwidget.c']]]
+  ['data',['data',['../structWidget__t.html#a9dd7b58be77bf31ab021aa627a73186a',1,'Widget_t']]],
+  ['debug',['DEBUG',['../xputty_8h.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'xputty.h']]],
+  ['debug_5fprint',['debug_print',['../xputty_8h.html#ac9e7326b4569847122754061b96c42d0',1,'xputty.h']]],
+  ['delete_5fadjustment',['delete_adjustment',['../xadjustment_8c.html#af8186d7e68d37007f6e38814225e6ee3',1,'delete_adjustment(Adjustment_t *adj):&#160;xadjustment.c'],['../xadjustment_8h.html#af8186d7e68d37007f6e38814225e6ee3',1,'delete_adjustment(Adjustment_t *adj):&#160;xadjustment.c']]],
+  ['destroy_5fwidget',['destroy_widget',['../xwidget_8c.html#abdabca284aa8866f1f242b6857312e3b',1,'destroy_widget(Widget_t *w, Xputty *main):&#160;xwidget.c'],['../xwidget_8h.html#abdabca284aa8866f1f242b6857312e3b',1,'destroy_widget(Widget_t *w, Xputty *main):&#160;xwidget.c']]],
+  ['dpy',['dpy',['../structXputty.html#ab185ae4fd00ee1930c61e0440734878f',1,'Xputty::dpy()'],['../structWidget__t.html#a5ae8f0fdd24c6baf15173dc0cc9ae360',1,'Widget_t::dpy()']]]
 ];

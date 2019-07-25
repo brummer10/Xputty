@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gravity',['gravity',['../structResize__t.html#a20c3835bb7bf53474f4d54447ffcd191',1,'Resize_t::gravity()'],['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391ade',1,'Gravity():&#160;xwidget.h']]]
+  ['func',['func',['../structWidget__t.html#a225b9a175e132994a5aa73b59a2911ad',1,'Widget_t']]],
+  ['func_5ft',['Func_t',['../structFunc__t.html',1,'']]]
 ];

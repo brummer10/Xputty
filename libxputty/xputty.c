@@ -47,7 +47,7 @@ void main_init(Xputty *main) {
 
 /**
  * @brief main_run          - the main event loop. I should be start after 
- * your Widget_s been created. You could create and destroy additional Widget_s
+ * your Widget_t's been created. You could create and destroy additional Widget_t's
  * at any time later during run. 
  * @param *main             - pointer to the main Xputty struct
  * @return void 

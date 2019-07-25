@@ -20,6 +20,8 @@
 
 
 #include "xwidget.h"
+#include "xwidget_private.h"
+
 
 /**
  * @brief key_mapping       - modifier key's mapped to a integer value
@@ -108,82 +110,6 @@ void destroy_widget(Widget_t * w, Xputty *main) {
 }
 
 /**
- * @brief _resize_surface    - intern check if surfaces needs resizing
- * @param *wid               - pointer to the Widget_t receive the event
- * @param width              - the new width
- * @param height             - the new height
- * @return void 
- */
-
-static inline void _resize_surface(Widget_t *wid, int width, int height) {
-    wid->width = width;
-    wid->height = height;
-    cairo_xlib_surface_set_size( wid->surface, wid->width, wid->height);
-    cairo_destroy(wid->crb);
-    cairo_surface_destroy(wid->buffer);
-    wid->buffer = cairo_surface_create_similar (wid->surface, 
-                        CAIRO_CONTENT_COLOR_ALPHA, width, height);
-    wid->crb = cairo_create (wid->buffer);
-}
-
-/**
- * @brief _resize_childs     - intern check if child widgets needs resizing
- * @param *wid               - pointer to the Widget_t receive the event
- * @return void 
- */
-
-static inline void _resize_childs(Widget_t *wid) {
-    if(!childlist_has_child(wid->childlist)) return;
-    int i = 0;
-    for(;i<wid->childlist->elem;i++) {
-        Widget_t *w = wid->childlist->childs[i];
-        switch(w->scale.gravity) {
-            case(NORTHWEST):
-                XResizeWindow (w->dpy, w->widget, max(1,
-                    w->scale.init_width - (wid->scale.scale_x)), 
-                    max(1,w->scale.init_height - (wid->scale.scale_y)));
-            break;
-            case(NORTHEAST):
-                XResizeWindow (w->dpy, w->widget, max(1,
-                    w->scale.init_width - (wid->scale.scale_x)), w->scale.init_height);
-            break;
-            case(SOUTHWEST):
-
-            XMoveWindow(wid->dpy,w->widget,w->scale.init_x,
-                                        w->scale.init_y-wid->scale.scale_y);
-            
-            break;
-            case(SOUTHEAST):
-                XMoveWindow(wid->dpy,w->widget,w->scale.init_x,
-                                            w->scale.init_y-wid->scale.scale_y);
-            break;
-            case(CENTER):
-                XMoveWindow(w->dpy,w->widget,w->scale.init_x /
-                    wid->scale.cscale_x,w->scale.init_y / wid->scale.cscale_y);
-                XResizeWindow (w->dpy, w->widget, max(1,
-                    w->scale.init_width / (wid->scale.cscale_x)), 
-                    max(1,w->scale.init_height / (wid->scale.cscale_y)));
-            break;
-            case(ASPECT):
-                XMoveWindow(w->dpy,w->widget,w->scale.init_x /
-                    wid->scale.ascale,w->scale.init_y / wid->scale.ascale);
-                XResizeWindow (w->dpy, w->widget, max(1,
-                    w->scale.init_width / (wid->scale.ascale)), 
-                    max(1,w->scale.init_height / (wid->scale.ascale)));
-            
-            break;
-            case(NONE):
-            XMoveWindow(wid->dpy,w->widget,w->scale.init_x-wid->scale.scale_x,
-                                        w->scale.init_y-wid->scale.scale_y);
-            break;
-            default:
-            break;
-        }
-        
-    }
-}
-
-/**
  * @brief configure_event    - default callback when a widget receive a ConfigureNotify
  * @param *w                 - pointer to the Widget_t receive the event
  * @param user_data          - void pointer to attached user_data
@@ -208,28 +134,6 @@ void configure_event(void *w_, void* user_data) {
 
         _resize_childs(wid);
     }
-}
-
-/**
- * @brief dummy1_callback    - default debuging callback for evfunc's
- * @param *w                 - pointer to the Widget_t receive the event
- * @param user_data          - void pointer to attached user_data
- * @return void 
- */
-
-static inline void dummy1_callback(void *w_, void* _data, void* user_data) {
-    debug_print("Widget_t dummy callback\n");
-}
-
-/**
- * @brief dummy1_callback    - default debuging callback for xevfunc's
- * @param *w                 - pointer to the Widget_t receive the event
- * @param user_data          - void pointer to attached user_data
- * @return void 
- */
-
-static inline void dummy_callback(void *w_, void* user_data) {
-    debug_print("Widget_t dummy callback\n");
 }
 
 /**
@@ -320,16 +224,17 @@ Widget_t *create_window(Xputty *app, Window win,
     assert(w->childlist != NULL);
     childlist_init(w->childlist);
     w->event_callback = widget_event_loop;
-    w->func.expose_callback = dummy_callback;
+    w->func.expose_callback = _dummy_callback;
     w->func.configure_callback = configure_event;
-    w->func.button_press_callback = dummy1_callback;
-    w->func.button_release_callback = dummy1_callback;
-    w->func.motion_callback = dummy1_callback;
-    w->func.key_press_callback = dummy1_callback;
-    w->func.key_release_callback = dummy1_callback;
-    w->func.enter_callback = dummy_callback;
-    w->func.leave_callback = dummy_callback;
-    w->func.user_callback = dummy_callback;
+    w->func.button_press_callback = _dummy1_callback;
+    w->func.button_release_callback = _dummy1_callback;
+    w->func.motion_callback = _dummy1_callback;
+    w->func.adj_callback = transparent_draw;
+    w->func.key_press_callback = _dummy1_callback;
+    w->func.key_release_callback = _dummy1_callback;
+    w->func.enter_callback = _dummy_callback;
+    w->func.leave_callback = _dummy_callback;
+    w->func.user_callback = _dummy_callback;
 
     childlist_add_child(app->childlist,w);
     XMapWindow(app->dpy, w->widget);
@@ -417,87 +322,21 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     childlist_init(w->childlist);
     childlist_add_child(parent->childlist, w);
     w->event_callback = widget_event_loop;
-    w->func.expose_callback = dummy_callback;
+    w->func.expose_callback = _dummy_callback;
     w->func.configure_callback = configure_event;;
-    w->func.button_press_callback = dummy1_callback;
-    w->func.button_release_callback = dummy1_callback;
-    w->func.motion_callback = dummy1_callback;
-    w->func.key_press_callback = dummy1_callback;
-    w->func.key_release_callback = dummy1_callback;
-    w->func.enter_callback = dummy_callback;
-    w->func.leave_callback = dummy_callback;
-    w->func.user_callback = dummy_callback;
+    w->func.button_press_callback = _dummy1_callback;
+    w->func.button_release_callback = _dummy1_callback;
+    w->func.motion_callback = _dummy1_callback;
+    w->func.adj_callback = transparent_draw;
+    w->func.key_press_callback = _dummy1_callback;
+    w->func.key_release_callback = _dummy1_callback;
+    w->func.enter_callback = _dummy_callback;
+    w->func.leave_callback = _dummy_callback;
+    w->func.user_callback = _dummy_callback;
 
     childlist_add_child(app->childlist,w);
     XMapWindow(app->dpy, w->widget);
     return w;
-}
-
-/**
- * @brief _has_pointer      - check if the widget has the pointer on Button release 
- * @param *w                - pointer to the Widget_t sending the request
- * @param *button           - pointer to the XButtonEvent sending the notify
- * @return bool             - true if pointer is in widget 
- */
-
-static inline bool _has_pointer(Widget_t *w, XButtonEvent *button) {
-    XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
-    
-    if ((button->x<attrs.width && button->y<attrs.height) &&
-                                (button->x>0 && button->y>0)){
-        return true;
-    } else {
-        return false;
-    }
-
-}
-
-/**
- * @brief _set_adj_value    - set value to adjustment from key event
- * @param *w                - pointer to the Widget_t receiving the event
- * @param x                 - use x or y-axis
- * @return void
- */
-
-static inline void _set_adj_value(void *w_, bool x, int direction) {
-    Widget_t *wid = (Widget_t*)w_;
-    if (x && wid->adj_x) {
-        wid->adj_x->value = min(wid->adj_x->max_value,max(wid->adj_x->min_value, 
-        wid->adj_x->value + (wid->adj_x->step * direction)));
-       // expose_widget(wid);
-    } else if (!x && wid->adj_y) {
-        wid->adj_y->value = min(wid->adj_y->max_value,max(wid->adj_y->min_value, 
-        wid->adj_y->value + (wid->adj_y->step * direction)));
-      //  expose_widget(wid);
-    }
-}
-
-/**
- * @brief _check_keymap     - check if key is in map, send requests if so 
- * @param *w                - pointer to the Widget_t receiving the event
- * @param xkey              - the XKeyEvent to check
- * @return void
- */
-
-static inline void _check_keymap (void *w_ ,XKeyEvent xkey) {
-    Widget_t *wid = (Widget_t*)w_;
-
-    int nk = key_mapping(wid->dpy, &xkey);
-    if (nk) {
-        switch (nk) {
-            case 3: _set_adj_value(w_, false, 1);
-            break;
-            case 4: _set_adj_value(w_, true, 1);
-            break;
-            case 5: _set_adj_value(w_, false, -1);
-            break;
-            case 6: _set_adj_value(w_, true, -1);
-            break;
-            default:
-            break;
-        }
-    }
 }
 
 /**
@@ -512,24 +351,6 @@ void expose_widget(Widget_t *w) {
     exp.type = Expose;
     exp.xexpose.window = w->widget;
     XSendEvent(w->dpy, w->widget, False, ExposureMask, (XEvent *)&exp);
-}
-
-/**
- * @brief _propagate_childs - send expose to child window
- * @param *wid              - pointer to the Widget_t send the event
- * @return void 
- */
-
-static inline void _propagate_child_expose(Widget_t *wid) {
-
-    if (childlist_has_child(wid->childlist)) {
-        int i = 0;
-        for(;i<wid->childlist->elem;i++) {
-            Widget_t *w = wid->childlist->childs[i];
-            if (w->transparency)
-                expose_widget(w);
-        }
-    }      
 }
 
 /**
@@ -565,82 +386,6 @@ void transparent_draw(void * w_, void* user_data) {
     cairo_pop_group_to_source (wid->cr);
     cairo_paint (wid->cr);
     _propagate_child_expose(wid);
-}
-
-/**
- * @brief _scroll_event     - internal check which adjustment needs update
- * @param *wid              - pointer to the Widget_t receiving a event
- * @param direction         - up/down scroll diretion
- * @return void 
- */
-
-static inline void _scroll_event(Widget_t * wid, int direction) {
-    if (wid->adj_y) {
-        switch(wid->adj_y->type) {
-            case (CL_CONTINUOS):
-                 wid->adj_y->value = min(wid->adj_y->max_value,max(wid->adj_y->min_value, 
-                  wid->adj_y->value + (wid->adj_y->step * direction)));
-                expose_widget(wid);
-            break;
-            case (CL_TOGGLE):
-                wid->adj_x->value = wid->adj_x->value ? 0.0 : 1.0;
-                expose_widget(wid);
-            break;
-            default:
-            break;
-        }
-    } else if(wid->adj_x) {
-        switch(wid->adj_x->type) {
-            case (CL_CONTINUOS):
-                wid->adj_x->value = min(wid->adj_x->max_value,max(wid->adj_x->min_value, 
-                  wid->adj_x->value + (wid->adj_x->step * direction)));
-                expose_widget(wid);
-            break;
-            case (CL_TOGGLE):
-                wid->adj_y->value = wid->adj_y->value ? 0.0 : 1.0;
-                expose_widget(wid);
-            break;
-            default:
-            break;
-            
-        }
-    } 
-}
-
-
-/**
- * @brief _button_press     - internal check which button is pressed
- * @param *wid              - pointer to the Widget_t receiving a event
- * @param *xbutton          - pointer to the XButtonEvent
- * @param *user_data        - void pointer to attached user_data
- * @return void 
- */
-
-static inline void _button_press(Widget_t * wid, XButtonEvent *xbutton, void* user_data) {
-    switch(xbutton->button) {
-        case Button1:
-            wid->state = 2;
-            wid->has_pointer = _has_pointer(wid, xbutton);
-            wid->pos_x = xbutton->x;
-            wid->pos_y = xbutton->y;
-            adj_set_start_value(wid);
-            wid->func.button_press_callback(wid, xbutton, user_data);
-        break;
-        case Button2:
-            debug_print("Button2 \n");
-        break;
-        case Button3:
-            debug_print("Button3 \n");
-        break;
-        case  Button4:
-            _scroll_event(wid, 1);
-        break;
-        case Button5:
-            _scroll_event(wid, -1);
-        break;
-        default:
-        break;
-    }
 }
 
 /**

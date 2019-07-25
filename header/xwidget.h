@@ -74,6 +74,7 @@ typedef struct {
     xevfunc configure_callback;
     xevfunc enter_callback;
     xevfunc leave_callback;
+    xevfunc adj_callback;
     xevfunc user_callback;
 
     evfunc button_press_callback;
@@ -320,7 +321,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data);
 void expose_widget(Widget_t *w);
 
 /**
- * @brief key_mapping       - modifier key's mapped to a integer value
+ * @brief _key_mapping       - modifier key's mapped to a integer value
  * @param *dpy              - pointer to the Display in use
  * @param *xkey             - the key to map
  * @return int              - value (1-10) or 0 when not mapped 

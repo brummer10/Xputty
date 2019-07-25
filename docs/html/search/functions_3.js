@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['expose_5fwidget',['expose_widget',['../xwidget_8c.html#a17f2f3effd46532c596511abcfb5058e',1,'expose_widget(Widget_t *w):&#160;xwidget.c'],['../xwidget_8h.html#a17f2f3effd46532c596511abcfb5058e',1,'expose_widget(Widget_t *w):&#160;xwidget.c']]]
+  ['delete_5fadjustment',['delete_adjustment',['../xadjustment_8c.html#af8186d7e68d37007f6e38814225e6ee3',1,'delete_adjustment(Adjustment_t *adj):&#160;xadjustment.c'],['../xadjustment_8h.html#af8186d7e68d37007f6e38814225e6ee3',1,'delete_adjustment(Adjustment_t *adj):&#160;xadjustment.c']]],
+  ['destroy_5fwidget',['destroy_widget',['../xwidget_8c.html#abdabca284aa8866f1f242b6857312e3b',1,'destroy_widget(Widget_t *w, Xputty *main):&#160;xwidget.c'],['../xwidget_8h.html#abdabca284aa8866f1f242b6857312e3b',1,'destroy_widget(Widget_t *w, Xputty *main):&#160;xwidget.c']]]
 ];

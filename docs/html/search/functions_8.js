@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['widget_5fevent_5floop',['widget_event_loop',['../xwidget_8c.html#a4549cfc76e73a5d56b50f0d762287436',1,'widget_event_loop(void *w_, void *event, Xputty *main, void *user_data):&#160;xwidget.c'],['../xwidget_8h.html#a4549cfc76e73a5d56b50f0d762287436',1,'widget_event_loop(void *w_, void *event, Xputty *main, void *user_data):&#160;xwidget.c']]]
+  ['transparent_5fdraw',['transparent_draw',['../xwidget_8c.html#a0e801c1a701cc8526b198371ce2ff692',1,'transparent_draw(void *w_, void *user_data):&#160;xwidget.c'],['../xwidget_8h.html#ab45a54d3dee60783a5afe9c236f54a04',1,'transparent_draw(void *wid, void *user_data):&#160;xwidget.c']]]
 ];

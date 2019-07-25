@@ -14,7 +14,7 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=310pt]{xwidget_8h__dep__incl}
+\includegraphics[width=350pt]{xwidget_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Data Structures}
@@ -74,7 +74,7 @@ void \hyperlink{xwidget_8h_a4549cfc76e73a5d56b50f0d762287436}{widget\+\_\+event\
 void \hyperlink{xwidget_8h_a17f2f3effd46532c596511abcfb5058e}{expose\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em expose\+\_\+widgets -\/ send expose expose event to window \end{DoxyCompactList}\item 
 int \hyperlink{xwidget_8h_a1607cf4a642a38ea235a007ea9579403}{key\+\_\+mapping} (Display $\ast$dpy, X\+Key\+Event $\ast$xkey)
-\begin{DoxyCompactList}\small\item\em key\+\_\+mapping -\/ modifier key\textquotesingle{}s mapped to a integer value \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \+\_\+key\+\_\+mapping -\/ modifier key\textquotesingle{}s mapped to a integer value \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
@@ -306,7 +306,19 @@ void
 
 
 
-key\+\_\+mapping -\/ modifier key\textquotesingle{}s mapped to a integer value 
+\+\_\+key\+\_\+mapping -\/ modifier key\textquotesingle{}s mapped to a integer value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$dpy} & -\/ pointer to the Display in use \\
+\hline
+{\em $\ast$xkey} & -\/ the key to map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ value (1-\/10) or 0 when not mapped
+\end{DoxyReturn}
+\+\_\+key\+\_\+mapping -\/ modifier key\textquotesingle{}s mapped to a integer value
 
 
 \begin{DoxyParams}{Parameters}

@@ -45,9 +45,9 @@ struct \hyperlink{structXputty}{Xputty}
 \#define \hyperlink{xputty_8h_ac9e7326b4569847122754061b96c42d0}{debug\+\_\+print}(...)~((void)((\hyperlink{xputty_8h_ad72dbcf6d0153db1b8d8a58001feed83}{D\+E\+B\+UG}) ? fprintf(stderr, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+) \+: 0))
 \begin{DoxyCompactList}\small\item\em debug\+\_\+print -\/ print out state messages when compiled with the -\/\+D\+D\+E\+B\+UG flag \end{DoxyCompactList}\item 
 \#define \hyperlink{xputty_8h_abb702d8b501669a23aa0ab3b281b9384}{min}(x,  y)~((x) $<$ (y) ? (x) \+: (y))
-\begin{DoxyCompactList}\small\item\em min -\/ set a minimal value as return value \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em min -\/ set a maximal value (x) as return value \end{DoxyCompactList}\item 
 \#define \hyperlink{xputty_8h_ac39d9cef6a5e030ba8d9e11121054268}{max}(x,  y)~((x) $<$ (y) ? (y) \+: (x))
-\begin{DoxyCompactList}\small\item\em max -\/ set a maximal value as return value \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em max -\/ set a minimal value (x) as return value \end{DoxyCompactList}\item 
 \#define \hyperlink{xputty_8h_a4b4e4f21ac252ef0b97fe32f026bd284}{I\+S\+\_\+\+U\+T\+F8}(c)~(((c)\&0xc0)==0xc0)
 \begin{DoxyCompactList}\small\item\em I\+S\+\_\+\+U\+T\+F8 -\/ check if a char contain U\+TF 8 formated signs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
@@ -67,7 +67,7 @@ typedef struct \hyperlink{structXputty}{Xputty} \hyperlink{xputty_8h_a640738d2c0
 void \hyperlink{xputty_8h_a484645d624d9e9eff0288f8d5583ff5e}{main\+\_\+init} (\hyperlink{structXputty}{Xputty} $\ast$main)
 \begin{DoxyCompactList}\small\item\em main\+\_\+init -\/ open the Display and init the main-\/$>$childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. \hyperlink{xputty_8h_a484645d624d9e9eff0288f8d5583ff5e}{main\+\_\+init()} should be called directly after declaration of \hyperlink{structXputty}{Xputty}. Any \hyperlink{structWidget__t}{Widget\+\_\+t} which would be created afterwards will be added to the list. This list is used to check if a \hyperlink{structWidget__t}{Widget\+\_\+t} is valid. When a \hyperlink{structWidget__t}{Widget\+\_\+t} call \hyperlink{xwidget_8c_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget()} it will be removed from the list. On \hyperlink{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit()} any remaining \hyperlink{structWidget__t}{Widget\+\_\+t} from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a X\+Event. \end{DoxyCompactList}\item 
 void \hyperlink{xputty_8h_abb548ea64f852a7c94473a595e67d69f}{main\+\_\+run} (\hyperlink{structXputty}{Xputty} $\ast$main)
-\begin{DoxyCompactList}\small\item\em main\+\_\+run -\/ the main event loop. I should be start after your Widget\+\_\+s been created. You could create and destroy additional Widget\+\_\+s at any time later during run. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em main\+\_\+run -\/ the main event loop. I should be start after your \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s been created. You could create and destroy additional \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s at any time later during run. \end{DoxyCompactList}\item 
 void \hyperlink{xputty_8h_a0d4eda902b4de6f7a30e8d869f842fda}{main\+\_\+quit} (\hyperlink{structXputty}{Xputty} $\ast$main)
 \begin{DoxyCompactList}\small\item\em main\+\_\+quit -\/ destroy all remaining \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s from the main-\/$>$childlist. Free all resources which may be allocated between init and quit. It should be called after \hyperlink{xputty_8h_abb548ea64f852a7c94473a595e67d69f}{main\+\_\+run()}; \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -107,7 +107,7 @@ I\+S\+\_\+\+U\+T\+F8 -\/ check if a char contain U\+TF 8 formated signs.
 
 
 
-max -\/ set a maximal value as return value 
+max -\/ set a minimal value (x) as return value 
 
 \mbox{\Hypertarget{xputty_8h_abb702d8b501669a23aa0ab3b281b9384}\label{xputty_8h_abb702d8b501669a23aa0ab3b281b9384}} 
 \index{xputty.\+h@{xputty.\+h}!min@{min}}
@@ -117,7 +117,7 @@ max -\/ set a maximal value as return value
 
 
 
-min -\/ set a minimal value as return value 
+min -\/ set a maximal value (x) as return value 
 
 \mbox{\Hypertarget{xputty_8h_accb46852f2244dde7d0e696c1380263e}\label{xputty_8h_accb46852f2244dde7d0e696c1380263e}} 
 \index{xputty.\+h@{xputty.\+h}!X\+P\+U\+T\+T\+Y1\+\_\+\+H\+\_\+@{X\+P\+U\+T\+T\+Y1\+\_\+\+H\+\_\+}}
@@ -215,7 +215,7 @@ void
 
 
 
-main\+\_\+run -\/ the main event loop. I should be start after your Widget\+\_\+s been created. You could create and destroy additional Widget\+\_\+s at any time later during run. 
+main\+\_\+run -\/ the main event loop. I should be start after your \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s been created. You could create and destroy additional \hyperlink{structWidget__t}{Widget\+\_\+t}\textquotesingle{}s at any time later during run. 
 
 
 \begin{DoxyParams}{Parameters}

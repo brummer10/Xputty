@@ -91,7 +91,8 @@ static void button_reset_release(void *w_, void* button_, void* user_data) {
         Widget_t *parent = w->parent;
         adj_set_value(parent->adj_x,parent->adj_x->std_value);
         adj_set_value(parent->adj_y,parent->adj_y->std_value);
-        expose_widget(parent);
+        parent->label = "Press mouse button and move:";
+       // expose_widget(parent);
     }
 
 }
@@ -143,13 +144,14 @@ static void draw_window(void *w_, void* user_data) {
     cairo_show_text(w->crb, w->label);
 }
 
-static void draw_motion(void *w_, void *motion_, void* user_data) {
+static void draw_motion(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
+    w->label = NULL;
     float x = adj_get_value(w->adj_x);
     float y = adj_get_value(w->adj_y);
-    char s[10];
-    char sa[30];
+    char s[10] = "";
+    char sa[30] = "";
     
     const char* format[] = {"%.1f", "%.2f", "%.3f"};
     snprintf(s, 30, "%s", "x = ");
@@ -190,9 +192,9 @@ int main (int argc, char ** argv)
     XStoreName(app.dpy, w->widget, "Xputty Movement");
     w->label = "Press mouse button and move:";
     w->func.expose_callback = draw_window;
-    w->func.motion_callback = draw_motion;
     w->adj_x = add_adjustment(w,0.5, 0.5, 0.0, 1.0, 0.01, CL_CONTINUOS);
     w->adj_y = add_adjustment(w,0.5, 0.5, 0.0, 1.0, 0.01, CL_CONTINUOS);
+    w->func.adj_callback = draw_motion;
     w->func.button_press_callback = window_button_press;
     w->func.button_release_callback = window_button_release;
 

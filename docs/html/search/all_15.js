@@ -1,21 +1,8 @@
 var searchData=
 [
-  ['xputty',['Xputty',['../index.html',1,'']]],
-  ['x',['x',['../structWidget__t.html#aac6ce7621b682bb4ce88bac9181c34a7',1,'Widget_t']]],
-  ['xadjustment_2ec',['xadjustment.c',['../xadjustment_8c.html',1,'']]],
-  ['xadjustment_2eh',['xadjustment.h',['../xadjustment_8h.html',1,'']]],
-  ['xadjustment_5fh_5f',['XADJUSTMENT_H_',['../xadjustment_8h.html#a32f69912c546bd28e73b2f48cc99a99d',1,'xadjustment.h']]],
-  ['xchildlist_2ec',['xchildlist.c',['../xchildlist_8c.html',1,'']]],
-  ['xchildlist_2eh',['xchildlist.h',['../xchildlist_8h.html',1,'']]],
-  ['xchildlist_5fh_5f',['XCHILDLIST_H_',['../xchildlist_8h.html#a396cfc2326c57bf038fc8b40d1fc7630',1,'xchildlist.h']]],
-  ['xevfunc',['xevfunc',['../xwidget_8h.html#a9ef0263424a7f5f8f6b02055fca67ddd',1,'xwidget.h']]],
-  ['xic',['xic',['../structWidget__t.html#adafb1b98ea551ef726be6c726ac2e817',1,'Widget_t']]],
-  ['xim',['xim',['../structWidget__t.html#a81aa76d336043a7230844d09a92113e2',1,'Widget_t']]],
-  ['xputty',['Xputty',['../structXputty.html',1,'Xputty'],['../xputty_8h.html#a640738d2c0bf1af308958da6468c829f',1,'Xputty():&#160;xputty.h']]],
-  ['xputty_2ec',['xputty.c',['../xputty_8c.html',1,'']]],
-  ['xputty_2eh',['xputty.h',['../xputty_8h.html',1,'']]],
-  ['xputty1_5fh_5f',['XPUTTY1_H_',['../xputty_8h.html#accb46852f2244dde7d0e696c1380263e',1,'xputty.h']]],
-  ['xwidget_2ec',['xwidget.c',['../xwidget_8c.html',1,'']]],
-  ['xwidget_2eh',['xwidget.h',['../xwidget_8h.html',1,'']]],
-  ['xwidget_5fh',['XWIDGET_H',['../xwidget_8h.html#ad56f2f46f2704941329069a12a1a0335',1,'xwidget.h']]]
+  ['w',['w',['../structAdjustment__t.html#a82c03e6ceb092314a75bd10ba918f9d7',1,'Adjustment_t']]],
+  ['widget',['widget',['../structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1',1,'Widget_t']]],
+  ['widget_5fevent_5floop',['widget_event_loop',['../xwidget_8c.html#a4549cfc76e73a5d56b50f0d762287436',1,'widget_event_loop(void *w_, void *event, Xputty *main, void *user_data):&#160;xwidget.c'],['../xwidget_8h.html#a4549cfc76e73a5d56b50f0d762287436',1,'widget_event_loop(void *w_, void *event, Xputty *main, void *user_data):&#160;xwidget.c']]],
+  ['widget_5ft',['Widget_t',['../structWidget__t.html',1,'Widget_t'],['../xputty_8h.html#a6b3e8ecb43e49de5de9dc7ab79404014',1,'Widget_t():&#160;xputty.h']]],
+  ['width',['width',['../structWidget__t.html#a3204c88196ed5793250b3530dd719037',1,'Widget_t']]]
 ];

@@ -1,4 +1,30 @@
 var searchData=
 [
-  ['y',['y',['../structWidget__t.html#acb9402de44e47837e1821b93fc052b38',1,'Widget_t']]]
+  ['xputty',['Xputty',['../index.html',1,'']]],
+  ['x',['x',['../structWidget__t.html#aac6ce7621b682bb4ce88bac9181c34a7',1,'Widget_t']]],
+  ['xadjustment_2ec',['xadjustment.c',['../xadjustment_8c.html',1,'']]],
+  ['xadjustment_2eh',['xadjustment.h',['../xadjustment_8h.html',1,'']]],
+  ['xadjustment_5fh_5f',['XADJUSTMENT_H_',['../xadjustment_8h.html#a32f69912c546bd28e73b2f48cc99a99d',1,'xadjustment.h']]],
+  ['xadjustment_5fprivate_2ec',['xadjustment_private.c',['../xadjustment__private_8c.html',1,'']]],
+  ['xadjustment_5fprivate_2eh',['xadjustment_private.h',['../xadjustment__private_8h.html',1,'']]],
+  ['xadjustment_5fprivate_5fh_5f',['XADJUSTMENT_PRIVATE_H_',['../xadjustment__private_8h.html#a4a9187efbfbe9743bd49d9aa67928d0f',1,'xadjustment_private.h']]],
+  ['xchildlist_2ec',['xchildlist.c',['../xchildlist_8c.html',1,'']]],
+  ['xchildlist_2eh',['xchildlist.h',['../xchildlist_8h.html',1,'']]],
+  ['xchildlist_5fh_5f',['XCHILDLIST_H_',['../xchildlist_8h.html#a396cfc2326c57bf038fc8b40d1fc7630',1,'xchildlist.h']]],
+  ['xchildlist_5fprivate_2ec',['xchildlist_private.c',['../xchildlist__private_8c.html',1,'']]],
+  ['xchildlist_5fprivate_2eh',['xchildlist_private.h',['../xchildlist__private_8h.html',1,'']]],
+  ['xchildlist_5fprivate_5fh_5f_5f',['XCHILDLIST_PRIVATE_H__',['../xchildlist__private_8h.html#a458c61768f5d10886717838d58d93278',1,'xchildlist_private.h']]],
+  ['xevfunc',['xevfunc',['../xwidget_8h.html#a9ef0263424a7f5f8f6b02055fca67ddd',1,'xwidget.h']]],
+  ['xic',['xic',['../structWidget__t.html#adafb1b98ea551ef726be6c726ac2e817',1,'Widget_t']]],
+  ['xim',['xim',['../structWidget__t.html#a81aa76d336043a7230844d09a92113e2',1,'Widget_t']]],
+  ['xputty',['Xputty',['../structXputty.html',1,'Xputty'],['../xputty_8h.html#a640738d2c0bf1af308958da6468c829f',1,'Xputty():&#160;xputty.h']]],
+  ['xputty_2ec',['xputty.c',['../xputty_8c.html',1,'']]],
+  ['xputty_2eh',['xputty.h',['../xputty_8h.html',1,'']]],
+  ['xputty1_5fh_5f',['XPUTTY1_H_',['../xputty_8h.html#accb46852f2244dde7d0e696c1380263e',1,'xputty.h']]],
+  ['xwidget_2ec',['xwidget.c',['../xwidget_8c.html',1,'']]],
+  ['xwidget_2eh',['xwidget.h',['../xwidget_8h.html',1,'']]],
+  ['xwidget_5fh',['XWIDGET_H',['../xwidget_8h.html#ad56f2f46f2704941329069a12a1a0335',1,'xwidget.h']]],
+  ['xwidget_5fprivate_2ec',['xwidget_private.c',['../xwidget__private_8c.html',1,'']]],
+  ['xwidget_5fprivate_2eh',['xwidget_private.h',['../xwidget__private_8h.html',1,'']]],
+  ['xwidget_5fprivate_5fh_5f_5f',['XWIDGET_PRIVATE_H__',['../xwidget__private_8h.html#aa1eb8cb0cc275026157758297102d323',1,'xwidget_private.h']]]
 ];

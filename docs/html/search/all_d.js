@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['parent',['parent',['../structWidget__t.html#a483f6517c19fe09e1bf2eaec6646a14b',1,'Widget_t']]],
-  ['pos_5fx',['pos_x',['../structWidget__t.html#ae2d46ffb30bb2335a043d138fa05e1a3',1,'Widget_t']]],
-  ['pos_5fy',['pos_y',['../structWidget__t.html#a9b127ac6b3f017b367351ee673e063c3',1,'Widget_t']]]
+  ['none',['NONE',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adeac157bdf0b85a40d2619cbc8bc1ae5fe2',1,'xwidget.h']]],
+  ['northeast',['NORTHEAST',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adeaa6671505783298e4cb967931c1c1ac5b',1,'xwidget.h']]],
+  ['northwest',['NORTHWEST',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adeac8aee466c121a3c3c942f58e1d8864d4',1,'xwidget.h']]]
 ];
