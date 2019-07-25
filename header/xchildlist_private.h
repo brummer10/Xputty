@@ -26,7 +26,7 @@
 #pragma once
 
 #ifndef XCHILDLIST_PRIVATE_H_
-#define XCHILDLIST_PRIVATE_H__
+#define XCHILDLIST_PRIVATE_H_
 
 #include "xputty.h"
 

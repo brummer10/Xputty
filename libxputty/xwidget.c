@@ -198,6 +198,7 @@ Widget_t *create_window(Xputty *app, Window win,
     w->crb = cairo_create (w->buffer);
 
     w->is_widget = false;
+    w->app = app;
     w->dpy = app->dpy;
     w->parent = &win;
     w->label = NULL;
@@ -295,6 +296,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->crb = cairo_create (w->buffer);
 
     w->is_widget = true;
+    w->app = app;
     w->dpy = app->dpy;
     w->parent = parent;
     w->label = NULL;

@@ -127,10 +127,13 @@ typedef struct Xputty Xputty;
 -----------------------------------------------------------------------
 ----------------------------------------------------------------------*/
 
+// library header
 #include "xwidget.h"
 #include "xadjustment.h"
 #include "xchildlist.h"
 
+// widget header
+#include "xbutton.h"
 
 /**
  * @brief Xputty             - the main struct. It should be declared

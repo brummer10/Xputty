@@ -8,12 +8,18 @@ var searchData=
   ['xadjustment_5fprivate_2ec',['xadjustment_private.c',['../xadjustment__private_8c.html',1,'']]],
   ['xadjustment_5fprivate_2eh',['xadjustment_private.h',['../xadjustment__private_8h.html',1,'']]],
   ['xadjustment_5fprivate_5fh_5f',['XADJUSTMENT_PRIVATE_H_',['../xadjustment__private_8h.html#a4a9187efbfbe9743bd49d9aa67928d0f',1,'xadjustment_private.h']]],
+  ['xbutton_2ec',['xbutton.c',['../xbutton_8c.html',1,'']]],
+  ['xbutton_2eh',['xbutton.h',['../xbutton_8h.html',1,'']]],
+  ['xbutton_5fh_5f',['XBUTTON_H_',['../xbutton_8h.html#a529495b7491220cdb4cf420183099430',1,'xbutton.h']]],
+  ['xbutton_5fprivate_2ec',['xbutton_private.c',['../xbutton__private_8c.html',1,'']]],
+  ['xbutton_5fprivate_2eh',['xbutton_private.h',['../xbutton__private_8h.html',1,'']]],
+  ['xbutton_5fprivate_5fh_5f',['XBUTTON_PRIVATE_H_',['../xbutton__private_8h.html#a719e82ef2949ca9b4b14413697e85c97',1,'xbutton_private.h']]],
   ['xchildlist_2ec',['xchildlist.c',['../xchildlist_8c.html',1,'']]],
   ['xchildlist_2eh',['xchildlist.h',['../xchildlist_8h.html',1,'']]],
   ['xchildlist_5fh_5f',['XCHILDLIST_H_',['../xchildlist_8h.html#a396cfc2326c57bf038fc8b40d1fc7630',1,'xchildlist.h']]],
   ['xchildlist_5fprivate_2ec',['xchildlist_private.c',['../xchildlist__private_8c.html',1,'']]],
   ['xchildlist_5fprivate_2eh',['xchildlist_private.h',['../xchildlist__private_8h.html',1,'']]],
-  ['xchildlist_5fprivate_5fh_5f_5f',['XCHILDLIST_PRIVATE_H__',['../xchildlist__private_8h.html#a458c61768f5d10886717838d58d93278',1,'xchildlist_private.h']]],
+  ['xchildlist_5fprivate_5fh_5f',['XCHILDLIST_PRIVATE_H_',['../xchildlist__private_8h.html#a60bfdfb9d36bb59620e186c0201ece15',1,'xchildlist_private.h']]],
   ['xevfunc',['xevfunc',['../xwidget_8h.html#a9ef0263424a7f5f8f6b02055fca67ddd',1,'xwidget.h']]],
   ['xic',['xic',['../structWidget__t.html#adafb1b98ea551ef726be6c726ac2e817',1,'Widget_t']]],
   ['xim',['xim',['../structWidget__t.html#a81aa76d336043a7230844d09a92113e2',1,'Widget_t']]],
@@ -26,5 +32,5 @@ var searchData=
   ['xwidget_5fh',['XWIDGET_H',['../xwidget_8h.html#ad56f2f46f2704941329069a12a1a0335',1,'xwidget.h']]],
   ['xwidget_5fprivate_2ec',['xwidget_private.c',['../xwidget__private_8c.html',1,'']]],
   ['xwidget_5fprivate_2eh',['xwidget_private.h',['../xwidget__private_8h.html',1,'']]],
-  ['xwidget_5fprivate_5fh_5f_5f',['XWIDGET_PRIVATE_H__',['../xwidget__private_8h.html#aa1eb8cb0cc275026157758297102d323',1,'xwidget_private.h']]]
+  ['xwidget_5fprivate_5fh_5f',['XWIDGET_PRIVATE_H_',['../xwidget__private_8h.html#ae1930d67bcc5abcf90eec1f62804d841',1,'xwidget_private.h']]]
 ];

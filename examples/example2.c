@@ -22,81 +22,6 @@
 #include "xputty.h"
 
 
-// draw a button
-static void draw_button(void *w_, void* user_data) {
-    Widget_t *w = (Widget_t*)w_;
-    if (!w) return;
-    XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
-    int width = attrs.width-2;
-    int height = attrs.height-2;
-    if (attrs.map_state != IsViewable) return;
-
-    cairo_new_path (w->crb);
-    cairo_move_to  (w->crb, 2, (2 + (height-4))/2);
-    cairo_curve_to (w->crb, 2 ,2, 2, 2, (2 + width)/2, 2);
-    cairo_curve_to (w->crb, width, 2, width, 2, width, (2 + height)/2);
-    cairo_curve_to (w->crb, width, height, width, height, (width + 2)/2, height);
-    cairo_curve_to (w->crb, 2, height, 2, height, 2, (2 + height)/2);
-    cairo_close_path (w->crb);
-
-    cairo_set_line_width(w->crb, 1.0);
-    cairo_set_source_rgb (w->crb, 0., 0.1, 0.1);
-    if(w->state==1) {
-        cairo_set_line_width(w->crb, 1.5);
-        cairo_set_source_rgb (w->crb, 0.2, 0.2, 0.2);
-    }
-    if(w->state==2) {
-        cairo_set_source_rgba (w->crb, 0., 0.1, 0.1, 0.2);
-        cairo_fill_preserve(w->crb);
-        cairo_set_line_width(w->crb, 2.0);
-        cairo_set_source_rgb (w->crb, 0., 0.1, 0.1);
-     }
-    cairo_stroke(w->crb); 
-
-    cairo_text_extents_t extents;
-    cairo_set_source_rgb (w->crb, 0.1, 0.2, 0.3);
-    if(w->state==1)
-        cairo_set_source_rgb (w->crb, 0.8, 0.8, 0.8);
-    if(w->state==2)
-        cairo_set_source_rgb (w->crb, 0.1, 0.8, 0.8);
-    cairo_set_font_size (w->crb, 12.0);
-    cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
-                               CAIRO_FONT_WEIGHT_BOLD);
-    cairo_text_extents(w->crb,w->label , &extents);
-
-    cairo_move_to (w->crb, (width-extents.width)*0.5, (height+extents.height)*0.5);
-    cairo_show_text(w->crb, w->label);
-    cairo_new_path (w->crb);
-}
-
-static void button_press(void *w_, void* button, void* user_data) {
-    expose_widget(w_);
-}
-
-static void button_release(void *w_, void* button_, void* user_data) {
-    Widget_t *w = (Widget_t*)w_;
-    expose_widget(w_);
-    if (w->has_pointer){
-        Widget_t *p = (Widget_t*)w->parent;
-        quit(p);
-    }
-
-}
-
-static void button_reset_release(void *w_, void* button_, void* user_data) {
-    Widget_t *w = (Widget_t*)w_;
-    expose_widget(w_);
-    if (w->has_pointer){
-        Widget_t *parent = w->parent;
-        adj_set_value(parent->adj_x,parent->adj_x->std_value);
-        adj_set_value(parent->adj_y,parent->adj_y->std_value);
-        parent->label = "Press mouse button and move:";
-       // expose_widget(parent);
-    }
-
-}
-
 static void draw_window(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
@@ -181,6 +106,28 @@ static void window_button_release(void *w_, void* button_, void* user_data) {
     expose_widget(w_);
 }
 
+static void button_quit_callback(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    
+    if (w->has_pointer && !*(int*)user_data){
+        Widget_t *p = (Widget_t*)w->parent;
+        quit(p);
+    }
+
+}
+
+static void button_reset_callback(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    expose_widget(w_);
+    if (w->has_pointer && !*(int*)user_data){
+        Widget_t *parent = w->parent;
+        adj_set_value(parent->adj_x,parent->adj_x->std_value);
+        adj_set_value(parent->adj_y,parent->adj_y->std_value);
+        parent->label = "Press mouse button and move:";
+    }
+
+}
+
 int main (int argc, char ** argv)
 {
     Xputty app;
@@ -198,23 +145,13 @@ int main (int argc, char ** argv)
     w->func.button_press_callback = window_button_press;
     w->func.button_release_callback = window_button_release;
 
-    b = create_widget(&app, w, 260, 170, 60, 20);
-    b->label = "Quit";
+    b = add_button(w, "Quit", 260, 170, 60, 20);
     b->scale.gravity = NONE;
-    b->func.expose_callback = draw_button;
-    b->func.enter_callback = transparent_draw;
-    b->func.button_press_callback = button_press;
-    b->func.button_release_callback = button_release;
-    b->func.leave_callback = transparent_draw;
+    b->func.user_callback = button_quit_callback;
 
-    b = create_widget(&app, w, 10, 170, 60, 20);
-    b->label = "Reset";
+    b = add_button(w, "Reset", 10, 170, 60, 20);
     b->scale.gravity = SOUTHEAST;
-    b->func.expose_callback = draw_button;
-    b->func.enter_callback = transparent_draw;
-    b->func.button_press_callback = button_press;
-    b->func.button_release_callback = button_reset_release;
-    b->func.leave_callback = transparent_draw;
+    b->func.user_callback = button_reset_callback;
 
     main_run(&app);
 

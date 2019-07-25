@@ -26,7 +26,7 @@
 #pragma once
 
 #ifndef XWIDGET_PRIVATE_H_
-#define XWIDGET_PRIVATE_H__
+#define XWIDGET_PRIVATE_H_
 
 #include "xputty.h"
 

@@ -1,0 +1,109 @@
+\hypertarget{xbutton__private_8h}{}\section{xbutton\+\_\+private.\+h File Reference}
+\label{xbutton__private_8h}\index{xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}}
+{\ttfamily \#include \char`\"{}xputty.\+h\char`\"{}}\newline
+Include dependency graph for xbutton\+\_\+private.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xbutton__private_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{xbutton__private_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{xbutton__private_8h_a719e82ef2949ca9b4b14413697e85c97}{X\+B\+U\+T\+T\+O\+N\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+H\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{xbutton__private_8h_a555079b56b3d52f2a74c20f6ebd05e29}{\+\_\+draw\+\_\+button} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+button -\/ internal draw the button to the buffer \end{DoxyCompactList}\item 
+void \hyperlink{xbutton__private_8h_a28a4fe06426208c720b93c1fa51aff49}{\+\_\+button\+\_\+pressed} (void $\ast$w\+\_\+, void $\ast$button, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+button\+\_\+pressed -\/ redraw the button and send state via user\+\_\+callback \end{DoxyCompactList}\item 
+void \hyperlink{xbutton__private_8h_a0168623590cbb3b5f19ae0878ea41a5f}{\+\_\+button\+\_\+released} (void $\ast$w\+\_\+, void $\ast$button\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+button\+\_\+released -\/ redraw the button and send state via user\+\_\+callback \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{xbutton__private_8h_a719e82ef2949ca9b4b14413697e85c97}\label{xbutton__private_8h_a719e82ef2949ca9b4b14413697e85c97}} 
+\index{xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}!X\+B\+U\+T\+T\+O\+N\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+H\+\_\+@{X\+B\+U\+T\+T\+O\+N\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+H\+\_\+}}
+\index{X\+B\+U\+T\+T\+O\+N\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+H\+\_\+@{X\+B\+U\+T\+T\+O\+N\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+H\+\_\+}!xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}}
+\subsubsection{\texorpdfstring{X\+B\+U\+T\+T\+O\+N\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+H\+\_\+}{XBUTTON\_PRIVATE\_H\_}}
+{\footnotesize\ttfamily \#define X\+B\+U\+T\+T\+O\+N\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+H\+\_\+}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xbutton__private_8h_a28a4fe06426208c720b93c1fa51aff49}\label{xbutton__private_8h_a28a4fe06426208c720b93c1fa51aff49}} 
+\index{xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}!\+\_\+button\+\_\+pressed@{\+\_\+button\+\_\+pressed}}
+\index{\+\_\+button\+\_\+pressed@{\+\_\+button\+\_\+pressed}!xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+button\+\_\+pressed()}{\_button\_pressed()}}
+{\footnotesize\ttfamily void \+\_\+button\+\_\+pressed (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{button,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+button\+\_\+pressed -\/ redraw the button and send state via user\+\_\+callback 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} button \\
+\hline
+{\em $\ast$button} & -\/ void pointer to X\+Event.\+xbutton struct \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xbutton__private_8h_a0168623590cbb3b5f19ae0878ea41a5f}\label{xbutton__private_8h_a0168623590cbb3b5f19ae0878ea41a5f}} 
+\index{xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}!\+\_\+button\+\_\+released@{\+\_\+button\+\_\+released}}
+\index{\+\_\+button\+\_\+released@{\+\_\+button\+\_\+released}!xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+button\+\_\+released()}{\_button\_released()}}
+{\footnotesize\ttfamily void \+\_\+button\+\_\+released (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{button\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+button\+\_\+released -\/ redraw the button and send state via user\+\_\+callback 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} button \\
+\hline
+{\em $\ast$button} & -\/ void pointer to X\+Event.\+xbutton struct \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xbutton__private_8h_a555079b56b3d52f2a74c20f6ebd05e29}\label{xbutton__private_8h_a555079b56b3d52f2a74c20f6ebd05e29}} 
+\index{xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}!\+\_\+draw\+\_\+button@{\+\_\+draw\+\_\+button}}
+\index{\+\_\+draw\+\_\+button@{\+\_\+draw\+\_\+button}!xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+\_\+button()}{\_draw\_button()}}
+{\footnotesize\ttfamily void \+\_\+draw\+\_\+button (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+draw\+\_\+button -\/ internal draw the button to the buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} button \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

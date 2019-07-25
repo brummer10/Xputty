@@ -23,19 +23,15 @@
 
 static void draw_label(Widget_t *w, int width, int height) {
     cairo_text_extents_t extents;
-    cairo_set_source_rgb (w->cr, 0.6, 0.6, 0.6);
-    if(w->state==1)
-        cairo_set_source_rgb (w->cr, 0.8, 0.8, 0.8);
-    if(w->state==2)
-        cairo_set_source_rgb (w->cr, 0.1, 0.8, 0.8);
-    cairo_set_font_size (w->cr, 12.0);
-    cairo_select_font_face (w->cr, "Sans", CAIRO_FONT_SLANT_NORMAL,
+    cairo_set_source_rgb (w->crb, 0.0, 0.1, 0.1);
+    cairo_set_font_size (w->crb, 12.0);
+    cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
                                CAIRO_FONT_WEIGHT_BOLD);
-    cairo_text_extents(w->cr,w->label , &extents);
+    cairo_text_extents(w->crb,w->label , &extents);
 
-    cairo_move_to (w->cr, (width-extents.width)*0.5, (height+extents.height)*0.5);
-    cairo_show_text(w->cr, w->label);
-    cairo_new_path (w->cr);
+    cairo_move_to (w->crb, (width-extents.width)*0.5, (height+extents.height)*0.5);
+    cairo_show_text(w->crb, w->label);
+    cairo_new_path (w->crb);
 }
 
 static void draw_window(void *w_, void* user_data) {
@@ -46,53 +42,31 @@ static void draw_window(void *w_, void* user_data) {
     int height = attrs.height;
     if (attrs.map_state != IsViewable) return;
 
-    cairo_push_group (w->cr);
-
-    cairo_set_source_rgb (w->cr, 0.05, 0.15, 0.15);
-    cairo_paint (w->cr);
-
-    draw_label(w,width,height);
-
-    cairo_pop_group_to_source (w->cr);
-    cairo_paint (w->cr);
-}
-
-static void draw_button(void *w_, void* user_data) {
-    Widget_t *w = (Widget_t*)w_;
-    XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
-    int width = attrs.width;
-    int height = attrs.height;
-    if (attrs.map_state != IsViewable) return;
-
-    cairo_push_group (w->cr);
-    cairo_set_source_rgb (w->cr, 0.5, 0.15, 0.15);
-    cairo_paint (w->cr);
+    cairo_pattern_t *pat;
+    pat = cairo_pattern_create_linear (0.0, 0.0, width , height);
+    cairo_pattern_add_color_stop_rgba (pat, 1, 0.5, 0, 0, 1);
+    cairo_pattern_add_color_stop_rgba (pat, 0, 1, 1, 0.5, 1);
+    cairo_rectangle(w->crb,0,0,width,height);
+    cairo_set_source (w->crb, pat);
+    cairo_fill (w->crb);
+    cairo_pattern_destroy (pat);
 
     draw_label(w,width,height);
-
-    cairo_pop_group_to_source (w->cr);
-    cairo_paint (w->cr);
 }
 
-static void button_press(void *w_, void* button, void* user_data) {
-    draw_button(w_, user_data);
-}
-
-static void button_release(void *w_, void* button_, void* user_data) {
+static void button_quit_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    draw_button(w_, NULL);
-    if (w->has_pointer){
+    
+    if (w->has_pointer && !*(int*)user_data){
         Widget_t *p = (Widget_t*)w->parent;
         quit(p);
     }
 
 }
 
-static void button1_release(void *w_, void* button_, void* user_data) {
+static void button_ok_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    draw_button(w_, NULL);
-    if (w->has_pointer){
+    if (w->has_pointer && !*(int*)user_data){
         Widget_t *p = (Widget_t*)w->parent;
         quit_widget(w);
         quit_widget(p);
@@ -112,36 +86,25 @@ int main (int argc, char ** argv)
     w->label = "How are you?";
     w->func.expose_callback = draw_window;
 
-
     Screen *screen = ScreenOfDisplay(app.dpy,0);
     int center_x = screen->width/2 - 150;
     int center_y = screen->height/2 - 100; 
     XMoveWindow(w->dpy,w->widget,center_x, center_y);
 
-    w_quit = create_widget(&app, w, 230, 170, 60, 20);
-    w_quit->label = "Quit";
-    w_quit->func.expose_callback = draw_button;
-    w_quit->func.enter_callback = draw_button;
-    w_quit->func.button_press_callback = button_press;
-    w_quit->func.button_release_callback = button_release;
-    w_quit->func.leave_callback = draw_button;
-    
+    w_quit = add_button(w, "Quit", 230, 170, 60, 20);
+    w_quit->scale.gravity = NONE;
+    w_quit->func.user_callback = button_quit_callback;
+
     w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 200);
     XStoreName(app.dpy, w->widget, "Xputty Message Box");
     w->label = "This is a message";
     w->func.expose_callback = draw_window;
     XMoveWindow(w->dpy,w->widget,center_x+30, center_y+30);
 
-    w_quit = create_widget(&app, w, 230, 170, 60, 20);
-    w_quit->label = "OK";
-    w_quit->func.expose_callback = draw_button;
-    w_quit->func.enter_callback = draw_button;
-    w_quit->func.button_press_callback = button_press;
-    w_quit->func.button_release_callback = button1_release;
-    w_quit->func.leave_callback = draw_button;
-
-    bool run = true;
-    
+    w_quit = add_button(w, "OK", 230, 170, 60, 20);
+    w_quit->scale.gravity = NONE;
+    w_quit->func.user_callback = button_ok_callback;
+   
     main_run(&app);
    
     main_quit(&app);
