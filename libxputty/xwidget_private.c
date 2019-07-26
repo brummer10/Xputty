@@ -293,3 +293,31 @@ void _resize_childs(Widget_t *wid) {
         
     }
 }
+
+/**
+ * @brief _color_mode        - intern check which color mode is selected
+ * @param *wid               - pointer to the Widget_t to set the color mode
+ * @param st                 - Widget state 
+ * @return Color_t*          - pointer to the selected Color_t struct
+ */
+
+Color_t *_color_mode(Widget_t *wid, Widget_state st) {
+    Color_t *c = NULL;
+    switch(st) {
+        case _NORMAL_:
+            c = &wid->normal_color;
+        break;
+        case _PRELIGHT_:
+            c = &wid->prelight_color;
+        break;
+        case _ACTIVE_:
+            c = &wid->active_color;
+        break;
+        case _SELECTED_:
+            c = &wid->selected_color;
+        break;
+        default:
+        break;
+    }
+    return c;
+}

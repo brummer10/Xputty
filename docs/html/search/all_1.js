@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['active_5fcolor',['active_color',['../structWidget__t.html#a9b835922783ab3d2243ed19582773f97',1,'Widget_t']]],
   ['add_5fadjustment',['add_adjustment',['../xadjustment_8c.html#afd8595365c53be47a55fecec996347a7',1,'add_adjustment(Widget_t *w, float std_value, float value, float min_value, float max_value, float step, CL_type type):&#160;xadjustment.c'],['../xadjustment_8h.html#afd8595365c53be47a55fecec996347a7',1,'add_adjustment(Widget_t *w, float std_value, float value, float min_value, float max_value, float step, CL_type type):&#160;xadjustment.c']]],
   ['add_5fbutton',['add_button',['../xbutton_8c.html#a4dbd91e99d5ee97678aee121f8e12587',1,'add_button(Widget_t *parent, const char *label, int x, int y, int width, int height):&#160;xbutton.c'],['../xbutton_8h.html#a4dbd91e99d5ee97678aee121f8e12587',1,'add_button(Widget_t *parent, const char *label, int x, int y, int width, int height):&#160;xbutton.c']]],
   ['adj_5fcallback',['adj_callback',['../structFunc__t.html#afe804d94b970050a9f85530408169623',1,'Func_t']]],

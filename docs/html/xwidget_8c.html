@@ -103,6 +103,15 @@ Functions</h2></td></tr>
 <tr class="memitem:adb0c2b832c062c6ae833f649654d1c25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#adb0c2b832c062c6ae833f649654d1c25">create_widget</a> (<a class="el" href="structXputty.html">Xputty</a> *app, <a class="el" href="structWidget__t.html">Widget_t</a> *parent, int x, int y, int width, int height)</td></tr>
 <tr class="memdesc:adb0c2b832c062c6ae833f649654d1c25"><td class="mdescLeft">&#160;</td><td class="mdescRight">*create_widget - create a widget  <a href="#adb0c2b832c062c6ae833f649654d1c25">More...</a><br /></td></tr>
 <tr class="separator:adb0c2b832c062c6ae833f649654d1c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a628e66c37b118178d3d7efef8c3f9409"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a628e66c37b118178d3d7efef8c3f9409">use_fg_color</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, <a class="el" href="xwidget_8h.html#a8a9a00ba3976b54d9c5cacffe16d14ef">Widget_state</a> st)</td></tr>
+<tr class="memdesc:a628e66c37b118178d3d7efef8c3f9409"><td class="mdescLeft">&#160;</td><td class="mdescRight">use_fg_color_normal - set normal forground color for <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>  <a href="#a628e66c37b118178d3d7efef8c3f9409">More...</a><br /></td></tr>
+<tr class="separator:a628e66c37b118178d3d7efef8c3f9409"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafc66a076ea370735dd79193d6bbf574"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#aafc66a076ea370735dd79193d6bbf574">use_bg_color</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, <a class="el" href="xwidget_8h.html#a8a9a00ba3976b54d9c5cacffe16d14ef">Widget_state</a> st)</td></tr>
+<tr class="memdesc:aafc66a076ea370735dd79193d6bbf574"><td class="mdescLeft">&#160;</td><td class="mdescRight">use_bg_color_normal - set normal background color for <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>  <a href="#aafc66a076ea370735dd79193d6bbf574">More...</a><br /></td></tr>
+<tr class="separator:aafc66a076ea370735dd79193d6bbf574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95faa1dad2f80629663d2cd59074ab40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a95faa1dad2f80629663d2cd59074ab40">use_base_color</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, <a class="el" href="xwidget_8h.html#a8a9a00ba3976b54d9c5cacffe16d14ef">Widget_state</a> st)</td></tr>
+<tr class="memdesc:a95faa1dad2f80629663d2cd59074ab40"><td class="mdescLeft">&#160;</td><td class="mdescRight">use_base_color_normal - set base color for <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>  <a href="#a95faa1dad2f80629663d2cd59074ab40">More...</a><br /></td></tr>
+<tr class="separator:a95faa1dad2f80629663d2cd59074ab40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17f2f3effd46532c596511abcfb5058e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a17f2f3effd46532c596511abcfb5058e">expose_widget</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w)</td></tr>
 <tr class="memdesc:a17f2f3effd46532c596511abcfb5058e"><td class="mdescLeft">&#160;</td><td class="mdescRight">expose_widgets - send expose expose event to window  <a href="#a17f2f3effd46532c596511abcfb5058e">More...</a><br /></td></tr>
 <tr class="separator:a17f2f3effd46532c596511abcfb5058e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -473,6 +482,117 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">*wid</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> receiving a event </td></tr>
     <tr><td class="paramname">*user_data</td><td>- void pointer to attached user_data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a95faa1dad2f80629663d2cd59074ab40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95faa1dad2f80629663d2cd59074ab40">&#9670;&nbsp;</a></span>use_base_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void use_base_color </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="xwidget_8h.html#a8a9a00ba3976b54d9c5cacffe16d14ef">Widget_state</a>&#160;</td>
+          <td class="paramname"><em>st</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>use_base_color_normal - set base color for <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>- the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> to send the event to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="aafc66a076ea370735dd79193d6bbf574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafc66a076ea370735dd79193d6bbf574">&#9670;&nbsp;</a></span>use_bg_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void use_bg_color </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="xwidget_8h.html#a8a9a00ba3976b54d9c5cacffe16d14ef">Widget_state</a>&#160;</td>
+          <td class="paramname"><em>st</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>use_bg_color_normal - set normal background color for <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>- the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> to send the event to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a628e66c37b118178d3d7efef8c3f9409"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a628e66c37b118178d3d7efef8c3f9409">&#9670;&nbsp;</a></span>use_fg_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void use_fg_color </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="xwidget_8h.html#a8a9a00ba3976b54d9c5cacffe16d14ef">Widget_state</a>&#160;</td>
+          <td class="paramname"><em>st</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>use_fg_color_normal - set normal forground color for <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>- the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> to send the event to </td></tr>
   </table>
   </dd>
 </dl>

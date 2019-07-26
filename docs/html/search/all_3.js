@@ -18,6 +18,7 @@ var searchData=
   ['cl_5fnone',['CL_NONE',['../xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a6dc58bda20e0018d54f1cb94df78119e',1,'xadjustment.h']]],
   ['cl_5ftoggle',['CL_TOGGLE',['../xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a08e7c21e78e2617f5f20de6b919b0e6c',1,'xadjustment.h']]],
   ['cl_5ftype',['CL_type',['../xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743',1,'xadjustment.h']]],
+  ['color_5ft',['Color_t',['../structColor__t.html',1,'']]],
   ['configure_5fcallback',['configure_callback',['../structFunc__t.html#a7876670d3bb74b11ab93fe81908d04b0',1,'Func_t']]],
   ['configure_5fevent',['configure_event',['../xwidget_8c.html#acf8c7ef79c60253a687116d3783e1c67',1,'xwidget.c']]],
   ['cr',['cr',['../structWidget__t.html#a26594f6ffabe98fc08f9207150fc9417',1,'Widget_t']]],

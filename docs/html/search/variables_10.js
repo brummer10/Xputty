@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['user_5fcallback',['user_callback',['../structFunc__t.html#a1f089cb13a39764a1f980470a51db71b',1,'Func_t']]]
+  ['transparency',['transparency',['../structWidget__t.html#a42a597c21eca964c0296fc7026feb43b',1,'Widget_t']]],
+  ['type',['type',['../structAdjustment__t.html#a1ec53b702dc4707522249f3cb5cbf6b3',1,'Adjustment_t']]]
 ];

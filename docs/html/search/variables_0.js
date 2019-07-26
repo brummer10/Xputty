@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['active_5fcolor',['active_color',['../structWidget__t.html#a9b835922783ab3d2243ed19582773f97',1,'Widget_t']]],
   ['adj_5fcallback',['adj_callback',['../structFunc__t.html#afe804d94b970050a9f85530408169623',1,'Func_t']]],
   ['adj_5fx',['adj_x',['../structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd',1,'Widget_t']]],
   ['adj_5fy',['adj_y',['../structWidget__t.html#abde95d3fb49faff5dd852f16810115e7',1,'Widget_t']]],

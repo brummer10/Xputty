@@ -46,27 +46,28 @@ void _draw_button(void *w_, void* user_data) {
     cairo_close_path (w->crb);
 
     cairo_set_line_width(w->crb, 1.0);
-    cairo_set_source_rgb (w->crb, 0., 0.1, 0.1);
+    use_bg_color(w, _NORMAL_);
     if(w->state==1) {
-        cairo_set_source_rgba (w->crb, 0.2, 0.2, 0.2, 0.1);
+        use_base_color(w, _PRELIGHT_);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.5);
-        cairo_set_source_rgb (w->crb, 0.2, 0.2, 0.2);
+        use_bg_color(w, _PRELIGHT_);
     }
     if(w->state==2) {
-        cairo_set_source_rgba (w->crb, 0.1, 0.1, 0.1, 0.1);
+        use_base_color(w, _SELECTED_);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 2.0);
-        cairo_set_source_rgb (w->crb, 0., 0.1, 0.1);
+        use_bg_color(w, _SELECTED_);
      }
     cairo_stroke(w->crb); 
 
     cairo_text_extents_t extents;
-    cairo_set_source_rgb (w->crb, 0.1, 0.1, 0.1);
-    if(w->state==1)
-        cairo_set_source_rgb (w->crb, 0.8, 0.8, 0.8);
-    if(w->state==2)
-        cairo_set_source_rgb (w->crb, 0.2, 0.2, 0.2);
+    use_fg_color(w, _NORMAL_);
+    if(w->state==1) {
+        use_fg_color(w, _PRELIGHT_);
+    } else if(w->state==2) {
+        use_fg_color(w, _SELECTED_);
+    }
     cairo_set_font_size (w->crb, 12.0);
     cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
                                CAIRO_FONT_WEIGHT_BOLD);

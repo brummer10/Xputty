@@ -23,6 +23,12 @@ void \hyperlink{xwidget_8c_acf8c7ef79c60253a687116d3783e1c67}{configure\+\_\+eve
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+window -\/ create a Window \end{DoxyCompactList}\item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8c_adb0c2b832c062c6ae833f649654d1c25}{create\+\_\+widget} (\hyperlink{structXputty}{Xputty} $\ast$app, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, int x, int y, int width, int height)
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+widget -\/ create a widget \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a628e66c37b118178d3d7efef8c3f9409}{use\+\_\+fg\+\_\+color} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st)
+\begin{DoxyCompactList}\small\item\em use\+\_\+fg\+\_\+color\+\_\+normal -\/ set normal forground color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_aafc66a076ea370735dd79193d6bbf574}{use\+\_\+bg\+\_\+color} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st)
+\begin{DoxyCompactList}\small\item\em use\+\_\+bg\+\_\+color\+\_\+normal -\/ set normal background color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a95faa1dad2f80629663d2cd59074ab40}{use\+\_\+base\+\_\+color} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st)
+\begin{DoxyCompactList}\small\item\em use\+\_\+base\+\_\+color\+\_\+normal -\/ set base color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a17f2f3effd46532c596511abcfb5058e}{expose\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em expose\+\_\+widgets -\/ send expose expose event to window \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a0e801c1a701cc8526b198371ce2ff692}{transparent\+\_\+draw} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
@@ -211,6 +217,60 @@ transparent\+\_\+draw -\/ copy parent surface to child surface
 {\em $\ast$wid} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} receiving a event \\
 \hline
 {\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a95faa1dad2f80629663d2cd59074ab40}\label{xwidget_8c_a95faa1dad2f80629663d2cd59074ab40}} 
+\index{xwidget.\+c@{xwidget.\+c}!use\+\_\+base\+\_\+color@{use\+\_\+base\+\_\+color}}
+\index{use\+\_\+base\+\_\+color@{use\+\_\+base\+\_\+color}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{use\+\_\+base\+\_\+color()}{use\_base\_color()}}
+{\footnotesize\ttfamily void use\+\_\+base\+\_\+color (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state}}]{st }\end{DoxyParamCaption})}
+
+
+
+use\+\_\+base\+\_\+color\+\_\+normal -\/ set base color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_aafc66a076ea370735dd79193d6bbf574}\label{xwidget_8c_aafc66a076ea370735dd79193d6bbf574}} 
+\index{xwidget.\+c@{xwidget.\+c}!use\+\_\+bg\+\_\+color@{use\+\_\+bg\+\_\+color}}
+\index{use\+\_\+bg\+\_\+color@{use\+\_\+bg\+\_\+color}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{use\+\_\+bg\+\_\+color()}{use\_bg\_color()}}
+{\footnotesize\ttfamily void use\+\_\+bg\+\_\+color (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state}}]{st }\end{DoxyParamCaption})}
+
+
+
+use\+\_\+bg\+\_\+color\+\_\+normal -\/ set normal background color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a628e66c37b118178d3d7efef8c3f9409}\label{xwidget_8c_a628e66c37b118178d3d7efef8c3f9409}} 
+\index{xwidget.\+c@{xwidget.\+c}!use\+\_\+fg\+\_\+color@{use\+\_\+fg\+\_\+color}}
+\index{use\+\_\+fg\+\_\+color@{use\+\_\+fg\+\_\+color}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{use\+\_\+fg\+\_\+color()}{use\_fg\_color()}}
+{\footnotesize\ttfamily void use\+\_\+fg\+\_\+color (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state}}]{st }\end{DoxyParamCaption})}
+
+
+
+use\+\_\+fg\+\_\+color\+\_\+normal -\/ set normal forground color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

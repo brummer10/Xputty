@@ -76,11 +76,12 @@ Collaboration diagram for Widget_t:</div>
 <div class="dyncontent">
 <div class="center"><img src="structWidget__t__coll__graph.png" border="0" usemap="#Widget__t_coll__map" alt="Collaboration graph"/></div>
 <map name="Widget__t_coll__map" id="Widget__t_coll__map">
-<area shape="rect" id="node2" href="structChildlist__t.html" title="Childlist_t &#45; struct to hold a Widget_t child list. " alt="" coords="5,200,85,227"/>
-<area shape="rect" id="node3" href="structAdjustment__t.html" title="Adjustment_t &#45; struct to hold a controller adjustment. " alt="" coords="109,200,208,227"/>
-<area shape="rect" id="node6" href="structXputty.html" title="Xputty &#45; the main struct. It should be declared before any other call to a Xputty function..." alt="" coords="121,291,181,317"/>
-<area shape="rect" id="node4" href="structFunc__t.html" title="Func_t &#45; struct to hold all supported event callbacks. " alt="" coords="77,5,139,32"/>
-<area shape="rect" id="node5" href="structResize__t.html" title="Resize_t &#45; struct used to resize child widgets. " alt="" coords="164,5,239,32"/>
+<area shape="rect" id="node2" href="structChildlist__t.html" title="Childlist_t &#45; struct to hold a Widget_t child list. " alt="" coords="5,244,85,271"/>
+<area shape="rect" id="node3" href="structAdjustment__t.html" title="Adjustment_t &#45; struct to hold a controller adjustment. " alt="" coords="109,244,208,271"/>
+<area shape="rect" id="node7" href="structXputty.html" title="Xputty &#45; the main struct. It should be declared before any other call to a Xputty function..." alt="" coords="121,335,181,361"/>
+<area shape="rect" id="node4" href="structFunc__t.html" title="Func_t &#45; struct to hold all supported event callbacks. " alt="" coords="30,5,93,32"/>
+<area shape="rect" id="node5" href="structResize__t.html" title="Resize_t &#45; struct used to resize child widgets. " alt="" coords="117,5,192,32"/>
+<area shape="rect" id="node6" href="structColor__t.html" title="Color_t &#45; struct used to set cairo color for Widget_t. " alt="" coords="216,5,280,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -106,6 +107,14 @@ Data Fields</h2></td></tr>
 <tr class="separator:a84d225e7b261d67daa764b47c8c62107"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad98022ee160d4c0906110868fc9e5664"><td class="memItemLeft" align="right" valign="top">cairo_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">crb</a></td></tr>
 <tr class="separator:ad98022ee160d4c0906110868fc9e5664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24f7c236de2f1083b37318d0552c8e3a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structColor__t.html">Color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a24f7c236de2f1083b37318d0552c8e3a">normal_color</a></td></tr>
+<tr class="separator:a24f7c236de2f1083b37318d0552c8e3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b835922783ab3d2243ed19582773f97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structColor__t.html">Color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a9b835922783ab3d2243ed19582773f97">active_color</a></td></tr>
+<tr class="separator:a9b835922783ab3d2243ed19582773f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58cb10635bfd905d2d361b492b7c6565"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structColor__t.html">Color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a58cb10635bfd905d2d361b492b7c6565">prelight_color</a></td></tr>
+<tr class="separator:a58cb10635bfd905d2d361b492b7c6565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae473f4da8e3178696dc7261ca2147179"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structColor__t.html">Color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#ae473f4da8e3178696dc7261ca2147179">selected_color</a></td></tr>
+<tr class="separator:ae473f4da8e3178696dc7261ca2147179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9dd7b58be77bf31ab021aa627a73186a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a9dd7b58be77bf31ab021aa627a73186a">data</a></td></tr>
 <tr class="separator:a9dd7b58be77bf31ab021aa627a73186a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a952020107ac1f6d9a37b4f978f77b61c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a952020107ac1f6d9a37b4f978f77b61c">label</a></td></tr>
@@ -159,6 +168,10 @@ Data Fields</h2></td></tr>
     <tr><td class="paramname">*cr</td><td>- pointer to the cairo xlib surface context </td></tr>
     <tr><td class="paramname">*buffer</td><td>- pointer to the cairo buffer surface </td></tr>
     <tr><td class="paramname">*crb</td><td>- pointer to the cairo buffer surface context </td></tr>
+    <tr><td class="paramname">*normal_color</td><td>- struct to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> normal colors </td></tr>
+    <tr><td class="paramname">*active_color</td><td>- struct to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> active colors </td></tr>
+    <tr><td class="paramname">*prelight_color</td><td>- struct to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> prelight colors </td></tr>
+    <tr><td class="paramname">*selected_color</td><td>- struct to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> selected colors </td></tr>
     <tr><td class="paramname">data</td><td>- int to hold user data </td></tr>
     <tr><td class="paramname">*label</td><td>- pointer to the widget label </td></tr>
     <tr><td class="paramname">input_label</td><td>- char array the widget input label </td></tr>
@@ -182,6 +195,21 @@ Data Fields</h2></td></tr>
   </dd>
 </dl>
 </div><h2 class="groupheader">Field Documentation</h2>
+<a id="a9b835922783ab3d2243ed19582773f97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b835922783ab3d2243ed19582773f97">&#9670;&nbsp;</a></span>active_color</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structColor__t.html">Color_t</a> Widget_t::active_color</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>struct to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> active colors </p>
+
+</div>
+</div>
 <a id="aabc05e0a46c85d24483fae36127b45dd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aabc05e0a46c85d24483fae36127b45dd">&#9670;&nbsp;</a></span>adj_x</h2>
 
@@ -422,6 +450,21 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a id="a24f7c236de2f1083b37318d0552c8e3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24f7c236de2f1083b37318d0552c8e3a">&#9670;&nbsp;</a></span>normal_color</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structColor__t.html">Color_t</a> Widget_t::normal_color</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>struct to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> normal colors </p>
+
+</div>
+</div>
 <a id="a483f6517c19fe09e1bf2eaec6646a14b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a483f6517c19fe09e1bf2eaec6646a14b">&#9670;&nbsp;</a></span>parent</h2>
 
@@ -467,6 +510,21 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a id="a58cb10635bfd905d2d361b492b7c6565"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58cb10635bfd905d2d361b492b7c6565">&#9670;&nbsp;</a></span>prelight_color</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structColor__t.html">Color_t</a> Widget_t::prelight_color</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>struct to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> prelight colors </p>
+
+</div>
+</div>
 <a id="a9a2d5b53f40f5bf3914fc0694027d7ec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9a2d5b53f40f5bf3914fc0694027d7ec">&#9670;&nbsp;</a></span>scale</h2>
 
@@ -479,6 +537,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>struct used to resize child widgets </p>
+
+</div>
+</div>
+<a id="ae473f4da8e3178696dc7261ca2147179"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae473f4da8e3178696dc7261ca2147179">&#9670;&nbsp;</a></span>selected_color</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structColor__t.html">Color_t</a> Widget_t::selected_color</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>struct to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> selected colors </p>
 
 </div>
 </div>

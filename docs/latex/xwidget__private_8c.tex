@@ -33,7 +33,9 @@ void \hyperlink{xwidget__private_8c_a70d121b920c02065b3bc096c9b92e83c}{\+\_\+dum
 void \hyperlink{xwidget__private_8c_a114b183c93f55d46f7071c9ef6110b02}{\+\_\+resize\+\_\+surface} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid, int width, int height)
 \begin{DoxyCompactList}\small\item\em \+\_\+resize\+\_\+surface -\/ intern check if surfaces needs resizing \end{DoxyCompactList}\item 
 void \hyperlink{xwidget__private_8c_a211aa2f671aa4c2885bc05e033eef8c4}{\+\_\+resize\+\_\+childs} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid)
-\begin{DoxyCompactList}\small\item\em \+\_\+resize\+\_\+childs -\/ intern check if child widgets needs resizing \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \+\_\+resize\+\_\+childs -\/ intern check if child widgets needs resizing \end{DoxyCompactList}\item 
+\hyperlink{structColor__t}{Color\+\_\+t} $\ast$ \hyperlink{xwidget__private_8c_a841732d9cb66e0cbde0d11cf5ccd69e2}{\+\_\+color\+\_\+mode} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st)
+\begin{DoxyCompactList}\small\item\em \+\_\+color\+\_\+mode -\/ intern check which color mode is selected \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -78,6 +80,26 @@ void
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget__private_8c_a841732d9cb66e0cbde0d11cf5ccd69e2}\label{xwidget__private_8c_a841732d9cb66e0cbde0d11cf5ccd69e2}} 
+\index{xwidget\+\_\+private.\+c@{xwidget\+\_\+private.\+c}!\+\_\+color\+\_\+mode@{\+\_\+color\+\_\+mode}}
+\index{\+\_\+color\+\_\+mode@{\+\_\+color\+\_\+mode}!xwidget\+\_\+private.\+c@{xwidget\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+color\+\_\+mode()}{\_color\_mode()}}
+{\footnotesize\ttfamily \hyperlink{structColor__t}{Color\+\_\+t}$\ast$ \+\_\+color\+\_\+mode (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{wid,  }\item[{\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state}}]{st }\end{DoxyParamCaption})}
+
+
+
+\+\_\+color\+\_\+mode -\/ intern check which color mode is selected 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$wid} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to set the color mode \\
+\hline
+{\em st} & -\/ Widget state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Color\+\_\+t$\ast$ -\/ pointer to the selected \hyperlink{structColor__t}{Color\+\_\+t} struct 
 \end{DoxyReturn}
 \mbox{\Hypertarget{xwidget__private_8c_ac337b3d0f61bc649c955c6e5bf14c810}\label{xwidget__private_8c_ac337b3d0f61bc649c955c6e5bf14c810}} 
 \index{xwidget\+\_\+private.\+c@{xwidget\+\_\+private.\+c}!\+\_\+dummy1\+\_\+callback@{\+\_\+dummy1\+\_\+callback}}

@@ -42,6 +42,14 @@ cairo\+\_\+surface\+\_\+t $\ast$ \hyperlink{structWidget__t_a84d225e7b261d67daa7
 \item 
 cairo\+\_\+t $\ast$ \hyperlink{structWidget__t_ad98022ee160d4c0906110868fc9e5664}{crb}
 \item 
+\hyperlink{structColor__t}{Color\+\_\+t} \hyperlink{structWidget__t_a24f7c236de2f1083b37318d0552c8e3a}{normal\+\_\+color}
+\item 
+\hyperlink{structColor__t}{Color\+\_\+t} \hyperlink{structWidget__t_a9b835922783ab3d2243ed19582773f97}{active\+\_\+color}
+\item 
+\hyperlink{structColor__t}{Color\+\_\+t} \hyperlink{structWidget__t_a58cb10635bfd905d2d361b492b7c6565}{prelight\+\_\+color}
+\item 
+\hyperlink{structColor__t}{Color\+\_\+t} \hyperlink{structWidget__t_ae473f4da8e3178696dc7261ca2147179}{selected\+\_\+color}
+\item 
 int \hyperlink{structWidget__t_a9dd7b58be77bf31ab021aa627a73186a}{data}
 \item 
 const char $\ast$ \hyperlink{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}{label}
@@ -107,6 +115,14 @@ X\+IM \hyperlink{structWidget__t_a81aa76d336043a7230844d09a92113e2}{xim}
 \hline
 {\em $\ast$crb} & -\/ pointer to the cairo buffer surface context \\
 \hline
+{\em $\ast$normal\+\_\+color} & -\/ struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} normal colors \\
+\hline
+{\em $\ast$active\+\_\+color} & -\/ struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} active colors \\
+\hline
+{\em $\ast$prelight\+\_\+color} & -\/ struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} prelight colors \\
+\hline
+{\em $\ast$selected\+\_\+color} & -\/ struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} selected colors \\
+\hline
 {\em data} & -\/ int to hold user data \\
 \hline
 {\em $\ast$label} & -\/ pointer to the widget label \\
@@ -149,7 +165,13 @@ X\+IM \hyperlink{structWidget__t_a81aa76d336043a7230844d09a92113e2}{xim}
 
 
 \subsection{Field Documentation}
-\mbox{\Hypertarget{structWidget__t_aabc05e0a46c85d24483fae36127b45dd}\label{structWidget__t_aabc05e0a46c85d24483fae36127b45dd}} 
+\mbox{\Hypertarget{structWidget__t_a9b835922783ab3d2243ed19582773f97}\label{structWidget__t_a9b835922783ab3d2243ed19582773f97}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!active\+\_\+color@{active\+\_\+color}}
+\index{active\+\_\+color@{active\+\_\+color}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{active\+\_\+color}{active\_color}}
+{\footnotesize\ttfamily \hyperlink{structColor__t}{Color\+\_\+t} Widget\+\_\+t\+::active\+\_\+color}
+
+struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} active colors \mbox{\Hypertarget{structWidget__t_aabc05e0a46c85d24483fae36127b45dd}\label{structWidget__t_aabc05e0a46c85d24483fae36127b45dd}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!adj\+\_\+x@{adj\+\_\+x}}
 \index{adj\+\_\+x@{adj\+\_\+x}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{adj\+\_\+x}{adj\_x}}
@@ -245,7 +267,13 @@ indicaate if the widget has parent \hyperlink{structWidget__t}{Widget\+\_\+t} or
 \subsubsection{\texorpdfstring{label}{label}}
 {\footnotesize\ttfamily const char$\ast$ Widget\+\_\+t\+::label}
 
-pointer to the widget label \mbox{\Hypertarget{structWidget__t_a483f6517c19fe09e1bf2eaec6646a14b}\label{structWidget__t_a483f6517c19fe09e1bf2eaec6646a14b}} 
+pointer to the widget label \mbox{\Hypertarget{structWidget__t_a24f7c236de2f1083b37318d0552c8e3a}\label{structWidget__t_a24f7c236de2f1083b37318d0552c8e3a}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!normal\+\_\+color@{normal\+\_\+color}}
+\index{normal\+\_\+color@{normal\+\_\+color}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{normal\+\_\+color}{normal\_color}}
+{\footnotesize\ttfamily \hyperlink{structColor__t}{Color\+\_\+t} Widget\+\_\+t\+::normal\+\_\+color}
+
+struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} normal colors \mbox{\Hypertarget{structWidget__t_a483f6517c19fe09e1bf2eaec6646a14b}\label{structWidget__t_a483f6517c19fe09e1bf2eaec6646a14b}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!parent@{parent}}
 \index{parent@{parent}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{parent}{parent}}
@@ -263,13 +291,25 @@ mouse pointer x position on button press \mbox{\Hypertarget{structWidget__t_a9b1
 \subsubsection{\texorpdfstring{pos\+\_\+y}{pos\_y}}
 {\footnotesize\ttfamily int Widget\+\_\+t\+::pos\+\_\+y}
 
-mouse pointer y position on button press \mbox{\Hypertarget{structWidget__t_a9a2d5b53f40f5bf3914fc0694027d7ec}\label{structWidget__t_a9a2d5b53f40f5bf3914fc0694027d7ec}} 
+mouse pointer y position on button press \mbox{\Hypertarget{structWidget__t_a58cb10635bfd905d2d361b492b7c6565}\label{structWidget__t_a58cb10635bfd905d2d361b492b7c6565}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!prelight\+\_\+color@{prelight\+\_\+color}}
+\index{prelight\+\_\+color@{prelight\+\_\+color}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{prelight\+\_\+color}{prelight\_color}}
+{\footnotesize\ttfamily \hyperlink{structColor__t}{Color\+\_\+t} Widget\+\_\+t\+::prelight\+\_\+color}
+
+struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} prelight colors \mbox{\Hypertarget{structWidget__t_a9a2d5b53f40f5bf3914fc0694027d7ec}\label{structWidget__t_a9a2d5b53f40f5bf3914fc0694027d7ec}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!scale@{scale}}
 \index{scale@{scale}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{scale}{scale}}
 {\footnotesize\ttfamily \hyperlink{structResize__t}{Resize\+\_\+t} Widget\+\_\+t\+::scale}
 
-struct used to resize child widgets \mbox{\Hypertarget{structWidget__t_aaa935b64805fdeb78acb015c67d6638c}\label{structWidget__t_aaa935b64805fdeb78acb015c67d6638c}} 
+struct used to resize child widgets \mbox{\Hypertarget{structWidget__t_ae473f4da8e3178696dc7261ca2147179}\label{structWidget__t_ae473f4da8e3178696dc7261ca2147179}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!selected\+\_\+color@{selected\+\_\+color}}
+\index{selected\+\_\+color@{selected\+\_\+color}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{selected\+\_\+color}{selected\_color}}
+{\footnotesize\ttfamily \hyperlink{structColor__t}{Color\+\_\+t} Widget\+\_\+t\+::selected\+\_\+color}
+
+struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} selected colors \mbox{\Hypertarget{structWidget__t_aaa935b64805fdeb78acb015c67d6638c}\label{structWidget__t_aaa935b64805fdeb78acb015c67d6638c}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!state@{state}}
 \index{state@{state}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{state}{state}}

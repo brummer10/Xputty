@@ -40,6 +40,16 @@ Widget_t* add_button(Widget_t *parent, const char * label,
 
     Widget_t *wid = create_widget(parent->app, parent, x, y, width, height);
     wid->label = label;
+
+    wid->normal_color = (Color_t){ /*fg*/{ 0.1, 0.1, 0.1, 1.0},
+         /*bg*/{ 0., 0.1, 0.1, 1.0}, /*base*/{ 0., 0.0, 0.0, 0.0}};
+
+    wid->prelight_color = (Color_t){ /*fg*/{ 0.8, 0.8, 0.8, 1.0},
+         /*bg*/{ 0.2, 0.2, 0.2, 1.0}, /*base*/{ 0.2, 0.2, 0.2, 0.1}};
+
+    wid->selected_color = (Color_t){ /*fg*/{ 0.2, 0.2, 0.2, 1.0},
+         /*bg*/{ 0.1, 0.1, 0.1, 1.0}, /*base*/{ 0.1, 0.1, 0.1, 0.2}};
+
     wid->scale.gravity = CENTER;
     wid->func.expose_callback = _draw_button;
     wid->func.enter_callback = transparent_draw;
