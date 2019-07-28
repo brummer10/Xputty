@@ -25,7 +25,7 @@
 
 /**
  * @brief add_vslider          - add a vertical slider to a Widget_t
- * connect to func.adj_callback to implement your actions
+ * connect to func.value_changed_callback to implement your actions
  * use set_adjustment(w->adj_y, . . ) to set the range you need
  * @param *parent             - pointer to the Widget_t request the button
  * @param *label              - Label to show on the button
@@ -38,19 +38,6 @@ Widget_t* add_vslider(Widget_t *parent, const char * label,
 
     Widget_t *wid = create_widget(parent->app, parent, x, y, width, height);
     wid->label = label;
-
-    wid->normal_color = (Color_t){ /*fg*/{ 0.3, 0.3, 0.3, 1.0},
-         /*bg*/{ 0.0, 0.1, 0.1, 1.0}, /*base*/{ 0.0, 0.0, 0.0, 0.5}};
-
-    wid->prelight_color = (Color_t){ /*fg*/{ 0.15, 0.15, 0.15, 1.0},
-         /*bg*/{ 0.2, 0.2, 0.2, 1.0}, /*base*/{ 0.1, 0.1, 0.1, 0.2}};
-
-    wid->selected_color = (Color_t){ /*fg*/{ 0.1, 0.1, 0.1, 1.0},
-         /*bg*/{ 0.1, 0.1, 0.1, 1.0}, /*base*/{ 0.1, 0.1, 0.1, 0.4}};
-
-    wid->active_color = (Color_t){ /*fg*/{ 0.15, 0.15, 0.15, 1.0},
-         /*bg*/{ 0.0, 0.1, 0.1, 1.0}, /*base*/{ 0.1, 0.1, 0.1, 0.5}};
-
     wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, 1.0,0.01, CL_CONTINUOS);
     wid->scale.gravity = ASPECT;
     wid->func.expose_callback = _draw_vslider;
@@ -62,7 +49,7 @@ Widget_t* add_vslider(Widget_t *parent, const char * label,
 
 /**
  * @brief add_hslider         - add a horizontal slider to a Widget_t
- * connect to func.adj_callback to implement your actions
+ * connect to func.value_changed_callback to implement your actions
  * use set_adjustment(w->adj_x, . . ) to set the range you need
  * @param *parent             - pointer to the Widget_t request the button
  * @param *label              - Label to show on the button
@@ -75,19 +62,6 @@ Widget_t* add_hslider(Widget_t *parent, const char * label,
 
     Widget_t *wid = create_widget(parent->app, parent, x, y, width, height);
     wid->label = label;
-
-    wid->normal_color = (Color_t){ /*fg*/{ 0.3, 0.3, 0.3, 1.0},
-         /*bg*/{ 0.0, 0.1, 0.1, 1.0}, /*base*/{ 0.0, 0.0, 0.0, 0.5}};
-
-    wid->prelight_color = (Color_t){ /*fg*/{ 0.15, 0.15, 0.15, 1.0},
-         /*bg*/{ 0.2, 0.2, 0.2, 1.0}, /*base*/{ 0.1, 0.1, 0.1, 0.2}};
-
-    wid->selected_color = (Color_t){ /*fg*/{ 0.1, 0.1, 0.1, 1.0},
-         /*bg*/{ 0.1, 0.1, 0.1, 1.0}, /*base*/{ 0.1, 0.1, 0.1, 0.4}};
-
-    wid->active_color = (Color_t){ /*fg*/{ 0.15, 0.15, 0.15, 1.0},
-         /*bg*/{ 0.0, 0.1, 0.1, 1.0}, /*base*/{ 0.1, 0.1, 0.1, 0.5}};
-
     wid->adj_x = add_adjustment(wid,0.0, 0.0, 0.0, 1.0,0.01, CL_CONTINUOS);
     wid->scale.gravity = ASPECT;
     wid->func.expose_callback = _draw_hslider;

@@ -197,10 +197,6 @@ Widget_t *create_window(Xputty *app, Window win,
                         CAIRO_CONTENT_COLOR_ALPHA, width, height);
     w->crb = cairo_create (w->buffer);
 
-    memset( &w->normal_color, sizeof(w->normal_color), 0 );
-    memset( &w->active_color, sizeof(w->active_color), 0 );
-    memset( &w->prelight_color, sizeof(w->prelight_color), 0 );
-    memset( &w->selected_color, sizeof(w->selected_color), 0 );
     w->is_widget = false;
     w->app = app;
     w->dpy = app->dpy;
@@ -235,6 +231,7 @@ Widget_t *create_window(Xputty *app, Window win,
     w->func.button_release_callback = _dummy1_callback;
     w->func.motion_callback = _dummy1_callback;
     w->func.adj_callback = transparent_draw;
+    w->func.value_changed_callback = _dummy_callback;
     w->func.key_press_callback = _dummy1_callback;
     w->func.key_release_callback = _dummy1_callback;
     w->func.enter_callback = _dummy_callback;
@@ -299,10 +296,6 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     
     w->crb = cairo_create (w->buffer);
 
-    memset( &w->normal_color, sizeof(w->normal_color), 0 );
-    memset( &w->active_color, sizeof(w->active_color), 0 );
-    memset( &w->prelight_color, sizeof(w->prelight_color), 0 );
-    memset( &w->selected_color, sizeof(w->selected_color), 0 );
     w->is_widget = true;
     w->app = app;
     w->dpy = app->dpy;
@@ -338,6 +331,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->func.button_release_callback = _dummy1_callback;
     w->func.motion_callback = _dummy1_callback;
     w->func.adj_callback = transparent_draw;
+    w->func.value_changed_callback = _dummy_callback;
     w->func.key_press_callback = _dummy1_callback;
     w->func.key_release_callback = _dummy1_callback;
     w->func.enter_callback = _dummy_callback;
@@ -347,93 +341,6 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     childlist_add_child(app->childlist,w);
     XMapWindow(app->dpy, w->widget);
     return w;
-}
-
-Widget_state get_widget_state(Widget_t *wid) {
-    switch(wid->state) {
-        case 0:
-            return _NORMAL_;
-        break;
-        case 1:
-            return _PRELIGHT_;
-        break;
-        case 2:
-            return _SELECTED_;
-        break;
-        case 3:
-            return _ACTIVE_;
-        break;
-        default:
-            return _NORMAL_;
-        break;        
-    }
-}
-
-/**
- * @brief get_color_mode     - intern check which color mode is selected
- * @param *wid               - pointer to the Widget_t to set the color mode
- * @param st                 - Widget state 
- * @return Color_t*          - pointer to the selected Color_t struct
- */
-
-Color_t *get_color_mode(Widget_t *wid, Widget_state st) {
-    Color_t *c = NULL;
-    switch(st) {
-        case _NORMAL_:
-            c = &wid->normal_color;
-        break;
-        case _PRELIGHT_:
-            c = &wid->prelight_color;
-        break;
-        case _ACTIVE_:
-            c = &wid->active_color;
-        break;
-        case _SELECTED_:
-            c = &wid->selected_color;
-        break;
-        default:
-        break;
-    }
-    return c;
-}
-
-/**
- * @brief use_fg_color_normal  - set normal forground color for Widget_t
- * @param w                    - the Widget_t to send the event to
- * @return void 
- */
-
-void use_fg_color(Widget_t *w, Widget_state st) {
-    Color_t *c = get_color_mode(w,st);
-    if (!c) return;
-    cairo_set_source_rgba(w->cr, c->fg[0],  c->fg[1], c->fg[2],  c->fg[3]);
-    cairo_set_source_rgba(w->crb, c->fg[0],  c->fg[1], c->fg[2],  c->fg[3]);
-}
-
-/**
- * @brief use_bg_color_normal  - set normal background color for Widget_t
- * @param w                    - the Widget_t to send the event to
- * @return void 
- */
-
-void use_bg_color(Widget_t *w, Widget_state st) {
-    Color_t *c = get_color_mode(w,st);
-    if (!c) return;
-    cairo_set_source_rgba(w->cr, c->bg[0],  c->bg[1], c->bg[2],  c->bg[3]);
-    cairo_set_source_rgba(w->crb, c->bg[0],  c->bg[1], c->bg[2],  c->bg[3]);
-}
-
-/**
- * @brief use_base_color_normal  - set base color for Widget_t
- * @param w                      - the Widget_t to send the event to
- * @return void 
- */
-
-void use_base_color(Widget_t *w, Widget_state st) {
-    Color_t *c = get_color_mode(w,st);
-    if (!c) return;
-    cairo_set_source_rgba(w->cr, c->ba[0],  c->ba[1], c->ba[2],  c->ba[3]);
-    cairo_set_source_rgba(w->crb, c->ba[0],  c->ba[1], c->ba[2],  c->ba[3]);
 }
 
 /**

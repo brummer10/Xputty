@@ -28,14 +28,6 @@
 
 
 /**
- * @brief _set_button_colormap - set color map to use for button states
- * @param *wid                 - pointer to Widget_t 
- * @return void
- */
-
-void _set_button_colormap(Widget_t *wid);
-
-/**
  * @brief _rounded_rectangle  - internal draw a rounded button
  * @param x                   - point on x axis
  * @param y                   - point on y axis
@@ -54,7 +46,7 @@ void _rounded_rectangle(cairo_t *cr,float x, float y, float width, float height)
  * @return void
  */
 
-void _pattern_out(Widget_t *w, Widget_state st, int height);
+void _pattern_out(Widget_t *w, Color_state st, int height);
 
 /**
  * @brief _pattern_in         - a little pattern to make press state more visible
@@ -64,7 +56,7 @@ void _pattern_out(Widget_t *w, Widget_state st, int height);
  * @return void
  */
 
-void _pattern_in(Widget_t *w, Widget_state st, int height);
+void _pattern_in(Widget_t *w, Color_state st, int height);
 /**
  * @brief _draw_button        - internal draw the button to the buffer
  * @param *w_                 - void pointer to the Widget_t button

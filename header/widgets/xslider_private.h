@@ -34,7 +34,7 @@
  * @return void
  */
 
-void _pattern_vslider(Widget_t *w, Widget_state st, int width);
+void _pattern_vslider(Widget_t *w, Color_state st, int width);
 
 /**
  * @brief _pattern_hslider  - set pattern for the slider base
@@ -44,7 +44,7 @@ void _pattern_vslider(Widget_t *w, Widget_state st, int width);
  * @return void
  */
 
-void _pattern_hslider(Widget_t *w, Widget_state st, int width);
+void _pattern_hslider(Widget_t *w, Color_state st, int width);
 
 /**
  * @brief _draw_vslider          - internal draw the slider to the buffer

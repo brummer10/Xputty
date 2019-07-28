@@ -29,7 +29,7 @@
 
 /**
  * @brief add_knob            - add a knob to a Widget_t
- * connect to func.adj_callback to implement your actions
+ * connect to func.value_changed_callback to implement your actions
  * use set_adjustment(w->adj_y, . . ) to set the range you need
  * @param *parent             - pointer to the Widget_t request the button
  * @param *label              - Label to show on the button

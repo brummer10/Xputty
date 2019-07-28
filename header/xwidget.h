@@ -75,6 +75,7 @@ typedef struct {
     xevfunc enter_callback;
     xevfunc leave_callback;
     xevfunc adj_callback;
+    xevfunc value_changed_callback;
     xevfunc user_callback;
 
     evfunc button_press_callback;
@@ -152,32 +153,6 @@ typedef struct {
 
 /**
  * 
- * @brief Color_t               - struct used to set cairo color for Widget_t
- * @param fg[4]                 - forground {red, green, blue, alpha}
- * @param bg[4]                 - background {red, green, blue, alpha}
- * @param ba[4]                 - base {red, green, blue, alpha}
- */
-
-typedef struct {
-    float fg[4];
-    float bg[4];
-    float ba[4];
-} Color_t;
-
-/**
- * 
- * @brief Widget_state         - select color mode to use on Widget_t
- */
-
-typedef enum {
-    _NORMAL_,
-    _PRELIGHT_,
-    _ACTIVE_,
-    _SELECTED_,
-} Widget_state;
-
-/**
- * 
  * @brief Widget_t           - struct to hold the basic widget info
  * @param *dpy               - pointer to the Display to use
  * @param *app               - pointer to the main struct
@@ -235,14 +210,6 @@ struct Widget_t {
     cairo_surface_t *buffer;
 /** pointer to the cairo buffer surface context */
     cairo_t *crb;
-/** struct to set Widget_t normal colors */
-    Color_t normal_color;
-/** struct to set Widget_t active colors */
-    Color_t active_color;
-/** struct to set Widget_t prelight colors */
-    Color_t prelight_color;
-/** struct to set Widget_t selected colors */
-    Color_t selected_color;
 /** int to hold user data */
     int data;
 /** pointer to the widget label */
@@ -305,47 +272,6 @@ Widget_t *create_window(Xputty *app, Window win,
 
 Widget_t *create_widget(Xputty *app, Widget_t *win,
                           int x, int y, int width, int height);
-
-Widget_state get_widget_state(Widget_t *wid);
-
-/**
- * @brief get_color_mode     - intern check which color mode is selected
- * @param *wid               - pointer to the Widget_t to set the color mode
- * @param st                 - Widget state 
- * @return Color_t*          - pointer to the selected Color_t struct
- */
-
-Color_t *get_color_mode(Widget_t *wid, Widget_state st);
-
-/**
- * @brief use_fg_color_normal  - set normal forground color for Widget_t
- * @param w                    - the Widget_t to send the event to
- * @return void 
- */
-
-void use_fg_color(Widget_t *w, Widget_state st);
-
-/**
- * @brief use_bg_color_normal  - set normal background color for Widget_t
- * @param w                    - the Widget_t to send the event to
- * @return void 
- */
-
-void use_bg_color(Widget_t *w, Widget_state st);
-
-/**
- * @brief use_base_color_normal  - set base color for Widget_t
- * @param w                      - the Widget_t to send the event to
- * @return void 
- */
-
-void use_base_color(Widget_t *w, Widget_state st);
-
-/**
- * @brief quit              - exit the main loop
- * @param *w                - pointer to the Widget_t sending the request
- * @return void 
- */
 
 void quit(Widget_t *w);
 

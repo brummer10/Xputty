@@ -29,7 +29,7 @@
 
 /**
  * @brief add_button          - add a button to a Widget_t
- * connect to func.adj_callback to implement your actions
+ * connect to func.value_changed_callback to implement your actions
  * @param *parent             - pointer to the Widget_t request the button
  * @param *label              - Label to show on the button
  * @param x,y,width,height    - the position/geometry to create the button
@@ -41,7 +41,7 @@ Widget_t* add_button(Widget_t *parent, const char * label,
 
 /**
  * @brief add_toggle_button          - add a button to a Widget_t
- * connect to func.adj_callback to implement your actions
+ * connect to func.value_changed_callback to implement your actions
  * @param *parent             - pointer to the Widget_t request the button
  * @param *label              - Label to show on the button
  * @param x,y,width,height    - the position/geometry to create the button

@@ -63,12 +63,12 @@ void _draw_knob(void *w_, void* user_data) {
 
     cairo_arc(w->crb,knobx1+arc_offset, knoby1+arc_offset, knob_x/2.1, 0, 2 * M_PI );
 
-    use_bg_color(w, _NORMAL_);
+    use_base_color_scheme(w, NORMAL_);
     cairo_fill (w->crb);
     cairo_new_path (w->crb);
 
     cairo_arc(w->crb,knobx1+arc_offset, knoby1+arc_offset, knob_x/3.1, 0, 2 * M_PI );
-    use_fg_color(w, _NORMAL_);
+    use_fg_color_scheme(w, NORMAL_);
     cairo_set_line_width(w->crb, knobx1/15);
     cairo_stroke(w->crb);
     cairo_new_path (w->crb);
@@ -79,7 +79,7 @@ void _draw_knob(void *w_, void* user_data) {
     cairo_move_to(w->crb, radius_x, radius_y);
     cairo_line_to(w->crb,lengh_x,lengh_y);
     cairo_set_line_width(w->crb,knobx1/7);
-    use_fg_color(w, _NORMAL_);
+    use_fg_color_scheme(w, NORMAL_);
     cairo_stroke(w->crb);
     cairo_new_path (w->crb);
 
@@ -106,7 +106,7 @@ void _draw_knob(void *w_, void* user_data) {
     }
 
     /** show label below the knob**/
-    use_fg_color(w, get_widget_state(w));
+    use_text_color_scheme(w, get_color_state(w));
     cairo_set_font_size (w->crb, knobx1/3);
     cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
                                CAIRO_FONT_WEIGHT_BOLD);
@@ -126,6 +126,6 @@ void _draw_knob(void *w_, void* user_data) {
 
 void _knob_released(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    if (w->has_pointer) w->state=_PRELIGHT_;
+    if (w->has_pointer) w->state= 1;
     expose_widget(w_);
 }

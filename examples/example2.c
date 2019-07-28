@@ -109,7 +109,7 @@ static void window_button_release(void *w_, void* button_, void* user_data) {
 static void button_quit_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     
-    if (w->has_pointer && !*(int*)user_data){
+    if (w->has_pointer && !adj_get_value(w->adj_y)) {
         Widget_t *p = (Widget_t*)w->parent;
         quit(p);
     }
@@ -119,7 +119,7 @@ static void button_quit_callback(void *w_, void* user_data) {
 static void button_reset_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     expose_widget(w_);
-    if (w->has_pointer && !*(int*)user_data){
+    if (w->has_pointer && !adj_get_value(w->adj_y)) {
         Widget_t *parent = w->parent;
         adj_set_value(parent->adj_x,parent->adj_x->std_value);
         adj_set_value(parent->adj_y,parent->adj_y->std_value);
@@ -147,11 +147,11 @@ int main (int argc, char ** argv)
 
     b = add_button(w, "Quit", 260, 200, 60, 30);
     b->scale.gravity = NONE;
-    b->func.user_callback = button_quit_callback;
+    b->func.value_changed_callback = button_quit_callback;
 
     b = add_button(w, "Reset", 10, 200, 60, 30);
     b->scale.gravity = SOUTHEAST;
-    b->func.user_callback = button_reset_callback;
+    b->func.value_changed_callback = button_reset_callback;
 
     main_run(&app);
 

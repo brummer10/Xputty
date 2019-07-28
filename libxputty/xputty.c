@@ -42,6 +42,9 @@ void main_init(Xputty *main) {
     main->childlist = (Childlist_t*)malloc(sizeof(Childlist_t));
     assert(main->childlist);
     childlist_init(main->childlist);
+    main->color_scheme = (XColor_t*)malloc(sizeof(XColor_t));
+    assert(main->color_scheme);
+    set_color_scheme(main);
     main->run = true;
 }
 
@@ -101,6 +104,7 @@ void main_quit(Xputty *main) {
     }
     childlist_destroy(main->childlist);
     free(main->childlist);
+    free(main->color_scheme);
     XCloseDisplay(main->dpy);
     debug_print("quit\n");
 }

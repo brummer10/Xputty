@@ -22,27 +22,6 @@
 #include "xbutton_private.h"
 
 /**
- * @brief _set_button_colormap - set color map to use for button states
- * @param *wid                 - pointer to Widget_t 
- * @return void
- */
-
-void _set_button_colormap(Widget_t *wid) {
-
-    wid->normal_color = (Color_t){ /*fg*/{ 0.1, 0.1, 0.1, 1.0},
-         /*bg*/{ 0.0, 0.1, 0.1, 1.0}, /*base*/{ 0.0, 0.0, 0.0, 0.2}};
-
-    wid->prelight_color = (Color_t){ /*fg*/{ 0.8, 0.8, 0.8, 1.0},
-         /*bg*/{ 0.2, 0.2, 0.2, 1.0}, /*base*/{ 0.2, 0.2, 0.2, 0.4}};
-
-    wid->selected_color = (Color_t){ /*fg*/{ 0.15, 0.15, 0.15, 1.0},
-         /*bg*/{ 0.1, 0.1, 0.1, 1.0}, /*base*/{ 0.1, 0.1, 0.1, 0.2}};
-
-    wid->active_color = (Color_t){ /*fg*/{ 0.15, 0.15, 0.15, 1.0},
-         /*bg*/{ 0.0, 0.1, 0.1, 1.0}, /*base*/{ 0.1, 0.1, 0.1, 0.5}};
-}
-
-/**
  * @brief _rounded_rectangle  - internal draw a rounded button
  * @param x                   - point on x axis
  * @param y                   - point on y axis
@@ -69,13 +48,13 @@ void _rounded_rectangle(cairo_t *cr,float x, float y, float width, float height)
  * @return void
  */
 
-void _pattern_out(Widget_t *w, Widget_state st, int height) {
-    Color_t *c = get_color_mode(w,st);
+void _pattern_out(Widget_t *w, Color_state st, int height) {
+    Colors *c = get_color_scheme(w->app,st);
     if (!c) return;
     cairo_pattern_t *pat = cairo_pattern_create_linear (2, 2, 2, height);
-    cairo_pattern_add_color_stop_rgba(pat, 0.0, c->ba[0],  c->ba[1], c->ba[2],  c->ba[3]);
+    cairo_pattern_add_color_stop_rgba(pat, 0.0, c->base[0],  c->base[1], c->base[2],  c->base[3]);
     cairo_pattern_add_color_stop_rgba(pat, 0.5, 0.0, 0.0, 0.0, 0.0);
-    cairo_pattern_add_color_stop_rgba(pat, 1.0, c->ba[0],  c->ba[1], c->ba[2],  c->ba[3]);
+    cairo_pattern_add_color_stop_rgba(pat, 1.0, c->base[0],  c->base[1], c->base[2],  c->base[3]);
     cairo_set_source(w->crb, pat);
     cairo_pattern_destroy (pat);
 }
@@ -88,12 +67,12 @@ void _pattern_out(Widget_t *w, Widget_state st, int height) {
  * @return void
  */
 
-void _pattern_in(Widget_t *w, Widget_state st, int height) {
-    Color_t *c = get_color_mode(w,st);
+void _pattern_in(Widget_t *w, Color_state st, int height) {
+    Colors *c = get_color_scheme(w->app,st);
     if (!c) return;
     cairo_pattern_t *pat = cairo_pattern_create_linear (2, 2, 2, height);
     cairo_pattern_add_color_stop_rgba(pat, 0.0, 0.0, 0.0, 0.0, 0.0);
-    cairo_pattern_add_color_stop_rgba(pat, 0.5, c->ba[0],  c->ba[1], c->ba[2],  c->ba[3]);
+    cairo_pattern_add_color_stop_rgba(pat, 0.5, c->base[0],  c->base[1], c->base[2],  c->base[3]);
     cairo_pattern_add_color_stop_rgba(pat, 1.0, 0.0, 0.0, 0.0, 0.0);
     cairo_set_source(w->crb, pat);
     cairo_pattern_destroy (pat);
@@ -121,24 +100,24 @@ void _draw_button(void *w_, void* user_data) {
 
     if(w->state==0) {
         cairo_set_line_width(w->crb, 1.0);
-        _pattern_out(w, _NORMAL_, height);
+        _pattern_out(w, NORMAL_, height);
         cairo_fill_preserve(w->crb);
-        use_bg_color(w, _NORMAL_);
+        use_bg_color_scheme(w, PRELIGHT_);
     } else if(w->state==1) {
-        _pattern_out(w, _PRELIGHT_, height);
+        _pattern_out(w, PRELIGHT_, height);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.5);
-        use_bg_color(w, _PRELIGHT_);
+        use_bg_color_scheme(w, PRELIGHT_);
     } else if(w->state==2) {
-        _pattern_in(w, _SELECTED_, height);
+        _pattern_in(w, SELECTED_, height);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.0);
-        use_bg_color(w, _SELECTED_);
+        use_bg_color_scheme(w, PRELIGHT_);
     } else if(w->state==3) {
-        _pattern_in(w, _ACTIVE_, height);
+        _pattern_in(w, ACTIVE_, height);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.0);
-        use_bg_color(w, _ACTIVE_);
+        use_bg_color_scheme(w, PRELIGHT_);
     }
     cairo_stroke(w->crb); 
 
@@ -155,20 +134,21 @@ void _draw_button(void *w_, void* user_data) {
     float offset = 0.0;
     cairo_text_extents_t extents;
     if(w->state==0) {
-        use_fg_color(w, _NORMAL_);
+        use_fg_color_scheme(w, NORMAL_);
     } else if(w->state==1 && ! (int)w->adj_y->value) {
-        use_fg_color(w, _PRELIGHT_);
-        offset = 0.5;
+        use_fg_color_scheme(w, PRELIGHT_);
+        offset = 1.0;
     } else if(w->state==1) {
-        use_fg_color(w, _ACTIVE_);
-        offset = 1.5;
+        use_fg_color_scheme(w, ACTIVE_);
+        offset = 0.5;
     } else if(w->state==2) {
-        use_fg_color(w, _SELECTED_);
+        use_fg_color_scheme(w, SELECTED_);
         offset = 2.0;
     } else if(w->state==3) {
-        use_fg_color(w, _ACTIVE_);
-        offset = 1.5;
+        use_fg_color_scheme(w, ACTIVE_);
+        offset = 1.0;
     }
+    use_text_color_scheme(w, get_color_state(w));
     cairo_set_font_size (w->crb, 12.0);
     cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
                                CAIRO_FONT_WEIGHT_BOLD);

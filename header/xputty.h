@@ -115,6 +115,12 @@ typedef struct Adjustment_t Adjustment_t ;
 typedef struct Widget_t Widget_t;
 
 /**
+ * @brief XColor_t           - the Widget_t Color struct
+ */
+
+typedef struct XColor_t XColor_t;
+
+/**
  * @brief  Xputty          - the main struct.It should be declared
  * before any other call to a Xputty function.
  */
@@ -131,6 +137,7 @@ typedef struct Xputty Xputty;
 #include "xwidget.h"
 #include "xadjustment.h"
 #include "xchildlist.h"
+#include "xcolor.h"
 
 // widget header
 #include "xbutton.h"
@@ -152,6 +159,8 @@ struct Xputty{
     Display *dpy;
 /** bool to quit the main loop */
     bool run;
+/** bool to quit the main loop */
+    XColor_t *color_scheme;
 };
 
 /**

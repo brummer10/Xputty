@@ -39,6 +39,7 @@
 .PHONY : all build-static clean
 
 all: $(LIB_SOURCES) $(WIDGET_SOURCES) $(EXAMPLE_SOURCES)
+	$(CC) thema-example.c $(LIB_SOURCES) $(WIDGET_SOURCES) -o thema-example $(INCLUDES) $(LDFLAGS)
 	$(CC) simple-example.c $(LIB_SOURCES) $(WIDGET_SOURCES) -o simple-example $(INCLUDES) $(LDFLAGS)
 	$(CC) example.c $(LIB_SOURCES)  $(WIDGET_SOURCES) -o example $(INCLUDES) $(LDFLAGS)
 	$(CC) example1.c $(LIB_SOURCES) $(WIDGET_SOURCES) -o example1 $(INCLUDES) $(LDFLAGS)

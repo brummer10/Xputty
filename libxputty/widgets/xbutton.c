@@ -25,7 +25,7 @@
 
 /**
  * @brief add_button          - add a button to a Widget_t
- * connect to func.adj_callback to implement your actions
+ * connect to func.value_changed_callback to implement your actions
  * @param *parent             - pointer to the Widget_t request the button
  * @param *label              - Label to show on the button
  * @param x,y,width,height    - the position/geometry to create the button
@@ -37,7 +37,7 @@ Widget_t* add_button(Widget_t *parent, const char * label,
 
     Widget_t *wid = create_widget(parent->app, parent, x, y, width, height);
     wid->label = label;
-    _set_button_colormap(wid);
+  //  _set_button_colormap(wid);
     wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, 1.0,1.0, CL_TOGGLE);
     wid->scale.gravity = CENTER;
     wid->func.expose_callback = _draw_button;
@@ -50,7 +50,7 @@ Widget_t* add_button(Widget_t *parent, const char * label,
 
 /**
  * @brief add_toggle_button          - add a button to a Widget_t
- * connect to func.adj_callback to implement your actions
+ * connect to func.value_changed_callback to implement your actions
  * @param *parent             - pointer to the Widget_t request the button
  * @param *label              - Label to show on the button
  * @param x,y,width,height    - the position/geometry to create the button
@@ -62,7 +62,7 @@ Widget_t* add_toggle_button(Widget_t *parent, const char * label,
 
     Widget_t *wid = create_widget(parent->app, parent, x, y, width, height);
     wid->label = label;
-    _set_button_colormap(wid);
+   // _set_button_colormap(wid);
     wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, 1.0,1.0, CL_TOGGLE);
     wid->scale.gravity = CENTER;
     wid->func.expose_callback = _draw_button;

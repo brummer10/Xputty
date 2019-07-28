@@ -194,5 +194,6 @@ void check_value_changed(Adjustment_t *adj, float *value) {
     if(fabs(*(value) - adj->value)>=0.00001) {
         adj->value = *(value);
         adj->w->func.adj_callback(adj->w, NULL);
+        adj->w->func.value_changed_callback(adj->w, value);
     }
 }

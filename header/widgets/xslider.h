@@ -29,7 +29,7 @@
 
 /**
  * @brief add_vslider          - add a vertical slider to a Widget_t
- * connect to func.adj_callback to implement your actions
+ * connect to func.value_changed_callback to implement your actions
  * use set_adjustment(w->adj_y, . . ) to set the range you need
  * @param *parent             - pointer to the Widget_t request the button
  * @param *label              - Label to show on the button
@@ -42,7 +42,7 @@ Widget_t* add_vslider(Widget_t *parent, const char * label,
 
 /**
  * @brief add_hslider          - add a horizontal slider to a Widget_t
- * connect to func.adj_callback to implement your actions
+ * connect to func.value_changed_callback to implement your actions
  * use set_adjustment(w->adj_x, . . ) to set the range you need
  * @param *parent             - pointer to the Widget_t request the button
  * @param *label              - Label to show on the button
