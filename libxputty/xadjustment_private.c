@@ -20,18 +20,3 @@
 
 #include "xadjustment_private.h"
 
-
-/**
- * @brief _check_value_changed  - check if value has changed and send
- * adj_callback if so
- * @param *adj                  - pointer to the Adjustment
- * @param v                     - value to check 
- * @return void
- */
-
-void _check_value_changed(Adjustment_t *adj, float *value) {
-    if(fabs(*(value) - adj->value)>=0.00001) {
-        adj->value = *(value);
-        adj->w->func.adj_callback(adj->w, NULL);
-    }
-}

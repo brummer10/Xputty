@@ -135,7 +135,7 @@ int main (int argc, char ** argv)
     Widget_t *w;
     Widget_t *b;
 
-    w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 330, 200);
+    w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 330, 240);
     XStoreName(app.dpy, w->widget, "Xputty Movement");
     w->label = "Press mouse button and move:";
     w->func.expose_callback = draw_window;
@@ -145,11 +145,11 @@ int main (int argc, char ** argv)
     w->func.button_press_callback = window_button_press;
     w->func.button_release_callback = window_button_release;
 
-    b = add_button(w, "Quit", 260, 170, 60, 20);
+    b = add_button(w, "Quit", 260, 200, 60, 30);
     b->scale.gravity = NONE;
     b->func.user_callback = button_quit_callback;
 
-    b = add_button(w, "Reset", 10, 170, 60, 20);
+    b = add_button(w, "Reset", 10, 200, 60, 30);
     b->scale.gravity = SOUTHEAST;
     b->func.user_callback = button_reset_callback;
 

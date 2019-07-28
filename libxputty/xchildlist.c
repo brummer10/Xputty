@@ -60,7 +60,9 @@ void childlist_destroy(Childlist_t *childlist) {
 
 void childlist_add_child(Childlist_t *childlist, Widget_t *child) {
     if(!childlist) childlist_init(childlist);
-    if(childlist->cap <= childlist->elem-1) _childlist_add_elem(childlist);
+    if (childlist->cap < childlist->elem+2) {
+         _childlist_add_elem(childlist);
+     }
     childlist->childs[childlist->elem] = child;
     if (!child->is_widget) {
         Atom WM_DELETE_WINDOW;

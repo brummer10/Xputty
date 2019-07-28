@@ -349,6 +349,54 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     return w;
 }
 
+Widget_state get_widget_state(Widget_t *wid) {
+    switch(wid->state) {
+        case 0:
+            return _NORMAL_;
+        break;
+        case 1:
+            return _PRELIGHT_;
+        break;
+        case 2:
+            return _SELECTED_;
+        break;
+        case 3:
+            return _ACTIVE_;
+        break;
+        default:
+            return _NORMAL_;
+        break;        
+    }
+}
+
+/**
+ * @brief get_color_mode     - intern check which color mode is selected
+ * @param *wid               - pointer to the Widget_t to set the color mode
+ * @param st                 - Widget state 
+ * @return Color_t*          - pointer to the selected Color_t struct
+ */
+
+Color_t *get_color_mode(Widget_t *wid, Widget_state st) {
+    Color_t *c = NULL;
+    switch(st) {
+        case _NORMAL_:
+            c = &wid->normal_color;
+        break;
+        case _PRELIGHT_:
+            c = &wid->prelight_color;
+        break;
+        case _ACTIVE_:
+            c = &wid->active_color;
+        break;
+        case _SELECTED_:
+            c = &wid->selected_color;
+        break;
+        default:
+        break;
+    }
+    return c;
+}
+
 /**
  * @brief use_fg_color_normal  - set normal forground color for Widget_t
  * @param w                    - the Widget_t to send the event to
@@ -356,7 +404,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
  */
 
 void use_fg_color(Widget_t *w, Widget_state st) {
-    Color_t *c = _color_mode(w,st);
+    Color_t *c = get_color_mode(w,st);
     if (!c) return;
     cairo_set_source_rgba(w->cr, c->fg[0],  c->fg[1], c->fg[2],  c->fg[3]);
     cairo_set_source_rgba(w->crb, c->fg[0],  c->fg[1], c->fg[2],  c->fg[3]);
@@ -369,7 +417,7 @@ void use_fg_color(Widget_t *w, Widget_state st) {
  */
 
 void use_bg_color(Widget_t *w, Widget_state st) {
-    Color_t *c = _color_mode(w,st);
+    Color_t *c = get_color_mode(w,st);
     if (!c) return;
     cairo_set_source_rgba(w->cr, c->bg[0],  c->bg[1], c->bg[2],  c->bg[3]);
     cairo_set_source_rgba(w->crb, c->bg[0],  c->bg[1], c->bg[2],  c->bg[3]);
@@ -382,7 +430,7 @@ void use_bg_color(Widget_t *w, Widget_state st) {
  */
 
 void use_base_color(Widget_t *w, Widget_state st) {
-    Color_t *c = _color_mode(w,st);
+    Color_t *c = get_color_mode(w,st);
     if (!c) return;
     cairo_set_source_rgba(w->cr, c->ba[0],  c->ba[1], c->ba[2],  c->ba[3]);
     cairo_set_source_rgba(w->crb, c->ba[0],  c->ba[1], c->ba[2],  c->ba[3]);
@@ -469,8 +517,9 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         break;
 
         case ButtonRelease:
-            wid->state = 0;
             wid->has_pointer = _has_pointer(wid, &xev->xbutton);
+            if(wid->has_pointer) wid->state = 1;
+            else wid->state = 0;
             wid->func.button_release_callback(w_, &xev->xbutton, user_data);
             debug_print("Widget_t  ButtonRelease %i\n", xev->xbutton.button);
         break;
@@ -514,9 +563,9 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
                 if (ch) {
                     int i = ch;
                     for(;i>0;i--) {
-                        destroy_widget(wid->childlist->childs[i-1],main);
+                        quit_widget(wid->childlist->childs[i-1]);
                     }
-                    destroy_widget(wid,main);
+                    quit_widget(wid);
                 } else {
                     destroy_widget(wid,main);
                 }

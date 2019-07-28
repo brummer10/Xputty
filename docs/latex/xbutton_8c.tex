@@ -14,7 +14,9 @@ Include dependency graph for xbutton.\+c\+:
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xbutton_8c_a4dbd91e99d5ee97678aee121f8e12587}{add\+\_\+button} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, const char $\ast$label, int x, int y, int width, int height)
-\begin{DoxyCompactList}\small\item\em add\+\_\+button -\/ add a button to a \hyperlink{structWidget__t}{Widget\+\_\+t} the button state could be 0 == O\+FF or 1 == ON the state is stored in the \hyperlink{structWidget__t}{Widget\+\_\+t} data parameter (wid-\/$>$data) and send via void $\ast$user\+\_\+data parameter in the wid-\/$>$func.\+user\+\_\+callback Overwrite this callback to implement your actions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em add\+\_\+button -\/ add a button to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+adj\+\_\+callback to implement your actions \end{DoxyCompactList}\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xbutton_8c_a528331e8ac24f1ca7bb0101dad28f962}{add\+\_\+toggle\+\_\+button} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, const char $\ast$label, int x, int y, int width, int height)
+\begin{DoxyCompactList}\small\item\em add\+\_\+toggle\+\_\+button -\/ add a button to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+adj\+\_\+callback to implement your actions \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -26,7 +28,29 @@ Include dependency graph for xbutton.\+c\+:
 
 
 
-add\+\_\+button -\/ add a button to a \hyperlink{structWidget__t}{Widget\+\_\+t} the button state could be 0 == O\+FF or 1 == ON the state is stored in the \hyperlink{structWidget__t}{Widget\+\_\+t} data parameter (wid-\/$>$data) and send via void $\ast$user\+\_\+data parameter in the wid-\/$>$func.\+user\+\_\+callback Overwrite this callback to implement your actions. 
+add\+\_\+button -\/ add a button to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+adj\+\_\+callback to implement your actions 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$parent} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} request the button \\
+\hline
+{\em $\ast$label} & -\/ Label to show on the button \\
+\hline
+{\em x,y,width,height} & -\/ the position/geometry to create the button \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} button struct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xbutton_8c_a528331e8ac24f1ca7bb0101dad28f962}\label{xbutton_8c_a528331e8ac24f1ca7bb0101dad28f962}} 
+\index{xbutton.\+c@{xbutton.\+c}!add\+\_\+toggle\+\_\+button@{add\+\_\+toggle\+\_\+button}}
+\index{add\+\_\+toggle\+\_\+button@{add\+\_\+toggle\+\_\+button}!xbutton.\+c@{xbutton.\+c}}
+\subsubsection{\texorpdfstring{add\+\_\+toggle\+\_\+button()}{add\_toggle\_button()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ add\+\_\+toggle\+\_\+button (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{const char $\ast$}]{label,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+add\+\_\+toggle\+\_\+button -\/ add a button to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+adj\+\_\+callback to implement your actions 
 
 
 \begin{DoxyParams}{Parameters}

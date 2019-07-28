@@ -2,6 +2,7 @@ var searchData=
 [
   ['cap',['cap',['../structChildlist__t.html#abf81fe823696baae53ff77036227f0c8',1,'Childlist_t']]],
   ['center',['CENTER',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adea2159ffbd3a68037511ab5ab4dd35ace7',1,'xwidget.h']]],
+  ['check_5fvalue_5fchanged',['check_value_changed',['../xadjustment_8c.html#a1db458f5dc9ea4f3775340b938b3c3bf',1,'check_value_changed(Adjustment_t *adj, float *value):&#160;xadjustment.c'],['../xadjustment_8h.html#a1db458f5dc9ea4f3775340b938b3c3bf',1,'check_value_changed(Adjustment_t *adj, float *value):&#160;xadjustment.c']]],
   ['childlist',['childlist',['../structXputty.html#a55fafc08d9702ab14137f52f35c4ff19',1,'Xputty::childlist()'],['../structWidget__t.html#ac203ccbc58958a7c205897d4aba197e9',1,'Widget_t::childlist()']]],
   ['childlist_5fadd_5fchild',['childlist_add_child',['../xchildlist_8c.html#a4515e80317c76cbfa903c50ddfcfbf58',1,'childlist_add_child(Childlist_t *childlist, Widget_t *child):&#160;xchildlist.c'],['../xchildlist_8h.html#a4515e80317c76cbfa903c50ddfcfbf58',1,'childlist_add_child(Childlist_t *childlist, Widget_t *child):&#160;xchildlist.c']]],
   ['childlist_5fdestroy',['childlist_destroy',['../xchildlist_8c.html#a57256a97c272561094da1b7ae5c57638',1,'childlist_destroy(Childlist_t *childlist):&#160;xchildlist.c'],['../xchildlist_8h.html#a57256a97c272561094da1b7ae5c57638',1,'childlist_destroy(Childlist_t *childlist):&#160;xchildlist.c']]],

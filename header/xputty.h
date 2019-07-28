@@ -134,6 +134,7 @@ typedef struct Xputty Xputty;
 
 // widget header
 #include "xbutton.h"
+#include "xslider.h"
 
 /**
  * @brief Xputty             - the main struct. It should be declared

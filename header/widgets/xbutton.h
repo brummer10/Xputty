@@ -29,10 +29,7 @@
 
 /**
  * @brief add_button          - add a button to a Widget_t
- * the button state could be 0 == OFF or 1 == ON
- * the state is stored in the Widget_t data parameter (wid->data)
- * and send via void *user_data parameter in the wid->func.user_callback
- * Overwrite this callback to implement your actions.
+ * connect to func.adj_callback to implement your actions
  * @param *parent             - pointer to the Widget_t request the button
  * @param *label              - Label to show on the button
  * @param x,y,width,height    - the position/geometry to create the button
@@ -40,6 +37,18 @@
  */
 
 Widget_t* add_button(Widget_t *parent, const char * label,
+                int x, int y, int width, int height);
+
+/**
+ * @brief add_toggle_button          - add a button to a Widget_t
+ * connect to func.adj_callback to implement your actions
+ * @param *parent             - pointer to the Widget_t request the button
+ * @param *label              - Label to show on the button
+ * @param x,y,width,height    - the position/geometry to create the button
+ * @return Widget_t*          - pointer to the Widget_t button struct
+ */
+
+Widget_t* add_toggle_button(Widget_t *parent, const char * label,
                 int x, int y, int width, int height);
 
 #endif // XBUTTON_H_

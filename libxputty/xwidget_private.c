@@ -35,19 +35,19 @@ void _scroll_event(Widget_t * wid, int direction) {
         adj = wid->adj_x;
     }
     if (adj) {
+        float value = adj->value;
         switch(adj->type) {
             case (CL_CONTINUOS):
-                adj->value = min(adj->max_value,max(adj->min_value, 
+                value = min(adj->max_value,max(adj->min_value, 
                                 adj->value + (adj->step * direction)));
-                wid->func.adj_callback(wid, NULL);
             break;
             case (CL_TOGGLE):
-                adj->value = adj->value ? 0.0 : 1.0;
-                wid->func.adj_callback(wid, NULL);
+                value = adj->value ? 1.0 : 0.0;
             break;
             default:
             break;
         }
+        check_value_changed(adj, &value);
     } 
 }
 
@@ -65,10 +65,7 @@ void _toggle_event(Widget_t * wid) {
     } else if(wid->adj_x) {
         adj = wid->adj_x;
     }
-    if (adj && adj->type == CL_TOGGLE) {
-        adj->value = adj->value ? 0.0 : 1.0;
-        wid->func.adj_callback(wid, NULL);
-    } else {
+    if (adj && adj->type != CL_TOGGLE) {
         adj_set_start_value(wid);
     }
 }
@@ -189,10 +186,9 @@ void _set_adj_value(void *w_, bool x, int direction) {
         adj = wid->adj_y;
     }
     if (adj) {
-        adj->value = min(adj->max_value,max(adj->min_value, 
+        float value = min(adj->max_value,max(adj->min_value, 
         adj->value + (adj->step * direction)));
-        wid->func.adj_callback(wid, NULL);
-        //expose_widget(wid);
+        check_value_changed(adj, &value);
     }
 }
 
@@ -292,32 +288,4 @@ void _resize_childs(Widget_t *wid) {
         }
         
     }
-}
-
-/**
- * @brief _color_mode        - intern check which color mode is selected
- * @param *wid               - pointer to the Widget_t to set the color mode
- * @param st                 - Widget state 
- * @return Color_t*          - pointer to the selected Color_t struct
- */
-
-Color_t *_color_mode(Widget_t *wid, Widget_state st) {
-    Color_t *c = NULL;
-    switch(st) {
-        case _NORMAL_:
-            c = &wid->normal_color;
-        break;
-        case _PRELIGHT_:
-            c = &wid->prelight_color;
-        break;
-        case _ACTIVE_:
-            c = &wid->active_color;
-        break;
-        case _SELECTED_:
-            c = &wid->selected_color;
-        break;
-        default:
-        break;
-    }
-    return c;
 }

@@ -69,6 +69,10 @@ enum \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state}
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+window -\/ create a Window \end{DoxyCompactList}\item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8h_a2376b5590243f7f4cfd51168af697227}{create\+\_\+widget} (\hyperlink{structXputty}{Xputty} $\ast$app, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$win, int x, int y, int width, int height)
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+widget -\/ create a widget \end{DoxyCompactList}\item 
+\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} \hyperlink{xwidget_8h_ab254dfad26046ca5ea3f0632e0a20a63}{get\+\_\+widget\+\_\+state} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid)
+\item 
+\hyperlink{structColor__t}{Color\+\_\+t} $\ast$ \hyperlink{xwidget_8h_a7a0784eed3b7723a734591291e039e0b}{get\+\_\+color\+\_\+mode} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st)
+\begin{DoxyCompactList}\small\item\em get\+\_\+color\+\_\+mode -\/ intern check which color mode is selected \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_a628e66c37b118178d3d7efef8c3f9409}{use\+\_\+fg\+\_\+color} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st)
 \begin{DoxyCompactList}\small\item\em use\+\_\+fg\+\_\+color\+\_\+normal -\/ set normal forground color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_aafc66a076ea370735dd79193d6bbf574}{use\+\_\+bg\+\_\+color} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st)
@@ -340,6 +344,32 @@ expose\+\_\+widgets -\/ send expose expose event to window
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8h_a7a0784eed3b7723a734591291e039e0b}\label{xwidget_8h_a7a0784eed3b7723a734591291e039e0b}} 
+\index{xwidget.\+h@{xwidget.\+h}!get\+\_\+color\+\_\+mode@{get\+\_\+color\+\_\+mode}}
+\index{get\+\_\+color\+\_\+mode@{get\+\_\+color\+\_\+mode}!xwidget.\+h@{xwidget.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+color\+\_\+mode()}{get\_color\_mode()}}
+{\footnotesize\ttfamily \hyperlink{structColor__t}{Color\+\_\+t}$\ast$ get\+\_\+color\+\_\+mode (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{wid,  }\item[{\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state}}]{st }\end{DoxyParamCaption})}
+
+
+
+get\+\_\+color\+\_\+mode -\/ intern check which color mode is selected 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$wid} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to set the color mode \\
+\hline
+{\em st} & -\/ Widget state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Color\+\_\+t$\ast$ -\/ pointer to the selected \hyperlink{structColor__t}{Color\+\_\+t} struct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8h_ab254dfad26046ca5ea3f0632e0a20a63}\label{xwidget_8h_ab254dfad26046ca5ea3f0632e0a20a63}} 
+\index{xwidget.\+h@{xwidget.\+h}!get\+\_\+widget\+\_\+state@{get\+\_\+widget\+\_\+state}}
+\index{get\+\_\+widget\+\_\+state@{get\+\_\+widget\+\_\+state}!xwidget.\+h@{xwidget.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+widget\+\_\+state()}{get\_widget\_state()}}
+{\footnotesize\ttfamily \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} get\+\_\+widget\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{wid }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{xwidget_8h_a1607cf4a642a38ea235a007ea9579403}\label{xwidget_8h_a1607cf4a642a38ea235a007ea9579403}} 
 \index{xwidget.\+h@{xwidget.\+h}!key\+\_\+mapping@{key\+\_\+mapping}}
 \index{key\+\_\+mapping@{key\+\_\+mapping}!xwidget.\+h@{xwidget.\+h}}

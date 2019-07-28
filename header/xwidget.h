@@ -306,6 +306,17 @@ Widget_t *create_window(Xputty *app, Window win,
 Widget_t *create_widget(Xputty *app, Widget_t *win,
                           int x, int y, int width, int height);
 
+Widget_state get_widget_state(Widget_t *wid);
+
+/**
+ * @brief get_color_mode     - intern check which color mode is selected
+ * @param *wid               - pointer to the Widget_t to set the color mode
+ * @param st                 - Widget state 
+ * @return Color_t*          - pointer to the selected Color_t struct
+ */
+
+Color_t *get_color_mode(Widget_t *wid, Widget_state st);
+
 /**
  * @brief use_fg_color_normal  - set normal forground color for Widget_t
  * @param w                    - the Widget_t to send the event to

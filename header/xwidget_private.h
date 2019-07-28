@@ -128,13 +128,4 @@ void _resize_surface(Widget_t *wid, int width, int height);
 
 void _resize_childs(Widget_t *wid);
 
-/**
- * @brief _color_mode        - intern check which color mode is selected
- * @param *wid               - pointer to the Widget_t to set the color mode
- * @param st                 - Widget state 
- * @return Color_t*          - pointer to the selected Color_t struct
- */
-
-Color_t *_color_mode(Widget_t *wid, Widget_state st);
-
 #endif // XWIDGET_PRIVATE_H__

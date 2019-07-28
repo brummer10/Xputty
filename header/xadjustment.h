@@ -99,6 +99,21 @@ Adjustment_t *add_adjustment(Widget_t *w, float std_value, float value,
 
 
 /**
+ * @brief *set_adjustment    - set a new range to a existing Adjustment
+ * @param *w                 - pointer to the Widget_t request a adjustment
+ * @param std_value          - standard value of the adjustment
+ * @param value              - current value of the adjustment
+ * @param min_value          - minimum value of the adjustment
+ * @param max_value          - maximal value of the adjustment
+ * @param step               - step to increase/decrease the adjustment
+ * @param type               - set CL_type of adjustment
+ * @return *adj              - pointer to adjustment
+ */
+
+void set_adjustment(Adjustment_t *adj, float std_value, float value,
+                float min_value,float max_value, float step, CL_type type);
+
+/**
  * @brief delete_adjustment  - freeing the memory of the adjustment
  * @param *adj               - pointer to the Adjustment to free 
  * @return *void             - return NULL
@@ -148,5 +163,15 @@ void adj_set_start_value(void *w);
  */
 
 void adj_set_state(void *w, float x, float y);
+
+/**
+ * @brief check_value_changed   - check if value has changed and send
+ * adj_callback if so
+ * @param *adj                  - pointer to the Adjustment 
+ * @param v                     - value to check 
+ * @return void
+ */
+
+void check_value_changed(Adjustment_t *adj, float *value);
 
 #endif //XADJUSTMENT_H_

@@ -31,7 +31,7 @@ void _childlist_add_elem(Childlist_t *childlist) {
     assert(childlist->childs != NULL);
     childlist->cap +=4;
     childlist->size = sizeof(childlist);
-    int i = childlist->elem;
+    int i = childlist->elem+1;
     for(;i<childlist->cap;i++) {
         childlist->childs[i] = NULL;
     }

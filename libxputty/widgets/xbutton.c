@@ -25,10 +25,7 @@
 
 /**
  * @brief add_button          - add a button to a Widget_t
- * the button state could be 0 == OFF or 1 == ON
- * the state is stored in the Widget_t data parameter (wid->data)
- * and send via void *user_data parameter in the wid->func.user_callback
- * Overwrite this callback to implement your actions.
+ * connect to func.adj_callback to implement your actions
  * @param *parent             - pointer to the Widget_t request the button
  * @param *label              - Label to show on the button
  * @param x,y,width,height    - the position/geometry to create the button
@@ -40,21 +37,38 @@ Widget_t* add_button(Widget_t *parent, const char * label,
 
     Widget_t *wid = create_widget(parent->app, parent, x, y, width, height);
     wid->label = label;
-
-    wid->normal_color = (Color_t){ /*fg*/{ 0.1, 0.1, 0.1, 1.0},
-         /*bg*/{ 0., 0.1, 0.1, 1.0}, /*base*/{ 0., 0.0, 0.0, 0.0}};
-
-    wid->prelight_color = (Color_t){ /*fg*/{ 0.8, 0.8, 0.8, 1.0},
-         /*bg*/{ 0.2, 0.2, 0.2, 1.0}, /*base*/{ 0.2, 0.2, 0.2, 0.1}};
-
-    wid->selected_color = (Color_t){ /*fg*/{ 0.2, 0.2, 0.2, 1.0},
-         /*bg*/{ 0.1, 0.1, 0.1, 1.0}, /*base*/{ 0.1, 0.1, 0.1, 0.2}};
-
+    _set_button_colormap(wid);
+    wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, 1.0,1.0, CL_TOGGLE);
     wid->scale.gravity = CENTER;
     wid->func.expose_callback = _draw_button;
     wid->func.enter_callback = transparent_draw;
     wid->func.leave_callback = transparent_draw;
     wid->func.button_press_callback = _button_pressed;
     wid->func.button_release_callback = _button_released;
+    return wid;
+}
+
+/**
+ * @brief add_toggle_button          - add a button to a Widget_t
+ * connect to func.adj_callback to implement your actions
+ * @param *parent             - pointer to the Widget_t request the button
+ * @param *label              - Label to show on the button
+ * @param x,y,width,height    - the position/geometry to create the button
+ * @return Widget_t*          - pointer to the Widget_t button struct
+ */
+
+Widget_t* add_toggle_button(Widget_t *parent, const char * label,
+                int x, int y, int width, int height) {
+
+    Widget_t *wid = create_widget(parent->app, parent, x, y, width, height);
+    wid->label = label;
+    _set_button_colormap(wid);
+    wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, 1.0,1.0, CL_TOGGLE);
+    wid->scale.gravity = CENTER;
+    wid->func.expose_callback = _draw_button;
+    wid->func.enter_callback = transparent_draw;
+    wid->func.leave_callback = transparent_draw;
+    wid->func.button_press_callback = _toggle_button_pressed;
+    wid->func.button_release_callback = _toggle_button_released;
     return wid;
 }

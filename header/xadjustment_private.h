@@ -30,14 +30,4 @@
 
 #include "xputty.h"
 
-/**
- * @brief _check_value_changed  - check if value has changed and send
- * adj_callback if so
- * @param *adj                  - pointer to the Adjustment 
- * @param v                     - value to check 
- * @return void
- */
-
-void _check_value_changed(Adjustment_t *adj, float *value);
-
 #endif // XADJUSTMENT_PRIVATE_H_

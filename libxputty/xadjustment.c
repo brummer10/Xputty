@@ -39,10 +39,31 @@ Adjustment_t *add_adjustment(Widget_t *w, float std_value, float value,
     Adjustment_t *adj = (Adjustment_t*)malloc(sizeof(Adjustment_t));
     assert(adj);
     *(adj) = (Adjustment_t){w, std_value, value, min_value, max_value, step, value, type};
-    
-    
+
     debug_print("Widget_t add adjustment\n");
     return adj;
+}
+
+/**
+ * @brief *set_adjustment    - set a new range to a existing Adjustment
+ * @param *w                 - pointer to the Widget_t request a adjustment
+ * @param std_value          - standard value of the adjustment
+ * @param value              - current value of the adjustment
+ * @param min_value          - minimum value of the adjustment
+ * @param max_value          - maximal value of the adjustment
+ * @param step               - step to increase/decrease the adjustment
+ * @param type               - set CL_type of adjustment
+ * @return *adj              - pointer to adjustment
+ */
+
+void set_adjustment(Adjustment_t *adj, float std_value, float value,
+                float min_value,float max_value, float step, CL_type type) {
+    if (!adj)
+    adj = (Adjustment_t*)malloc(sizeof(Adjustment_t));
+    assert(adj);
+    *(adj) = (Adjustment_t){adj->w, std_value, value, min_value, max_value, step, value, type};
+
+    debug_print("Widget_t set adjustment\n");
 }
 
 /**
@@ -91,8 +112,7 @@ float adj_get_value(Adjustment_t *adj) {
 
 void adj_set_value(Adjustment_t *adj, float v) {
     if (!adj) return;
-    adj->value = v;
-    adj->w->func.adj_callback(adj->w, NULL);
+    check_value_changed(adj, &v);
 }
 
 /**
@@ -131,12 +151,13 @@ void adj_set_state(void *w, float x, float y) {
             }
             break;
             case (CL_TOGGLE):
-                value = wid->adj_x->value ? 0.0 : 1.0;
+                // dont toggle on motion!
+                // value = wid->adj_x->value ? 0.0 : 1.0;
             break;
             default:
             break;
         }
-        _check_value_changed(wid->adj_x, &value);
+        check_value_changed(wid->adj_x, &value);
     }
     if(wid->adj_y) {
         float value = wid->adj_y->value;
@@ -151,11 +172,27 @@ void adj_set_state(void *w, float x, float y) {
             }
             break;
             case (CL_TOGGLE):
-                value = wid->adj_y->value ? 0.0 : 1.0;
+                // dont toggle on motion!
+                // value = wid->adj_y->value ? 0.0 : 1.0;
             break;
             default:
             break;
         }
-        _check_value_changed(wid->adj_y, &value);
+        check_value_changed(wid->adj_y, &value);
+    }
+}
+
+/**
+ * @brief check_value_changed   - check if value has changed and send
+ * adj_callback if so
+ * @param *adj                  - pointer to the Adjustment
+ * @param v                     - value to check 
+ * @return void
+ */
+
+void check_value_changed(Adjustment_t *adj, float *value) {
+    if(fabs(*(value) - adj->value)>=0.00001) {
+        adj->value = *(value);
+        adj->w->func.adj_callback(adj->w, NULL);
     }
 }

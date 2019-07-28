@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['check_5fvalue_5fchanged',['check_value_changed',['../xadjustment_8c.html#a1db458f5dc9ea4f3775340b938b3c3bf',1,'check_value_changed(Adjustment_t *adj, float *value):&#160;xadjustment.c'],['../xadjustment_8h.html#a1db458f5dc9ea4f3775340b938b3c3bf',1,'check_value_changed(Adjustment_t *adj, float *value):&#160;xadjustment.c']]],
   ['childlist_5fadd_5fchild',['childlist_add_child',['../xchildlist_8c.html#a4515e80317c76cbfa903c50ddfcfbf58',1,'childlist_add_child(Childlist_t *childlist, Widget_t *child):&#160;xchildlist.c'],['../xchildlist_8h.html#a4515e80317c76cbfa903c50ddfcfbf58',1,'childlist_add_child(Childlist_t *childlist, Widget_t *child):&#160;xchildlist.c']]],
   ['childlist_5fdestroy',['childlist_destroy',['../xchildlist_8c.html#a57256a97c272561094da1b7ae5c57638',1,'childlist_destroy(Childlist_t *childlist):&#160;xchildlist.c'],['../xchildlist_8h.html#a57256a97c272561094da1b7ae5c57638',1,'childlist_destroy(Childlist_t *childlist):&#160;xchildlist.c']]],
   ['childlist_5ffind_5fchild',['childlist_find_child',['../xchildlist_8c.html#a54b8a01a41d48965bd02c5269d0f2103',1,'childlist_find_child(Childlist_t *childlist, Widget_t *child):&#160;xchildlist.c'],['../xchildlist_8h.html#a54b8a01a41d48965bd02c5269d0f2103',1,'childlist_find_child(Childlist_t *childlist, Widget_t *child):&#160;xchildlist.c']]],

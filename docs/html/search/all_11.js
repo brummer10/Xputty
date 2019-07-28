@@ -4,6 +4,7 @@ var searchData=
   ['scale_5fx',['scale_x',['../structResize__t.html#a66246e7c08afdbe8f576ec4224a4fd3c',1,'Resize_t']]],
   ['scale_5fy',['scale_y',['../structResize__t.html#ab21caee367ce8e911c1e9b678d3d299e',1,'Resize_t']]],
   ['selected_5fcolor',['selected_color',['../structWidget__t.html#ae473f4da8e3178696dc7261ca2147179',1,'Widget_t']]],
+  ['set_5fadjustment',['set_adjustment',['../xadjustment_8c.html#ab7188a4bb4294e2a08aea2430975b406',1,'set_adjustment(Adjustment_t *adj, float std_value, float value, float min_value, float max_value, float step, CL_type type):&#160;xadjustment.c'],['../xadjustment_8h.html#ab7188a4bb4294e2a08aea2430975b406',1,'set_adjustment(Adjustment_t *adj, float std_value, float value, float min_value, float max_value, float step, CL_type type):&#160;xadjustment.c']]],
   ['size',['size',['../structChildlist__t.html#a3045339822c393689c6fac8b8a2a4457',1,'Childlist_t']]],
   ['southeast',['SOUTHEAST',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adea16c2c7abfbd3bad3343b0dcaa858bb49',1,'xwidget.h']]],
   ['southwest',['SOUTHWEST',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adea6aa90951b336be999de204e61dd366d4',1,'xwidget.h']]],
