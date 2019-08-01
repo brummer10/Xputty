@@ -221,6 +221,7 @@ Widget_t *create_window(Xputty *app, Window win,
     w->transparency = false;
     w->adj_x = NULL;
     w->adj_y = NULL;
+    w->adj   = NULL;
     w->childlist = (Childlist_t*)malloc(sizeof(Childlist_t));
     assert(w->childlist != NULL);
     childlist_init(w->childlist);
@@ -237,9 +238,10 @@ Widget_t *create_window(Xputty *app, Window win,
     w->func.enter_callback = _dummy_callback;
     w->func.leave_callback = _dummy_callback;
     w->func.user_callback = _dummy_callback;
+    debug_print("size of Func_t = %i\n", sizeof(w->func)/sizeof(void*));
 
     childlist_add_child(app->childlist,w);
-    XMapWindow(app->dpy, w->widget);
+    //XMapWindow(app->dpy, w->widget);
     return w;
 }
 
@@ -320,6 +322,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->transparency = true;
     w->adj_x = NULL;
     w->adj_y = NULL;
+    w->adj   = NULL;
     w->childlist = (Childlist_t*)malloc(sizeof(Childlist_t));
     assert(w->childlist != NULL);
     childlist_init(w->childlist);
@@ -339,8 +342,56 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->func.user_callback = _dummy_callback;
 
     childlist_add_child(app->childlist,w);
-    XMapWindow(app->dpy, w->widget);
+    //XMapWindow(app->dpy, w->widget);
     return w;
+}
+
+/**
+ * @brief widget_show       - map/show widget
+ * @param *w                - pointer to the Widget_t to map
+ * @return void 
+ */
+
+void widget_show(Widget_t *w) {
+    XMapWindow(w->dpy, w->widget);
+}
+
+/**
+ * @brief widget_hide       - unmap/hide widget
+ * @param *w                - pointer to the Widget_t to unmap
+ * @return void 
+ */
+
+void widget_hide(Widget_t *w) {
+    int i=0;
+    for(;i<w->childlist->elem;i++) {
+        widget_hide(w->childlist->childs[i]);
+    }
+    XUnmapWindow(w->dpy, w->widget);
+}
+
+/**
+ * @brief widget_show_all   - map/show widget with all childs
+ * @param *w                - pointer to the Widget_t to map
+ * @return void 
+ */
+
+void widget_show_all(Widget_t *w) {
+    XMapWindow(w->dpy, w->widget);
+    int i=0;
+    for(;i<w->childlist->elem;i++) {
+        widget_show_all(w->childlist->childs[i]);
+    }
+}
+
+/**
+ * @brief *get_toplevel_widget - get pointer to the top level Widget_t
+ * @param *main                - pointer to the main Xputty struct
+ * @return void 
+ */
+
+Widget_t *get_toplevel_widget(Xputty *main) {
+    return  main->childlist->childs[0];
 }
 
 /**
@@ -424,6 +475,21 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         break;
 
         case ButtonRelease:
+            if(main->hold_grab != NULL) {
+                XUngrabPointer(main->hold_grab->dpy,CurrentTime);
+                int i = main->hold_grab->childlist->elem-1;
+                for(;i>-1;i--) {
+                    Widget_t *w = main->hold_grab->childlist->childs[i];
+                    if (xev->xbutton.window == w->widget) {
+                        const char *l = main->hold_grab->childlist->childs[i]->label;
+                        main->hold_grab->func.button_release_callback
+                            (main->hold_grab, &i, &l);
+                        break;
+                    }
+                }
+                quit_widget(main->hold_grab);
+                main->hold_grab = NULL;
+            }
             wid->has_pointer = _has_pointer(wid, &xev->xbutton);
             if(wid->has_pointer) wid->state = 1;
             else wid->state = 0;
@@ -481,6 +547,32 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         default:
         break;
     }
+}
+
+/**
+ * @brief send_configure_event - send ConfigureNotify to Widget_t
+ * @param *w                   - pointer to the Widget_t to send the notify
+ * @param x,y                  - the new Widget_t position
+ * @param width,height         - the new Widget_t size
+ * @return void 
+ */
+
+void send_configure_event(Widget_t *w,int x, int y, int width, int height) {
+    XConfigureEvent notify;
+    memset(&notify, 0, sizeof(notify));
+    notify.type = ConfigureNotify;
+    notify.display = w->dpy;
+    notify.send_event = True;
+    notify.event = w->widget;
+    notify.window = w->widget;
+    notify.x = x;
+    notify.y = y;
+    notify.width = width;
+    notify.height = height;
+    notify.border_width = 0;
+    notify.above = None;
+    notify.override_redirect = 1;
+    XSendEvent( w->dpy, w->widget, true, StructureNotifyMask, (XEvent*)&notify );    
 }
 
 /**

@@ -11,11 +11,15 @@
 {\ttfamily \#include $<$cairo-\/xlib.\+h$>$}\newline
 {\ttfamily \#include $<$X11/\+Xutil.\+h$>$}\newline
 {\ttfamily \#include $<$X11/keysym.\+h$>$}\newline
+{\ttfamily \#include $<$X11/\+Xatom.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}xwidget.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}xadjustment.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}xchildlist.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xcolor.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}xbutton.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}xslider.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xknob.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xmenu.\+h\char`\"{}}\newline
 Include dependency graph for xputty.\+h\+:
 \nopagebreak
 \begin{figure}[H]
@@ -61,6 +65,8 @@ typedef struct \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} \hyperlink{xpu
 \begin{DoxyCompactList}\small\item\em \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} -\/ \hyperlink{structAdjustment__t}{Adjustment\+\_\+t} for a \hyperlink{structWidget__t}{Widget\+\_\+t}. \end{DoxyCompactList}\item 
 typedef struct \hyperlink{structWidget__t}{Widget\+\_\+t} \hyperlink{xputty_8h_a6b3e8ecb43e49de5de9dc7ab79404014}{Widget\+\_\+t}
 \begin{DoxyCompactList}\small\item\em \hyperlink{structWidget__t}{Widget\+\_\+t} -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} base struct. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{structXColor__t}{X\+Color\+\_\+t} \hyperlink{xputty_8h_a8fd8b2af101a65738477a274b3894153}{X\+Color\+\_\+t}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structXColor__t}{X\+Color\+\_\+t} -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} Color struct. \end{DoxyCompactList}\item 
 typedef struct \hyperlink{structXputty}{Xputty} \hyperlink{xputty_8h_a640738d2c0bf1af308958da6468c829f}{Xputty}
 \begin{DoxyCompactList}\small\item\em \hyperlink{structXputty}{Xputty} -\/ the main struct.\+It should be declared before any other call to a \hyperlink{structXputty}{Xputty} function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
@@ -159,6 +165,16 @@ min -\/ set a maximal value (x) as return value
 
 
 \hyperlink{structWidget__t}{Widget\+\_\+t} -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} base struct. 
+
+\mbox{\Hypertarget{xputty_8h_a8fd8b2af101a65738477a274b3894153}\label{xputty_8h_a8fd8b2af101a65738477a274b3894153}} 
+\index{xputty.\+h@{xputty.\+h}!X\+Color\+\_\+t@{X\+Color\+\_\+t}}
+\index{X\+Color\+\_\+t@{X\+Color\+\_\+t}!xputty.\+h@{xputty.\+h}}
+\subsubsection{\texorpdfstring{X\+Color\+\_\+t}{XColor\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structXColor__t}{X\+Color\+\_\+t} \hyperlink{structXColor__t}{X\+Color\+\_\+t}}
+
+
+
+\hyperlink{structXColor__t}{X\+Color\+\_\+t} -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} Color struct. 
 
 \mbox{\Hypertarget{xputty_8h_a640738d2c0bf1af308958da6468c829f}\label{xputty_8h_a640738d2c0bf1af308958da6468c829f}} 
 \index{xputty.\+h@{xputty.\+h}!Xputty@{Xputty}}

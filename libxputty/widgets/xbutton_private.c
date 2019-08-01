@@ -140,7 +140,7 @@ void _draw_button(void *w_, void* user_data) {
         offset = 1.0;
     } else if(w->state==1) {
         use_fg_color_scheme(w, ACTIVE_);
-        offset = 0.5;
+        offset = 2.0;
     } else if(w->state==2) {
         use_fg_color_scheme(w, SELECTED_);
         offset = 2.0;

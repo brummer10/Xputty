@@ -36,6 +36,7 @@
 #include <cairo-xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
+#include <X11/Xatom.h>
 
 
 /*---------------------------------------------------------------------
@@ -143,6 +144,7 @@ typedef struct Xputty Xputty;
 #include "xbutton.h"
 #include "xslider.h"
 #include "xknob.h"
+#include "xmenu.h"
 
 /**
  * @brief Xputty             - the main struct. It should be declared
@@ -150,6 +152,8 @@ typedef struct Xputty Xputty;
  * @param *childlist         - pointer to the main childlist
  * @param *dpy               - pointer to the display in use
  * @param run                - bool to quit the main loop
+ * @param *color_scheme      - theming scheme for all Widget_t
+ * @param *hold_grab         - pointer to a modal Widget_t
  */
 
 struct Xputty{
@@ -159,8 +163,10 @@ struct Xputty{
     Display *dpy;
 /** bool to quit the main loop */
     bool run;
-/** bool to quit the main loop */
+/** theming scheme for all Widget_t */
     XColor_t *color_scheme;
+/** pointer to a modal Widget_t */
+    Widget_t *hold_grab;
 };
 
 /**

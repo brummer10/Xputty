@@ -76,12 +76,13 @@ Collaboration diagram for Xputty:</div>
 <div class="dyncontent">
 <div class="center"><img src="structXputty__coll__graph.png" border="0" usemap="#Xputty_coll__map" alt="Collaboration graph"/></div>
 <map name="Xputty_coll__map" id="Xputty_coll__map">
-<area shape="rect" id="node3" href="structWidget__t.html" title="Widget_t &#45; struct to hold the basic widget info. " alt="" coords="155,139,230,165"/>
-<area shape="rect" id="node2" href="structChildlist__t.html" title="Childlist_t &#45; struct to hold a Widget_t child list. " alt="" coords="17,243,97,269"/>
-<area shape="rect" id="node4" href="structAdjustment__t.html" title="Adjustment_t &#45; struct to hold a controller adjustment. " alt="" coords="179,243,278,269"/>
-<area shape="rect" id="node5" href="structFunc__t.html" title="Func_t &#45; struct to hold all supported event callbacks. " alt="" coords="131,5,193,32"/>
-<area shape="rect" id="node6" href="structResize__t.html" title="Resize_t &#45; struct used to resize child widgets. " alt="" coords="218,5,293,32"/>
-<area shape="rect" id="node7" href="structColor__t.html" title="Color_t &#45; struct used to set cairo color for Widget_t. " alt="" coords="317,5,381,32"/>
+<area shape="rect" id="node3" href="structWidget__t.html" title="Widget_t &#45; struct to hold the basic widget info. " alt="" coords="159,332,234,359"/>
+<area shape="rect" id="node2" href="structChildlist__t.html" title="Childlist_t &#45; struct to hold a Widget_t child list. " alt="" coords="299,451,379,477"/>
+<area shape="rect" id="node4" href="structAdjustment__t.html" title="Adjustment_t &#45; struct to hold a controller adjustment. " alt="" coords="125,451,223,477"/>
+<area shape="rect" id="node5" href="structFunc__t.html" title="Func_t &#45; struct to hold all supported event callbacks. " alt="" coords="5,228,68,255"/>
+<area shape="rect" id="node6" href="structResize__t.html" title="Resize_t &#45; struct used to resize child widgets. " alt="" coords="93,228,167,255"/>
+<area shape="rect" id="node7" href="structXColor__t.html" title="XColor_t &#45; the Widget_t Color struct. " alt="" coords="283,139,356,165"/>
+<area shape="rect" id="node8" href="structColors.html" title="Color_t &#45; struct used to set cairo color for Widget_t. " alt="" coords="289,5,349,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -93,6 +94,10 @@ Data Fields</h2></td></tr>
 <tr class="separator:ab185ae4fd00ee1930c61e0440734878f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a8e0381e77ae9fae69aab5dda8e7e7a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structXputty.html#a3a8e0381e77ae9fae69aab5dda8e7e7a">run</a></td></tr>
 <tr class="separator:a3a8e0381e77ae9fae69aab5dda8e7e7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab9298d9341e315b1aa4ac16188c699e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structXColor__t.html">XColor_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structXputty.html#aab9298d9341e315b1aa4ac16188c699e">color_scheme</a></td></tr>
+<tr class="separator:aab9298d9341e315b1aa4ac16188c699e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a744a6ffdff59d8725c863e7ecddfc0e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structXputty.html#a744a6ffdff59d8725c863e7ecddfc0e1">hold_grab</a></td></tr>
+<tr class="separator:a744a6ffdff59d8725c863e7ecddfc0e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> - the main struct. It should be declared before any other call to a <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> function. </p>
@@ -101,6 +106,8 @@ Data Fields</h2></td></tr>
     <tr><td class="paramname">*childlist</td><td>- pointer to the main childlist </td></tr>
     <tr><td class="paramname">*dpy</td><td>- pointer to the display in use </td></tr>
     <tr><td class="paramname">run</td><td>- bool to quit the main loop </td></tr>
+    <tr><td class="paramname">*color_scheme</td><td>- theming scheme for all <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </td></tr>
+    <tr><td class="paramname">*hold_grab</td><td>- pointer to a modal <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -120,6 +127,21 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a id="aab9298d9341e315b1aa4ac16188c699e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab9298d9341e315b1aa4ac16188c699e">&#9670;&nbsp;</a></span>color_scheme</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structXColor__t.html">XColor_t</a>* Xputty::color_scheme</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>theming scheme for all <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+
+</div>
+</div>
 <a id="ab185ae4fd00ee1930c61e0440734878f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab185ae4fd00ee1930c61e0440734878f">&#9670;&nbsp;</a></span>dpy</h2>
 
@@ -132,6 +154,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>pointer to the display in use </p>
+
+</div>
+</div>
+<a id="a744a6ffdff59d8725c863e7ecddfc0e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a744a6ffdff59d8725c863e7ecddfc0e1">&#9670;&nbsp;</a></span>hold_grab</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWidget__t.html">Widget_t</a>* Xputty::hold_grab</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>pointer to a modal <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
 
 </div>
 </div>

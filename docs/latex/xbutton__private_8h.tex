@@ -25,13 +25,11 @@ This graph shows which files directly or indirectly include this file\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{xbutton__private_8h_a84ad14c8ee4ef96c7d92acc972883c8b}{\+\_\+set\+\_\+button\+\_\+colormap} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid)
-\begin{DoxyCompactList}\small\item\em \+\_\+set\+\_\+button\+\_\+colormap -\/ set color map to use for button states \end{DoxyCompactList}\item 
 void \hyperlink{xbutton__private_8h_ad4e31fc35cac78b036b693d09edfad35}{\+\_\+rounded\+\_\+rectangle} (cairo\+\_\+t $\ast$cr, float x, float y, float width, float height)
 \begin{DoxyCompactList}\small\item\em \+\_\+rounded\+\_\+rectangle -\/ internal draw a rounded button \end{DoxyCompactList}\item 
-void \hyperlink{xbutton__private_8h_ac0888b19e35a96f7820b87f3e2316ec2}{\+\_\+pattern\+\_\+out} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st, int height)
+void \hyperlink{xbutton__private_8h_a0ea4425c5e10fa1a3f052afa6114d30b}{\+\_\+pattern\+\_\+out} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} st, int height)
 \begin{DoxyCompactList}\small\item\em \+\_\+pattern\+\_\+in -\/ a little pattern to make press state more visible \end{DoxyCompactList}\item 
-void \hyperlink{xbutton__private_8h_a646ed35fa047cfcc7a93d1790c672fc1}{\+\_\+pattern\+\_\+in} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st, int height)
+void \hyperlink{xbutton__private_8h_a7b78e740b4f0797a42a53278bfb3c7d4}{\+\_\+pattern\+\_\+in} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} st, int height)
 \begin{DoxyCompactList}\small\item\em \+\_\+pattern\+\_\+in -\/ a little pattern to make press state more visible \end{DoxyCompactList}\item 
 void \hyperlink{xbutton__private_8h_a555079b56b3d52f2a74c20f6ebd05e29}{\+\_\+draw\+\_\+button} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+button -\/ internal draw the button to the buffer \end{DoxyCompactList}\item 
@@ -119,11 +117,11 @@ void
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xbutton__private_8h_a646ed35fa047cfcc7a93d1790c672fc1}\label{xbutton__private_8h_a646ed35fa047cfcc7a93d1790c672fc1}} 
+\mbox{\Hypertarget{xbutton__private_8h_a7b78e740b4f0797a42a53278bfb3c7d4}\label{xbutton__private_8h_a7b78e740b4f0797a42a53278bfb3c7d4}} 
 \index{xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}!\+\_\+pattern\+\_\+in@{\+\_\+pattern\+\_\+in}}
 \index{\+\_\+pattern\+\_\+in@{\+\_\+pattern\+\_\+in}!xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}}
 \subsubsection{\texorpdfstring{\+\_\+pattern\+\_\+in()}{\_pattern\_in()}}
-{\footnotesize\ttfamily void \+\_\+pattern\+\_\+in (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state}}]{st,  }\item[{int}]{height }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void \+\_\+pattern\+\_\+in (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state}}]{st,  }\item[{int}]{height }\end{DoxyParamCaption})}
 
 
 
@@ -141,11 +139,11 @@ void
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xbutton__private_8h_ac0888b19e35a96f7820b87f3e2316ec2}\label{xbutton__private_8h_ac0888b19e35a96f7820b87f3e2316ec2}} 
+\mbox{\Hypertarget{xbutton__private_8h_a0ea4425c5e10fa1a3f052afa6114d30b}\label{xbutton__private_8h_a0ea4425c5e10fa1a3f052afa6114d30b}} 
 \index{xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}!\+\_\+pattern\+\_\+out@{\+\_\+pattern\+\_\+out}}
 \index{\+\_\+pattern\+\_\+out@{\+\_\+pattern\+\_\+out}!xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}}
 \subsubsection{\texorpdfstring{\+\_\+pattern\+\_\+out()}{\_pattern\_out()}}
-{\footnotesize\ttfamily void \+\_\+pattern\+\_\+out (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state}}]{st,  }\item[{int}]{height }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void \+\_\+pattern\+\_\+out (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state}}]{st,  }\item[{int}]{height }\end{DoxyParamCaption})}
 
 
 
@@ -182,24 +180,6 @@ void
 {\em width} & -\/ the button width \\
 \hline
 {\em height} & -\/ the button height \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\mbox{\Hypertarget{xbutton__private_8h_a84ad14c8ee4ef96c7d92acc972883c8b}\label{xbutton__private_8h_a84ad14c8ee4ef96c7d92acc972883c8b}} 
-\index{xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}!\+\_\+set\+\_\+button\+\_\+colormap@{\+\_\+set\+\_\+button\+\_\+colormap}}
-\index{\+\_\+set\+\_\+button\+\_\+colormap@{\+\_\+set\+\_\+button\+\_\+colormap}!xbutton\+\_\+private.\+h@{xbutton\+\_\+private.\+h}}
-\subsubsection{\texorpdfstring{\+\_\+set\+\_\+button\+\_\+colormap()}{\_set\_button\_colormap()}}
-{\footnotesize\ttfamily void \+\_\+set\+\_\+button\+\_\+colormap (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{wid }\end{DoxyParamCaption})}
-
-
-
-\+\_\+set\+\_\+button\+\_\+colormap -\/ set color map to use for button states 
-
-
-\begin{DoxyParams}{Parameters}
-{\em $\ast$wid} & -\/ pointer to \hyperlink{structWidget__t}{Widget\+\_\+t} \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

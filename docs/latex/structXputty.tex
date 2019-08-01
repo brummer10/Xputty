@@ -27,6 +27,10 @@ Collaboration diagram for Xputty\+:
 Display $\ast$ \hyperlink{structXputty_ab185ae4fd00ee1930c61e0440734878f}{dpy}
 \item 
 bool \hyperlink{structXputty_a3a8e0381e77ae9fae69aab5dda8e7e7a}{run}
+\item 
+\hyperlink{structXColor__t}{X\+Color\+\_\+t} $\ast$ \hyperlink{structXputty_aab9298d9341e315b1aa4ac16188c699e}{color\+\_\+scheme}
+\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{structXputty_a744a6ffdff59d8725c863e7ecddfc0e1}{hold\+\_\+grab}
 \end{DoxyCompactItemize}
 
 
@@ -41,6 +45,10 @@ bool \hyperlink{structXputty_a3a8e0381e77ae9fae69aab5dda8e7e7a}{run}
 \hline
 {\em run} & -\/ bool to quit the main loop \\
 \hline
+{\em $\ast$color\+\_\+scheme} & -\/ theming scheme for all \hyperlink{structWidget__t}{Widget\+\_\+t} \\
+\hline
+{\em $\ast$hold\+\_\+grab} & -\/ pointer to a modal \hyperlink{structWidget__t}{Widget\+\_\+t} \\
+\hline
 \end{DoxyParams}
 
 
@@ -51,13 +59,25 @@ bool \hyperlink{structXputty_a3a8e0381e77ae9fae69aab5dda8e7e7a}{run}
 \subsubsection{\texorpdfstring{childlist}{childlist}}
 {\footnotesize\ttfamily \hyperlink{structChildlist__t}{Childlist\+\_\+t}$\ast$ Xputty\+::childlist}
 
-pointer to the main childlist \mbox{\Hypertarget{structXputty_ab185ae4fd00ee1930c61e0440734878f}\label{structXputty_ab185ae4fd00ee1930c61e0440734878f}} 
+pointer to the main childlist \mbox{\Hypertarget{structXputty_aab9298d9341e315b1aa4ac16188c699e}\label{structXputty_aab9298d9341e315b1aa4ac16188c699e}} 
+\index{Xputty@{Xputty}!color\+\_\+scheme@{color\+\_\+scheme}}
+\index{color\+\_\+scheme@{color\+\_\+scheme}!Xputty@{Xputty}}
+\subsubsection{\texorpdfstring{color\+\_\+scheme}{color\_scheme}}
+{\footnotesize\ttfamily \hyperlink{structXColor__t}{X\+Color\+\_\+t}$\ast$ Xputty\+::color\+\_\+scheme}
+
+theming scheme for all \hyperlink{structWidget__t}{Widget\+\_\+t} \mbox{\Hypertarget{structXputty_ab185ae4fd00ee1930c61e0440734878f}\label{structXputty_ab185ae4fd00ee1930c61e0440734878f}} 
 \index{Xputty@{Xputty}!dpy@{dpy}}
 \index{dpy@{dpy}!Xputty@{Xputty}}
 \subsubsection{\texorpdfstring{dpy}{dpy}}
 {\footnotesize\ttfamily Display$\ast$ Xputty\+::dpy}
 
-pointer to the display in use \mbox{\Hypertarget{structXputty_a3a8e0381e77ae9fae69aab5dda8e7e7a}\label{structXputty_a3a8e0381e77ae9fae69aab5dda8e7e7a}} 
+pointer to the display in use \mbox{\Hypertarget{structXputty_a744a6ffdff59d8725c863e7ecddfc0e1}\label{structXputty_a744a6ffdff59d8725c863e7ecddfc0e1}} 
+\index{Xputty@{Xputty}!hold\+\_\+grab@{hold\+\_\+grab}}
+\index{hold\+\_\+grab@{hold\+\_\+grab}!Xputty@{Xputty}}
+\subsubsection{\texorpdfstring{hold\+\_\+grab}{hold\_grab}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ Xputty\+::hold\+\_\+grab}
+
+pointer to a modal \hyperlink{structWidget__t}{Widget\+\_\+t} \mbox{\Hypertarget{structXputty_a3a8e0381e77ae9fae69aab5dda8e7e7a}\label{structXputty_a3a8e0381e77ae9fae69aab5dda8e7e7a}} 
 \index{Xputty@{Xputty}!run@{run}}
 \index{run@{run}!Xputty@{Xputty}}
 \subsubsection{\texorpdfstring{run}{run}}

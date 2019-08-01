@@ -152,6 +152,7 @@ int main (int argc, char ** argv)
     b = add_button(w, "Reset", 10, 200, 60, 30);
     b->scale.gravity = SOUTHEAST;
     b->func.value_changed_callback = button_reset_callback;
+    widget_show_all(w);
 
     main_run(&app);
 

@@ -63,11 +63,13 @@ void _draw_knob(void *w_, void* user_data) {
 
     cairo_arc(w->crb,knobx1+arc_offset, knoby1+arc_offset, knob_x/2.1, 0, 2 * M_PI );
 
-    use_base_color_scheme(w, NORMAL_);
+    use_base_color_scheme(w, get_color_state(w));
     cairo_fill (w->crb);
     cairo_new_path (w->crb);
 
+    use_bg_color_scheme(w, get_color_state(w));
     cairo_arc(w->crb,knobx1+arc_offset, knoby1+arc_offset, knob_x/3.1, 0, 2 * M_PI );
+    cairo_fill_preserve(w->crb);
     use_fg_color_scheme(w, NORMAL_);
     cairo_set_line_width(w->crb, knobx1/15);
     cairo_stroke(w->crb);

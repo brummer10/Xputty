@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['none',['NONE',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adeac157bdf0b85a40d2619cbc8bc1ae5fe2',1,'xwidget.h']]],
-  ['northeast',['NORTHEAST',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adeaa6671505783298e4cb967931c1c1ac5b',1,'xwidget.h']]],
-  ['northwest',['NORTHWEST',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adeac8aee466c121a3c3c942f58e1d8864d4',1,'xwidget.h']]]
+  ['forground_5f',['FORGROUND_',['../xcolor_8h.html#a2c1c3c5b8916c211c3fe5f76decb7e1ca6ad4b0fe5a81ba8d5bc90865457555c8',1,'xcolor.h']]]
 ];

@@ -49,6 +49,8 @@ int main (int argc, char ** argv)
     XStoreName(app.dpy, w->widget, "Hello world");
     /** overwrite event handler with your own */
     w->func.expose_callback = draw_window;
+    /** map the Window to display */
+    widget_show_all(w);
     /** run the event loop */
     main_run(&app);
     /** clean up after the event loop is finished */

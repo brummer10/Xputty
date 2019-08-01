@@ -184,6 +184,7 @@ typedef struct {
  * @param scale              - struct used to resize child widgets
  * @param *adj_x             - pointer to the x axis adjustment
  * @param *adj_y             - pointer to the y axis adjustment
+ * @param *adj               - pointer to the adjustment in use
  * @param *childlist         - pointer to Widget_t child list
  * @param xic                - Locale and UTF 8 support interface
  * @param xim                - Context to Locale and UTF 8 support
@@ -242,6 +243,8 @@ struct Widget_t {
     Adjustment_t *adj_x;
 /** pointer to the y axis adjustment */
     Adjustment_t *adj_y;
+/** pointer to the adjustment in use*/
+    Adjustment_t *adj;
 /** pointer to Widget_t child list */
     Childlist_t *childlist;
 /** Locale and UTF 8 support */
@@ -272,6 +275,44 @@ Widget_t *create_window(Xputty *app, Window win,
 
 Widget_t *create_widget(Xputty *app, Widget_t *win,
                           int x, int y, int width, int height);
+
+/**
+ * @brief widget_show       - map/show widget
+ * @param *w                - pointer to the Widget_t to map
+ * @return void 
+ */
+
+void widget_show(Widget_t *w);
+
+/**
+ * @brief widget_hide       - unmap/hide widget
+ * @param *w                - pointer to the Widget_t to unmap
+ * @return void 
+ */
+
+void widget_hide(Widget_t *w);
+
+/**
+ * @brief widget_show_all   - map/show widget with all childs
+ * @param *w                - pointer to the Widget_t to map
+ * @return void 
+ */
+
+void widget_show_all(Widget_t *w);
+
+/**
+ * @brief *get_toplevel_widget - get pointer to the top level Widget_t
+ * @param *main                - pointer to the main Xputty struct
+ * @return void 
+ */
+
+Widget_t *get_toplevel_widget(Xputty *main);
+
+/**
+ * @brief quit              - exit the main loop
+ * @param *w                - pointer to the Widget_t sending the request
+ * @return void 
+ */
 
 void quit(Widget_t *w);
 
@@ -310,6 +351,16 @@ void destroy_widget(Widget_t *w, Xputty *main);
  */
 
 void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data);
+
+/**
+ * @brief send_configure_event - send ConfigureNotify to Widget_t
+ * @param *w                   - pointer to the Widget_t to send the notify
+ * @param x,y                  - the new Widget_t position
+ * @param width,height         - the new Widget_t size
+ * @return void 
+ */
+
+void send_configure_event(Widget_t *w,int x, int y, int width, int height);
 
 /**
  * @brief expose_widgets    - send expose expose event to window

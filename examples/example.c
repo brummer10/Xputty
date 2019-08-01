@@ -94,6 +94,7 @@ int main (int argc, char ** argv)
     w_quit = add_button(w, "Quit", 230, 170, 60, 20);
     w_quit->scale.gravity = NONE;
     w_quit->func.user_callback = button_quit_callback;
+    widget_show_all(w);
 
     w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 200);
     XStoreName(app.dpy, w->widget, "Xputty Message Box");
@@ -104,6 +105,7 @@ int main (int argc, char ** argv)
     w_quit = add_button(w, "OK", 230, 170, 60, 20);
     w_quit->scale.gravity = NONE;
     w_quit->func.user_callback = button_ok_callback;
+    widget_show_all(w);
    
     main_run(&app);
    

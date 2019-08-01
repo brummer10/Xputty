@@ -84,21 +84,28 @@ $(function() {
 <code>#include &lt;cairo-xlib.h&gt;</code><br />
 <code>#include &lt;X11/Xutil.h&gt;</code><br />
 <code>#include &lt;X11/keysym.h&gt;</code><br />
+<code>#include &lt;X11/Xatom.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="xwidget_8h_source.html">xwidget.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="xadjustment_8h_source.html">xadjustment.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="xchildlist_8h_source.html">xchildlist.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="xcolor_8h_source.html">xcolor.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="xbutton_8h_source.html">xbutton.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="xslider_8h_source.html">xslider.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="xknob_8h_source.html">xknob.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="xmenu_8h_source.html">xmenu.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for xputty.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="xputty_8h__incl.png" border="0" usemap="#xputty_8h" alt=""/></div>
 <map name="xputty_8h" id="xputty_8h">
-<area shape="rect" id="node13" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1080,80,1159,107"/>
-<area shape="rect" id="node14" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="1183,80,1287,107"/>
-<area shape="rect" id="node15" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1312,80,1396,107"/>
-<area shape="rect" id="node16" href="xbutton_8h.html" title="xbutton.h" alt="" coords="1420,80,1496,107"/>
-<area shape="rect" id="node17" href="xslider_8h.html" title="xslider.h" alt="" coords="1520,80,1591,107"/>
+<area shape="rect" id="node14" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1203,80,1281,107"/>
+<area shape="rect" id="node15" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="1306,80,1410,107"/>
+<area shape="rect" id="node16" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1435,80,1519,107"/>
+<area shape="rect" id="node17" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1543,80,1611,107"/>
+<area shape="rect" id="node18" href="xbutton_8h.html" title="xbutton.h" alt="" coords="1635,80,1711,107"/>
+<area shape="rect" id="node19" href="xslider_8h.html" title="xslider.h" alt="" coords="1735,80,1805,107"/>
+<area shape="rect" id="node20" href="xknob_8h.html" title="xknob.h" alt="" coords="1829,80,1897,107"/>
+<area shape="rect" id="node21" href="xmenu_8h.html" title="xmenu.h" alt="" coords="1922,80,1994,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -108,25 +115,35 @@ This graph shows which files directly or indirectly include this file:</div>
 <map name="xputty_8hdep" id="xputty_8hdep">
 <area shape="rect" id="node2" href="xputty_8c.html" title="xputty.c" alt="" coords="5,80,75,107"/>
 <area shape="rect" id="node3" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="99,80,203,107"/>
-<area shape="rect" id="node5" href="xwidget_8h.html" title="xwidget.h" alt="" coords="666,80,745,107"/>
-<area shape="rect" id="node7" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="402,80,486,107"/>
-<area shape="rect" id="node9" href="xadjustment__private_8h.html" title="xadjustment_private.h" alt="" coords="227,80,378,107"/>
-<area shape="rect" id="node11" href="xchildlist__private_8h.html" title="xchildlist_private.h" alt="" coords="511,80,641,107"/>
-<area shape="rect" id="node13" href="xwidget__private_8h.html" title="xwidget_private.h" alt="" coords="769,80,893,107"/>
-<area shape="rect" id="node15" href="xbutton_8h.html" title="xbutton.h" alt="" coords="917,80,993,107"/>
-<area shape="rect" id="node17" href="xbutton__private_8h.html" title="xbutton_private.h" alt="" coords="1017,80,1140,107"/>
-<area shape="rect" id="node19" href="xslider_8h.html" title="xslider.h" alt="" coords="1165,80,1235,107"/>
-<area shape="rect" id="node21" href="xslider__private_8h.html" title="xslider_private.h" alt="" coords="1260,80,1377,107"/>
+<area shape="rect" id="node5" href="xwidget_8h.html" title="xwidget.h" alt="" coords="758,80,837,107"/>
+<area shape="rect" id="node7" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="494,80,578,107"/>
+<area shape="rect" id="node9" href="xcolor_8h.html" title="xcolor.h" alt="" coords="402,80,470,107"/>
+<area shape="rect" id="node11" href="xadjustment__private_8h.html" title="xadjustment_private.h" alt="" coords="227,80,378,107"/>
+<area shape="rect" id="node13" href="xchildlist__private_8h.html" title="xchildlist_private.h" alt="" coords="603,80,733,107"/>
+<area shape="rect" id="node15" href="xwidget__private_8h.html" title="xwidget_private.h" alt="" coords="861,80,985,107"/>
+<area shape="rect" id="node17" href="xbutton_8h.html" title="xbutton.h" alt="" coords="1009,80,1085,107"/>
+<area shape="rect" id="node19" href="xbutton__private_8h.html" title="xbutton_private.h" alt="" coords="1109,80,1232,107"/>
+<area shape="rect" id="node21" href="xknob_8h.html" title="xknob.h" alt="" coords="1257,80,1325,107"/>
+<area shape="rect" id="node23" href="xknob__private_8h.html" title="xknob_private.h" alt="" coords="1349,80,1464,107"/>
+<area shape="rect" id="node25" href="xmenu_8h.html" title="xmenu.h" alt="" coords="1488,80,1560,107"/>
+<area shape="rect" id="node27" href="xmenu__private_8h.html" title="xmenu_private.h" alt="" coords="1585,80,1703,107"/>
+<area shape="rect" id="node29" href="xslider_8h.html" title="xslider.h" alt="" coords="1727,80,1798,107"/>
+<area shape="rect" id="node31" href="xslider__private_8h.html" title="xslider_private.h" alt="" coords="1823,80,1940,107"/>
 <area shape="rect" id="node4" href="xadjustment_8c.html" title="xadjustment.c" alt="" coords="99,155,203,181"/>
-<area shape="rect" id="node6" href="xwidget_8c.html" title="xwidget.c" alt="" coords="666,155,745,181"/>
-<area shape="rect" id="node8" href="xchildlist_8c.html" title="xchildlist.c" alt="" coords="402,155,486,181"/>
-<area shape="rect" id="node10" href="xadjustment__private_8c.html" title="xadjustment_private.c" alt="" coords="227,155,378,181"/>
-<area shape="rect" id="node12" href="xchildlist__private_8c.html" title="xchildlist_private.c" alt="" coords="511,155,641,181"/>
-<area shape="rect" id="node14" href="xwidget__private_8c.html" title="xwidget_private.c" alt="" coords="769,155,893,181"/>
-<area shape="rect" id="node16" href="xbutton_8c.html" title="xbutton.c" alt="" coords="917,155,993,181"/>
-<area shape="rect" id="node18" href="xbutton__private_8c.html" title="xbutton_private.c" alt="" coords="1017,155,1140,181"/>
-<area shape="rect" id="node20" href="xslider_8c.html" title="xslider.c" alt="" coords="1165,155,1235,181"/>
-<area shape="rect" id="node22" href="xslider__private_8c.html" title="xslider_private.c" alt="" coords="1260,155,1377,181"/>
+<area shape="rect" id="node6" href="xwidget_8c.html" title="xwidget.c" alt="" coords="758,155,837,181"/>
+<area shape="rect" id="node8" href="xchildlist_8c.html" title="xchildlist.c" alt="" coords="494,155,578,181"/>
+<area shape="rect" id="node10" href="xcolor_8c.html" title="xcolor.c" alt="" coords="402,155,470,181"/>
+<area shape="rect" id="node12" href="xadjustment__private_8c.html" title="xadjustment_private.c" alt="" coords="227,155,378,181"/>
+<area shape="rect" id="node14" href="xchildlist__private_8c.html" title="xchildlist_private.c" alt="" coords="603,155,733,181"/>
+<area shape="rect" id="node16" href="xwidget__private_8c.html" title="xwidget_private.c" alt="" coords="861,155,985,181"/>
+<area shape="rect" id="node18" href="xbutton_8c.html" title="xbutton.c" alt="" coords="1009,155,1085,181"/>
+<area shape="rect" id="node20" href="xbutton__private_8c.html" title="xbutton_private.c" alt="" coords="1109,155,1232,181"/>
+<area shape="rect" id="node22" href="xknob_8c.html" title="xknob.c" alt="" coords="1257,155,1325,181"/>
+<area shape="rect" id="node24" href="xknob__private_8c.html" title="xknob_private.c" alt="" coords="1349,155,1464,181"/>
+<area shape="rect" id="node26" href="xmenu_8c.html" title="xmenu.c" alt="" coords="1488,155,1560,181"/>
+<area shape="rect" id="node28" href="xmenu__private_8c.html" title="xmenu_private.c" alt="" coords="1585,155,1703,181"/>
+<area shape="rect" id="node30" href="xslider_8c.html" title="xslider.c" alt="" coords="1727,155,1798,181"/>
+<area shape="rect" id="node32" href="xslider__private_8c.html" title="xslider_private.c" alt="" coords="1823,155,1940,181"/>
 </map>
 </div>
 </div>
@@ -168,6 +185,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a6b3e8ecb43e49de5de9dc7ab79404014"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structWidget__t.html">Widget_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#a6b3e8ecb43e49de5de9dc7ab79404014">Widget_t</a></td></tr>
 <tr class="memdesc:a6b3e8ecb43e49de5de9dc7ab79404014"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> - the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> base struct.  <a href="#a6b3e8ecb43e49de5de9dc7ab79404014">More...</a><br /></td></tr>
 <tr class="separator:a6b3e8ecb43e49de5de9dc7ab79404014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fd8b2af101a65738477a274b3894153"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structXColor__t.html">XColor_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#a8fd8b2af101a65738477a274b3894153">XColor_t</a></td></tr>
+<tr class="memdesc:a8fd8b2af101a65738477a274b3894153"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structXColor__t.html" title="XColor_t - the Widget_t Color struct. ">XColor_t</a> - the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> Color struct.  <a href="#a8fd8b2af101a65738477a274b3894153">More...</a><br /></td></tr>
+<tr class="separator:a8fd8b2af101a65738477a274b3894153"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a640738d2c0bf1af308958da6468c829f"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structXputty.html">Xputty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8h.html#a640738d2c0bf1af308958da6468c829f">Xputty</a></td></tr>
 <tr class="memdesc:a640738d2c0bf1af308958da6468c829f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> - the main struct.It should be declared before any other call to a <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> function.  <a href="#a640738d2c0bf1af308958da6468c829f">More...</a><br /></td></tr>
 <tr class="separator:a640738d2c0bf1af308958da6468c829f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -359,6 +379,22 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> - the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> base struct. </p>
+
+</div>
+</div>
+<a id="a8fd8b2af101a65738477a274b3894153"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fd8b2af101a65738477a274b3894153">&#9670;&nbsp;</a></span>XColor_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structXColor__t.html">XColor_t</a> <a class="el" href="structXColor__t.html">XColor_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="structXColor__t.html" title="XColor_t - the Widget_t Color struct. ">XColor_t</a> - the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> Color struct. </p>
 
 </div>
 </div>

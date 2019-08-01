@@ -101,9 +101,12 @@ void _draw_vslider(void *w_, void* user_data) {
     cairo_set_line_width(w->crb,1);
     cairo_stroke(w->crb);
 
-    use_fg_color_scheme(w, NORMAL_);
+
+    use_bg_color_scheme(w, get_color_state(w));
     cairo_arc(w->crb,center, (height-center-10) -
         ((height-10-upcenter) * sliderstate), center/3, 0, 2 * M_PI );
+    cairo_fill_preserve(w->crb);
+    use_fg_color_scheme(w, NORMAL_);
     cairo_set_line_width(w->crb,center/15);
     cairo_stroke(w->crb);
     cairo_new_path (w->crb);
@@ -163,9 +166,11 @@ void _draw_hslider(void *w_, void* user_data) {
     cairo_set_line_width(w->crb,1);
     cairo_stroke(w->crb);
 
-    use_fg_color_scheme(w, NORMAL_);
+    use_bg_color_scheme(w, get_color_state(w));
     cairo_arc(w->crb, (center) +
         ((width-10-upcenter) * sliderstate),center, center/3, 0, 2 * M_PI );
+    cairo_fill_preserve(w->crb);
+    use_fg_color_scheme(w, NORMAL_);
     cairo_set_line_width(w->crb,center/15);
     cairo_stroke(w->crb);
     cairo_new_path (w->crb);

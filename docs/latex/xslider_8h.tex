@@ -26,9 +26,9 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xslider_8h_a80c7eeb4a1b25c6fcb855d407d959b48}{add\+\_\+vslider} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, const char $\ast$label, int x, int y, int width, int height)
-\begin{DoxyCompactList}\small\item\em add\+\_\+vslider -\/ add a vertical slider to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+adj\+\_\+callback to implement your actions use set\+\_\+adjustment(w-\/$>$adj\+\_\+y, . . ) to set the range you need \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em add\+\_\+vslider -\/ add a vertical slider to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+value\+\_\+changed\+\_\+callback to implement your actions use set\+\_\+adjustment(w-\/$>$adj\+\_\+y, . . ) to set the range you need \end{DoxyCompactList}\item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xslider_8h_a508d0eea38b9c3a8b1e769b0e502c5bc}{add\+\_\+hslider} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, const char $\ast$label, int x, int y, int width, int height)
-\begin{DoxyCompactList}\small\item\em add\+\_\+hslider -\/ add a horizontal slider to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+adj\+\_\+callback to implement your actions use set\+\_\+adjustment(w-\/$>$adj\+\_\+x, . . ) to set the range you need \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em add\+\_\+hslider -\/ add a horizontal slider to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+value\+\_\+changed\+\_\+callback to implement your actions use set\+\_\+adjustment(w-\/$>$adj\+\_\+x, . . ) to set the range you need \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
@@ -49,7 +49,21 @@ This graph shows which files directly or indirectly include this file\+:
 
 
 
-add\+\_\+hslider -\/ add a horizontal slider to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+adj\+\_\+callback to implement your actions use set\+\_\+adjustment(w-\/$>$adj\+\_\+x, . . ) to set the range you need 
+add\+\_\+hslider -\/ add a horizontal slider to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+value\+\_\+changed\+\_\+callback to implement your actions use set\+\_\+adjustment(w-\/$>$adj\+\_\+x, . . ) to set the range you need 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$parent} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} request the button \\
+\hline
+{\em $\ast$label} & -\/ Label to show on the button \\
+\hline
+{\em x,y,width,height} & -\/ the position/geometry to create the button \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} button struct
+\end{DoxyReturn}
+add\+\_\+hslider -\/ add a horizontal slider to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+value\+\_\+changed\+\_\+callback to implement your actions use set\+\_\+adjustment(w-\/$>$adj\+\_\+x, . . ) to set the range you need
 
 
 \begin{DoxyParams}{Parameters}
@@ -71,7 +85,21 @@ Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t
 
 
 
-add\+\_\+vslider -\/ add a vertical slider to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+adj\+\_\+callback to implement your actions use set\+\_\+adjustment(w-\/$>$adj\+\_\+y, . . ) to set the range you need 
+add\+\_\+vslider -\/ add a vertical slider to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+value\+\_\+changed\+\_\+callback to implement your actions use set\+\_\+adjustment(w-\/$>$adj\+\_\+y, . . ) to set the range you need 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$parent} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} request the button \\
+\hline
+{\em $\ast$label} & -\/ Label to show on the button \\
+\hline
+{\em x,y,width,height} & -\/ the position/geometry to create the button \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} button struct
+\end{DoxyReturn}
+add\+\_\+vslider -\/ add a vertical slider to a \hyperlink{structWidget__t}{Widget\+\_\+t} connect to func.\+value\+\_\+changed\+\_\+callback to implement your actions use set\+\_\+adjustment(w-\/$>$adj\+\_\+y, . . ) to set the range you need
 
 
 \begin{DoxyParams}{Parameters}

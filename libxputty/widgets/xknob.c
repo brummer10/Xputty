@@ -27,7 +27,7 @@
 /**
  * @brief add_knob            - add a knob to a Widget_t
  * connect to func.value_changed_callback to implement your actions
- * use set_adjustment(w->adj_y, . . ) to set the range you need
+ * use set_adjustment(w->adj, . . ) to set the range you need
  * @param *parent             - pointer to the Widget_t request the button
  * @param *label              - Label to show on the button
  * @param x,y,width,height    - the position/geometry to create the button
@@ -40,6 +40,7 @@ Widget_t* add_knob(Widget_t *parent, const char * label,
     Widget_t *wid = create_widget(parent->app, parent, x, y, width, height);
     wid->label = label;
     wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, 1.0,0.01, CL_CONTINUOS);
+    wid->adj = wid->adj_y;
     wid->scale.gravity = ASPECT;
     wid->func.expose_callback = _draw_knob;
     wid->func.enter_callback = transparent_draw;

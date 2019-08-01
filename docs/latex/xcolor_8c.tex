@@ -1,0 +1,197 @@
+\hypertarget{xcolor_8c}{}\section{xcolor.\+c File Reference}
+\label{xcolor_8c}\index{xcolor.\+c@{xcolor.\+c}}
+{\ttfamily \#include \char`\"{}xcolor.\+h\char`\"{}}\newline
+Include dependency graph for xcolor.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xcolor_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{xcolor_8c_a4e5e3eb9811ab59de97fd2ebc1c73dac}{set\+\_\+color\+\_\+scheme} (\hyperlink{structXputty}{Xputty} $\ast$main)
+\begin{DoxyCompactList}\small\item\em set\+\_\+color\+\_\+scheme -\/ init color shema to default values \end{DoxyCompactList}\item 
+\hyperlink{structColors}{Colors} $\ast$ \hyperlink{xcolor_8c_acc93257352c04e26189e54ba561ab3f4}{get\+\_\+color\+\_\+scheme} (\hyperlink{structXputty}{Xputty} $\ast$main, \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} st)
+\begin{DoxyCompactList}\small\item\em get\+\_\+color\+\_\+scheme -\/ init color shema to default values \end{DoxyCompactList}\item 
+\hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} \hyperlink{xcolor_8c_a02fe4f3a29af917cc1de5f8b5c4b4171}{get\+\_\+color\+\_\+state} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid)
+\begin{DoxyCompactList}\small\item\em get\+\_\+color\+\_\+state -\/ get the Color\+\_\+state to use \end{DoxyCompactList}\item 
+void \hyperlink{xcolor_8c_a389caf2131cd599465c512eead16a6c0}{use\+\_\+fg\+\_\+color\+\_\+scheme} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} st)
+\begin{DoxyCompactList}\small\item\em use\+\_\+fg\+\_\+color\+\_\+scheme -\/ set normal forground color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xcolor_8c_a335aed33f3b2fca02beb85375186a5c9}{use\+\_\+bg\+\_\+color\+\_\+scheme} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} st)
+\begin{DoxyCompactList}\small\item\em use\+\_\+bg\+\_\+color\+\_\+scheme -\/ set normal background color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xcolor_8c_af2eeed36f1b19416481687498a6d1ce3}{use\+\_\+base\+\_\+color\+\_\+scheme} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} st)
+\begin{DoxyCompactList}\small\item\em use\+\_\+text\+\_\+color\+\_\+scheme -\/ set text color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xcolor_8c_a082dd5329f6c1e402747b9ecfa1dceae}{use\+\_\+text\+\_\+color\+\_\+scheme} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} st)
+\begin{DoxyCompactList}\small\item\em use\+\_\+text\+\_\+color\+\_\+scheme -\/ set text color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xcolor_8c_a441ef24e7ac1af8c830aadac851e29dc}{set\+\_\+pattern} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{structColors}{Colors} $\ast$from, \hyperlink{structColors}{Colors} $\ast$to, \hyperlink{xcolor_8h_a2c1c3c5b8916c211c3fe5f76decb7e1c}{Color\+\_\+mod} mod, int width, int height)
+\begin{DoxyCompactList}\small\item\em set\+\_\+pattern -\/ set pattern for the col\+\_\+fromted colors \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xcolor_8c_acc93257352c04e26189e54ba561ab3f4}\label{xcolor_8c_acc93257352c04e26189e54ba561ab3f4}} 
+\index{xcolor.\+c@{xcolor.\+c}!get\+\_\+color\+\_\+scheme@{get\+\_\+color\+\_\+scheme}}
+\index{get\+\_\+color\+\_\+scheme@{get\+\_\+color\+\_\+scheme}!xcolor.\+c@{xcolor.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+color\+\_\+scheme()}{get\_color\_scheme()}}
+{\footnotesize\ttfamily \hyperlink{structColors}{Colors}$\ast$ get\+\_\+color\+\_\+scheme (\begin{DoxyParamCaption}\item[{\hyperlink{structXputty}{Xputty} $\ast$}]{main,  }\item[{\hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state}}]{st }\end{DoxyParamCaption})}
+
+
+
+get\+\_\+color\+\_\+scheme -\/ init color shema to default values 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$main} & -\/ pointer to the main \hyperlink{structXputty}{Xputty} struct \\
+\hline
+{\em st} & -\/ the Color\+\_\+state to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{structColors}{Colors} -\/ the \hyperlink{structColors}{Colors} scheme asosiated with the Color\+\_\+state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xcolor_8c_a02fe4f3a29af917cc1de5f8b5c4b4171}\label{xcolor_8c_a02fe4f3a29af917cc1de5f8b5c4b4171}} 
+\index{xcolor.\+c@{xcolor.\+c}!get\+\_\+color\+\_\+state@{get\+\_\+color\+\_\+state}}
+\index{get\+\_\+color\+\_\+state@{get\+\_\+color\+\_\+state}!xcolor.\+c@{xcolor.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+color\+\_\+state()}{get\_color\_state()}}
+{\footnotesize\ttfamily \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} get\+\_\+color\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{wid }\end{DoxyParamCaption})}
+
+
+
+get\+\_\+color\+\_\+state -\/ get the Color\+\_\+state to use 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$wid} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Color\+\_\+state -\/ the Color\+\_\+state related to the \hyperlink{structWidget__t}{Widget\+\_\+t} state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xcolor_8c_a4e5e3eb9811ab59de97fd2ebc1c73dac}\label{xcolor_8c_a4e5e3eb9811ab59de97fd2ebc1c73dac}} 
+\index{xcolor.\+c@{xcolor.\+c}!set\+\_\+color\+\_\+scheme@{set\+\_\+color\+\_\+scheme}}
+\index{set\+\_\+color\+\_\+scheme@{set\+\_\+color\+\_\+scheme}!xcolor.\+c@{xcolor.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+color\+\_\+scheme()}{set\_color\_scheme()}}
+{\footnotesize\ttfamily void set\+\_\+color\+\_\+scheme (\begin{DoxyParamCaption}\item[{\hyperlink{structXputty}{Xputty} $\ast$}]{main }\end{DoxyParamCaption})}
+
+
+
+set\+\_\+color\+\_\+scheme -\/ init color shema to default values 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$main} & -\/ pointer to the main \hyperlink{structXputty}{Xputty} struct \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xcolor_8c_a441ef24e7ac1af8c830aadac851e29dc}\label{xcolor_8c_a441ef24e7ac1af8c830aadac851e29dc}} 
+\index{xcolor.\+c@{xcolor.\+c}!set\+\_\+pattern@{set\+\_\+pattern}}
+\index{set\+\_\+pattern@{set\+\_\+pattern}!xcolor.\+c@{xcolor.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+pattern()}{set\_pattern()}}
+{\footnotesize\ttfamily void set\+\_\+pattern (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{structColors}{Colors} $\ast$}]{from,  }\item[{\hyperlink{structColors}{Colors} $\ast$}]{to,  }\item[{\hyperlink{xcolor_8h_a2c1c3c5b8916c211c3fe5f76decb7e1c}{Color\+\_\+mod}}]{mod,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+set\+\_\+pattern -\/ set pattern for the col\+\_\+fromted colors 
+
+set\+\_\+pattern -\/ set pattern for the selected colors
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} button \\
+\hline
+{\em $\ast$from} & -\/ the \hyperlink{structColors}{Colors} set to use from \\
+\hline
+{\em $\ast$to} & -\/ the \hyperlink{structColors}{Colors} set to use to \\
+\hline
+{\em mod} & -\/ the Color\+\_\+mod to use \\
+\hline
+{\em width} & -\/ the width of the base \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xcolor_8c_af2eeed36f1b19416481687498a6d1ce3}\label{xcolor_8c_af2eeed36f1b19416481687498a6d1ce3}} 
+\index{xcolor.\+c@{xcolor.\+c}!use\+\_\+base\+\_\+color\+\_\+scheme@{use\+\_\+base\+\_\+color\+\_\+scheme}}
+\index{use\+\_\+base\+\_\+color\+\_\+scheme@{use\+\_\+base\+\_\+color\+\_\+scheme}!xcolor.\+c@{xcolor.\+c}}
+\subsubsection{\texorpdfstring{use\+\_\+base\+\_\+color\+\_\+scheme()}{use\_base\_color\_scheme()}}
+{\footnotesize\ttfamily void use\+\_\+base\+\_\+color\+\_\+scheme (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state}}]{st }\end{DoxyParamCaption})}
+
+
+
+use\+\_\+text\+\_\+color\+\_\+scheme -\/ set text color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
+\hline
+{\em st} & -\/ the Color\+\_\+state to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xcolor_8c_a335aed33f3b2fca02beb85375186a5c9}\label{xcolor_8c_a335aed33f3b2fca02beb85375186a5c9}} 
+\index{xcolor.\+c@{xcolor.\+c}!use\+\_\+bg\+\_\+color\+\_\+scheme@{use\+\_\+bg\+\_\+color\+\_\+scheme}}
+\index{use\+\_\+bg\+\_\+color\+\_\+scheme@{use\+\_\+bg\+\_\+color\+\_\+scheme}!xcolor.\+c@{xcolor.\+c}}
+\subsubsection{\texorpdfstring{use\+\_\+bg\+\_\+color\+\_\+scheme()}{use\_bg\_color\_scheme()}}
+{\footnotesize\ttfamily void use\+\_\+bg\+\_\+color\+\_\+scheme (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state}}]{st }\end{DoxyParamCaption})}
+
+
+
+use\+\_\+bg\+\_\+color\+\_\+scheme -\/ set normal background color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
+\hline
+{\em st} & -\/ the Color\+\_\+state to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xcolor_8c_a389caf2131cd599465c512eead16a6c0}\label{xcolor_8c_a389caf2131cd599465c512eead16a6c0}} 
+\index{xcolor.\+c@{xcolor.\+c}!use\+\_\+fg\+\_\+color\+\_\+scheme@{use\+\_\+fg\+\_\+color\+\_\+scheme}}
+\index{use\+\_\+fg\+\_\+color\+\_\+scheme@{use\+\_\+fg\+\_\+color\+\_\+scheme}!xcolor.\+c@{xcolor.\+c}}
+\subsubsection{\texorpdfstring{use\+\_\+fg\+\_\+color\+\_\+scheme()}{use\_fg\_color\_scheme()}}
+{\footnotesize\ttfamily void use\+\_\+fg\+\_\+color\+\_\+scheme (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state}}]{st }\end{DoxyParamCaption})}
+
+
+
+use\+\_\+fg\+\_\+color\+\_\+scheme -\/ set normal forground color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
+\hline
+{\em st} & -\/ the Color\+\_\+state to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xcolor_8c_a082dd5329f6c1e402747b9ecfa1dceae}\label{xcolor_8c_a082dd5329f6c1e402747b9ecfa1dceae}} 
+\index{xcolor.\+c@{xcolor.\+c}!use\+\_\+text\+\_\+color\+\_\+scheme@{use\+\_\+text\+\_\+color\+\_\+scheme}}
+\index{use\+\_\+text\+\_\+color\+\_\+scheme@{use\+\_\+text\+\_\+color\+\_\+scheme}!xcolor.\+c@{xcolor.\+c}}
+\subsubsection{\texorpdfstring{use\+\_\+text\+\_\+color\+\_\+scheme()}{use\_text\_color\_scheme()}}
+{\footnotesize\ttfamily void use\+\_\+text\+\_\+color\+\_\+scheme (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state}}]{st }\end{DoxyParamCaption})}
+
+
+
+use\+\_\+text\+\_\+color\+\_\+scheme -\/ set text color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
+\hline
+{\em st} & -\/ the Color\+\_\+state to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

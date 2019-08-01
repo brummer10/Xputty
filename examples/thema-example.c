@@ -48,6 +48,66 @@ static void set_colors(Xputty *app) {
         /*text*/{ 0.75, 0.75, 0.75, 1.0}};
 }
 
+static void set_green(Widget_t *w) {
+    w->app->color_scheme->normal = (Colors){
+     /* cairo/ r  / g  / b  / a  /  */
+     /*fg*/{ 0.15, 0.15, 0.15, 1.0},
+     /*bg*/{ 0.4, 0.5, 0.3, 1.0},
+     /*base*/{ 0.1, 0.2, 0.3, 0.4},
+     /*text*/{ 0.19, 0.19, 0.19, 1.0}};
+    expose_widget(get_toplevel_widget(w->app));
+}
+
+static void set_blue(Widget_t *w) {
+    w->app->color_scheme->normal = (Colors){
+     /* cairo/ r / g / b / a /  */
+     /*fg*/{ 0.85, 0.85, 0.85, 1.0},
+     /*bg*/{ 0.3, 0.4, 0.5, 1.0},
+     /*base*/{ 0.0, 0.0, 0.0, 0.2},
+     /*text*/{ 0.9, 0.9, 0.9, 1.0}};
+    expose_widget(get_toplevel_widget(w->app));
+}
+
+static void set_gray(Widget_t *w) {
+    w->app->color_scheme->normal = (Colors){
+     /* cairo/ r / g / b / a /  */
+     /*fg*/{ 0.15, 0.15, 0.15, 1.0},
+     /*bg*/{ 0.8, 0.8, 0.8, 1.0},
+     /*base*/{ 0.0, 0.0, 0.0, 0.2},
+     /*text*/{ 0.19, 0.19, 0.19, 1.0}};
+    expose_widget(get_toplevel_widget(w->app));
+}
+
+static void set_black(Widget_t *w) {
+    w->app->color_scheme->normal = (Colors){
+     /* cairo/ r / g / b / a /  */
+     /*fg*/{ 0.95, 0.95, 0.95, 1.0},
+     /*bg*/{ 0.18, 0.18, 0.18, 1.0},
+     /*base*/{ 0.0, 0.0, 0.0, 0.2},
+     /*text*/{ 0.9, 0.9, 0.9, 1.0}};
+    expose_widget(get_toplevel_widget(w->app));
+}
+
+static void set_red(Widget_t *w) {
+    w->app->color_scheme->normal = (Colors){
+     /* cairo/ r / g / b / a /  */
+     /*fg*/{ 0.95, 0.95, 0.95, 1.0},
+     /*bg*/{ 0.68, 0.18, 0.18, 1.0},
+     /*base*/{ 0.0, 0.0, 0.0, 0.2},
+     /*text*/{ 0.9, 0.9, 0.9, 1.0}};
+    expose_widget(get_toplevel_widget(w->app));
+}
+
+static void set_yellow(Widget_t *w) {
+    w->app->color_scheme->normal = (Colors){
+     /* cairo/ r / g / b / a /  */
+     /*fg*/{ 0.15, 0.15, 0.15, 1.0},
+     /*bg*/{ 0.78, 0.78, 0.18, 1.0},
+     /*base*/{ 0.0, 0.0, 0.0, 0.2},
+     /*text*/{ 0.1, 0.1, 0.1, 1.0}};
+    expose_widget(get_toplevel_widget(w->app));
+}
+
 static void draw_window(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     use_bg_color_scheme(w, get_color_state(w));
@@ -57,48 +117,67 @@ static void draw_window(void *w_, void* user_data) {
 static void button_quit_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     
-    if (w->has_pointer && !adj_get_value(w->adj_y)){
-        Widget_t *p = (Widget_t*)w->parent;
-        quit(p);
+    if (w->has_pointer && !adj_get_value(w->adj)){
+        quit(get_toplevel_widget(w->app));
     }
 
+}
+
+static void menu_response(void *w_, void* item_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    // fprintf(stderr, "selected item is %i with label %s\n", *(int*)item_, *(const char**)user_data);
+    switch (*(int*)item_) {
+        case 0: set_green(w);
+        break;
+        case 1: set_blue(w);
+        break;
+        case 2: set_gray(w);
+        break;
+        case 3: set_black(w);
+        break;
+        case 4: set_red(w);
+        break;
+        case 5: set_yellow (w);
+        break;
+        default:
+        break;
+    }
+}
+
+static void create_mymenu(Widget_t *w) {
+    Widget_t *m = create_menu(w, 6);
+    menu_add_item(m,"green");
+    menu_add_item(m,"blue");
+    menu_add_item(m,"gray");
+    menu_add_item(m,"black");
+    menu_add_item(m,"red");
+    menu_add_item(m,"yellow");
+    m->func.button_release_callback = menu_response;
+    pop_menu_show(w, m);
 }
 
 static void button_thema_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     
-    if (w->has_pointer && !adj_get_value(w->adj_y)){
-        w->app->color_scheme->normal = (Colors){
-         /* cairo/ r  / g  / b  / a  /  */
-         /*fg*/{ 0.85, 0.85, 0.85, 1.0},
-         /*bg*/{ 0.3, 0.4, 0.5, 1.0},
-         /*base*/{ 0.0, 0.0, 0.0, 0.2},
-         /*text*/{ 0.9, 0.9, 0.9, 1.0}};
-    } else if (adj_get_value(w->adj_y)){
-        w->app->color_scheme->normal = (Colors){
-         /* cairo/ r  / g  / b  / a  /  */
-         /*fg*/{ 0.15, 0.15, 0.15, 1.0},
-         /*bg*/{ 0.4, 0.5, 0.3, 1.0},
-         /*base*/{ 0.1, 0.2, 0.3, 0.4},
-         /*text*/{ 0.19, 0.19, 0.19, 1.0}};
+    if (w->has_pointer && adj_get_value(w->adj)){
+        create_mymenu(w);
     }
-    Widget_t *p = (Widget_t*)w->parent;
-    expose_widget(p);
+    adj_set_value(w->adj,0.0);
 }
 
 static void hslider_callback(void *w_, void* user_data) {
    // Widget_t *w = (Widget_t*)w_;
-   //  fprintf(stderr, "hslider value changed %f\n", adj_get_value(w->adj_x));
+   //  fprintf(stderr, "hslider value changed %f\n", adj_get_value(w->adj));
 }
 
 static void vslider_callback(void *w_, void* user_data) {
    //  Widget_t *w = (Widget_t*)w_;
-   //  fprintf(stderr, "vslider value changed %f\n", adj_get_value(w->adj_y));
+   //  fprintf(stderr, "vslider value changed %f\n", adj_get_value(w->adj));
 }
 
 static void knob_callback(void *w_, void* user_data) {
    //  Widget_t *w = (Widget_t*)w_;
-   //  fprintf(stderr, "knob value changed %f\n", adj_get_value(w->adj_y));
+   //  fprintf(stderr, "knob value changed %f\n", adj_get_value(w->adj));
 }
 
 int main (int argc, char ** argv)
@@ -139,6 +218,7 @@ int main (int argc, char ** argv)
 
     b = add_knob(w, "Knob2", 10, 260, 60, 80);
     b->func.value_changed_callback = knob_callback;
+    widget_show_all(w);
 
     main_run(&app);
     main_quit(&app);

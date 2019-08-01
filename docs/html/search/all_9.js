@@ -6,5 +6,6 @@ var searchData=
   ['init_5fy',['init_y',['../structResize__t.html#a2f2c63ce1d407649d6b8daf4d6fbbb98',1,'Resize_t']]],
   ['input_5flabel',['input_label',['../structWidget__t.html#ac5cb454301472edeb16e563ef2149dbb',1,'Widget_t']]],
   ['is_5futf8',['IS_UTF8',['../xputty_8h.html#a4b4e4f21ac252ef0b97fe32f026bd284',1,'xputty.h']]],
-  ['is_5fwidget',['is_widget',['../structWidget__t.html#aff0b7ecbf87b995342d13e2efe79dfca',1,'Widget_t']]]
+  ['is_5fwidget',['is_widget',['../structWidget__t.html#aff0b7ecbf87b995342d13e2efe79dfca',1,'Widget_t']]],
+  ['item_5fheight',['item_height',['../xmenu_8h.html#abd286b4dae67bfcaf94ce170aa3d3043',1,'xmenu.h']]]
 ];

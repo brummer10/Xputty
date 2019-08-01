@@ -23,22 +23,22 @@ void \hyperlink{xwidget_8c_acf8c7ef79c60253a687116d3783e1c67}{configure\+\_\+eve
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+window -\/ create a Window \end{DoxyCompactList}\item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8c_adb0c2b832c062c6ae833f649654d1c25}{create\+\_\+widget} (\hyperlink{structXputty}{Xputty} $\ast$app, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, int x, int y, int width, int height)
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+widget -\/ create a widget \end{DoxyCompactList}\item 
-\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} \hyperlink{xwidget_8c_ab254dfad26046ca5ea3f0632e0a20a63}{get\+\_\+widget\+\_\+state} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid)
-\item 
-\hyperlink{structColor__t}{Color\+\_\+t} $\ast$ \hyperlink{xwidget_8c_a7a0784eed3b7723a734591291e039e0b}{get\+\_\+color\+\_\+mode} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st)
-\begin{DoxyCompactList}\small\item\em get\+\_\+color\+\_\+mode -\/ intern check which color mode is selected \end{DoxyCompactList}\item 
-void \hyperlink{xwidget_8c_a628e66c37b118178d3d7efef8c3f9409}{use\+\_\+fg\+\_\+color} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st)
-\begin{DoxyCompactList}\small\item\em use\+\_\+fg\+\_\+color\+\_\+normal -\/ set normal forground color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
-void \hyperlink{xwidget_8c_aafc66a076ea370735dd79193d6bbf574}{use\+\_\+bg\+\_\+color} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st)
-\begin{DoxyCompactList}\small\item\em use\+\_\+bg\+\_\+color\+\_\+normal -\/ set normal background color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
-void \hyperlink{xwidget_8c_a95faa1dad2f80629663d2cd59074ab40}{use\+\_\+base\+\_\+color} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} st)
-\begin{DoxyCompactList}\small\item\em use\+\_\+base\+\_\+color\+\_\+normal -\/ set base color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a7378f213e6159eb59b98467198844086}{widget\+\_\+show} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em widget\+\_\+show -\/ map/show widget \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_ab00e7f2485e08237c865e96ba56e63e6}{widget\+\_\+hide} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em widget\+\_\+hide -\/ unmap/hide widget \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_aae228a75c93bb0cb9ad57ffaf4d25922}{widget\+\_\+show\+\_\+all} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em widget\+\_\+show\+\_\+all -\/ map/show widget with all childs \end{DoxyCompactList}\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8c_add6f77e7910eea8adf6ff32563bc7904}{get\+\_\+toplevel\+\_\+widget} (\hyperlink{structXputty}{Xputty} $\ast$main)
+\begin{DoxyCompactList}\small\item\em $\ast$get\+\_\+toplevel\+\_\+widget -\/ get pointer to the top level \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a17f2f3effd46532c596511abcfb5058e}{expose\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em expose\+\_\+widgets -\/ send expose expose event to window \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a0e801c1a701cc8526b198371ce2ff692}{transparent\+\_\+draw} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em transparent\+\_\+draw -\/ copy parent surface to child surface \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a4549cfc76e73a5d56b50f0d762287436}{widget\+\_\+event\+\_\+loop} (void $\ast$w\+\_\+, void $\ast$event, \hyperlink{structXputty}{Xputty} $\ast$main, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em widget\+\_\+event\+\_\+loop -\/ the internal widget event loop \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a6f6b3d05aefce9a3f7454a44897aecc0}{send\+\_\+configure\+\_\+event} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, int x, int y, int width, int height)
+\begin{DoxyCompactList}\small\item\em send\+\_\+configure\+\_\+event -\/ send Configure\+Notify to \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a4d835af5b56eb13ed7bd4602ce7ccd92}{quit} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em quit -\/ exit the main loop \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
@@ -148,32 +148,24 @@ expose\+\_\+widgets -\/ send expose expose event to window
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xwidget_8c_a7a0784eed3b7723a734591291e039e0b}\label{xwidget_8c_a7a0784eed3b7723a734591291e039e0b}} 
-\index{xwidget.\+c@{xwidget.\+c}!get\+\_\+color\+\_\+mode@{get\+\_\+color\+\_\+mode}}
-\index{get\+\_\+color\+\_\+mode@{get\+\_\+color\+\_\+mode}!xwidget.\+c@{xwidget.\+c}}
-\subsubsection{\texorpdfstring{get\+\_\+color\+\_\+mode()}{get\_color\_mode()}}
-{\footnotesize\ttfamily \hyperlink{structColor__t}{Color\+\_\+t}$\ast$ get\+\_\+color\+\_\+mode (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{wid,  }\item[{\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state}}]{st }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{xwidget_8c_add6f77e7910eea8adf6ff32563bc7904}\label{xwidget_8c_add6f77e7910eea8adf6ff32563bc7904}} 
+\index{xwidget.\+c@{xwidget.\+c}!get\+\_\+toplevel\+\_\+widget@{get\+\_\+toplevel\+\_\+widget}}
+\index{get\+\_\+toplevel\+\_\+widget@{get\+\_\+toplevel\+\_\+widget}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+toplevel\+\_\+widget()}{get\_toplevel\_widget()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ get\+\_\+toplevel\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structXputty}{Xputty} $\ast$}]{main }\end{DoxyParamCaption})}
 
 
 
-get\+\_\+color\+\_\+mode -\/ intern check which color mode is selected 
+$\ast$get\+\_\+toplevel\+\_\+widget -\/ get pointer to the top level \hyperlink{structWidget__t}{Widget\+\_\+t} 
 
 
 \begin{DoxyParams}{Parameters}
-{\em $\ast$wid} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to set the color mode \\
-\hline
-{\em st} & -\/ Widget state \\
+{\em $\ast$main} & -\/ pointer to the main \hyperlink{structXputty}{Xputty} struct \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Color\+\_\+t$\ast$ -\/ pointer to the selected \hyperlink{structColor__t}{Color\+\_\+t} struct 
+void 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xwidget_8c_ab254dfad26046ca5ea3f0632e0a20a63}\label{xwidget_8c_ab254dfad26046ca5ea3f0632e0a20a63}} 
-\index{xwidget.\+c@{xwidget.\+c}!get\+\_\+widget\+\_\+state@{get\+\_\+widget\+\_\+state}}
-\index{get\+\_\+widget\+\_\+state@{get\+\_\+widget\+\_\+state}!xwidget.\+c@{xwidget.\+c}}
-\subsubsection{\texorpdfstring{get\+\_\+widget\+\_\+state()}{get\_widget\_state()}}
-{\footnotesize\ttfamily \hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state} get\+\_\+widget\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{wid }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{xwidget_8c_a1607cf4a642a38ea235a007ea9579403}\label{xwidget_8c_a1607cf4a642a38ea235a007ea9579403}} 
 \index{xwidget.\+c@{xwidget.\+c}!key\+\_\+mapping@{key\+\_\+mapping}}
 \index{key\+\_\+mapping@{key\+\_\+mapping}!xwidget.\+c@{xwidget.\+c}}
@@ -232,6 +224,28 @@ quit\+\_\+widget -\/ remove a widget from the processing loop
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a6f6b3d05aefce9a3f7454a44897aecc0}\label{xwidget_8c_a6f6b3d05aefce9a3f7454a44897aecc0}} 
+\index{xwidget.\+c@{xwidget.\+c}!send\+\_\+configure\+\_\+event@{send\+\_\+configure\+\_\+event}}
+\index{send\+\_\+configure\+\_\+event@{send\+\_\+configure\+\_\+event}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{send\+\_\+configure\+\_\+event()}{send\_configure\_event()}}
+{\footnotesize\ttfamily void send\+\_\+configure\+\_\+event (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+send\+\_\+configure\+\_\+event -\/ send Configure\+Notify to \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the notify \\
+\hline
+{\em x,y} & -\/ the new \hyperlink{structWidget__t}{Widget\+\_\+t} position \\
+\hline
+{\em width,height} & -\/ the new \hyperlink{structWidget__t}{Widget\+\_\+t} size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \mbox{\Hypertarget{xwidget_8c_a0e801c1a701cc8526b198371ce2ff692}\label{xwidget_8c_a0e801c1a701cc8526b198371ce2ff692}} 
 \index{xwidget.\+c@{xwidget.\+c}!transparent\+\_\+draw@{transparent\+\_\+draw}}
 \index{transparent\+\_\+draw@{transparent\+\_\+draw}!xwidget.\+c@{xwidget.\+c}}
@@ -247,60 +261,6 @@ transparent\+\_\+draw -\/ copy parent surface to child surface
 {\em $\ast$wid} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} receiving a event \\
 \hline
 {\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\mbox{\Hypertarget{xwidget_8c_a95faa1dad2f80629663d2cd59074ab40}\label{xwidget_8c_a95faa1dad2f80629663d2cd59074ab40}} 
-\index{xwidget.\+c@{xwidget.\+c}!use\+\_\+base\+\_\+color@{use\+\_\+base\+\_\+color}}
-\index{use\+\_\+base\+\_\+color@{use\+\_\+base\+\_\+color}!xwidget.\+c@{xwidget.\+c}}
-\subsubsection{\texorpdfstring{use\+\_\+base\+\_\+color()}{use\_base\_color()}}
-{\footnotesize\ttfamily void use\+\_\+base\+\_\+color (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state}}]{st }\end{DoxyParamCaption})}
-
-
-
-use\+\_\+base\+\_\+color\+\_\+normal -\/ set base color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
-
-
-\begin{DoxyParams}{Parameters}
-{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\mbox{\Hypertarget{xwidget_8c_aafc66a076ea370735dd79193d6bbf574}\label{xwidget_8c_aafc66a076ea370735dd79193d6bbf574}} 
-\index{xwidget.\+c@{xwidget.\+c}!use\+\_\+bg\+\_\+color@{use\+\_\+bg\+\_\+color}}
-\index{use\+\_\+bg\+\_\+color@{use\+\_\+bg\+\_\+color}!xwidget.\+c@{xwidget.\+c}}
-\subsubsection{\texorpdfstring{use\+\_\+bg\+\_\+color()}{use\_bg\_color()}}
-{\footnotesize\ttfamily void use\+\_\+bg\+\_\+color (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state}}]{st }\end{DoxyParamCaption})}
-
-
-
-use\+\_\+bg\+\_\+color\+\_\+normal -\/ set normal background color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
-
-
-\begin{DoxyParams}{Parameters}
-{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\mbox{\Hypertarget{xwidget_8c_a628e66c37b118178d3d7efef8c3f9409}\label{xwidget_8c_a628e66c37b118178d3d7efef8c3f9409}} 
-\index{xwidget.\+c@{xwidget.\+c}!use\+\_\+fg\+\_\+color@{use\+\_\+fg\+\_\+color}}
-\index{use\+\_\+fg\+\_\+color@{use\+\_\+fg\+\_\+color}!xwidget.\+c@{xwidget.\+c}}
-\subsubsection{\texorpdfstring{use\+\_\+fg\+\_\+color()}{use\_fg\_color()}}
-{\footnotesize\ttfamily void use\+\_\+fg\+\_\+color (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xwidget_8h_a8a9a00ba3976b54d9c5cacffe16d14ef}{Widget\+\_\+state}}]{st }\end{DoxyParamCaption})}
-
-
-
-use\+\_\+fg\+\_\+color\+\_\+normal -\/ set normal forground color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
-
-
-\begin{DoxyParams}{Parameters}
-{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -323,6 +283,60 @@ widget\+\_\+event\+\_\+loop -\/ the internal widget event loop
 {\em $\ast$event} & -\/ void pointer to the X\+Event \\
 \hline
 {\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_ab00e7f2485e08237c865e96ba56e63e6}\label{xwidget_8c_ab00e7f2485e08237c865e96ba56e63e6}} 
+\index{xwidget.\+c@{xwidget.\+c}!widget\+\_\+hide@{widget\+\_\+hide}}
+\index{widget\+\_\+hide@{widget\+\_\+hide}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{widget\+\_\+hide()}{widget\_hide()}}
+{\footnotesize\ttfamily void widget\+\_\+hide (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+widget\+\_\+hide -\/ unmap/hide widget 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to unmap \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a7378f213e6159eb59b98467198844086}\label{xwidget_8c_a7378f213e6159eb59b98467198844086}} 
+\index{xwidget.\+c@{xwidget.\+c}!widget\+\_\+show@{widget\+\_\+show}}
+\index{widget\+\_\+show@{widget\+\_\+show}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{widget\+\_\+show()}{widget\_show()}}
+{\footnotesize\ttfamily void widget\+\_\+show (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+widget\+\_\+show -\/ map/show widget 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_aae228a75c93bb0cb9ad57ffaf4d25922}\label{xwidget_8c_aae228a75c93bb0cb9ad57ffaf4d25922}} 
+\index{xwidget.\+c@{xwidget.\+c}!widget\+\_\+show\+\_\+all@{widget\+\_\+show\+\_\+all}}
+\index{widget\+\_\+show\+\_\+all@{widget\+\_\+show\+\_\+all}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{widget\+\_\+show\+\_\+all()}{widget\_show\_all()}}
+{\footnotesize\ttfamily void widget\+\_\+show\+\_\+all (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+widget\+\_\+show\+\_\+all -\/ map/show widget with all childs 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to map \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

@@ -45,6 +45,7 @@ void main_init(Xputty *main) {
     main->color_scheme = (XColor_t*)malloc(sizeof(XColor_t));
     assert(main->color_scheme);
     set_color_scheme(main);
+    main->hold_grab = NULL;
     main->run = true;
 }
 
@@ -74,6 +75,24 @@ void main_run(Xputty *main) {
         }
 
         switch (xev.type) {
+        case ButtonPress:
+            if(main->hold_grab != NULL) {
+                bool is_item = False;
+                int i = main->hold_grab->childlist->elem-1;
+                for(;i>-1;i--) {
+                    Widget_t *w = main->hold_grab->childlist->childs[i];
+                    if (xev.xbutton.window == w->widget) {
+                        is_item = True;
+                        break;
+                    }
+                }
+                if (!is_item) {
+                    XUngrabPointer(main->hold_grab->dpy,CurrentTime);
+                    quit_widget(main->hold_grab);
+                    main->hold_grab = NULL;
+                }
+            }
+            break;
             case ClientMessage:
                 /* delete window event */
                 if (xev.xclient.data.l[0] == WM_DELETE_WINDOW &&

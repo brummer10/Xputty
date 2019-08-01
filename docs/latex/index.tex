@@ -51,6 +51,8 @@ produced by this code\+:
     XStoreName(app.\hyperlink{structXputty_ab185ae4fd00ee1930c61e0440734878f}{dpy}, w->\hyperlink{structWidget__t_acb2bfb41674371ee1220a9d6a2d89fb1}{widget}, \textcolor{stringliteral}{"Hello world"});\textcolor{comment}{}
 \textcolor{comment}{    /** overwrite event handler with your own */}
     w->\hyperlink{structWidget__t_a225b9a175e132994a5aa73b59a2911ad}{func}.\hyperlink{structFunc__t_ae4ba307ec29bfea83e1197aa750c1396}{expose\_callback} = draw\_window;\textcolor{comment}{}
+\textcolor{comment}{    /** map the Window to display */}
+    \hyperlink{xwidget_8c_aae228a75c93bb0cb9ad57ffaf4d25922}{widget\_show\_all}(w);\textcolor{comment}{}
 \textcolor{comment}{    /** run the event loop */}
     \hyperlink{xputty_8c_abb548ea64f852a7c94473a595e67d69f}{main\_run}(&app);\textcolor{comment}{}
 \textcolor{comment}{    /** clean up after the event loop is finished */}

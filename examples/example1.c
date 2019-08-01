@@ -148,7 +148,11 @@ static void get_text(void *w_, void *key_, void *user_data) {
             break;
             case 9: ;
             break;
-            case 10: quit(w);
+            case 10: 
+                {
+                Widget_t *p = (Widget_t*)w->parent;
+                quit(p);
+                }
             break;
             case 11: text_input_clip(w);
             break;
@@ -287,6 +291,7 @@ int main (int argc, char ** argv)
     mywindow.w_ok->func.leave_callback = draw_button;
     mywindow.w_ok->scale.gravity = NONE;
 
+    widget_show_all(mywindow.w);
     mywindow.run = true;
 
     main_run(&app);
