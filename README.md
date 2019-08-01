@@ -5,19 +5,19 @@ A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces
 
 ## Features
 
-- easy create widgets and windows within the xlib windows system.
-- easy handling of multiple windows including multiple widgets. 
-- easy to use main struct to handle the lifetime of all widgets and windows.
+- easy creation of widgets and windows within the xlib windows system
+- easy handling of multiple windows including multiple widgets
+- easy to use main struct to handle the lifetime of all widgets and windows
     - Xputty main;
     - main_init(&main);
     - create_windows();
     - main_run(&main);
     - main_quit(&main);
-- easy connection to event handlers by just overwrite the defaults with you own handlers.
-- double buffered cairo surfaces to enable transparent drawing on child widgets.
-- easy to use x/y adjustments to create your own controller widgets like sliders, knobs, buttons or a trackball.
+- easy connection to event handlers by simply overwriting the defaults with you own handlers
+- double buffered cairo surfaces to enable transparent drawing on child widgets
+- easy to use x/y adjustments to create your own controller widgets like sliders, knobs, buttons or a trackball
 - full documented API [Documentation](https://brummer10.github.io/Xputty/html/index.html)
-- static linking to create position independent applicatios,
+- static linking to create position independent applications
 
 
 Here is the usual hello world:
