@@ -59,4 +59,13 @@ Widget_t* create_menu(Widget_t *parent, int items);
 
 Widget_t* menu_add_item(Widget_t *menu,const char * label);
 
+/**
+ * @brief menu_add_check_item - add a item to menu
+ * @param *menu               - pointer to the Widget_t menu
+ * @param *label              - Label to show on the menu
+ * @return Widget_t*          - pointer to the Widget_t menu_item struct
+ */
+
+Widget_t* menu_add_check_item(Widget_t *menu,const char * label);
+
 #endif //XMENU_H_

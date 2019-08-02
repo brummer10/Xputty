@@ -487,7 +487,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
                         break;
                     }
                 }
-                quit_widget(main->hold_grab);
+                widget_hide(main->hold_grab);
                 main->hold_grab = NULL;
             }
             wid->has_pointer = _has_pointer(wid, &xev->xbutton);
@@ -587,7 +587,7 @@ void quit(Widget_t *w) {
     xevent.type = ClientMessage;
     xevent.message_type = WM_DELETE_WINDOW;
     xevent.display = w->dpy;
-    xevent.window = w->widget;
+    xevent.window = get_toplevel_widget(w->app)->widget;
     xevent.format = 16;
     xevent.data.l[0] = WM_DELETE_WINDOW;
     XSendEvent(w->dpy, w->widget, 0, 0, (XEvent *)&xevent);

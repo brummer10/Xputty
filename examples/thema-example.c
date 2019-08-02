@@ -108,9 +108,28 @@ static void set_yellow(Widget_t *w) {
     expose_widget(get_toplevel_widget(w->app));
 }
 
+static void _pattern(Widget_t *w) {
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    int width = attrs.width;
+    int height = attrs.height;
+    set_pattern(w,&w->app->color_scheme->normal,&w->app->color_scheme->active,BACKGROUND_,width,height);
+    
+}
+
+static void pattern(Widget_t *w) {
+    Widget_t *p = get_toplevel_widget(w->app);
+    p->data = (int)w->adj->value;
+    if ((int)w->adj->value) {
+        _pattern(p);
+    }
+    expose_widget(get_toplevel_widget(w->app));
+}
+
 static void draw_window(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    use_bg_color_scheme(w, get_color_state(w));
+    if (!w->data) use_bg_color_scheme(w, get_color_state(w));
+    else _pattern(w);
     cairo_paint (w->crb);
 }
 
@@ -137,7 +156,9 @@ static void menu_response(void *w_, void* item_, void* user_data) {
         break;
         case 4: set_red(w);
         break;
-        case 5: set_yellow (w);
+        case 5: set_yellow(w);
+        break;
+        case 6: pattern(w->childlist->childs[6]);
         break;
         default:
         break;
@@ -145,22 +166,22 @@ static void menu_response(void *w_, void* item_, void* user_data) {
 }
 
 static void create_mymenu(Widget_t *w) {
-    Widget_t *m = create_menu(w, 6);
+    Widget_t *m = create_menu(w, 7);
     menu_add_item(m,"green");
     menu_add_item(m,"blue");
     menu_add_item(m,"gray");
     menu_add_item(m,"black");
     menu_add_item(m,"red");
     menu_add_item(m,"yellow");
+    menu_add_check_item(m,"pattern");
     m->func.button_release_callback = menu_response;
-    pop_menu_show(w, m);
 }
 
 static void button_thema_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     
     if (w->has_pointer && adj_get_value(w->adj)){
-        create_mymenu(w);
+        pop_menu_show(w, w->childlist->childs[0]);
     }
     adj_set_value(w->adj,0.0);
 }
@@ -194,9 +215,10 @@ int main (int argc, char ** argv)
     b->scale.gravity = NONE;
     b->func.value_changed_callback = button_quit_callback;
 
-    b = add_toggle_button(w, "Thema", 10, 410, 60, 30);
+    b = add_toggle_button(w, "Theme", 10, 410, 60, 30);
     b->scale.gravity = SOUTHEAST;
     b->func.value_changed_callback = button_thema_callback;
+    create_mymenu(b);
 
     b = add_hslider(w, "HSlider", 10, 10, 280, 40);
     b->func.value_changed_callback = hslider_callback;
@@ -210,13 +232,13 @@ int main (int argc, char ** argv)
     b = add_vslider(w, "Slider2", 240, 80, 40, 260);
     b->func.value_changed_callback = vslider_callback;
 
-    b = add_knob(w, "Knob", 10, 60, 60, 80);
+    b = add_knob(w, "Knob", 20, 60, 60, 80);
     b->func.value_changed_callback = knob_callback;
 
-    b = add_knob(w, "Knob1", 10, 160, 60, 80);
+    b = add_knob(w, "Knob1", 20, 160, 60, 80);
     b->func.value_changed_callback = knob_callback;
 
-    b = add_knob(w, "Knob2", 10, 260, 60, 80);
+    b = add_knob(w, "Knob2", 20, 260, 60, 80);
     b->func.value_changed_callback = knob_callback;
     widget_show_all(w);
 

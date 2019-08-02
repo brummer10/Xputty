@@ -46,6 +46,15 @@ void _draw_menu(void *w_, void* user_data);
 void _draw_item(void *w_, void* user_data);
 
 /**
+ * @brief _draw_check_item     - draw item on expose call
+ * @param *w_                  - the item to draw
+ * @param *user_data           - attached user_data
+ * @return void
+ */
+
+void _draw_check_item(void *w_, void* user_data);
+
+/**
  * @brief _item_button_pressed - redraw item on button press
  * @param *button              - the xbutton which is pressed
  * @param *user_data           - attached user_data
@@ -53,6 +62,15 @@ void _draw_item(void *w_, void* user_data);
  */
 
 void _item_button_pressed(void *w_, void* button, void* user_data);
+
+/**
+ * @brief _check_item_button_pressed  - redraw item on button press
+ * @param *button                     - the xbutton which is pressed
+ * @param *user_data                  - attached user_data
+ * @return void
+ */
+
+void _check_item_button_pressed(void *w_, void* button_, void* user_data);
 
 /**
  * @brief _configure_menu     - set final size and position of menu to a Widget_t

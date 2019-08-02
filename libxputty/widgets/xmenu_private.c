@@ -84,6 +84,26 @@ void _draw_item(void *w_, void* user_data) {
 }
 
 /**
+ * @brief _draw_check_item     - draw item on expose call
+ * @param *w_                  - the item to draw
+ * @param *user_data           - attached user_data
+ * @return void
+ */
+
+void _draw_check_item(void *w_, void* user_data) {
+    _draw_item(w_, user_data);
+    Widget_t *w = (Widget_t*)w_;
+    cairo_rectangle(w->crb, 5, (item_height-10)/2, 10 , 10);
+    use_base_color_scheme(w, get_color_state(w));
+    cairo_fill(w->crb);
+    if ((int) w->adj_y->value) {
+        cairo_rectangle(w->crb, 7, 12, 6 , 6);
+        use_fg_color_scheme(w, ACTIVE_);
+        cairo_fill(w->crb);
+    }
+}
+
+/**
  * @brief _item_button_pressed - redraw item on button press
  * @param *button              - the xbutton which is pressed
  * @param *user_data           - attached user_data
@@ -92,6 +112,22 @@ void _draw_item(void *w_, void* user_data) {
 
 void _item_button_pressed(void *w_, void* button, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
+    expose_widget(w_);
+}
+
+/**
+ * @brief _check_item_button_pressed  - redraw item on button press
+ * @param *button                     - the xbutton which is pressed
+ * @param *user_data                  - attached user_data
+ * @return void
+ */
+
+void _check_item_button_pressed(void *w_, void* button_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    if (w->has_pointer) {
+        float value = w->adj_y->value ? 0.0 : 1.0;
+        adj_set_value(w->adj_y, value);
+    }
     expose_widget(w_);
 }
 
@@ -105,7 +141,7 @@ void _item_button_pressed(void *w_, void* button, void* user_data) {
 void _configure_menu(Widget_t *parent, Widget_t *menu) {
     int x1, y1;
     Window child;
-    XTranslateCoordinates( parent->dpy, parent->widget, DefaultRootWindow(parent->dpy), parent->pos_x, parent->pos_y, &x1, &y1, &child );
+    XTranslateCoordinates( parent->dpy, parent->widget, DefaultRootWindow(parent->dpy), 0, 0, &x1, &y1, &child );
     int item_width = 1.0;
     cairo_text_extents_t extents;
     int i = menu->childlist->elem-1;

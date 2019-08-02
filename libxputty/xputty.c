@@ -88,7 +88,7 @@ void main_run(Xputty *main) {
                 }
                 if (!is_item) {
                     XUngrabPointer(main->hold_grab->dpy,CurrentTime);
-                    quit_widget(main->hold_grab);
+                    widget_hide(main->hold_grab);
                     main->hold_grab = NULL;
                 }
             }
