@@ -217,7 +217,7 @@ Widget_t *create_window(Xputty *app, Window win,
     w->scale.cscale_x = 1.0;
     w->scale.cscale_y = 1.0;
     w->scale.ascale   = 1.0;
-    w->scale.gravity  = NONE;
+    w->scale.gravity  = CENTER;
     w->transparency = false;
     w->adj_x = NULL;
     w->adj_y = NULL;

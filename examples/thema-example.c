@@ -166,7 +166,7 @@ static void menu_response(void *w_, void* item_, void* user_data) {
 }
 
 static void create_mymenu(Widget_t *w) {
-    Widget_t *m = create_menu(w, 7);
+    Widget_t *m = create_menu(w,25);
     menu_add_item(m,"green");
     menu_add_item(m,"blue");
     menu_add_item(m,"gray");

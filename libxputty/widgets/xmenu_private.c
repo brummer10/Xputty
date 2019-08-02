@@ -93,11 +93,14 @@ void _draw_item(void *w_, void* user_data) {
 void _draw_check_item(void *w_, void* user_data) {
     _draw_item(w_, user_data);
     Widget_t *w = (Widget_t*)w_;
-    cairo_rectangle(w->crb, 5, (item_height-10)/2, 10 , 10);
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    int height = attrs.height;
+    cairo_rectangle(w->crb, height/6, height/3, height/3 , height/3);
     use_base_color_scheme(w, get_color_state(w));
     cairo_fill(w->crb);
     if ((int) w->adj_y->value) {
-        cairo_rectangle(w->crb, 7, 12, 6 , 6);
+        cairo_rectangle(w->crb, height/6+1, height/3+1, height/3-2 , height/3-2);
         use_fg_color_scheme(w, ACTIVE_);
         cairo_fill(w->crb);
     }
@@ -139,6 +142,9 @@ void _check_item_button_pressed(void *w_, void* button_, void* user_data) {
  */
 
 void _configure_menu(Widget_t *parent, Widget_t *menu) {
+    XWindowAttributes attrs;
+    XGetWindowAttributes(menu->dpy, (Window)menu->childlist->childs[0]->widget, &attrs);
+    int height = attrs.height;
     int x1, y1;
     Window child;
     XTranslateCoordinates( parent->dpy, parent->widget, DefaultRootWindow(parent->dpy), 0, 0, &x1, &y1, &child );
@@ -147,13 +153,13 @@ void _configure_menu(Widget_t *parent, Widget_t *menu) {
     int i = menu->childlist->elem-1;
     for(;i>-1;i--) {
         Widget_t *w = menu->childlist->childs[i];
-        cairo_set_font_size (w->crb, item_height/2);
+        cairo_set_font_size (w->crb, height/2);
         cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
                                    CAIRO_FONT_WEIGHT_BOLD);
         cairo_text_extents(w->crb,w->label , &extents);
         
         item_width = max(item_width, (int)extents.width+40);
     }
-    XResizeWindow (menu->dpy, menu->widget, item_width, item_height*(menu->childlist->elem));
+    XResizeWindow (menu->dpy, menu->widget, item_width, height*(menu->childlist->elem));
     XMoveWindow(menu->dpy,menu->widget,x1, y1);    
 }

@@ -26,11 +26,6 @@
 
 #include "xputty.h"
 
-/**
- * @brief item_height       - define the height of a menu item
- */
-
-#define item_height 30
 
 /**
  * @brief pop_menu_show       - pop up a menu to a Widget_t
@@ -44,11 +39,11 @@ void pop_menu_show(Widget_t *parent, Widget_t *menu);
 /**
  * @brief create_menu         - create a menu to a Widget_t
  * @param *parent             - pointer to the Widget_t the menu should pop over
- * @param items               - define how many entrys the menu should have
+ * @param height              - define the height of a single menu item
  * @return Widget_t*          - pointer to the Widget_t button struct
  */
 
-Widget_t* create_menu(Widget_t *parent, int items);
+Widget_t* create_menu(Widget_t *parent, int height);
 
 /**
  * @brief menu_add_item       - add a item to menu

@@ -43,16 +43,16 @@ void pop_menu_show(Widget_t *parent, Widget_t *menu) {
 /**
  * @brief create_menu         - create a menu to a Widget_t
  * @param *parent             - pointer to the Widget_t the menu should pop over
- * @param items               - define how many entrys the menu should have
+ * @param height              - define the height of a single menu item
  * @return Widget_t*          - pointer to the Widget_t button struct
  */
 
-Widget_t* create_menu(Widget_t *parent, int items) {
+Widget_t* create_menu(Widget_t *parent, int height) {
 
     int x1, y1;
     Window child;
     XTranslateCoordinates( parent->dpy, parent->widget, DefaultRootWindow(parent->dpy), 0, 0, &x1, &y1, &child );
-    Widget_t *wid = create_window(parent->app, DefaultRootWindow(parent->dpy), x1, y1, 1, (items*item_height));
+    Widget_t *wid = create_window(parent->app, DefaultRootWindow(parent->dpy), x1, y1, 10, height);
     Atom window_type = XInternAtom(wid->dpy, "_NET_WM_WINDOW_TYPE", False);
     long vale = XInternAtom(wid->dpy, "_NET_WM_WINDOW_TYPE_POPUP_MENU", False);
     XChangeProperty(wid->dpy, wid->widget, window_type,
@@ -77,7 +77,8 @@ Widget_t* menu_add_item(Widget_t *menu,const char * label) {
     int width = attrs.width;
     int height = attrs.height;
     int si = childlist_has_child(menu->childlist);
-    Widget_t *wid = create_widget(menu->app, menu, 0, item_height*si, width, item_height);
+    Widget_t *wid = create_widget(menu->app, menu, 0, height*si, width, height);
+    wid->scale.gravity = NORTHEAST;
     wid->label = label;
     wid->func.expose_callback = _draw_item;
     wid->func.button_press_callback = _item_button_pressed;
