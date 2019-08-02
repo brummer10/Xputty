@@ -146,7 +146,7 @@ int main (int argc, char ** argv)
     w->func.button_release_callback = window_button_release;
 
     b = add_button(w, "Quit", 260, 200, 60, 30);
-    b->scale.gravity = NONE;
+    b->scale.gravity = SOUTHWEST;
     b->func.value_changed_callback = button_quit_callback;
 
     b = add_button(w, "Reset", 10, 200, 60, 30);

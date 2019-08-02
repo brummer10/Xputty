@@ -255,8 +255,7 @@ void _resize_childs(Widget_t *wid) {
                     w->scale.init_width - (wid->scale.scale_x)), w->scale.init_height);
             break;
             case(SOUTHWEST):
-
-                XMoveWindow(wid->dpy,w->widget,w->scale.init_x,
+                XMoveWindow(wid->dpy,w->widget,w->scale.init_x-wid->scale.scale_x,
                                         w->scale.init_y-wid->scale.scale_y);
             
             break;

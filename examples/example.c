@@ -92,7 +92,7 @@ int main (int argc, char ** argv)
     XMoveWindow(w->dpy,w->widget,center_x, center_y);
 
     w_quit = add_button(w, "Quit", 230, 170, 60, 20);
-    w_quit->scale.gravity = NONE;
+    w_quit->scale.gravity = SOUTHWEST;
     w_quit->func.user_callback = button_quit_callback;
     widget_show_all(w);
 
@@ -103,7 +103,7 @@ int main (int argc, char ** argv)
     XMoveWindow(w->dpy,w->widget,center_x+30, center_y+30);
 
     w_quit = add_button(w, "OK", 230, 170, 60, 20);
-    w_quit->scale.gravity = NONE;
+    w_quit->scale.gravity = SOUTHWEST;
     w_quit->func.user_callback = button_ok_callback;
     widget_show_all(w);
    

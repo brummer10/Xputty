@@ -212,7 +212,7 @@ int main (int argc, char ** argv)
     w->func.expose_callback = draw_window;
 
     b = add_button(w, "Quit", 230, 410, 60, 30);
-    b->scale.gravity = NONE;
+    b->scale.gravity = SOUTHWEST;
     b->func.value_changed_callback = button_quit_callback;
 
     b = add_toggle_button(w, "Theme", 10, 410, 60, 30);
