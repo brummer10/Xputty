@@ -24,7 +24,7 @@
 #ifndef XMENU_PRIVATE_H_
 #define XMENU_PRIVATE_H_
 
-#include "xputty.h"
+#include "xmenu.h"
 
 
 /**

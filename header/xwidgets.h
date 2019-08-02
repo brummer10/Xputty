@@ -18,31 +18,22 @@
  *
  */
 
-
 #pragma once
 
-#ifndef XKNOB_PRIVATE_H_
-#define XKNOB_PRIVATE_H_
+#ifndef XWIDGETS_H_
+#define XWIDGETS_H_
 
+
+/** xwidgets.h include some predefined widgets for libxputty, include this to use them 
+ * if you would only use libxputty and define our own widgets, include xputt.h 
+ * instead this one in your project.
+ */
+
+// widget header
+#include "xbutton.h"
+#include "xslider.h"
 #include "xknob.h"
-
-/**
- * @brief _draw_knob             - internal draw the knob to the buffer
- * @param *w_                    - void pointer to the Widget_t button
- * @param *user_data             - void pointer to attached user_data
- * @return void
- */
-
-void _draw_knob(void *w_, void* user_data);
-
-/**
- * @brief _knob_released  - redraw the slider when buttob released 
- * @param *w_               - void pointer to the Widget_t button
- * @param *user_data        - void pointer to attached user_data
- * @return void
- */
-
-void _knob_released(void *w_, void* button_, void* user_data);
+#include "xmenu.h"
 
 
-#endif //XKNOB_PRIVATE_H_
+#endif //XWIDGETS_H_

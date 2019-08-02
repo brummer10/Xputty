@@ -19,7 +19,7 @@
  */
 
 
-#include "xputty.h"
+#include "xwidgets.h"
 
 static void draw_label(Widget_t *w, int width, int height) {
     cairo_text_extents_t extents;

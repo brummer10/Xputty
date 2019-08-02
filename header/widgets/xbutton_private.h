@@ -24,7 +24,7 @@
 #ifndef XBUTTON_PRIVATE_H_
 #define XBUTTON_PRIVATE_H_
 
-#include "xputty.h"
+#include "xbutton.h"
 
 
 /**

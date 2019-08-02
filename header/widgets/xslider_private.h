@@ -24,7 +24,7 @@
 #ifndef XSLIDER_PRIVATE_H_
 #define XSLIDER_PRIVATE_H_
 
-#include "xputty.h"
+#include "xslider.h"
 
 /**
  * @brief _pattern_vslider  - set pattern for the slider base

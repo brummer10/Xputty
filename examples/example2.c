@@ -19,7 +19,7 @@
  */
 
 
-#include "xputty.h"
+#include "xwidgets.h"
 
 
 static void draw_window(void *w_, void* user_data) {

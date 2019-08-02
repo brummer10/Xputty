@@ -19,7 +19,7 @@
  */
 
 
-#include "xputty.h"
+#include "xwidgets.h"
 
 static void set_colors(Xputty *app) {
     app->color_scheme->normal = (Colors){

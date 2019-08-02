@@ -19,7 +19,7 @@
  */
 
 
-#include "xputty.h"
+#include "xwidgets.h"
 
 typedef struct {
     Widget_t *w;
