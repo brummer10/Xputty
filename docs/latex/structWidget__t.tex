@@ -66,6 +66,8 @@ int \hyperlink{structWidget__t_a1def6d2237743e75a0b84ca0c34a6834}{height}
 \item 
 bool \hyperlink{structWidget__t_aff0b7ecbf87b995342d13e2efe79dfca}{is\+\_\+widget}
 \item 
+bool \hyperlink{structWidget__t_acb0bba70f001420ed9a33128c10e74ed}{is\+\_\+radio}
+\item 
 bool \hyperlink{structWidget__t_a42a597c21eca964c0296fc7026feb43b}{transparency}
 \item 
 \hyperlink{structResize__t}{Resize\+\_\+t} \hyperlink{structWidget__t_a9a2d5b53f40f5bf3914fc0694027d7ec}{scale}
@@ -140,6 +142,8 @@ X\+IM \hyperlink{structWidget__t_a81aa76d336043a7230844d09a92113e2}{xim}
 {\em height} & -\/ widget height \\
 \hline
 {\em is\+\_\+widget} & -\/ set/check if the parent is \hyperlink{structWidget__t}{Widget\+\_\+t} \\
+\hline
+{\em is\+\_\+radio} & -\/ set/check if the \hyperlink{structWidget__t}{Widget\+\_\+t} is part of a radio group \\
 \hline
 {\em transparency} & -\/ flag to set/check transparent drawing \\
 \hline
@@ -251,7 +255,13 @@ the widget size y-\/axis \mbox{\Hypertarget{structWidget__t_ac5cb454301472edeb16
 \subsubsection{\texorpdfstring{input\+\_\+label}{input\_label}}
 {\footnotesize\ttfamily char Widget\+\_\+t\+::input\+\_\+label\mbox{[}32\mbox{]}}
 
-char array to hold user input \mbox{\Hypertarget{structWidget__t_aff0b7ecbf87b995342d13e2efe79dfca}\label{structWidget__t_aff0b7ecbf87b995342d13e2efe79dfca}} 
+char array to hold user input \mbox{\Hypertarget{structWidget__t_acb0bba70f001420ed9a33128c10e74ed}\label{structWidget__t_acb0bba70f001420ed9a33128c10e74ed}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!is\+\_\+radio@{is\+\_\+radio}}
+\index{is\+\_\+radio@{is\+\_\+radio}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{is\+\_\+radio}{is\_radio}}
+{\footnotesize\ttfamily bool Widget\+\_\+t\+::is\+\_\+radio}
+
+indicaate if the widget is part of a radio group \mbox{\Hypertarget{structWidget__t_aff0b7ecbf87b995342d13e2efe79dfca}\label{structWidget__t_aff0b7ecbf87b995342d13e2efe79dfca}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!is\+\_\+widget@{is\+\_\+widget}}
 \index{is\+\_\+widget@{is\+\_\+widget}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{is\+\_\+widget}{is\_widget}}

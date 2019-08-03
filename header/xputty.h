@@ -139,6 +139,7 @@ typedef struct Xputty Xputty;
 #include "xadjustment.h"
 #include "xchildlist.h"
 #include "xcolor.h"
+#include "xpngloader.h"
 
 
 /**

@@ -1,0 +1,94 @@
+\hypertarget{xpngloader_8h}{}\section{xpngloader.\+h File Reference}
+\label{xpngloader_8h}\index{xpngloader.\+h@{xpngloader.\+h}}
+{\ttfamily \#include \char`\"{}xputty.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xresources.\+h\char`\"{}}\newline
+Include dependency graph for xpngloader.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xpngloader_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xpngloader_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbinary__stream}{binary\+\_\+stream}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structbinary__stream}{binary\+\_\+stream} -\/ struct definition to read binary data into cairo surface \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{xpngloader_8h_ae1ad145aa2d525b2aa5f308b75cf8b94}{X\+P\+N\+G\+L\+O\+A\+D\+E\+R\+\_\+\+H\+\_\+}
+\item 
+\#define \hyperlink{xpngloader_8h_a5637cfaabbf58ec7f1a5b8d84c9df2b9}{E\+X\+T\+LD}(N\+A\+ME)
+\item 
+\#define \hyperlink{xpngloader_8h_ad21ced59f46124f67ce89f73e60c2563}{L\+D\+V\+AR}(N\+A\+ME)~\+\_\+binary\+\_\+ \#\# N\+A\+ME \#\# \+\_\+start
+\item 
+\#define \hyperlink{xpngloader_8h_a9cf4ebd25acb387665f845145d4ed04a}{L\+D\+L\+EN}(N\+A\+ME)~((\+\_\+binary\+\_\+ \#\# N\+A\+ME \#\# \+\_\+end) -\/ (\+\_\+binary\+\_\+ \#\# N\+A\+ME \#\# \+\_\+start))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+cairo\+\_\+surface\+\_\+t $\ast$ \hyperlink{xpngloader_8h_a814ff706695612053b32b7f5b722ad4c}{cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream} (const unsigned char $\ast$name)
+\begin{DoxyCompactList}\small\item\em cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream -\/ read binary data into cairo surface from stream \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{xpngloader_8h_a5637cfaabbf58ec7f1a5b8d84c9df2b9}\label{xpngloader_8h_a5637cfaabbf58ec7f1a5b8d84c9df2b9}} 
+\index{xpngloader.\+h@{xpngloader.\+h}!E\+X\+T\+LD@{E\+X\+T\+LD}}
+\index{E\+X\+T\+LD@{E\+X\+T\+LD}!xpngloader.\+h@{xpngloader.\+h}}
+\subsubsection{\texorpdfstring{E\+X\+T\+LD}{EXTLD}}
+{\footnotesize\ttfamily \#define E\+X\+T\+LD(\begin{DoxyParamCaption}\item[{}]{N\+A\+ME }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \_binary\_ ## NAME ## \_start[]; \(\backslash\)
+  extern \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \_binary\_ ## NAME ## \_end[];
+\end{DoxyCode}
+define some M\+A\+C\+R\+OS to read png data from binary stream png\textquotesingle{}s been converted to object files with ld -\/r -\/b binary name.\+png -\/o name.\+o \mbox{\Hypertarget{xpngloader_8h_a9cf4ebd25acb387665f845145d4ed04a}\label{xpngloader_8h_a9cf4ebd25acb387665f845145d4ed04a}} 
+\index{xpngloader.\+h@{xpngloader.\+h}!L\+D\+L\+EN@{L\+D\+L\+EN}}
+\index{L\+D\+L\+EN@{L\+D\+L\+EN}!xpngloader.\+h@{xpngloader.\+h}}
+\subsubsection{\texorpdfstring{L\+D\+L\+EN}{LDLEN}}
+{\footnotesize\ttfamily \#define L\+D\+L\+EN(\begin{DoxyParamCaption}\item[{}]{N\+A\+ME }\end{DoxyParamCaption})~((\+\_\+binary\+\_\+ \#\# N\+A\+ME \#\# \+\_\+end) -\/ (\+\_\+binary\+\_\+ \#\# N\+A\+ME \#\# \+\_\+start))}
+
+\mbox{\Hypertarget{xpngloader_8h_ad21ced59f46124f67ce89f73e60c2563}\label{xpngloader_8h_ad21ced59f46124f67ce89f73e60c2563}} 
+\index{xpngloader.\+h@{xpngloader.\+h}!L\+D\+V\+AR@{L\+D\+V\+AR}}
+\index{L\+D\+V\+AR@{L\+D\+V\+AR}!xpngloader.\+h@{xpngloader.\+h}}
+\subsubsection{\texorpdfstring{L\+D\+V\+AR}{LDVAR}}
+{\footnotesize\ttfamily \#define L\+D\+V\+AR(\begin{DoxyParamCaption}\item[{}]{N\+A\+ME }\end{DoxyParamCaption})~\+\_\+binary\+\_\+ \#\# N\+A\+ME \#\# \+\_\+start}
+
+\mbox{\Hypertarget{xpngloader_8h_ae1ad145aa2d525b2aa5f308b75cf8b94}\label{xpngloader_8h_ae1ad145aa2d525b2aa5f308b75cf8b94}} 
+\index{xpngloader.\+h@{xpngloader.\+h}!X\+P\+N\+G\+L\+O\+A\+D\+E\+R\+\_\+\+H\+\_\+@{X\+P\+N\+G\+L\+O\+A\+D\+E\+R\+\_\+\+H\+\_\+}}
+\index{X\+P\+N\+G\+L\+O\+A\+D\+E\+R\+\_\+\+H\+\_\+@{X\+P\+N\+G\+L\+O\+A\+D\+E\+R\+\_\+\+H\+\_\+}!xpngloader.\+h@{xpngloader.\+h}}
+\subsubsection{\texorpdfstring{X\+P\+N\+G\+L\+O\+A\+D\+E\+R\+\_\+\+H\+\_\+}{XPNGLOADER\_H\_}}
+{\footnotesize\ttfamily \#define X\+P\+N\+G\+L\+O\+A\+D\+E\+R\+\_\+\+H\+\_\+}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xpngloader_8h_a814ff706695612053b32b7f5b722ad4c}\label{xpngloader_8h_a814ff706695612053b32b7f5b722ad4c}} 
+\index{xpngloader.\+h@{xpngloader.\+h}!cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream@{cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream}}
+\index{cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream@{cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream}!xpngloader.\+h@{xpngloader.\+h}}
+\subsubsection{\texorpdfstring{cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream()}{cairo\_image\_surface\_create\_from\_stream()}}
+{\footnotesize\ttfamily cairo\+\_\+surface\+\_\+t$\ast$ cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream (\begin{DoxyParamCaption}\item[{const unsigned char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream -\/ read binary data into cairo surface from stream 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$name} & -\/ pointer to the binary image data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cairo\+\_\+surface\+\_\+t -\/ the cairo\+\_\+image\+\_\+surface 
+\end{DoxyReturn}

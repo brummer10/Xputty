@@ -1,0 +1,59 @@
+\hypertarget{xpngloader_8c}{}\section{xpngloader.\+c File Reference}
+\label{xpngloader_8c}\index{xpngloader.\+c@{xpngloader.\+c}}
+{\ttfamily \#include \char`\"{}xpngloader.\+h\char`\"{}}\newline
+Include dependency graph for xpngloader.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xpngloader_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+cairo\+\_\+status\+\_\+t \hyperlink{xpngloader_8c_a2c4f5eaa5ce502eb8ae038bc3c1ba0af}{png\+\_\+stream\+\_\+reader} (void $\ast$\+\_\+stream, unsigned char $\ast$data, unsigned int length)
+\begin{DoxyCompactList}\small\item\em load png data from binary blob into cairo surface \end{DoxyCompactList}\item 
+cairo\+\_\+surface\+\_\+t $\ast$ \hyperlink{xpngloader_8c_a814ff706695612053b32b7f5b722ad4c}{cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream} (const unsigned char $\ast$name)
+\begin{DoxyCompactList}\small\item\em cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream -\/ read binary data into cairo surface from stream \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xpngloader_8c_a814ff706695612053b32b7f5b722ad4c}\label{xpngloader_8c_a814ff706695612053b32b7f5b722ad4c}} 
+\index{xpngloader.\+c@{xpngloader.\+c}!cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream@{cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream}}
+\index{cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream@{cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream}!xpngloader.\+c@{xpngloader.\+c}}
+\subsubsection{\texorpdfstring{cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream()}{cairo\_image\_surface\_create\_from\_stream()}}
+{\footnotesize\ttfamily cairo\+\_\+surface\+\_\+t$\ast$ cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream (\begin{DoxyParamCaption}\item[{const unsigned char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream -\/ read binary data into cairo surface from stream 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$name} & -\/ pointer to the binary image data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cairo\+\_\+surface\+\_\+t -\/ the cairo\+\_\+image\+\_\+surface 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xpngloader_8c_a2c4f5eaa5ce502eb8ae038bc3c1ba0af}\label{xpngloader_8c_a2c4f5eaa5ce502eb8ae038bc3c1ba0af}} 
+\index{xpngloader.\+c@{xpngloader.\+c}!png\+\_\+stream\+\_\+reader@{png\+\_\+stream\+\_\+reader}}
+\index{png\+\_\+stream\+\_\+reader@{png\+\_\+stream\+\_\+reader}!xpngloader.\+c@{xpngloader.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+stream\+\_\+reader()}{png\_stream\_reader()}}
+{\footnotesize\ttfamily cairo\+\_\+status\+\_\+t png\+\_\+stream\+\_\+reader (\begin{DoxyParamCaption}\item[{void $\ast$}]{\+\_\+stream,  }\item[{unsigned char $\ast$}]{data,  }\item[{unsigned int}]{length }\end{DoxyParamCaption})}
+
+
+
+load png data from binary blob into cairo surface 
+
+png\+\_\+stream\+\_\+reader -\/ read binary data bytes into cairo surface from binary stream 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stream} & -\/ the stream to read from \\
+\hline
+{\em length} & -\/ the length to be read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+C\+A\+I\+R\+O\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+U\+C\+C\+E\+SS -\/ the result 
+\end{DoxyReturn}

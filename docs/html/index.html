@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="xputty_logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libxputty
    &#160;<span id="projectnumber">0.1</span>
@@ -67,9 +68,9 @@ $(function() {
 <div class="textblock"><p>A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</p>
 <h2>Features</h2>
 <ul>
-<li>easy create widgets and windows within the xlib windows system.</li>
-<li>easy handling of multiple windows including multiple widgets.</li>
-<li>easy to use main struct to handle the lifetime of all widgets and windows.<ul>
+<li>easy creation of widgets and windows within the xlib windows system</li>
+<li>easy handling of multiple windows including multiple widgets</li>
+<li>easy to use main struct to handle the lifetime of all widgets and windows<ul>
 <li><a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> main;</li>
 <li>main_init(&amp;main);</li>
 <li>create_windows();</li>
@@ -77,11 +78,11 @@ $(function() {
 <li>main_quit(&amp;main);</li>
 </ul>
 </li>
-<li>easy connection to event handlers by just overwrite the defaults with you own handlers.</li>
-<li>double buffered cairo surfaces to enable transparent drawing on child widgets.</li>
-<li>easy to use x/y adjustments to create your own controller widgets like sliders, knobs, buttons or a trackball.</li>
+<li>easy connection to event handlers by simply overwriting the defaults with you own handlers</li>
+<li>double buffered cairo surfaces to enable transparent drawing on child widgets</li>
+<li>easy to use x/y adjustments to create your own controller widgets like sliders, knobs, buttons or a trackball</li>
 <li>full documented API <a href="https://brummer10.github.io/Xputty/html/index.html">Documentation</a></li>
-<li>static linking to create position independent applicatios,</li>
+<li>static linking to create position independent applications</li>
 </ul>
 <p>Here is the usual hello world:</p>
 <div class="image">

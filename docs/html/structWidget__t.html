@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="xputty_logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libxputty
    &#160;<span id="projectnumber">0.1</span>
@@ -132,6 +133,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:a1def6d2237743e75a0b84ca0c34a6834"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff0b7ecbf87b995342d13e2efe79dfca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#aff0b7ecbf87b995342d13e2efe79dfca">is_widget</a></td></tr>
 <tr class="separator:aff0b7ecbf87b995342d13e2efe79dfca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb0bba70f001420ed9a33128c10e74ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#acb0bba70f001420ed9a33128c10e74ed">is_radio</a></td></tr>
+<tr class="separator:acb0bba70f001420ed9a33128c10e74ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42a597c21eca964c0296fc7026feb43b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a42a597c21eca964c0296fc7026feb43b">transparency</a></td></tr>
 <tr class="separator:a42a597c21eca964c0296fc7026feb43b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a2d5b53f40f5bf3914fc0694027d7ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structResize__t.html">Resize_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a9a2d5b53f40f5bf3914fc0694027d7ec">scale</a></td></tr>
@@ -179,6 +182,7 @@ Data Fields</h2></td></tr>
     <tr><td class="paramname">width</td><td>- widget width </td></tr>
     <tr><td class="paramname">height</td><td>- widget height </td></tr>
     <tr><td class="paramname">is_widget</td><td>- set/check if the parent is <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </td></tr>
+    <tr><td class="paramname">is_radio</td><td>- set/check if the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is part of a radio group </td></tr>
     <tr><td class="paramname">transparency</td><td>- flag to set/check transparent drawing </td></tr>
     <tr><td class="paramname">scale</td><td>- struct used to resize child widgets </td></tr>
     <tr><td class="paramname">*adj_x</td><td>- pointer to the x axis adjustment </td></tr>
@@ -413,6 +417,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>char array to hold user input </p>
+
+</div>
+</div>
+<a id="acb0bba70f001420ed9a33128c10e74ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb0bba70f001420ed9a33128c10e74ed">&#9670;&nbsp;</a></span>is_radio</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Widget_t::is_radio</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>indicaate if the widget is part of a radio group </p>
 
 </div>
 </div>

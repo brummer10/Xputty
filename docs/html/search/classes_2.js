@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['func_5ft',['Func_t',['../structFunc__t.html',1,'']]]
+  ['childlist_5ft',['Childlist_t',['../structChildlist__t.html',1,'']]],
+  ['colors',['Colors',['../structColors.html',1,'']]]
 ];

@@ -16,13 +16,39 @@ void \hyperlink{xmenu__private_8c_aecf82ae7946323d071617983c8d83825}{\+\_\+draw\
 \begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+menu -\/ draw menu on expose call \end{DoxyCompactList}\item 
 void \hyperlink{xmenu__private_8c_a648db81750573ec3d553e89aebfe19bf}{\+\_\+draw\+\_\+item} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+item -\/ draw item on expose call \end{DoxyCompactList}\item 
+void \hyperlink{xmenu__private_8c_addbe0dd3f9bf221eee2a42364bf84b33}{\+\_\+draw\+\_\+check\+\_\+item} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+check\+\_\+item -\/ draw item on expose call \end{DoxyCompactList}\item 
 void \hyperlink{xmenu__private_8c_a6aeeeb842fabed66853b869de3f78887}{\+\_\+item\+\_\+button\+\_\+pressed} (void $\ast$w\+\_\+, void $\ast$button, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em \+\_\+item\+\_\+button\+\_\+pressed -\/ redraw item on button press \end{DoxyCompactList}\item 
+void \hyperlink{xmenu__private_8c_aaa6e146ce3b89710c22d9fd418824eb4}{\+\_\+check\+\_\+item\+\_\+button\+\_\+pressed} (void $\ast$w\+\_\+, void $\ast$button\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+check\+\_\+item\+\_\+button\+\_\+pressed -\/ redraw item on button press \end{DoxyCompactList}\item 
+void \hyperlink{xmenu__private_8c_a8c69f235270ee0acf02c3673ed4aca5b}{\+\_\+radio\+\_\+item\+\_\+button\+\_\+pressed} (void $\ast$w\+\_\+, void $\ast$button\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+radio\+\_\+item\+\_\+button\+\_\+pressed -\/ redraw item on button press \end{DoxyCompactList}\item 
 void \hyperlink{xmenu__private_8c_ab27924c83f6484527b41c1c2a3186191}{\+\_\+configure\+\_\+menu} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$menu)
 \begin{DoxyCompactList}\small\item\em \+\_\+configure\+\_\+menu -\/ set final size and position of menu to a \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
+\mbox{\Hypertarget{xmenu__private_8c_aaa6e146ce3b89710c22d9fd418824eb4}\label{xmenu__private_8c_aaa6e146ce3b89710c22d9fd418824eb4}} 
+\index{xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}!\+\_\+check\+\_\+item\+\_\+button\+\_\+pressed@{\+\_\+check\+\_\+item\+\_\+button\+\_\+pressed}}
+\index{\+\_\+check\+\_\+item\+\_\+button\+\_\+pressed@{\+\_\+check\+\_\+item\+\_\+button\+\_\+pressed}!xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+check\+\_\+item\+\_\+button\+\_\+pressed()}{\_check\_item\_button\_pressed()}}
+{\footnotesize\ttfamily void \+\_\+check\+\_\+item\+\_\+button\+\_\+pressed (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{button\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+check\+\_\+item\+\_\+button\+\_\+pressed -\/ redraw item on button press 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$button} & -\/ the xbutton which is pressed \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \mbox{\Hypertarget{xmenu__private_8c_ab27924c83f6484527b41c1c2a3186191}\label{xmenu__private_8c_ab27924c83f6484527b41c1c2a3186191}} 
 \index{xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}!\+\_\+configure\+\_\+menu@{\+\_\+configure\+\_\+menu}}
 \index{\+\_\+configure\+\_\+menu@{\+\_\+configure\+\_\+menu}!xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}}
@@ -38,6 +64,26 @@ void \hyperlink{xmenu__private_8c_ab27924c83f6484527b41c1c2a3186191}{\+\_\+confi
 {\em $\ast$parent} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} the menu should pop over \\
 \hline
 {\em $\ast$menu} & -\/ the menu to show \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xmenu__private_8c_addbe0dd3f9bf221eee2a42364bf84b33}\label{xmenu__private_8c_addbe0dd3f9bf221eee2a42364bf84b33}} 
+\index{xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}!\+\_\+draw\+\_\+check\+\_\+item@{\+\_\+draw\+\_\+check\+\_\+item}}
+\index{\+\_\+draw\+\_\+check\+\_\+item@{\+\_\+draw\+\_\+check\+\_\+item}!xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+\_\+check\+\_\+item()}{\_draw\_check\_item()}}
+{\footnotesize\ttfamily void \+\_\+draw\+\_\+check\+\_\+item (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+draw\+\_\+check\+\_\+item -\/ draw item on expose call 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ the item to draw \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -92,6 +138,26 @@ void
 
 
 \+\_\+item\+\_\+button\+\_\+pressed -\/ redraw item on button press 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$button} & -\/ the xbutton which is pressed \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xmenu__private_8c_a8c69f235270ee0acf02c3673ed4aca5b}\label{xmenu__private_8c_a8c69f235270ee0acf02c3673ed4aca5b}} 
+\index{xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}!\+\_\+radio\+\_\+item\+\_\+button\+\_\+pressed@{\+\_\+radio\+\_\+item\+\_\+button\+\_\+pressed}}
+\index{\+\_\+radio\+\_\+item\+\_\+button\+\_\+pressed@{\+\_\+radio\+\_\+item\+\_\+button\+\_\+pressed}!xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+radio\+\_\+item\+\_\+button\+\_\+pressed()}{\_radio\_item\_button\_pressed()}}
+{\footnotesize\ttfamily void \+\_\+radio\+\_\+item\+\_\+button\+\_\+pressed (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{button\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+radio\+\_\+item\+\_\+button\+\_\+pressed -\/ redraw item on button press 
 
 
 \begin{DoxyParams}{Parameters}

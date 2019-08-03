@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['cairo_5fimage_5fsurface_5fcreate_5ffrom_5fstream',['cairo_image_surface_create_from_stream',['../xpngloader_8c.html#a814ff706695612053b32b7f5b722ad4c',1,'cairo_image_surface_create_from_stream(const unsigned char *name):&#160;xpngloader.c'],['../xpngloader_8h.html#a814ff706695612053b32b7f5b722ad4c',1,'cairo_image_surface_create_from_stream(const unsigned char *name):&#160;xpngloader.c']]],
   ['cap',['cap',['../structChildlist__t.html#abf81fe823696baae53ff77036227f0c8',1,'Childlist_t']]],
   ['center',['CENTER',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adea2159ffbd3a68037511ab5ab4dd35ace7',1,'xwidget.h']]],
   ['check_5fvalue_5fchanged',['check_value_changed',['../xadjustment_8c.html#a1db458f5dc9ea4f3775340b938b3c3bf',1,'check_value_changed(Adjustment_t *adj, float *value):&#160;xadjustment.c'],['../xadjustment_8h.html#a1db458f5dc9ea4f3775340b938b3c3bf',1,'check_value_changed(Adjustment_t *adj, float *value):&#160;xadjustment.c']]],
@@ -27,7 +28,7 @@ var searchData=
   ['configure_5fevent',['configure_event',['../xwidget_8c.html#acf8c7ef79c60253a687116d3783e1c67',1,'xwidget.c']]],
   ['cr',['cr',['../structWidget__t.html#a26594f6ffabe98fc08f9207150fc9417',1,'Widget_t']]],
   ['crb',['crb',['../structWidget__t.html#ad98022ee160d4c0906110868fc9e5664',1,'Widget_t']]],
-  ['create_5fmenu',['create_menu',['../xmenu_8c.html#a34f5113785511c89a604ef0e564cedfa',1,'create_menu(Widget_t *parent, int items):&#160;xmenu.c'],['../xmenu_8h.html#a34f5113785511c89a604ef0e564cedfa',1,'create_menu(Widget_t *parent, int items):&#160;xmenu.c']]],
+  ['create_5fmenu',['create_menu',['../xmenu_8c.html#a0eae3dbc8ef61ae9952ac81b4dd1aba4',1,'create_menu(Widget_t *parent, int height):&#160;xmenu.c'],['../xmenu_8h.html#a0eae3dbc8ef61ae9952ac81b4dd1aba4',1,'create_menu(Widget_t *parent, int height):&#160;xmenu.c']]],
   ['create_5fwidget',['create_widget',['../xwidget_8c.html#adb0c2b832c062c6ae833f649654d1c25',1,'create_widget(Xputty *app, Widget_t *parent, int x, int y, int width, int height):&#160;xwidget.c'],['../xwidget_8h.html#a2376b5590243f7f4cfd51168af697227',1,'create_widget(Xputty *app, Widget_t *win, int x, int y, int width, int height):&#160;xwidget.c']]],
   ['create_5fwindow',['create_window',['../xwidget_8c.html#a5528f841e6b5f2ef62b3b10bfa8bf20f',1,'create_window(Xputty *app, Window win, int x, int y, int width, int height):&#160;xwidget.c'],['../xwidget_8h.html#a5528f841e6b5f2ef62b3b10bfa8bf20f',1,'create_window(Xputty *app, Window win, int x, int y, int width, int height):&#160;xwidget.c']]],
   ['cscale_5fx',['cscale_x',['../structResize__t.html#adde90facb06c76169ff56eeaa39d4c68',1,'Resize_t']]],

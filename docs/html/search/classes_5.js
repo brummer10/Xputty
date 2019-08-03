@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['xcolor_5ft',['XColor_t',['../structXColor__t.html',1,'']]],
-  ['xputty',['Xputty',['../structXputty.html',1,'']]]
+  ['widget_5ft',['Widget_t',['../structWidget__t.html',1,'']]]
 ];

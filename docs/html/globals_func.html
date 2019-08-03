@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="xputty_logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libxputty
    &#160;<span id="projectnumber">0.1</span>
@@ -68,12 +69,16 @@ $(function() {
 , <a class="el" href="xwidget__private_8h.html#a58ae554632b1c9f7afc73aa159a1dc0c">xwidget_private.h</a>
 </li>
 <li>_button_pressed()
-: <a class="el" href="xbutton__private_8c.html#a28a4fe06426208c720b93c1fa51aff49">xbutton_private.c</a>
-, <a class="el" href="xbutton__private_8h.html#a28a4fe06426208c720b93c1fa51aff49">xbutton_private.h</a>
+: <a class="el" href="xbutton__private_8h.html#a28a4fe06426208c720b93c1fa51aff49">xbutton_private.h</a>
+, <a class="el" href="xbutton__private_8c.html#a28a4fe06426208c720b93c1fa51aff49">xbutton_private.c</a>
 </li>
 <li>_button_released()
 : <a class="el" href="xbutton__private_8c.html#a0168623590cbb3b5f19ae0878ea41a5f">xbutton_private.c</a>
 , <a class="el" href="xbutton__private_8h.html#a0168623590cbb3b5f19ae0878ea41a5f">xbutton_private.h</a>
+</li>
+<li>_check_item_button_pressed()
+: <a class="el" href="xmenu__private_8h.html#aaa6e146ce3b89710c22d9fd418824eb4">xmenu_private.h</a>
+, <a class="el" href="xmenu__private_8c.html#aaa6e146ce3b89710c22d9fd418824eb4">xmenu_private.c</a>
 </li>
 <li>_check_keymap()
 : <a class="el" href="xwidget__private_8c.html#ae2aeefa7b35ff7e10a148e8438a12dc9">xwidget_private.c</a>
@@ -88,8 +93,12 @@ $(function() {
 , <a class="el" href="xmenu__private_8h.html#ab27924c83f6484527b41c1c2a3186191">xmenu_private.h</a>
 </li>
 <li>_draw_button()
-: <a class="el" href="xbutton__private_8c.html#a555079b56b3d52f2a74c20f6ebd05e29">xbutton_private.c</a>
-, <a class="el" href="xbutton__private_8h.html#a555079b56b3d52f2a74c20f6ebd05e29">xbutton_private.h</a>
+: <a class="el" href="xbutton__private_8h.html#a555079b56b3d52f2a74c20f6ebd05e29">xbutton_private.h</a>
+, <a class="el" href="xbutton__private_8c.html#a555079b56b3d52f2a74c20f6ebd05e29">xbutton_private.c</a>
+</li>
+<li>_draw_check_item()
+: <a class="el" href="xmenu__private_8c.html#addbe0dd3f9bf221eee2a42364bf84b33">xmenu_private.c</a>
+, <a class="el" href="xmenu__private_8h.html#addbe0dd3f9bf221eee2a42364bf84b33">xmenu_private.h</a>
 </li>
 <li>_draw_hslider()
 : <a class="el" href="xslider__private_8c.html#a65b279b4fc239e85326dfd50e65b6574">xslider_private.c</a>
@@ -116,8 +125,8 @@ $(function() {
 , <a class="el" href="xwidget__private_8h.html#ac337b3d0f61bc649c955c6e5bf14c810">xwidget_private.h</a>
 </li>
 <li>_dummy_callback()
-: <a class="el" href="xwidget__private_8c.html#a70d121b920c02065b3bc096c9b92e83c">xwidget_private.c</a>
-, <a class="el" href="xwidget__private_8h.html#a70d121b920c02065b3bc096c9b92e83c">xwidget_private.h</a>
+: <a class="el" href="xwidget__private_8h.html#a70d121b920c02065b3bc096c9b92e83c">xwidget_private.h</a>
+, <a class="el" href="xwidget__private_8c.html#a70d121b920c02065b3bc096c9b92e83c">xwidget_private.c</a>
 </li>
 <li>_has_pointer()
 : <a class="el" href="xwidget__private_8c.html#ad7cd47bfff17d8870ba9c2a0caa36cec">xwidget_private.c</a>
@@ -140,8 +149,8 @@ $(function() {
 , <a class="el" href="xbutton__private_8h.html#a7b78e740b4f0797a42a53278bfb3c7d4">xbutton_private.h</a>
 </li>
 <li>_pattern_out()
-: <a class="el" href="xbutton__private_8c.html#a0ea4425c5e10fa1a3f052afa6114d30b">xbutton_private.c</a>
-, <a class="el" href="xbutton__private_8h.html#a0ea4425c5e10fa1a3f052afa6114d30b">xbutton_private.h</a>
+: <a class="el" href="xbutton__private_8h.html#a0ea4425c5e10fa1a3f052afa6114d30b">xbutton_private.h</a>
+, <a class="el" href="xbutton__private_8c.html#a0ea4425c5e10fa1a3f052afa6114d30b">xbutton_private.c</a>
 </li>
 <li>_pattern_vslider()
 : <a class="el" href="xslider__private_8c.html#afbd00aa98160ecad075c7378e6a53c74">xslider_private.c</a>
@@ -150,6 +159,10 @@ $(function() {
 <li>_propagate_child_expose()
 : <a class="el" href="xwidget__private_8c.html#aaaac44f0d2bcf2ddc3f76b79e74fb3b6">xwidget_private.c</a>
 , <a class="el" href="xwidget__private_8h.html#aaaac44f0d2bcf2ddc3f76b79e74fb3b6">xwidget_private.h</a>
+</li>
+<li>_radio_item_button_pressed()
+: <a class="el" href="xmenu__private_8c.html#a8c69f235270ee0acf02c3673ed4aca5b">xmenu_private.c</a>
+, <a class="el" href="xmenu__private_8h.html#a8c69f235270ee0acf02c3673ed4aca5b">xmenu_private.h</a>
 </li>
 <li>_resize_childs()
 : <a class="el" href="xwidget__private_8c.html#a211aa2f671aa4c2885bc05e033eef8c4">xwidget_private.c</a>
@@ -164,20 +177,20 @@ $(function() {
 , <a class="el" href="xbutton__private_8h.html#ad4e31fc35cac78b036b693d09edfad35">xbutton_private.h</a>
 </li>
 <li>_scroll_event()
-: <a class="el" href="xwidget__private_8c.html#a26c822f013ec5d3d606d0e9648bf1634">xwidget_private.c</a>
-, <a class="el" href="xwidget__private_8h.html#a26c822f013ec5d3d606d0e9648bf1634">xwidget_private.h</a>
+: <a class="el" href="xwidget__private_8h.html#a26c822f013ec5d3d606d0e9648bf1634">xwidget_private.h</a>
+, <a class="el" href="xwidget__private_8c.html#a26c822f013ec5d3d606d0e9648bf1634">xwidget_private.c</a>
 </li>
 <li>_set_adj_value()
 : <a class="el" href="xwidget__private_8c.html#a227521763a2c42146302b62c79e97ac2">xwidget_private.c</a>
 , <a class="el" href="xwidget__private_8h.html#a227521763a2c42146302b62c79e97ac2">xwidget_private.h</a>
 </li>
 <li>_slider_released()
-: <a class="el" href="xslider__private_8c.html#a15a2fae4b8325b037644afb6131827b5">xslider_private.c</a>
-, <a class="el" href="xslider__private_8h.html#a15a2fae4b8325b037644afb6131827b5">xslider_private.h</a>
+: <a class="el" href="xslider__private_8h.html#a15a2fae4b8325b037644afb6131827b5">xslider_private.h</a>
+, <a class="el" href="xslider__private_8c.html#a15a2fae4b8325b037644afb6131827b5">xslider_private.c</a>
 </li>
 <li>_toggle_button_pressed()
-: <a class="el" href="xbutton__private_8c.html#a31d787399bcdba7f2589a9499d45695f">xbutton_private.c</a>
-, <a class="el" href="xbutton__private_8h.html#a31d787399bcdba7f2589a9499d45695f">xbutton_private.h</a>
+: <a class="el" href="xbutton__private_8h.html#a31d787399bcdba7f2589a9499d45695f">xbutton_private.h</a>
+, <a class="el" href="xbutton__private_8c.html#a31d787399bcdba7f2589a9499d45695f">xbutton_private.c</a>
 </li>
 <li>_toggle_button_released()
 : <a class="el" href="xbutton__private_8c.html#a0aed08450617940038e61344f5d67743">xbutton_private.c</a>
@@ -196,16 +209,16 @@ $(function() {
 , <a class="el" href="xadjustment_8h.html#afd8595365c53be47a55fecec996347a7">xadjustment.h</a>
 </li>
 <li>add_button()
-: <a class="el" href="xbutton_8c.html#a4dbd91e99d5ee97678aee121f8e12587">xbutton.c</a>
-, <a class="el" href="xbutton_8h.html#a4dbd91e99d5ee97678aee121f8e12587">xbutton.h</a>
+: <a class="el" href="xbutton_8h.html#a4dbd91e99d5ee97678aee121f8e12587">xbutton.h</a>
+, <a class="el" href="xbutton_8c.html#a4dbd91e99d5ee97678aee121f8e12587">xbutton.c</a>
 </li>
 <li>add_hslider()
 : <a class="el" href="xslider_8c.html#a508d0eea38b9c3a8b1e769b0e502c5bc">xslider.c</a>
 , <a class="el" href="xslider_8h.html#a508d0eea38b9c3a8b1e769b0e502c5bc">xslider.h</a>
 </li>
 <li>add_knob()
-: <a class="el" href="xknob_8c.html#a5a495d949d121ea73a7b4099503c6640">xknob.c</a>
-, <a class="el" href="xknob_8h.html#a5a495d949d121ea73a7b4099503c6640">xknob.h</a>
+: <a class="el" href="xknob_8h.html#a5a495d949d121ea73a7b4099503c6640">xknob.h</a>
+, <a class="el" href="xknob_8c.html#a5a495d949d121ea73a7b4099503c6640">xknob.c</a>
 </li>
 <li>add_toggle_button()
 : <a class="el" href="xbutton_8c.html#a528331e8ac24f1ca7bb0101dad28f962">xbutton.c</a>
@@ -220,8 +233,8 @@ $(function() {
 , <a class="el" href="xadjustment_8h.html#af1f74e9733cffbb287e4912fc8ab37cd">xadjustment.h</a>
 </li>
 <li>adj_get_value()
-: <a class="el" href="xadjustment_8c.html#a5a78c30051a7a9c3dc0ce84c3482c530">xadjustment.c</a>
-, <a class="el" href="xadjustment_8h.html#a5a78c30051a7a9c3dc0ce84c3482c530">xadjustment.h</a>
+: <a class="el" href="xadjustment_8h.html#a5a78c30051a7a9c3dc0ce84c3482c530">xadjustment.h</a>
+, <a class="el" href="xadjustment_8c.html#a5a78c30051a7a9c3dc0ce84c3482c530">xadjustment.c</a>
 </li>
 <li>adj_set_start_value()
 : <a class="el" href="xadjustment_8c.html#a670e06d916d1d6fd1f2968fb171c29aa">xadjustment.c</a>
@@ -232,24 +245,28 @@ $(function() {
 , <a class="el" href="xadjustment_8h.html#aaeeb13f45a95f6e2f585641b212eca11">xadjustment.h</a>
 </li>
 <li>adj_set_value()
-: <a class="el" href="xadjustment_8c.html#afbe410bb3efb6e78941a4f938d1c67ca">xadjustment.c</a>
-, <a class="el" href="xadjustment_8h.html#afbe410bb3efb6e78941a4f938d1c67ca">xadjustment.h</a>
+: <a class="el" href="xadjustment_8h.html#afbe410bb3efb6e78941a4f938d1c67ca">xadjustment.h</a>
+, <a class="el" href="xadjustment_8c.html#afbe410bb3efb6e78941a4f938d1c67ca">xadjustment.c</a>
 </li>
 </ul>
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
+<li>cairo_image_surface_create_from_stream()
+: <a class="el" href="xpngloader_8c.html#a814ff706695612053b32b7f5b722ad4c">xpngloader.c</a>
+, <a class="el" href="xpngloader_8h.html#a814ff706695612053b32b7f5b722ad4c">xpngloader.h</a>
+</li>
 <li>check_value_changed()
-: <a class="el" href="xadjustment_8c.html#a1db458f5dc9ea4f3775340b938b3c3bf">xadjustment.c</a>
-, <a class="el" href="xadjustment_8h.html#a1db458f5dc9ea4f3775340b938b3c3bf">xadjustment.h</a>
+: <a class="el" href="xadjustment_8h.html#a1db458f5dc9ea4f3775340b938b3c3bf">xadjustment.h</a>
+, <a class="el" href="xadjustment_8c.html#a1db458f5dc9ea4f3775340b938b3c3bf">xadjustment.c</a>
 </li>
 <li>childlist_add_child()
 : <a class="el" href="xchildlist_8c.html#a4515e80317c76cbfa903c50ddfcfbf58">xchildlist.c</a>
 , <a class="el" href="xchildlist_8h.html#a4515e80317c76cbfa903c50ddfcfbf58">xchildlist.h</a>
 </li>
 <li>childlist_destroy()
-: <a class="el" href="xchildlist_8c.html#a57256a97c272561094da1b7ae5c57638">xchildlist.c</a>
-, <a class="el" href="xchildlist_8h.html#a57256a97c272561094da1b7ae5c57638">xchildlist.h</a>
+: <a class="el" href="xchildlist_8h.html#a57256a97c272561094da1b7ae5c57638">xchildlist.h</a>
+, <a class="el" href="xchildlist_8c.html#a57256a97c272561094da1b7ae5c57638">xchildlist.c</a>
 </li>
 <li>childlist_find_child()
 : <a class="el" href="xchildlist_8c.html#a54b8a01a41d48965bd02c5269d0f2103">xchildlist.c</a>
@@ -264,8 +281,8 @@ $(function() {
 , <a class="el" href="xchildlist_8h.html#af130af096a2f8b3a807e7e2dcf0ee6c0">xchildlist.h</a>
 </li>
 <li>childlist_init()
-: <a class="el" href="xchildlist_8c.html#ad47bf3695fdf0c67bc059e4ce25c4639">xchildlist.c</a>
-, <a class="el" href="xchildlist_8h.html#ad47bf3695fdf0c67bc059e4ce25c4639">xchildlist.h</a>
+: <a class="el" href="xchildlist_8h.html#ad47bf3695fdf0c67bc059e4ce25c4639">xchildlist.h</a>
+, <a class="el" href="xchildlist_8c.html#ad47bf3695fdf0c67bc059e4ce25c4639">xchildlist.c</a>
 </li>
 <li>childlist_remove_child()
 : <a class="el" href="xchildlist_8c.html#a6cdf6afd4fdf75550b6aca31ac42379c">xchildlist.c</a>
@@ -275,16 +292,16 @@ $(function() {
 : <a class="el" href="xwidget_8c.html#acf8c7ef79c60253a687116d3783e1c67">xwidget.c</a>
 </li>
 <li>create_menu()
-: <a class="el" href="xmenu_8c.html#a34f5113785511c89a604ef0e564cedfa">xmenu.c</a>
-, <a class="el" href="xmenu_8h.html#a34f5113785511c89a604ef0e564cedfa">xmenu.h</a>
+: <a class="el" href="xmenu_8c.html#a0eae3dbc8ef61ae9952ac81b4dd1aba4">xmenu.c</a>
+, <a class="el" href="xmenu_8h.html#a0eae3dbc8ef61ae9952ac81b4dd1aba4">xmenu.h</a>
 </li>
 <li>create_widget()
-: <a class="el" href="xwidget_8c.html#adb0c2b832c062c6ae833f649654d1c25">xwidget.c</a>
-, <a class="el" href="xwidget_8h.html#a2376b5590243f7f4cfd51168af697227">xwidget.h</a>
+: <a class="el" href="xwidget_8h.html#a2376b5590243f7f4cfd51168af697227">xwidget.h</a>
+, <a class="el" href="xwidget_8c.html#adb0c2b832c062c6ae833f649654d1c25">xwidget.c</a>
 </li>
 <li>create_window()
-: <a class="el" href="xwidget_8c.html#a5528f841e6b5f2ef62b3b10bfa8bf20f">xwidget.c</a>
-, <a class="el" href="xwidget_8h.html#a5528f841e6b5f2ef62b3b10bfa8bf20f">xwidget.h</a>
+: <a class="el" href="xwidget_8h.html#a5528f841e6b5f2ef62b3b10bfa8bf20f">xwidget.h</a>
+, <a class="el" href="xwidget_8c.html#a5528f841e6b5f2ef62b3b10bfa8bf20f">xwidget.c</a>
 </li>
 </ul>
 
@@ -315,12 +332,12 @@ $(function() {
 , <a class="el" href="xcolor_8h.html#acc93257352c04e26189e54ba561ab3f4">xcolor.h</a>
 </li>
 <li>get_color_state()
-: <a class="el" href="xcolor_8c.html#a02fe4f3a29af917cc1de5f8b5c4b4171">xcolor.c</a>
-, <a class="el" href="xcolor_8h.html#a02fe4f3a29af917cc1de5f8b5c4b4171">xcolor.h</a>
+: <a class="el" href="xcolor_8h.html#a02fe4f3a29af917cc1de5f8b5c4b4171">xcolor.h</a>
+, <a class="el" href="xcolor_8c.html#a02fe4f3a29af917cc1de5f8b5c4b4171">xcolor.c</a>
 </li>
 <li>get_toplevel_widget()
-: <a class="el" href="xwidget_8c.html#add6f77e7910eea8adf6ff32563bc7904">xwidget.c</a>
-, <a class="el" href="xwidget_8h.html#add6f77e7910eea8adf6ff32563bc7904">xwidget.h</a>
+: <a class="el" href="xwidget_8h.html#add6f77e7910eea8adf6ff32563bc7904">xwidget.h</a>
+, <a class="el" href="xwidget_8c.html#add6f77e7910eea8adf6ff32563bc7904">xwidget.c</a>
 </li>
 </ul>
 
@@ -339,24 +356,35 @@ $(function() {
 , <a class="el" href="xputty_8h.html#a484645d624d9e9eff0288f8d5583ff5e">xputty.h</a>
 </li>
 <li>main_quit()
-: <a class="el" href="xputty_8c.html#a0d4eda902b4de6f7a30e8d869f842fda">xputty.c</a>
-, <a class="el" href="xputty_8h.html#a0d4eda902b4de6f7a30e8d869f842fda">xputty.h</a>
+: <a class="el" href="xputty_8h.html#a0d4eda902b4de6f7a30e8d869f842fda">xputty.h</a>
+, <a class="el" href="xputty_8c.html#a0d4eda902b4de6f7a30e8d869f842fda">xputty.c</a>
 </li>
 <li>main_run()
 : <a class="el" href="xputty_8c.html#abb548ea64f852a7c94473a595e67d69f">xputty.c</a>
 , <a class="el" href="xputty_8h.html#abb548ea64f852a7c94473a595e67d69f">xputty.h</a>
 </li>
+<li>menu_add_check_item()
+: <a class="el" href="xmenu_8h.html#a85f18cd2005f83587f0fcd049d96513f">xmenu.h</a>
+, <a class="el" href="xmenu_8c.html#a85f18cd2005f83587f0fcd049d96513f">xmenu.c</a>
+</li>
 <li>menu_add_item()
-: <a class="el" href="xmenu_8c.html#a7173305c686ccc93797c3afc617bc7df">xmenu.c</a>
-, <a class="el" href="xmenu_8h.html#a7173305c686ccc93797c3afc617bc7df">xmenu.h</a>
+: <a class="el" href="xmenu_8h.html#a7173305c686ccc93797c3afc617bc7df">xmenu.h</a>
+, <a class="el" href="xmenu_8c.html#a7173305c686ccc93797c3afc617bc7df">xmenu.c</a>
+</li>
+<li>menu_add_radio_item()
+: <a class="el" href="xmenu_8c.html#a2ccd4d73cf41f29d1c61123ec05ea1f5">xmenu.c</a>
+, <a class="el" href="xmenu_8h.html#a2ccd4d73cf41f29d1c61123ec05ea1f5">xmenu.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
+<li>png_stream_reader()
+: <a class="el" href="xpngloader_8c.html#a2c4f5eaa5ce502eb8ae038bc3c1ba0af">xpngloader.c</a>
+</li>
 <li>pop_menu_show()
-: <a class="el" href="xmenu_8c.html#ac7d4e8055f6a2e474aa121c7c637aa21">xmenu.c</a>
-, <a class="el" href="xmenu_8h.html#ac7d4e8055f6a2e474aa121c7c637aa21">xmenu.h</a>
+: <a class="el" href="xmenu_8h.html#ac7d4e8055f6a2e474aa121c7c637aa21">xmenu.h</a>
+, <a class="el" href="xmenu_8c.html#ac7d4e8055f6a2e474aa121c7c637aa21">xmenu.c</a>
 </li>
 </ul>
 
@@ -373,22 +401,30 @@ $(function() {
 </ul>
 
 
+<h3><a id="index_r"></a>- r -</h3><ul>
+<li>radio_item_set_active()
+: <a class="el" href="xmenu_8c.html#a3158157d7c7a8c20a22601515443b0c4">xmenu.c</a>
+, <a class="el" href="xmenu_8h.html#a3158157d7c7a8c20a22601515443b0c4">xmenu.h</a>
+</li>
+</ul>
+
+
 <h3><a id="index_s"></a>- s -</h3><ul>
 <li>send_configure_event()
 : <a class="el" href="xwidget_8c.html#a6f6b3d05aefce9a3f7454a44897aecc0">xwidget.c</a>
 , <a class="el" href="xwidget_8h.html#a6f6b3d05aefce9a3f7454a44897aecc0">xwidget.h</a>
 </li>
 <li>set_adjustment()
-: <a class="el" href="xadjustment_8c.html#ab7188a4bb4294e2a08aea2430975b406">xadjustment.c</a>
-, <a class="el" href="xadjustment_8h.html#ab7188a4bb4294e2a08aea2430975b406">xadjustment.h</a>
+: <a class="el" href="xadjustment_8h.html#ab7188a4bb4294e2a08aea2430975b406">xadjustment.h</a>
+, <a class="el" href="xadjustment_8c.html#ab7188a4bb4294e2a08aea2430975b406">xadjustment.c</a>
 </li>
 <li>set_color_scheme()
 : <a class="el" href="xcolor_8c.html#a4e5e3eb9811ab59de97fd2ebc1c73dac">xcolor.c</a>
 , <a class="el" href="xcolor_8h.html#a4e5e3eb9811ab59de97fd2ebc1c73dac">xcolor.h</a>
 </li>
 <li>set_pattern()
-: <a class="el" href="xcolor_8c.html#a441ef24e7ac1af8c830aadac851e29dc">xcolor.c</a>
-, <a class="el" href="xcolor_8h.html#a441ef24e7ac1af8c830aadac851e29dc">xcolor.h</a>
+: <a class="el" href="xcolor_8h.html#a441ef24e7ac1af8c830aadac851e29dc">xcolor.h</a>
+, <a class="el" href="xcolor_8c.html#a441ef24e7ac1af8c830aadac851e29dc">xcolor.c</a>
 </li>
 </ul>
 
@@ -407,16 +443,16 @@ $(function() {
 , <a class="el" href="xcolor_8h.html#af2eeed36f1b19416481687498a6d1ce3">xcolor.h</a>
 </li>
 <li>use_bg_color_scheme()
-: <a class="el" href="xcolor_8c.html#a335aed33f3b2fca02beb85375186a5c9">xcolor.c</a>
-, <a class="el" href="xcolor_8h.html#a335aed33f3b2fca02beb85375186a5c9">xcolor.h</a>
+: <a class="el" href="xcolor_8h.html#a335aed33f3b2fca02beb85375186a5c9">xcolor.h</a>
+, <a class="el" href="xcolor_8c.html#a335aed33f3b2fca02beb85375186a5c9">xcolor.c</a>
 </li>
 <li>use_fg_color_scheme()
 : <a class="el" href="xcolor_8c.html#a389caf2131cd599465c512eead16a6c0">xcolor.c</a>
 , <a class="el" href="xcolor_8h.html#a389caf2131cd599465c512eead16a6c0">xcolor.h</a>
 </li>
 <li>use_text_color_scheme()
-: <a class="el" href="xcolor_8c.html#a082dd5329f6c1e402747b9ecfa1dceae">xcolor.c</a>
-, <a class="el" href="xcolor_8h.html#a082dd5329f6c1e402747b9ecfa1dceae">xcolor.h</a>
+: <a class="el" href="xcolor_8h.html#a082dd5329f6c1e402747b9ecfa1dceae">xcolor.h</a>
+, <a class="el" href="xcolor_8c.html#a082dd5329f6c1e402747b9ecfa1dceae">xcolor.c</a>
 </li>
 </ul>
 
@@ -427,16 +463,16 @@ $(function() {
 , <a class="el" href="xwidget_8h.html#a4549cfc76e73a5d56b50f0d762287436">xwidget.h</a>
 </li>
 <li>widget_hide()
-: <a class="el" href="xwidget_8c.html#ab00e7f2485e08237c865e96ba56e63e6">xwidget.c</a>
-, <a class="el" href="xwidget_8h.html#ab00e7f2485e08237c865e96ba56e63e6">xwidget.h</a>
+: <a class="el" href="xwidget_8h.html#ab00e7f2485e08237c865e96ba56e63e6">xwidget.h</a>
+, <a class="el" href="xwidget_8c.html#ab00e7f2485e08237c865e96ba56e63e6">xwidget.c</a>
 </li>
 <li>widget_show()
 : <a class="el" href="xwidget_8c.html#a7378f213e6159eb59b98467198844086">xwidget.c</a>
 , <a class="el" href="xwidget_8h.html#a7378f213e6159eb59b98467198844086">xwidget.h</a>
 </li>
 <li>widget_show_all()
-: <a class="el" href="xwidget_8c.html#aae228a75c93bb0cb9ad57ffaf4d25922">xwidget.c</a>
-, <a class="el" href="xwidget_8h.html#aae228a75c93bb0cb9ad57ffaf4d25922">xwidget.h</a>
+: <a class="el" href="xwidget_8h.html#aae228a75c93bb0cb9ad57ffaf4d25922">xwidget.h</a>
+, <a class="el" href="xwidget_8c.html#aae228a75c93bb0cb9ad57ffaf4d25922">xwidget.c</a>
 </li>
 </ul>
 </div><!-- contents -->

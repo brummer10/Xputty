@@ -22,6 +22,8 @@ var searchData=
   ['xmenu_2eh',['xmenu.h',['../xmenu_8h.html',1,'']]],
   ['xmenu_5fprivate_2ec',['xmenu_private.c',['../xmenu__private_8c.html',1,'']]],
   ['xmenu_5fprivate_2eh',['xmenu_private.h',['../xmenu__private_8h.html',1,'']]],
+  ['xpngloader_2ec',['xpngloader.c',['../xpngloader_8c.html',1,'']]],
+  ['xpngloader_2eh',['xpngloader.h',['../xpngloader_8h.html',1,'']]],
   ['xputty_2ec',['xputty.c',['../xputty_8c.html',1,'']]],
   ['xputty_2eh',['xputty.h',['../xputty_8h.html',1,'']]],
   ['xslider_2ec',['xslider.c',['../xslider_8c.html',1,'']]],
@@ -31,5 +33,6 @@ var searchData=
   ['xwidget_2ec',['xwidget.c',['../xwidget_8c.html',1,'']]],
   ['xwidget_2eh',['xwidget.h',['../xwidget_8h.html',1,'']]],
   ['xwidget_5fprivate_2ec',['xwidget_private.c',['../xwidget__private_8c.html',1,'']]],
-  ['xwidget_5fprivate_2eh',['xwidget_private.h',['../xwidget__private_8h.html',1,'']]]
+  ['xwidget_5fprivate_2eh',['xwidget_private.h',['../xwidget__private_8h.html',1,'']]],
+  ['xwidgets_2eh',['xwidgets.h',['../xwidgets_8h.html',1,'']]]
 ];

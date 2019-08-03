@@ -5,5 +5,6 @@ var searchData=
   ['event_5fcallback',['event_callback',['../structWidget__t.html#af0adf855c1991d11f59c5b6f9a2c526a',1,'Widget_t']]],
   ['evfunc',['evfunc',['../xwidget_8h.html#ab4ae973f86a383c8c0f92b709044520a',1,'xwidget.h']]],
   ['expose_5fcallback',['expose_callback',['../structFunc__t.html#ae4ba307ec29bfea83e1197aa750c1396',1,'Func_t']]],
-  ['expose_5fwidget',['expose_widget',['../xwidget_8c.html#a17f2f3effd46532c596511abcfb5058e',1,'expose_widget(Widget_t *w):&#160;xwidget.c'],['../xwidget_8h.html#a17f2f3effd46532c596511abcfb5058e',1,'expose_widget(Widget_t *w):&#160;xwidget.c']]]
+  ['expose_5fwidget',['expose_widget',['../xwidget_8c.html#a17f2f3effd46532c596511abcfb5058e',1,'expose_widget(Widget_t *w):&#160;xwidget.c'],['../xwidget_8h.html#a17f2f3effd46532c596511abcfb5058e',1,'expose_widget(Widget_t *w):&#160;xwidget.c']]],
+  ['extld',['EXTLD',['../xpngloader_8h.html#a5637cfaabbf58ec7f1a5b8d84c9df2b9',1,'xpngloader.h']]]
 ];
