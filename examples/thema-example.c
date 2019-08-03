@@ -207,6 +207,7 @@ int main (int argc, char ** argv)
     main_init(&app);
     set_colors(&app);
     Widget_t *b;
+    Widget_t *bt;
     Widget_t *w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 450);
     XStoreName(app.dpy, w->widget, "Color-scheme");
     w->func.expose_callback = draw_window;
@@ -215,10 +216,9 @@ int main (int argc, char ** argv)
     b->scale.gravity = SOUTHWEST;
     b->func.value_changed_callback = button_quit_callback;
 
-    b = add_toggle_button(w, "Theme", 10, 410, 60, 30);
-    b->scale.gravity = SOUTHEAST;
-    b->func.value_changed_callback = button_thema_callback;
-    create_mymenu(b);
+    bt = add_toggle_button(w, "Theme", 10, 410, 60, 30);
+    bt->scale.gravity = SOUTHEAST;
+    bt->func.value_changed_callback = button_thema_callback;
 
     b = add_hslider(w, "HSlider", 10, 10, 280, 40);
     b->func.value_changed_callback = hslider_callback;
@@ -241,6 +241,7 @@ int main (int argc, char ** argv)
     b = add_knob(w, "Knob2", 20, 260, 60, 80);
     b->func.value_changed_callback = knob_callback;
     widget_show_all(w);
+    create_mymenu(bt);
 
     main_run(&app);
     main_quit(&app);

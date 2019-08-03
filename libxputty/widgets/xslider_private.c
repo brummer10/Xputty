@@ -191,7 +191,7 @@ void _draw_hslider(void *w_, void* user_data) {
 }
 
 /**
- * @brief _slider_released  - redraw the slider when buttob released 
+ * @brief _slider_released  - redraw the slider when button released 
  * @param *w_               - void pointer to the Widget_t button
  * @param *user_data        - void pointer to attached user_data
  * @return void
