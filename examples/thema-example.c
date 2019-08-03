@@ -174,6 +174,8 @@ static void create_mymenu(Widget_t *w) {
     menu_add_item(m,"red");
     menu_add_item(m,"yellow");
     menu_add_check_item(m,"pattern");
+    menu_add_radio_item(m,"radio item");
+    menu_add_radio_item(m,"radio item1");
     m->func.button_release_callback = menu_response;
 }
 

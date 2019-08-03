@@ -94,13 +94,48 @@ Widget_t* menu_add_item(Widget_t *menu,const char * label) {
  * @return Widget_t*          - pointer to the Widget_t menu_item struct
  */
 
-Widget_t* menu_add_check_item(Widget_t *menu,const char * label) {
+Widget_t* menu_add_check_item(Widget_t *menu, const char * label) {
     Widget_t *wid = menu_add_item(menu, label);
     wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, 1.0,1.0, CL_TOGGLE);
     wid->adj = wid->adj_y;
     wid->func.expose_callback = _draw_check_item;
     wid->func.button_press_callback = _check_item_button_pressed;
     
+    return wid;
+}
+
+
+/**
+ * @brief radio_item_set_active       - activate selected radio item
+ * @param *w                          - the Widget_t to activate
+ * @return void
+ */
+
+void radio_item_set_active(Widget_t *w) {
+    Widget_t * p = w->parent;
+    int i = p->childlist->elem-1;
+    for(;i>-1;i--) {
+        Widget_t *wid = p->childlist->childs[i];
+        if (wid->adj && wid->is_radio) {
+            if (wid == w) adj_set_value(wid->adj_y, 1.0);
+            else adj_set_value(wid->adj_y, 0.0);
+        }
+    }
+}
+
+/**
+ * @brief menu_add_radio_item - add a radio item to menu
+ * @param *menu               - pointer to the Widget_t menu
+ * @param *label              - Label to show on the menu
+ * @return Widget_t*          - pointer to the Widget_t menu_item struct
+ */
+
+Widget_t* menu_add_radio_item(Widget_t *menu, const char * label) {
+    Widget_t *wid = menu_add_check_item(menu, label);
+    wid->is_radio = true;
+    wid->func.expose_callback = _draw_check_item;
+    wid->func.button_press_callback = _radio_item_button_pressed;
+    radio_item_set_active(wid);
     return wid;
 }
 

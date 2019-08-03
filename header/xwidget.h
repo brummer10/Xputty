@@ -180,6 +180,7 @@ typedef struct {
  * @param width              - widget width
  * @param height             - widget height
  * @param is_widget          - set/check if the parent is Widget_t
+ * @param is_radio           - set/check if the Widget_t is part of a radio group
  * @param transparency       - flag to set/check transparent drawing
  * @param scale              - struct used to resize child widgets
  * @param *adj_x             - pointer to the x axis adjustment
@@ -235,6 +236,8 @@ struct Widget_t {
     int height;
 /** indicaate if the widget has parent Widget_t or XWindow */
     bool is_widget;
+/** indicaate if the widget is part of a radio group */
+    bool is_radio;
 /** indicaate if the widget use transparent drawing, default = true */
     bool transparency;
 /** struct used to resize child widgets */

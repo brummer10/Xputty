@@ -52,7 +52,7 @@ Widget_t* create_menu(Widget_t *parent, int height);
  * @return Widget_t*          - pointer to the Widget_t menu_item struct
  */
 
-Widget_t* menu_add_item(Widget_t *menu,const char * label);
+Widget_t* menu_add_item(Widget_t *menu, const char * label);
 
 /**
  * @brief menu_add_check_item - add a item to menu
@@ -61,6 +61,23 @@ Widget_t* menu_add_item(Widget_t *menu,const char * label);
  * @return Widget_t*          - pointer to the Widget_t menu_item struct
  */
 
-Widget_t* menu_add_check_item(Widget_t *menu,const char * label);
+Widget_t* menu_add_check_item(Widget_t *menu, const char * label);
+
+/**
+ * @brief radio_item_set_active       - activate selected radio item
+ * @param *w                          - the Widget_t to activate
+ * @return void
+ */
+
+void radio_item_set_active(Widget_t *w);
+
+/**
+ * @brief menu_add_radio_item - add a radio item to menu
+ * @param *menu               - pointer to the Widget_t menu
+ * @param *label              - Label to show on the menu
+ * @return Widget_t*          - pointer to the Widget_t menu_item struct
+ */
+
+Widget_t* menu_add_radio_item(Widget_t *menu, const char * label);
 
 #endif //XMENU_H_

@@ -96,11 +96,19 @@ void _draw_check_item(void *w_, void* user_data) {
     XWindowAttributes attrs;
     XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
     int height = attrs.height;
-    cairo_rectangle(w->crb, height/6, height/3, height/3 , height/3);
+    if (!w->is_radio) {
+        cairo_rectangle(w->crb, height/6, height/3, height/3 , height/3);
+    } else {
+        cairo_arc(w->crb, height/3, height/2, height/6, 0, 2 * M_PI );
+    }
     use_base_color_scheme(w, get_color_state(w));
     cairo_fill(w->crb);
     if ((int) w->adj_y->value) {
-        cairo_rectangle(w->crb, height/6+1, height/3+1, height/3-2 , height/3-2);
+        if (!w->is_radio) {
+            cairo_rectangle(w->crb, height/6+1, height/3+1, height/3-2 , height/3-2);
+        } else {
+            cairo_arc(w->crb, height/3, height/2, height/6-2, 0, 2 * M_PI );
+        }
         use_fg_color_scheme(w, ACTIVE_);
         cairo_fill(w->crb);
     }
@@ -131,7 +139,21 @@ void _check_item_button_pressed(void *w_, void* button_, void* user_data) {
         float value = w->adj_y->value ? 0.0 : 1.0;
         adj_set_value(w->adj_y, value);
     }
-    expose_widget(w_);
+}
+
+/**
+ * @brief _radio_item_button_pressed  - redraw item on button press
+ * @param *button                     - the xbutton which is pressed
+ * @param *user_data                  - attached user_data
+ * @return void
+ */
+
+void _radio_item_button_pressed(void *w_, void* button_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    Widget_t * p = w->parent;
+    if (w->has_pointer) {
+        radio_item_set_active(w);
+    }
 }
 
 /**

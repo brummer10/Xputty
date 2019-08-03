@@ -73,6 +73,15 @@ void _item_button_pressed(void *w_, void* button, void* user_data);
 void _check_item_button_pressed(void *w_, void* button_, void* user_data);
 
 /**
+ * @brief _radio_item_button_pressed  - redraw item on button press
+ * @param *button                     - the xbutton which is pressed
+ * @param *user_data                  - attached user_data
+ * @return void
+ */
+
+void _radio_item_button_pressed(void *w_, void* button_, void* user_data);
+
+/**
  * @brief _configure_menu     - set final size and position of menu to a Widget_t
  * @param *parent             - pointer to the Widget_t the menu should pop over
  * @param *menu               - the menu to show
