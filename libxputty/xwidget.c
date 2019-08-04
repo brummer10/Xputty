@@ -95,6 +95,7 @@ void destroy_widget(Widget_t * w, Xputty *main) {
         delete_adjustment(w->adj_x);
         delete_adjustment(w->adj_y);
         childlist_destroy(w->childlist);
+        cairo_surface_destroy(w->image);
         cairo_destroy(w->crb);
         cairo_surface_destroy(w->buffer);
         cairo_destroy(w->cr);
@@ -197,6 +198,8 @@ Widget_t *create_window(Xputty *app, Window win,
                         CAIRO_CONTENT_COLOR_ALPHA, width, height);
     w->crb = cairo_create (w->buffer);
 
+    w->image = NULL;
+
     w->is_widget = false;
     w->is_radio  = false;
     w->app = app;
@@ -298,6 +301,8 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
                         CAIRO_CONTENT_COLOR_ALPHA, width, height);
     
     w->crb = cairo_create (w->buffer);
+
+    w->image = NULL;
 
     w->is_widget = true;
     w->is_radio  = false;

@@ -92,4 +92,13 @@ typedef struct  {
 
 cairo_surface_t *cairo_image_surface_create_from_stream ( const unsigned char* name);
 
+/**
+ * @brief widget_get_png             - read png into Widget_t xlib surface
+ * @param *w                         - pointer to the Widget_t which should use the png
+ * @param *name                      - pointer to the binary image data LDVAR(name)
+ * @return void
+ */
+
+void widget_get_png(Widget_t *w, const unsigned char* name);
+
 #endif //XPNGLOADER_H_

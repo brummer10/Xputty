@@ -109,6 +109,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:a84d225e7b261d67daa764b47c8c62107"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad98022ee160d4c0906110868fc9e5664"><td class="memItemLeft" align="right" valign="top">cairo_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">crb</a></td></tr>
 <tr class="separator:ad98022ee160d4c0906110868fc9e5664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e179b5ae7494b9533c8673ec3642a55"><td class="memItemLeft" align="right" valign="top">cairo_surface_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a4e179b5ae7494b9533c8673ec3642a55">image</a></td></tr>
+<tr class="separator:a4e179b5ae7494b9533c8673ec3642a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9dd7b58be77bf31ab021aa627a73186a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a9dd7b58be77bf31ab021aa627a73186a">data</a></td></tr>
 <tr class="separator:a9dd7b58be77bf31ab021aa627a73186a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a952020107ac1f6d9a37b4f978f77b61c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWidget__t.html#a952020107ac1f6d9a37b4f978f77b61c">label</a></td></tr>
@@ -166,6 +168,7 @@ Data Fields</h2></td></tr>
     <tr><td class="paramname">*cr</td><td>- pointer to the cairo xlib surface context </td></tr>
     <tr><td class="paramname">*buffer</td><td>- pointer to the cairo buffer surface </td></tr>
     <tr><td class="paramname">*crb</td><td>- pointer to the cairo buffer surface context </td></tr>
+    <tr><td class="paramname">*image</td><td>- pointer to the cairo image surface </td></tr>
     <tr><td class="paramname">*normal_color</td><td>- struct to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> normal colors </td></tr>
     <tr><td class="paramname">*active_color</td><td>- struct to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> active colors </td></tr>
     <tr><td class="paramname">*prelight_color</td><td>- struct to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> prelight colors </td></tr>
@@ -402,6 +405,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>the widget size y-axis </p>
+
+</div>
+</div>
+<a id="a4e179b5ae7494b9533c8673ec3642a55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e179b5ae7494b9533c8673ec3642a55">&#9670;&nbsp;</a></span>image</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cairo_surface_t* Widget_t::image</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>pointer to the cairo image surface used to load a png </p>
 
 </div>
 </div>

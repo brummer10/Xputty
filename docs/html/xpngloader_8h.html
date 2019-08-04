@@ -153,6 +153,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a814ff706695612053b32b7f5b722ad4c"><td class="memItemLeft" align="right" valign="top">cairo_surface_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xpngloader_8h.html#a814ff706695612053b32b7f5b722ad4c">cairo_image_surface_create_from_stream</a> (const unsigned char *name)</td></tr>
 <tr class="memdesc:a814ff706695612053b32b7f5b722ad4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">cairo_image_surface_create_from_stream - read binary data into cairo surface from stream  <a href="#a814ff706695612053b32b7f5b722ad4c">More...</a><br /></td></tr>
 <tr class="separator:a814ff706695612053b32b7f5b722ad4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3245e688a0901f7574c58509e72384a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xpngloader_8h.html#a3245e688a0901f7574c58509e72384a6">widget_get_png</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, const unsigned char *name)</td></tr>
+<tr class="memdesc:a3245e688a0901f7574c58509e72384a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget_get_png - read png into <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> xlib surface  <a href="#a3245e688a0901f7574c58509e72384a6">More...</a><br /></td></tr>
+<tr class="separator:a3245e688a0901f7574c58509e72384a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a5637cfaabbf58ec7f1a5b8d84c9df2b9"></a>
@@ -249,6 +252,44 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>cairo_surface_t - the cairo_image_surface </dd></dl>
+
+</div>
+</div>
+<a id="a3245e688a0901f7574c58509e72384a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3245e688a0901f7574c58509e72384a6">&#9670;&nbsp;</a></span>widget_get_png()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void widget_get_png </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>widget_get_png - read png into <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> xlib surface </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> which should use the png </td></tr>
+    <tr><td class="paramname">*name</td><td>- pointer to the binary image data <a class="el" href="xpngloader_8h.html#ad21ced59f46124f67ce89f73e60c2563">LDVAR(name)</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>

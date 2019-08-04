@@ -54,6 +54,27 @@ cairo_surface_t *cairo_image_surface_create_from_stream ( const unsigned char* n
     return cairo_image_surface_create_from_png_stream(&png_stream_reader, (void *)&png_stream);
 }
 
+/**
+ * @brief widget_get_png             - read png into Widget_t xlib surface
+ * @param *w                         - pointer to the Widget_t which should use the png
+ * @param *name                      - pointer to the binary image data LDVAR(name)
+ * @return void
+ */
+
+void widget_get_png(Widget_t *w, const unsigned char* name) {
+    cairo_surface_t *getpng = cairo_image_surface_create_from_stream (name);
+    int width = cairo_image_surface_get_width(getpng);
+    int height = cairo_image_surface_get_height(getpng);
+    
+    w->image = cairo_surface_create_similar (w->surface, 
+                        CAIRO_CONTENT_COLOR_ALPHA, width, height);
+    cairo_t *cri = cairo_create (w->image);
+    cairo_set_source_surface (cri, getpng,0,0);
+    cairo_paint (cri);
+    cairo_surface_destroy(getpng);
+    cairo_destroy(cri);
+}
+
 /*
 cairo_surface_t* iamge = cairo_image_surface_create_from_stream( LDVAR(image_name_png));
 */

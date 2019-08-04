@@ -131,6 +131,8 @@ static void draw_window(void *w_, void* user_data) {
     if (!w->data) use_bg_color_scheme(w, get_color_state(w));
     else _pattern(w);
     cairo_paint (w->crb);
+    cairo_set_source_surface (w->crb, w->image,0,0);
+    cairo_paint (w->crb);
 }
 
 static void button_quit_callback(void *w_, void* user_data) {
@@ -213,6 +215,7 @@ int main (int argc, char ** argv)
     Widget_t *w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 450);
     XStoreName(app.dpy, w->widget, "Color-scheme");
     w->func.expose_callback = draw_window;
+    widget_get_png(w, LDVAR(xputty_logo_png));
 
     b = add_button(w, "Quit", 230, 410, 60, 30);
     b->scale.gravity = SOUTHWEST;

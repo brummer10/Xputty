@@ -42,6 +42,8 @@ cairo\+\_\+surface\+\_\+t $\ast$ \hyperlink{structWidget__t_a84d225e7b261d67daa7
 \item 
 cairo\+\_\+t $\ast$ \hyperlink{structWidget__t_ad98022ee160d4c0906110868fc9e5664}{crb}
 \item 
+cairo\+\_\+surface\+\_\+t $\ast$ \hyperlink{structWidget__t_a4e179b5ae7494b9533c8673ec3642a55}{image}
+\item 
 int \hyperlink{structWidget__t_a9dd7b58be77bf31ab021aa627a73186a}{data}
 \item 
 const char $\ast$ \hyperlink{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}{label}
@@ -110,6 +112,8 @@ X\+IM \hyperlink{structWidget__t_a81aa76d336043a7230844d09a92113e2}{xim}
 {\em $\ast$buffer} & -\/ pointer to the cairo buffer surface \\
 \hline
 {\em $\ast$crb} & -\/ pointer to the cairo buffer surface context \\
+\hline
+{\em $\ast$image} & -\/ pointer to the cairo image surface \\
 \hline
 {\em $\ast$normal\+\_\+color} & -\/ struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} normal colors \\
 \hline
@@ -249,7 +253,13 @@ indicate if mouse pointer is in widget \mbox{\Hypertarget{structWidget__t_a1def6
 \subsubsection{\texorpdfstring{height}{height}}
 {\footnotesize\ttfamily int Widget\+\_\+t\+::height}
 
-the widget size y-\/axis \mbox{\Hypertarget{structWidget__t_ac5cb454301472edeb16e563ef2149dbb}\label{structWidget__t_ac5cb454301472edeb16e563ef2149dbb}} 
+the widget size y-\/axis \mbox{\Hypertarget{structWidget__t_a4e179b5ae7494b9533c8673ec3642a55}\label{structWidget__t_a4e179b5ae7494b9533c8673ec3642a55}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!image@{image}}
+\index{image@{image}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{image}{image}}
+{\footnotesize\ttfamily cairo\+\_\+surface\+\_\+t$\ast$ Widget\+\_\+t\+::image}
+
+pointer to the cairo image surface used to load a png \mbox{\Hypertarget{structWidget__t_ac5cb454301472edeb16e563ef2149dbb}\label{structWidget__t_ac5cb454301472edeb16e563ef2149dbb}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!input\+\_\+label@{input\+\_\+label}}
 \index{input\+\_\+label@{input\+\_\+label}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{input\+\_\+label}{input\_label}}

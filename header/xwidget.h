@@ -164,6 +164,7 @@ typedef struct {
  * @param *cr                - pointer to the cairo xlib surface context
  * @param *buffer            - pointer to the cairo buffer surface
  * @param *crb               - pointer to the cairo buffer surface context
+ * @param *image             - pointer to the cairo image surface
  * @param *normal_color      - struct to set Widget_t normal colors
  * @param *active_color      - struct to set Widget_t active colors
  * @param *prelight_color    - struct to set Widget_t prelight colors
@@ -212,6 +213,8 @@ struct Widget_t {
     cairo_surface_t *buffer;
 /** pointer to the cairo buffer surface context */
     cairo_t *crb;
+/** pointer to the cairo image surface used to load a png */
+    cairo_surface_t *image;
 /** int to hold user data */
     int data;
 /** pointer to the widget label */
