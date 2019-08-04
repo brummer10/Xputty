@@ -147,6 +147,10 @@ typedef struct {
     float cscale_x;
 /** scalling factor of the y axsis */
     float cscale_y;
+/** rescalling factor of the x axsis */
+    float rcscale_x;
+/** rescalling factor of the y axsis */
+    float rcscale_y;
 /** scalling factor for aspect scalling */
     float ascale;
 } Resize_t;
@@ -338,6 +342,22 @@ void quit_widget(Widget_t *w);
  */
 
 void transparent_draw(void * wid, void* user_data);
+
+/**
+ * @brief widget_reset_scale - reset scaling mode after image surface
+ * @param *w                 - pointer to the Widget_t sending the request
+ * @return void 
+ */
+
+void widget_reset_scale(Widget_t *w);
+
+/**
+ * @brief widget_set_scale   - set scaling mode for image surface
+ * @param *w                 - pointer to the Widget_t sending the request
+ * @return void 
+ */
+
+void widget_set_scale(Widget_t *w);
 
 /**
  * @brief destroy_widget    - destroy a widget

@@ -131,8 +131,10 @@ static void draw_window(void *w_, void* user_data) {
     if (!w->data) use_bg_color_scheme(w, get_color_state(w));
     else _pattern(w);
     cairo_paint (w->crb);
+    widget_set_scale(w);
     cairo_set_source_surface (w->crb, w->image,0,0);
     cairo_paint (w->crb);
+    widget_reset_scale(w);
 }
 
 static void button_quit_callback(void *w_, void* user_data) {

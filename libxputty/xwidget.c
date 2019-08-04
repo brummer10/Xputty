@@ -124,8 +124,10 @@ void configure_event(void *w_, void* user_data) {
     if (wid->width != attrs.width || wid->height != attrs.height) {
         wid->scale.scale_x    = (float)wid->scale.init_width - attrs.width;
         wid->scale.scale_y    = (float)wid->scale.init_height - attrs.height;
-        wid->scale.cscale_x   = (float)(((float)wid->scale.init_width/(float)attrs.width));
-        wid->scale.cscale_y   = (float)(((float)wid->scale.init_height/(float)attrs.height));
+        wid->scale.cscale_x   = (float)((float)wid->scale.init_width/(float)attrs.width);
+        wid->scale.cscale_y   = (float)((float)wid->scale.init_height/(float)attrs.height);
+        wid->scale.rcscale_x   = (float)((float)attrs.width/(float)wid->scale.init_width);
+        wid->scale.rcscale_y   = (float)((float)attrs.height/(float)wid->scale.init_height);
         wid->scale.ascale     = wid->scale.cscale_x < wid->scale.cscale_y ? 
                                 wid->scale.cscale_y : wid->scale.cscale_x;
 
@@ -135,6 +137,26 @@ void configure_event(void *w_, void* user_data) {
 
         _resize_childs(wid);
     }
+}
+
+/**
+ * @brief widget_reset_scale - reset scaling mode after image surface
+ * @param *w                 - pointer to the Widget_t sending the request
+ * @return void 
+ */
+
+void widget_reset_scale(Widget_t *w) {
+    cairo_scale(w->crb, w->scale.cscale_x,w->scale.cscale_y);
+}
+
+/**
+ * @brief widget_set_scale   - set scaling mode for image surface
+ * @param *w                 - pointer to the Widget_t sending the request
+ * @return void 
+ */
+
+void widget_set_scale(Widget_t *w) {
+    cairo_scale(w->crb, w->scale.rcscale_x,w->scale.rcscale_y);
 }
 
 /**
@@ -220,6 +242,8 @@ Widget_t *create_window(Xputty *app, Window win,
     w->scale.scale_y  = 0.0;
     w->scale.cscale_x = 1.0;
     w->scale.cscale_y = 1.0;
+    w->scale.rcscale_x = 1.0;
+    w->scale.rcscale_y = 1.0;
     w->scale.ascale   = 1.0;
     w->scale.gravity  = CENTER;
     w->transparency = false;
@@ -325,6 +349,8 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->scale.scale_y  = 0.0;
     w->scale.cscale_x = 1.0;
     w->scale.cscale_y = 1.0;
+    w->scale.rcscale_x = 1.0;
+    w->scale.rcscale_y = 1.0;
     w->scale.ascale   = 1.0;
     w->transparency = true;
     w->adj_x = NULL;

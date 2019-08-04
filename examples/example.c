@@ -100,12 +100,12 @@ int main (int argc, char ** argv)
     XStoreName(app.dpy, w->widget, "Xputty Message Box");
     w->label = "This is a message";
     w->func.expose_callback = draw_window;
-    XMoveWindow(w->dpy,w->widget,center_x+30, center_y+30);
 
     w_quit = add_button(w, "OK", 230, 170, 60, 20);
     w_quit->scale.gravity = SOUTHWEST;
     w_quit->func.user_callback = button_ok_callback;
     widget_show_all(w);
+    XMoveWindow(w->dpy,w->widget,center_x+60, center_y+60);
    
     main_run(&app);
    
