@@ -42,16 +42,16 @@
 	EXAMPLE_OBJ := $(patsubst %.c,%.o,$(EXAMPLE_SOURCES))
 	EXEC_FILES := $(patsubst %.c,%,$(EXAMPLE_SOURCES))
 
-.PHONY : all build-static clean
+.PHONY : all clean
 
-all: $(LIB_SOURCES) $(WIDGET_SOURCES) $(EXAMPLE_SOURCES)
+all:  $(RESOURCEHEADER) $(EXEC_FILES) 
+
+depracted: $(LIB_SOURCES) $(WIDGET_SOURCES) $(EXAMPLE_SOURCES)
 	$(CC) thema-example.c $(LIB_SOURCES) $(WIDGET_SOURCES) -o thema-example $(INCLUDES) $(LDFLAGS)
 	$(CC) simple-example.c $(LIB_SOURCES) $(WIDGET_SOURCES) -o simple-example $(INCLUDES) $(LDFLAGS)
 	$(CC) example.c $(LIB_SOURCES)  $(WIDGET_SOURCES) -o example $(INCLUDES) $(LDFLAGS)
 	$(CC) example1.c $(LIB_SOURCES) $(WIDGET_SOURCES) -o example1 $(INCLUDES) $(LDFLAGS)
 	$(CC) example2.c $(LIB_SOURCES)  $(WIDGET_SOURCES) -o example2 $(INCLUDES) $(LDFLAGS)
-
-build-static:  $(RESOURCEHEADER) $(EXEC_FILES) 
 
 clean:
 	rm -f $(EXAMPLE_OBJ) $(EXEC_FILES)
