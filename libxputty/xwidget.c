@@ -508,21 +508,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         break;
 
         case ButtonRelease:
-            if(main->hold_grab != NULL) {
-                XUngrabPointer(main->hold_grab->dpy,CurrentTime);
-                int i = main->hold_grab->childlist->elem-1;
-                for(;i>-1;i--) {
-                    Widget_t *w = main->hold_grab->childlist->childs[i];
-                    if (xev->xbutton.window == w->widget) {
-                        const char *l = main->hold_grab->childlist->childs[i]->label;
-                        main->hold_grab->func.button_release_callback
-                            (main->hold_grab, &i, &l);
-                        break;
-                    }
-                }
-                widget_hide(main->hold_grab);
-                main->hold_grab = NULL;
-            }
+            _check_grab(wid, &xev->xbutton, main);
             wid->has_pointer = _has_pointer(wid, &xev->xbutton);
             if(wid->has_pointer) wid->state = 1;
             else wid->state = 0;

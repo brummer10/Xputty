@@ -79,6 +79,7 @@ Widget_t* menu_add_item(Widget_t *menu,const char * label) {
     int si = childlist_has_child(menu->childlist);
     Widget_t *wid = create_widget(menu->app, menu, 0, height*si, width, height);
     wid->scale.gravity = NORTHEAST;
+    wid->transparency = false;
     wid->label = label;
     wid->func.expose_callback = _draw_item;
     wid->func.button_press_callback = _item_button_pressed;

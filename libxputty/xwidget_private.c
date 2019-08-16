@@ -106,6 +106,34 @@ void _button_press(Widget_t * wid, XButtonEvent *xbutton, void* user_data) {
 }
 
 /**
+ * @brief _check_grab       - internal check if menu is pressed
+ * @param *wid              - pointer to the Widget_t receiving a event
+ * @param *xbutton          - pointer to the XButtonEvent
+ * @param *main             - pointer to main struct
+ * @return void 
+ */
+
+void _check_grab(Widget_t * wid, XButtonEvent *xbutton, Xputty *main) {
+    if(xbutton->button == Button1) {
+        if(main->hold_grab != NULL) {
+            XUngrabPointer(main->hold_grab->dpy,CurrentTime);
+            int i = main->hold_grab->childlist->elem-1;
+            for(;i>-1;i--) {
+                Widget_t *w = main->hold_grab->childlist->childs[i];
+                if (xbutton->window == w->widget) {
+                    const char *l = main->hold_grab->childlist->childs[i]->label;
+                    main->hold_grab->func.button_release_callback
+                        (main->hold_grab, &i, &l);
+                    break;
+                }
+            }
+            widget_hide(main->hold_grab);
+            main->hold_grab = NULL;
+        }
+    }
+}
+
+/**
  * @brief _propagate_childs - send expose to child window
  * @param *wid              - pointer to the Widget_t send the event
  * @return void 

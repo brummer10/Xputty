@@ -58,6 +58,16 @@ void _toggle_event(Widget_t * wid);
 void _button_press(Widget_t * wid, XButtonEvent *xbutton, void* user_data);
 
 /**
+ * @brief _check_grab       - internal check if menu is pressed
+ * @param *wid              - pointer to the Widget_t receiving a event
+ * @param *xbutton          - pointer to the XButtonEvent
+ * @param *main             - pointer to main struct
+ * @return void 
+ */
+
+void _check_grab(Widget_t * wid, XButtonEvent *xbutton, Xputty *main);
+
+/**
  * @brief _propagate_childs - send expose to child window
  * @param *wid              - pointer to the Widget_t send the event
  * @return void 

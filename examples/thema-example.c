@@ -240,9 +240,11 @@ int main (int argc, char ** argv)
     b->func.value_changed_callback = vslider_callback;
 
     b = add_knob(w, "Knob", 20, 60, 60, 80);
+    set_adjustment(b->adj,0.0, 0.0, 0.0, 5.0,0.05, CL_CONTINUOS);
     b->func.value_changed_callback = knob_callback;
 
     b = add_knob(w, "Knob1", 20, 160, 60, 80);
+    set_adjustment(b->adj,0.0, 0.0, 0.0, 100.0,0.5, CL_CONTINUOS);
     b->func.value_changed_callback = knob_callback;
 
     b = add_knob(w, "Knob2", 20, 260, 60, 80);
