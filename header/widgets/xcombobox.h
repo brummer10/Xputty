@@ -45,6 +45,13 @@ Widget_t* add_combobox(Widget_t *parent, const char  * label, int x, int y, int 
 
 Widget_t *combobox_add_entry(Widget_t *wid, const char  * label);
 
+/**
+ * @brief combobox_set_active_entry  - set the active combobox entry
+ * @param *w_                        - void pointer to the Widget_t combobox
+ * @param active                     - the active entry (int)
+ * @return void
+ */
+
 void combobox_set_active_entry(Widget_t *w, int active);
 
 #endif //XCOMBOBOX_H_
