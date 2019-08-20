@@ -48,6 +48,15 @@ void _scroll_event(Widget_t * wid, int direction);
 void _toggle_event(Widget_t * wid);
 
 /**
+ * @brief _check_enum     - internal check which adjustment needs update
+ * @param *wid              - pointer to the Widget_t receiving a event
+ * @param *xbutton          - pointer to the XButtonEvent
+ * @return void 
+ */
+
+void _check_enum(Widget_t * wid, XButtonEvent *xbutton);
+
+/**
  * @brief _button_press     - internal check which button is pressed
  * @param *wid              - pointer to the Widget_t receiving a event
  * @param *xbutton          - pointer to the XButtonEvent

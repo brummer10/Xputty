@@ -245,6 +245,8 @@ struct Widget_t {
     bool is_widget;
 /** indicaate if the widget is part of a radio group */
     bool is_radio;
+/** indicaate if the widget is a popup Widget_t */
+    bool is_pop_widget;
 /** indicaate if the widget use transparent drawing, default = true */
     bool transparency;
 /** struct used to resize child widgets */
@@ -293,6 +295,14 @@ Widget_t *create_widget(Xputty *app, Widget_t *win,
  */
 
 void widget_show(Widget_t *w);
+
+/**
+ * @brief pop_widget_show_all   - map/show popup widget with all childs
+ * @param *w                    - pointer to the Widget_t to map
+ * @return void 
+ */
+
+void pop_widget_show_all(Widget_t *w);
 
 /**
  * @brief widget_hide       - unmap/hide widget

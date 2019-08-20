@@ -41,6 +41,11 @@ void _scroll_event(Widget_t * wid, int direction) {
                 value = min(adj->max_value,max(adj->min_value, 
                                 adj->value + (adj->step * direction)));
             break;
+            case (CL_ENUM):
+                value = adj->value + (adj->step * -direction);
+                if (value>adj->max_value) value = adj->min_value;
+                if (value<adj->min_value) value = adj->max_value;
+            break;
             case (CL_TOGGLE):
                 value = adj->value ? 1.0 : 0.0;
             break;
@@ -67,6 +72,29 @@ void _toggle_event(Widget_t * wid) {
     }
     if (adj && adj->type != CL_TOGGLE) {
         adj_set_start_value(wid);
+    }
+}
+
+/**
+ * @brief _check_enum     - internal check which adjustment needs update
+ * @param *wid              - pointer to the Widget_t receiving a event
+ * @param *xbutton          - pointer to the XButtonEvent
+ * @return void 
+ */
+
+void _check_enum(Widget_t * wid, XButtonEvent *xbutton) {
+    if (xbutton->button != Button1 || !wid->has_pointer) return;
+    Adjustment_t *adj = NULL;
+    if (wid->adj_y) {
+        adj = wid->adj_y;
+    } else if(wid->adj_x) {
+        adj = wid->adj_x;
+    }
+    if (adj && adj->type == CL_ENUM) {
+        float value = adj->value;
+        value = adj->value + 1.0;
+        if (value>adj->max_value) value = adj->min_value;
+        check_value_changed(adj, &value);
     }
 }
 

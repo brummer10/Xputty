@@ -34,6 +34,7 @@
 #include "xslider.h"
 #include "xknob.h"
 #include "xmenu.h"
+#include "xcombobox.h"
 
 
 #endif //XWIDGETS_H_

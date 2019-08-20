@@ -223,6 +223,7 @@ Widget_t *create_window(Xputty *app, Window win,
     w->image = NULL;
 
     w->is_widget = false;
+    w->is_pop_widget = false;
     w->is_radio  = false;
     w->app = app;
     w->dpy = app->dpy;
@@ -329,6 +330,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->image = NULL;
 
     w->is_widget = true;
+    w->is_pop_widget = false;
     w->is_radio  = false;
     w->app = app;
     w->dpy = app->dpy;
@@ -410,6 +412,22 @@ void widget_hide(Widget_t *w) {
  */
 
 void widget_show_all(Widget_t *w) {
+    if (!w->is_pop_widget) {
+        XMapWindow(w->dpy, w->widget);
+        int i=0;
+        for(;i<w->childlist->elem;i++) {
+            widget_show_all(w->childlist->childs[i]);
+        }
+    }
+}
+
+/**
+ * @brief pop_widget_show_all   - map/show popup widget with all childs
+ * @param *w                    - pointer to the Widget_t to map
+ * @return void 
+ */
+
+void pop_widget_show_all(Widget_t *w) {
     XMapWindow(w->dpy, w->widget);
     int i=0;
     for(;i<w->childlist->elem;i++) {
@@ -512,6 +530,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
             wid->has_pointer = _has_pointer(wid, &xev->xbutton);
             if(wid->has_pointer) wid->state = 1;
             else wid->state = 0;
+            _check_enum(wid, &xev->xbutton);
             wid->func.button_release_callback(w_, &xev->xbutton, user_data);
             debug_print("Widget_t  ButtonRelease %i\n", xev->xbutton.button);
         break;

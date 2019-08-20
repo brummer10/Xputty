@@ -183,6 +183,22 @@ static void create_mymenu(Widget_t *w) {
     m->func.button_release_callback = menu_response;
 }
 
+static void combo_response(void *w_, void* user_data) {
+   // Widget_t *w = (Widget_t*)w_;
+   // fprintf (stderr, "entry %i selected\n", (int)adj_get_value(w->adj));
+}
+
+static void create_myentrys(Widget_t *w) {
+    combobox_add_entry(w,"entry 0");
+    combobox_add_entry(w,"entry 1");
+    combobox_add_entry(w,"entry 2");
+    combobox_add_entry(w,"entry 3");
+    combobox_add_entry(w,"entry 4");
+    combobox_add_entry(w,"entry 5");
+    w->func.value_changed_callback = combo_response;
+    combobox_set_active_entry(w, 1);
+}
+
 static void button_thema_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     
@@ -214,8 +230,16 @@ int main (int argc, char ** argv)
     set_colors(&app);
     Widget_t *b;
     Widget_t *bt;
+    Widget_t *ct;
     Widget_t *w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 450);
     XStoreName(app.dpy, w->widget, "Color-scheme");
+    XSizeHints* win_size_hints;
+    win_size_hints = XAllocSizeHints();
+    win_size_hints->flags =  PMinSize;
+    win_size_hints->min_width = 260;
+    win_size_hints->min_height = 225;
+    XSetWMNormalHints(app.dpy, w->widget, win_size_hints);
+    XFree(win_size_hints);
     w->func.expose_callback = draw_window;
     widget_get_png(w, LDVAR(xputty_logo_png));
 
@@ -226,6 +250,10 @@ int main (int argc, char ** argv)
     bt = add_toggle_button(w, "Theme", 10, 410, 60, 30);
     bt->scale.gravity = SOUTHEAST;
     bt->func.value_changed_callback = button_thema_callback;
+
+    ct = add_combobox(w, "", 100, 410, 90, 30);
+    ct->scale.gravity = SOUTHEAST;
+   // ct->func.value_changed_callback = button_thema_callback;
 
     b = add_hslider(w, "HSlider", 10, 10, 280, 40);
     b->func.value_changed_callback = hslider_callback;
@@ -251,6 +279,7 @@ int main (int argc, char ** argv)
     b->func.value_changed_callback = knob_callback;
     widget_show_all(w);
     create_mymenu(bt);
+    create_myentrys(ct);
 
     main_run(&app);
     main_quit(&app);

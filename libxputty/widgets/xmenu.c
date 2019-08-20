@@ -31,7 +31,7 @@
 
 void pop_menu_show(Widget_t *parent, Widget_t *menu) {
     _configure_menu(parent, menu);
-    widget_show_all(menu);
+    pop_widget_show_all(menu);
     int err = XGrabPointer(menu->dpy, DefaultRootWindow(parent->dpy), True,
                  ButtonPressMask|ButtonReleaseMask|PointerMotionMask,
                  GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
@@ -59,6 +59,7 @@ Widget_t* create_menu(Widget_t *parent, int height) {
         XA_ATOM, 32, PropModeReplace, (unsigned char *) &vale,1 );
     XSetTransientForHint(parent->dpy,wid->widget,parent->widget);
     wid->func.expose_callback = _draw_menu;
+    wid->is_pop_widget = true;
     childlist_add_child(parent->childlist, wid);
     return wid;
 
