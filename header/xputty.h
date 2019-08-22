@@ -183,7 +183,7 @@ struct Xputty{
 void main_init(Xputty *main);
 
 /**
- * @brief main_run          - the main event loop. I should be start after 
+ * @brief main_run          - the main event loop. It should be start after 
  * your Widget_t's been created. You could create and destroy additional Widget_t's
  * at any time later during run. 
  * @param *main             - pointer to the main Xputty struct
@@ -191,6 +191,17 @@ void main_init(Xputty *main);
  */
 
 void main_run(Xputty *main);
+
+/**
+ * @brief run_embedded      - the main event loop to run embedded UI's.
+ * It should be start after your Widget_t's been created.
+ * You could create and destroy additional Widget_t's
+ * at any time later during run. 
+ * @param *main             - pointer to the main Xputty struct
+ * @return void 
+ */
+
+void run_embedded(Xputty *main);
 
 /**
  * @brief main_quit         - destroy all remaining Widget_t's from the

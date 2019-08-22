@@ -191,6 +191,7 @@ void adj_set_state(void *w, float x, float y) {
  */
 
 void check_value_changed(Adjustment_t *adj, float *value) {
+    debug_print("Adjustment_t check_value_changed %f\n", *(value));
     if(fabs(*(value) - adj->value)>=0.00001) {
         adj->value = *(value);
         adj->w->func.adj_callback(adj->w, NULL);

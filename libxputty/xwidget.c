@@ -228,8 +228,10 @@ Widget_t *create_window(Xputty *app, Window win,
     w->app = app;
     w->dpy = app->dpy;
     w->parent = &win;
+    w->parent_struct = NULL;
     w->label = NULL;
     w->state = 0;
+    w->has_focus = false;
     w->data = 0;
     w->x = x;
     w->y = y;
@@ -335,8 +337,10 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->app = app;
     w->dpy = app->dpy;
     w->parent = parent;
+    w->parent_struct = NULL;
     w->label = NULL;
     w->state = 0;
+    w->has_focus = false;
     w->data = 0;
     w->x = x;
     w->y = y;
@@ -547,6 +551,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         break;
 
         case LeaveNotify:
+            wid->has_focus = false;
             if(!(xev->xcrossing.state & Button1Mask)) {
                 wid->state = 0;
                 wid->func.leave_callback(w_, user_data);
@@ -555,6 +560,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         break;
 
         case EnterNotify:
+            wid->has_focus = true;
             if(!(xev->xcrossing.state & Button1Mask)) {
                 wid->state = 1;
                 wid->func.enter_callback(w_, user_data);

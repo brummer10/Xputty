@@ -22,6 +22,28 @@
 #include "xknob_private.h"
 
 /**
+ * @brief _draw_image_knob       - internal draw the knob from image
+ * to the buffer
+ * @param *w                     - pointer to the Widget_t knob
+ * @return void
+ */
+
+void _draw_image_knob(Widget_t *w, int width_t, int height_t) {
+    int width = cairo_xlib_surface_get_width(w->image);
+    int height = cairo_xlib_surface_get_height(w->image);
+    double x = (double)width_t/(double)height;
+    double y = (double)height/(double)width_t;
+    double knobstate = adj_get_state(w->adj_y);
+    int findex = (int)(((width/height)-1) * knobstate);
+    cairo_scale(w->crb, x,x);
+    //widget_set_scale(w);
+    cairo_set_source_surface (w->crb, w->image, -height*findex, 0);
+    cairo_rectangle(w->crb,0, 0, height, height);
+    cairo_fill(w->crb);
+    //widget_reset_scale(w);
+    cairo_scale(w->crb, y,y);
+}
+/**
  * @brief _draw_knob             - internal draw the knob to the buffer
  * @param *w_                    - void pointer to the Widget_t button
  * @param *user_data             - void pointer to attached user_data
@@ -34,7 +56,7 @@ void _draw_knob(void *w_, void* user_data) {
     XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
     int width = attrs.width-2;
     int height = attrs.height-2;
-    
+
     const double scale_zero = 20 * (M_PI/180); // defines "dead zone" for knobs
     int arc_offset = 0;
     int knob_x = 0;
@@ -50,41 +72,44 @@ void _draw_knob(void *w_, void* user_data) {
 
     int knoby = (height - knob_y) * 0.5;
     int knoby1 = height * 0.5;
+    if (w->image) {
+        _draw_image_knob(w, width, height);
+    } else {
 
-    double knobstate = adj_get_state(w->adj_y);
-    double angle = scale_zero + knobstate * 2 * (M_PI - scale_zero);
+        double knobstate = adj_get_state(w->adj_y);
+        double angle = scale_zero + knobstate * 2 * (M_PI - scale_zero);
 
-    double pointer_off =knob_x/6;
-    double radius = min(knob_x-pointer_off, knob_y-pointer_off) / 2;
-    double lengh_x = (knobx+radius+pointer_off/2) - radius * sin(angle);
-    double lengh_y = (knoby+radius+pointer_off/2) + radius * cos(angle);
-    double radius_x = (knobx+radius+pointer_off/2) - radius/ 1.18 * sin(angle);
-    double radius_y = (knoby+radius+pointer_off/2) + radius/ 1.18 * cos(angle);
+        double pointer_off =knob_x/6;
+        double radius = min(knob_x-pointer_off, knob_y-pointer_off) / 2;
+        double lengh_x = (knobx+radius+pointer_off/2) - radius * sin(angle);
+        double lengh_y = (knoby+radius+pointer_off/2) + radius * cos(angle);
+        double radius_x = (knobx+radius+pointer_off/2) - radius/ 1.18 * sin(angle);
+        double radius_y = (knoby+radius+pointer_off/2) + radius/ 1.18 * cos(angle);
 
-    cairo_arc(w->crb,knobx1+arc_offset, knoby1+arc_offset, knob_x/2.1, 0, 2 * M_PI );
+        cairo_arc(w->crb,knobx1+arc_offset, knoby1+arc_offset, knob_x/2.1, 0, 2 * M_PI );
 
-    use_base_color_scheme(w, get_color_state(w));
-    cairo_fill (w->crb);
-    cairo_new_path (w->crb);
+        use_base_color_scheme(w, get_color_state(w));
+        cairo_fill (w->crb);
+        cairo_new_path (w->crb);
 
-    use_bg_color_scheme(w, get_color_state(w));
-    cairo_arc(w->crb,knobx1+arc_offset, knoby1+arc_offset, knob_x/3.1, 0, 2 * M_PI );
-    cairo_fill_preserve(w->crb);
-    use_fg_color_scheme(w, NORMAL_);
-    cairo_set_line_width(w->crb, knobx1/15);
-    cairo_stroke(w->crb);
-    cairo_new_path (w->crb);
+        use_bg_color_scheme(w, get_color_state(w));
+        cairo_arc(w->crb,knobx1+arc_offset, knoby1+arc_offset, knob_x/3.1, 0, 2 * M_PI );
+        cairo_fill_preserve(w->crb);
+        use_fg_color_scheme(w, NORMAL_);
+        cairo_set_line_width(w->crb, knobx1/15);
+        cairo_stroke(w->crb);
+        cairo_new_path (w->crb);
 
-    /** create a rotating pointer on the kob**/
-    cairo_set_line_cap(w->crb, CAIRO_LINE_CAP_ROUND); 
-    cairo_set_line_join(w->crb, CAIRO_LINE_JOIN_BEVEL);
-    cairo_move_to(w->crb, radius_x, radius_y);
-    cairo_line_to(w->crb,lengh_x,lengh_y);
-    cairo_set_line_width(w->crb,knobx1/7);
-    use_fg_color_scheme(w, NORMAL_);
-    cairo_stroke(w->crb);
-    cairo_new_path (w->crb);
-
+        /** create a rotating pointer on the kob**/
+        cairo_set_line_cap(w->crb, CAIRO_LINE_CAP_ROUND); 
+        cairo_set_line_join(w->crb, CAIRO_LINE_JOIN_BEVEL);
+        cairo_move_to(w->crb, radius_x, radius_y);
+        cairo_line_to(w->crb,lengh_x,lengh_y);
+        cairo_set_line_width(w->crb,knobx1/7);
+        use_fg_color_scheme(w, NORMAL_);
+        cairo_stroke(w->crb);
+        cairo_new_path (w->crb);
+    }
     cairo_text_extents_t extents;
     /** show value on the kob**/
     if (w->state) {

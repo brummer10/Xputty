@@ -177,6 +177,7 @@ typedef struct {
  * @param *label             - pointer to the widget label
  * @param input_label        - char array the widget input label
  * @param state              - int to hold the widget state
+ * @param has_focus          - indicate the mouse pointer state
  * @param has_pointer        - is mouse pointer in widget
  * @param pos_x              - mouse pointer x position on button press
  * @param pos_y              - mouse pointer y position on button press
@@ -205,6 +206,8 @@ struct Widget_t {
     Window widget;
 /** pointer to the Parent Window or Widget_t */
     void *parent;
+/** pointer to the Parent struct */
+    void *parent_struct;
 /** the main XEvent callback */
     vfunc event_callback;
 /** struct holding the event callbacks */
@@ -227,6 +230,8 @@ struct Widget_t {
     char input_label[32];
 /** int to hold the widget state default = 0 */
     int state;
+/** indicate the mouse pointer state */
+    bool has_focus;
 /** indicate if mouse pointer is in widget */
     bool has_pointer;
 /** mouse pointer x position on button press */

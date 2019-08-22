@@ -50,7 +50,7 @@ void main_init(Xputty *main) {
 }
 
 /**
- * @brief main_run          - the main event loop. I should be start after 
+ * @brief main_run          - the main event loop. It should be start after 
  * your Widget_t's been created. You could create and destroy additional Widget_t's
  * at any time later during run. 
  * @param *main             - pointer to the main Xputty struct
@@ -103,6 +103,50 @@ void main_run(Xputty *main) {
                     if(i>1) quit_widget(main->childlist->childs[i]);
                 }
             break;
+        }
+    }
+}
+
+/**
+ * @brief run_embedded      - the main event loop to run embedded UI's.
+ * It should be start after your Widget_t's been created.
+ * You could create and destroy additional Widget_t's
+ * at any time later during run. 
+ * @param *main             - pointer to the main Xputty struct
+ * @return void 
+ */
+
+void run_embedded(Xputty *main) {
+
+    XEvent xev;
+    int ew = -1;
+
+    while (XPending(main->dpy) > 0) {
+        XNextEvent(main->dpy, &xev);
+        ew = childlist_find_widget(main->childlist, xev.xany.window);
+        if(ew  >= 0) {
+            Widget_t * w = main->childlist->childs[ew];
+            w->event_callback(w, &xev, main, NULL);
+        }
+        switch (xev.type) {
+        case ButtonPress:
+            if(main->hold_grab != NULL) {
+                bool is_item = False;
+                int i = main->hold_grab->childlist->elem-1;
+                for(;i>-1;i--) {
+                    Widget_t *w = main->hold_grab->childlist->childs[i];
+                    if (xev.xbutton.window == w->widget) {
+                        is_item = True;
+                        break;
+                    }
+                }
+                if (!is_item) {
+                    XUngrabPointer(main->hold_grab->dpy,CurrentTime);
+                    widget_hide(main->hold_grab);
+                    main->hold_grab = NULL;
+                }
+            }
+        break;
         }
     }
 }

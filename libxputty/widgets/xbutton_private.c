@@ -79,6 +79,49 @@ void _pattern_in(Widget_t *w, Color_state st, int height) {
 }
 
 /**
+ * @brief _draw_image_button       - internal draw the knob from image
+ * to the buffer
+ * @param *w                     - pointer to the Widget_t knob
+ * @return void
+ */
+
+void _draw_image_button(Widget_t *w, int width_t, int height_t) {
+    int width = cairo_xlib_surface_get_width(w->image);
+    int height = cairo_xlib_surface_get_height(w->image);
+    double x = (double)width_t/(double)height;
+    double y = (double)height/(double)width_t;
+    double buttonstate = adj_get_state(w->adj);
+    int findex = (int)(((width/height)-1) * buttonstate);
+    cairo_scale(w->crb, x,x);
+    cairo_set_source_surface (w->crb, w->image, -height*findex, 0);
+    cairo_rectangle(w->crb,0, 0, height, height);
+    cairo_fill(w->crb);
+    cairo_scale(w->crb, y,y);
+    cairo_text_extents_t extents;
+    if(w->state==0) {
+        use_fg_color_scheme(w, NORMAL_);
+    } else if(w->state==1 && ! (int)w->adj_y->value) {
+        use_fg_color_scheme(w, PRELIGHT_);
+    } else if(w->state==1) {
+        use_fg_color_scheme(w, ACTIVE_);
+    } else if(w->state==2) {
+        use_fg_color_scheme(w, SELECTED_);
+    } else if(w->state==3) {
+        use_fg_color_scheme(w, ACTIVE_);
+    }
+
+    use_text_color_scheme(w, get_color_state(w));
+    cairo_set_font_size (w->crb, (width_t*0.5)/3);
+    cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
+                               CAIRO_FONT_WEIGHT_BOLD);
+    cairo_text_extents(w->crb,w->label , &extents);
+
+    cairo_move_to (w->crb, (width_t*0.5)-(extents.width/2), height_t);
+    cairo_show_text(w->crb, w->label);
+    cairo_new_path (w->crb);
+}
+
+/**
  * @brief _draw_button           - internal draw the button to the buffer
  * @param *w_                    - void pointer to the Widget_t button
  * @param *user_data             - void pointer to attached user_data
@@ -93,70 +136,75 @@ void _draw_button(void *w_, void* user_data) {
     int width = attrs.width-2;
     int height = attrs.height-2;
     if (attrs.map_state != IsViewable) return;
-    if (!w->state && (int)w->adj_y->value)
-        w->state = 3;
+    if (w->image) {
+        _draw_image_button(w, width, height);
+    } else {
+        if (!w->state && (int)w->adj_y->value)
+            w->state = 3;
 
-    _rounded_rectangle(w->crb,2.0, 2.0, width, height);
+        _rounded_rectangle(w->crb,2.0, 2.0, width, height);
 
-    if(w->state==0) {
-        cairo_set_line_width(w->crb, 1.0);
-        _pattern_out(w, NORMAL_, height);
-        cairo_fill_preserve(w->crb);
-        use_bg_color_scheme(w, PRELIGHT_);
-    } else if(w->state==1) {
-        _pattern_out(w, PRELIGHT_, height);
-        cairo_fill_preserve(w->crb);
-        cairo_set_line_width(w->crb, 1.5);
-        use_bg_color_scheme(w, PRELIGHT_);
-    } else if(w->state==2) {
-        _pattern_in(w, SELECTED_, height);
-        cairo_fill_preserve(w->crb);
-        cairo_set_line_width(w->crb, 1.0);
-        use_bg_color_scheme(w, PRELIGHT_);
-    } else if(w->state==3) {
-        _pattern_in(w, ACTIVE_, height);
-        cairo_fill_preserve(w->crb);
-        cairo_set_line_width(w->crb, 1.0);
-        use_bg_color_scheme(w, PRELIGHT_);
+        if(w->state==0) {
+            cairo_set_line_width(w->crb, 1.0);
+            _pattern_out(w, NORMAL_, height);
+            cairo_fill_preserve(w->crb);
+            use_bg_color_scheme(w, PRELIGHT_);
+        } else if(w->state==1) {
+            _pattern_out(w, PRELIGHT_, height);
+            cairo_fill_preserve(w->crb);
+            cairo_set_line_width(w->crb, 1.5);
+            use_bg_color_scheme(w, PRELIGHT_);
+        } else if(w->state==2) {
+            _pattern_in(w, SELECTED_, height);
+            cairo_fill_preserve(w->crb);
+            cairo_set_line_width(w->crb, 1.0);
+            use_bg_color_scheme(w, PRELIGHT_);
+        } else if(w->state==3) {
+            _pattern_in(w, ACTIVE_, height);
+            cairo_fill_preserve(w->crb);
+            cairo_set_line_width(w->crb, 1.0);
+            use_bg_color_scheme(w, PRELIGHT_);
+        }
+        cairo_stroke(w->crb); 
+
+        if(w->state==2) {
+            _rounded_rectangle(w->crb,4.0, 4.0, width, height);
+            cairo_stroke(w->crb);
+            _rounded_rectangle(w->crb,3.0, 3.0, width, height);
+            cairo_stroke(w->crb);
+        } else if (w->state==3) {
+            _rounded_rectangle(w->crb,3.0, 3.0, width, height);
+            cairo_stroke(w->crb);
+        }
+
+        float offset = 0.0;
+        cairo_text_extents_t extents;
+        if(w->state==0) {
+            use_fg_color_scheme(w, NORMAL_);
+        } else if(w->state==1 && ! (int)w->adj_y->value) {
+            use_fg_color_scheme(w, PRELIGHT_);
+            offset = 1.0;
+        } else if(w->state==1) {
+            use_fg_color_scheme(w, ACTIVE_);
+            offset = 2.0;
+        } else if(w->state==2) {
+            use_fg_color_scheme(w, SELECTED_);
+            offset = 2.0;
+        } else if(w->state==3) {
+            use_fg_color_scheme(w, ACTIVE_);
+            offset = 1.0;
+        }
+
+        use_text_color_scheme(w, get_color_state(w));
+        cairo_set_font_size (w->crb, height/2.2);
+        cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
+                                   CAIRO_FONT_WEIGHT_BOLD);
+        cairo_text_extents(w->crb,w->label , &extents);
+
+        cairo_move_to (w->crb, (width-extents.width)*0.5 +offset, (height+extents.height)*0.5 +offset);
+        cairo_show_text(w->crb, w->label);
+        cairo_new_path (w->crb);
     }
-    cairo_stroke(w->crb); 
-
-    if(w->state==2) {
-        _rounded_rectangle(w->crb,4.0, 4.0, width, height);
-        cairo_stroke(w->crb);
-        _rounded_rectangle(w->crb,3.0, 3.0, width, height);
-        cairo_stroke(w->crb);
-    } else if (w->state==3) {
-        _rounded_rectangle(w->crb,3.0, 3.0, width, height);
-        cairo_stroke(w->crb);
-    }
-
-    float offset = 0.0;
-    cairo_text_extents_t extents;
-    if(w->state==0) {
-        use_fg_color_scheme(w, NORMAL_);
-    } else if(w->state==1 && ! (int)w->adj_y->value) {
-        use_fg_color_scheme(w, PRELIGHT_);
-        offset = 1.0;
-    } else if(w->state==1) {
-        use_fg_color_scheme(w, ACTIVE_);
-        offset = 2.0;
-    } else if(w->state==2) {
-        use_fg_color_scheme(w, SELECTED_);
-        offset = 2.0;
-    } else if(w->state==3) {
-        use_fg_color_scheme(w, ACTIVE_);
-        offset = 1.0;
-    }
-    use_text_color_scheme(w, get_color_state(w));
-    cairo_set_font_size (w->crb, 12.0);
-    cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
-                               CAIRO_FONT_WEIGHT_BOLD);
-    cairo_text_extents(w->crb,w->label , &extents);
-
-    cairo_move_to (w->crb, (width-extents.width)*0.5 +offset, (height+extents.height)*0.5 +offset);
-    cairo_show_text(w->crb, w->label);
-    cairo_new_path (w->crb);
 }
 
 /*---------------------------------------------------------------------
@@ -176,9 +224,6 @@ void _draw_button(void *w_, void* user_data) {
 void _button_pressed(void *w_, void* button, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     adj_set_value(w->adj_y, 1.0);
-   // expose_widget(w_);
-    w->data = 1;
-    w->func.user_callback(w_, &w->data);
 }
 
 /**
@@ -193,9 +238,6 @@ void _button_released(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (w->has_pointer) w->state=1;
     adj_set_value(w->adj_y, 0.0);
-   // expose_widget(w_);
-    w->data = 0;
-    w->func.user_callback(w_, &w->data);
 }
 
 /*---------------------------------------------------------------------
@@ -227,15 +269,17 @@ void _toggle_button_pressed(void *w_, void* button, void* user_data) {
 
 void _toggle_button_released(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
+    XButtonEvent *xbutton = (XButtonEvent*)button_;
     if (w->has_pointer) {
-        float value = w->adj_y->value ? 0.0 : 1.0;
-        adj_set_value(w->adj_y, value);
-        w->state = (int) w->adj_y->value ? 3 : 1;
+        float value = w->adj->value;
+        if (xbutton->button == Button1) value = value ? 
+                w->adj->min_value : w->adj->max_value; 
+        if (xbutton->button == Button4) value = w->adj->max_value; 
+        if (xbutton->button == Button5) value = w->adj->min_value; 
+        adj_set_value(w->adj, value);
+        w->state = (int) w->adj->value ? 3 : 1;
     } else {
-        w->state = (int) w->adj_y->value ? 3 : 0;
-        w->data = (int) w->adj_y->value;
+        w->state = (int) w->adj->value ? 3 : 0;
     }
     expose_widget(w_);
-    w->data = (int) w->adj_y->value;
-    w->func.user_callback(w_, &w->data);
 }

@@ -47,7 +47,7 @@ void _scroll_event(Widget_t * wid, int direction) {
                 if (value<adj->min_value) value = adj->max_value;
             break;
             case (CL_TOGGLE):
-                value = adj->value ? 1.0 : 0.0;
+               // value = adj->value ? 1.0 : 0.0;
             break;
             default:
             break;
@@ -188,17 +188,24 @@ void _propagate_child_expose(Widget_t *wid) {
 
 void _check_keymap (void *w_ ,XKeyEvent xkey) {
     Widget_t *wid = (Widget_t*)w_;
-
+    int i = 0;
+    for(;i<wid->childlist->elem;i++) {
+        Widget_t *w = wid->childlist->childs[i];
+        if(w->has_focus) {
+             wid=w;
+            break;
+        }
+    }
     int nk = key_mapping(wid->dpy, &xkey);
     if (nk) {
         switch (nk) {
-            case 3: _set_adj_value(w_, false, 1);
+            case 3: _set_adj_value(wid, false, 1);
             break;
-            case 4: _set_adj_value(w_, true, 1);
+            case 4: _set_adj_value(wid, true, 1);
             break;
-            case 5: _set_adj_value(w_, false, -1);
+            case 5: _set_adj_value(wid, false, -1);
             break;
-            case 6: _set_adj_value(w_, true, -1);
+            case 6: _set_adj_value(wid, true, -1);
             break;
             default:
             break;

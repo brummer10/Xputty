@@ -64,6 +64,7 @@ void childlist_add_child(Childlist_t *childlist, Widget_t *child) {
          _childlist_add_elem(childlist);
      }
     childlist->childs[childlist->elem] = child;
+    debug_print("Childlist_t  add_child\n");
     if (!child->is_widget) {
         Atom WM_DELETE_WINDOW;
         WM_DELETE_WINDOW = XInternAtom(child->dpy, "WM_DELETE_WINDOW", True);
