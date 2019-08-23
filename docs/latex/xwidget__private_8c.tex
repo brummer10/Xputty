@@ -16,8 +16,12 @@ void \hyperlink{xwidget__private_8c_a26c822f013ec5d3d606d0e9648bf1634}{\+\_\+scr
 \begin{DoxyCompactList}\small\item\em \+\_\+scroll\+\_\+event -\/ internal check which adjustment needs update \end{DoxyCompactList}\item 
 void \hyperlink{xwidget__private_8c_a281115cc04cefd9ff84d2a169515ef69}{\+\_\+toggle\+\_\+event} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid)
 \begin{DoxyCompactList}\small\item\em \+\_\+toggle\+\_\+event -\/ internal check which adjustment needs update \end{DoxyCompactList}\item 
+void \hyperlink{xwidget__private_8c_a3fa824e7c223fab91f65dbdcd3e07f18}{\+\_\+check\+\_\+enum} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid, X\+Button\+Event $\ast$xbutton)
+\begin{DoxyCompactList}\small\item\em \+\_\+check\+\_\+enum -\/ internal check which adjustment needs update \end{DoxyCompactList}\item 
 void \hyperlink{xwidget__private_8c_a58ae554632b1c9f7afc73aa159a1dc0c}{\+\_\+button\+\_\+press} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid, X\+Button\+Event $\ast$xbutton, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em \+\_\+button\+\_\+press -\/ internal check which button is pressed \end{DoxyCompactList}\item 
+void \hyperlink{xwidget__private_8c_a4268fe28baeb0a66234a976f14c6975b}{\+\_\+check\+\_\+grab} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid, X\+Button\+Event $\ast$xbutton, \hyperlink{structXputty}{Xputty} $\ast$main)
+\begin{DoxyCompactList}\small\item\em \+\_\+check\+\_\+grab -\/ internal check if menu is pressed \end{DoxyCompactList}\item 
 void \hyperlink{xwidget__private_8c_aaaac44f0d2bcf2ddc3f76b79e74fb3b6}{\+\_\+propagate\+\_\+child\+\_\+expose} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid)
 \begin{DoxyCompactList}\small\item\em \+\_\+propagate\+\_\+childs -\/ send expose to child window \end{DoxyCompactList}\item 
 void \hyperlink{xwidget__private_8c_ae2aeefa7b35ff7e10a148e8438a12dc9}{\+\_\+check\+\_\+keymap} (void $\ast$w\+\_\+, X\+Key\+Event xkey)
@@ -54,6 +58,48 @@ void \hyperlink{xwidget__private_8c_a211aa2f671aa4c2885bc05e033eef8c4}{\+\_\+res
 {\em $\ast$xbutton} & -\/ pointer to the X\+Button\+Event \\
 \hline
 {\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget__private_8c_a3fa824e7c223fab91f65dbdcd3e07f18}\label{xwidget__private_8c_a3fa824e7c223fab91f65dbdcd3e07f18}} 
+\index{xwidget\+\_\+private.\+c@{xwidget\+\_\+private.\+c}!\+\_\+check\+\_\+enum@{\+\_\+check\+\_\+enum}}
+\index{\+\_\+check\+\_\+enum@{\+\_\+check\+\_\+enum}!xwidget\+\_\+private.\+c@{xwidget\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+check\+\_\+enum()}{\_check\_enum()}}
+{\footnotesize\ttfamily void \+\_\+check\+\_\+enum (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{wid,  }\item[{X\+Button\+Event $\ast$}]{xbutton }\end{DoxyParamCaption})}
+
+
+
+\+\_\+check\+\_\+enum -\/ internal check which adjustment needs update 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$wid} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} receiving a event \\
+\hline
+{\em $\ast$xbutton} & -\/ pointer to the X\+Button\+Event \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget__private_8c_a4268fe28baeb0a66234a976f14c6975b}\label{xwidget__private_8c_a4268fe28baeb0a66234a976f14c6975b}} 
+\index{xwidget\+\_\+private.\+c@{xwidget\+\_\+private.\+c}!\+\_\+check\+\_\+grab@{\+\_\+check\+\_\+grab}}
+\index{\+\_\+check\+\_\+grab@{\+\_\+check\+\_\+grab}!xwidget\+\_\+private.\+c@{xwidget\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+check\+\_\+grab()}{\_check\_grab()}}
+{\footnotesize\ttfamily void \+\_\+check\+\_\+grab (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{wid,  }\item[{X\+Button\+Event $\ast$}]{xbutton,  }\item[{\hyperlink{structXputty}{Xputty} $\ast$}]{main }\end{DoxyParamCaption})}
+
+
+
+\+\_\+check\+\_\+grab -\/ internal check if menu is pressed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$wid} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} receiving a event \\
+\hline
+{\em $\ast$xbutton} & -\/ pointer to the X\+Button\+Event \\
+\hline
+{\em $\ast$main} & -\/ pointer to main struct \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

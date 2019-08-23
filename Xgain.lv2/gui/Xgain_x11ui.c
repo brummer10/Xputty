@@ -2,6 +2,7 @@
 #include "lv2/lv2plug.in/ns/lv2core/lv2.h"
 #include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
 
+// xwidgets.h includes xputty.h and all defined widgets from Xputty
 #include "xwidgets.h"
 
 #include "./Xgain.h"
@@ -84,31 +85,50 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
         free(ui);
         return NULL;
     }
-
+    // init Xputty
     main_init(&ui->main);
+    // create the toplevel Window on the parentXwindow provided by the host
     ui->win = create_window(&ui->main, (Window)ui->parentXwindow, 0, 0, 230, 200);
+    // setup a background image to use on the toplevel window
     widget_get_png(ui->win, LDVAR(pedal_png));
+    // connect the expose func
     ui->win->func.expose_callback = draw_window;
+    // create a toggle button
     ui->widget[0] = add_toggle_button(ui->win, "Power", 40, 60, 80, 90);
+    // setup a image to use for the toggle button
     widget_get_png(ui->widget[0], LDVAR(pswitch_png));
+    // set resize mode for the toggle button to Aspect ratio
     ui->widget[0]->scale.gravity = ASPECT;
+    // store the Port Index in the Widget_t data field
     ui->widget[0]->data = BYPASS;
+    // store a pointer to the X11_UI struct in the parent_struct Widget_t field
     ui->widget[0]->parent_struct = ui;
+    // connect the value changed callback with the write_function
     ui->widget[0]->func.value_changed_callback = value_changed;
+    // create a knob widget
     ui->widget[1] = add_knob(ui->win, "Gain", 120, 60, 80, 90);
+    // setup a image to be used for the knob
     widget_get_png(ui->widget[1], LDVAR(knob_png));
+    // store the port index in the Widget_t data field
     ui->widget[1]->data = GAIN;
+    // store a pointer to the X11_UI struct in the parent_struct Widget_t field
     ui->widget[1]->parent_struct = ui;
+    // set the knob adjustment to the needed range
     set_adjustment(ui->widget[1]->adj,0.0, 0.0, -40.0, 40.0, 0.1, CL_CONTINUOS);
+    // connect the value changed callback with the write_function
     ui->widget[1]->func.value_changed_callback = value_changed;
+    // finally map all Widgets on screen
     widget_show_all(ui->win);
-
+    // set the widget pointer to the X11 Window from the toplevel Widget_t
     *widget = (void*)ui->win->widget;
+    // request to resize the parentXwindow to the size of the toplevel Widget_t
     if (resize){
         ui->resize = resize;
         resize->ui_resize(resize->handle, 230, 200);
     }
+    // store pointer to the host controller
     ui->controller = controller;
+    // store pointer to the host write function
     ui->write_function = write_function;
     
     return (LV2UI_Handle)ui;
@@ -117,6 +137,7 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
 // cleanup after usage
 static void cleanup(LV2UI_Handle handle) {
     X11_UI* ui = (X11_UI*)handle;
+    // Xputty free all memory used
     main_quit(&ui->main);
     free(ui);
 }
@@ -135,6 +156,8 @@ static void port_event(LV2UI_Handle handle, uint32_t port_index,
     float value = *(float*)buffer;
     for (int i=0;i<CONTROLS;i++) {
         if (port_index == ui->widget[i]->data) {
+            // Xputty check if the new value differs from the old one
+            // and set new one, when needed
             check_value_changed(ui->widget[i]->adj, &value);
         }
     }
@@ -143,6 +166,7 @@ static void port_event(LV2UI_Handle handle, uint32_t port_index,
 // LV2 idle interface to host
 static int ui_idle(LV2UI_Handle handle) {
     X11_UI* ui = (X11_UI*)handle;
+    // Xputty event loop setup to run one cycle when called
     run_embedded(&ui->main);
     return 0;
 }
@@ -150,6 +174,7 @@ static int ui_idle(LV2UI_Handle handle) {
 // LV2 resize interface to host
 static int ui_resize(LV2UI_Feature_Handle handle, int w, int h) {
     X11_UI* ui = (X11_UI*)handle;
+    // Xputty sends configure event to the toplevel widget to resize itself
     if (ui) send_configure_event(ui->win,0, 0, w, h);
     return 0;
 }

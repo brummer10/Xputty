@@ -92,10 +92,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:a484645d624d9e9eff0288f8d5583ff5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">main_init - open the Display and init the main-&gt;childlist. Also it set the bool run to true. This one will be used to terminate the main event loop. <a class="el" href="xputty_8c.html#a484645d624d9e9eff0288f8d5583ff5e" title="main_init - open the Display and init the main-&gt;childlist. Also it set the bool run to true...">main_init()</a> should be called directly after declaration of <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a>. Any <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> which would be created afterwards will be added to the list. This list is used to check if a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is valid. When a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> call <a class="el" href="xwidget_8c.html#a1e367c7f3e7dcd71fbbb6125fc1b227a" title="quit_widget - remove a widget from the processing loop ">quit_widget()</a> it will be removed from the list. On <a class="el" href="xputty_8c.html#a0d4eda902b4de6f7a30e8d869f842fda" title="main_quit - destroy all remaining Widget_t&#39;s from the main-&gt;childlist. Free all resources which may b...">main_quit()</a> any remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> from this list will be destroyed, to ensure that we leave the memory clean. This list is also used to check which Window receive a XEvent.  <a href="#a484645d624d9e9eff0288f8d5583ff5e">More...</a><br /></td></tr>
 <tr class="separator:a484645d624d9e9eff0288f8d5583ff5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb548ea64f852a7c94473a595e67d69f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8c.html#abb548ea64f852a7c94473a595e67d69f">main_run</a> (<a class="el" href="structXputty.html">Xputty</a> *main)</td></tr>
-<tr class="memdesc:abb548ea64f852a7c94473a595e67d69f"><td class="mdescLeft">&#160;</td><td class="mdescRight">main_run - the main event loop. I should be start after your <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s been created. You could create and destroy additional <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s at any time later during run.  <a href="#abb548ea64f852a7c94473a595e67d69f">More...</a><br /></td></tr>
+<tr class="memdesc:abb548ea64f852a7c94473a595e67d69f"><td class="mdescLeft">&#160;</td><td class="mdescRight">main_run - the main event loop. It should be start after your <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s been created. You could create and destroy additional <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s at any time later during run.  <a href="#abb548ea64f852a7c94473a595e67d69f">More...</a><br /></td></tr>
 <tr class="separator:abb548ea64f852a7c94473a595e67d69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad265582bb835c54e689b2c354e8dd865"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8c.html#ad265582bb835c54e689b2c354e8dd865">run_embedded</a> (<a class="el" href="structXputty.html">Xputty</a> *main)</td></tr>
+<tr class="memdesc:ad265582bb835c54e689b2c354e8dd865"><td class="mdescLeft">&#160;</td><td class="mdescRight">run_embedded - the main event loop to run embedded UI's. It should be start after your <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s been created. You could create and destroy additional <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s at any time later during run.  <a href="#ad265582bb835c54e689b2c354e8dd865">More...</a><br /></td></tr>
+<tr class="separator:ad265582bb835c54e689b2c354e8dd865"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d4eda902b4de6f7a30e8d869f842fda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xputty_8c.html#a0d4eda902b4de6f7a30e8d869f842fda">main_quit</a> (<a class="el" href="structXputty.html">Xputty</a> *main)</td></tr>
-<tr class="memdesc:a0d4eda902b4de6f7a30e8d869f842fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">main_quit - destroy all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s from the main-&gt;childlist. Free all resources which may be allocated between init and quit. It should be called after <a class="el" href="xputty_8c.html#abb548ea64f852a7c94473a595e67d69f" title="main_run - the main event loop. I should be start after your Widget_t&#39;s been created. You could create and destroy additional Widget_t&#39;s at any time later during run. ">main_run()</a>;  <a href="#a0d4eda902b4de6f7a30e8d869f842fda">More...</a><br /></td></tr>
+<tr class="memdesc:a0d4eda902b4de6f7a30e8d869f842fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">main_quit - destroy all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s from the main-&gt;childlist. Free all resources which may be allocated between init and quit. It should be called after <a class="el" href="xputty_8c.html#abb548ea64f852a7c94473a595e67d69f" title="main_run - the main event loop. It should be start after your Widget_t&#39;s been created. You could create and destroy additional Widget_t&#39;s at any time later during run. ">main_run()</a>;  <a href="#a0d4eda902b4de6f7a30e8d869f842fda">More...</a><br /></td></tr>
 <tr class="separator:a0d4eda902b4de6f7a30e8d869f842fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -142,7 +145,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>main_quit - destroy all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s from the main-&gt;childlist. Free all resources which may be allocated between init and quit. It should be called after <a class="el" href="xputty_8c.html#abb548ea64f852a7c94473a595e67d69f" title="main_run - the main event loop. I should be start after your Widget_t&#39;s been created. You could create and destroy additional Widget_t&#39;s at any time later during run. ">main_run()</a>; </p>
+<p>main_quit - destroy all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s from the main-&gt;childlist. Free all resources which may be allocated between init and quit. It should be called after <a class="el" href="xputty_8c.html#abb548ea64f852a7c94473a595e67d69f" title="main_run - the main event loop. It should be start after your Widget_t&#39;s been created. You could create and destroy additional Widget_t&#39;s at any time later during run. ">main_run()</a>; </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*main</td><td>- pointer to the main <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> struct </td></tr>
@@ -169,7 +172,34 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>main_run - the main event loop. I should be start after your <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s been created. You could create and destroy additional <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s at any time later during run. </p>
+<p>main_run - the main event loop. It should be start after your <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s been created. You could create and destroy additional <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s at any time later during run. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*main</td><td>- pointer to the main <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> struct </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ad265582bb835c54e689b2c354e8dd865"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad265582bb835c54e689b2c354e8dd865">&#9670;&nbsp;</a></span>run_embedded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void run_embedded </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structXputty.html">Xputty</a> *&#160;</td>
+          <td class="paramname"><em>main</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>run_embedded - the main event loop to run embedded UI's. It should be start after your <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s been created. You could create and destroy additional <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s at any time later during run. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*main</td><td>- pointer to the main <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> struct </td></tr>

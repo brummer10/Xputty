@@ -24,6 +24,8 @@ var searchData=
   ['color_5fscheme',['color_scheme',['../structXputty.html#aab9298d9341e315b1aa4ac16188c699e',1,'Xputty']]],
   ['color_5fstate',['Color_state',['../xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771',1,'xcolor.h']]],
   ['colors',['Colors',['../structColors.html',1,'']]],
+  ['combobox_5fadd_5fentry',['combobox_add_entry',['../xcombobox_8c.html#a83ae77edb79a8a1cedf4008dce611d85',1,'combobox_add_entry(Widget_t *wid, const char *label):&#160;xcombobox.c'],['../xcombobox_8h.html#a83ae77edb79a8a1cedf4008dce611d85',1,'combobox_add_entry(Widget_t *wid, const char *label):&#160;xcombobox.c']]],
+  ['combobox_5fset_5factive_5fentry',['combobox_set_active_entry',['../xcombobox_8c.html#a12e9201cffb573b702ff7040bb0ba53f',1,'combobox_set_active_entry(Widget_t *w, int active):&#160;xcombobox.c'],['../xcombobox_8h.html#a12e9201cffb573b702ff7040bb0ba53f',1,'combobox_set_active_entry(Widget_t *w, int active):&#160;xcombobox.c']]],
   ['configure_5fcallback',['configure_callback',['../structFunc__t.html#a7876670d3bb74b11ab93fe81908d04b0',1,'Func_t']]],
   ['configure_5fevent',['configure_event',['../xwidget_8c.html#acf8c7ef79c60253a687116d3783e1c67',1,'xwidget.c']]],
   ['cr',['cr',['../structWidget__t.html#a26594f6ffabe98fc08f9207150fc9417',1,'Widget_t']]],

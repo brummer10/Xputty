@@ -113,3 +113,6 @@ $(NAME) : clean $(RES_OBJECTS)
 nogui : clean
 	$(CXX) $(CXXFLAGS) $(OBJECTS) $(LDFLAGS) -o $(NAME).so
 	$(STRIP) -s -x -X -R .note.ABI-tag $(NAME).so
+
+doc:
+	#pass

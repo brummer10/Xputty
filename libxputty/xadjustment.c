@@ -137,7 +137,7 @@ void adj_set_start_value(void *w) {
 
 void adj_set_state(void *w, float x, float y) {
     Widget_t * wid = (Widget_t*)w;
-    const float scaling = 0.5;
+    const float scaling = 1.0;
     if(wid->adj_x) {
         float value= wid->adj_x->value;
         switch(wid->adj_x->type) {

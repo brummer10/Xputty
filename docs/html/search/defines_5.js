@@ -7,6 +7,8 @@ var searchData=
   ['xchildlist_5fh_5f',['XCHILDLIST_H_',['../xchildlist_8h.html#a396cfc2326c57bf038fc8b40d1fc7630',1,'xchildlist.h']]],
   ['xchildlist_5fprivate_5fh_5f',['XCHILDLIST_PRIVATE_H_',['../xchildlist__private_8h.html#a60bfdfb9d36bb59620e186c0201ece15',1,'xchildlist_private.h']]],
   ['xcolor_5fh_5f',['XCOLOR_H_',['../xcolor_8h.html#ad574302aff402f1aeffabc23a0ff99b3',1,'xcolor.h']]],
+  ['xcombobox_5fh_5f',['XCOMBOBOX_H_',['../xcombobox_8h.html#a63173d7330b03268a05eb6ba0a307663',1,'xcombobox.h']]],
+  ['xcombobox_5fprivate_5fh_5f',['XCOMBOBOX_PRIVATE_H_',['../xcombobox__private_8h.html#ad6de66f60766accdf063096ee539bc54',1,'xcombobox_private.h']]],
   ['xknob_5fh_5f',['XKNOB_H_',['../xknob_8h.html#aa8a36113876143fb943214e9216f62ab',1,'xknob.h']]],
   ['xknob_5fprivate_5fh_5f',['XKNOB_PRIVATE_H_',['../xknob__private_8h.html#a07bda226f2f31c39a3c17361e5a831e9',1,'xknob_private.h']]],
   ['xmenu_5fh_5f',['XMENU_H_',['../xmenu_8h.html#ab50687acede91baaceea9c131caa0d1e',1,'xmenu.h']]],

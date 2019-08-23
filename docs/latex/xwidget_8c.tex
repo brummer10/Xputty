@@ -19,6 +19,10 @@ void \hyperlink{xwidget_8c_abdabca284aa8866f1f242b6857312e3b}{destroy\+\_\+widge
 \begin{DoxyCompactList}\small\item\em destroy\+\_\+widget -\/ destroy a widget \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_acf8c7ef79c60253a687116d3783e1c67}{configure\+\_\+event} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em configure\+\_\+event -\/ default callback when a widget receive a Configure\+Notify \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a73cfd5d35a86fde690c00a74f6e34759}{widget\+\_\+reset\+\_\+scale} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em widget\+\_\+reset\+\_\+scale -\/ reset scaling mode after image surface \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a0e071df83f5642d90f81dc1c246db9e1}{widget\+\_\+set\+\_\+scale} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em widget\+\_\+set\+\_\+scale -\/ set scaling mode for image surface \end{DoxyCompactList}\item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8c_a5528f841e6b5f2ef62b3b10bfa8bf20f}{create\+\_\+window} (\hyperlink{structXputty}{Xputty} $\ast$app, Window win, int x, int y, int width, int height)
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+window -\/ create a Window \end{DoxyCompactList}\item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8c_adb0c2b832c062c6ae833f649654d1c25}{create\+\_\+widget} (\hyperlink{structXputty}{Xputty} $\ast$app, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, int x, int y, int width, int height)
@@ -29,6 +33,8 @@ void \hyperlink{xwidget_8c_ab00e7f2485e08237c865e96ba56e63e6}{widget\+\_\+hide} 
 \begin{DoxyCompactList}\small\item\em widget\+\_\+hide -\/ unmap/hide widget \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_aae228a75c93bb0cb9ad57ffaf4d25922}{widget\+\_\+show\+\_\+all} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em widget\+\_\+show\+\_\+all -\/ map/show widget with all childs \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_aeaae876ce057c32f1d0b31c041fb43e4}{pop\+\_\+widget\+\_\+show\+\_\+all} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em pop\+\_\+widget\+\_\+show\+\_\+all -\/ map/show popup widget with all childs \end{DoxyCompactList}\item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xwidget_8c_add6f77e7910eea8adf6ff32563bc7904}{get\+\_\+toplevel\+\_\+widget} (\hyperlink{structXputty}{Xputty} $\ast$main)
 \begin{DoxyCompactList}\small\item\em $\ast$get\+\_\+toplevel\+\_\+widget -\/ get pointer to the top level \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a17f2f3effd46532c596511abcfb5058e}{expose\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
@@ -188,6 +194,24 @@ key\+\_\+mapping -\/ modifier key\textquotesingle{}s mapped to a integer value
 \begin{DoxyReturn}{Returns}
 int -\/ value (1-\/10) or 0 when not mapped 
 \end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_aeaae876ce057c32f1d0b31c041fb43e4}\label{xwidget_8c_aeaae876ce057c32f1d0b31c041fb43e4}} 
+\index{xwidget.\+c@{xwidget.\+c}!pop\+\_\+widget\+\_\+show\+\_\+all@{pop\+\_\+widget\+\_\+show\+\_\+all}}
+\index{pop\+\_\+widget\+\_\+show\+\_\+all@{pop\+\_\+widget\+\_\+show\+\_\+all}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{pop\+\_\+widget\+\_\+show\+\_\+all()}{pop\_widget\_show\_all()}}
+{\footnotesize\ttfamily void pop\+\_\+widget\+\_\+show\+\_\+all (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+pop\+\_\+widget\+\_\+show\+\_\+all -\/ map/show popup widget with all childs 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \mbox{\Hypertarget{xwidget_8c_a4d835af5b56eb13ed7bd4602ce7ccd92}\label{xwidget_8c_a4d835af5b56eb13ed7bd4602ce7ccd92}} 
 \index{xwidget.\+c@{xwidget.\+c}!quit@{quit}}
 \index{quit@{quit}!xwidget.\+c@{xwidget.\+c}}
@@ -301,6 +325,42 @@ widget\+\_\+hide -\/ unmap/hide widget
 
 \begin{DoxyParams}{Parameters}
 {\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to unmap \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a73cfd5d35a86fde690c00a74f6e34759}\label{xwidget_8c_a73cfd5d35a86fde690c00a74f6e34759}} 
+\index{xwidget.\+c@{xwidget.\+c}!widget\+\_\+reset\+\_\+scale@{widget\+\_\+reset\+\_\+scale}}
+\index{widget\+\_\+reset\+\_\+scale@{widget\+\_\+reset\+\_\+scale}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{widget\+\_\+reset\+\_\+scale()}{widget\_reset\_scale()}}
+{\footnotesize\ttfamily void widget\+\_\+reset\+\_\+scale (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+widget\+\_\+reset\+\_\+scale -\/ reset scaling mode after image surface 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a0e071df83f5642d90f81dc1c246db9e1}\label{xwidget_8c_a0e071df83f5642d90f81dc1c246db9e1}} 
+\index{xwidget.\+c@{xwidget.\+c}!widget\+\_\+set\+\_\+scale@{widget\+\_\+set\+\_\+scale}}
+\index{widget\+\_\+set\+\_\+scale@{widget\+\_\+set\+\_\+scale}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{widget\+\_\+set\+\_\+scale()}{widget\_set\_scale()}}
+{\footnotesize\ttfamily void widget\+\_\+set\+\_\+scale (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+widget\+\_\+set\+\_\+scale -\/ set scaling mode for image surface 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

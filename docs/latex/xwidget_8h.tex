@@ -63,6 +63,8 @@ enum \hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391ade}{Gravity} \{ \newli
 \begin{DoxyCompactList}\small\item\em $\ast$create\+\_\+widget -\/ create a widget \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_a7378f213e6159eb59b98467198844086}{widget\+\_\+show} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em widget\+\_\+show -\/ map/show widget \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8h_aeaae876ce057c32f1d0b31c041fb43e4}{pop\+\_\+widget\+\_\+show\+\_\+all} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em pop\+\_\+widget\+\_\+show\+\_\+all -\/ map/show popup widget with all childs \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_ab00e7f2485e08237c865e96ba56e63e6}{widget\+\_\+hide} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em widget\+\_\+hide -\/ unmap/hide widget \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_aae228a75c93bb0cb9ad57ffaf4d25922}{widget\+\_\+show\+\_\+all} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
@@ -75,6 +77,10 @@ void \hyperlink{xwidget_8h_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget} 
 \begin{DoxyCompactList}\small\item\em quit\+\_\+widget -\/ remove a widget from the processing loop \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_ab45a54d3dee60783a5afe9c236f54a04}{transparent\+\_\+draw} (void $\ast$wid, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em transparent\+\_\+draw -\/ copy parent surface to child surface \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8h_a73cfd5d35a86fde690c00a74f6e34759}{widget\+\_\+reset\+\_\+scale} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em widget\+\_\+reset\+\_\+scale -\/ reset scaling mode after image surface \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8h_a0e071df83f5642d90f81dc1c246db9e1}{widget\+\_\+set\+\_\+scale} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em widget\+\_\+set\+\_\+scale -\/ set scaling mode for image surface \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_abdabca284aa8866f1f242b6857312e3b}{destroy\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{structXputty}{Xputty} $\ast$main)
 \begin{DoxyCompactList}\small\item\em destroy\+\_\+widget -\/ destroy a widget \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8h_a4549cfc76e73a5d56b50f0d762287436}{widget\+\_\+event\+\_\+loop} (void $\ast$w\+\_\+, void $\ast$event, \hyperlink{structXputty}{Xputty} $\ast$main, void $\ast$user\+\_\+data)
@@ -358,6 +364,24 @@ int -\/ value (1-\/10) or 0 when not mapped
 \begin{DoxyReturn}{Returns}
 int -\/ value (1-\/10) or 0 when not mapped 
 \end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8h_aeaae876ce057c32f1d0b31c041fb43e4}\label{xwidget_8h_aeaae876ce057c32f1d0b31c041fb43e4}} 
+\index{xwidget.\+h@{xwidget.\+h}!pop\+\_\+widget\+\_\+show\+\_\+all@{pop\+\_\+widget\+\_\+show\+\_\+all}}
+\index{pop\+\_\+widget\+\_\+show\+\_\+all@{pop\+\_\+widget\+\_\+show\+\_\+all}!xwidget.\+h@{xwidget.\+h}}
+\subsubsection{\texorpdfstring{pop\+\_\+widget\+\_\+show\+\_\+all()}{pop\_widget\_show\_all()}}
+{\footnotesize\ttfamily void pop\+\_\+widget\+\_\+show\+\_\+all (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+pop\+\_\+widget\+\_\+show\+\_\+all -\/ map/show popup widget with all childs 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \mbox{\Hypertarget{xwidget_8h_a4d835af5b56eb13ed7bd4602ce7ccd92}\label{xwidget_8h_a4d835af5b56eb13ed7bd4602ce7ccd92}} 
 \index{xwidget.\+h@{xwidget.\+h}!quit@{quit}}
 \index{quit@{quit}!xwidget.\+h@{xwidget.\+h}}
@@ -471,6 +495,42 @@ widget\+\_\+hide -\/ unmap/hide widget
 
 \begin{DoxyParams}{Parameters}
 {\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to unmap \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8h_a73cfd5d35a86fde690c00a74f6e34759}\label{xwidget_8h_a73cfd5d35a86fde690c00a74f6e34759}} 
+\index{xwidget.\+h@{xwidget.\+h}!widget\+\_\+reset\+\_\+scale@{widget\+\_\+reset\+\_\+scale}}
+\index{widget\+\_\+reset\+\_\+scale@{widget\+\_\+reset\+\_\+scale}!xwidget.\+h@{xwidget.\+h}}
+\subsubsection{\texorpdfstring{widget\+\_\+reset\+\_\+scale()}{widget\_reset\_scale()}}
+{\footnotesize\ttfamily void widget\+\_\+reset\+\_\+scale (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+widget\+\_\+reset\+\_\+scale -\/ reset scaling mode after image surface 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8h_a0e071df83f5642d90f81dc1c246db9e1}\label{xwidget_8h_a0e071df83f5642d90f81dc1c246db9e1}} 
+\index{xwidget.\+h@{xwidget.\+h}!widget\+\_\+set\+\_\+scale@{widget\+\_\+set\+\_\+scale}}
+\index{widget\+\_\+set\+\_\+scale@{widget\+\_\+set\+\_\+scale}!xwidget.\+h@{xwidget.\+h}}
+\subsubsection{\texorpdfstring{widget\+\_\+set\+\_\+scale()}{widget\_set\_scale()}}
+{\footnotesize\ttfamily void widget\+\_\+set\+\_\+scale (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+widget\+\_\+set\+\_\+scale -\/ set scaling mode for image surface 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

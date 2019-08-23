@@ -30,6 +30,8 @@ Window \hyperlink{structWidget__t_acb2bfb41674371ee1220a9d6a2d89fb1}{widget}
 \item 
 void $\ast$ \hyperlink{structWidget__t_a483f6517c19fe09e1bf2eaec6646a14b}{parent}
 \item 
+void $\ast$ \hyperlink{structWidget__t_adb548fa6377a020f0563c71382305bad}{parent\+\_\+struct}
+\item 
 \hyperlink{xwidget_8h_a6423c133fb634585762a77dda34befab}{vfunc} \hyperlink{structWidget__t_af0adf855c1991d11f59c5b6f9a2c526a}{event\+\_\+callback}
 \item 
 \hyperlink{structFunc__t}{Func\+\_\+t} \hyperlink{structWidget__t_a225b9a175e132994a5aa73b59a2911ad}{func}
@@ -52,6 +54,8 @@ char \hyperlink{structWidget__t_ac5cb454301472edeb16e563ef2149dbb}{input\+\_\+la
 \item 
 int \hyperlink{structWidget__t_aaa935b64805fdeb78acb015c67d6638c}{state}
 \item 
+bool \hyperlink{structWidget__t_a1d72a2a27fd2db4a4f52e30dc8ff46cc}{has\+\_\+focus}
+\item 
 bool \hyperlink{structWidget__t_ac8c396c698d816afad49fa751c3ca2c8}{has\+\_\+pointer}
 \item 
 int \hyperlink{structWidget__t_ae2d46ffb30bb2335a043d138fa05e1a3}{pos\+\_\+x}
@@ -69,6 +73,8 @@ int \hyperlink{structWidget__t_a1def6d2237743e75a0b84ca0c34a6834}{height}
 bool \hyperlink{structWidget__t_aff0b7ecbf87b995342d13e2efe79dfca}{is\+\_\+widget}
 \item 
 bool \hyperlink{structWidget__t_acb0bba70f001420ed9a33128c10e74ed}{is\+\_\+radio}
+\item 
+bool \hyperlink{structWidget__t_a4a5d0c274428a1264e88baac7ab68d7d}{is\+\_\+pop\+\_\+widget}
 \item 
 bool \hyperlink{structWidget__t_a42a597c21eca964c0296fc7026feb43b}{transparency}
 \item 
@@ -130,6 +136,8 @@ X\+IM \hyperlink{structWidget__t_a81aa76d336043a7230844d09a92113e2}{xim}
 {\em input\+\_\+label} & -\/ char array the widget input label \\
 \hline
 {\em state} & -\/ int to hold the widget state \\
+\hline
+{\em has\+\_\+focus} & -\/ indicate the mouse pointer state \\
 \hline
 {\em has\+\_\+pointer} & -\/ is mouse pointer in widget \\
 \hline
@@ -241,7 +249,13 @@ the main X\+Event callback \mbox{\Hypertarget{structWidget__t_a225b9a175e132994a
 \subsubsection{\texorpdfstring{func}{func}}
 {\footnotesize\ttfamily \hyperlink{structFunc__t}{Func\+\_\+t} Widget\+\_\+t\+::func}
 
-struct holding the event callbacks \mbox{\Hypertarget{structWidget__t_ac8c396c698d816afad49fa751c3ca2c8}\label{structWidget__t_ac8c396c698d816afad49fa751c3ca2c8}} 
+struct holding the event callbacks \mbox{\Hypertarget{structWidget__t_a1d72a2a27fd2db4a4f52e30dc8ff46cc}\label{structWidget__t_a1d72a2a27fd2db4a4f52e30dc8ff46cc}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!has\+\_\+focus@{has\+\_\+focus}}
+\index{has\+\_\+focus@{has\+\_\+focus}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{has\+\_\+focus}{has\_focus}}
+{\footnotesize\ttfamily bool Widget\+\_\+t\+::has\+\_\+focus}
+
+indicate the mouse pointer state \mbox{\Hypertarget{structWidget__t_ac8c396c698d816afad49fa751c3ca2c8}\label{structWidget__t_ac8c396c698d816afad49fa751c3ca2c8}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!has\+\_\+pointer@{has\+\_\+pointer}}
 \index{has\+\_\+pointer@{has\+\_\+pointer}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{has\+\_\+pointer}{has\_pointer}}
@@ -265,7 +279,13 @@ pointer to the cairo image surface used to load a png \mbox{\Hypertarget{structW
 \subsubsection{\texorpdfstring{input\+\_\+label}{input\_label}}
 {\footnotesize\ttfamily char Widget\+\_\+t\+::input\+\_\+label\mbox{[}32\mbox{]}}
 
-char array to hold user input \mbox{\Hypertarget{structWidget__t_acb0bba70f001420ed9a33128c10e74ed}\label{structWidget__t_acb0bba70f001420ed9a33128c10e74ed}} 
+char array to hold user input \mbox{\Hypertarget{structWidget__t_a4a5d0c274428a1264e88baac7ab68d7d}\label{structWidget__t_a4a5d0c274428a1264e88baac7ab68d7d}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!is\+\_\+pop\+\_\+widget@{is\+\_\+pop\+\_\+widget}}
+\index{is\+\_\+pop\+\_\+widget@{is\+\_\+pop\+\_\+widget}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{is\+\_\+pop\+\_\+widget}{is\_pop\_widget}}
+{\footnotesize\ttfamily bool Widget\+\_\+t\+::is\+\_\+pop\+\_\+widget}
+
+indicaate if the widget is a popup \hyperlink{structWidget__t}{Widget\+\_\+t} \mbox{\Hypertarget{structWidget__t_acb0bba70f001420ed9a33128c10e74ed}\label{structWidget__t_acb0bba70f001420ed9a33128c10e74ed}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!is\+\_\+radio@{is\+\_\+radio}}
 \index{is\+\_\+radio@{is\+\_\+radio}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{is\+\_\+radio}{is\_radio}}
@@ -289,7 +309,13 @@ pointer to the widget label \mbox{\Hypertarget{structWidget__t_a483f6517c19fe09e
 \subsubsection{\texorpdfstring{parent}{parent}}
 {\footnotesize\ttfamily void$\ast$ Widget\+\_\+t\+::parent}
 
-pointer to the Parent Window or \hyperlink{structWidget__t}{Widget\+\_\+t} \mbox{\Hypertarget{structWidget__t_ae2d46ffb30bb2335a043d138fa05e1a3}\label{structWidget__t_ae2d46ffb30bb2335a043d138fa05e1a3}} 
+pointer to the Parent Window or \hyperlink{structWidget__t}{Widget\+\_\+t} \mbox{\Hypertarget{structWidget__t_adb548fa6377a020f0563c71382305bad}\label{structWidget__t_adb548fa6377a020f0563c71382305bad}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!parent\+\_\+struct@{parent\+\_\+struct}}
+\index{parent\+\_\+struct@{parent\+\_\+struct}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{parent\+\_\+struct}{parent\_struct}}
+{\footnotesize\ttfamily void$\ast$ Widget\+\_\+t\+::parent\+\_\+struct}
+
+pointer to the Parent struct \mbox{\Hypertarget{structWidget__t_ae2d46ffb30bb2335a043d138fa05e1a3}\label{structWidget__t_ae2d46ffb30bb2335a043d138fa05e1a3}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!pos\+\_\+x@{pos\+\_\+x}}
 \index{pos\+\_\+x@{pos\+\_\+x}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{pos\+\_\+x}{pos\_x}}

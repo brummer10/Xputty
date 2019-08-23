@@ -95,9 +95,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a281115cc04cefd9ff84d2a169515ef69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget__private_8c.html#a281115cc04cefd9ff84d2a169515ef69">_toggle_event</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *wid)</td></tr>
 <tr class="memdesc:a281115cc04cefd9ff84d2a169515ef69"><td class="mdescLeft">&#160;</td><td class="mdescRight">_toggle_event - internal check which adjustment needs update  <a href="#a281115cc04cefd9ff84d2a169515ef69">More...</a><br /></td></tr>
 <tr class="separator:a281115cc04cefd9ff84d2a169515ef69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fa824e7c223fab91f65dbdcd3e07f18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget__private_8c.html#a3fa824e7c223fab91f65dbdcd3e07f18">_check_enum</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *wid, XButtonEvent *xbutton)</td></tr>
+<tr class="memdesc:a3fa824e7c223fab91f65dbdcd3e07f18"><td class="mdescLeft">&#160;</td><td class="mdescRight">_check_enum - internal check which adjustment needs update  <a href="#a3fa824e7c223fab91f65dbdcd3e07f18">More...</a><br /></td></tr>
+<tr class="separator:a3fa824e7c223fab91f65dbdcd3e07f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58ae554632b1c9f7afc73aa159a1dc0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget__private_8c.html#a58ae554632b1c9f7afc73aa159a1dc0c">_button_press</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *wid, XButtonEvent *xbutton, void *user_data)</td></tr>
 <tr class="memdesc:a58ae554632b1c9f7afc73aa159a1dc0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">_button_press - internal check which button is pressed  <a href="#a58ae554632b1c9f7afc73aa159a1dc0c">More...</a><br /></td></tr>
 <tr class="separator:a58ae554632b1c9f7afc73aa159a1dc0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4268fe28baeb0a66234a976f14c6975b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget__private_8c.html#a4268fe28baeb0a66234a976f14c6975b">_check_grab</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *wid, XButtonEvent *xbutton, <a class="el" href="structXputty.html">Xputty</a> *main)</td></tr>
+<tr class="memdesc:a4268fe28baeb0a66234a976f14c6975b"><td class="mdescLeft">&#160;</td><td class="mdescRight">_check_grab - internal check if menu is pressed  <a href="#a4268fe28baeb0a66234a976f14c6975b">More...</a><br /></td></tr>
+<tr class="separator:a4268fe28baeb0a66234a976f14c6975b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaaac44f0d2bcf2ddc3f76b79e74fb3b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget__private_8c.html#aaaac44f0d2bcf2ddc3f76b79e74fb3b6">_propagate_child_expose</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *wid)</td></tr>
 <tr class="memdesc:aaaac44f0d2bcf2ddc3f76b79e74fb3b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">_propagate_childs - send expose to child window  <a href="#aaaac44f0d2bcf2ddc3f76b79e74fb3b6">More...</a><br /></td></tr>
 <tr class="separator:aaaac44f0d2bcf2ddc3f76b79e74fb3b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,6 +168,89 @@ Functions</h2></td></tr>
     <tr><td class="paramname">*wid</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> receiving a event </td></tr>
     <tr><td class="paramname">*xbutton</td><td>- pointer to the XButtonEvent </td></tr>
     <tr><td class="paramname">*user_data</td><td>- void pointer to attached user_data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a3fa824e7c223fab91f65dbdcd3e07f18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fa824e7c223fab91f65dbdcd3e07f18">&#9670;&nbsp;</a></span>_check_enum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _check_enum </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>wid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">XButtonEvent *&#160;</td>
+          <td class="paramname"><em>xbutton</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>_check_enum - internal check which adjustment needs update </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*wid</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> receiving a event </td></tr>
+    <tr><td class="paramname">*xbutton</td><td>- pointer to the XButtonEvent </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a4268fe28baeb0a66234a976f14c6975b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4268fe28baeb0a66234a976f14c6975b">&#9670;&nbsp;</a></span>_check_grab()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _check_grab </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>wid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">XButtonEvent *&#160;</td>
+          <td class="paramname"><em>xbutton</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structXputty.html">Xputty</a> *&#160;</td>
+          <td class="paramname"><em>main</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>_check_grab - internal check if menu is pressed </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*wid</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> receiving a event </td></tr>
+    <tr><td class="paramname">*xbutton</td><td>- pointer to the XButtonEvent </td></tr>
+    <tr><td class="paramname">*main</td><td>- pointer to main struct </td></tr>
   </table>
   </dd>
 </dl>
