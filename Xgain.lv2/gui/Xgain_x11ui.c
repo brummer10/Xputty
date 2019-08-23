@@ -72,7 +72,8 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     ui->parentXwindow = 0;
     LV2UI_Resize* resize = NULL;
 
-    for (int i = 0; features[i]; ++i) {
+    int i = 0;
+    for (; features[i]; ++i) {
         if (!strcmp(features[i]->URI, LV2_UI__parent)) {
             ui->parentXwindow = features[i]->data;
         } else if (!strcmp(features[i]->URI, LV2_UI__resize)) {
@@ -154,7 +155,8 @@ static void port_event(LV2UI_Handle handle, uint32_t port_index,
                         const void * buffer) {
     X11_UI* ui = (X11_UI*)handle;
     float value = *(float*)buffer;
-    for (int i=0;i<CONTROLS;i++) {
+    int i=0;
+    for (;i<CONTROLS;i++) {
         if (port_index == ui->widget[i]->data) {
             // Xputty check if the new value differs from the old one
             // and set new one, when needed
