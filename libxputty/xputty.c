@@ -60,14 +60,14 @@ void main_init(Xputty *main) {
 void main_run(Xputty *main) {
     Widget_t * wid = main->childlist->childs[0]; 
     Atom WM_DELETE_WINDOW;
-    WM_DELETE_WINDOW = XInternAtom(wid->dpy, "WM_DELETE_WINDOW", True);
-    XSetWMProtocols(wid->dpy, wid->widget, &WM_DELETE_WINDOW, 1);
+    WM_DELETE_WINDOW = XInternAtom(wid->app->dpy, "WM_DELETE_WINDOW", True);
+    XSetWMProtocols(wid->app->dpy, wid->widget, &WM_DELETE_WINDOW, 1);
 
     XEvent xev;
     XPointer w_;
     int ew;
 
-    while (main->run && (XNextEvent(wid->dpy, &xev)>=0)) {
+    while (main->run && (XNextEvent(main->dpy, &xev)>=0)) {
         ew = childlist_find_widget(main->childlist, xev.xany.window);
         if(ew  >= 0) {
             Widget_t * w = main->childlist->childs[ew];
@@ -87,7 +87,7 @@ void main_run(Xputty *main) {
                     }
                 }
                 if (!is_item) {
-                    XUngrabPointer(main->hold_grab->dpy,CurrentTime);
+                    XUngrabPointer(main->dpy,CurrentTime);
                     widget_hide(main->hold_grab);
                     main->hold_grab = NULL;
                 }
@@ -141,7 +141,7 @@ void run_embedded(Xputty *main) {
                     }
                 }
                 if (!is_item) {
-                    XUngrabPointer(main->hold_grab->dpy,CurrentTime);
+                    XUngrabPointer(main->dpy,CurrentTime);
                     widget_hide(main->hold_grab);
                     main->hold_grab = NULL;
                 }

@@ -6,8 +6,9 @@ var searchData=
   ['init_5fx',['init_x',['../structResize__t.html#aff15bb95322452215ca38c4f3c926cd1',1,'Resize_t']]],
   ['init_5fy',['init_y',['../structResize__t.html#a2f2c63ce1d407649d6b8daf4d6fbbb98',1,'Resize_t']]],
   ['input_5flabel',['input_label',['../structWidget__t.html#ac5cb454301472edeb16e563ef2149dbb',1,'Widget_t']]],
-  ['is_5fpop_5fwidget',['is_pop_widget',['../structWidget__t.html#a4a5d0c274428a1264e88baac7ab68d7d',1,'Widget_t']]],
-  ['is_5fradio',['is_radio',['../structWidget__t.html#acb0bba70f001420ed9a33128c10e74ed',1,'Widget_t']]],
+  ['is_5fpopup',['IS_POPUP',['../xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55bad5eca61d30ac5aa2160dbad35b19c4c3',1,'xwidget.h']]],
+  ['is_5fradio',['IS_RADIO',['../xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba7786613892035035d8082fd638fcafd0',1,'xwidget.h']]],
   ['is_5futf8',['IS_UTF8',['../xputty_8h.html#a4b4e4f21ac252ef0b97fe32f026bd284',1,'xputty.h']]],
-  ['is_5fwidget',['is_widget',['../structWidget__t.html#aff0b7ecbf87b995342d13e2efe79dfca',1,'Widget_t']]]
+  ['is_5fwidget',['IS_WIDGET',['../xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba02baf100f71ba232ee58c436bfe78b02',1,'xwidget.h']]],
+  ['is_5fwindow',['IS_WINDOW',['../xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba96d3ce9569e73843f74aa018bd8895a3',1,'xwidget.h']]]
 ];

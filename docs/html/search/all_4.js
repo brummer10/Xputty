@@ -5,5 +5,5 @@ var searchData=
   ['debug_5fprint',['debug_print',['../xputty_8h.html#ac9e7326b4569847122754061b96c42d0',1,'xputty.h']]],
   ['delete_5fadjustment',['delete_adjustment',['../xadjustment_8c.html#af8186d7e68d37007f6e38814225e6ee3',1,'delete_adjustment(Adjustment_t *adj):&#160;xadjustment.c'],['../xadjustment_8h.html#af8186d7e68d37007f6e38814225e6ee3',1,'delete_adjustment(Adjustment_t *adj):&#160;xadjustment.c']]],
   ['destroy_5fwidget',['destroy_widget',['../xwidget_8c.html#abdabca284aa8866f1f242b6857312e3b',1,'destroy_widget(Widget_t *w, Xputty *main):&#160;xwidget.c'],['../xwidget_8h.html#abdabca284aa8866f1f242b6857312e3b',1,'destroy_widget(Widget_t *w, Xputty *main):&#160;xwidget.c']]],
-  ['dpy',['dpy',['../structXputty.html#ab185ae4fd00ee1930c61e0440734878f',1,'Xputty::dpy()'],['../structWidget__t.html#a5ae8f0fdd24c6baf15173dc0cc9ae360',1,'Widget_t::dpy()']]]
+  ['dpy',['dpy',['../structXputty.html#ab185ae4fd00ee1930c61e0440734878f',1,'Xputty']]]
 ];

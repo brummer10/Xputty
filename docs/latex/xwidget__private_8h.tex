@@ -39,7 +39,7 @@ void \hyperlink{xwidget__private_8h_aaaac44f0d2bcf2ddc3f76b79e74fb3b6}{\+\_\+pro
 \begin{DoxyCompactList}\small\item\em \+\_\+propagate\+\_\+childs -\/ send expose to child window \end{DoxyCompactList}\item 
 void \hyperlink{xwidget__private_8h_ae2aeefa7b35ff7e10a148e8438a12dc9}{\+\_\+check\+\_\+keymap} (void $\ast$w\+\_\+, X\+Key\+Event xkey)
 \begin{DoxyCompactList}\small\item\em \+\_\+check\+\_\+keymap -\/ check if key is in map, send requests if so \end{DoxyCompactList}\item 
-bool \hyperlink{xwidget__private_8h_ad7cd47bfff17d8870ba9c2a0caa36cec}{\+\_\+has\+\_\+pointer} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, X\+Button\+Event $\ast$button)
+void \hyperlink{xwidget__private_8h_ae8d8e0d87f6186d3d19f1372c357edbe}{\+\_\+has\+\_\+pointer} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, X\+Button\+Event $\ast$button)
 \begin{DoxyCompactList}\small\item\em \+\_\+has\+\_\+pointer -\/ check if the widget has the pointer on Button release \end{DoxyCompactList}\item 
 void \hyperlink{xwidget__private_8h_a227521763a2c42146302b62c79e97ac2}{\+\_\+set\+\_\+adj\+\_\+value} (void $\ast$w\+\_\+, bool x, int direction)
 \begin{DoxyCompactList}\small\item\em \+\_\+set\+\_\+adj\+\_\+value -\/ set value to adjustment from key event \end{DoxyCompactList}\item 
@@ -187,11 +187,11 @@ void
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xwidget__private_8h_ad7cd47bfff17d8870ba9c2a0caa36cec}\label{xwidget__private_8h_ad7cd47bfff17d8870ba9c2a0caa36cec}} 
+\mbox{\Hypertarget{xwidget__private_8h_ae8d8e0d87f6186d3d19f1372c357edbe}\label{xwidget__private_8h_ae8d8e0d87f6186d3d19f1372c357edbe}} 
 \index{xwidget\+\_\+private.\+h@{xwidget\+\_\+private.\+h}!\+\_\+has\+\_\+pointer@{\+\_\+has\+\_\+pointer}}
 \index{\+\_\+has\+\_\+pointer@{\+\_\+has\+\_\+pointer}!xwidget\+\_\+private.\+h@{xwidget\+\_\+private.\+h}}
 \subsubsection{\texorpdfstring{\+\_\+has\+\_\+pointer()}{\_has\_pointer()}}
-{\footnotesize\ttfamily bool \+\_\+has\+\_\+pointer (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{X\+Button\+Event $\ast$}]{button }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void \+\_\+has\+\_\+pointer (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{X\+Button\+Event $\ast$}]{button }\end{DoxyParamCaption})}
 
 
 
@@ -205,7 +205,7 @@ void
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-bool -\/ true if pointer is in widget 
+void 
 \end{DoxyReturn}
 \mbox{\Hypertarget{xwidget__private_8h_aaaac44f0d2bcf2ddc3f76b79e74fb3b6}\label{xwidget__private_8h_aaaac44f0d2bcf2ddc3f76b79e74fb3b6}} 
 \index{xwidget\+\_\+private.\+h@{xwidget\+\_\+private.\+h}!\+\_\+propagate\+\_\+child\+\_\+expose@{\+\_\+propagate\+\_\+child\+\_\+expose}}

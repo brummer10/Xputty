@@ -83,18 +83,19 @@ void _toggle_event(Widget_t * wid) {
  */
 
 void _check_enum(Widget_t * wid, XButtonEvent *xbutton) {
-    if (xbutton->button != Button1 || !wid->has_pointer) return;
-    Adjustment_t *adj = NULL;
-    if (wid->adj_y) {
-        adj = wid->adj_y;
-    } else if(wid->adj_x) {
-        adj = wid->adj_x;
-    }
-    if (adj && adj->type == CL_ENUM) {
-        float value = adj->value;
-        value = adj->value + 1.0;
-        if (value>adj->max_value) value = adj->min_value;
-        check_value_changed(adj, &value);
+    if (wid->flags & HAS_POINTER && xbutton->button == Button1) {
+        Adjustment_t *adj = NULL;
+        if (wid->adj_y) {
+            adj = wid->adj_y;
+        } else if(wid->adj_x) {
+            adj = wid->adj_x;
+        }
+        if (adj && adj->type == CL_ENUM) {
+            float value = adj->value;
+            value = adj->value + 1.0;
+            if (value>adj->max_value) value = adj->min_value;
+            check_value_changed(adj, &value);
+        }
     }
 }
 
@@ -110,7 +111,7 @@ void _button_press(Widget_t * wid, XButtonEvent *xbutton, void* user_data) {
     switch(xbutton->button) {
         case Button1:
             wid->state = 2;
-            wid->has_pointer = _has_pointer(wid, xbutton);
+            _has_pointer(wid, xbutton);
             wid->pos_x = xbutton->x;
             wid->pos_y = xbutton->y;
             _toggle_event(wid);
@@ -144,7 +145,7 @@ void _button_press(Widget_t * wid, XButtonEvent *xbutton, void* user_data) {
 void _check_grab(Widget_t * wid, XButtonEvent *xbutton, Xputty *main) {
     if(xbutton->button == Button1) {
         if(main->hold_grab != NULL) {
-            XUngrabPointer(main->hold_grab->dpy,CurrentTime);
+            XUngrabPointer(main->dpy,CurrentTime);
             int i = main->hold_grab->childlist->elem-1;
             for(;i>-1;i--) {
                 Widget_t *w = main->hold_grab->childlist->childs[i];
@@ -173,7 +174,7 @@ void _propagate_child_expose(Widget_t *wid) {
         int i = 0;
         for(;i<wid->childlist->elem;i++) {
             Widget_t *w = wid->childlist->childs[i];
-            if (w->transparency)
+            if (w->flags & USE_TRANSPARENCY)
                 expose_widget(w);
         }
     }      
@@ -191,12 +192,12 @@ void _check_keymap (void *w_ ,XKeyEvent xkey) {
     int i = 0;
     for(;i<wid->childlist->elem;i++) {
         Widget_t *w = wid->childlist->childs[i];
-        if(w->has_focus) {
+        if(w->flags & HAS_FOCUS) {
              wid=w;
             break;
         }
     }
-    int nk = key_mapping(wid->dpy, &xkey);
+    int nk = key_mapping(wid->app->dpy, &xkey);
     if (nk) {
         switch (nk) {
             case 3: _set_adj_value(wid, false, 1);
@@ -217,20 +218,19 @@ void _check_keymap (void *w_ ,XKeyEvent xkey) {
  * @brief _has_pointer      - check if the widget has the pointer on Button release 
  * @param *w                - pointer to the Widget_t sending the request
  * @param *button           - pointer to the XButtonEvent sending the notify
- * @return bool             - true if pointer is in widget 
+ * @return void
  */
 
-bool _has_pointer(Widget_t *w, XButtonEvent *button) {
+void _has_pointer(Widget_t *w, XButtonEvent *button) {
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     
     if ((button->x<attrs.width && button->y<attrs.height) &&
                                 (button->x>0 && button->y>0)){
-        return true;
+        w->flags |= HAS_POINTER;
     } else {
-        return false;
+        w->flags &= ~HAS_POINTER;
     }
-
 }
 
 /**
@@ -309,40 +309,40 @@ void _resize_childs(Widget_t *wid) {
         Widget_t *w = wid->childlist->childs[i];
         switch(w->scale.gravity) {
             case(NORTHWEST):
-                XResizeWindow (w->dpy, w->widget, max(1,
+                XResizeWindow (wid->app->dpy, w->widget, max(1,
                     w->scale.init_width - (wid->scale.scale_x)), 
                     max(1,w->scale.init_height - (wid->scale.scale_y)));
             break;
             case(NORTHEAST):
-                XResizeWindow (w->dpy, w->widget, max(1,
+                XResizeWindow (wid->app->dpy, w->widget, max(1,
                     w->scale.init_width - (wid->scale.scale_x)), w->scale.init_height);
             break;
             case(SOUTHWEST):
-                XMoveWindow(wid->dpy,w->widget,w->scale.init_x-wid->scale.scale_x,
+                XMoveWindow(wid->app->dpy,w->widget,w->scale.init_x-wid->scale.scale_x,
                                         w->scale.init_y-wid->scale.scale_y);
             
             break;
             case(SOUTHEAST):
-                XMoveWindow(wid->dpy,w->widget,w->scale.init_x,
+                XMoveWindow(wid->app->dpy,w->widget,w->scale.init_x,
                                             w->scale.init_y-wid->scale.scale_y);
             break;
             case(CENTER):
-                XMoveWindow(w->dpy,w->widget,w->scale.init_x /
+                XMoveWindow(wid->app->dpy,w->widget,w->scale.init_x /
                     wid->scale.cscale_x,w->scale.init_y / wid->scale.cscale_y);
-                XResizeWindow (w->dpy, w->widget, max(1,
+                XResizeWindow (wid->app->dpy, w->widget, max(1,
                     w->scale.init_width / (wid->scale.cscale_x)), 
                     max(1,w->scale.init_height / (wid->scale.cscale_y)));
             break;
             case(ASPECT):
-                XMoveWindow(w->dpy,w->widget,w->scale.init_x /
+                XMoveWindow(wid->app->dpy,w->widget,w->scale.init_x /
                     wid->scale.ascale,w->scale.init_y / wid->scale.ascale);
-                XResizeWindow (w->dpy, w->widget, max(1,
+                XResizeWindow (wid->app->dpy, w->widget, max(1,
                     w->scale.init_width / (wid->scale.ascale)), 
                     max(1,w->scale.init_height / (wid->scale.ascale)));
             
             break;
             case(NONE):
-              //  XMoveWindow(wid->dpy,w->widget,w->scale.init_x-wid->scale.scale_x,
+              //  XMoveWindow(wid->app->dpy,w->widget,w->scale.init_x-wid->scale.scale_x,
               //                          w->scale.init_y-wid->scale.scale_y);
             break;
             default:

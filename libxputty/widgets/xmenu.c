@@ -32,7 +32,7 @@
 void pop_menu_show(Widget_t *parent, Widget_t *menu) {
     _configure_menu(parent, menu);
     pop_widget_show_all(menu);
-    int err = XGrabPointer(menu->dpy, DefaultRootWindow(parent->dpy), True,
+    int err = XGrabPointer(menu->app->dpy, DefaultRootWindow(parent->app->dpy), True,
                  ButtonPressMask|ButtonReleaseMask|PointerMotionMask,
                  GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
     menu->app->hold_grab = menu;
@@ -51,15 +51,15 @@ Widget_t* create_menu(Widget_t *parent, int height) {
 
     int x1, y1;
     Window child;
-    XTranslateCoordinates( parent->dpy, parent->widget, DefaultRootWindow(parent->dpy), 0, 0, &x1, &y1, &child );
-    Widget_t *wid = create_window(parent->app, DefaultRootWindow(parent->dpy), x1, y1, 10, height);
-    Atom window_type = XInternAtom(wid->dpy, "_NET_WM_WINDOW_TYPE", False);
-    long vale = XInternAtom(wid->dpy, "_NET_WM_WINDOW_TYPE_POPUP_MENU", False);
-    XChangeProperty(wid->dpy, wid->widget, window_type,
+    XTranslateCoordinates( parent->app->dpy, parent->widget, DefaultRootWindow(parent->app->dpy), 0, 0, &x1, &y1, &child );
+    Widget_t *wid = create_window(parent->app, DefaultRootWindow(parent->app->dpy), x1, y1, 10, height);
+    Atom window_type = XInternAtom(wid->app->dpy, "_NET_WM_WINDOW_TYPE", False);
+    long vale = XInternAtom(wid->app->dpy, "_NET_WM_WINDOW_TYPE_POPUP_MENU", False);
+    XChangeProperty(wid->app->dpy, wid->widget, window_type,
         XA_ATOM, 32, PropModeReplace, (unsigned char *) &vale,1 );
-    XSetTransientForHint(parent->dpy,wid->widget,parent->widget);
+    XSetTransientForHint(parent->app->dpy,wid->widget,parent->widget);
     wid->func.expose_callback = _draw_menu;
-    wid->is_pop_widget = true;
+    wid->flags |= IS_POPUP;
     childlist_add_child(parent->childlist, wid);
     return wid;
 
@@ -74,13 +74,13 @@ Widget_t* create_menu(Widget_t *parent, int height) {
 
 Widget_t* menu_add_item(Widget_t *menu,const char * label) {
     XWindowAttributes attrs;
-    XGetWindowAttributes(menu->dpy, (Window)menu->widget, &attrs);
+    XGetWindowAttributes(menu->app->dpy, (Window)menu->widget, &attrs);
     int width = attrs.width;
     int height = attrs.height;
     int si = childlist_has_child(menu->childlist);
     Widget_t *wid = create_widget(menu->app, menu, 0, height*si, width, height);
     wid->scale.gravity = NORTHEAST;
-    wid->transparency = false;
+    wid->flags &= ~USE_TRANSPARENCY;
     wid->label = label;
     wid->func.expose_callback = _draw_item;
     wid->func.button_press_callback = _item_button_pressed;
@@ -118,7 +118,7 @@ void radio_item_set_active(Widget_t *w) {
     int i = p->childlist->elem-1;
     for(;i>-1;i--) {
         Widget_t *wid = p->childlist->childs[i];
-        if (wid->adj && wid->is_radio) {
+        if (wid->adj && wid->flags & IS_RADIO) {
             if (wid == w) adj_set_value(wid->adj_y, 1.0);
             else adj_set_value(wid->adj_y, 0.0);
         }
@@ -134,7 +134,7 @@ void radio_item_set_active(Widget_t *w) {
 
 Widget_t* menu_add_radio_item(Widget_t *menu, const char * label) {
     Widget_t *wid = menu_add_check_item(menu, label);
-    wid->is_radio = true;
+    wid->flags |= IS_RADIO;
     wid->func.expose_callback = _draw_check_item;
     wid->func.button_press_callback = _radio_item_button_pressed;
     radio_item_set_active(wid);

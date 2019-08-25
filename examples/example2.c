@@ -27,7 +27,7 @@ static void draw_window(void *w_, void* user_data) {
     if (!w) return;
     debug_print("draw_window \n");
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width;
     int height = attrs.height;
     if (attrs.map_state != IsViewable) return;
@@ -109,7 +109,7 @@ static void window_button_release(void *w_, void* button_, void* user_data) {
 static void button_quit_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     
-    if (w->has_pointer && !adj_get_value(w->adj_y)) {
+    if (w->flags & HAS_POINTER && !adj_get_value(w->adj_y)) {
         Widget_t *p = (Widget_t*)w->parent;
         quit(p);
     }
@@ -119,7 +119,7 @@ static void button_quit_callback(void *w_, void* user_data) {
 static void button_reset_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     expose_widget(w_);
-    if (w->has_pointer && !adj_get_value(w->adj_y)) {
+    if (w->flags & HAS_POINTER && !adj_get_value(w->adj_y)) {
         Widget_t *parent = w->parent;
         adj_set_value(parent->adj_x,parent->adj_x->std_value);
         adj_set_value(parent->adj_y,parent->adj_y->std_value);

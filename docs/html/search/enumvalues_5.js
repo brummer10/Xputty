@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['prelight_5f',['PRELIGHT_',['../xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a4e75636632c9a333b0107d31a5078eed',1,'xcolor.h']]]
+  ['is_5fpopup',['IS_POPUP',['../xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55bad5eca61d30ac5aa2160dbad35b19c4c3',1,'xwidget.h']]],
+  ['is_5fradio',['IS_RADIO',['../xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba7786613892035035d8082fd638fcafd0',1,'xwidget.h']]],
+  ['is_5fwidget',['IS_WIDGET',['../xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba02baf100f71ba232ee58c436bfe78b02',1,'xwidget.h']]],
+  ['is_5fwindow',['IS_WINDOW',['../xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba96d3ce9569e73843f74aa018bd8895a3',1,'xwidget.h']]]
 ];

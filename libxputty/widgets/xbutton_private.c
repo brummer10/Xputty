@@ -132,7 +132,7 @@ void _draw_button(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width-2;
     int height = attrs.height-2;
     if (attrs.map_state != IsViewable) return;
@@ -236,7 +236,7 @@ void _button_pressed(void *w_, void* button, void* user_data) {
 
 void _button_released(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    if (w->has_pointer) w->state=1;
+    if (w->flags & HAS_POINTER) w->state=1;
     adj_set_value(w->adj_y, 0.0);
 }
 
@@ -270,7 +270,7 @@ void _toggle_button_pressed(void *w_, void* button, void* user_data) {
 void _toggle_button_released(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     XButtonEvent *xbutton = (XButtonEvent*)button_;
-    if (w->has_pointer) {
+    if (w->flags & HAS_POINTER) {
         float value = w->adj->value;
         if (xbutton->button == Button1) value = value ? 
                 w->adj->min_value : w->adj->max_value; 

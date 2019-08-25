@@ -53,6 +53,17 @@ enum \hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391ade}{Gravity} \{ \newli
 \hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391adea8c0a044902c54374c3761b1e06152a1f}{A\+S\+P\+E\+CT} = 0x0032, 
 \hyperlink{xwidget_8h_a5b77df25933eae1169c9efbc78391adeac157bdf0b85a40d2619cbc8bc1ae5fe2}{N\+O\+NE} = 0x10000
  \}\begin{DoxyCompactList}\small\item\em Gravity -\/ enum to indicate how to resize a widget. \end{DoxyCompactList}
+\item 
+enum \{ \newline
+\hyperlink{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba02baf100f71ba232ee58c436bfe78b02}{I\+S\+\_\+\+W\+I\+D\+G\+ET} = 0x0001, 
+\hyperlink{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba96d3ce9569e73843f74aa018bd8895a3}{I\+S\+\_\+\+W\+I\+N\+D\+OW} = 0x0002, 
+\hyperlink{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55bad5eca61d30ac5aa2160dbad35b19c4c3}{I\+S\+\_\+\+P\+O\+P\+UP} = 0x0004, 
+\hyperlink{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba7786613892035035d8082fd638fcafd0}{I\+S\+\_\+\+R\+A\+D\+IO} = 0x0008, 
+\newline
+\hyperlink{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba382c01f8f5f6b97733d95fecefdbaef6}{U\+S\+E\+\_\+\+T\+R\+A\+N\+S\+P\+A\+R\+E\+N\+CY} = 0x0010, 
+\hyperlink{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba77ed320daf286953bd956a0d470d3fe0}{H\+A\+S\+\_\+\+F\+O\+C\+US} = 0x0020, 
+\hyperlink{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba24dd904cfcaac15acb4fd0c48126f869}{H\+A\+S\+\_\+\+P\+O\+I\+N\+T\+ER} = 0x0040
+ \}\begin{DoxyCompactList}\small\item\em anonymous enum -\/ flags to set \hyperlink{structWidget__t}{Widget\+\_\+t} propertys \end{DoxyCompactList}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -172,6 +183,61 @@ void
 
 
 \subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55b}\label{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55b}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+
+
+anonymous enum -\/ flags to set \hyperlink{structWidget__t}{Widget\+\_\+t} propertys 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\+S\+\_\+\+W\+I\+D\+G\+ET} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} is a sub widget \\
+\hline
+{\em I\+S\+\_\+\+W\+I\+N\+D\+OW} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} has no \hyperlink{structWidget__t}{Widget\+\_\+t} parent \\
+\hline
+{\em I\+S\+\_\+\+P\+O\+P\+UP} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} is a pop up widget \\
+\hline
+{\em I\+S\+\_\+\+R\+A\+D\+IO} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} is part of a radio group \\
+\hline
+{\em U\+S\+E\+\_\+\+T\+R\+A\+N\+S\+P\+A\+R\+E\+N\+CY} & -\/ \hyperlink{structWidget__t}{Widget\+\_\+t} need transparent draw (buffer) \\
+\hline
+{\em H\+A\+S\+\_\+\+F\+O\+C\+US} & -\/ Mouse pointer is above \hyperlink{structWidget__t}{Widget\+\_\+t} \\
+\hline
+{\em H\+A\+S\+\_\+\+P\+O\+I\+N\+T\+ER} & -\/ Mouse pointer is pressed on \hyperlink{structWidget__t}{Widget\+\_\+t} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+S\+\_\+\+W\+I\+D\+G\+ET@{I\+S\+\_\+\+W\+I\+D\+G\+ET}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!I\+S\+\_\+\+W\+I\+D\+G\+ET@{I\+S\+\_\+\+W\+I\+D\+G\+ET}}}\mbox{\Hypertarget{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba02baf100f71ba232ee58c436bfe78b02}\label{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba02baf100f71ba232ee58c436bfe78b02}} 
+I\+S\+\_\+\+W\+I\+D\+G\+ET&\hyperlink{structWidget__t}{Widget\+\_\+t} is a sub widget \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+S\+\_\+\+W\+I\+N\+D\+OW@{I\+S\+\_\+\+W\+I\+N\+D\+OW}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!I\+S\+\_\+\+W\+I\+N\+D\+OW@{I\+S\+\_\+\+W\+I\+N\+D\+OW}}}\mbox{\Hypertarget{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba96d3ce9569e73843f74aa018bd8895a3}\label{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba96d3ce9569e73843f74aa018bd8895a3}} 
+I\+S\+\_\+\+W\+I\+N\+D\+OW&\hyperlink{structWidget__t}{Widget\+\_\+t} has no \hyperlink{structWidget__t}{Widget\+\_\+t} parent \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+S\+\_\+\+P\+O\+P\+UP@{I\+S\+\_\+\+P\+O\+P\+UP}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!I\+S\+\_\+\+P\+O\+P\+UP@{I\+S\+\_\+\+P\+O\+P\+UP}}}\mbox{\Hypertarget{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55bad5eca61d30ac5aa2160dbad35b19c4c3}\label{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55bad5eca61d30ac5aa2160dbad35b19c4c3}} 
+I\+S\+\_\+\+P\+O\+P\+UP&\hyperlink{structWidget__t}{Widget\+\_\+t} is a pop up widget \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+S\+\_\+\+R\+A\+D\+IO@{I\+S\+\_\+\+R\+A\+D\+IO}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!I\+S\+\_\+\+R\+A\+D\+IO@{I\+S\+\_\+\+R\+A\+D\+IO}}}\mbox{\Hypertarget{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba7786613892035035d8082fd638fcafd0}\label{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba7786613892035035d8082fd638fcafd0}} 
+I\+S\+\_\+\+R\+A\+D\+IO&\hyperlink{structWidget__t}{Widget\+\_\+t} is part of a radio group \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+S\+E\+\_\+\+T\+R\+A\+N\+S\+P\+A\+R\+E\+N\+CY@{U\+S\+E\+\_\+\+T\+R\+A\+N\+S\+P\+A\+R\+E\+N\+CY}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!U\+S\+E\+\_\+\+T\+R\+A\+N\+S\+P\+A\+R\+E\+N\+CY@{U\+S\+E\+\_\+\+T\+R\+A\+N\+S\+P\+A\+R\+E\+N\+CY}}}\mbox{\Hypertarget{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba382c01f8f5f6b97733d95fecefdbaef6}\label{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba382c01f8f5f6b97733d95fecefdbaef6}} 
+U\+S\+E\+\_\+\+T\+R\+A\+N\+S\+P\+A\+R\+E\+N\+CY&\hyperlink{structWidget__t}{Widget\+\_\+t} need transparent draw (buffer) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+A\+S\+\_\+\+F\+O\+C\+US@{H\+A\+S\+\_\+\+F\+O\+C\+US}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!H\+A\+S\+\_\+\+F\+O\+C\+US@{H\+A\+S\+\_\+\+F\+O\+C\+US}}}\mbox{\Hypertarget{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba77ed320daf286953bd956a0d470d3fe0}\label{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba77ed320daf286953bd956a0d470d3fe0}} 
+H\+A\+S\+\_\+\+F\+O\+C\+US&Mouse pointer is above \hyperlink{structWidget__t}{Widget\+\_\+t} \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+A\+S\+\_\+\+P\+O\+I\+N\+T\+ER@{H\+A\+S\+\_\+\+P\+O\+I\+N\+T\+ER}!xwidget.\+h@{xwidget.\+h}}\index{xwidget.\+h@{xwidget.\+h}!H\+A\+S\+\_\+\+P\+O\+I\+N\+T\+ER@{H\+A\+S\+\_\+\+P\+O\+I\+N\+T\+ER}}}\mbox{\Hypertarget{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba24dd904cfcaac15acb4fd0c48126f869}\label{xwidget_8h_a06fc87d81c62e9abb8790b6e5713c55ba24dd904cfcaac15acb4fd0c48126f869}} 
+H\+A\+S\+\_\+\+P\+O\+I\+N\+T\+ER&Mouse pointer is pressed on \hyperlink{structWidget__t}{Widget\+\_\+t} \\
+\hline
+
+\end{DoxyEnumFields}
 \mbox{\Hypertarget{xwidget_8h_a5b77df25933eae1169c9efbc78391ade}\label{xwidget_8h_a5b77df25933eae1169c9efbc78391ade}} 
 \index{xwidget.\+h@{xwidget.\+h}!Gravity@{Gravity}}
 \index{Gravity@{Gravity}!xwidget.\+h@{xwidget.\+h}}

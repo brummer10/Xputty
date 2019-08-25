@@ -180,6 +180,19 @@ Enumerations</h2></td></tr>
  }<tr class="memdesc:a5b77df25933eae1169c9efbc78391ade"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gravity - enum to indicate how to resize a widget.  <a href="xwidget_8h.html#a5b77df25933eae1169c9efbc78391ade">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:a5b77df25933eae1169c9efbc78391ade"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba02baf100f71ba232ee58c436bfe78b02">IS_WIDGET</a> = 0x0001, 
+<a class="el" href="xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba96d3ce9569e73843f74aa018bd8895a3">IS_WINDOW</a> = 0x0002, 
+<a class="el" href="xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55bad5eca61d30ac5aa2160dbad35b19c4c3">IS_POPUP</a> = 0x0004, 
+<a class="el" href="xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba7786613892035035d8082fd638fcafd0">IS_RADIO</a> = 0x0008, 
+<br />
+&#160;&#160;<a class="el" href="xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba382c01f8f5f6b97733d95fecefdbaef6">USE_TRANSPARENCY</a> = 0x0010, 
+<a class="el" href="xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba77ed320daf286953bd956a0d470d3fe0">HAS_FOCUS</a> = 0x0020, 
+<a class="el" href="xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba24dd904cfcaac15acb4fd0c48126f869">HAS_POINTER</a> = 0x0040
+<br />
+ }<tr class="memdesc:a06fc87d81c62e9abb8790b6e5713c55b"><td class="mdescLeft">&#160;</td><td class="mdescRight">anonymous enum - flags to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> propertys  <a href="xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55b">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -327,6 +340,50 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a06fc87d81c62e9abb8790b6e5713c55b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06fc87d81c62e9abb8790b6e5713c55b">&#9670;&nbsp;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>anonymous enum - flags to set <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> propertys </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">IS_WIDGET</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is a sub widget </td></tr>
+    <tr><td class="paramname">IS_WINDOW</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> has no <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> parent </td></tr>
+    <tr><td class="paramname">IS_POPUP</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is a pop up widget </td></tr>
+    <tr><td class="paramname">IS_RADIO</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is part of a radio group </td></tr>
+    <tr><td class="paramname">USE_TRANSPARENCY</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> need transparent draw (buffer) </td></tr>
+    <tr><td class="paramname">HAS_FOCUS</td><td>- Mouse pointer is above <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </td></tr>
+    <tr><td class="paramname">HAS_POINTER</td><td>- Mouse pointer is pressed on <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba02baf100f71ba232ee58c436bfe78b02"></a>IS_WIDGET&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is a sub widget </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba96d3ce9569e73843f74aa018bd8895a3"></a>IS_WINDOW&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> has no <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> parent </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55bad5eca61d30ac5aa2160dbad35b19c4c3"></a>IS_POPUP&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is a pop up widget </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba7786613892035035d8082fd638fcafd0"></a>IS_RADIO&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is part of a radio group </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba382c01f8f5f6b97733d95fecefdbaef6"></a>USE_TRANSPARENCY&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> need transparent draw (buffer) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba77ed320daf286953bd956a0d470d3fe0"></a>HAS_FOCUS&#160;</td><td class="fielddoc"><p>Mouse pointer is above <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba24dd904cfcaac15acb4fd0c48126f869"></a>HAS_POINTER&#160;</td><td class="fielddoc"><p>Mouse pointer is pressed on <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="a5b77df25933eae1169c9efbc78391ade"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b77df25933eae1169c9efbc78391ade">&#9670;&nbsp;</a></span>Gravity</h2>
 

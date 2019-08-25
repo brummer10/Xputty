@@ -32,7 +32,7 @@ void _draw_combobox_button(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width-2;
     int height = attrs.height-2;
     if (attrs.map_state != IsViewable) return;
@@ -110,7 +110,7 @@ void _draw_combobox(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width-2;
     int height = attrs.height-2;
     if (attrs.map_state != IsViewable) return;
@@ -150,7 +150,7 @@ void _draw_combobox(void *w_, void* user_data) {
     }
 
     use_text_color_scheme(w, get_color_state(w));
-    cairo_set_font_size (w->crb, 12.0);
+    cairo_set_font_size (w->crb, height/2.3);
     cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
                                CAIRO_FONT_WEIGHT_BOLD);
     cairo_text_extents(w->crb,w->label , &extents);
@@ -170,7 +170,7 @@ void _draw_combobox(void *w_, void* user_data) {
 
 void _combobox_button_released(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    if (w->has_pointer){
+    if (w->flags & HAS_POINTER){
         XButtonEvent *xbutton = (XButtonEvent*)button_;
         if (xbutton->button == Button3) {
             w->state=1;
@@ -190,7 +190,7 @@ void _combobox_button_released(void *w_, void* button_, void* user_data) {
 void _button_combobox_released(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     XButtonEvent *xbutton = (XButtonEvent*)button_;
-    if (w->has_pointer && xbutton->button == Button1) {
+    if (w->flags & HAS_POINTER && xbutton->button == Button1) {
         Widget_t *parent = w->parent;
         w->state=1;
         pop_menu_show(parent, parent->childlist->childs[0]);

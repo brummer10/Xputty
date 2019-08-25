@@ -53,7 +53,7 @@ void _draw_image_knob(Widget_t *w, int width_t, int height_t) {
 void _draw_knob(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width-2;
     int height = attrs.height-2;
 
@@ -153,6 +153,6 @@ void _draw_knob(void *w_, void* user_data) {
 
 void _knob_released(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    if (w->has_pointer) w->state= 1;
+    if (w->flags & HAS_POINTER) w->state= 1;
     expose_widget(w_);
 }

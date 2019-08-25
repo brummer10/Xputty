@@ -110,7 +110,7 @@ static void set_yellow(Widget_t *w) {
 
 static void _pattern(Widget_t *w) {
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width;
     int height = attrs.height;
     set_pattern(w,&w->app->color_scheme->normal,&w->app->color_scheme->active,BACKGROUND_,width,height);
@@ -140,7 +140,7 @@ static void draw_window(void *w_, void* user_data) {
 static void button_quit_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     
-    if (w->has_pointer && !adj_get_value(w->adj)){
+    if (w->flags & HAS_POINTER && !adj_get_value(w->adj)){
         quit(get_toplevel_widget(w->app));
     }
 
@@ -202,7 +202,7 @@ static void create_myentrys(Widget_t *w) {
 static void button_thema_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     
-    if (w->has_pointer && adj_get_value(w->adj)){
+    if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
         pop_menu_show(w, w->childlist->childs[0]);
     }
     adj_set_value(w->adj,0.0);

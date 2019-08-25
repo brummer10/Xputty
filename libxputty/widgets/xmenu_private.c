@@ -47,7 +47,7 @@ void _draw_item(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int y = attrs.y;
     int width = attrs.width;
     int height = attrs.height;
@@ -94,20 +94,20 @@ void _draw_check_item(void *w_, void* user_data) {
     _draw_item(w_, user_data);
     Widget_t *w = (Widget_t*)w_;
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int height = attrs.height;
-    if (!w->is_radio) {
-        cairo_rectangle(w->crb, height/6, height/3, height/3 , height/3);
-    } else {
+    if (w->flags & IS_RADIO) {
         cairo_arc(w->crb, height/3, height/2, height/6, 0, 2 * M_PI );
+    } else {
+        cairo_rectangle(w->crb, height/6, height/3, height/3 , height/3);
     }
     use_base_color_scheme(w, get_color_state(w));
     cairo_fill(w->crb);
     if ((int) w->adj_y->value) {
-        if (!w->is_radio) {
-            cairo_rectangle(w->crb, height/6+1, height/3+1, height/3-2 , height/3-2);
-        } else {
+        if (w->flags & IS_RADIO) {
             cairo_arc(w->crb, height/3, height/2, height/6-2, 0, 2 * M_PI );
+        } else {
+            cairo_rectangle(w->crb, height/6+1, height/3+1, height/3-2 , height/3-2);
         }
         use_fg_color_scheme(w, ACTIVE_);
         cairo_fill(w->crb);
@@ -135,7 +135,7 @@ void _item_button_pressed(void *w_, void* button, void* user_data) {
 
 void _check_item_button_pressed(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    if (w->has_pointer) {
+    if (w->flags & HAS_POINTER) {
         float value = w->adj_y->value ? 0.0 : 1.0;
         adj_set_value(w->adj_y, value);
     }
@@ -151,7 +151,7 @@ void _check_item_button_pressed(void *w_, void* button_, void* user_data) {
 void _radio_item_button_pressed(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     Widget_t * p = w->parent;
-    if (w->has_pointer) {
+    if (w->flags & HAS_POINTER) {
         radio_item_set_active(w);
     }
 }
@@ -165,11 +165,11 @@ void _radio_item_button_pressed(void *w_, void* button_, void* user_data) {
 
 void _configure_menu(Widget_t *parent, Widget_t *menu) {
     XWindowAttributes attrs;
-    XGetWindowAttributes(menu->dpy, (Window)menu->childlist->childs[0]->widget, &attrs);
+    XGetWindowAttributes(menu->app->dpy, (Window)menu->childlist->childs[0]->widget, &attrs);
     int height = attrs.height;
     int x1, y1;
     Window child;
-    XTranslateCoordinates( parent->dpy, parent->widget, DefaultRootWindow(parent->dpy), 0, 0, &x1, &y1, &child );
+    XTranslateCoordinates( parent->app->dpy, parent->widget, DefaultRootWindow(parent->app->dpy), 0, 0, &x1, &y1, &child );
     int item_width = 1.0;
     cairo_text_extents_t extents;
     int i = menu->childlist->elem-1;
@@ -182,6 +182,6 @@ void _configure_menu(Widget_t *parent, Widget_t *menu) {
         
         item_width = max(item_width, (int)extents.width+40);
     }
-    XResizeWindow (menu->dpy, menu->widget, item_width, height*(menu->childlist->elem));
-    XMoveWindow(menu->dpy,menu->widget,x1, y1);    
+    XResizeWindow (menu->app->dpy, menu->widget, item_width, height*(menu->childlist->elem));
+    XMoveWindow(menu->app->dpy,menu->widget,x1, y1);    
 }

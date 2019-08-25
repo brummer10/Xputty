@@ -37,7 +37,7 @@ static void draw_label(Widget_t *w, int width, int height) {
 static void draw_window(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width;
     int height = attrs.height;
     if (attrs.map_state != IsViewable) return;
@@ -57,7 +57,7 @@ static void draw_window(void *w_, void* user_data) {
 static void button_quit_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     
-    if (w->has_pointer && !*(int*)user_data){
+    if (w->flags & HAS_POINTER && !*(int*)user_data){
         Widget_t *p = (Widget_t*)w->parent;
         quit(p);
     }
@@ -66,7 +66,7 @@ static void button_quit_callback(void *w_, void* user_data) {
 
 static void button_ok_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    if (w->has_pointer && !*(int*)user_data){
+    if (w->flags & HAS_POINTER && !*(int*)user_data){
         Widget_t *p = (Widget_t*)w->parent;
         quit_widget(w);
         quit_widget(p);
@@ -89,7 +89,7 @@ int main (int argc, char ** argv)
     Screen *screen = ScreenOfDisplay(app.dpy,0);
     int center_x = screen->width/2 - 150;
     int center_y = screen->height/2 - 100; 
-    XMoveWindow(w->dpy,w->widget,center_x, center_y);
+    XMoveWindow(w->app->dpy,w->widget,center_x, center_y);
 
     w_quit = add_button(w, "Quit", 230, 170, 60, 20);
     w_quit->scale.gravity = SOUTHWEST;
@@ -105,7 +105,7 @@ int main (int argc, char ** argv)
     w_quit->scale.gravity = SOUTHWEST;
     w_quit->func.user_callback = button_ok_callback;
     widget_show_all(w);
-    XMoveWindow(w->dpy,w->widget,center_x+60, center_y+60);
+    XMoveWindow(w->app->dpy,w->widget,center_x+60, center_y+60);
    
     main_run(&app);
    

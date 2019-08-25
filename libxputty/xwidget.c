@@ -88,7 +88,7 @@ void destroy_widget(Widget_t * w, Xputty *main) {
         quit(w);
     } else if(childlist_find_child(main->childlist, w)>=0) {
         childlist_remove_child(main->childlist, w);
-        if(w->is_widget) {
+        if(w->flags & IS_WIDGET) {
             Widget_t *p = (Widget_t *) w->parent;
             childlist_remove_child(p->childlist, w);
         }
@@ -103,8 +103,8 @@ void destroy_widget(Widget_t * w, Xputty *main) {
         
         XDestroyIC(w->xic);
         XCloseIM(w->xim);
-        XUnmapWindow(w->dpy, w->widget);
-        XDestroyWindow(w->dpy, w->widget);
+        XUnmapWindow(w->app->dpy, w->widget);
+        XDestroyWindow(w->app->dpy, w->widget);
         free(w->childlist);
         free(w);
     }
@@ -120,7 +120,7 @@ void destroy_widget(Widget_t * w, Xputty *main) {
 void configure_event(void *w_, void* user_data) {
     Widget_t *wid = (Widget_t*)w_;
     XWindowAttributes attrs;
-    XGetWindowAttributes(wid->dpy, (Window)wid->widget, &attrs);
+    XGetWindowAttributes(wid->app->dpy, (Window)wid->widget, &attrs);
     if (wid->width != attrs.width || wid->height != attrs.height) {
         wid->scale.scale_x    = (float)wid->scale.init_width - attrs.width;
         wid->scale.scale_y    = (float)wid->scale.init_height - attrs.height;
@@ -222,16 +222,12 @@ Widget_t *create_window(Xputty *app, Window win,
 
     w->image = NULL;
 
-    w->is_widget = false;
-    w->is_pop_widget = false;
-    w->is_radio  = false;
+    w->flags = IS_WINDOW;
     w->app = app;
-    w->dpy = app->dpy;
     w->parent = &win;
     w->parent_struct = NULL;
     w->label = NULL;
     w->state = 0;
-    w->has_focus = false;
     w->data = 0;
     w->x = x;
     w->y = y;
@@ -249,7 +245,6 @@ Widget_t *create_window(Xputty *app, Window win,
     w->scale.rcscale_y = 1.0;
     w->scale.ascale   = 1.0;
     w->scale.gravity  = CENTER;
-    w->transparency = false;
     w->adj_x = NULL;
     w->adj_y = NULL;
     w->adj   = NULL;
@@ -330,17 +325,13 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->crb = cairo_create (w->buffer);
 
     w->image = NULL;
-
-    w->is_widget = true;
-    w->is_pop_widget = false;
-    w->is_radio  = false;
+    
+    w->flags = IS_WIDGET | USE_TRANSPARENCY;
     w->app = app;
-    w->dpy = app->dpy;
     w->parent = parent;
     w->parent_struct = NULL;
     w->label = NULL;
     w->state = 0;
-    w->has_focus = false;
     w->data = 0;
     w->x = x;
     w->y = y;
@@ -358,7 +349,6 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->scale.rcscale_x = 1.0;
     w->scale.rcscale_y = 1.0;
     w->scale.ascale   = 1.0;
-    w->transparency = true;
     w->adj_x = NULL;
     w->adj_y = NULL;
     w->adj   = NULL;
@@ -382,6 +372,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
 
     childlist_add_child(app->childlist,w);
     //XMapWindow(app->dpy, w->widget);
+    debug_print("size of Widget_t = %i\n", sizeof(struct Widget_t));
     return w;
 }
 
@@ -392,7 +383,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
  */
 
 void widget_show(Widget_t *w) {
-    XMapWindow(w->dpy, w->widget);
+    XMapWindow(w->app->dpy, w->widget);
 }
 
 /**
@@ -406,7 +397,7 @@ void widget_hide(Widget_t *w) {
     for(;i<w->childlist->elem;i++) {
         widget_hide(w->childlist->childs[i]);
     }
-    XUnmapWindow(w->dpy, w->widget);
+    XUnmapWindow(w->app->dpy, w->widget);
 }
 
 /**
@@ -416,8 +407,10 @@ void widget_hide(Widget_t *w) {
  */
 
 void widget_show_all(Widget_t *w) {
-    if (!w->is_pop_widget) {
-        XMapWindow(w->dpy, w->widget);
+    if (w->flags & IS_POPUP) {
+        return;
+    } else {
+        XMapWindow(w->app->dpy, w->widget);
         int i=0;
         for(;i<w->childlist->elem;i++) {
             widget_show_all(w->childlist->childs[i]);
@@ -432,7 +425,7 @@ void widget_show_all(Widget_t *w) {
  */
 
 void pop_widget_show_all(Widget_t *w) {
-    XMapWindow(w->dpy, w->widget);
+    XMapWindow(w->app->dpy, w->widget);
     int i=0;
     for(;i<w->childlist->elem;i++) {
         widget_show_all(w->childlist->childs[i]);
@@ -460,7 +453,7 @@ void expose_widget(Widget_t *w) {
     memset(&exp, 0, sizeof(exp));
     exp.type = Expose;
     exp.xexpose.window = w->widget;
-    XSendEvent(w->dpy, w->widget, False, ExposureMask, (XEvent *)&exp);
+    XSendEvent(w->app->dpy, w->widget, False, ExposureMask, (XEvent *)&exp);
 }
 
 /**
@@ -475,10 +468,10 @@ void transparent_draw(void * w_, void* user_data) {
 
     cairo_push_group (wid->cr);
 
-    if (wid->transparency) {
+    if (wid->flags & USE_TRANSPARENCY) {
         Widget_t *parent = (Widget_t*)wid->parent;
         XWindowAttributes attrs;
-        XGetWindowAttributes(wid->dpy, wid->widget, &attrs);
+        XGetWindowAttributes(wid->app->dpy, wid->widget, &attrs);
 
         debug_print("Widget_t _transparency \n");
         cairo_set_source_surface (wid->crb, parent->buffer, -attrs.x, -attrs.y);
@@ -531,8 +524,8 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
 
         case ButtonRelease:
             _check_grab(wid, &xev->xbutton, main);
-            wid->has_pointer = _has_pointer(wid, &xev->xbutton);
-            if(wid->has_pointer) wid->state = 1;
+            _has_pointer(wid, &xev->xbutton);
+            if(wid->flags & HAS_POINTER) wid->state = 1;
             else wid->state = 0;
             _check_enum(wid, &xev->xbutton);
             wid->func.button_release_callback(w_, &xev->xbutton, user_data);
@@ -551,7 +544,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         break;
 
         case LeaveNotify:
-            wid->has_focus = false;
+            wid->flags &= ~HAS_FOCUS;
             if(!(xev->xcrossing.state & Button1Mask)) {
                 wid->state = 0;
                 wid->func.leave_callback(w_, user_data);
@@ -560,7 +553,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         break;
 
         case EnterNotify:
-            wid->has_focus = true;
+            wid->flags |= HAS_FOCUS;
             if(!(xev->xcrossing.state & Button1Mask)) {
                 wid->state = 1;
                 wid->func.enter_callback(w_, user_data);
@@ -575,7 +568,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         break;
 
         case ClientMessage:
-            if (xev->xclient.message_type == XInternAtom(wid->dpy, "WIDGET_DESTROY", 1)) {
+            if (xev->xclient.message_type == XInternAtom(wid->app->dpy, "WIDGET_DESTROY", 1)) {
                 int ch = childlist_has_child(wid->childlist);
                 if (ch) {
                     int i = ch;
@@ -605,7 +598,7 @@ void send_configure_event(Widget_t *w,int x, int y, int width, int height) {
     XConfigureEvent notify;
     memset(&notify, 0, sizeof(notify));
     notify.type = ConfigureNotify;
-    notify.display = w->dpy;
+    notify.display = w->app->dpy;
     notify.send_event = True;
     notify.event = w->widget;
     notify.window = w->widget;
@@ -616,7 +609,7 @@ void send_configure_event(Widget_t *w,int x, int y, int width, int height) {
     notify.border_width = 0;
     notify.above = None;
     notify.override_redirect = 1;
-    XSendEvent( w->dpy, w->widget, true, StructureNotifyMask, (XEvent*)&notify );    
+    XSendEvent( w->app->dpy, w->widget, true, StructureNotifyMask, (XEvent*)&notify );    
 }
 
 /**
@@ -626,15 +619,15 @@ void send_configure_event(Widget_t *w,int x, int y, int width, int height) {
  */
 
 void quit(Widget_t *w) {
-    Atom WM_DELETE_WINDOW = XInternAtom(w->dpy, "WM_DELETE_WINDOW", True);
+    Atom WM_DELETE_WINDOW = XInternAtom(w->app->dpy, "WM_DELETE_WINDOW", True);
     XClientMessageEvent xevent;
     xevent.type = ClientMessage;
     xevent.message_type = WM_DELETE_WINDOW;
-    xevent.display = w->dpy;
+    xevent.display = w->app->dpy;
     xevent.window = get_toplevel_widget(w->app)->widget;
     xevent.format = 16;
     xevent.data.l[0] = WM_DELETE_WINDOW;
-    XSendEvent(w->dpy, w->widget, 0, 0, (XEvent *)&xevent);
+    XSendEvent(w->app->dpy, w->widget, 0, 0, (XEvent *)&xevent);
 }
 
 /**
@@ -644,14 +637,14 @@ void quit(Widget_t *w) {
  */
 
 void quit_widget(Widget_t *w) {
-    Atom QUIT_WIDGET = XInternAtom(w->dpy, "WIDGET_DESTROY", False);
+    Atom QUIT_WIDGET = XInternAtom(w->app->dpy, "WIDGET_DESTROY", False);
     XClientMessageEvent xevent;
     xevent.type = ClientMessage;
     xevent.message_type = QUIT_WIDGET;
-    xevent.display = w->dpy;
+    xevent.display = w->app->dpy;
     xevent.window = w->widget;
     xevent.format = 16;
     xevent.data.l[0] = 1;
-    XSendEvent(w->dpy, w->widget, 0, 0, (XEvent *)&xevent);
+    XSendEvent(w->app->dpy, w->widget, 0, 0, (XEvent *)&xevent);
 }
 

@@ -22,8 +22,6 @@ Collaboration diagram for Widget\+\_\+t\+:
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-Display $\ast$ \hyperlink{structWidget__t_a5ae8f0fdd24c6baf15173dc0cc9ae360}{dpy}
-\item 
 \hyperlink{structXputty}{Xputty} $\ast$ \hyperlink{structWidget__t_a06eaa5b134c47983fd965e745cdbaa3b}{app}
 \item 
 Window \hyperlink{structWidget__t_acb2bfb41674371ee1220a9d6a2d89fb1}{widget}
@@ -48,15 +46,13 @@ cairo\+\_\+surface\+\_\+t $\ast$ \hyperlink{structWidget__t_a4e179b5ae7494b9533c
 \item 
 int \hyperlink{structWidget__t_a9dd7b58be77bf31ab021aa627a73186a}{data}
 \item 
+unsigned int \hyperlink{structWidget__t_a0ebd3253a061cfeb9318c3e16040785c}{flags}
+\item 
 const char $\ast$ \hyperlink{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}{label}
 \item 
 char \hyperlink{structWidget__t_ac5cb454301472edeb16e563ef2149dbb}{input\+\_\+label} \mbox{[}32\mbox{]}
 \item 
 int \hyperlink{structWidget__t_aaa935b64805fdeb78acb015c67d6638c}{state}
-\item 
-bool \hyperlink{structWidget__t_a1d72a2a27fd2db4a4f52e30dc8ff46cc}{has\+\_\+focus}
-\item 
-bool \hyperlink{structWidget__t_ac8c396c698d816afad49fa751c3ca2c8}{has\+\_\+pointer}
 \item 
 int \hyperlink{structWidget__t_ae2d46ffb30bb2335a043d138fa05e1a3}{pos\+\_\+x}
 \item 
@@ -69,14 +65,6 @@ int \hyperlink{structWidget__t_acb9402de44e47837e1821b93fc052b38}{y}
 int \hyperlink{structWidget__t_a3204c88196ed5793250b3530dd719037}{width}
 \item 
 int \hyperlink{structWidget__t_a1def6d2237743e75a0b84ca0c34a6834}{height}
-\item 
-bool \hyperlink{structWidget__t_aff0b7ecbf87b995342d13e2efe79dfca}{is\+\_\+widget}
-\item 
-bool \hyperlink{structWidget__t_acb0bba70f001420ed9a33128c10e74ed}{is\+\_\+radio}
-\item 
-bool \hyperlink{structWidget__t_a4a5d0c274428a1264e88baac7ab68d7d}{is\+\_\+pop\+\_\+widget}
-\item 
-bool \hyperlink{structWidget__t_a42a597c21eca964c0296fc7026feb43b}{transparency}
 \item 
 \hyperlink{structResize__t}{Resize\+\_\+t} \hyperlink{structWidget__t_a9a2d5b53f40f5bf3914fc0694027d7ec}{scale}
 \item 
@@ -99,8 +87,6 @@ X\+IM \hyperlink{structWidget__t_a81aa76d336043a7230844d09a92113e2}{xim}
 
 
 \begin{DoxyParams}{Parameters}
-{\em $\ast$dpy} & -\/ pointer to the Display to use \\
-\hline
 {\em $\ast$app} & -\/ pointer to the main struct \\
 \hline
 {\em widget} & -\/ the X11 Window \\
@@ -121,25 +107,15 @@ X\+IM \hyperlink{structWidget__t_a81aa76d336043a7230844d09a92113e2}{xim}
 \hline
 {\em $\ast$image} & -\/ pointer to the cairo image surface \\
 \hline
-{\em $\ast$normal\+\_\+color} & -\/ struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} normal colors \\
-\hline
-{\em $\ast$active\+\_\+color} & -\/ struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} active colors \\
-\hline
-{\em $\ast$prelight\+\_\+color} & -\/ struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} prelight colors \\
-\hline
-{\em $\ast$selected\+\_\+color} & -\/ struct to set \hyperlink{structWidget__t}{Widget\+\_\+t} selected colors \\
-\hline
 {\em data} & -\/ int to hold user data \\
+\hline
+{\em flags} & -\/ unsigned int to hold \hyperlink{structWidget__t}{Widget\+\_\+t} flags \\
 \hline
 {\em $\ast$label} & -\/ pointer to the widget label \\
 \hline
 {\em input\+\_\+label} & -\/ char array the widget input label \\
 \hline
 {\em state} & -\/ int to hold the widget state \\
-\hline
-{\em has\+\_\+focus} & -\/ indicate the mouse pointer state \\
-\hline
-{\em has\+\_\+pointer} & -\/ is mouse pointer in widget \\
 \hline
 {\em pos\+\_\+x} & -\/ mouse pointer x position on button press \\
 \hline
@@ -152,12 +128,6 @@ X\+IM \hyperlink{structWidget__t_a81aa76d336043a7230844d09a92113e2}{xim}
 {\em width} & -\/ widget width \\
 \hline
 {\em height} & -\/ widget height \\
-\hline
-{\em is\+\_\+widget} & -\/ set/check if the parent is \hyperlink{structWidget__t}{Widget\+\_\+t} \\
-\hline
-{\em is\+\_\+radio} & -\/ set/check if the \hyperlink{structWidget__t}{Widget\+\_\+t} is part of a radio group \\
-\hline
-{\em transparency} & -\/ flag to set/check transparent drawing \\
 \hline
 {\em scale} & -\/ struct used to resize child widgets \\
 \hline
@@ -231,37 +201,25 @@ pointer to the cairo buffer surface context \mbox{\Hypertarget{structWidget__t_a
 \subsubsection{\texorpdfstring{data}{data}}
 {\footnotesize\ttfamily int Widget\+\_\+t\+::data}
 
-int to hold user data \mbox{\Hypertarget{structWidget__t_a5ae8f0fdd24c6baf15173dc0cc9ae360}\label{structWidget__t_a5ae8f0fdd24c6baf15173dc0cc9ae360}} 
-\index{Widget\+\_\+t@{Widget\+\_\+t}!dpy@{dpy}}
-\index{dpy@{dpy}!Widget\+\_\+t@{Widget\+\_\+t}}
-\subsubsection{\texorpdfstring{dpy}{dpy}}
-{\footnotesize\ttfamily Display$\ast$ Widget\+\_\+t\+::dpy}
-
-pointer to the Display to use \mbox{\Hypertarget{structWidget__t_af0adf855c1991d11f59c5b6f9a2c526a}\label{structWidget__t_af0adf855c1991d11f59c5b6f9a2c526a}} 
+int to hold user data \mbox{\Hypertarget{structWidget__t_af0adf855c1991d11f59c5b6f9a2c526a}\label{structWidget__t_af0adf855c1991d11f59c5b6f9a2c526a}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!event\+\_\+callback@{event\+\_\+callback}}
 \index{event\+\_\+callback@{event\+\_\+callback}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{event\+\_\+callback}{event\_callback}}
 {\footnotesize\ttfamily \hyperlink{xwidget_8h_a6423c133fb634585762a77dda34befab}{vfunc} Widget\+\_\+t\+::event\+\_\+callback}
 
-the main X\+Event callback \mbox{\Hypertarget{structWidget__t_a225b9a175e132994a5aa73b59a2911ad}\label{structWidget__t_a225b9a175e132994a5aa73b59a2911ad}} 
+the main X\+Event callback \mbox{\Hypertarget{structWidget__t_a0ebd3253a061cfeb9318c3e16040785c}\label{structWidget__t_a0ebd3253a061cfeb9318c3e16040785c}} 
+\index{Widget\+\_\+t@{Widget\+\_\+t}!flags@{flags}}
+\index{flags@{flags}!Widget\+\_\+t@{Widget\+\_\+t}}
+\subsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily unsigned int Widget\+\_\+t\+::flags}
+
+int to hold \hyperlink{structWidget__t}{Widget\+\_\+t} flags \mbox{\Hypertarget{structWidget__t_a225b9a175e132994a5aa73b59a2911ad}\label{structWidget__t_a225b9a175e132994a5aa73b59a2911ad}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!func@{func}}
 \index{func@{func}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{func}{func}}
 {\footnotesize\ttfamily \hyperlink{structFunc__t}{Func\+\_\+t} Widget\+\_\+t\+::func}
 
-struct holding the event callbacks \mbox{\Hypertarget{structWidget__t_a1d72a2a27fd2db4a4f52e30dc8ff46cc}\label{structWidget__t_a1d72a2a27fd2db4a4f52e30dc8ff46cc}} 
-\index{Widget\+\_\+t@{Widget\+\_\+t}!has\+\_\+focus@{has\+\_\+focus}}
-\index{has\+\_\+focus@{has\+\_\+focus}!Widget\+\_\+t@{Widget\+\_\+t}}
-\subsubsection{\texorpdfstring{has\+\_\+focus}{has\_focus}}
-{\footnotesize\ttfamily bool Widget\+\_\+t\+::has\+\_\+focus}
-
-indicate the mouse pointer state \mbox{\Hypertarget{structWidget__t_ac8c396c698d816afad49fa751c3ca2c8}\label{structWidget__t_ac8c396c698d816afad49fa751c3ca2c8}} 
-\index{Widget\+\_\+t@{Widget\+\_\+t}!has\+\_\+pointer@{has\+\_\+pointer}}
-\index{has\+\_\+pointer@{has\+\_\+pointer}!Widget\+\_\+t@{Widget\+\_\+t}}
-\subsubsection{\texorpdfstring{has\+\_\+pointer}{has\_pointer}}
-{\footnotesize\ttfamily bool Widget\+\_\+t\+::has\+\_\+pointer}
-
-indicate if mouse pointer is in widget \mbox{\Hypertarget{structWidget__t_a1def6d2237743e75a0b84ca0c34a6834}\label{structWidget__t_a1def6d2237743e75a0b84ca0c34a6834}} 
+struct holding the event callbacks \mbox{\Hypertarget{structWidget__t_a1def6d2237743e75a0b84ca0c34a6834}\label{structWidget__t_a1def6d2237743e75a0b84ca0c34a6834}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!height@{height}}
 \index{height@{height}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{height}{height}}
@@ -279,25 +237,7 @@ pointer to the cairo image surface used to load a png \mbox{\Hypertarget{structW
 \subsubsection{\texorpdfstring{input\+\_\+label}{input\_label}}
 {\footnotesize\ttfamily char Widget\+\_\+t\+::input\+\_\+label\mbox{[}32\mbox{]}}
 
-char array to hold user input \mbox{\Hypertarget{structWidget__t_a4a5d0c274428a1264e88baac7ab68d7d}\label{structWidget__t_a4a5d0c274428a1264e88baac7ab68d7d}} 
-\index{Widget\+\_\+t@{Widget\+\_\+t}!is\+\_\+pop\+\_\+widget@{is\+\_\+pop\+\_\+widget}}
-\index{is\+\_\+pop\+\_\+widget@{is\+\_\+pop\+\_\+widget}!Widget\+\_\+t@{Widget\+\_\+t}}
-\subsubsection{\texorpdfstring{is\+\_\+pop\+\_\+widget}{is\_pop\_widget}}
-{\footnotesize\ttfamily bool Widget\+\_\+t\+::is\+\_\+pop\+\_\+widget}
-
-indicaate if the widget is a popup \hyperlink{structWidget__t}{Widget\+\_\+t} \mbox{\Hypertarget{structWidget__t_acb0bba70f001420ed9a33128c10e74ed}\label{structWidget__t_acb0bba70f001420ed9a33128c10e74ed}} 
-\index{Widget\+\_\+t@{Widget\+\_\+t}!is\+\_\+radio@{is\+\_\+radio}}
-\index{is\+\_\+radio@{is\+\_\+radio}!Widget\+\_\+t@{Widget\+\_\+t}}
-\subsubsection{\texorpdfstring{is\+\_\+radio}{is\_radio}}
-{\footnotesize\ttfamily bool Widget\+\_\+t\+::is\+\_\+radio}
-
-indicaate if the widget is part of a radio group \mbox{\Hypertarget{structWidget__t_aff0b7ecbf87b995342d13e2efe79dfca}\label{structWidget__t_aff0b7ecbf87b995342d13e2efe79dfca}} 
-\index{Widget\+\_\+t@{Widget\+\_\+t}!is\+\_\+widget@{is\+\_\+widget}}
-\index{is\+\_\+widget@{is\+\_\+widget}!Widget\+\_\+t@{Widget\+\_\+t}}
-\subsubsection{\texorpdfstring{is\+\_\+widget}{is\_widget}}
-{\footnotesize\ttfamily bool Widget\+\_\+t\+::is\+\_\+widget}
-
-indicaate if the widget has parent \hyperlink{structWidget__t}{Widget\+\_\+t} or X\+Window \mbox{\Hypertarget{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}\label{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}} 
+char array to hold user input \mbox{\Hypertarget{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}\label{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!label@{label}}
 \index{label@{label}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{label}{label}}
@@ -345,13 +285,7 @@ int to hold the widget state default = 0 \mbox{\Hypertarget{structWidget__t_ae9b
 \subsubsection{\texorpdfstring{surface}{surface}}
 {\footnotesize\ttfamily cairo\+\_\+surface\+\_\+t$\ast$ Widget\+\_\+t\+::surface}
 
-pointer to the cairo xlib surface \mbox{\Hypertarget{structWidget__t_a42a597c21eca964c0296fc7026feb43b}\label{structWidget__t_a42a597c21eca964c0296fc7026feb43b}} 
-\index{Widget\+\_\+t@{Widget\+\_\+t}!transparency@{transparency}}
-\index{transparency@{transparency}!Widget\+\_\+t@{Widget\+\_\+t}}
-\subsubsection{\texorpdfstring{transparency}{transparency}}
-{\footnotesize\ttfamily bool Widget\+\_\+t\+::transparency}
-
-indicaate if the widget use transparent drawing, default = true \mbox{\Hypertarget{structWidget__t_acb2bfb41674371ee1220a9d6a2d89fb1}\label{structWidget__t_acb2bfb41674371ee1220a9d6a2d89fb1}} 
+pointer to the cairo xlib surface \mbox{\Hypertarget{structWidget__t_acb2bfb41674371ee1220a9d6a2d89fb1}\label{structWidget__t_acb2bfb41674371ee1220a9d6a2d89fb1}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!widget@{widget}}
 \index{widget@{widget}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{widget}{widget}}

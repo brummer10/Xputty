@@ -33,7 +33,7 @@ This is a example plugin for Xputty, a X11/cairo based Lv2 UI library
             lv2:OutputPort ;
         lv2:index 0 ;
         lv2:symbol "out" ;
-        lv2:name "Out"
+        lv2:name "Out" ;
     ] , [
         a lv2:AudioPort ,
             lv2:InputPort ;

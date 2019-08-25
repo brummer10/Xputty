@@ -157,8 +157,36 @@ typedef struct {
 
 /**
  * 
+ * @brief anonymous enum       - flags to set Widget_t propertys
+ * @param IS_WIDGET            - Widget_t is a sub widget
+ * @param IS_WINDOW            - Widget_t has no Widget_t parent 
+ * @param IS_POPUP             - Widget_t is a pop up widget
+ * @param IS_RADIO             - Widget_t is part of a radio group
+ * @param USE_TRANSPARENCY     - Widget_t need transparent draw (buffer)
+ * @param HAS_FOCUS            - Mouse pointer is above Widget_t
+ * @param HAS_POINTER          - Mouse pointer is pressed on Widget_t
+ */
+
+enum {
+    /** Widget_t is a sub widget */
+    IS_WIDGET         = 0x0001,
+    /** Widget_t has no Widget_t parent */
+    IS_WINDOW         = 0x0002,
+    /** Widget_t is a pop up widget */
+    IS_POPUP          = 0x0004,
+    /** Widget_t is part of a radio group */
+    IS_RADIO          = 0x0008,
+    /** Widget_t need transparent draw (buffer) */
+    USE_TRANSPARENCY  = 0x0010,
+    /** Mouse pointer is above Widget_t */
+    HAS_FOCUS         = 0x0020,
+    /** Mouse pointer is pressed on Widget_t */
+    HAS_POINTER       = 0x0040,
+};
+
+/**
+ * 
  * @brief Widget_t           - struct to hold the basic widget info
- * @param *dpy               - pointer to the Display to use
  * @param *app               - pointer to the main struct
  * @param widget             - the X11 Window
  * @param *parent            - pointer to the Parent Window or Widget_t
@@ -169,25 +197,17 @@ typedef struct {
  * @param *buffer            - pointer to the cairo buffer surface
  * @param *crb               - pointer to the cairo buffer surface context
  * @param *image             - pointer to the cairo image surface
- * @param *normal_color      - struct to set Widget_t normal colors
- * @param *active_color      - struct to set Widget_t active colors
- * @param *prelight_color    - struct to set Widget_t prelight colors
- * @param *selected_color    - struct to set Widget_t selected colors
  * @param data               - int to hold user data 
+ * @param flags              - unsigned int to hold Widget_t flags 
  * @param *label             - pointer to the widget label
  * @param input_label        - char array the widget input label
  * @param state              - int to hold the widget state
- * @param has_focus          - indicate the mouse pointer state
- * @param has_pointer        - is mouse pointer in widget
  * @param pos_x              - mouse pointer x position on button press
  * @param pos_y              - mouse pointer y position on button press
  * @param x                  - x position of Window on Parent
  * @param y                  - y position of Window on Parent
  * @param width              - widget width
  * @param height             - widget height
- * @param is_widget          - set/check if the parent is Widget_t
- * @param is_radio           - set/check if the Widget_t is part of a radio group
- * @param transparency       - flag to set/check transparent drawing
  * @param scale              - struct used to resize child widgets
  * @param *adj_x             - pointer to the x axis adjustment
  * @param *adj_y             - pointer to the y axis adjustment
@@ -198,8 +218,6 @@ typedef struct {
  */
 
 struct Widget_t {
-/** pointer to the Display to use */
-    Display *dpy;
 /** pointer to the main struct */
     Xputty *app;
 /** the X11 newly created Window */
@@ -224,16 +242,14 @@ struct Widget_t {
     cairo_surface_t *image;
 /** int to hold user data */
     int data;
+/** int to hold Widget_t flags */
+    unsigned int flags;
 /** pointer to the widget label */
     const char* label;
 /** char array to hold user input */
     char input_label[32];
 /** int to hold the widget state default = 0 */
     int state;
-/** indicate the mouse pointer state */
-    bool has_focus;
-/** indicate if mouse pointer is in widget */
-    bool has_pointer;
 /** mouse pointer x position on button press */
     int pos_x;
 /** mouse pointer y position on button press */
@@ -246,14 +262,6 @@ struct Widget_t {
     int width;
 /** the widget size y-axis */
     int height;
-/** indicaate if the widget has parent Widget_t or XWindow */
-    bool is_widget;
-/** indicaate if the widget is part of a radio group */
-    bool is_radio;
-/** indicaate if the widget is a popup Widget_t */
-    bool is_pop_widget;
-/** indicaate if the widget use transparent drawing, default = true */
-    bool transparency;
 /** struct used to resize child widgets */
     Resize_t scale;
 /** pointer to the x axis adjustment */

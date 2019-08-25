@@ -33,7 +33,7 @@ static void draw_text_input(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width;
     int height = attrs.height;
     if (attrs.map_state != IsViewable) return;
@@ -127,7 +127,7 @@ static void get_text(void *w_, void *key_, void *user_data) {
     if (!w) return;
     XKeyEvent *key = (XKeyEvent*)key_;
     if (!key) return;
-    int nk = key_mapping(w->dpy, key);
+    int nk = key_mapping(w->app->dpy, key);
     if (nk) {
         switch (nk) {
             case 1: ;
@@ -175,7 +175,7 @@ static void draw_button(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width;
     int height = attrs.height;
     if (attrs.map_state != IsViewable) return;
@@ -225,7 +225,7 @@ static void button_press(void *w_, void* button, void* user_data) {
 static void button_release(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     draw_button(w_, NULL);
-    if (w->has_pointer){
+    if (w->flags & HAS_POINTER){
         Widget_t *p = (Widget_t*)w->parent;
         quit(p);
     }
@@ -236,7 +236,7 @@ static void draw_window(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width;
     int height = attrs.height;
     if (attrs.map_state != IsViewable) return;

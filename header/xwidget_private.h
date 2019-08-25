@@ -97,10 +97,10 @@ void _check_keymap (void *w_ ,XKeyEvent xkey);
  * @brief _has_pointer      - check if the widget has the pointer on Button release 
  * @param *w                - pointer to the Widget_t sending the request
  * @param *button           - pointer to the XButtonEvent sending the notify
- * @return bool             - true if pointer is in widget 
+ * @return void
  */
 
-bool _has_pointer(Widget_t *w, XButtonEvent *button);
+void _has_pointer(Widget_t *w, XButtonEvent *button);
 
 /**
  * @brief _set_adj_value    - set value to adjustment from key event

@@ -71,7 +71,7 @@ void _pattern_hslider(Widget_t *w, Color_state st, int height) {
 void _draw_vslider(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width-2;
     int height = attrs.height-2;
     float center = (float)width/2;
@@ -136,7 +136,7 @@ void _draw_vslider(void *w_, void* user_data) {
 void _draw_hslider(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     XWindowAttributes attrs;
-    XGetWindowAttributes(w->dpy, (Window)w->widget, &attrs);
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width-2;
     int height = attrs.height-2;
     float center = (float)height/2;
