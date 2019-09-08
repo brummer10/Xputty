@@ -248,6 +248,18 @@ struct Widget_t {
     const char* label;
 /** char array to hold user input */
     char input_label[32];
+/** pointer to the x axis adjustment */
+    Adjustment_t *adj_x;
+/** pointer to the y axis adjustment */
+    Adjustment_t *adj_y;
+/** pointer to the adjustment in use*/
+    Adjustment_t *adj;
+/** pointer to Widget_t child list */
+    Childlist_t *childlist;
+/** Locale and UTF 8 support */
+    XIC xic;
+/** Context to Locale and UTF 8 support */
+    XIM xim;
 /** int to hold the widget state default = 0 */
     int state;
 /** mouse pointer x position on button press */
@@ -264,18 +276,6 @@ struct Widget_t {
     int height;
 /** struct used to resize child widgets */
     Resize_t scale;
-/** pointer to the x axis adjustment */
-    Adjustment_t *adj_x;
-/** pointer to the y axis adjustment */
-    Adjustment_t *adj_y;
-/** pointer to the adjustment in use*/
-    Adjustment_t *adj;
-/** pointer to Widget_t child list */
-    Childlist_t *childlist;
-/** Locale and UTF 8 support */
-    XIC xic;
-/** Context to Locale and UTF 8 support */
-    XIM xim;
 };
 
 
@@ -410,6 +410,22 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data);
  */
 
 void send_configure_event(Widget_t *w,int x, int y, int width, int height);
+
+/**
+ * @brief send_button_press_event   - send ButtonPress event to Widget_t
+ * @param *w                        - pointer to the Widget_t to send the notify
+ * @return void 
+ */
+
+void send_button_press_event(Widget_t *w);
+
+/**
+ * @brief send_button_release_event - send ButtonRelease event to Widget_t
+ * @param *w                        - pointer to the Widget_t to send the notify
+ * @return void 
+ */
+
+void send_button_release_event(Widget_t *w);
 
 /**
  * @brief expose_widgets    - send expose expose event to window

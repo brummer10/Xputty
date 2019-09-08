@@ -47,7 +47,9 @@ typedef enum {
 /** Widget_t request a button adjustment */
     CL_BUTTON       = 0x0008,
 /** Widget_t request a enum adjustment */
-    CL_ENUM         = 0x0010
+    CL_ENUM         = 0x0016,
+/** Widget_t request a viewport adjustment */
+    CL_VIEWPORT     = 0x0032,
 }CL_type;
 
 /**

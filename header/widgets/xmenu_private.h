@@ -55,6 +55,15 @@ void _draw_item(void *w_, void* user_data);
 void _draw_check_item(void *w_, void* user_data);
 
 /**
+ * @brief _set_viewpoint       - move the view_port to position
+ * @param *w_                  - void pointer to view_port
+ * @param *user_data           - attached user_data
+ * @return void
+ */
+
+void _set_viewpoint(void *w_, void* user_data);
+
+/**
  * @brief _item_button_pressed - redraw item on button press
  * @param *button              - the xbutton which is pressed
  * @param *user_data           - attached user_data

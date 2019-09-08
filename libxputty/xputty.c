@@ -77,10 +77,11 @@ void main_run(Xputty *main) {
         switch (xev.type) {
         case ButtonPress:
             if(main->hold_grab != NULL) {
+                Widget_t *view_port = main->hold_grab->childlist->childs[0];
                 bool is_item = False;
-                int i = main->hold_grab->childlist->elem-1;
+                int i = view_port->childlist->elem-1;
                 for(;i>-1;i--) {
-                    Widget_t *w = main->hold_grab->childlist->childs[i];
+                    Widget_t *w = view_port->childlist->childs[i];
                     if (xev.xbutton.window == w->widget) {
                         is_item = True;
                         break;
@@ -131,10 +132,11 @@ void run_embedded(Xputty *main) {
         switch (xev.type) {
         case ButtonPress:
             if(main->hold_grab != NULL) {
+                Widget_t *view_port = main->hold_grab->childlist->childs[0];
                 bool is_item = False;
-                int i = main->hold_grab->childlist->elem-1;
+                int i = view_port->childlist->elem-1;
                 for(;i>-1;i--) {
-                    Widget_t *w = main->hold_grab->childlist->childs[i];
+                    Widget_t *w = view_port->childlist->childs[i];
                     if (xev.xbutton.window == w->widget) {
                         is_item = True;
                         break;

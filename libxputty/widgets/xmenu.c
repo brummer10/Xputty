@@ -41,6 +41,23 @@ void pop_menu_show(Widget_t *parent, Widget_t *menu) {
 }
 
 /**
+ * @brief create_viewport     - create a viewport on a menu to a Widget_t
+ * @param *parent             - pointer to the Widget_t the menu should pop over
+ * @param width               - define the width of the viewport
+ * @param height              - define the height of the viewport
+ * @return Widget_t*          - pointer to the Widget_t viewport
+ */
+
+Widget_t* create_viewport(Widget_t *parent, int width, int height) {
+    Widget_t *wid = create_widget(parent->app, parent, 0, 0, width, height);
+    wid->scale.gravity = CENTER;
+    wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, -1.0,1.0, CL_VIEWPORT);
+    wid->adj = wid->adj_y;
+    wid->func.adj_callback = _set_viewpoint;
+    
+}
+
+/**
  * @brief create_menu         - create a menu to a Widget_t
  * @param *parent             - pointer to the Widget_t the menu should pop over
  * @param height              - define the height of a single menu item
@@ -53,6 +70,7 @@ Widget_t* create_menu(Widget_t *parent, int height) {
     Window child;
     XTranslateCoordinates( parent->app->dpy, parent->widget, DefaultRootWindow(parent->app->dpy), 0, 0, &x1, &y1, &child );
     Widget_t *wid = create_window(parent->app, DefaultRootWindow(parent->app->dpy), x1, y1, 10, height);
+    Widget_t* view_port = create_viewport(wid, 10, 5*height);
     Atom window_type = XInternAtom(wid->app->dpy, "_NET_WM_WINDOW_TYPE", False);
     long vale = XInternAtom(wid->app->dpy, "_NET_WM_WINDOW_TYPE_POPUP_MENU", False);
     XChangeProperty(wid->app->dpy, wid->widget, window_type,
@@ -73,12 +91,15 @@ Widget_t* create_menu(Widget_t *parent, int height) {
  */
 
 Widget_t* menu_add_item(Widget_t *menu,const char * label) {
+    Widget_t* view_port =  menu->childlist->childs[0];
     XWindowAttributes attrs;
     XGetWindowAttributes(menu->app->dpy, (Window)menu->widget, &attrs);
     int width = attrs.width;
     int height = attrs.height;
-    int si = childlist_has_child(menu->childlist);
-    Widget_t *wid = create_widget(menu->app, menu, 0, height*si, width, height);
+    int si = childlist_has_child(view_port->childlist);
+    Widget_t *wid = create_widget(menu->app, view_port, 0, height*si, width, height);
+    float max_value = view_port->adj->max_value+1.0;
+    set_adjustment(view_port->adj,0.0, 0.0, 0.0, max_value,1.0, CL_VIEWPORT);
     wid->scale.gravity = NORTHEAST;
     wid->flags &= ~USE_TRANSPARENCY;
     wid->label = label;

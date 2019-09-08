@@ -46,6 +46,11 @@ void _scroll_event(Widget_t * wid, int direction) {
                 if (value>adj->max_value) value = adj->min_value;
                 if (value<adj->min_value) value = adj->max_value;
             break;
+            case (CL_VIEWPORT):
+                value = adj->value + (adj->step * -direction);
+                if (value>adj->max_value) value = adj->max_value;
+                if (value<adj->min_value) value = adj->min_value;
+            break;
             case (CL_TOGGLE):
                // value = adj->value ? 1.0 : 0.0;
             break;
@@ -143,14 +148,15 @@ void _button_press(Widget_t * wid, XButtonEvent *xbutton, void* user_data) {
  */
 
 void _check_grab(Widget_t * wid, XButtonEvent *xbutton, Xputty *main) {
-    if(xbutton->button == Button1) {
-        if(main->hold_grab != NULL) {
+    if(main->hold_grab != NULL) {
+        Widget_t *view_port = main->hold_grab->childlist->childs[0];
+        if(xbutton->button == Button1) {
             XUngrabPointer(main->dpy,CurrentTime);
-            int i = main->hold_grab->childlist->elem-1;
+            int i = view_port->childlist->elem-1;
             for(;i>-1;i--) {
-                Widget_t *w = main->hold_grab->childlist->childs[i];
+                Widget_t *w = view_port->childlist->childs[i];
                 if (xbutton->window == w->widget) {
-                    const char *l = main->hold_grab->childlist->childs[i]->label;
+                    const char *l = view_port->childlist->childs[i]->label;
                     main->hold_grab->func.button_release_callback
                         (main->hold_grab, &i, &l);
                     break;
@@ -158,6 +164,11 @@ void _check_grab(Widget_t * wid, XButtonEvent *xbutton, Xputty *main) {
             }
             widget_hide(main->hold_grab);
             main->hold_grab = NULL;
+
+        } else if(xbutton->button == Button4) {
+            _scroll_event(view_port, 1);
+        } else if(xbutton->button == Button5) {
+            _scroll_event(view_port, -1);
         }
     }
 }
@@ -189,6 +200,7 @@ void _propagate_child_expose(Widget_t *wid) {
 
 void _check_keymap (void *w_ ,XKeyEvent xkey) {
     Widget_t *wid = (Widget_t*)w_;
+    int n = 1;
     int i = 0;
     for(;i<wid->childlist->elem;i++) {
         Widget_t *w = wid->childlist->childs[i];
@@ -197,16 +209,34 @@ void _check_keymap (void *w_ ,XKeyEvent xkey) {
             break;
         }
     }
+    if(wid->app->hold_grab != NULL) {
+        wid = wid->app->hold_grab->childlist->childs[0];
+        n = -1;
+    }
     int nk = key_mapping(wid->app->dpy, &xkey);
     if (nk) {
         switch (nk) {
-            case 3: _set_adj_value(wid, false, 1);
+            case 3: _set_adj_value(wid, false, 1*n);
             break;
-            case 4: _set_adj_value(wid, true, 1);
+            case 4: _set_adj_value(wid, true, 1*n);
             break;
-            case 5: _set_adj_value(wid, false, -1);
+            case 5: _set_adj_value(wid, false, -1*n);
             break;
-            case 6: _set_adj_value(wid, true, -1);
+            case 6: _set_adj_value(wid, true, -1*n);
+            break;
+            case 10: 
+            {
+                int i = 0;
+                for(;i<wid->childlist->elem;i++) {
+                    Widget_t *w = wid->childlist->childs[i];
+                    if(w->flags & HAS_FOCUS) {
+                         wid=w;
+                        break;
+                    }
+                }
+                send_button_press_event(wid);
+                send_button_release_event(wid);
+            }
             break;
             default:
             break;

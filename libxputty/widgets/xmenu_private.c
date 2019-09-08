@@ -80,7 +80,6 @@ void _draw_item(void *w_, void* user_data) {
     cairo_move_to (w->crb, (width-extents.width)/2., height - extents.height );
     cairo_show_text(w->crb, w->label);
     cairo_new_path (w->crb);
-
 }
 
 /**
@@ -114,6 +113,24 @@ void _draw_check_item(void *w_, void* user_data) {
     }
 }
 
+
+/**
+ * @brief _set_viewpoint       - move the view_port to position
+ * @param *w_                  - void pointer to view_port
+ * @param *user_data           - attached user_data
+ * @return void
+ */
+
+void _set_viewpoint(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    int v = (int)adj_get_value(w->adj);
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->app->dpy, (Window)w->childlist->childs[0]->widget, &attrs);
+    int height = attrs.height;
+    XMoveWindow(w->app->dpy,w->widget,0, -height*v);
+}
+
+
 /**
  * @brief _item_button_pressed - redraw item on button press
  * @param *button              - the xbutton which is pressed
@@ -135,7 +152,7 @@ void _item_button_pressed(void *w_, void* button, void* user_data) {
 
 void _check_item_button_pressed(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    if (w->flags & HAS_POINTER) {
+    if (w->flags & HAS_FOCUS) {
         float value = w->adj_y->value ? 0.0 : 1.0;
         adj_set_value(w->adj_y, value);
     }
@@ -151,7 +168,7 @@ void _check_item_button_pressed(void *w_, void* button_, void* user_data) {
 void _radio_item_button_pressed(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     Widget_t * p = w->parent;
-    if (w->flags & HAS_POINTER) {
+    if (w->flags & HAS_FOCUS) {
         radio_item_set_active(w);
     }
 }
@@ -164,17 +181,19 @@ void _radio_item_button_pressed(void *w_, void* button_, void* user_data) {
  */
 
 void _configure_menu(Widget_t *parent, Widget_t *menu) {
+    Widget_t* view_port =  menu->childlist->childs[0];
     XWindowAttributes attrs;
-    XGetWindowAttributes(menu->app->dpy, (Window)menu->childlist->childs[0]->widget, &attrs);
+    XGetWindowAttributes(menu->app->dpy, (Window)view_port->childlist->childs[0]->widget, &attrs);
     int height = attrs.height;
     int x1, y1;
     Window child;
     XTranslateCoordinates( parent->app->dpy, parent->widget, DefaultRootWindow(parent->app->dpy), 0, 0, &x1, &y1, &child );
     int item_width = 1.0;
     cairo_text_extents_t extents;
-    int i = menu->childlist->elem-1;
+    int i = view_port->childlist->elem-1;
+    set_adjustment(view_port->adj,0.0, view_port->adj->value, 0.0, i-4.0,1.0, CL_VIEWPORT);
     for(;i>-1;i--) {
-        Widget_t *w = menu->childlist->childs[i];
+        Widget_t *w = view_port->childlist->childs[i];
         cairo_set_font_size (w->crb, height/2);
         cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
                                    CAIRO_FONT_WEIGHT_BOLD);
@@ -182,6 +201,7 @@ void _configure_menu(Widget_t *parent, Widget_t *menu) {
         
         item_width = max(item_width, (int)extents.width+40);
     }
-    XResizeWindow (menu->app->dpy, menu->widget, item_width, height*(menu->childlist->elem));
+    XResizeWindow (menu->app->dpy, menu->widget, item_width, height*5);
+    XResizeWindow (view_port->app->dpy, view_port->widget, item_width, height*(view_port->childlist->elem));
     XMoveWindow(menu->app->dpy,menu->widget,x1, y1);    
 }

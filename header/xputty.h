@@ -157,12 +157,12 @@ struct Xputty{
     Childlist_t *childlist;
 /** pointer to the display in use */
     Display *dpy;
-/** bool to quit the main loop */
-    bool run;
 /** theming scheme for all Widget_t */
     XColor_t *color_scheme;
 /** pointer to a modal Widget_t */
     Widget_t *hold_grab;
+/** bool to quit the main loop */
+    bool run;
 };
 
 /**

@@ -148,6 +148,7 @@ static void button_quit_callback(void *w_, void* user_data) {
 
 static void menu_response(void *w_, void* item_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
+    Widget_t *view_port = w->childlist->childs[0];
     // fprintf(stderr, "selected item is %i with label %s\n", *(int*)item_, *(const char**)user_data);
     switch (*(int*)item_) {
         case 0: set_green(w);
@@ -162,7 +163,7 @@ static void menu_response(void *w_, void* item_, void* user_data) {
         break;
         case 5: set_yellow(w);
         break;
-        case 6: pattern(w->childlist->childs[6]);
+        case 6: pattern(view_port->childlist->childs[6]);
         break;
         default:
         break;

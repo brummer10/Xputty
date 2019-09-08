@@ -231,6 +231,7 @@ void _set_entry(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     int v = (int)adj_get_value(w->adj);
     Widget_t * menu = w->childlist->childs[0];
-    w->label = menu->childlist->childs[v]->label;
+    Widget_t* view_port =  menu->childlist->childs[0];
+    w->label = view_port->childlist->childs[v]->label;
     transparent_draw(w, user_data);
 }

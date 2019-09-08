@@ -372,7 +372,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
 
     childlist_add_child(app->childlist,w);
     //XMapWindow(app->dpy, w->widget);
-    debug_print("size of Widget_t = %i\n", sizeof(struct Widget_t));
+    debug_print("size of Widget_t = %ld\n", sizeof(struct Widget_t));
     return w;
 }
 
@@ -610,6 +610,58 @@ void send_configure_event(Widget_t *w,int x, int y, int width, int height) {
     notify.above = None;
     notify.override_redirect = 1;
     XSendEvent( w->app->dpy, w->widget, true, StructureNotifyMask, (XEvent*)&notify );    
+}
+
+/**
+ * @brief send_button_press_event   - send ButtonPress event to Widget_t
+ * @param *w                        - pointer to the Widget_t to send the notify
+ * @return void 
+ */
+
+void send_button_press_event(Widget_t *w) {
+    XEvent event;
+    memset(&event, 0, sizeof(XEvent));
+    XWindowAttributes attr;
+    XGetWindowAttributes(w->app->dpy, w->widget, &attr);
+    event.type = ButtonPress;
+    event.xbutton.same_screen = true;
+    event.xbutton.root = None;
+    event.xbutton.window = w->widget;
+    event.xbutton.subwindow = None;
+    event.xbutton.x = 1;
+    event.xbutton.y = 1;
+    event.xbutton.x_root = attr.x;
+    event.xbutton.y_root = attr.y;
+    event.xbutton.state = 0;
+    event.xbutton.button = Button1;
+    XSendEvent(w->app->dpy, PointerWindow, True, ButtonPressMask, &event);
+
+}
+
+/**
+ * @brief send_button_release_event - send ButtonRelease event to Widget_t
+ * @param *w                        - pointer to the Widget_t to send the notify
+ * @return void 
+ */
+
+void send_button_release_event(Widget_t *w) {
+    XEvent event;
+    memset(&event, 0, sizeof(XEvent));
+    XWindowAttributes attr;
+    XGetWindowAttributes(w->app->dpy, w->widget, &attr);
+    event.type = ButtonRelease;
+    event.xbutton.same_screen = true;
+    event.xbutton.root = None;
+    event.xbutton.window = w->widget;
+    event.xbutton.subwindow = None;
+    event.xbutton.x = 1;
+    event.xbutton.y = 1;
+    event.xbutton.x_root = attr.x;
+    event.xbutton.y_root = attr.y;
+    event.xbutton.state = 0;
+    event.xbutton.button = Button1;
+    XSendEvent(w->app->dpy, PointerWindow, True, ButtonReleaseMask, &event);
+
 }
 
 /**
