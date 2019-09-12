@@ -151,6 +151,7 @@ void _check_grab(Widget_t * wid, XButtonEvent *xbutton, Xputty *main) {
     if(main->hold_grab != NULL) {
         Widget_t *view_port = main->hold_grab->childlist->childs[0];
         if(xbutton->button == Button1) {
+            //if (xbutton->window == view_port->widget) return;
             XUngrabPointer(main->dpy,CurrentTime);
             int i = view_port->childlist->elem-1;
             for(;i>-1;i--) {
@@ -370,6 +371,10 @@ void _resize_childs(Widget_t *wid) {
                     w->scale.init_width / (wid->scale.ascale)), 
                     max(1,w->scale.init_height / (wid->scale.ascale)));
             
+            break;
+            case(MENUITEM):
+                XResizeWindow (wid->app->dpy, w->widget, max(1,
+                    w->scale.init_width - (wid->scale.scale_x)-5), w->scale.init_height);
             break;
             case(NONE):
               //  XMoveWindow(wid->app->dpy,w->widget,w->scale.init_x-wid->scale.scale_x,

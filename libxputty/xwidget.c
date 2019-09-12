@@ -358,7 +358,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     childlist_add_child(parent->childlist, w);
     w->event_callback = widget_event_loop;
     w->func.expose_callback = _dummy_callback;
-    w->func.configure_callback = configure_event;;
+    w->func.configure_callback = configure_event;
     w->func.button_press_callback = _dummy1_callback;
     w->func.button_release_callback = _dummy1_callback;
     w->func.motion_callback = _dummy1_callback;

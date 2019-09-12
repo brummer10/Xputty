@@ -204,7 +204,7 @@ static void button_thema_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     
     if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
-        pop_menu_show(w, w->childlist->childs[0]);
+        pop_menu_show(w, w->childlist->childs[0], 5);
     }
     adj_set_value(w->adj,0.0);
 }

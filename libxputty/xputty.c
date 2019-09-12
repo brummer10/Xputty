@@ -87,6 +87,7 @@ void main_run(Xputty *main) {
                         break;
                     }
                 }
+                if (xev.xbutton.window == view_port->widget) is_item = True;
                 if (!is_item) {
                     XUngrabPointer(main->dpy,CurrentTime);
                     widget_hide(main->hold_grab);
@@ -142,6 +143,7 @@ void run_embedded(Xputty *main) {
                         break;
                     }
                 }
+                if (xev.xbutton.window == view_port->widget) is_item = True;
                 if (!is_item) {
                     XUngrabPointer(main->dpy,CurrentTime);
                     widget_hide(main->hold_grab);

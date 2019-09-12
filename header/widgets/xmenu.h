@@ -34,7 +34,7 @@
  * @return void
  */
 
-void pop_menu_show(Widget_t *parent, Widget_t *menu);
+void pop_menu_show(Widget_t *parent, Widget_t *menu, int elem);
 
 /**
  * @brief create_menu         - create a menu to a Widget_t

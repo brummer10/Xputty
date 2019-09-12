@@ -99,19 +99,21 @@ typedef struct {
 
 typedef enum {
 /** Widget_t adjust nord/west */
-    NORTHWEST    = 0x0001,
+    NORTHWEST    ,
 /** Widget_t adjust nord/east */
-    NORTHEAST    = 0x0002,
+    NORTHEAST    ,
 /** Widget_t adjust south/west */
-    SOUTHWEST     = 0x0004,
+    SOUTHWEST     ,
 /** Widget_t adjust south/east */
-    SOUTHEAST     = 0x0008,
+    SOUTHEAST     ,
 /** Widget_t adjust centered */
-    CENTER        = 0x0016,
+    CENTER        ,
 /** Widget_t adjust in a aspect frame */
-    ASPECT        = 0x0032,
+    ASPECT        ,
+/** Widget_t adjust in a aspect frame */
+    MENUITEM      ,
 /** Widget_t request no adjustment in frame */
-    NONE          = 0x10000   
+    NONE          ,   
 }Gravity;
 
 /**

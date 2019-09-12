@@ -29,8 +29,8 @@
  * @return void
  */
 
-void pop_menu_show(Widget_t *parent, Widget_t *menu) {
-    _configure_menu(parent, menu);
+void pop_menu_show(Widget_t *parent, Widget_t *menu, int elem) {
+    _configure_menu(parent, menu, elem);
     pop_widget_show_all(menu);
     int err = XGrabPointer(menu->app->dpy, DefaultRootWindow(parent->app->dpy), True,
                  ButtonPressMask|ButtonReleaseMask|PointerMotionMask,
@@ -50,11 +50,12 @@ void pop_menu_show(Widget_t *parent, Widget_t *menu) {
 
 Widget_t* create_viewport(Widget_t *parent, int width, int height) {
     Widget_t *wid = create_widget(parent->app, parent, 0, 0, width, height);
-    wid->scale.gravity = CENTER;
+    wid->scale.gravity = NONE;
+    wid->flags &= ~USE_TRANSPARENCY;
     wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, -1.0,1.0, CL_VIEWPORT);
     wid->adj = wid->adj_y;
     wid->func.adj_callback = _set_viewpoint;
-    
+    wid->func.expose_callback = _draw_viewslider;
 }
 
 /**
@@ -78,6 +79,7 @@ Widget_t* create_menu(Widget_t *parent, int height) {
     XSetTransientForHint(parent->app->dpy,wid->widget,parent->widget);
     wid->func.expose_callback = _draw_menu;
     wid->flags |= IS_POPUP;
+    wid->scale.gravity = NONE;
     childlist_add_child(parent->childlist, wid);
     return wid;
 
@@ -100,7 +102,7 @@ Widget_t* menu_add_item(Widget_t *menu,const char * label) {
     Widget_t *wid = create_widget(menu->app, view_port, 0, height*si, width, height);
     float max_value = view_port->adj->max_value+1.0;
     set_adjustment(view_port->adj,0.0, 0.0, 0.0, max_value,1.0, CL_VIEWPORT);
-    wid->scale.gravity = NORTHEAST;
+    wid->scale.gravity = MENUITEM;
     wid->flags &= ~USE_TRANSPARENCY;
     wid->label = label;
     wid->func.expose_callback = _draw_item;

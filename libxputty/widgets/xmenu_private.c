@@ -113,6 +113,36 @@ void _draw_check_item(void *w_, void* user_data) {
     }
 }
 
+/**
+ * @brief _draw_viewslider     - draw a slider on the viewport
+ * to indicate the view point
+ * @param *w_                  - void pointer to view_port
+ * @param *user_data           - attached user_data
+ * @return void
+ */
+
+void _draw_viewslider(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    int v = (int)w->adj->max_value;
+    if (!v) return;
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
+    if (attrs.map_state != IsViewable) return;
+    int width = attrs.width;
+    int height = attrs.height;
+    float sliderstate = adj_get_state(w->adj);
+    use_bg_color_scheme(w, NORMAL_);
+    cairo_rectangle(w->crb, width-5,0,5,height);
+    cairo_fill_preserve(w->crb);
+    use_base_color_scheme(w, NORMAL_);
+    cairo_fill(w->crb);
+    use_bg_color_scheme(w, NORMAL_);
+    cairo_rectangle(w->crb, width-5,(height-10)*sliderstate,5,10);
+    cairo_fill_preserve(w->crb);
+    use_fg_color_scheme(w, NORMAL_);
+    cairo_set_line_width(w->crb,1);
+    cairo_stroke(w->crb);
+}
 
 /**
  * @brief _set_viewpoint       - move the view_port to position
@@ -180,7 +210,7 @@ void _radio_item_button_pressed(void *w_, void* button_, void* user_data) {
  * @return void
  */
 
-void _configure_menu(Widget_t *parent, Widget_t *menu) {
+void _configure_menu(Widget_t *parent, Widget_t *menu, int elem) {
     Widget_t* view_port =  menu->childlist->childs[0];
     XWindowAttributes attrs;
     XGetWindowAttributes(menu->app->dpy, (Window)view_port->childlist->childs[0]->widget, &attrs);
@@ -191,7 +221,12 @@ void _configure_menu(Widget_t *parent, Widget_t *menu) {
     int item_width = 1.0;
     cairo_text_extents_t extents;
     int i = view_port->childlist->elem-1;
-    set_adjustment(view_port->adj,0.0, view_port->adj->value, 0.0, i-4.0,1.0, CL_VIEWPORT);
+    set_adjustment(view_port->adj,0.0, view_port->adj->value, 0.0, i-(elem-1),1.0, CL_VIEWPORT);
+    bool is_not_scrolable = false;
+    if(view_port->childlist->elem <= elem) {
+        elem = view_port->childlist->elem;
+        is_not_scrolable = true;
+    }
     for(;i>-1;i--) {
         Widget_t *w = view_port->childlist->childs[i];
         cairo_set_font_size (w->crb, height/2);
@@ -200,8 +235,9 @@ void _configure_menu(Widget_t *parent, Widget_t *menu) {
         cairo_text_extents(w->crb,w->label , &extents);
         
         item_width = max(item_width, (int)extents.width+40);
+        if(is_not_scrolable) w->scale.gravity = NORTHEAST;
     }
-    XResizeWindow (menu->app->dpy, menu->widget, item_width, height*5);
-    XResizeWindow (view_port->app->dpy, view_port->widget, item_width, height*(view_port->childlist->elem));
-    XMoveWindow(menu->app->dpy,menu->widget,x1, y1);    
+    XResizeWindow (menu->app->dpy, menu->widget, item_width, height*elem);
+    XResizeWindow (view_port->app->dpy, view_port->widget, item_width, height*view_port->childlist->elem);
+    XMoveWindow(menu->app->dpy,menu->widget,x1, y1);   
 }

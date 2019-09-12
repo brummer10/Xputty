@@ -174,7 +174,7 @@ void _combobox_button_released(void *w_, void* button_, void* user_data) {
         XButtonEvent *xbutton = (XButtonEvent*)button_;
         if (xbutton->button == Button3) {
             w->state=1;
-            pop_menu_show(w, w->childlist->childs[0]);
+            pop_menu_show(w, w->childlist->childs[0], 6);
         }
     }
 }
@@ -193,7 +193,7 @@ void _button_combobox_released(void *w_, void* button_, void* user_data) {
     if (w->flags & HAS_POINTER && xbutton->button == Button1) {
         Widget_t *parent = w->parent;
         w->state=1;
-        pop_menu_show(parent, parent->childlist->childs[0]);
+        pop_menu_show(parent, parent->childlist->childs[0], 6);
     }
     adj_set_value(w->adj, 0.0);
 }

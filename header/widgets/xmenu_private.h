@@ -55,6 +55,16 @@ void _draw_item(void *w_, void* user_data);
 void _draw_check_item(void *w_, void* user_data);
 
 /**
+ * @brief _draw_viewslider     - draw a slider on the viewport
+ * to indicate the view point
+ * @param *w_                  - void pointer to view_port
+ * @param *user_data           - attached user_data
+ * @return void
+ */
+
+void _draw_viewslider(void *w_, void* user_data);
+
+/**
  * @brief _set_viewpoint       - move the view_port to position
  * @param *w_                  - void pointer to view_port
  * @param *user_data           - attached user_data
@@ -97,6 +107,6 @@ void _radio_item_button_pressed(void *w_, void* button_, void* user_data);
  * @return void
  */
 
-void _configure_menu(Widget_t *parent, Widget_t *menu);
+void _configure_menu(Widget_t *parent, Widget_t *menu, int elem);
 
 #endif //XMENU_PRIVATE_H_
