@@ -74,15 +74,6 @@ void _draw_viewslider(void *w_, void* user_data);
 void _set_viewpoint(void *w_, void* user_data);
 
 /**
- * @brief _item_button_pressed - redraw item on button press
- * @param *button              - the xbutton which is pressed
- * @param *user_data           - attached user_data
- * @return void
- */
-
-void _item_button_pressed(void *w_, void* button, void* user_data);
-
-/**
  * @brief _check_item_button_pressed  - redraw item on button press
  * @param *button                     - the xbutton which is pressed
  * @param *user_data                  - attached user_data

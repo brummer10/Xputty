@@ -160,19 +160,6 @@ void _set_viewpoint(void *w_, void* user_data) {
     XMoveWindow(w->app->dpy,w->widget,0, -height*v);
 }
 
-
-/**
- * @brief _item_button_pressed - redraw item on button press
- * @param *button              - the xbutton which is pressed
- * @param *user_data           - attached user_data
- * @return void
- */
-
-void _item_button_pressed(void *w_, void* button, void* user_data) {
-    Widget_t *w = (Widget_t*)w_;
-    expose_widget(w_);
-}
-
 /**
  * @brief _check_item_button_pressed  - redraw item on button press
  * @param *button                     - the xbutton which is pressed

@@ -106,7 +106,6 @@ Widget_t* menu_add_item(Widget_t *menu,const char * label) {
     wid->flags &= ~USE_TRANSPARENCY;
     wid->label = label;
     wid->func.expose_callback = _draw_item;
-    wid->func.button_press_callback = _item_button_pressed;
     wid->func.enter_callback = transparent_draw;
     wid->func.leave_callback = transparent_draw;
     return wid;
@@ -125,7 +124,6 @@ Widget_t* menu_add_check_item(Widget_t *menu, const char * label) {
     wid->adj = wid->adj_y;
     wid->func.expose_callback = _draw_check_item;
     wid->func.button_press_callback = _check_item_button_pressed;
-    
     return wid;
 }
 
