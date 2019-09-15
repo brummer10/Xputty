@@ -174,7 +174,7 @@ void use_text_color_scheme(Widget_t *w, Color_state st) {
  * @return void
  */
 
-void set_pattern(Widget_t *w, Colors *from, Colors *to, Color_mod mod, int width, int height) {
+void set_pattern(Widget_t *w, Colors *from, Colors *to, Color_mod mod) {
     float *col_from;
     float *col_to;
     switch (mod) {
@@ -195,6 +195,10 @@ void set_pattern(Widget_t *w, Colors *from, Colors *to, Color_mod mod, int width
             col_to = to->text;
         break;
     }
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
+    int width = attrs.width;
+    int height = attrs.height;
     cairo_pattern_t *pat = cairo_pattern_create_linear (0, 0, width, height);
     cairo_pattern_add_color_stop_rgba(pat, 0.0, col_from[0], col_from[1], col_from[2], col_from[3]);
     cairo_pattern_add_color_stop_rgba(pat, 1.0, col_to[0], col_to[1], col_to[2], col_to[3]);

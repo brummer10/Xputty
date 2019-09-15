@@ -147,6 +147,6 @@ void use_text_color_scheme(Widget_t *w, Color_state st);
  * @return void
  */
 
-void set_pattern(Widget_t *w, Colors *from, Colors *to, Color_mod mod, int width, int height);
+void set_pattern(Widget_t *w, Colors *from, Colors *to, Color_mod mod);
 
 #endif //XCOLOR_H_

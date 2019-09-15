@@ -35,6 +35,7 @@
 #include "xknob.h"
 #include "xmenu.h"
 #include "xcombobox.h"
+#include "xtooltip.h"
 
 
 #endif //XWIDGETS_H_

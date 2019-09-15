@@ -246,6 +246,51 @@ void _check_keymap (void *w_ ,XKeyEvent xkey) {
 }
 
 /**
+ * @brief _show_tooltip     - check if a Widget_t have a tooltip,
+ * if so, show it. 
+ * @param *wid              - pointer to the Widget_t receiving the event
+ * @return void
+ */
+
+void _show_tooltip(Widget_t *wid) {
+    int i = 0;
+    for(;i<wid->childlist->elem;i++) {
+        Widget_t *w = wid->childlist->childs[i];
+        if (w->flags & IS_TOOLTIP) {
+            unsigned int mask;
+            int x, y, rx, ry;
+            Window child, root;
+            XQueryPointer(wid->app->dpy, wid->widget, &root, &child, &rx, &ry, &x, &y, &mask);
+            int x1, y1;
+            XTranslateCoordinates( wid->app->dpy, wid->widget, DefaultRootWindow(wid->app->dpy),
+                                                                       x, y, &x1, &y1, &child );
+            XMoveWindow(w->app->dpy,w->widget,x1, y1);   
+            widget_show(w);
+            break;
+        }
+    }
+}
+
+/**
+ * @brief _hide_tooltip     - check if a Widget_t have a tooltip,
+ * if so, hide it. 
+ * @param *wid              - pointer to the Widget_t receiving the event
+ * @return void
+ */
+
+void _hide_tooltip(Widget_t *wid) {
+    int i = 0;
+    for(;i<wid->childlist->elem;i++) {
+        Widget_t *w = wid->childlist->childs[i];
+        if (w->flags & IS_TOOLTIP) {
+            widget_hide(w);
+            break;
+        }
+    }
+    
+}
+
+/**
  * @brief _has_pointer      - check if the widget has the pointer on Button release 
  * @param *w                - pointer to the Widget_t sending the request
  * @param *button           - pointer to the XButtonEvent sending the notify

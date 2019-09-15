@@ -407,7 +407,7 @@ void widget_hide(Widget_t *w) {
  */
 
 void widget_show_all(Widget_t *w) {
-    if (w->flags & IS_POPUP) {
+    if (w->flags & IS_POPUP || w->flags & IS_TOOLTIP) {
         return;
     } else {
         XMapWindow(w->app->dpy, w->widget);
@@ -428,7 +428,7 @@ void pop_widget_show_all(Widget_t *w) {
     XMapWindow(w->app->dpy, w->widget);
     int i=0;
     for(;i<w->childlist->elem;i++) {
-        widget_show_all(w->childlist->childs[i]);
+        pop_widget_show_all(w->childlist->childs[i]);
     }
 }
 
@@ -518,6 +518,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         break;
 
         case ButtonPress:
+            if (wid->flags & HAS_TOOLTIP) _hide_tooltip(wid);
             _button_press(wid, &xev->xbutton, user_data);
             debug_print("Widget_t  ButtonPress %i\n", xev->xbutton.button);
         break;
@@ -549,6 +550,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
                 wid->state = 0;
                 wid->func.leave_callback(w_, user_data);
             }
+            if (wid->flags & HAS_TOOLTIP) _hide_tooltip(wid);
             debug_print("Widget_t LeaveNotify \n");
         break;
 
@@ -557,12 +559,14 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
             if(!(xev->xcrossing.state & Button1Mask)) {
                 wid->state = 1;
                 wid->func.enter_callback(w_, user_data);
+                if (wid->flags & HAS_TOOLTIP) _show_tooltip(wid);
             }
             debug_print("Widget_t EnterNotify \n");
         break;
 
         case MotionNotify:
             adj_set_state(wid, xev->xmotion.x, xev->xmotion.y);
+            if (wid->flags & HAS_TOOLTIP) _hide_tooltip(wid);
             wid->func.motion_callback(w_,&xev->xmotion, user_data);
             debug_print("Widget_t MotionNotify x = %i Y = %i \n",xev->xmotion.x,xev->xmotion.y );
         break;

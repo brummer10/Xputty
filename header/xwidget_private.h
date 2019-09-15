@@ -94,6 +94,24 @@ void _propagate_child_expose(Widget_t *wid);
 void _check_keymap (void *w_ ,XKeyEvent xkey);
 
 /**
+ * @brief _show_tooltip     - check if a Widget_t have a tooltip,
+ * if so, show it. 
+ * @param *wid              - pointer to the Widget_t receiving the event
+ * @return void
+ */
+
+void _show_tooltip(Widget_t *wid);
+
+/**
+ * @brief _hide_tooltip     - check if a Widget_t have a tooltip,
+ * if so, hide it. 
+ * @param *wid              - pointer to the Widget_t receiving the event
+ * @return void
+ */
+
+void _hide_tooltip(Widget_t *wid);
+
+/**
  * @brief _has_pointer      - check if the widget has the pointer on Button release 
  * @param *w                - pointer to the Widget_t sending the request
  * @param *button           - pointer to the XButtonEvent sending the notify

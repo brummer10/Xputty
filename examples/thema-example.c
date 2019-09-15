@@ -109,11 +109,7 @@ static void set_yellow(Widget_t *w) {
 }
 
 static void _pattern(Widget_t *w) {
-    XWindowAttributes attrs;
-    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
-    int width = attrs.width;
-    int height = attrs.height;
-    set_pattern(w,&w->app->color_scheme->normal,&w->app->color_scheme->active,BACKGROUND_,width,height);
+    set_pattern(w,&w->app->color_scheme->normal,&w->app->color_scheme->active,BACKGROUND_);
     
 }
 
@@ -281,6 +277,7 @@ int main (int argc, char ** argv)
     widget_show_all(w);
     create_mymenu(bt);
     create_myentrys(ct);
+    add_tooltip(bt, "I'm a tooltip");
 
     main_run(&app);
     main_quit(&app);

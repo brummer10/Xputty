@@ -171,19 +171,23 @@ typedef struct {
 
 enum {
     /** Widget_t is a sub widget */
-    IS_WIDGET         = 0x0001,
+    IS_WIDGET         = 1<<0,
     /** Widget_t has no Widget_t parent */
-    IS_WINDOW         = 0x0002,
+    IS_WINDOW         = 1<<1,
     /** Widget_t is a pop up widget */
-    IS_POPUP          = 0x0004,
+    IS_POPUP          = 1<<2,
     /** Widget_t is part of a radio group */
-    IS_RADIO          = 0x0008,
+    IS_RADIO          = 1<<3,
+    /** Widget_t is part of a radio group */
+    IS_TOOLTIP        = 1<<4,
     /** Widget_t need transparent draw (buffer) */
-    USE_TRANSPARENCY  = 0x0010,
+    USE_TRANSPARENCY  = 1<<5,
     /** Mouse pointer is above Widget_t */
-    HAS_FOCUS         = 0x0020,
+    HAS_FOCUS         = 1<<6,
     /** Mouse pointer is pressed on Widget_t */
-    HAS_POINTER       = 0x0040,
+    HAS_POINTER       = 1<<7,
+    /** Widget_t have tooltip */
+    HAS_TOOLTIP       = 1<<8,
 };
 
 /**
@@ -245,7 +249,7 @@ struct Widget_t {
 /** int to hold user data */
     int data;
 /** int to hold Widget_t flags */
-    unsigned int flags;
+    long int flags;
 /** pointer to the widget label */
     const char* label;
 /** char array to hold user input */
