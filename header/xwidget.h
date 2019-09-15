@@ -178,7 +178,7 @@ enum {
     IS_POPUP          = 1<<2,
     /** Widget_t is part of a radio group */
     IS_RADIO          = 1<<3,
-    /** Widget_t is part of a radio group */
+    /** Widget_t is a tooltip widget */
     IS_TOOLTIP        = 1<<4,
     /** Widget_t need transparent draw (buffer) */
     USE_TRANSPARENCY  = 1<<5,

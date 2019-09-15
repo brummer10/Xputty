@@ -20,34 +20,29 @@
 
 
 #include "xtooltip.h"
+#include "xtooltip_private.h"
 
 /**
- * @brief _draw_tooltip        - draw tooltip on expose call
- * @param *w_                  - the tooltip to draw
- * @param *user_data           - attached user_data
+ * @brief tooltip_set_text     - set a (new) text to a tooltip for Widget_t
+ * @param *w                   - pointer to the Widget_t request the tooltip
+ * @param *label               - the tooltip text
  * @return void
  */
 
-void _draw_tooltip(void *w_, void* user_data) {
-    Widget_t *w = (Widget_t*)w_;
-    if (!w) return;
-    XWindowAttributes attrs;
-    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
-    int width = attrs.width;
-    int height = attrs.height;
-    use_bg_color_scheme(w, get_color_state(w));
-    cairo_paint (w->crb);
-    cairo_text_extents_t extents;
-    /** show label **/
-    use_text_color_scheme(w, get_color_state(w));
-    cairo_set_font_size (w->crb, 12);
-    cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
-                               CAIRO_FONT_WEIGHT_BOLD);
-    cairo_text_extents(w->crb,w->label , &extents);
-
-    cairo_move_to (w->crb, (width-extents.width)/2., height - extents.height );
-    cairo_show_text(w->crb, w->label);
-    
+void tooltip_set_text(Widget_t *w, const char* label) {
+    Widget_t *wid = NULL;
+    bool is_tooltip = false;
+    int i = 0;
+    for(;i<w->childlist->elem;i++) {
+        wid = w->childlist->childs[i];
+        if (wid->flags & IS_TOOLTIP) {
+            wid->label = label;
+            _get_width(wid);
+            is_tooltip = true;
+            break;
+        }
+    }
+    if (!is_tooltip) add_tooltip(w, label);
 }
 
 /**
@@ -58,15 +53,9 @@ void _draw_tooltip(void *w_, void* user_data) {
  */
 
 void add_tooltip(Widget_t *w, const char* label) {
-    cairo_text_extents_t extents;
-    cairo_set_font_size (w->crb, 12);
-    cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
-                               CAIRO_FONT_WEIGHT_BOLD);
-    cairo_text_extents(w->crb,label , &extents);
-    
-    int width = max(1, (int)extents.width+40);
-    Widget_t *wid = create_tooltip(w, width, 25);
+    Widget_t *wid = create_tooltip(w, 25, 25);
     wid->label = label;
+    _get_width(wid);
 }
 
 /**

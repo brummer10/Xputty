@@ -28,13 +28,13 @@
 
 
 /**
- * @brief _draw_tooltip        - draw tooltip on expose call
- * @param *w_                  - the tooltip to draw
- * @param *user_data           - attached user_data
+ * @brief tooltip_set_text     - set a (new) text to a tooltip for Widget_t
+ * @param *w                   - pointer to the Widget_t request the tooltip
+ * @param *label               - the tooltip text
  * @return void
  */
 
-void _draw_tooltip(void *w_, void* user_data);
+void tooltip_set_text(Widget_t *w, const char* label);
 
 /**
  * @brief add_tooltip          - add a tooltip to Widget_t

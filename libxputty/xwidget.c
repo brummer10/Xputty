@@ -566,7 +566,6 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
 
         case MotionNotify:
             adj_set_state(wid, xev->xmotion.x, xev->xmotion.y);
-            if (wid->flags & HAS_TOOLTIP) _hide_tooltip(wid);
             wid->func.motion_callback(w_,&xev->xmotion, user_data);
             debug_print("Widget_t MotionNotify x = %i Y = %i \n",xev->xmotion.x,xev->xmotion.y );
         break;
