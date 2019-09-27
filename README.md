@@ -60,6 +60,11 @@ int main (int argc, char ** argv)
 
 ```
 
+Here is a bit more advanced example:
+
+![Theme-example](https://github.com/brummer10/Xputty/raw/master/examples/Theme-example.png)
+
+
 check out the example folder for more examples.
 
 
