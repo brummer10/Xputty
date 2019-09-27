@@ -18,13 +18,15 @@ void \hyperlink{xmenu__private_8c_a648db81750573ec3d553e89aebfe19bf}{\+\_\+draw\
 \begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+item -\/ draw item on expose call \end{DoxyCompactList}\item 
 void \hyperlink{xmenu__private_8c_addbe0dd3f9bf221eee2a42364bf84b33}{\+\_\+draw\+\_\+check\+\_\+item} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+check\+\_\+item -\/ draw item on expose call \end{DoxyCompactList}\item 
-void \hyperlink{xmenu__private_8c_a6aeeeb842fabed66853b869de3f78887}{\+\_\+item\+\_\+button\+\_\+pressed} (void $\ast$w\+\_\+, void $\ast$button, void $\ast$user\+\_\+data)
-\begin{DoxyCompactList}\small\item\em \+\_\+item\+\_\+button\+\_\+pressed -\/ redraw item on button press \end{DoxyCompactList}\item 
+void \hyperlink{xmenu__private_8c_ae306de1c15572cbe282b404b9f81d0b1}{\+\_\+draw\+\_\+viewslider} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+viewslider -\/ draw a slider on the viewport to indicate the view point \end{DoxyCompactList}\item 
+void \hyperlink{xmenu__private_8c_ab616d68b1296f29fcbfc079c2fc5c47b}{\+\_\+set\+\_\+viewpoint} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+set\+\_\+viewpoint -\/ move the view\+\_\+port to position \end{DoxyCompactList}\item 
 void \hyperlink{xmenu__private_8c_aaa6e146ce3b89710c22d9fd418824eb4}{\+\_\+check\+\_\+item\+\_\+button\+\_\+pressed} (void $\ast$w\+\_\+, void $\ast$button\+\_\+, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em \+\_\+check\+\_\+item\+\_\+button\+\_\+pressed -\/ redraw item on button press \end{DoxyCompactList}\item 
 void \hyperlink{xmenu__private_8c_a8c69f235270ee0acf02c3673ed4aca5b}{\+\_\+radio\+\_\+item\+\_\+button\+\_\+pressed} (void $\ast$w\+\_\+, void $\ast$button\+\_\+, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em \+\_\+radio\+\_\+item\+\_\+button\+\_\+pressed -\/ redraw item on button press \end{DoxyCompactList}\item 
-void \hyperlink{xmenu__private_8c_ab27924c83f6484527b41c1c2a3186191}{\+\_\+configure\+\_\+menu} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$menu)
+void \hyperlink{xmenu__private_8c_acab604d7c2317a4302aea351796417e9}{\+\_\+configure\+\_\+menu} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$menu, int elem)
 \begin{DoxyCompactList}\small\item\em \+\_\+configure\+\_\+menu -\/ set final size and position of menu to a \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -49,11 +51,11 @@ void \hyperlink{xmenu__private_8c_ab27924c83f6484527b41c1c2a3186191}{\+\_\+confi
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xmenu__private_8c_ab27924c83f6484527b41c1c2a3186191}\label{xmenu__private_8c_ab27924c83f6484527b41c1c2a3186191}} 
+\mbox{\Hypertarget{xmenu__private_8c_acab604d7c2317a4302aea351796417e9}\label{xmenu__private_8c_acab604d7c2317a4302aea351796417e9}} 
 \index{xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}!\+\_\+configure\+\_\+menu@{\+\_\+configure\+\_\+menu}}
 \index{\+\_\+configure\+\_\+menu@{\+\_\+configure\+\_\+menu}!xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}}
 \subsubsection{\texorpdfstring{\+\_\+configure\+\_\+menu()}{\_configure\_menu()}}
-{\footnotesize\ttfamily void \+\_\+configure\+\_\+menu (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{menu }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void \+\_\+configure\+\_\+menu (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{menu,  }\item[{int}]{elem }\end{DoxyParamCaption})}
 
 
 
@@ -129,19 +131,19 @@ show label \mbox{\Hypertarget{xmenu__private_8c_aecf82ae7946323d071617983c8d8382
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xmenu__private_8c_a6aeeeb842fabed66853b869de3f78887}\label{xmenu__private_8c_a6aeeeb842fabed66853b869de3f78887}} 
-\index{xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}!\+\_\+item\+\_\+button\+\_\+pressed@{\+\_\+item\+\_\+button\+\_\+pressed}}
-\index{\+\_\+item\+\_\+button\+\_\+pressed@{\+\_\+item\+\_\+button\+\_\+pressed}!xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}}
-\subsubsection{\texorpdfstring{\+\_\+item\+\_\+button\+\_\+pressed()}{\_item\_button\_pressed()}}
-{\footnotesize\ttfamily void \+\_\+item\+\_\+button\+\_\+pressed (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{button,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{xmenu__private_8c_ae306de1c15572cbe282b404b9f81d0b1}\label{xmenu__private_8c_ae306de1c15572cbe282b404b9f81d0b1}} 
+\index{xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}!\+\_\+draw\+\_\+viewslider@{\+\_\+draw\+\_\+viewslider}}
+\index{\+\_\+draw\+\_\+viewslider@{\+\_\+draw\+\_\+viewslider}!xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+\_\+viewslider()}{\_draw\_viewslider()}}
+{\footnotesize\ttfamily void \+\_\+draw\+\_\+viewslider (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
 
 
 
-\+\_\+item\+\_\+button\+\_\+pressed -\/ redraw item on button press 
+\+\_\+draw\+\_\+viewslider -\/ draw a slider on the viewport to indicate the view point 
 
 
 \begin{DoxyParams}{Parameters}
-{\em $\ast$button} & -\/ the xbutton which is pressed \\
+{\em $\ast$w\+\_\+} & -\/ void pointer to view\+\_\+port \\
 \hline
 {\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
 \hline
@@ -162,6 +164,26 @@ void
 
 \begin{DoxyParams}{Parameters}
 {\em $\ast$button} & -\/ the xbutton which is pressed \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xmenu__private_8c_ab616d68b1296f29fcbfc079c2fc5c47b}\label{xmenu__private_8c_ab616d68b1296f29fcbfc079c2fc5c47b}} 
+\index{xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}!\+\_\+set\+\_\+viewpoint@{\+\_\+set\+\_\+viewpoint}}
+\index{\+\_\+set\+\_\+viewpoint@{\+\_\+set\+\_\+viewpoint}!xmenu\+\_\+private.\+c@{xmenu\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+\_\+viewpoint()}{\_set\_viewpoint()}}
+{\footnotesize\ttfamily void \+\_\+set\+\_\+viewpoint (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+set\+\_\+viewpoint -\/ move the view\+\_\+port to position 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to view\+\_\+port \\
 \hline
 {\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
 \hline

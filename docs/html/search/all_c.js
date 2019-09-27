@@ -8,6 +8,7 @@ var searchData=
   ['menu_5fadd_5fcheck_5fitem',['menu_add_check_item',['../xmenu_8c.html#a85f18cd2005f83587f0fcd049d96513f',1,'menu_add_check_item(Widget_t *menu, const char *label):&#160;xmenu.c'],['../xmenu_8h.html#a85f18cd2005f83587f0fcd049d96513f',1,'menu_add_check_item(Widget_t *menu, const char *label):&#160;xmenu.c']]],
   ['menu_5fadd_5fitem',['menu_add_item',['../xmenu_8c.html#a7173305c686ccc93797c3afc617bc7df',1,'menu_add_item(Widget_t *menu, const char *label):&#160;xmenu.c'],['../xmenu_8h.html#a7173305c686ccc93797c3afc617bc7df',1,'menu_add_item(Widget_t *menu, const char *label):&#160;xmenu.c']]],
   ['menu_5fadd_5fradio_5fitem',['menu_add_radio_item',['../xmenu_8c.html#a2ccd4d73cf41f29d1c61123ec05ea1f5',1,'menu_add_radio_item(Widget_t *menu, const char *label):&#160;xmenu.c'],['../xmenu_8h.html#a2ccd4d73cf41f29d1c61123ec05ea1f5',1,'menu_add_radio_item(Widget_t *menu, const char *label):&#160;xmenu.c']]],
+  ['menuitem',['MENUITEM',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adea6bfb073b2b83d6e1810401f3074c8d46',1,'xwidget.h']]],
   ['min',['min',['../xputty_8h.html#abb702d8b501669a23aa0ab3b281b9384',1,'xputty.h']]],
   ['min_5fvalue',['min_value',['../structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3',1,'Adjustment_t']]],
   ['motion_5fcallback',['motion_callback',['../structFunc__t.html#ac2842c834907f4aeace8f404c6cc7621',1,'Func_t']]]

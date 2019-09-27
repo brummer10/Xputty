@@ -39,6 +39,10 @@ void \hyperlink{xwidget__private_8h_aaaac44f0d2bcf2ddc3f76b79e74fb3b6}{\+\_\+pro
 \begin{DoxyCompactList}\small\item\em \+\_\+propagate\+\_\+childs -\/ send expose to child window \end{DoxyCompactList}\item 
 void \hyperlink{xwidget__private_8h_ae2aeefa7b35ff7e10a148e8438a12dc9}{\+\_\+check\+\_\+keymap} (void $\ast$w\+\_\+, X\+Key\+Event xkey)
 \begin{DoxyCompactList}\small\item\em \+\_\+check\+\_\+keymap -\/ check if key is in map, send requests if so \end{DoxyCompactList}\item 
+void \hyperlink{xwidget__private_8h_a0fcaac082ae3641f01eaf11bb54c8a29}{\+\_\+show\+\_\+tooltip} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid)
+\begin{DoxyCompactList}\small\item\em \+\_\+show\+\_\+tooltip -\/ check if a \hyperlink{structWidget__t}{Widget\+\_\+t} have a tooltip, if so, show it. \end{DoxyCompactList}\item 
+void \hyperlink{xwidget__private_8h_a99b80e757ae2ee971b9b9ad18d694538}{\+\_\+hide\+\_\+tooltip} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid)
+\begin{DoxyCompactList}\small\item\em \+\_\+hide\+\_\+tooltip -\/ check if a \hyperlink{structWidget__t}{Widget\+\_\+t} have a tooltip, if so, hide it. \end{DoxyCompactList}\item 
 void \hyperlink{xwidget__private_8h_ae8d8e0d87f6186d3d19f1372c357edbe}{\+\_\+has\+\_\+pointer} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, X\+Button\+Event $\ast$button)
 \begin{DoxyCompactList}\small\item\em \+\_\+has\+\_\+pointer -\/ check if the widget has the pointer on Button release \end{DoxyCompactList}\item 
 void \hyperlink{xwidget__private_8h_a227521763a2c42146302b62c79e97ac2}{\+\_\+set\+\_\+adj\+\_\+value} (void $\ast$w\+\_\+, bool x, int direction)
@@ -207,6 +211,24 @@ void
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
+\mbox{\Hypertarget{xwidget__private_8h_a99b80e757ae2ee971b9b9ad18d694538}\label{xwidget__private_8h_a99b80e757ae2ee971b9b9ad18d694538}} 
+\index{xwidget\+\_\+private.\+h@{xwidget\+\_\+private.\+h}!\+\_\+hide\+\_\+tooltip@{\+\_\+hide\+\_\+tooltip}}
+\index{\+\_\+hide\+\_\+tooltip@{\+\_\+hide\+\_\+tooltip}!xwidget\+\_\+private.\+h@{xwidget\+\_\+private.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+hide\+\_\+tooltip()}{\_hide\_tooltip()}}
+{\footnotesize\ttfamily void \+\_\+hide\+\_\+tooltip (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{wid }\end{DoxyParamCaption})}
+
+
+
+\+\_\+hide\+\_\+tooltip -\/ check if a \hyperlink{structWidget__t}{Widget\+\_\+t} have a tooltip, if so, hide it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$wid} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} receiving the event \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \mbox{\Hypertarget{xwidget__private_8h_aaaac44f0d2bcf2ddc3f76b79e74fb3b6}\label{xwidget__private_8h_aaaac44f0d2bcf2ddc3f76b79e74fb3b6}} 
 \index{xwidget\+\_\+private.\+h@{xwidget\+\_\+private.\+h}!\+\_\+propagate\+\_\+child\+\_\+expose@{\+\_\+propagate\+\_\+child\+\_\+expose}}
 \index{\+\_\+propagate\+\_\+child\+\_\+expose@{\+\_\+propagate\+\_\+child\+\_\+expose}!xwidget\+\_\+private.\+h@{xwidget\+\_\+private.\+h}}
@@ -300,6 +322,24 @@ void
 {\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} receiving the event \\
 \hline
 {\em x} & -\/ use x or y-\/axis \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget__private_8h_a0fcaac082ae3641f01eaf11bb54c8a29}\label{xwidget__private_8h_a0fcaac082ae3641f01eaf11bb54c8a29}} 
+\index{xwidget\+\_\+private.\+h@{xwidget\+\_\+private.\+h}!\+\_\+show\+\_\+tooltip@{\+\_\+show\+\_\+tooltip}}
+\index{\+\_\+show\+\_\+tooltip@{\+\_\+show\+\_\+tooltip}!xwidget\+\_\+private.\+h@{xwidget\+\_\+private.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+show\+\_\+tooltip()}{\_show\_tooltip()}}
+{\footnotesize\ttfamily void \+\_\+show\+\_\+tooltip (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{wid }\end{DoxyParamCaption})}
+
+
+
+\+\_\+show\+\_\+tooltip -\/ check if a \hyperlink{structWidget__t}{Widget\+\_\+t} have a tooltip, if so, show it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$wid} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} receiving the event \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

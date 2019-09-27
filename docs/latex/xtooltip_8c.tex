@@ -1,0 +1,86 @@
+\hypertarget{xtooltip_8c}{}\section{xtooltip.\+c File Reference}
+\label{xtooltip_8c}\index{xtooltip.\+c@{xtooltip.\+c}}
+{\ttfamily \#include \char`\"{}xtooltip.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xtooltip\+\_\+private.\+h\char`\"{}}\newline
+Include dependency graph for xtooltip.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xtooltip_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{xtooltip_8c_a8bbcf0b320636e1ea741dadcdbdd239d}{tooltip\+\_\+set\+\_\+text} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, const char $\ast$label)
+\begin{DoxyCompactList}\small\item\em tooltip\+\_\+set\+\_\+text -\/ set a (new) text to a tooltip for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xtooltip_8c_aca3c90497b917bbc066ef82b84f6a1c0}{add\+\_\+tooltip} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, const char $\ast$label)
+\begin{DoxyCompactList}\small\item\em add\+\_\+tooltip -\/ add a tooltip to \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xtooltip_8c_a0c186aeb0b152b0b7756578b3aef5367}{create\+\_\+tooltip} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, int width, int height)
+\begin{DoxyCompactList}\small\item\em create\+\_\+tooltip -\/ create a tooltip for a \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xtooltip_8c_aca3c90497b917bbc066ef82b84f6a1c0}\label{xtooltip_8c_aca3c90497b917bbc066ef82b84f6a1c0}} 
+\index{xtooltip.\+c@{xtooltip.\+c}!add\+\_\+tooltip@{add\+\_\+tooltip}}
+\index{add\+\_\+tooltip@{add\+\_\+tooltip}!xtooltip.\+c@{xtooltip.\+c}}
+\subsubsection{\texorpdfstring{add\+\_\+tooltip()}{add\_tooltip()}}
+{\footnotesize\ttfamily void add\+\_\+tooltip (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{const char $\ast$}]{label }\end{DoxyParamCaption})}
+
+
+
+add\+\_\+tooltip -\/ add a tooltip to \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} request the tooltip \\
+\hline
+{\em $\ast$label} & -\/ the tooltip text \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xtooltip_8c_a0c186aeb0b152b0b7756578b3aef5367}\label{xtooltip_8c_a0c186aeb0b152b0b7756578b3aef5367}} 
+\index{xtooltip.\+c@{xtooltip.\+c}!create\+\_\+tooltip@{create\+\_\+tooltip}}
+\index{create\+\_\+tooltip@{create\+\_\+tooltip}!xtooltip.\+c@{xtooltip.\+c}}
+\subsubsection{\texorpdfstring{create\+\_\+tooltip()}{create\_tooltip()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ create\+\_\+tooltip (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+create\+\_\+tooltip -\/ create a tooltip for a \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$parent} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} the tooltip should pop over \\
+\hline
+{\em width} & -\/ define the width of the tooltip \\
+\hline
+{\em height} & -\/ define the height of the tooltip \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} button struct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xtooltip_8c_a8bbcf0b320636e1ea741dadcdbdd239d}\label{xtooltip_8c_a8bbcf0b320636e1ea741dadcdbdd239d}} 
+\index{xtooltip.\+c@{xtooltip.\+c}!tooltip\+\_\+set\+\_\+text@{tooltip\+\_\+set\+\_\+text}}
+\index{tooltip\+\_\+set\+\_\+text@{tooltip\+\_\+set\+\_\+text}!xtooltip.\+c@{xtooltip.\+c}}
+\subsubsection{\texorpdfstring{tooltip\+\_\+set\+\_\+text()}{tooltip\_set\_text()}}
+{\footnotesize\ttfamily void tooltip\+\_\+set\+\_\+text (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{const char $\ast$}]{label }\end{DoxyParamCaption})}
+
+
+
+tooltip\+\_\+set\+\_\+text -\/ set a (new) text to a tooltip for \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} request the tooltip \\
+\hline
+{\em $\ast$label} & -\/ the tooltip text \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

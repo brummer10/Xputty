@@ -91,9 +91,12 @@ Include dependency graph for xmenu.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac7d4e8055f6a2e474aa121c7c637aa21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xmenu_8c.html#ac7d4e8055f6a2e474aa121c7c637aa21">pop_menu_show</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *parent, <a class="el" href="structWidget__t.html">Widget_t</a> *menu)</td></tr>
-<tr class="memdesc:ac7d4e8055f6a2e474aa121c7c637aa21"><td class="mdescLeft">&#160;</td><td class="mdescRight">pop_menu_show - pop up a menu to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>  <a href="#ac7d4e8055f6a2e474aa121c7c637aa21">More...</a><br /></td></tr>
-<tr class="separator:ac7d4e8055f6a2e474aa121c7c637aa21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a068b5ee4a93f62143876d53be7105d71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xmenu_8c.html#a068b5ee4a93f62143876d53be7105d71">pop_menu_show</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *parent, <a class="el" href="structWidget__t.html">Widget_t</a> *menu, int elem)</td></tr>
+<tr class="memdesc:a068b5ee4a93f62143876d53be7105d71"><td class="mdescLeft">&#160;</td><td class="mdescRight">pop_menu_show - pop up a menu to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>  <a href="#a068b5ee4a93f62143876d53be7105d71">More...</a><br /></td></tr>
+<tr class="separator:a068b5ee4a93f62143876d53be7105d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61c713f72c681d8d3018788851b786f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xmenu_8c.html#a61c713f72c681d8d3018788851b786f8">create_viewport</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *parent, int width, int height)</td></tr>
+<tr class="memdesc:a61c713f72c681d8d3018788851b786f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">create_viewport - create a viewport on a menu to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>  <a href="#a61c713f72c681d8d3018788851b786f8">More...</a><br /></td></tr>
+<tr class="separator:a61c713f72c681d8d3018788851b786f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0eae3dbc8ef61ae9952ac81b4dd1aba4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xmenu_8c.html#a0eae3dbc8ef61ae9952ac81b4dd1aba4">create_menu</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *parent, int height)</td></tr>
 <tr class="memdesc:a0eae3dbc8ef61ae9952ac81b4dd1aba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">create_menu - create a menu to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>  <a href="#a0eae3dbc8ef61ae9952ac81b4dd1aba4">More...</a><br /></td></tr>
 <tr class="separator:a0eae3dbc8ef61ae9952ac81b4dd1aba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,6 +149,51 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Widget_t* - pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> button struct </dd></dl>
+
+</div>
+</div>
+<a id="a61c713f72c681d8d3018788851b786f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61c713f72c681d8d3018788851b786f8">&#9670;&nbsp;</a></span>create_viewport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWidget__t.html">Widget_t</a>* create_viewport </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>create_viewport - create a viewport on a menu to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*parent</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> the menu should pop over </td></tr>
+    <tr><td class="paramname">width</td><td>- define the width of the viewport </td></tr>
+    <tr><td class="paramname">height</td><td>- define the height of the viewport </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Widget_t* - pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> viewport </dd></dl>
 
 </div>
 </div>
@@ -263,8 +311,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac7d4e8055f6a2e474aa121c7c637aa21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7d4e8055f6a2e474aa121c7c637aa21">&#9670;&nbsp;</a></span>pop_menu_show()</h2>
+<a id="a068b5ee4a93f62143876d53be7105d71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a068b5ee4a93f62143876d53be7105d71">&#9670;&nbsp;</a></span>pop_menu_show()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -279,7 +327,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
-          <td class="paramname"><em>menu</em>&#160;</td>
+          <td class="paramname"><em>menu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>elem</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

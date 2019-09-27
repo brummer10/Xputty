@@ -13,8 +13,10 @@ Include dependency graph for xmenu.\+c\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{xmenu_8c_ac7d4e8055f6a2e474aa121c7c637aa21}{pop\+\_\+menu\+\_\+show} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$menu)
+void \hyperlink{xmenu_8c_a068b5ee4a93f62143876d53be7105d71}{pop\+\_\+menu\+\_\+show} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$menu, int elem)
 \begin{DoxyCompactList}\small\item\em pop\+\_\+menu\+\_\+show -\/ pop up a menu to a \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xmenu_8c_a61c713f72c681d8d3018788851b786f8}{create\+\_\+viewport} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, int width, int height)
+\begin{DoxyCompactList}\small\item\em create\+\_\+viewport -\/ create a viewport on a menu to a \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xmenu_8c_a0eae3dbc8ef61ae9952ac81b4dd1aba4}{create\+\_\+menu} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, int height)
 \begin{DoxyCompactList}\small\item\em create\+\_\+menu -\/ create a menu to a \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
 \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xmenu_8c_a7173305c686ccc93797c3afc617bc7df}{menu\+\_\+add\+\_\+item} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$menu, const char $\ast$label)
@@ -47,6 +49,28 @@ create\+\_\+menu -\/ create a menu to a \hyperlink{structWidget__t}{Widget\+\_\+
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} button struct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xmenu_8c_a61c713f72c681d8d3018788851b786f8}\label{xmenu_8c_a61c713f72c681d8d3018788851b786f8}} 
+\index{xmenu.\+c@{xmenu.\+c}!create\+\_\+viewport@{create\+\_\+viewport}}
+\index{create\+\_\+viewport@{create\+\_\+viewport}!xmenu.\+c@{xmenu.\+c}}
+\subsubsection{\texorpdfstring{create\+\_\+viewport()}{create\_viewport()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ create\+\_\+viewport (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+create\+\_\+viewport -\/ create a viewport on a menu to a \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$parent} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} the menu should pop over \\
+\hline
+{\em width} & -\/ define the width of the viewport \\
+\hline
+{\em height} & -\/ define the height of the viewport \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} viewport 
 \end{DoxyReturn}
 \mbox{\Hypertarget{xmenu_8c_a85f18cd2005f83587f0fcd049d96513f}\label{xmenu_8c_a85f18cd2005f83587f0fcd049d96513f}} 
 \index{xmenu.\+c@{xmenu.\+c}!menu\+\_\+add\+\_\+check\+\_\+item@{menu\+\_\+add\+\_\+check\+\_\+item}}
@@ -108,11 +132,11 @@ menu\+\_\+add\+\_\+radio\+\_\+item -\/ add a radio item to menu
 \begin{DoxyReturn}{Returns}
 Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} menu\+\_\+item struct 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xmenu_8c_ac7d4e8055f6a2e474aa121c7c637aa21}\label{xmenu_8c_ac7d4e8055f6a2e474aa121c7c637aa21}} 
+\mbox{\Hypertarget{xmenu_8c_a068b5ee4a93f62143876d53be7105d71}\label{xmenu_8c_a068b5ee4a93f62143876d53be7105d71}} 
 \index{xmenu.\+c@{xmenu.\+c}!pop\+\_\+menu\+\_\+show@{pop\+\_\+menu\+\_\+show}}
 \index{pop\+\_\+menu\+\_\+show@{pop\+\_\+menu\+\_\+show}!xmenu.\+c@{xmenu.\+c}}
 \subsubsection{\texorpdfstring{pop\+\_\+menu\+\_\+show()}{pop\_menu\_show()}}
-{\footnotesize\ttfamily void pop\+\_\+menu\+\_\+show (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{menu }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void pop\+\_\+menu\+\_\+show (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{menu,  }\item[{int}]{elem }\end{DoxyParamCaption})}
 
 
 

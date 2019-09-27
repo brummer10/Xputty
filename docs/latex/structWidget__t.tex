@@ -46,11 +46,23 @@ cairo\+\_\+surface\+\_\+t $\ast$ \hyperlink{structWidget__t_a4e179b5ae7494b9533c
 \item 
 int \hyperlink{structWidget__t_a9dd7b58be77bf31ab021aa627a73186a}{data}
 \item 
-unsigned int \hyperlink{structWidget__t_a0ebd3253a061cfeb9318c3e16040785c}{flags}
+long int \hyperlink{structWidget__t_ada1de5e6a955dc81fa956c9e7f2d2062}{flags}
 \item 
 const char $\ast$ \hyperlink{structWidget__t_a952020107ac1f6d9a37b4f978f77b61c}{label}
 \item 
 char \hyperlink{structWidget__t_ac5cb454301472edeb16e563ef2149dbb}{input\+\_\+label} \mbox{[}32\mbox{]}
+\item 
+\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{structWidget__t_aabc05e0a46c85d24483fae36127b45dd}{adj\+\_\+x}
+\item 
+\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{structWidget__t_abde95d3fb49faff5dd852f16810115e7}{adj\+\_\+y}
+\item 
+\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{structWidget__t_af3fdf65eb9a663016b91ee87a96d75a8}{adj}
+\item 
+\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$ \hyperlink{structWidget__t_ac203ccbc58958a7c205897d4aba197e9}{childlist}
+\item 
+X\+IC \hyperlink{structWidget__t_adafb1b98ea551ef726be6c726ac2e817}{xic}
+\item 
+X\+IM \hyperlink{structWidget__t_a81aa76d336043a7230844d09a92113e2}{xim}
 \item 
 int \hyperlink{structWidget__t_aaa935b64805fdeb78acb015c67d6638c}{state}
 \item 
@@ -67,18 +79,6 @@ int \hyperlink{structWidget__t_a3204c88196ed5793250b3530dd719037}{width}
 int \hyperlink{structWidget__t_a1def6d2237743e75a0b84ca0c34a6834}{height}
 \item 
 \hyperlink{structResize__t}{Resize\+\_\+t} \hyperlink{structWidget__t_a9a2d5b53f40f5bf3914fc0694027d7ec}{scale}
-\item 
-\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{structWidget__t_aabc05e0a46c85d24483fae36127b45dd}{adj\+\_\+x}
-\item 
-\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{structWidget__t_abde95d3fb49faff5dd852f16810115e7}{adj\+\_\+y}
-\item 
-\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$ \hyperlink{structWidget__t_af3fdf65eb9a663016b91ee87a96d75a8}{adj}
-\item 
-\hyperlink{structChildlist__t}{Childlist\+\_\+t} $\ast$ \hyperlink{structWidget__t_ac203ccbc58958a7c205897d4aba197e9}{childlist}
-\item 
-X\+IC \hyperlink{structWidget__t_adafb1b98ea551ef726be6c726ac2e817}{xic}
-\item 
-X\+IM \hyperlink{structWidget__t_a81aa76d336043a7230844d09a92113e2}{xim}
 \end{DoxyCompactItemize}
 
 
@@ -207,11 +207,11 @@ int to hold user data \mbox{\Hypertarget{structWidget__t_af0adf855c1991d11f59c5b
 \subsubsection{\texorpdfstring{event\+\_\+callback}{event\_callback}}
 {\footnotesize\ttfamily \hyperlink{xwidget_8h_a6423c133fb634585762a77dda34befab}{vfunc} Widget\+\_\+t\+::event\+\_\+callback}
 
-the main X\+Event callback \mbox{\Hypertarget{structWidget__t_a0ebd3253a061cfeb9318c3e16040785c}\label{structWidget__t_a0ebd3253a061cfeb9318c3e16040785c}} 
+the main X\+Event callback \mbox{\Hypertarget{structWidget__t_ada1de5e6a955dc81fa956c9e7f2d2062}\label{structWidget__t_ada1de5e6a955dc81fa956c9e7f2d2062}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!flags@{flags}}
 \index{flags@{flags}!Widget\+\_\+t@{Widget\+\_\+t}}
 \subsubsection{\texorpdfstring{flags}{flags}}
-{\footnotesize\ttfamily unsigned int Widget\+\_\+t\+::flags}
+{\footnotesize\ttfamily long int Widget\+\_\+t\+::flags}
 
 int to hold \hyperlink{structWidget__t}{Widget\+\_\+t} flags \mbox{\Hypertarget{structWidget__t_a225b9a175e132994a5aa73b59a2911ad}\label{structWidget__t_a225b9a175e132994a5aa73b59a2911ad}} 
 \index{Widget\+\_\+t@{Widget\+\_\+t}!func@{func}}

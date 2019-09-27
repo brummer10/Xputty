@@ -138,6 +138,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a6f6b3d05aefce9a3f7454a44897aecc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a6f6b3d05aefce9a3f7454a44897aecc0">send_configure_event</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, int x, int y, int width, int height)</td></tr>
 <tr class="memdesc:a6f6b3d05aefce9a3f7454a44897aecc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">send_configure_event - send ConfigureNotify to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>  <a href="#a6f6b3d05aefce9a3f7454a44897aecc0">More...</a><br /></td></tr>
 <tr class="separator:a6f6b3d05aefce9a3f7454a44897aecc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf136b8b267467116166d84248f8a7c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#adf136b8b267467116166d84248f8a7c3">send_button_press_event</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w)</td></tr>
+<tr class="memdesc:adf136b8b267467116166d84248f8a7c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">send_button_press_event - send ButtonPress event to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>  <a href="#adf136b8b267467116166d84248f8a7c3">More...</a><br /></td></tr>
+<tr class="separator:adf136b8b267467116166d84248f8a7c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fe57c44e95fcd54891dc9ba22efe06a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a2fe57c44e95fcd54891dc9ba22efe06a">send_button_release_event</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w)</td></tr>
+<tr class="memdesc:a2fe57c44e95fcd54891dc9ba22efe06a"><td class="mdescLeft">&#160;</td><td class="mdescRight">send_button_release_event - send ButtonRelease event to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>  <a href="#a2fe57c44e95fcd54891dc9ba22efe06a">More...</a><br /></td></tr>
+<tr class="separator:a2fe57c44e95fcd54891dc9ba22efe06a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d835af5b56eb13ed7bd4602ce7ccd92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xwidget_8c.html#a4d835af5b56eb13ed7bd4602ce7ccd92">quit</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w)</td></tr>
 <tr class="memdesc:a4d835af5b56eb13ed7bd4602ce7ccd92"><td class="mdescLeft">&#160;</td><td class="mdescRight">quit - exit the main loop  <a href="#a4d835af5b56eb13ed7bd4602ce7ccd92">More...</a><br /></td></tr>
 <tr class="separator:a4d835af5b56eb13ed7bd4602ce7ccd92"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -515,6 +521,60 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> sending the request </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="adf136b8b267467116166d84248f8a7c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf136b8b267467116166d84248f8a7c3">&#9670;&nbsp;</a></span>send_button_press_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void send_button_press_event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send_button_press_event - send ButtonPress event to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> to send the notify </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a2fe57c44e95fcd54891dc9ba22efe06a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fe57c44e95fcd54891dc9ba22efe06a">&#9670;&nbsp;</a></span>send_button_release_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void send_button_release_event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send_button_release_event - send ButtonRelease event to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> to send the notify </td></tr>
   </table>
   </dd>
 </dl>

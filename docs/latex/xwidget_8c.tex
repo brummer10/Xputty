@@ -45,6 +45,10 @@ void \hyperlink{xwidget_8c_a4549cfc76e73a5d56b50f0d762287436}{widget\+\_\+event\
 \begin{DoxyCompactList}\small\item\em widget\+\_\+event\+\_\+loop -\/ the internal widget event loop \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a6f6b3d05aefce9a3f7454a44897aecc0}{send\+\_\+configure\+\_\+event} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, int x, int y, int width, int height)
 \begin{DoxyCompactList}\small\item\em send\+\_\+configure\+\_\+event -\/ send Configure\+Notify to \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_adf136b8b267467116166d84248f8a7c3}{send\+\_\+button\+\_\+press\+\_\+event} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em send\+\_\+button\+\_\+press\+\_\+event -\/ send Button\+Press event to \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xwidget_8c_a2fe57c44e95fcd54891dc9ba22efe06a}{send\+\_\+button\+\_\+release\+\_\+event} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\begin{DoxyCompactList}\small\item\em send\+\_\+button\+\_\+release\+\_\+event -\/ send Button\+Release event to \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a4d835af5b56eb13ed7bd4602ce7ccd92}{quit} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
 \begin{DoxyCompactList}\small\item\em quit -\/ exit the main loop \end{DoxyCompactList}\item 
 void \hyperlink{xwidget_8c_a1e367c7f3e7dcd71fbbb6125fc1b227a}{quit\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
@@ -243,6 +247,42 @@ quit\+\_\+widget -\/ remove a widget from the processing loop
 
 \begin{DoxyParams}{Parameters}
 {\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} sending the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_adf136b8b267467116166d84248f8a7c3}\label{xwidget_8c_adf136b8b267467116166d84248f8a7c3}} 
+\index{xwidget.\+c@{xwidget.\+c}!send\+\_\+button\+\_\+press\+\_\+event@{send\+\_\+button\+\_\+press\+\_\+event}}
+\index{send\+\_\+button\+\_\+press\+\_\+event@{send\+\_\+button\+\_\+press\+\_\+event}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{send\+\_\+button\+\_\+press\+\_\+event()}{send\_button\_press\_event()}}
+{\footnotesize\ttfamily void send\+\_\+button\+\_\+press\+\_\+event (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+send\+\_\+button\+\_\+press\+\_\+event -\/ send Button\+Press event to \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the notify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xwidget_8c_a2fe57c44e95fcd54891dc9ba22efe06a}\label{xwidget_8c_a2fe57c44e95fcd54891dc9ba22efe06a}} 
+\index{xwidget.\+c@{xwidget.\+c}!send\+\_\+button\+\_\+release\+\_\+event@{send\+\_\+button\+\_\+release\+\_\+event}}
+\index{send\+\_\+button\+\_\+release\+\_\+event@{send\+\_\+button\+\_\+release\+\_\+event}!xwidget.\+c@{xwidget.\+c}}
+\subsubsection{\texorpdfstring{send\+\_\+button\+\_\+release\+\_\+event()}{send\_button\_release\_event()}}
+{\footnotesize\ttfamily void send\+\_\+button\+\_\+release\+\_\+event (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+
+
+send\+\_\+button\+\_\+release\+\_\+event -\/ send Button\+Release event to \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the notify \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
