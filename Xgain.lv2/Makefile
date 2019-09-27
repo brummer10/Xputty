@@ -43,7 +43,7 @@
 	-ffast-math -fomit-frame-pointer -fstrength-reduce -fdata-sections -Wl,--gc-sections $(SSE_CFLAGS)
 	LDFLAGS += -I. -shared -lm 
 	GUI_LDFLAGS += -I./gui -I$(RESOURCES_DIR) -I$(HEADER_DIR) -I$(WIDGET_HEADER_DIR) \
-	-L. ../examples/libxputty.a -shared `pkg-config --static --cflags --libs cairo x11` -lm 
+	-L. ../Build/libxputty.a -shared `pkg-config --static --cflags --libs cairo x11` -lm 
 	# invoke build files
 	OBJECTS = plugin/$(NAME).cpp 
 	GUI_OBJECTS = gui/$(NAME)_x11ui.c

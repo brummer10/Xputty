@@ -1,5 +1,5 @@
 
-SUBDIR := $(wildcard */)
+SUBDIR := $(sort $(wildcard */))
 SUBDIR := $(filter-out  libxputty/, $(SUBDIR))
 SUBDIR := $(filter-out  header/, $(SUBDIR))
 SUBDIR := $(filter-out  docs/, $(SUBDIR))
