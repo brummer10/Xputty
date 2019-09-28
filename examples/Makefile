@@ -28,7 +28,7 @@ all: $(EXEC_FILES)
 clean:
 	rm -f $(EXAMPLE_OBJ) $(EXEC_FILES)
 
-$(EXAMPLE_OBJ): $(EXAMPLE_SOURCES) 
+$(EXAMPLE_OBJ): $(EXAMPLE_SOURCES) $(HEADER_DIR)*.h
 	$(CC) -c $(patsubst %.o,%.c,$@) -o $@  $(INCLUDES) $(LDFLAGS)
 
 $(EXEC_FILES): $(EXAMPLE_OBJ)
