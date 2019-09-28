@@ -33,17 +33,16 @@
 	NAME = Xgain
 	BUNDLE = $(NAME).lv2
 	VER = 0.1
-	LIB_DIR := ../libxputty/
-	HEADER_DIR := ../header/
-	WIDGET_DIR := $(LIB_DIR)widgets/
-	WIDGET_HEADER_DIR := $(HEADER_DIR)widgets/
-	RESOURCES_DIR :=$(LIB_DIR)resources/
+
+	LIB_DIR := ../Build/
+	HEADER_DIR := $(LIB_DIR)include/
+
 	# set compile flags
 	CXXFLAGS += -I. -I./dsp -I./plugin -fPIC -DPIC -O2 -Wall -funroll-loops \
 	-ffast-math -fomit-frame-pointer -fstrength-reduce -fdata-sections -Wl,--gc-sections $(SSE_CFLAGS)
 	LDFLAGS += -I. -shared -lm 
-	GUI_LDFLAGS += -I./gui -I$(RESOURCES_DIR) -I$(HEADER_DIR) -I$(WIDGET_HEADER_DIR) \
-	-L. ../Build/libxputty.a -shared `pkg-config --static --cflags --libs cairo x11` -lm 
+	GUI_LDFLAGS += -I./gui -I$(HEADER_DIR) \
+	-L. $(LIB_DIR)libxputty.a -shared `pkg-config --static --cflags --libs cairo x11` -lm 
 	# invoke build files
 	OBJECTS = plugin/$(NAME).cpp 
 	GUI_OBJECTS = gui/$(NAME)_x11ui.c

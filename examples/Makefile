@@ -1,13 +1,10 @@
 
 
-	LIB_DIR := ../libxputty/
-	HEADER_DIR := ../header/
-	WIDGET_DIR := $(LIB_DIR)widgets/
-	WIDGET_HEADER_DIR := $(HEADER_DIR)widgets/
-	RESOURCES_DIR :=$(LIB_DIR)resources/
+	LIB_DIR := ../Build/
+	HEADER_DIR := $(LIB_DIR)include/
 
 	# include path for library headers
-	INCLUDES := -I. -I$(HEADER_DIR) -I$(WIDGET_HEADER_DIR) -I$(RESOURCES_DIR)
+	INCLUDES := -I. -I$(HEADER_DIR) 
 	# link flags to dynamic link cairo and X11 (default)
 	LDFLAGS += -fPIC `pkg-config --static --cflags --libs cairo x11` -lm
 	# set link flags to static link cairo and X11
@@ -35,7 +32,7 @@ $(EXAMPLE_OBJ): $(EXAMPLE_SOURCES)
 	$(CC) -c $(patsubst %.o,%.c,$@) -o $@  $(INCLUDES) $(LDFLAGS)
 
 $(EXEC_FILES): $(EXAMPLE_OBJ)
-	$(CC)  $(patsubst %,%.c,$@) -L. ../Build/libxputty.a -o $@  $(INCLUDES) $(LDFLAGS)
+	$(CC)  $(patsubst %,%.c,$@) -L. $(LIB_DIR)libxputty.a -o $@  $(INCLUDES) $(LDFLAGS)
 
 doc:
 

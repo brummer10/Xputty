@@ -44,6 +44,7 @@ all:  $(RESOURCEHEADER) libxputty.a
 
 clean:
 	rm -f libxputty.a $(LIB_OBJ) $(WIDGET_OBJ) $(RESOURCES_OBJ) $(DEP) $(RESOURCEHEADER)
+	rm -rf $(OBJ_DIR)/include/
 
 $(RESOURCEHEADER): $(RESOURCES_OBJ) 
 	rm -f $(RESOURCEHEADER)
@@ -64,6 +65,10 @@ $(LIB_OBJ): $(LIB_SOURCES)
 
 libxputty.a:  $(RESOURCES_OBJ) $(LIB_OBJ) $(WIDGET_OBJ) 
 	ar rcs libxputty.a $(LIB_OBJ) $(WIDGET_OBJ) $(RESOURCES_OBJ)
+	mkdir -p $(OBJ_DIR)/include/
+	cp $(HEADER_DIR)*.h $(OBJ_DIR)/include/
+	cp $(WIDGET_HEADER_DIR)*.h $(OBJ_DIR)/include/
+	cp $(RESOURCEHEADER) $(OBJ_DIR)/include/
 
 doc:
 
