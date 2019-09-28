@@ -50,6 +50,8 @@ typedef enum {
     CL_ENUM         = 0x0016,
 /** Widget_t request a viewport adjustment */
     CL_VIEWPORT     = 0x0032,
+/** Widget_t request a viewport adjustment */
+    CL_METER        = 0x0064,
 }CL_type;
 
 /**

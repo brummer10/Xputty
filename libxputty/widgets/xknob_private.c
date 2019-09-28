@@ -43,6 +43,7 @@ void _draw_image_knob(Widget_t *w, int width_t, int height_t) {
     //widget_reset_scale(w);
     cairo_scale(w->crb, y,y);
 }
+
 /**
  * @brief _draw_knob             - internal draw the knob to the buffer
  * @param *w_                    - void pointer to the Widget_t button
