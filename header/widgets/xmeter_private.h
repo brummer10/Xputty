@@ -28,6 +28,14 @@
 
 
 /**
+ * @brief _log_meter           - logaritmic meter deflection
+ * @param db                   - mesured db
+ * @return float               - state to show on the meter
+ */
+
+float _log_meter (float db);
+
+/**
  * @brief _create_vertical_meter_image      - internal draw the meter image
  * to the cairo image surface
  * @param *w                                - pointer to the Widget_t meter

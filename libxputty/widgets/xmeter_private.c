@@ -21,6 +21,42 @@
 
 #include "xmeter_private.h"
 
+
+/**
+ * @brief _log_meter           - logaritmic meter deflection
+ * @param db                   - mesured db
+ * @return float               - state to show on the meter
+ */
+
+float _log_meter (float db) {
+    float def = 0.0f; /* Meter deflection %age */
+
+    if (db < -70.0f) {
+        def = 0.0f;
+    } else if (db < -60.0f) {
+        def = (db + 70.0f) * 0.25f;
+    } else if (db < -50.0f) {
+        def = (db + 60.0f) * 0.5f + 2.5f;
+    } else if (db < -40.0f) {
+        def = (db + 50.0f) * 0.75f + 7.5f;
+    } else if (db < -30.0f) {
+        def = (db + 40.0f) * 1.5f + 15.0f;
+    } else if (db < -20.0f) {
+        def = (db + 30.0f) * 2.0f + 30.0f;
+    } else if (db < 6.0f) {
+        def = (db + 20.0f) * 2.5f + 50.0f;
+    } else {
+        def = 115.0f;
+    }
+
+    /* 115 is the deflection %age that would be
+       when db=6.0. this is an arbitrary
+       endpoint for our scaling.
+    */
+
+    return def/115.0f;
+}
+
 /**
  * @brief _create_vertical_meter_image      - internal draw the meter image
  * to the cairo image surface
@@ -52,15 +88,15 @@ void _create_vertical_meter_image(Widget_t *w, int width, int height) {
     int c = (width)/2 ;
     int ci = c-2;
 
-    int i = 2;
+    int i = 1;
     int j = 1;
-    for(;i<height;) {
+    for(;i<height-3;) {
         for(;j<width;) {
-            cairo_rectangle(cri,j,i,ci,4);
+            cairo_rectangle(cri,j,i,ci,2);
             cairo_fill(cri);
             j +=c;
         }
-        i +=6;
+        i +=3;
         j = 1;
     }
 
@@ -70,15 +106,15 @@ void _create_vertical_meter_image(Widget_t *w, int width, int height) {
     cairo_pattern_add_color_stop_rgba(pat, 0.2, 0.4, 0.4, 0.1, 1);
     cairo_pattern_add_color_stop_rgba(pat, 0.0, 0.5, 0.0, 0.0, 1);
     cairo_set_source(cri, pat);
-    i = 2;
+    i = 1;
     j = 1;
-    for(;i<height;) {
+    for(;i<height-3;) {
         for(;j<width;) {
-            cairo_rectangle(cri,width+j,i,ci,4);
+            cairo_rectangle(cri,width+j,i,ci,2);
             cairo_fill(cri);
             j +=c;
         }
-        i +=6;
+        i +=3;
         j = 1;
     }
 
@@ -117,15 +153,15 @@ void _create_horizontal_meter_image(Widget_t *w, int width, int height) {
     int c = (height)/2 ;
     int ci = c-2;
 
-    int i = 2;
+    int i = 1;
     int j = 1;
     for(;i<width;) {
         for(;j<height;) {
-            cairo_rectangle(cri,i,j,4,ci);
+            cairo_rectangle(cri,i,j,2,ci);
             cairo_fill(cri);
             j +=c;
         }
-        i +=6;
+        i +=3;
         j = 1;
     }
 
@@ -135,15 +171,15 @@ void _create_horizontal_meter_image(Widget_t *w, int width, int height) {
     cairo_pattern_add_color_stop_rgba(pat, 0.8, 0.4, 0.4, 0.1, 1);
     cairo_pattern_add_color_stop_rgba(pat, 1.0, 0.5, 0.0, 0.0, 1);
     cairo_set_source(cri, pat);
-    i = 2;
+    i = 1;
     j = 1;
     for(;i<width;) {
         for(;j<height;) {
-            cairo_rectangle(cri,i,height+j,4,ci);
+            cairo_rectangle(cri,i,height+j,2,ci);
             cairo_fill(cri);
             j +=c;
         }
-        i +=6;
+        i +=3;
         j = 1;
     }
 
@@ -167,9 +203,10 @@ void _draw_v_meter(void *w_, void* user_data) {
 
     int width = cairo_xlib_surface_get_width(w->image);
     int height = cairo_xlib_surface_get_height(w->image);
-    double x = (double)width_t/((double)width/2);
-    double y = ((double)width/2)/(double)width_t;
-    double meterstate = adj_get_state(w->adj_y);
+    double x = (double)height_t/((double)height);
+    double y = ((double)height)/(double)height_t;
+    double meterstate = _log_meter(adj_get_value(w->adj_y));
+    double oldstate = _log_meter(w->adj_y->start_value);
     cairo_scale(w->crb, x,x);
     cairo_set_source_surface (w->crb, w->image, 0, 0);
     cairo_rectangle(w->crb,0, 0, width/2, height);
@@ -177,6 +214,10 @@ void _draw_v_meter(void *w_, void* user_data) {
     cairo_set_source_surface (w->crb, w->image, -width/2, 0);
     cairo_rectangle(w->crb, 0, height, width/2, -height*meterstate);
     cairo_fill(w->crb);
+    
+    cairo_rectangle(w->crb, 0, height-height*oldstate, width/2, 3);
+    cairo_fill(w->crb);
+
     cairo_scale(w->crb, y,y);
 }
 

@@ -23,6 +23,32 @@
 #include "xmeter_private.h"
 
 
+/**
+ * @brief power2db             - power (db) input to db output consider falloff
+ * @param power                - mesured power
+ * @return float               - calculated db
+ */
+
+float power2db(Widget_t *w, float power) {
+    const float falloff = 27 * 60 * 0.0005;
+    const float fallsoft = 6 * 60 * 0.0005;
+    //power = 20.*log10(power);
+    if (power <=  20.*log10(0.00021)) { // -70db
+        power = 20.*log10(0.00000000001); //-137db
+        w->adj->start_value = min(0.0,w->adj->start_value - fallsoft);
+    }
+    // retrieve old meter value and consider falloff
+    if (power < w->adj->std_value) {
+        power = max(power, w->adj->std_value - falloff);
+        w->adj->start_value = min(0.0,w->adj->start_value - fallsoft);
+    }
+    if (power > w->adj->start_value) {
+        w->adj->start_value = power ;
+    }
+    
+    w->adj->std_value = power;
+    return  power;
+}
 
 /**
  * @brief add_vmeter          - add a vumeter to a Widget_t
@@ -39,12 +65,10 @@ Widget_t* add_vmeter(Widget_t *parent, const char * label,
     Widget_t *wid = create_widget(parent->app, parent, x, y, width, height);
     _create_vertical_meter_image(wid, width, height);
     wid->label = label;
-    wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, 1.0,0.001, CL_METER);
+    wid->adj_y = add_adjustment(wid,-70.0, -70.0, -70.0, 6.0,0.1, CL_METER);
     wid->adj = wid->adj_y;
     wid->scale.gravity = ASPECT;
     wid->func.expose_callback = _draw_v_meter;
-    wid->func.enter_callback = transparent_draw;
-    wid->func.leave_callback = transparent_draw;
     return wid;
 }
 
@@ -67,7 +91,5 @@ Widget_t* add_hmeter(Widget_t *parent, const char * label,
     wid->adj = wid->adj_x;
     wid->scale.gravity = ASPECT;
     wid->func.expose_callback = _draw_h_meter;
-    wid->func.enter_callback = transparent_draw;
-    wid->func.leave_callback = transparent_draw;
     return wid;
 }

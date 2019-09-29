@@ -28,6 +28,14 @@
 
 
 /**
+ * @brief power2db             - power (db) input to db output consider falloff
+ * @param power                - mesured power
+ * @return float               - calculated db
+ */
+
+float power2db(Widget_t *w, float power);
+
+/**
  * @brief add_vmeter          - add a vumeter to a Widget_t
  * connect to func.value_changed_callback to implement your actions
  * @param *parent             - pointer to the Widget_t request the button

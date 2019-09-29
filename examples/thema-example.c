@@ -261,8 +261,8 @@ int main (int argc, char ** argv)
     b = add_vslider(w, "Slider1", 180, 80, 40, 260);
     b->func.value_changed_callback = vslider_callback;
 
-    b = add_vslider(w, "Slider2", 240, 80, 40, 260);
-    b->func.value_changed_callback = vslider_callback;
+    b = add_vmeter(w, "Slider2", 240, 80, 12, 260);
+   // b->func.value_changed_callback = vslider_callback;
 
     b = add_knob(w, "Knob", 20, 60, 60, 80);
     set_adjustment(b->adj,0.0, 0.0, 0.0, 5.0,0.05, CL_CONTINUOS);

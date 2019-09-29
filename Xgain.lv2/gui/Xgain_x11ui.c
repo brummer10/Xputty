@@ -18,7 +18,7 @@ EXTLD(knob_png)
 -----------------------------------------------------------------------
 ----------------------------------------------------------------------*/
 
-#define CONTROLS 2
+#define CONTROLS 3
 
 /*---------------------------------------------------------------------
 -----------------------------------------------------------------------    
@@ -95,7 +95,7 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     // connect the expose func
     ui->win->func.expose_callback = draw_window;
     // create a toggle button
-    ui->widget[0] = add_toggle_button(ui->win, "Power", 40, 60, 80, 90);
+    ui->widget[0] = add_toggle_button(ui->win, "Power", 20, 60, 80, 90);
     // setup a image to use for the toggle button
     widget_get_png(ui->widget[0], LDVAR(pswitch_png));
     // set resize mode for the toggle button to Aspect ratio
@@ -107,7 +107,7 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     // connect the value changed callback with the write_function
     ui->widget[0]->func.value_changed_callback = value_changed;
     // create a knob widget
-    ui->widget[1] = add_knob(ui->win, "Gain", 120, 60, 80, 90);
+    ui->widget[1] = add_knob(ui->win, "Gain", 100, 60, 80, 90);
     // setup a image to be used for the knob
     widget_get_png(ui->widget[1], LDVAR(knob_png));
     // store the port index in the Widget_t data field
@@ -118,6 +118,10 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     set_adjustment(ui->widget[1]->adj,0.0, 0.0, -40.0, 40.0, 0.1, CL_CONTINUOS);
     // connect the value changed callback with the write_function
     ui->widget[1]->func.value_changed_callback = value_changed;
+    // create a meter widget
+    ui->widget[2] = add_vmeter(ui->win, "Meter", 190, 20, 10, 160);
+    // store the port index in the Widget_t data field
+    ui->widget[2]->data = METER;
     // finally map all Widgets on screen
     widget_show_all(ui->win);
     // set the widget pointer to the X11 Window from the toplevel Widget_t
@@ -158,6 +162,8 @@ static void port_event(LV2UI_Handle handle, uint32_t port_index,
     int i=0;
     for (;i<CONTROLS;i++) {
         if (port_index == ui->widget[i]->data) {
+            // case port is METER, convert value to meter deflection
+            if (port_index == METER) value = power2db(ui->widget[i], value);
             // Xputty check if the new value differs from the old one
             // and set new one, when needed
             check_value_changed(ui->widget[i]->adj, &value);

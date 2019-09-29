@@ -51,8 +51,7 @@ This is a example plugin for Xputty, a X11/cairo based Lv2 UI library
         lv2:maximum 1.0 ;
         lv2:designation lv2:enabled;
         lv2:portProperty lv2:toggled;
-    ] 
-      , [
+    ] , [
         a lv2:InputPort ,
             lv2:ControlPort ;
         lv2:index 3 ;
@@ -61,6 +60,15 @@ This is a example plugin for Xputty, a X11/cairo based Lv2 UI library
         lv2:default 0.0 ;
         lv2:minimum -40.0 ;
         lv2:maximum 40.0 ;
+    ] , [
+        a lv2:OutputPort ,
+            lv2:ControlPort ;
+        lv2:index 4 ;
+        lv2:symbol "METER" ;
+        lv2:name "METER" ;
+        lv2:default -70.0 ;
+        lv2:minimum -70.0 ;
+        lv2:maximum 4.0 ;
     ] .
 
 <urn:Xputty:Xgain_gui>

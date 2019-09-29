@@ -15,7 +15,8 @@ typedef enum
    EFFECTS_OUTPUT,
    EFFECTS_INPUT,
    BYPASS,
-   GAIN, 
+   GAIN,
+   METER,
 } PortIndex;
 
 #endif //XGAIN_H_
