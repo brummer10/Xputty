@@ -44,7 +44,7 @@ float power2db(Widget_t *w, float power);
  * @return Widget_t*          - pointer to the Widget_t button struct
  */
 
-Widget_t* add_vmeter(Widget_t *parent, const char * label,
+Widget_t* add_vmeter(Widget_t *parent, const char * label, bool show_scale,
                 int x, int y, int width, int height);
 
 /**

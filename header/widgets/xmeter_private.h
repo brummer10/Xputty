@@ -28,6 +28,14 @@
 
 
 /**
+ * @brief _draw_meter_scale    - draw a meter scale beside the meter widget
+ * @param w                    - the widget to draw to
+ * @return void
+ */
+
+void _draw_vmeter_scale(void *w_, void* user_data);
+
+/**
  * @brief _log_meter           - logaritmic meter deflection
  * @param db                   - mesured db
  * @return float               - state to show on the meter

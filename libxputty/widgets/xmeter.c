@@ -59,16 +59,21 @@ float power2db(Widget_t *w, float power) {
  * @return Widget_t*          - pointer to the Widget_t button struct
  */
 
-Widget_t* add_vmeter(Widget_t *parent, const char * label,
+Widget_t* add_vmeter(Widget_t *parent, const char * label, bool show_scale,
                 int x, int y, int width, int height) {
 
     Widget_t *wid = create_widget(parent->app, parent, x, y, width, height);
     _create_vertical_meter_image(wid, width, height);
     wid->label = label;
-    wid->adj_y = add_adjustment(wid,-70.0, -70.0, -70.0, 6.0,0.1, CL_METER);
+    wid->adj_y = add_adjustment(wid,-70.0, -70.0, -70.0, 6.0,0.001, CL_METER);
     wid->adj = wid->adj_y;
     wid->scale.gravity = ASPECT;
     wid->func.expose_callback = _draw_v_meter;
+    if (show_scale) {
+        Widget_t *wid2 = create_widget(parent->app, parent, x+width, y, width, height);
+        wid2->scale.gravity = ASPECT;
+        wid2->func.expose_callback =_draw_vmeter_scale;
+    }
     return wid;
 }
 

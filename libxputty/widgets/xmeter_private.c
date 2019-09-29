@@ -23,6 +23,55 @@
 
 
 /**
+ * @brief _draw_meter_scale    - draw a meter scale beside the meter widget
+ * @param w                    - the widget to draw to
+ * @return void
+ */
+
+void _draw_vmeter_scale(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
+    int rect_width = attrs.width;
+    int rect_height = attrs.height;
+    double x0      = 0;
+    double y0      = 0;
+
+    int  db_points[] = { -50, -40, -30, -20, -15, -10, -6, -3, 0, 3 };
+    char  buf[32];
+
+    cairo_set_font_size (w->crb, (float)rect_width/2);
+    cairo_select_font_face(w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
+                               CAIRO_FONT_WEIGHT_BOLD);
+    cairo_set_source_rgb(w->crb, 0.8, 0.8, 0.8);
+
+    for (unsigned int i = 0; i < sizeof (db_points)/sizeof (db_points[0]); ++i)
+    {
+        float fraction = _log_meter((double)db_points[i]);
+        if (i<6)
+        {
+            snprintf (buf, sizeof (buf), "%d", db_points[i]);
+            cairo_move_to (w->crb, x0+rect_width*0.1,y0+rect_height - (rect_height * fraction));
+        }
+        else if (i<8)
+        {
+            snprintf (buf, sizeof (buf), "%d", db_points[i]);
+            cairo_move_to (w->crb, x0+rect_width*0.2,y0+rect_height - (rect_height * fraction));
+        }
+        else
+        {
+            snprintf (buf, sizeof (buf), " %d", db_points[i]);
+            cairo_move_to (w->crb, x0+rect_width*0.21,y0+rect_height - (rect_height * fraction));
+        }
+        cairo_show_text (w->crb, buf);
+    }
+
+    cairo_set_source_rgb(w->crb, 0.6, 0.6, 0.6);
+    cairo_set_line_width(w->crb, 2.0);
+    cairo_stroke(w->crb);
+}
+
+/**
  * @brief _log_meter           - logaritmic meter deflection
  * @param db                   - mesured db
  * @return float               - state to show on the meter
@@ -195,7 +244,7 @@ void _create_horizontal_meter_image(Widget_t *w, int width, int height) {
  */
 
 void _draw_v_meter(void *w_, void* user_data) {
-     Widget_t *w = (Widget_t*)w_;
+    Widget_t *w = (Widget_t*)w_;
     XWindowAttributes attrs;
     XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width_t = attrs.width;
