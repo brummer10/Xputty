@@ -86,15 +86,20 @@ Widget_t* add_vmeter(Widget_t *parent, const char * label, bool show_scale,
  * @return Widget_t*          - pointer to the Widget_t button struct
  */
 
-Widget_t* add_hmeter(Widget_t *parent, const char * label,
+Widget_t* add_hmeter(Widget_t *parent, const char * label, bool show_scale,
                 int x, int y, int width, int height) {
 
     Widget_t *wid = create_widget(parent->app, parent, x, y, width, height);
     _create_horizontal_meter_image(wid, width, height);
     wid->label = label;
-    wid->adj_x = add_adjustment(wid,0.0, 0.0, 0.0, 1.0,0.001, CL_METER);
+    wid->adj_x = add_adjustment(wid,-70.0, -70.0, -70.0, 6.0,0.001, CL_METER);
     wid->adj = wid->adj_x;
     wid->scale.gravity = ASPECT;
     wid->func.expose_callback = _draw_h_meter;
+    if (show_scale) {
+        Widget_t *wid2 = create_widget(parent->app, parent, x, y+height, width, height);
+        wid2->scale.gravity = ASPECT;
+        wid2->func.expose_callback =_draw_hmeter_scale;
+    }
     return wid;
 }

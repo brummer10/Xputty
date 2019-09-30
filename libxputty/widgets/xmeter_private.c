@@ -23,7 +23,7 @@
 
 
 /**
- * @brief _draw_meter_scale    - draw a meter scale beside the meter widget
+ * @brief _draw_vmeter_scale   - draw a vmeter scale beside the meter widget
  * @param w                    - the widget to draw to
  * @return void
  */
@@ -38,6 +38,7 @@ void _draw_vmeter_scale(void *w_, void* user_data) {
     double y0      = 0;
 
     int  db_points[] = { -50, -40, -30, -20, -15, -10, -6, -3, 0, 3 };
+    //int  db_points[] = { -50, -40, -30, -20, -10, -3, 0, 4 };
     char  buf[32];
 
     cairo_set_font_size (w->crb, (float)rect_width/2);
@@ -48,20 +49,22 @@ void _draw_vmeter_scale(void *w_, void* user_data) {
     for (unsigned int i = 0; i < sizeof (db_points)/sizeof (db_points[0]); ++i)
     {
         float fraction = _log_meter((double)db_points[i]);
+        cairo_move_to (w->crb, 0,y0+rect_height - (rect_height * fraction));
+        cairo_line_to (w->crb, x0+rect_width-3 ,y0+rect_height -  (rect_height * fraction));
         if (i<6)
         {
             snprintf (buf, sizeof (buf), "%d", db_points[i]);
-            cairo_move_to (w->crb, x0+rect_width*0.1,y0+rect_height - (rect_height * fraction));
+            cairo_move_to (w->crb, x0+rect_width*0.1,y0+rect_height - (rect_height * fraction)-3);
         }
         else if (i<8)
         {
             snprintf (buf, sizeof (buf), "%d", db_points[i]);
-            cairo_move_to (w->crb, x0+rect_width*0.2,y0+rect_height - (rect_height * fraction));
+            cairo_move_to (w->crb, x0+rect_width*0.2,y0+rect_height - (rect_height * fraction)-3);
         }
         else
         {
             snprintf (buf, sizeof (buf), " %d", db_points[i]);
-            cairo_move_to (w->crb, x0+rect_width*0.21,y0+rect_height - (rect_height * fraction));
+            cairo_move_to (w->crb, x0+rect_width*0.21,y0+rect_height - (rect_height * fraction)-3);
         }
         cairo_show_text (w->crb, buf);
     }
@@ -69,6 +72,54 @@ void _draw_vmeter_scale(void *w_, void* user_data) {
     cairo_set_source_rgb(w->crb, 0.6, 0.6, 0.6);
     cairo_set_line_width(w->crb, 2.0);
     cairo_stroke(w->crb);
+}
+
+/**
+ * @brief _draw_hmeter_scale   - draw a hmeter scale beside the meter widget
+ * @param w                    - the widget to draw to
+ * @return void
+ */
+
+void _draw_hmeter_scale(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
+    int rect_width = attrs.width;
+    int rect_height = attrs.height;
+	double x0      = 0;
+	double y0      = 0;
+
+    int  db_points[] = { -50, -40, -30, -20, -15, -10, -6, -3, 0, 3 };
+	char  buf[32];
+
+	cairo_set_font_size (w->crb, (float)rect_height/2);
+	cairo_select_font_face(w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
+							   CAIRO_FONT_WEIGHT_BOLD);
+    cairo_set_source_rgba(w->crb, 0.6, 0.6, 0.6, 0.6);
+
+	for (unsigned int i = 0; i < sizeof (db_points)/sizeof (db_points[0]); ++i)
+	{
+		float fraction = _log_meter(db_points[i]);
+		//cairo_set_source_rgb (w->crb,0.32 + 0.22*i/2,0.5 +  0.1*i/2, 0.1);
+
+		cairo_move_to (w->crb, x0+(rect_width * fraction),y0+rect_height*0.1);
+		cairo_line_to (w->crb, x0+(rect_width * fraction) ,y0+rect_height*0.6);
+		if (i<6)
+		{
+			snprintf (buf, sizeof (buf), "%d", db_points[i]);
+			cairo_move_to (w->crb, x0+(rect_width * fraction)+3,y0+rect_height);
+		}
+		else
+		{
+			snprintf (buf, sizeof (buf), " %d", db_points[i]);
+			cairo_move_to (w->crb, x0+(rect_width * fraction)+3,y0+rect_height );
+		}
+		cairo_show_text (w->crb, buf);
+	}
+
+	cairo_set_source_rgba(w->crb, 0.6, 0.6, 0.6, 0.6);
+	cairo_set_line_width(w->crb, 1.5);
+	cairo_stroke(w->crb);
 }
 
 /**
@@ -288,7 +339,7 @@ void _draw_h_meter(void *w_, void* user_data) {
     int height = cairo_xlib_surface_get_height(w->image);
     double x = (double)width_t/((double)width);
     double y = ((double)width)/(double)width_t;
-    double meterstate = _log_meter(adj_get_state(w->adj_x));
+    double meterstate = _log_meter(adj_get_value(w->adj_x));
     double oldstate = _log_meter(w->adj_x->start_value);
     cairo_scale(w->crb, x,x);
     cairo_set_source_surface (w->crb, w->image, 0, 0);
@@ -298,7 +349,7 @@ void _draw_h_meter(void *w_, void* user_data) {
     cairo_rectangle(w->crb, 0, 0, width*meterstate, height/2);
     cairo_fill(w->crb);
 
-    cairo_rectangle(w->crb,width-width*oldstate, 0, 3, height/2);
+    cairo_rectangle(w->crb,(width*oldstate)-3, 0, 3, height/2);
     cairo_fill(w->crb);
 
     cairo_scale(w->crb, y,y);

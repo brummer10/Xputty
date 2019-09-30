@@ -95,7 +95,7 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     // connect the expose func
     ui->win->func.expose_callback = draw_window;
     // create a toggle button
-    ui->widget[0] = add_toggle_button(ui->win, "Power", 20, 60, 80, 90);
+    ui->widget[0] = add_toggle_button(ui->win, "Power", 20, 40, 80, 90);
     // setup a image to use for the toggle button
     widget_get_png(ui->widget[0], LDVAR(pswitch_png));
     // set resize mode for the toggle button to Aspect ratio
@@ -107,7 +107,7 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     // connect the value changed callback with the write_function
     ui->widget[0]->func.value_changed_callback = value_changed;
     // create a knob widget
-    ui->widget[1] = add_knob(ui->win, "Gain", 100, 60, 80, 90);
+    ui->widget[1] = add_knob(ui->win, "Gain", 120, 40, 80, 90);
     // setup a image to be used for the knob
     widget_get_png(ui->widget[1], LDVAR(knob_png));
     // store the port index in the Widget_t data field
@@ -119,7 +119,8 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     // connect the value changed callback with the write_function
     ui->widget[1]->func.value_changed_callback = value_changed;
     // create a meter widget
-    ui->widget[2] = add_vmeter(ui->win, "Meter", true, 190, 20, 10, 160);
+    //ui->widget[2] = add_vmeter(ui->win, "Meter", true, 190, 20, 10, 160);
+    ui->widget[2] = add_hmeter(ui->win, "Meter", true, 20, 140, 190, 10);
     // store the port index in the Widget_t data field
     ui->widget[2]->data = METER;
     // finally map all Widgets on screen
