@@ -1,9 +1,4 @@
 /*
- *                           0BSD 
- * 
- *                    BSD Zero Clause License
- * 
- *  Copyright (c) 2019 Hermann Meyer
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted.
@@ -18,26 +13,24 @@
  *
  */
 
+
 #pragma once
 
-#ifndef XWIDGETS_H_
-#define XWIDGETS_H_
+#ifndef XLABEL_H_
+#define XLABEL_H_
+
+#include "xputty.h"
 
 
-/** xwidgets.h include some predefined widgets for libxputty, include this to use them 
- * if you would only use libxputty and define our own widgets, include xputt.h 
- * instead this one in your project.
+/**
+ * @brief add_label           - add a label to a Widget_t
+ * @param *parent             - pointer to the Widget_t request the label
+ * @param *label              - Label to show on the button
+ * @param x,y,width,height    - the position/geometry to create the label
+ * @return Widget_t*          - pointer to the Widget_t label struct
  */
 
-// widget header
-#include "xbutton.h"
-#include "xslider.h"
-#include "xknob.h"
-#include "xmenu.h"
-#include "xcombobox.h"
-#include "xtooltip.h"
-#include "xmeter.h"
-#include "xlabel.h"
+Widget_t* add_label(Widget_t *parent, const char * label,
+                int x, int y, int width, int height);
 
-
-#endif //XWIDGETS_H_
+#endif //XLABEL_H_

@@ -274,6 +274,7 @@ int main (int argc, char ** argv)
 
     b = add_knob(w, "Knob2", 20, 260, 60, 80);
     b->func.value_changed_callback = knob_callback;
+    b = add_label(w, "LABEL", 40, 350, 60, 20);
     widget_show_all(w);
     create_mymenu(bt);
     create_myentrys(ct);

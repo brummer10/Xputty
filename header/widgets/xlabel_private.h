@@ -18,26 +18,22 @@
  *
  */
 
+
 #pragma once
 
-#ifndef XWIDGETS_H_
-#define XWIDGETS_H_
+#ifndef XLABEL_PRIVATE_H_
+#define XLABEL_PRIVATE_H_
 
-
-/** xwidgets.h include some predefined widgets for libxputty, include this to use them 
- * if you would only use libxputty and define our own widgets, include xputt.h 
- * instead this one in your project.
- */
-
-// widget header
-#include "xbutton.h"
-#include "xslider.h"
-#include "xknob.h"
-#include "xmenu.h"
-#include "xcombobox.h"
-#include "xtooltip.h"
-#include "xmeter.h"
 #include "xlabel.h"
 
 
-#endif //XWIDGETS_H_
+/**
+ * @brief _draw_label            - internal draw the label to the buffer
+ * @param *w_                    - void pointer to the Widget_t label
+ * @param *user_data             - void pointer to attached user_data
+ * @return void
+ */
+
+void _draw_label(void *w_, void* user_data);
+
+#endif //XLABEL_PRIVATE_H_

@@ -119,7 +119,6 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     // connect the value changed callback with the write_function
     ui->widget[1]->func.value_changed_callback = value_changed;
     // create a meter widget
-    //ui->widget[2] = add_vmeter(ui->win, "Meter", true, 190, 20, 10, 160);
     ui->widget[2] = add_hmeter(ui->win, "Meter", true, 20, 140, 190, 10);
     // store the port index in the Widget_t data field
     ui->widget[2]->data = METER;
