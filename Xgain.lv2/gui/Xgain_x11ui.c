@@ -33,6 +33,7 @@ typedef struct {
     Xputty main;
     Widget_t *win;
     Widget_t *widget[CONTROLS];
+    int block_event;
 
     void *controller;
     LV2UI_Write_Function write_function;
@@ -52,7 +53,9 @@ static void draw_window(void *w_, void* user_data) {
 static void value_changed(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     X11_UI* ui = (X11_UI*)w->parent_struct;
-    ui->write_function(ui->controller,w->data,sizeof(float),0,&w->adj->value);
+    if (ui->block_event != w->data) 
+        ui->write_function(ui->controller,w->data,sizeof(float),0,&w->adj->value);
+    ui->block_event = -1;
 }
 
 // init the xwindow and return the LV2UI handle
@@ -71,6 +74,7 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
 
     ui->parentXwindow = 0;
     LV2UI_Resize* resize = NULL;
+    ui->block_event = -1;
 
     int i = 0;
     for (; features[i]; ++i) {
@@ -162,6 +166,8 @@ static void port_event(LV2UI_Handle handle, uint32_t port_index,
     int i=0;
     for (;i<CONTROLS;i++) {
         if (port_index == ui->widget[i]->data) {
+            // prevent event loop between host and plugin
+            ui->block_event = (int)port_index;
             // case port is METER, convert value to meter deflection
             if (port_index == METER) value = power2db(ui->widget[i], value);
             // Xputty check if the new value differs from the old one
