@@ -139,8 +139,11 @@ void _draw_button(void *w_, void* user_data) {
     if (w->image) {
         _draw_image_button(w, width, height);
     } else {
-        if (!w->state && (int)w->adj_y->value)
+        if (!w->state && (int)w->adj_y->value) {
             w->state = 3;
+        } else if (w->state == 3 && !(int)w->adj_y->value) {
+            w->state = 0;
+        }
 
         _rounded_rectangle(w->crb,2.0, 2.0, width, height);
 

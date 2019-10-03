@@ -2,6 +2,8 @@
 SUBDIR := $(sort $(wildcard */))
 SUBDIR := $(filter-out  libxputty/, $(SUBDIR))
 SUBDIR := $(filter-out  header/, $(SUBDIR))
+SUBDIR := $(filter-out  Xgain.lv2/, $(SUBDIR))
+SUBDIR := $(filter-out  examples/, $(SUBDIR))
 SUBDIR := $(filter-out  docs/, $(SUBDIR))
 
 .PHONY: $(SUBDIR) recurse

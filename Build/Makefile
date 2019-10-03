@@ -72,3 +72,7 @@ libxputty.a:  $(RESOURCES_OBJ) $(LIB_OBJ) $(WIDGET_OBJ)
 
 doc:
 
+install:
+
+uninstall:
+
