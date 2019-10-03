@@ -85,7 +85,7 @@ void Dsp::compute(int count, float *input0, float *output0)
 		iRec1[1] = iRec1[0];
 		fRec2[1] = fRec2[0];
 	}
-    fVbargraph0 = (bypass? 20.*log10(power0) : db_zero);
+    fVbargraph0 = (bypass? 20.*log10(std::max<double>(db_zero,power0)) : db_zero);
     
 #undef bypass
 #undef fVslider0
@@ -134,7 +134,8 @@ void Dsp::del_instance(Dsp *p)
 /*
 typedef enum
 {
-   GAIN, 
+   GAIN,
+   METER,
 } PortIndex;
 */
 

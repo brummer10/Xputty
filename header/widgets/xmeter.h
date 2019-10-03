@@ -38,10 +38,10 @@ float power2db(Widget_t *w, float power);
 /**
  * @brief add_vmeter          - add a vumeter to a Widget_t
  * connect to func.value_changed_callback to implement your actions
- * @param *parent             - pointer to the Widget_t request the button
- * @param *label              - Label to show on the button
- * @param x,y,width,height    - the position/geometry to create the button
- * @return Widget_t*          - pointer to the Widget_t button struct
+ * @param *parent             - pointer to the Widget_t request the vumeter
+ * @param *label              - Label to show on the vumeter
+ * @param x,y,width,height    - the position/geometry to create the vumeter
+ * @return Widget_t*          - pointer to the Widget_t mete struct
  */
 
 Widget_t* add_vmeter(Widget_t *parent, const char * label, bool show_scale,
@@ -50,10 +50,10 @@ Widget_t* add_vmeter(Widget_t *parent, const char * label, bool show_scale,
 /**
  * @brief add_hmeter          - add a vumeter to a Widget_t
  * connect to func.value_changed_callback to implement your actions
- * @param *parent             - pointer to the Widget_t request the button
- * @param *label              - Label to show on the button
- * @param x,y,width,height    - the position/geometry to create the button
- * @return Widget_t*          - pointer to the Widget_t button struct
+ * @param *parent             - pointer to the Widget_t request the vumeter
+ * @param *label              - Label to show on the vumeter
+ * @param x,y,width,height    - the position/geometry to create the vumeter
+ * @return Widget_t*          - pointer to the Widget_t meter struct
  */
 
 Widget_t* add_hmeter(Widget_t *parent, const char * label, bool show_scale,

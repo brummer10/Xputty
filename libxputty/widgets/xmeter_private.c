@@ -303,11 +303,9 @@ void _draw_v_meter(void *w_, void* user_data) {
 
     int width = cairo_xlib_surface_get_width(w->image);
     int height = cairo_xlib_surface_get_height(w->image);
-    double x = (double)height_t/((double)height);
-    double y = ((double)height)/(double)height_t;
     double meterstate = _log_meter(adj_get_value(w->adj_y));
     double oldstate = _log_meter(w->adj_y->start_value);
-    cairo_scale(w->crb, x,x);
+    widget_set_scale(w);
     cairo_set_source_surface (w->crb, w->image, 0, 0);
     cairo_rectangle(w->crb,0, 0, width/2, height);
     cairo_fill(w->crb);
@@ -317,8 +315,7 @@ void _draw_v_meter(void *w_, void* user_data) {
 
     cairo_rectangle(w->crb, 0, height-height*oldstate, width/2, 3);
     cairo_fill(w->crb);
-
-    cairo_scale(w->crb, y,y);
+    widget_reset_scale(w);
 }
 
 /**
@@ -337,11 +334,9 @@ void _draw_h_meter(void *w_, void* user_data) {
 
     int width = cairo_xlib_surface_get_width(w->image);
     int height = cairo_xlib_surface_get_height(w->image);
-    double x = (double)width_t/((double)width);
-    double y = ((double)width)/(double)width_t;
     double meterstate = _log_meter(adj_get_value(w->adj_x));
     double oldstate = _log_meter(w->adj_x->start_value);
-    cairo_scale(w->crb, x,x);
+    widget_set_scale(w);
     cairo_set_source_surface (w->crb, w->image, 0, 0);
     cairo_rectangle(w->crb,0, 0, width, height/2);
     cairo_fill(w->crb);
@@ -352,5 +347,5 @@ void _draw_h_meter(void *w_, void* user_data) {
     cairo_rectangle(w->crb,(width*oldstate)-3, 0, 3, height/2);
     cairo_fill(w->crb);
 
-    cairo_scale(w->crb, y,y);
+    widget_reset_scale(w);
 }
