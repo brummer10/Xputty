@@ -37,6 +37,16 @@
 void pop_menu_show(Widget_t *parent, Widget_t *menu, int elem);
 
 /**
+ * @brief create_viewport     - create a viewport on a menu to a Widget_t
+ * @param *parent             - pointer to the Widget_t the menu should pop over
+ * @param width               - define the width of the viewport
+ * @param height              - define the height of the viewport
+ * @return Widget_t*          - pointer to the Widget_t viewport
+ */
+
+Widget_t* create_viewport(Widget_t *parent, int width, int height);
+
+/**
  * @brief create_menu         - create a menu to a Widget_t
  * @param *parent             - pointer to the Widget_t the menu should pop over
  * @param height              - define the height of a single menu item

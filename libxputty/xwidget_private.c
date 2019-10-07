@@ -264,7 +264,7 @@ void _show_tooltip(Widget_t *wid) {
             int x1, y1;
             XTranslateCoordinates( wid->app->dpy, wid->widget, DefaultRootWindow(wid->app->dpy),
                                                                        x, y, &x1, &y1, &child );
-            XMoveWindow(w->app->dpy,w->widget,x1, y1);   
+            XMoveWindow(w->app->dpy,w->widget,x1+10, y1-10);
             widget_show(w);
             break;
         }
@@ -287,7 +287,22 @@ void _hide_tooltip(Widget_t *wid) {
             break;
         }
     }
-    
+}
+
+/**
+ * @brief _hide_all_tooltips - hide all active tooltips
+ * @param *wid               - pointer to the Widget_t receiving the event
+ * @return void
+ */
+
+void _hide_all_tooltips(Widget_t *wid) {
+    int i = 0;
+    for(;i<wid->app->childlist->elem;i++) {
+        Widget_t *w = wid->app->childlist->childs[i];
+        if (w->flags & IS_TOOLTIP) {
+            widget_hide(w);
+        }
+    }
 }
 
 /**

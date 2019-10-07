@@ -174,7 +174,7 @@ void _combobox_button_released(void *w_, void* button_, void* user_data) {
         XButtonEvent *xbutton = (XButtonEvent*)button_;
         if (xbutton->button == Button3) {
             w->state=1;
-            pop_menu_show(w, w->childlist->childs[0], 6);
+            pop_menu_show(w, w->childlist->childs[1], 6);
         }
     }
 }
@@ -193,7 +193,7 @@ void _button_combobox_released(void *w_, void* button_, void* user_data) {
     if (w->flags & HAS_POINTER && xbutton->button == Button1) {
         Widget_t *parent = w->parent;
         w->state=1;
-        pop_menu_show(parent, parent->childlist->childs[0], 6);
+        pop_menu_show(parent, parent->childlist->childs[1], 6);
     }
     adj_set_value(w->adj, 0.0);
 }
@@ -213,7 +213,7 @@ void _entry_released(void *w_, void* item_, void* user_data) {
     for(;i>-1;i--) {
         Widget_t *wid = w->app->childlist->childs[i];
         if (wid == w) {
-            combo = w->app->childlist->childs[i-1];
+            combo = w->app->childlist->childs[i-2];
             adj_set_value(combo->adj, (float)*(int*)item_);
             break;
         }
@@ -230,8 +230,11 @@ void _entry_released(void *w_, void* item_, void* user_data) {
 void _set_entry(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     int v = (int)adj_get_value(w->adj);
-    Widget_t * menu = w->childlist->childs[0];
+    Widget_t * menu = w->childlist->childs[1];
+    if (!childlist_has_child(menu->childlist)) return;
     Widget_t* view_port =  menu->childlist->childs[0];
-    w->label = view_port->childlist->childs[v]->label;
-    transparent_draw(w, user_data);
+    if(v>=0) {
+        w->label = view_port->childlist->childs[v]->label;
+        transparent_draw(w, user_data);
+    }
 }

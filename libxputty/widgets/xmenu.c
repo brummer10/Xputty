@@ -30,6 +30,9 @@
  */
 
 void pop_menu_show(Widget_t *parent, Widget_t *menu, int elem) {
+    if (!childlist_has_child(menu->childlist)) return;
+    Widget_t* view_port =  menu->childlist->childs[0];
+    if (!view_port->childlist->elem) return;
     _configure_menu(parent, menu, elem);
     pop_widget_show_all(menu);
     int err = XGrabPointer(menu->app->dpy, DefaultRootWindow(parent->app->dpy), True,

@@ -88,6 +88,14 @@ void destroy_widget(Widget_t * w, Xputty *main) {
         quit(w);
     } else if(childlist_find_child(main->childlist, w)>=0) {
         childlist_remove_child(main->childlist, w);
+        int ch = childlist_has_child(w->childlist);
+        if (ch) {
+            int i = ch;
+            for(;i>0;i--) {
+                destroy_widget(w->childlist->childs[i-1],main);
+            }
+            destroy_widget(w,main);
+        }
         if(w->flags & IS_WIDGET) {
             Widget_t *p = (Widget_t *) w->parent;
             childlist_remove_child(p->childlist, w);
@@ -560,6 +568,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
                 wid->state = 1;
                 wid->func.enter_callback(w_, user_data);
                 if (wid->flags & HAS_TOOLTIP) _show_tooltip(wid);
+                else _hide_all_tooltips(wid);
             }
             debug_print("Widget_t EnterNotify \n");
         break;

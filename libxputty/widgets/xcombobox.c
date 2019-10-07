@@ -54,13 +54,14 @@ Widget_t* add_combobox(Widget_t *parent, const char  * label, int x, int y, int 
     wid->func.enter_callback = transparent_draw;
     wid->func.leave_callback = transparent_draw;
     wid->func.button_release_callback = _combobox_button_released;
-    
-    Widget_t* menu = create_menu(wid, 25);
-    menu->func.button_release_callback = _entry_released;
 
     Widget_t* button = add_button(wid, "", width-20, 0, 20, height);
     button->func.expose_callback = _draw_combobox_button;  
     button->func.button_release_callback = _button_combobox_released;
+
+    Widget_t* menu = create_menu(wid, 25);
+    menu->func.button_release_callback = _entry_released;
+
 
     return wid;
 }
@@ -73,7 +74,7 @@ Widget_t* add_combobox(Widget_t *parent, const char  * label, int x, int y, int 
  */
 
 Widget_t *combobox_add_entry(Widget_t *wid, const char  * label) {
-    Widget_t *menu = wid->childlist->childs[0];
+    Widget_t *menu = wid->childlist->childs[1];
     Widget_t *item = menu_add_item(menu,label);
     wid->label = label;
     float max_value = wid->adj->max_value+1.0;

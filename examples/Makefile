@@ -17,6 +17,10 @@
 	 `pkg-config --static --cflags --libs cairo` \
 	 -L/usr/X11/lib -lX11 -lm
 
+	BLUE = "\033[1;34m"
+	RED =  "\033[1;31m"
+	NONE = "\033[0m"
+
 	EXAMPLE_SOURCES := $(wildcard *.c)
 	EXAMPLE_OBJ := $(patsubst %.c,%.o,$(EXAMPLE_SOURCES))
 	EXEC_FILES := $(patsubst %.c,%,$(EXAMPLE_SOURCES))
@@ -27,6 +31,10 @@ all: $(EXEC_FILES)
 
 clean:
 	rm -f $(EXAMPLE_OBJ) $(EXEC_FILES)
+
+$(HEADER_DIR)*.h:
+	@echo $(RED)You need to build libxputty before build the examples!!$(NONE)
+	@exit 1
 
 $(EXAMPLE_OBJ): $(EXAMPLE_SOURCES) $(HEADER_DIR)*.h
 	$(CC) -c $(patsubst %.o,%.c,$@) -o $@  $(INCLUDES) $(LDFLAGS)

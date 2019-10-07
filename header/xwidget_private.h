@@ -112,6 +112,14 @@ void _show_tooltip(Widget_t *wid);
 void _hide_tooltip(Widget_t *wid);
 
 /**
+ * @brief _hide_all_tooltips - hide all active tooltips
+ * @param *wid               - pointer to the Widget_t receiving the event
+ * @return void
+ */
+
+void _hide_all_tooltips(Widget_t *wid);
+
+/**
  * @brief _has_pointer      - check if the widget has the pointer on Button release 
  * @param *w                - pointer to the Widget_t sending the request
  * @param *button           - pointer to the XButtonEvent sending the notify

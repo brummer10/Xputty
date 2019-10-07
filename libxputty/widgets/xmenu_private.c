@@ -199,6 +199,7 @@ void _radio_item_button_pressed(void *w_, void* button_, void* user_data) {
 
 void _configure_menu(Widget_t *parent, Widget_t *menu, int elem) {
     Widget_t* view_port =  menu->childlist->childs[0];
+    if (!view_port->childlist->elem) return;
     XWindowAttributes attrs;
     XGetWindowAttributes(menu->app->dpy, (Window)view_port->childlist->childs[0]->widget, &attrs);
     int height = attrs.height;
