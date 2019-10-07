@@ -72,7 +72,8 @@ static int compare_fun (const void *p1, const void *p2) {
 }
 
 static void get_files(FileBrowser *filebrowser, char *path, int get_dirs) {
-    for (int i = 0; i<255;i++) {
+    int i = 0;
+    for (; i<255;i++) {
         sprintf(filebrowser->filenames[i], '\0');
         if(get_dirs) sprintf(filebrowser->dirnames[i], '\0');
     }
@@ -117,7 +118,8 @@ static void set_files(FileBrowser *filebrowser) {
     set_adjustment(filebrowser->ft->adj_y,0.0, 0.0, 0.0, -1.0,1.0, CL_ENUM);
     filebrowser->ft->adj = filebrowser->ft->adj_y;
     adj_set_value(filebrowser->ft->adj, 0.0);
-    for (int i = 0; i<filebrowser->n; i++) {
+    int i = 0;
+    for (; i<filebrowser->n; i++) {
         combobox_add_entry(filebrowser->ft,filebrowser->filenames[i]);
     }
 
@@ -127,7 +129,8 @@ static void set_dirs(FileBrowser *filebrowser) {
     set_adjustment(filebrowser->ct->adj_y,0.0, 0.0, 0.0, -1.0,1.0, CL_ENUM);
     filebrowser->ct->adj = filebrowser->ct->adj_y;
     adj_set_value(filebrowser->ct->adj, 0.0);
-    for (int i = 0; i<filebrowser->m; i++) {
+    int i = 0;
+    for (; i<filebrowser->m; i++) {
         combobox_add_entry(filebrowser->ct,filebrowser->dirnames[i]);
     }
 }
