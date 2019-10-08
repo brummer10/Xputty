@@ -40,7 +40,7 @@ $(EXAMPLE_OBJ): $(EXAMPLE_SOURCES) $(HEADER_DIR)*.h
 	$(CC) -c $(patsubst %.o,%.c,$@) -o $@  $(INCLUDES) $(LDFLAGS)
 
 $(EXEC_FILES): $(EXAMPLE_OBJ)
-	$(CC)  $(patsubst %,%.c,$@) -L. $(LIB_DIR)libxputty.a -o $@  $(INCLUDES) $(LDFLAGS)
+	$(CC) -Wall $(patsubst %,%.c,$@) -L. $(LIB_DIR)libxputty.a -o $@  $(INCLUDES) $(LDFLAGS)
 
 doc:
 

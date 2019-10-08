@@ -59,6 +59,7 @@ Widget_t* create_viewport(Widget_t *parent, int width, int height) {
     wid->adj = wid->adj_y;
     wid->func.adj_callback = _set_viewpoint;
     wid->func.expose_callback = _draw_viewslider;
+    return wid;
 }
 
 /**
@@ -74,7 +75,7 @@ Widget_t* create_menu(Widget_t *parent, int height) {
     Window child;
     XTranslateCoordinates( parent->app->dpy, parent->widget, DefaultRootWindow(parent->app->dpy), 0, 0, &x1, &y1, &child );
     Widget_t *wid = create_window(parent->app, DefaultRootWindow(parent->app->dpy), x1, y1, 10, height);
-    Widget_t* view_port = create_viewport(wid, 10, 5*height);
+    create_viewport(wid, 10, 5*height);
     Atom window_type = XInternAtom(wid->app->dpy, "_NET_WM_WINDOW_TYPE", False);
     long vale = XInternAtom(wid->app->dpy, "_NET_WM_WINDOW_TYPE_POPUP_MENU", False);
     XChangeProperty(wid->app->dpy, wid->widget, window_type,
@@ -85,7 +86,6 @@ Widget_t* create_menu(Widget_t *parent, int height) {
     wid->scale.gravity = NONE;
     childlist_add_child(parent->childlist, wid);
     return wid;
-
 }
 
 /**

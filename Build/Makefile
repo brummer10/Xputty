@@ -56,10 +56,10 @@ $(RESOURCES_OBJ): $(RESOURCES)
 	cd $(RESOURCES_DIR) && ld -r -b binary $(patsubst %.o,%.png,$@) -o ../../Build/$@
 
 $(WIDGET_OBJ): $(WIDGET_SOURCES)
-	$(CC) -MMD -c $(addprefix $(WIDGET_DIR),$(patsubst %.o,%.c,$@)) -o $@ $(INCLUDES) $(LDFLAGS)
+	$(CC) -MMD -Wall -c $(addprefix $(WIDGET_DIR),$(patsubst %.o,%.c,$@)) -o $@ $(INCLUDES) $(LDFLAGS)
 
 $(LIB_OBJ): $(LIB_SOURCES)
-	$(CC) -MMD -c $(addprefix $(LIB_DIR),$(patsubst %.o,%.c,$@)) -o $@ $(INCLUDES) $(LDFLAGS)
+	$(CC) -MMD -Wall -c $(addprefix $(LIB_DIR),$(patsubst %.o,%.c,$@)) -o $@ $(INCLUDES) $(LDFLAGS)
 
 -include $(DEP)
 

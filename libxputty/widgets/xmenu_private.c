@@ -48,7 +48,6 @@ void _draw_item(void *w_, void* user_data) {
     if (!w) return;
     XWindowAttributes attrs;
     XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
-    int y = attrs.y;
     int width = attrs.width;
     int height = attrs.height;
     if (attrs.map_state != IsViewable) return;
@@ -184,7 +183,6 @@ void _check_item_button_pressed(void *w_, void* button_, void* user_data) {
 
 void _radio_item_button_pressed(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    Widget_t * p = w->parent;
     if (w->flags & HAS_FOCUS) {
         radio_item_set_active(w);
     }

@@ -64,7 +64,6 @@ void main_run(Xputty *main) {
     XSetWMProtocols(wid->app->dpy, wid->widget, &WM_DELETE_WINDOW, 1);
 
     XEvent xev;
-    XPointer w_;
     int ew;
 
     while (main->run && (XNextEvent(main->dpy, &xev)>=0)) {

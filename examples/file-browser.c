@@ -298,14 +298,6 @@ static void button_ok_callback(void *w_, void* user_data) {
    Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
     if (w->flags & HAS_POINTER && !*(int*)user_data){
-        Widget_t* menu =  filebrowser->ft->childlist->childs[1];
-        Widget_t* view_port =  menu->childlist->childs[0];
-        if(!childlist_has_child(view_port->childlist)) return ;
-        Widget_t *file = view_port->childlist->childs[(int)adj_get_value(filebrowser->ft->adj)];
-        menu =  filebrowser->ct->childlist->childs[1];
-        view_port =  menu->childlist->childs[0];
-        if(!childlist_has_child(view_port->childlist)) return ;
-        Widget_t *dir = view_port->childlist->childs[(int)adj_get_value(filebrowser->ct->adj)];
         if(filebrowser->selected_file)
             fprintf(stderr, "selected = %s\n",filebrowser->selected_file);
         quit(get_toplevel_widget(w->app));

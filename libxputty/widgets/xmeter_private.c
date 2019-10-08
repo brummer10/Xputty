@@ -296,10 +296,6 @@ void _create_horizontal_meter_image(Widget_t *w, int width, int height) {
 
 void _draw_v_meter(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    XWindowAttributes attrs;
-    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
-    int width_t = attrs.width;
-    int height_t = attrs.height;
 
     int width = cairo_xlib_surface_get_width(w->image);
     int height = cairo_xlib_surface_get_height(w->image);
@@ -326,11 +322,7 @@ void _draw_v_meter(void *w_, void* user_data) {
  */
 
 void _draw_h_meter(void *w_, void* user_data) {
-     Widget_t *w = (Widget_t*)w_;
-    XWindowAttributes attrs;
-    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
-    int width_t = attrs.width;
-    int height_t = attrs.height;
+    Widget_t *w = (Widget_t*)w_;
 
     int width = cairo_xlib_surface_get_width(w->image);
     int height = cairo_xlib_surface_get_height(w->image);

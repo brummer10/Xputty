@@ -75,7 +75,6 @@ void _draw_combobox_button(void *w_, void* user_data) {
     }
 
     float offset = 0.0;
-    cairo_text_extents_t extents;
     if(w->state==0) {
         use_fg_color_scheme(w, NORMAL_);
     } else if(w->state==1) {

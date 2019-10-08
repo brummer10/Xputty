@@ -199,7 +199,8 @@ void _draw_button(void *w_, void* user_data) {
         }
 
         use_text_color_scheme(w, get_color_state(w));
-        cairo_set_font_size (w->crb, height/2.2);
+        float font_size = ((height/2.2 < (width*0.5)/3) ? height/2.2 : (width*0.6)/3);
+        cairo_set_font_size (w->crb, font_size);
         cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
                                    CAIRO_FONT_WEIGHT_BOLD);
         cairo_text_extents(w->crb,w->label , &extents);
@@ -258,7 +259,6 @@ void _button_released(void *w_, void* button_, void* user_data) {
  */
 
 void _toggle_button_pressed(void *w_, void* button, void* user_data) {
-    Widget_t *w = (Widget_t*)w_;
     expose_widget(w_);
 }
 

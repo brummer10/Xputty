@@ -275,7 +275,7 @@ Widget_t *create_window(Xputty *app, Window win,
     w->func.enter_callback = _dummy_callback;
     w->func.leave_callback = _dummy_callback;
     w->func.user_callback = _dummy_callback;
-    debug_print("size of Func_t = %i\n", sizeof(w->func)/sizeof(void*));
+    debug_print("size of Func_t = %lu\n", sizeof(w->func)/sizeof(void*));
 
     childlist_add_child(app->childlist,w);
     //XMapWindow(app->dpy, w->widget);
