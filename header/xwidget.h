@@ -77,6 +77,7 @@ typedef struct {
     xevfunc adj_callback;
     xevfunc value_changed_callback;
     xevfunc user_callback;
+    xevfunc mem_free_callback;
 
     evfunc button_press_callback;
     evfunc button_release_callback;
@@ -167,6 +168,7 @@ typedef struct {
  * @param USE_TRANSPARENCY     - Widget_t need transparent draw (buffer)
  * @param HAS_FOCUS            - Mouse pointer is above Widget_t
  * @param HAS_POINTER          - Mouse pointer is pressed on Widget_t
+ * @param HAS_TOOLTIP          - Widget_t have tooltip
  */
 
 enum {
@@ -188,6 +190,8 @@ enum {
     HAS_POINTER       = 1<<7,
     /** Widget_t have tooltip */
     HAS_TOOLTIP       = 1<<8,
+    /** Widget_t have mem to be released */
+    HAS_MEM           = 1<<9,
 };
 
 /**

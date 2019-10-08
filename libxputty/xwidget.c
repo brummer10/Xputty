@@ -87,6 +87,9 @@ void destroy_widget(Widget_t * w, Xputty *main) {
     if (count == 0 && main->run == true) {
         quit(w);
     } else if(childlist_find_child(main->childlist, w)>=0) {
+        if(w->flags & HAS_MEM) {
+            w->func.mem_free_callback(w, NULL);
+        }
         childlist_remove_child(main->childlist, w);
         int ch = childlist_has_child(w->childlist);
         if (ch) {
@@ -377,6 +380,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->func.enter_callback = _dummy_callback;
     w->func.leave_callback = _dummy_callback;
     w->func.user_callback = _dummy_callback;
+    w->func.mem_free_callback = _dummy_callback;
 
     childlist_add_child(app->childlist,w);
     //XMapWindow(app->dpy, w->widget);

@@ -380,6 +380,26 @@ static void button_hidden_callback(void *w_, void* user_data) {
     }
 }
 
+static void mem_free(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    FileBrowser *filebrowser = w->parent_struct;
+
+    int j = 0;
+    for(; j<filebrowser->n;j++) {
+        free(filebrowser->file_names[j]);
+    }
+    free(filebrowser->file_names);
+
+    j = 0;
+    for(; j<filebrowser->m;j++) {
+        free(filebrowser->dir_names[j]);
+    }
+    free(filebrowser->dir_names);
+    free(filebrowser->selected_file);
+    free(filebrowser->path);
+}
+
+
 int main (int argc, char ** argv)
 {
     Xputty app;
@@ -396,9 +416,12 @@ int main (int argc, char ** argv)
     assert(filebrowser.path != NULL);
 
     filebrowser.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 660, 200);
+    filebrowser.w->flags |= HAS_MEM;
     filebrowser.w->parent_struct = &filebrowser;
     XStoreName(app.dpy, filebrowser.w->widget, "File Selector");
     filebrowser.w->func.expose_callback = draw_window;
+    filebrowser.w->func.mem_free_callback = mem_free;
+
     filebrowser.ct = add_combobox(filebrowser.w, "", 20, 40, 560, 30);
     filebrowser.ct->parent_struct = &filebrowser;
     filebrowser.ct->func.value_changed_callback = combo_response;
@@ -447,20 +470,6 @@ int main (int argc, char ** argv)
     main_run(&app);
 
     main_quit(&app);
-
-    int j = 0;
-    for(; j<filebrowser.n;j++) {
-        free(filebrowser.file_names[j]);
-    }
-    free(filebrowser.file_names);
-
-    j = 0;
-    for(; j<filebrowser.m;j++) {
-        free(filebrowser.dir_names[j]);
-    }
-    free(filebrowser.dir_names);
-    free(filebrowser.selected_file);
-    free(filebrowser.path);
 
     return 0;
 }
