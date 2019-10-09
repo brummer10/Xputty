@@ -241,7 +241,7 @@ static int get_files(FileBrowser *filebrowser, char *path, int get_dirs) {
             filebrowser->dir_names = (char **)realloc(filebrowser->dir_names,
               (filebrowser->m + 1) * sizeof(char *));
             assert(filebrowser->dir_names != NULL);
-            asprintf(&filebrowser->dir_names[filebrowser->m++],(strcmp (path, "/") != 0) ? 
+            asprintf(&filebrowser->dir_names[filebrowser->m++], (strcmp(path, "/") != 0) ?
               "%s/%s" : "%s%s" , path,dp->d_name);
             assert(&filebrowser->dir_names[filebrowser->m] != NULL);
         }
@@ -373,9 +373,11 @@ static void open_file_callback(void *w_, void* user_data) {
     FileBrowser *filebrowser = w->parent_struct;
     if (w->flags & HAS_POINTER && !*(int*)user_data){
         set_selected_file(filebrowser);
-        fprintf(stderr, "file = %s\n",filebrowser->selected_file);
-        filebrowser->w->label = filebrowser->selected_file;
-        expose_widget(filebrowser->w);
+        if(filebrowser->selected_file) {
+            fprintf(stderr, "file = %s\n",filebrowser->selected_file);
+            filebrowser->w->label = filebrowser->selected_file;
+            expose_widget(filebrowser->w);
+        }
     }
 }
 
