@@ -63,8 +63,8 @@ typedef struct {
     Widget_t *sel_dir;
     Widget_t *sel_file;
     bool show_hidden;
-    unsigned n;
-    unsigned m;
+    unsigned int n;
+    unsigned int m;
     char *path;
     char *selected_file;
     char **file_names;
@@ -121,34 +121,41 @@ static inline int clear(Widget_t *w) {
 }
 
 static inline int compare_fun (const void *p1, const void *p2) {
-    return strcmp(*(const char**) p1, *(const char**) p2);
+    return strcasecmp(*(const char**) p1, *(const char**) p2);
 }
 
 static inline int compare_hidden_dirs_fun (const void *p1, const void *p2) {
     if(strstr(*(const char**)p1, "/.") && strstr(*(const char**)p2, "/.")) return 0;
     if(strstr(*(const char**)p1, "/.")) return 1;
     if(strstr(*(const char**)p2, "/.")) return -1;
-    return strcmp(*(const char**) p1, *(const char**) p2);
+    return strcasecmp(*(const char**) p1, *(const char**) p2);
 }
 
 static inline int compare_hidden_files_fun (const void *p1, const void *p2) {
     if(strncmp(*(const char**)p1, ".",1)==0 && strncmp(*(const char**)p2, ".",1)==0) return 0;
     if(strncmp(*(const char**)p1, ".",1)==0 ) return 1;
     if(strncmp(*(const char**)p2, ".",1)==0 ) return -1;
-    return strcmp(*(const char**) p1, *(const char**) p2);
+    return strcasecmp(*(const char**) p1, *(const char**) p2);
 }
 
 static inline bool show_hidden_files(FileBrowser *filebrowser, char* file) {
-    if(!filebrowser->show_hidden) {
-        return (file[0] != '.');
-    } else {
-        return strcmp(file,".")!=0;
+    return (filebrowser->show_hidden) ? strcmp(file,".")!=0 : (file[0] != '.');
+}
+
+static inline void sort_buffers(FileBrowser *filebrowser, int get_dirs) {
+    if (filebrowser->m>1 && get_dirs) {
+        qsort (filebrowser->dir_names, filebrowser->m,
+          sizeof filebrowser->dir_names[0], (filebrowser->show_hidden) ?
+          compare_hidden_dirs_fun : compare_fun);
+    }
+    if (filebrowser->n>1) {
+        qsort (filebrowser->file_names, filebrowser->n,
+          sizeof filebrowser->file_names[0], (filebrowser->show_hidden) ?
+          compare_hidden_files_fun : compare_fun);
     }
 }
 
-static int get_files(FileBrowser *filebrowser, char *path, int get_dirs) {
-    int ret = 0;
-    // clear file-name buffer
+static inline void clear_filebuffer(FileBrowser *filebrowser) {
     int j = 0;
     for(; j<filebrowser->n;j++) {
         free(filebrowser->file_names[j]);
@@ -159,42 +166,59 @@ static int get_files(FileBrowser *filebrowser, char *path, int get_dirs) {
         filebrowser->file_names = NULL;
         filebrowser->n=0;
     }
-    // clear directory-name buffer
-    if(get_dirs) {
-        int j = 0;
-        for(; j<filebrowser->m;j++) {
-            free(filebrowser->dir_names[j]);
-            filebrowser->dir_names[j] = NULL;
+}
+
+static inline void clear_dirbuffer(FileBrowser *filebrowser) {
+    int j = 0;
+    for(; j<filebrowser->m;j++) {
+        free(filebrowser->dir_names[j]);
+        filebrowser->dir_names[j] = NULL;
+    }
+    if(filebrowser->m) {
+        free(filebrowser->dir_names);
+        filebrowser->dir_names = NULL;
+        filebrowser->m=0;
+    }
+}
+
+static inline int prefill_dirbuffer(FileBrowser *filebrowser, char *path) {
+    int ret = 0;
+    if (strcmp (path, "/") == 0) {
+        filebrowser->dir_names = (char **)realloc(filebrowser->dir_names,
+          (filebrowser->m + 1) * sizeof(char *));
+        assert(filebrowser->dir_names != NULL);
+        asprintf(&filebrowser->dir_names[filebrowser->m++], "%s",path);
+        assert(&filebrowser->dir_names[filebrowser->m] != NULL);
+    } else {
+        char *ho;
+        asprintf(&ho, "%s",path);
+        assert(ho != NULL);
+        while (strcmp (ho, "/") != 0) {
+            filebrowser->dir_names = (char **)realloc(filebrowser->dir_names,
+              (filebrowser->m + 1) * sizeof(char *));
+            assert(filebrowser->dir_names != NULL);
+            asprintf(&filebrowser->dir_names[filebrowser->m++], "%s",dirname(ho));
+            assert(&filebrowser->dir_names[filebrowser->m] != NULL);
+            ret++;
         }
-        if(filebrowser->m) {
-            free(filebrowser->dir_names);
-            filebrowser->dir_names = NULL;
-            filebrowser->m=0;
-        }
-        if (strcmp (path, "/") == 0) {
-            filebrowser->dir_names = (char **)realloc(filebrowser->dir_names, (filebrowser->m + 1) * sizeof(char *));
+        if (strcmp (path, "/") != 0) {
+            filebrowser->dir_names = (char **)realloc(filebrowser->dir_names,
+              (filebrowser->m + 1) * sizeof(char *));
             assert(filebrowser->dir_names != NULL);
             asprintf(&filebrowser->dir_names[filebrowser->m++], "%s",path);
             assert(&filebrowser->dir_names[filebrowser->m] != NULL);
-        } else {
-            char *ho;
-            asprintf(&ho, "%s",path);
-            assert(ho != NULL);
-            while (strcmp (ho, "/") != 0) {
-                filebrowser->dir_names = (char **)realloc(filebrowser->dir_names, (filebrowser->m + 1) * sizeof(char *));
-                assert(filebrowser->dir_names != NULL);
-                asprintf(&filebrowser->dir_names[filebrowser->m++], "%s",dirname(ho));
-                assert(&filebrowser->dir_names[filebrowser->m] != NULL);
-                ret++;
-            }
-            if (strcmp (path, "/") != 0) {
-                filebrowser->dir_names = (char **)realloc(filebrowser->dir_names, (filebrowser->m + 1) * sizeof(char *));
-                assert(filebrowser->dir_names != NULL);
-                asprintf(&filebrowser->dir_names[filebrowser->m++], "%s",path);
-                assert(&filebrowser->dir_names[filebrowser->m] != NULL);
-            }
-            free(ho);
         }
+        free(ho);
+    }
+    return ret;   
+}
+
+static int get_files(FileBrowser *filebrowser, char *path, int get_dirs) {
+    int ret = 0;
+    clear_filebuffer(filebrowser);
+    if(get_dirs) {
+        clear_dirbuffer(filebrowser);
+        ret = prefill_dirbuffer(filebrowser, path);
     }
 
     DIR *dirp;
@@ -202,46 +226,28 @@ static int get_files(FileBrowser *filebrowser, char *path, int get_dirs) {
     dirp = opendir(path);
     while ((dp = readdir(dirp)) != NULL) {
 
-        if(dp-> d_type != DT_DIR && strlen(dp->d_name)!=0 && dp->d_type != DT_UNKNOWN &&
-          show_hidden_files(filebrowser, dp->d_name)  && strcmp(dp->d_name,"..")!=0) {
+        if(dp-> d_type != DT_DIR && strlen(dp->d_name)!=0 && dp->d_type != DT_UNKNOWN
+          && strcmp(dp->d_name,"..")!=0 && show_hidden_files(filebrowser, dp->d_name)) {
 
-            filebrowser->file_names = (char **)realloc(filebrowser->file_names, (filebrowser->n + 1) * sizeof(char *));
+            filebrowser->file_names = (char **)realloc(filebrowser->file_names,
+              (filebrowser->n + 1) * sizeof(char *));
             assert(filebrowser->file_names != NULL);
             asprintf(&filebrowser->file_names[filebrowser->n++],"%s",dp->d_name);
             assert(&filebrowser->file_names[filebrowser->n] != NULL);
 
-        } else if(get_dirs && dp -> d_type == DT_DIR && show_hidden_files(filebrowser, dp->d_name)
-          && strcmp(dp->d_name,"..")!=0 && strlen(dp->d_name)!=0) {
+        } else if(get_dirs && dp -> d_type == DT_DIR && strlen(dp->d_name)!=0
+          && strcmp(dp->d_name,"..")!=0 && show_hidden_files(filebrowser, dp->d_name)) {
 
-            if (strcmp (path, "/") != 0) {
-                filebrowser->dir_names = (char **)realloc(filebrowser->dir_names, (filebrowser->m + 1) * sizeof(char *));
-                assert(filebrowser->dir_names != NULL);
-                asprintf(&filebrowser->dir_names[filebrowser->m++], "%s/%s", path,dp->d_name);
-                assert(&filebrowser->dir_names[filebrowser->m] != NULL);
-            } else {
-                filebrowser->dir_names = (char **)realloc(filebrowser->dir_names, (filebrowser->m + 1) * sizeof(char *));
-                assert(filebrowser->dir_names != NULL);
-                asprintf(&filebrowser->dir_names[filebrowser->m++], "%s%s", path,dp->d_name);
-                assert(&filebrowser->dir_names[filebrowser->m] != NULL);
-            }
+            filebrowser->dir_names = (char **)realloc(filebrowser->dir_names,
+              (filebrowser->m + 1) * sizeof(char *));
+            assert(filebrowser->dir_names != NULL);
+            asprintf(&filebrowser->dir_names[filebrowser->m++],(strcmp (path, "/") != 0) ? 
+              "%s/%s" : "%s%s" , path,dp->d_name);
+            assert(&filebrowser->dir_names[filebrowser->m] != NULL);
         }
     }
     closedir(dirp);
-   
-    if (filebrowser->m>1 && get_dirs) {
-        if(filebrowser->show_hidden) {
-            qsort (filebrowser->dir_names, filebrowser->m, sizeof filebrowser->dir_names[0], compare_hidden_dirs_fun);
-        } else {
-            qsort (filebrowser->dir_names, filebrowser->m, sizeof filebrowser->dir_names[0], compare_fun);
-        }
-    }
-    if (filebrowser->n>1) {
-        if(filebrowser->show_hidden) {
-            qsort (filebrowser->file_names, filebrowser->n, sizeof filebrowser->file_names[0], compare_hidden_files_fun);
-        } else {
-            qsort (filebrowser->file_names, filebrowser->n, sizeof filebrowser->file_names[0], compare_fun);
-        }
-    }
+    sort_buffers(filebrowser, get_dirs);
     return ret;
 }
 
@@ -273,6 +279,32 @@ static void center_widget(Widget_t *wid, Widget_t *w) {
         max(1,w->scale.init_height / (wid->scale.cscale_y)));
 }
 
+static void reload_file_entrys(FileBrowser *filebrowser) {
+    clear(filebrowser->ft);
+    get_files(filebrowser,filebrowser->path, 0);
+    filebrowser->ft = add_combobox(filebrowser->w, "", 20, 90, 560, 30);
+    center_widget(filebrowser->w,filebrowser->ft);
+    filebrowser->ft->parent_struct = filebrowser;
+    set_files(filebrowser);
+    combobox_set_active_entry(filebrowser->ft, 0);
+    widget_show_all(filebrowser->w);
+}
+
+static void set_selected_file(FileBrowser *filebrowser) {
+    Widget_t* menu =  filebrowser->ft->childlist->childs[1];
+    Widget_t* view_port =  menu->childlist->childs[0];
+    if(!childlist_has_child(view_port->childlist)) return ;
+    Widget_t *file = view_port->childlist->childs[(int)adj_get_value(filebrowser->ft->adj)];
+    menu =  filebrowser->ct->childlist->childs[1];
+    view_port =  menu->childlist->childs[0];
+    if(!childlist_has_child(view_port->childlist)) return ;
+    Widget_t *dir = view_port->childlist->childs[(int)adj_get_value(filebrowser->ct->adj)];
+    free(filebrowser->selected_file);
+    filebrowser->selected_file = NULL;
+    asprintf(&filebrowser->selected_file, "%s/%s",dir->label, file->label);
+    assert(filebrowser->selected_file != NULL);
+}
+
 static void combo_response(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
@@ -284,22 +316,20 @@ static void combo_response(void *w_, void* user_data) {
     filebrowser->path = NULL;
     asprintf(&filebrowser->path, "%s",entry->label);
     assert(filebrowser->path != NULL);
-    clear(filebrowser->ft);
-    get_files(filebrowser,filebrowser->path, 0);
-    filebrowser->ft = add_combobox(filebrowser->w, "", 20, 90, 560, 30);
-    center_widget(filebrowser->w,filebrowser->ft);
-    filebrowser->ft->parent_struct = filebrowser;
-    set_files(filebrowser);
-    combobox_set_active_entry(filebrowser->ft, 0);
-    widget_show_all(filebrowser->w);
+    reload_file_entrys(filebrowser);
 }
 
 static void button_ok_callback(void *w_, void* user_data) {
    Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
     if (w->flags & HAS_POINTER && !*(int*)user_data){
-        if(filebrowser->selected_file)
+        if(filebrowser->selected_file) {
             fprintf(stderr, "selected = %s\n",filebrowser->selected_file);
+        } else {
+            set_selected_file(filebrowser);
+            if(filebrowser->selected_file)
+                fprintf(stderr, "selected = %s\n",filebrowser->selected_file);
+        }
         quit(get_toplevel_widget(w->app));
    }
 }
@@ -342,18 +372,7 @@ static void open_file_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
     if (w->flags & HAS_POINTER && !*(int*)user_data){
-        Widget_t* menu =  filebrowser->ft->childlist->childs[1];
-        Widget_t* view_port =  menu->childlist->childs[0];
-        if(!childlist_has_child(view_port->childlist)) return ;
-        Widget_t *file = view_port->childlist->childs[(int)adj_get_value(filebrowser->ft->adj)];
-        menu =  filebrowser->ct->childlist->childs[1];
-        view_port =  menu->childlist->childs[0];
-        if(!childlist_has_child(view_port->childlist)) return ;
-        Widget_t *dir = view_port->childlist->childs[(int)adj_get_value(filebrowser->ct->adj)];
-        free(filebrowser->selected_file);
-        filebrowser->selected_file = NULL;
-        asprintf(&filebrowser->selected_file, "%s/%s",dir->label, file->label);
-        assert(filebrowser->selected_file != NULL);
+        set_selected_file(filebrowser);
         fprintf(stderr, "file = %s\n",filebrowser->selected_file);
         filebrowser->w->label = filebrowser->selected_file;
         expose_widget(filebrowser->w);
@@ -363,11 +382,8 @@ static void open_file_callback(void *w_, void* user_data) {
 static void button_hidden_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
-    if (w->flags & HAS_POINTER && adj_get_value(w->adj)) {
-        filebrowser->show_hidden = true;
-        reload_all(filebrowser);
-    } else if (w->flags & HAS_POINTER && !adj_get_value(w->adj)) {
-        filebrowser->show_hidden = false;
+    if (w->flags & HAS_POINTER) {
+        filebrowser->show_hidden = adj_get_value(w->adj) ? true : false;
         reload_all(filebrowser);
     }
 }
@@ -375,18 +391,8 @@ static void button_hidden_callback(void *w_, void* user_data) {
 static void mem_free(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
-
-    int j = 0;
-    for(; j<filebrowser->n;j++) {
-        free(filebrowser->file_names[j]);
-    }
-    free(filebrowser->file_names);
-
-    j = 0;
-    for(; j<filebrowser->m;j++) {
-        free(filebrowser->dir_names[j]);
-    }
-    free(filebrowser->dir_names);
+    clear_filebuffer(filebrowser);
+    clear_dirbuffer(filebrowser);
     free(filebrowser->selected_file);
     free(filebrowser->path);
 }
@@ -404,7 +410,7 @@ int main (int argc, char ** argv)
     filebrowser.dir_names = NULL;
     filebrowser.selected_file = NULL;
     filebrowser.path = NULL;
-    asprintf(&filebrowser.path, "%s",getenv("HOME"));
+    asprintf(&filebrowser.path, "%s",getenv("HOME") ? getenv("HOME") : "/");
     assert(filebrowser.path != NULL);
 
     filebrowser.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 660, 200);
@@ -430,7 +436,7 @@ int main (int argc, char ** argv)
     filebrowser.sel_file = add_button(filebrowser.w, "Select", 590, 90, 60, 30);
     filebrowser.sel_file->parent_struct = &filebrowser;
     filebrowser.sel_file->scale.gravity = CENTER;
-    add_tooltip(filebrowser.sel_file,"Set select file");
+    add_tooltip(filebrowser.sel_file,"Select current file to load");
     filebrowser.sel_file->func.value_changed_callback = open_file_callback;
 
     int ds = get_files(&filebrowser,filebrowser.path, 1);   
