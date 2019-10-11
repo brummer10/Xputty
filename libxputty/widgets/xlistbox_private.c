@@ -54,7 +54,8 @@ void _draw_listbox_item(void *w_, void* user_data) {
     Widget_t* view_port = w->parent;
     Widget_t* listbox =  view_port->parent;
     int j = (int)listbox->adj->value;
-    if(w == view_port->childlist->childs[j]) w->state=3;
+    if(w == view_port->childlist->childs[j]) 
+      w->state = (w->state == 1) ? 1 : 3;
     
     use_bg_color_scheme(w, get_color_state(w));
     cairo_rectangle(w->crb, 0, 0, width , height);
@@ -71,7 +72,7 @@ void _draw_listbox_item(void *w_, void* user_data) {
         cairo_set_line_width(w->crb, 1.0);
         use_bg_color_scheme(w, PRELIGHT_);
     } else if(w->state==3) {
-        use_bg_color_scheme(w, SELECTED_);
+        use_base_color_scheme(w, SELECTED_);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.0);
         use_bg_color_scheme(w, PRELIGHT_);
