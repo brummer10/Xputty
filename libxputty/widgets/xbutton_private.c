@@ -202,6 +202,11 @@ void _draw_button(void *w_, void* user_data) {
         cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
                                    CAIRO_FONT_WEIGHT_BOLD);
         cairo_text_extents(w->crb,w->label , &extents);
+        if(strlen(w->label)<4) {
+            font_size = ((height/1.5 < (width)/1.5) ? height/1.5 : (width)/1.5);
+            cairo_set_font_size (w->crb, font_size);
+            cairo_text_extents(w->crb,w->label , &extents);
+        }
 
         cairo_move_to (w->crb, (width-extents.width)*0.5 +offset, (height+extents.height)*0.5 +offset);
         cairo_show_text(w->crb, w->label);

@@ -162,10 +162,10 @@ void _listbox_entry_released(void *w_, void* button_, void* user_data) {
                 Widget_t *wid = view_port->childlist->childs[i];
                 if (xbutton->window == wid->widget) {
                     const char *l = view_port->childlist->childs[i]->label;
-                    listbox->func.button_release_callback(listbox, &i, &l);
                     float value = (float)i;
                     check_value_changed(listbox->adj, &value);
                     wid->state= 3;
+                    listbox->func.button_release_callback(listbox, &i, &l);
                 }
                 wid->state= 0;
             }

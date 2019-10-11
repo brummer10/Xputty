@@ -59,7 +59,7 @@ Widget_t* add_listbox(Widget_t *parent, const char * label,
     wid->scale.gravity = CENTER;
     wid->func.expose_callback = _draw_listbox;
     int elem = height/25;
-    wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, -1.0,1.0, CL_ENUM);
+    wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, -1.0,1.0, CL_NONE);
     wid->adj = wid->adj_y;
     create_listbox_viewport(wid, elem, width, height);
     return wid;
@@ -82,7 +82,7 @@ Widget_t* listbox_add_entry(Widget_t *listbox, const char * label) {
     float max_value = view_port->adj->max_value+1.0;
     set_adjustment(view_port->adj,0.0, 0.0, 0.0, max_value,1.0, CL_VIEWPORT);
     max_value = listbox->adj->max_value+1.0;
-    set_adjustment(listbox->adj,0.0, 0.0, 0.0, max_value,1.0, CL_ENUM);
+    set_adjustment(listbox->adj,0.0, 0.0, 0.0, max_value,1.0, CL_NONE);
     wid->flags &= ~USE_TRANSPARENCY | ~HAS_TOOLTIP;
     wid->scale.gravity = MENUITEM;
     wid->label = label;

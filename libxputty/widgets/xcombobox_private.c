@@ -90,10 +90,10 @@ void _draw_combobox_button(void *w_, void* user_data) {
     use_text_color_scheme(w, get_color_state(w));
     int wa = width/1.1;
     int h = height/2.2;
-    int wa1 = width/1.5;
+    int wa1 = width/1.55;
     int h1 = height/1.3;
     int wa2 = width/2.8;
-
+   
     cairo_move_to(w->crb, wa+offset, h+offset);
     cairo_line_to(w->crb, wa1+offset, h1+offset);
     cairo_line_to(w->crb, wa2+offset, h+offset);
