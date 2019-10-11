@@ -50,6 +50,7 @@ void _draw_tooltip(void *w_, void* user_data) {
     if (!w) return;
     XWindowAttributes attrs;
     XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
+    if (attrs.map_state != IsViewable) return;
     int width = attrs.width;
     int height = attrs.height;
     use_bg_color_scheme(w, get_color_state(w));

@@ -77,6 +77,7 @@ Widget_t* create_tooltip(Widget_t *parent, int width, int height) {
     XChangeProperty(wid->app->dpy, wid->widget, window_type,
         XA_ATOM, 32, PropModeReplace, (unsigned char *) &vale,1 );
     XSetTransientForHint(parent->app->dpy,wid->widget,parent->widget);
+    wid->flags &= ~USE_TRANSPARENCY;
     wid->func.expose_callback = _draw_tooltip;
     wid->flags |= IS_TOOLTIP;
     parent->flags |= HAS_TOOLTIP;
