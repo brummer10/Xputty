@@ -38,6 +38,7 @@
 #include "xtooltip.h"
 #include "xmeter.h"
 #include "xlabel.h"
+#include "xlistbox.h"
 
 
 #endif //XWIDGETS_H_

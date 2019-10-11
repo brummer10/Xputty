@@ -74,6 +74,15 @@ void _draw_button(void *w_, void* user_data);
  * @return void
  */
 
+/**
+ * @brief _draw_check_button     - internal draw the button to the buffer
+ * @param *w_                    - void pointer to the Widget_t button
+ * @param *user_data             - void pointer to attached user_data
+ * @return void
+ */
+
+void _draw_check_button(void *w_, void* user_data);
+
 /*---------------------------------------------------------------------
 -----------------------------------------------------------------------	
                             button

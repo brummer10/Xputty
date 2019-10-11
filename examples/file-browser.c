@@ -459,7 +459,7 @@ int main (int argc, char ** argv)
     add_tooltip(filebrowser.w_okay,"Print selected file and exit");
     filebrowser.w_okay->func.value_changed_callback = button_ok_callback;
 
-    filebrowser.w_hidden = add_toggle_button(filebrowser.w, "", 20, 165, 20, 20);
+    filebrowser.w_hidden = add_check_button(filebrowser.w, "", 20, 165, 20, 20);
     filebrowser.w_hidden->parent_struct = &filebrowser;
     filebrowser.w_hidden->scale.gravity = CENTER;
     add_tooltip(filebrowser.w_hidden,"Show hidden files and folders");

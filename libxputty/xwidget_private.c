@@ -406,7 +406,7 @@ void _resize_childs(Widget_t *wid) {
             break;
             case(NORTHEAST):
                 XResizeWindow (wid->app->dpy, w->widget, max(1,
-                    w->scale.init_width - (wid->scale.scale_x)), w->scale.init_height);
+                    w->scale.init_width - (wid->scale.scale_x)), w->height);
             break;
             case(SOUTHWEST):
                 XMoveWindow(wid->app->dpy,w->widget,w->scale.init_x-wid->scale.scale_x,
