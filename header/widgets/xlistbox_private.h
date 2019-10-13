@@ -56,6 +56,16 @@ void _draw_listbox_item(void *w_, void* user_data);
 void _draw_listbox_viewslider(void *w_, void* user_data);
 
 /**
+ * @brief _reconfigure_listbox_viewport - reconfigure the viwport adjustment
+ * on size changes
+ * @param *w_                      - void pointer to view_port
+ * @param *user_data               - attached user_data
+ * @return void
+ */
+
+void _reconfigure_listbox_viewport(void *w_, void* user_data);
+
+/**
  * @brief _set_listbox_viewpoint  - move the view_port to position
  * @param *w_                     - void pointer to view_port
  * @param *user_data              - attached user_data

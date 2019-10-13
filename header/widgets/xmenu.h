@@ -34,7 +34,7 @@
  * @return void
  */
 
-void pop_menu_show(Widget_t *parent, Widget_t *menu, int elem);
+void pop_menu_show(Widget_t *parent, Widget_t *menu, int elem, bool above);
 
 /**
  * @brief create_viewport     - create a viewport on a menu to a Widget_t

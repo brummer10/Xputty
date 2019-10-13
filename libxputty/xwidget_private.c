@@ -443,6 +443,6 @@ void _resize_childs(Widget_t *wid) {
             default:
             break;
         }
-        
+        w->func.configure_notify_callback(w,NULL);
     }
 }

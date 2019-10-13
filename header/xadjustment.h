@@ -127,15 +127,23 @@ void *delete_adjustment(Adjustment_t *adj);
 
 /**
  * @brief adj_get_state      - get the current state of the adjustment
- * @param *adj               - pointer to the Adjustment to free 
+ * @param *adj               - pointer to the Adjustment
  * @return float             - return the adjustment state (0<->1)
  */
 
 float adj_get_state(Adjustment_t *adj);
 
 /**
+ * @brief adj_set_state      - set the current state of the adjustment
+ * @param *adj               - pointer to the Adjustment
+ * @return float             - return the adjustment state (0<->1)
+ */
+
+void adj_set_state(Adjustment_t *adj, float state);
+
+/**
  * @brief adj_get_value      - get the current value of the adjustment
- * @param *adj               - pointer to the Adjustment to free 
+ * @param *adj               - pointer to the Adjustment
  * @return float             - return the adjustment value
  */
 
@@ -143,7 +151,7 @@ float adj_get_value(Adjustment_t *adj);
 
 /**
  * @brief adj_set_value      - set the current value of the adjustment
- * @param *adj               - pointer to the Adjustment to free 
+ * @param *adj               - pointer to the Adjustment
  * @param v                  - value set the Adjustment to 
  * @return void
  */
@@ -159,14 +167,14 @@ void adj_set_value(Adjustment_t *adj, float v);
 void adj_set_start_value(void *w);
 
 /**
- * @brief adj_set_state      - set value/state of the adjustment
+ * @brief adj_set_motion_state      - set value/state of the adjustment
  * @param *adj               - pointer to Widget_t containing the adjustment
  * @param x                  - value for the xaxis
  * @param y                  - value for the yaxis
  * @return void
  */
 
-void adj_set_state(void *w, float x, float y);
+void adj_set_motion_state(void *w, float x, float y);
 
 /**
  * @brief check_value_changed   - check if value has changed and send

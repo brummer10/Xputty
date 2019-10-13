@@ -81,8 +81,21 @@ void *delete_adjustment(Adjustment_t *adj) {
 }
 
 /**
+ * @brief adj_set_state      - set the current state of the adjustment
+ * @param *adj               - pointer to the Adjustment
+ * @return float             - return the adjustment state (0<->1)
+ */
+
+void adj_set_state(Adjustment_t *adj, float state) {
+    if (!adj) return;
+    float nvalue = min(1.0,max(0.0,state));
+    float value = nvalue * (adj->max_value - adj->min_value) + adj->min_value;
+    check_value_changed(adj, &value);
+}
+
+/**
  * @brief adj_get_state      - get the current state of the adjustment
- * @param *adj               - pointer to the Adjustment to free 
+ * @param *adj               - pointer to the Adjustment
  * @return float             - return the adjustment state (0<->1)
  */
 
@@ -94,7 +107,7 @@ float adj_get_state(Adjustment_t *adj) {
 
 /**
  * @brief adj_get_value      - get the current value of the adjustment
- * @param *adj               - pointer to the Adjustment to free 
+ * @param *adj               - pointer to the Adjustment
  * @return float             - return the adjustment value
  */
 
@@ -105,7 +118,7 @@ float adj_get_value(Adjustment_t *adj) {
 
 /**
  * @brief adj_set_value      - set the current value of the adjustment
- * @param *adj               - pointer to the Adjustment to free 
+ * @param *adj               - pointer to the Adjustment
  * @param v                  - value set the Adjustment to 
  * @return void
  */
@@ -128,14 +141,14 @@ void adj_set_start_value(void *w) {
 }
 
 /**
- * @brief adj_set_state      - set value/state of the adjustment
+ * @brief adj_set_motion_state      - set value/state of the adjustment
  * @param *adj               - pointer to Widget_t containing the adjustment
  * @param x                  - value for the xaxis
  * @param y                  - value for the yaxis
  * @return void
  */
 
-void adj_set_state(void *w, float x, float y) {
+void adj_set_motion_state(void *w, float x, float y) {
     Widget_t * wid = (Widget_t*)w;
     const float scaling = 1.0;
     if(wid->adj_x) {

@@ -20,6 +20,7 @@
 
 
 #include "xcombobox_private.h"
+#include "xtooltip.h"
 
 /**
  * @brief _draw_combobox_button  - internal draw the combobox button to the buffer
@@ -161,6 +162,8 @@ void _draw_combobox(void *w_, void* user_data) {
     cairo_move_to (w->crb, (width-extents.width)*0.5, (height+extents.height)*0.5);
     cairo_show_text(w->crb, w->label);
     cairo_new_path (w->crb);
+    if (extents.width > (float)width) tooltip_set_text(w,w->label);
+    else w->flags &= ~HAS_TOOLTIP;
 }
 
 /**
@@ -177,7 +180,7 @@ void _combobox_button_released(void *w_, void* button_, void* user_data) {
         XButtonEvent *xbutton = (XButtonEvent*)button_;
         if (xbutton->button == Button3) {
             w->state=1;
-            pop_menu_show(w, w->childlist->childs[1], 6);
+            pop_menu_show(w, w->childlist->childs[1], 6, true);
         }
     }
 }
@@ -196,7 +199,7 @@ void _button_combobox_released(void *w_, void* button_, void* user_data) {
     if (w->flags & HAS_POINTER && xbutton->button == Button1) {
         Widget_t *parent = w->parent;
         w->state=1;
-        pop_menu_show(parent, parent->childlist->childs[1], 6);
+        pop_menu_show(parent, parent->childlist->childs[1], 6, true);
     }
     adj_set_value(w->adj, 0.0);
 }

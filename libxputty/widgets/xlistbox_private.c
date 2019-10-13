@@ -20,6 +20,7 @@
 
 
 #include "xlistbox_private.h"
+#include "xtooltip.h"
 
 
 /**
@@ -89,8 +90,29 @@ void _draw_listbox_item(void *w_, void* user_data) {
     cairo_move_to (w->crb, (width-extents.width)/2., height - extents.height );
     cairo_show_text(w->crb, w->label);
     cairo_new_path (w->crb);
-    if (extents.width > (float)width)  w->flags |= HAS_TOOLTIP;
+    if (extents.width > (float)width) tooltip_set_text(w,w->label);
     else w->flags &= ~HAS_TOOLTIP;
+}
+
+/**
+ * @brief _reconfigure_listbox_viewport - reconfigure the viwport adjustment
+ * on size changes
+ * @param *w_                      - void pointer to view_port
+ * @param *user_data               - attached user_data
+ * @return void
+ */
+
+void _reconfigure_listbox_viewport(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    float st = adj_get_state(w->adj);
+    Widget_t* listbox = w->parent;
+    XWindowAttributes attrs;
+    XGetWindowAttributes(listbox->app->dpy, (Window)listbox->widget, &attrs);
+    int height = attrs.height;
+    int elem = height/25;
+    int si = childlist_has_child(w->childlist);
+    w->adj->max_value = si-elem;
+    adj_set_state(w->adj,st);
 }
 
 /**

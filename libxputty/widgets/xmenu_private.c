@@ -195,15 +195,16 @@ void _radio_item_button_pressed(void *w_, void* button_, void* user_data) {
  * @return void
  */
 
-void _configure_menu(Widget_t *parent, Widget_t *menu, int elem) {
+void _configure_menu(Widget_t *parent, Widget_t *menu, int elem, bool above) {
     Widget_t* view_port =  menu->childlist->childs[0];
     if (!view_port->childlist->elem) return;
     XWindowAttributes attrs;
     XGetWindowAttributes(menu->app->dpy, (Window)view_port->childlist->childs[0]->widget, &attrs);
     int height = attrs.height;
     int x1, y1;
+    int posy = (above) ? parent->height : 0;
     Window child;
-    XTranslateCoordinates( parent->app->dpy, parent->widget, DefaultRootWindow(parent->app->dpy), 0, 0, &x1, &y1, &child );
+    XTranslateCoordinates( parent->app->dpy, parent->widget, DefaultRootWindow(parent->app->dpy), 0, posy, &x1, &y1, &child );
     int item_width = 1.0;
     cairo_text_extents_t extents;
     int i = view_port->childlist->elem-1;
@@ -222,6 +223,9 @@ void _configure_menu(Widget_t *parent, Widget_t *menu, int elem) {
         
         item_width = max(item_width, (int)extents.width+40);
         if(is_not_scrolable) w->scale.gravity = NORTHEAST;
+    }
+    if(above) {
+        if(item_width<parent->width)item_width = parent->width;
     }
     XResizeWindow (menu->app->dpy, menu->widget, item_width, height*elem);
     XResizeWindow (view_port->app->dpy, view_port->widget, item_width, height*view_port->childlist->elem);

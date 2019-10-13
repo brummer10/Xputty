@@ -78,6 +78,7 @@ typedef struct {
     xevfunc value_changed_callback;
     xevfunc user_callback;
     xevfunc mem_free_callback;
+    xevfunc configure_notify_callback;
 
     evfunc button_press_callback;
     evfunc button_release_callback;

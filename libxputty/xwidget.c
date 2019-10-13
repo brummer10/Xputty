@@ -275,10 +275,12 @@ Widget_t *create_window(Xputty *app, Window win,
     w->func.enter_callback = _dummy_callback;
     w->func.leave_callback = _dummy_callback;
     w->func.user_callback = _dummy_callback;
-    debug_print("size of Func_t = %lu\n", sizeof(w->func)/sizeof(void*));
+    w->func.mem_free_callback = _dummy_callback;
+    w->func.configure_notify_callback = _dummy_callback;
 
     childlist_add_child(app->childlist,w);
     //XMapWindow(app->dpy, w->widget);
+    debug_print("size of Func_t = %lu\n", sizeof(w->func)/sizeof(void*));
     return w;
 }
 
@@ -381,6 +383,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->func.leave_callback = _dummy_callback;
     w->func.user_callback = _dummy_callback;
     w->func.mem_free_callback = _dummy_callback;
+    w->func.configure_notify_callback = _dummy_callback;
 
     childlist_add_child(app->childlist,w);
     //XMapWindow(app->dpy, w->widget);
@@ -578,7 +581,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         break;
 
         case MotionNotify:
-            adj_set_state(wid, xev->xmotion.x, xev->xmotion.y);
+            adj_set_motion_state(wid, xev->xmotion.x, xev->xmotion.y);
             wid->func.motion_callback(w_,&xev->xmotion, user_data);
             debug_print("Widget_t MotionNotify x = %i Y = %i \n",xev->xmotion.x,xev->xmotion.y );
         break;

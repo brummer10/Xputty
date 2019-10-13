@@ -98,6 +98,6 @@ void _radio_item_button_pressed(void *w_, void* button_, void* user_data);
  * @return void
  */
 
-void _configure_menu(Widget_t *parent, Widget_t *menu, int elem);
+void _configure_menu(Widget_t *parent, Widget_t *menu, int elem, bool above);
 
 #endif //XMENU_PRIVATE_H_

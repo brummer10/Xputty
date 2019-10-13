@@ -417,7 +417,7 @@ int main (int argc, char ** argv)
     asprintf(&filebrowser.path, "%s",getenv("HOME") ? getenv("HOME") : "/");
     assert(filebrowser.path != NULL);
 
-    filebrowser.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 660, 400);
+    filebrowser.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 660, 420);
     filebrowser.w->flags |= HAS_MEM;
     filebrowser.w->parent_struct = &filebrowser;
     XStoreName(app.dpy, filebrowser.w->widget, "File Selector");
@@ -443,13 +443,13 @@ int main (int argc, char ** argv)
     set_dirs(&filebrowser);
     combobox_set_active_entry(filebrowser.ct, ds);
 
-    filebrowser.w_quit = add_button(filebrowser.w, "\u2620", 580, 330, 60, 60);
+    filebrowser.w_quit = add_button(filebrowser.w, "\u2620", 580, 350, 60, 60);
     filebrowser.w_quit->parent_struct = &filebrowser;
     filebrowser.w_quit->scale.gravity = CENTER;
     add_tooltip(filebrowser.w_quit,"Exit file selector");
     filebrowser.w_quit->func.value_changed_callback = button_quit_callback;
 
-    filebrowser.w_okay = add_button(filebrowser.w, "\u2713", 510, 330, 60, 60);
+    filebrowser.w_okay = add_button(filebrowser.w, "\u2713", 510, 350, 60, 60);
     filebrowser.w_okay->parent_struct = &filebrowser;
     filebrowser.w_okay->scale.gravity = CENTER;
     add_tooltip(filebrowser.w_okay,"Print selected file and exit");
