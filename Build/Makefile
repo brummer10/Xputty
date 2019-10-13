@@ -8,6 +8,7 @@
 	WIDGET_DIR := $(LIB_DIR)widgets/
 	WIDGET_HEADER_DIR := $(HEADER_DIR)widgets/
 	RESOURCES_DIR :=$(LIB_DIR)resources/
+	XDG_DIR := $(LIB_DIR)xdgmime/
 	OBJ_DIR := .
 
 	# include path for library headers
@@ -36,6 +37,9 @@
 	RESOURCE_EXTLD := $(notdir $(patsubst %.png,%_png,$(RESOURCES)))
 	RESOURCEHEADER := $(RESOURCES_DIR)xresources.h
 
+	XDG_SOURCES :=  $(wildcard $(XDG_DIR)*.c)
+	XDG_OBJ := $(notdir $(patsubst %.c,%.o,$(XDG_SOURCES)))
+
 	DEP = $(LIB_OBJ:%.o=%.d) $(WIDGET_OBJ:%.o=%.d)
 
 .PHONY : all clean
@@ -43,7 +47,7 @@
 all:  $(RESOURCEHEADER) libxputty.a
 
 clean:
-	rm -f libxputty.a $(LIB_OBJ) $(WIDGET_OBJ) $(RESOURCES_OBJ) $(DEP) $(RESOURCEHEADER)
+	rm -f libxputty.a $(LIB_OBJ) $(WIDGET_OBJ) $(RESOURCES_OBJ)  $(XDG_OBJ) $(DEP) $(RESOURCEHEADER)
 	rm -rf $(OBJ_DIR)/include/
 
 $(RESOURCEHEADER): $(RESOURCES_OBJ) 
@@ -51,6 +55,9 @@ $(RESOURCEHEADER): $(RESOURCES_OBJ)
 	for f in $(RESOURCE_EXTLD); do \
 		echo 'EXTLD('$${f}')' >> $(RESOURCEHEADER) ; \
 	done
+
+$(XDG_OBJ): $(XDG_SOURCES)
+	$(CC) -MMD -Wall -DHAVE_MMAP -c $(addprefix $(XDG_DIR),$(patsubst %.o,%.c,$@)) -o $@ $(INCLUDES) $(LDFLAGS)
 
 $(RESOURCES_OBJ): $(RESOURCES)
 	cd $(RESOURCES_DIR) && ld -r -b binary $(patsubst %.o,%.png,$@) -o ../../Build/$@
@@ -63,12 +70,13 @@ $(LIB_OBJ): $(LIB_SOURCES)
 
 -include $(DEP)
 
-libxputty.a:  $(RESOURCES_OBJ) $(LIB_OBJ) $(WIDGET_OBJ) 
-	ar rcs libxputty.a $(LIB_OBJ) $(WIDGET_OBJ) $(RESOURCES_OBJ)
+libxputty.a:  $(RESOURCES_OBJ) $(LIB_OBJ) $(WIDGET_OBJ) $(XDG_OBJ)
+	ar rcs libxputty.a $(LIB_OBJ) $(WIDGET_OBJ) $(RESOURCES_OBJ) $(XDG_OBJ)
 	mkdir -p $(OBJ_DIR)/include/
 	cp $(HEADER_DIR)*.h $(OBJ_DIR)/include/
 	cp $(WIDGET_HEADER_DIR)*.h $(OBJ_DIR)/include/
 	cp $(RESOURCEHEADER) $(OBJ_DIR)/include/
+	cp $(XDG_DIR)*.h $(OBJ_DIR)/include/
 
 doc:
 

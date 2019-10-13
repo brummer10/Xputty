@@ -14,6 +14,7 @@
 #include <libgen.h>
 
 #include "xwidgets.h"
+#include "xdgmime.h"
 
 /* asprintf implement from:
     https://stackoverflow.com/questions/40159892/using-asprintf-on-windows 
@@ -61,7 +62,8 @@ typedef struct {
     Widget_t *w_okay;
     Widget_t *w_hidden;
     Widget_t *sel_dir;
-    Widget_t *sel_file;
+    Widget_t *set_filter;
+    int use_filter;
     bool show_hidden;
     unsigned int n;
     unsigned int m;
@@ -142,6 +144,18 @@ static inline int compare_hidden_files_fun (const void *p1, const void *p2) {
 
 static inline bool show_hidden_files(FileBrowser *filebrowser, char* file) {
     return (filebrowser->show_hidden) ? strcmp(file,".")!=0 : (file[0] != '.');
+}
+
+static inline bool show_filter_files(FileBrowser *filebrowser, char* file) {
+    if (!filebrowser->use_filter) {
+        return true;
+    } else {
+        Widget_t* menu =  filebrowser->set_filter->childlist->childs[1];
+        Widget_t* view_port =  menu->childlist->childs[0];
+
+        return strstr(xdg_mime_get_mime_type_from_file_name(file),
+          view_port->childlist->childs[filebrowser->use_filter]->label);
+    }
 }
 
 static inline void sort_buffers(FileBrowser *filebrowser, int get_dirs) {
@@ -229,7 +243,8 @@ static int get_files(FileBrowser *filebrowser, char *path, int get_dirs) {
     while ((dp = readdir(dirp)) != NULL) {
 
         if(dp-> d_type != DT_DIR && strlen(dp->d_name)!=0 && dp->d_type != DT_UNKNOWN
-          && strcmp(dp->d_name,"..")!=0 && show_hidden_files(filebrowser, dp->d_name)) {
+          && strcmp(dp->d_name,"..")!=0 && show_hidden_files(filebrowser, dp->d_name) &&
+          show_filter_files(filebrowser, dp->d_name)) {
 
             filebrowser->file_names = (char **)realloc(filebrowser->file_names,
               (filebrowser->n + 1) * sizeof(char *));
@@ -392,6 +407,15 @@ static void button_hidden_callback(void *w_, void* user_data) {
     }
 }
 
+static void set_filter_callback(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    FileBrowser *filebrowser = w->parent_struct;
+    if (filebrowser->use_filter != adj_get_value(w->adj)) {
+        filebrowser->use_filter = adj_get_value(w->adj);
+        reload_file_entrys(filebrowser);
+    }
+}
+
 static void mem_free(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
@@ -409,6 +433,7 @@ int main (int argc, char ** argv)
     FileBrowser filebrowser;
     filebrowser.n=0;
     filebrowser.m=0;
+    filebrowser.use_filter = 0;
     filebrowser.show_hidden = false;
     filebrowser.file_names = NULL;
     filebrowser.dir_names = NULL;
@@ -454,6 +479,20 @@ int main (int argc, char ** argv)
     filebrowser.w_okay->scale.gravity = CENTER;
     add_tooltip(filebrowser.w_okay,"Print selected file and exit");
     filebrowser.w_okay->func.value_changed_callback = button_ok_callback;
+
+    filebrowser.set_filter = add_combobox(filebrowser.w, "", 360, 355, 120, 30);
+    filebrowser.set_filter->parent_struct = &filebrowser;
+    combobox_add_entry(filebrowser.set_filter,"all");
+    combobox_add_entry(filebrowser.set_filter,"application");
+    combobox_add_entry(filebrowser.set_filter,"audio");
+    combobox_add_entry(filebrowser.set_filter,"font");
+    combobox_add_entry(filebrowser.set_filter,"image");
+    combobox_add_entry(filebrowser.set_filter,"text");
+    combobox_add_entry(filebrowser.set_filter,"video");
+    combobox_add_entry(filebrowser.set_filter,"x-content");
+    combobox_set_active_entry(filebrowser.set_filter, 0);
+    filebrowser.set_filter->func.value_changed_callback = set_filter_callback;
+    add_tooltip(filebrowser.set_filter->childlist->childs[0], "File filter type");
 
     filebrowser.w_hidden = add_check_button(filebrowser.w, "", 20, 365, 20, 20);
     filebrowser.w_hidden->parent_struct = &filebrowser;
