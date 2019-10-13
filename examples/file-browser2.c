@@ -362,6 +362,8 @@ static void button_ok_callback(void *w_, void* user_data) {
         }
         asprintf(&filebrowser->command, "xdg-open %s",filebrowser->selected_file);
         if (system(NULL)) system(filebrowser->command);
+        free(filebrowser->command);
+        filebrowser->command = NULL;
         //quit(get_toplevel_widget(w->app));
    }
 }
