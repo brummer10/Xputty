@@ -360,7 +360,7 @@ static void button_ok_callback(void *w_, void* user_data) {
             if(filebrowser->selected_file)
                 fprintf(stderr, "selected = %s\n",filebrowser->selected_file);
         }
-        asprintf(&filebrowser->command, "xdg-open %s",filebrowser->selected_file);
+        asprintf(&filebrowser->command, "xdg-open '%s'",filebrowser->selected_file);
         if (system(NULL)) system(filebrowser->command);
         free(filebrowser->command);
         filebrowser->command = NULL;
@@ -415,7 +415,7 @@ static void button_hidden_callback(void *w_, void* user_data) {
 static void set_filter_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
-    if (filebrowser->use_filter != adj_get_value(w->adj)) {
+    if (filebrowser->use_filter != (int)adj_get_value(w->adj)) {
         filebrowser->use_filter = adj_get_value(w->adj);
         reload_file_entrys(filebrowser);
     }
