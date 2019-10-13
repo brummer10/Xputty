@@ -68,6 +68,7 @@ typedef struct {
     unsigned int n;
     unsigned int m;
     char *path;
+    char *command;
     char *selected_file;
     char **file_names;
     char **dir_names;
@@ -359,7 +360,9 @@ static void button_ok_callback(void *w_, void* user_data) {
             if(filebrowser->selected_file)
                 fprintf(stderr, "selected = %s\n",filebrowser->selected_file);
         }
-        quit(get_toplevel_widget(w->app));
+        asprintf(&filebrowser->command, "xdg-open %s",filebrowser->selected_file);
+        if (system(NULL)) system(filebrowser->command);
+        //quit(get_toplevel_widget(w->app));
    }
 }
 
@@ -423,6 +426,7 @@ static void mem_free(void *w_, void* user_data) {
     clear_dirbuffer(filebrowser);
     free(filebrowser->selected_file);
     free(filebrowser->path);
+    free(filebrowser->command);
 }
 
 
@@ -439,6 +443,7 @@ int main (int argc, char ** argv)
     filebrowser.dir_names = NULL;
     filebrowser.selected_file = NULL;
     filebrowser.path = NULL;
+    filebrowser.command = NULL;
     asprintf(&filebrowser.path, "%s",getenv("HOME") ? getenv("HOME") : "/");
     assert(filebrowser.path != NULL);
 
@@ -477,7 +482,7 @@ int main (int argc, char ** argv)
     filebrowser.w_okay = add_button(filebrowser.w, "\u2713", 510, 350, 60, 60);
     filebrowser.w_okay->parent_struct = &filebrowser;
     filebrowser.w_okay->scale.gravity = CENTER;
-    add_tooltip(filebrowser.w_okay,"Print selected file and exit");
+    add_tooltip(filebrowser.w_okay,"Load selected file");
     filebrowser.w_okay->func.value_changed_callback = button_ok_callback;
 
     filebrowser.set_filter = add_combobox(filebrowser.w, "", 360, 355, 120, 30);
