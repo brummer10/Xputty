@@ -17,9 +17,10 @@
 #include "xdgmime.h"
 
 /* asprintf implement from:
-    https://stackoverflow.com/questions/40159892/using-asprintf-on-windows 
+    https://stackoverflow.com/questions/40159892/using-asprintf-on-windows
+    define _GNU_SOURCE to use the GNU asprintf extension instead this one.
 */
-
+#ifndef _GNU_SOURCE
 #ifndef _vscprintf 
 int _vscprintf_so(const char * format, va_list pargs) {
     int retval;
@@ -53,6 +54,7 @@ int asprintf(char *strp[], const char *fmt, ...) {
     return r;
 }
 #endif // asprintf
+#endif // _GNU_SOURCE
 
 typedef struct {
     Widget_t *w;
@@ -74,7 +76,6 @@ typedef struct {
     char **dir_names;
 } FileBrowser;
 
-static void file_released_callback(void *w_, void* button, void* user_data);
 
 static void draw_window(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
@@ -297,18 +298,6 @@ static void center_widget(Widget_t *wid, Widget_t *w) {
         max(1,w->scale.init_height / (wid->scale.cscale_y)));
 }
 
-static void reload_file_entrys(FileBrowser *filebrowser) {
-    clear(filebrowser->ft);
-    get_files(filebrowser,filebrowser->path, 0);
-    filebrowser->ft = add_listbox(filebrowser->w, "", 20, 90, 620, 225);
-    filebrowser->ft->parent_struct = filebrowser;
-    filebrowser->ft->func.button_release_callback = file_released_callback;
-    set_files(filebrowser);
-    center_widget(filebrowser->w,filebrowser->ft);
-    //combobox_set_active_entry(filebrowser->ft, 0);
-    widget_show_all(filebrowser->w);
-}
-
 static void set_selected_file(FileBrowser *filebrowser) {
     Widget_t* view_port =  filebrowser->ft->childlist->childs[0];
     if(!childlist_has_child(view_port->childlist)) return ;
@@ -334,6 +323,17 @@ static void file_released_callback(void *w_, void* button, void* user_data) {
     }
 }
 
+static void reload_file_entrys(FileBrowser *filebrowser) {
+    clear(filebrowser->ft);
+    get_files(filebrowser,filebrowser->path, 0);
+    filebrowser->ft = add_listbox(filebrowser->w, "", 20, 90, 620, 225);
+    filebrowser->ft->parent_struct = filebrowser;
+    filebrowser->ft->func.button_release_callback = file_released_callback;
+    set_files(filebrowser);
+    center_widget(filebrowser->w,filebrowser->ft);
+    widget_show_all(filebrowser->w);
+    listbox_set_active_entry(filebrowser->ft, 0);
+}
 
 static void combo_response(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
@@ -392,7 +392,7 @@ static void reload_all(FileBrowser *filebrowser) {
     set_dirs(filebrowser);
     widget_show_all(filebrowser->w);
     combobox_set_active_entry(filebrowser->ct, ds);
-    //combobox_set_active_entry(filebrowser->ft, 0);
+    listbox_set_active_entry(filebrowser->ft, 0);
 }
 
 static void open_dir_callback(void *w_, void* user_data) {
@@ -474,6 +474,7 @@ int main (int argc, char ** argv)
     set_files(&filebrowser); 
     set_dirs(&filebrowser);
     combobox_set_active_entry(filebrowser.ct, ds);
+    listbox_set_active_entry(filebrowser.ft, 0);
 
     filebrowser.w_quit = add_button(filebrowser.w, "\u2620", 580, 350, 60, 60);
     filebrowser.w_quit->parent_struct = &filebrowser;

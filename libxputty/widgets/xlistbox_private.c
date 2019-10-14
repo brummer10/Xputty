@@ -90,8 +90,12 @@ void _draw_listbox_item(void *w_, void* user_data) {
     cairo_move_to (w->crb, (width-extents.width)/2., height - extents.height );
     cairo_show_text(w->crb, w->label);
     cairo_new_path (w->crb);
-    if (extents.width > (float)width) tooltip_set_text(w,w->label);
-    else w->flags &= ~HAS_TOOLTIP;
+    if (extents.width > (float)width) {
+        tooltip_set_text(w,w->label);
+        w->flags |= HAS_TOOLTIP;
+    } else {
+        w->flags &= ~HAS_TOOLTIP;
+    }
 }
 
 /**

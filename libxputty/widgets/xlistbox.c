@@ -24,6 +24,20 @@
 
 
 /**
+ * @brief listbox_set_active_entry   - set the active listbox entry
+ * @param *w_                        - void pointer to the Widget_t listbox
+ * @param active                     - the active entry (int)
+ * @return void
+ */
+
+void listbox_set_active_entry(Widget_t *w, int active) {
+    float value = (float)active;
+    if (value>w->adj->max_value) value = w->adj->max_value;
+    if (value<w->adj->min_value) value = w->adj->min_value;
+    adj_set_value(w->adj, (float)value);
+}
+
+/**
  * @brief create_listbox_viewport     - create a viewport on a listbox to a Widget_t
  * @param *parent                     - pointer to the Widget_t request the viewport
  * @param width                       - define the width of the viewport
