@@ -15,46 +15,8 @@
 
 #include "xwidgets.h"
 #include "xdgmime.h"
-
-/* asprintf implement from:
-    https://stackoverflow.com/questions/40159892/using-asprintf-on-windows
-    define _GNU_SOURCE to use the GNU asprintf extension instead this one.
-*/
-#ifndef _GNU_SOURCE
-#ifndef _vscprintf 
-int _vscprintf_so(const char * format, va_list pargs) {
-    int retval;
-    va_list argcopy;
-    va_copy(argcopy, pargs);
-    retval = vsnprintf(NULL, 0, format, argcopy);
-    va_end(argcopy);
-    return retval;
-}
-#endif // _vscprintf
-
-#ifndef vasprintf
-int vasprintf(char **strp, const char *fmt, va_list ap) {
-    int len = _vscprintf_so(fmt, ap);
-    if (len == -1) return -1;
-    char *str = malloc((size_t) len + 1);
-    if (!str) return -1;
-    int r = vsnprintf(str, len + 1, fmt, ap);
-    if (r == -1) return free(str), -1;
-    *strp = str;
-    return r;
-}
-#endif // vasprintf
-
-#ifndef asprintf
-int asprintf(char *strp[], const char *fmt, ...) {
-    va_list ap;
-    va_start(ap, fmt);
-    int r = vasprintf(strp, fmt, ap);
-    va_end(ap);
-    return r;
-}
-#endif // asprintf
-#endif // _GNU_SOURCE
+#include "xasprintf.h"
+#include "xfilepicker.h"
 
 typedef struct {
     Widget_t *w;
@@ -65,15 +27,8 @@ typedef struct {
     Widget_t *w_hidden;
     Widget_t *sel_dir;
     Widget_t *set_filter;
-    int use_filter;
-    bool show_hidden;
-    unsigned int n;
-    unsigned int m;
-    char *path;
+    FilePicker *fp;
     char *command;
-    char *selected_file;
-    char **file_names;
-    char **dir_names;
 } FileBrowser;
 
 
@@ -126,167 +81,21 @@ static inline int clear(Widget_t *w) {
     return 0;
 }
 
-static inline int compare_fun (const void *p1, const void *p2) {
-    return strcasecmp(*(const char**) p1, *(const char**) p2);
-}
-
-static inline int compare_hidden_dirs_fun (const void *p1, const void *p2) {
-    if(strstr(*(const char**)p1, "/.") && strstr(*(const char**)p2, "/.")) return 0;
-    if(strstr(*(const char**)p1, "/.")) return 1;
-    if(strstr(*(const char**)p2, "/.")) return -1;
-    return strcasecmp(*(const char**) p1, *(const char**) p2);
-}
-
-static inline int compare_hidden_files_fun (const void *p1, const void *p2) {
-    if(strncmp(*(const char**)p1, ".",1)==0 && strncmp(*(const char**)p2, ".",1)==0) return 0;
-    if(strncmp(*(const char**)p1, ".",1)==0 ) return 1;
-    if(strncmp(*(const char**)p2, ".",1)==0 ) return -1;
-    return strcasecmp(*(const char**) p1, *(const char**) p2);
-}
-
-static inline bool show_hidden_files(FileBrowser *filebrowser, char* file) {
-    return (filebrowser->show_hidden) ? strcmp(file,".")!=0 : (file[0] != '.');
-}
-
-static inline bool show_filter_files(FileBrowser *filebrowser, char* file) {
-    if (!filebrowser->use_filter) {
-        return true;
-    } else {
-        Widget_t* menu =  filebrowser->set_filter->childlist->childs[1];
-        Widget_t* view_port =  menu->childlist->childs[0];
-
-        return strstr(xdg_mime_get_mime_type_from_file_name(file),
-          view_port->childlist->childs[filebrowser->use_filter]->label);
-    }
-}
-
-static inline void sort_buffers(FileBrowser *filebrowser, int get_dirs) {
-    if (filebrowser->m>1 && get_dirs) {
-        qsort (filebrowser->dir_names, filebrowser->m,
-          sizeof filebrowser->dir_names[0], (filebrowser->show_hidden) ?
-          compare_hidden_dirs_fun : compare_fun);
-    }
-    if (filebrowser->n>1) {
-        qsort (filebrowser->file_names, filebrowser->n,
-          sizeof filebrowser->file_names[0], (filebrowser->show_hidden) ?
-          compare_hidden_files_fun : compare_fun);
-    }
-}
-
-static inline void clear_filebuffer(FileBrowser *filebrowser) {
-    int j = 0;
-    for(; j<filebrowser->n;j++) {
-        free(filebrowser->file_names[j]);
-        filebrowser->file_names[j] = NULL;
-    }
-    if(filebrowser->n) {
-        free(filebrowser->file_names);
-        filebrowser->file_names = NULL;
-        filebrowser->n=0;
-    }
-}
-
-static inline void clear_dirbuffer(FileBrowser *filebrowser) {
-    int j = 0;
-    for(; j<filebrowser->m;j++) {
-        free(filebrowser->dir_names[j]);
-        filebrowser->dir_names[j] = NULL;
-    }
-    if(filebrowser->m) {
-        free(filebrowser->dir_names);
-        filebrowser->dir_names = NULL;
-        filebrowser->m=0;
-    }
-}
-
-static inline int prefill_dirbuffer(FileBrowser *filebrowser, char *path) {
+static int set_files(FileBrowser *filebrowser) {
     int ret = 0;
-    if (strcmp (path, "/") == 0) {
-        filebrowser->dir_names = (char **)realloc(filebrowser->dir_names,
-          (filebrowser->m + 1) * sizeof(char *));
-        assert(filebrowser->dir_names != NULL);
-        asprintf(&filebrowser->dir_names[filebrowser->m++], "%s",path);
-        assert(&filebrowser->dir_names[filebrowser->m] != NULL);
-    } else {
-        char *ho;
-        asprintf(&ho, "%s",path);
-        assert(ho != NULL);
-        while (strcmp (ho, "/") != 0) {
-            filebrowser->dir_names = (char **)realloc(filebrowser->dir_names,
-              (filebrowser->m + 1) * sizeof(char *));
-            assert(filebrowser->dir_names != NULL);
-            asprintf(&filebrowser->dir_names[filebrowser->m++], "%s",dirname(ho));
-            assert(&filebrowser->dir_names[filebrowser->m] != NULL);
-            ret++;
-        }
-        if (strcmp (path, "/") != 0) {
-            filebrowser->dir_names = (char **)realloc(filebrowser->dir_names,
-              (filebrowser->m + 1) * sizeof(char *));
-            assert(filebrowser->dir_names != NULL);
-            asprintf(&filebrowser->dir_names[filebrowser->m++], "%s",path);
-            assert(&filebrowser->dir_names[filebrowser->m] != NULL);
-        }
-        free(ho);
+    int i = 0;
+    for (; i<filebrowser->fp->n; i++) {
+        listbox_add_entry(filebrowser->ft,filebrowser->fp->file_names[i]);
+        if(filebrowser->fp->selected_file && strcmp(filebrowser->fp->file_names[i],
+          basename(filebrowser->fp->selected_file))==0 )  ret = i;
     }
-    return ret;   
-}
-
-static int get_files(FileBrowser *filebrowser, char *path, int get_dirs) {
-    int ret = 0;
-    clear_filebuffer(filebrowser);
-    if(get_dirs) {
-        clear_dirbuffer(filebrowser);
-        ret = prefill_dirbuffer(filebrowser, path);
-    }
-
-    DIR *dirp;
-    struct dirent *dp;
-    dirp = opendir(path);
-    while ((dp = readdir(dirp)) != NULL) {
-
-        if(dp-> d_type != DT_DIR && strlen(dp->d_name)!=0 && dp->d_type != DT_UNKNOWN
-          && strcmp(dp->d_name,"..")!=0 && show_hidden_files(filebrowser, dp->d_name) &&
-          show_filter_files(filebrowser, dp->d_name)) {
-
-            filebrowser->file_names = (char **)realloc(filebrowser->file_names,
-              (filebrowser->n + 1) * sizeof(char *));
-            assert(filebrowser->file_names != NULL);
-            asprintf(&filebrowser->file_names[filebrowser->n++],"%s",dp->d_name);
-            assert(&filebrowser->file_names[filebrowser->n] != NULL);
-
-        } else if(get_dirs && dp -> d_type == DT_DIR && strlen(dp->d_name)!=0
-          && strcmp(dp->d_name,"..")!=0 && show_hidden_files(filebrowser, dp->d_name)) {
-
-            filebrowser->dir_names = (char **)realloc(filebrowser->dir_names,
-              (filebrowser->m + 1) * sizeof(char *));
-            assert(filebrowser->dir_names != NULL);
-            asprintf(&filebrowser->dir_names[filebrowser->m++], (strcmp(path, "/") != 0) ?
-              "%s/%s" : "%s%s" , path,dp->d_name);
-            assert(&filebrowser->dir_names[filebrowser->m] != NULL);
-        }
-    }
-    closedir(dirp);
-    sort_buffers(filebrowser, get_dirs);
     return ret;
 }
 
-static void set_files(FileBrowser *filebrowser) {
-    set_adjustment(filebrowser->ft->adj_y,0.0, 0.0, 0.0, -1.0,1.0, CL_ENUM);
-    filebrowser->ft->adj = filebrowser->ft->adj_y;
-    adj_set_value(filebrowser->ft->adj, 0.0);
-    int i = 0;
-    for (; i<filebrowser->n; i++) {
-        listbox_add_entry(filebrowser->ft,filebrowser->file_names[i]);
-    }
-}
-
 static void set_dirs(FileBrowser *filebrowser) {
-    set_adjustment(filebrowser->ct->adj_y,0.0, 0.0, 0.0, -1.0,1.0, CL_ENUM);
-    filebrowser->ct->adj = filebrowser->ct->adj_y;
-    adj_set_value(filebrowser->ct->adj, 0.0);
     int i = 0;
-    for (; i<filebrowser->m; i++) {
-        combobox_add_entry(filebrowser->ct,filebrowser->dir_names[i]);
+    for (; i<filebrowser->fp->m; i++) {
+        combobox_add_entry(filebrowser->ct,filebrowser->fp->dir_names[i]);
     }
 }
 
@@ -306,33 +115,33 @@ static void set_selected_file(FileBrowser *filebrowser) {
     view_port =  menu->childlist->childs[0];
     if(!childlist_has_child(view_port->childlist)) return ;
     Widget_t *dir = view_port->childlist->childs[(int)adj_get_value(filebrowser->ct->adj)];
-    free(filebrowser->selected_file);
-    filebrowser->selected_file = NULL;
-    asprintf(&filebrowser->selected_file, "%s/%s",dir->label, file->label);
-    assert(filebrowser->selected_file != NULL);
+    free(filebrowser->fp->selected_file);
+    filebrowser->fp->selected_file = NULL;
+    asprintf(&filebrowser->fp->selected_file, "%s/%s",dir->label, file->label);
+    assert(filebrowser->fp->selected_file != NULL);
 }
 
 static void file_released_callback(void *w_, void* button, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
     set_selected_file(filebrowser);
-    if(filebrowser->selected_file) {
-        fprintf(stderr, "file = %s\n",filebrowser->selected_file);
-        filebrowser->w->label = filebrowser->selected_file;
+    if(filebrowser->fp->selected_file) {
+        fprintf(stderr, "file = %s\n",filebrowser->fp->selected_file);
+        filebrowser->w->label = filebrowser->fp->selected_file;
         expose_widget(filebrowser->w);
     }
 }
 
 static void reload_file_entrys(FileBrowser *filebrowser) {
     clear(filebrowser->ft);
-    get_files(filebrowser,filebrowser->path, 0);
+    fp_get_files(filebrowser->fp,filebrowser->fp->path, 0);
     filebrowser->ft = add_listbox(filebrowser->w, "", 20, 90, 620, 225);
     filebrowser->ft->parent_struct = filebrowser;
     filebrowser->ft->func.button_release_callback = file_released_callback;
-    set_files(filebrowser);
+    int set_f = set_files(filebrowser);
     center_widget(filebrowser->w,filebrowser->ft);
     widget_show_all(filebrowser->w);
-    listbox_set_active_entry(filebrowser->ft, 0);
+    listbox_set_active_entry(filebrowser->ft, set_f);
 }
 
 static void combo_response(void *w_, void* user_data) {
@@ -342,10 +151,10 @@ static void combo_response(void *w_, void* user_data) {
     Widget_t* view_port =  menu->childlist->childs[0];
     if(!childlist_has_child(view_port->childlist)) return ;
     Widget_t *entry = view_port->childlist->childs[(int)adj_get_value(w->adj)];
-    free(filebrowser->path);
-    filebrowser->path = NULL;
-    asprintf(&filebrowser->path, "%s",entry->label);
-    assert(filebrowser->path != NULL);
+    free(filebrowser->fp->path);
+    filebrowser->fp->path = NULL;
+    asprintf(&filebrowser->fp->path, "%s",entry->label);
+    assert(filebrowser->fp->path != NULL);
     reload_file_entrys(filebrowser);
 }
 
@@ -353,14 +162,14 @@ static void button_ok_callback(void *w_, void* user_data) {
    Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
     if (w->flags & HAS_POINTER && !*(int*)user_data){
-        if(filebrowser->selected_file) {
-            fprintf(stderr, "selected = %s\n",filebrowser->selected_file);
+        if(filebrowser->fp->selected_file) {
+            fprintf(stderr, "selected = %s\n",filebrowser->fp->selected_file);
         } else {
             set_selected_file(filebrowser);
-            if(filebrowser->selected_file)
-                fprintf(stderr, "selected = %s\n",filebrowser->selected_file);
+            if(filebrowser->fp->selected_file)
+                fprintf(stderr, "selected = %s\n",filebrowser->fp->selected_file);
         }
-        asprintf(&filebrowser->command, "xdg-open '%s'",filebrowser->selected_file);
+        asprintf(&filebrowser->command, "xdg-open '%s'",filebrowser->fp->selected_file);
         if (system(NULL)) system(filebrowser->command);
         free(filebrowser->command);
         filebrowser->command = NULL;
@@ -373,13 +182,13 @@ static void reload_all(FileBrowser *filebrowser) {
     Widget_t* view_port =  menu->childlist->childs[0];
     if(!childlist_has_child(view_port->childlist)) return ;
     Widget_t *entry = view_port->childlist->childs[(int)adj_get_value(filebrowser->ct->adj)];
-    free(filebrowser->path);
-    filebrowser->path = NULL;
-    asprintf(&filebrowser->path, "%s",entry->label);
-    assert(filebrowser->path != NULL);
+    free(filebrowser->fp->path);
+    filebrowser->fp->path = NULL;
+    asprintf(&filebrowser->fp->path, "%s",entry->label);
+    assert(filebrowser->fp->path != NULL);
     clear(filebrowser->ft);
     clear(filebrowser->ct);
-    int ds = get_files(filebrowser,filebrowser->path, 1);
+    int ds = fp_get_files(filebrowser->fp,filebrowser->fp->path, 1);
     filebrowser->ct = add_combobox(filebrowser->w, "", 20, 40, 580, 30);
     center_widget(filebrowser->w,filebrowser->ct);
     filebrowser->ct->parent_struct = filebrowser;
@@ -387,12 +196,12 @@ static void reload_all(FileBrowser *filebrowser) {
     filebrowser->ft = add_listbox(filebrowser->w, "", 20, 90, 620, 225);
     filebrowser->ft->parent_struct = filebrowser;
     filebrowser->ft->func.button_release_callback = file_released_callback;
-    set_files(filebrowser);
+    int set_f = set_files(filebrowser);
     center_widget(filebrowser->w,filebrowser->ft);
     set_dirs(filebrowser);
     widget_show_all(filebrowser->w);
     combobox_set_active_entry(filebrowser->ct, ds);
-    listbox_set_active_entry(filebrowser->ft, 0);
+    listbox_set_active_entry(filebrowser->ft, set_f);
 }
 
 static void open_dir_callback(void *w_, void* user_data) {
@@ -407,7 +216,7 @@ static void button_hidden_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
     if (w->flags & HAS_POINTER) {
-        filebrowser->show_hidden = adj_get_value(w->adj) ? true : false;
+        filebrowser->fp->show_hidden = adj_get_value(w->adj) ? true : false;
         reload_all(filebrowser);
     }
 }
@@ -415,8 +224,17 @@ static void button_hidden_callback(void *w_, void* user_data) {
 static void set_filter_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
-    if (filebrowser->use_filter != (int)adj_get_value(w->adj)) {
-        filebrowser->use_filter = adj_get_value(w->adj);
+    if (filebrowser->fp->use_filter != (int)adj_get_value(w->adj)) {
+        filebrowser->fp->use_filter = (int)adj_get_value(w->adj);
+        Widget_t* menu =  w->childlist->childs[1];
+        Widget_t* view_port =  menu->childlist->childs[0];
+        if(!childlist_has_child(view_port->childlist)) return ;
+        Widget_t *entry = view_port->childlist->childs[(int)adj_get_value(w->adj)];
+        free(filebrowser->fp->filter);
+        filebrowser->fp->filter = NULL;
+        asprintf(&filebrowser->fp->filter, "%s",entry->label);
+        assert(filebrowser->fp->filter != NULL);
+
         reload_file_entrys(filebrowser);
     }
 }
@@ -424,11 +242,9 @@ static void set_filter_callback(void *w_, void* user_data) {
 static void mem_free(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
-    clear_filebuffer(filebrowser);
-    clear_dirbuffer(filebrowser);
-    free(filebrowser->selected_file);
-    free(filebrowser->path);
     free(filebrowser->command);
+    fp_free(filebrowser->fp);
+    free(filebrowser->fp);
 }
 
 
@@ -437,17 +253,9 @@ int main (int argc, char ** argv)
     Xputty app;
     main_init(&app);
     FileBrowser filebrowser;
-    filebrowser.n=0;
-    filebrowser.m=0;
-    filebrowser.use_filter = 0;
-    filebrowser.show_hidden = false;
-    filebrowser.file_names = NULL;
-    filebrowser.dir_names = NULL;
-    filebrowser.selected_file = NULL;
-    filebrowser.path = NULL;
+    filebrowser.fp = (FilePicker*)malloc(sizeof(FilePicker));
+    fp_init(filebrowser.fp, getenv("HOME") ? getenv("HOME") : "/");
     filebrowser.command = NULL;
-    asprintf(&filebrowser.path, "%s",getenv("HOME") ? getenv("HOME") : "/");
-    assert(filebrowser.path != NULL);
 
     filebrowser.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 660, 420);
     filebrowser.w->flags |= HAS_MEM;
@@ -470,11 +278,11 @@ int main (int argc, char ** argv)
     filebrowser.ft->parent_struct = &filebrowser;
     filebrowser.ft->func.button_release_callback = file_released_callback;
 
-    int ds = get_files(&filebrowser,filebrowser.path, 1);   
-    set_files(&filebrowser); 
+    int ds = fp_get_files(filebrowser.fp,filebrowser.fp->path, 1);   
+    int set_f = set_files(&filebrowser); 
     set_dirs(&filebrowser);
     combobox_set_active_entry(filebrowser.ct, ds);
-    listbox_set_active_entry(filebrowser.ft, 0);
+    listbox_set_active_entry(filebrowser.ft, set_f);
 
     filebrowser.w_quit = add_button(filebrowser.w, "\u2620", 580, 350, 60, 60);
     filebrowser.w_quit->parent_struct = &filebrowser;

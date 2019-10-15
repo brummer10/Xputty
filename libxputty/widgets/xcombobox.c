@@ -31,8 +31,8 @@
 void combobox_set_active_entry(Widget_t *w, int active) {
     float value = (float)active;
     if (value>w->adj->max_value) value = w->adj->max_value;
-    if (value<w->adj->min_value) value = w->adj->min_value;
-    adj_set_value(w->adj, (float)value);
+    else if (value<w->adj->min_value) value = w->adj->min_value;
+    adj_set_value(w->adj, value);
 }
 
 /**
