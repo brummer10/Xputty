@@ -99,7 +99,7 @@ void _draw_listbox_item(void *w_, void* user_data) {
 }
 
 /**
- * @brief _reconfigure_listbox_viewport - reconfigure the viwport adjustment
+ * @brief _reconfigure_listbox_viewport - reconfigure the viewport adjustment
  * on size changes
  * @param *w_                      - void pointer to view_port
  * @param *user_data               - attached user_data
@@ -117,6 +117,23 @@ void _reconfigure_listbox_viewport(void *w_, void* user_data) {
     int si = childlist_has_child(w->childlist);
     w->adj->max_value = si-elem;
     adj_set_state(w->adj,st);
+}
+
+/**
+ * @brief _configure_listbox       - configure the viewport on mapping
+ * @param *w_                      - void pointer to view_port
+ * @param *user_data               - attached user_data
+ * @return void
+ */
+
+void _configure_listbox(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    int si = max(1,childlist_has_child(w->childlist));
+    Widget_t* listbox = w->parent;
+    XWindowAttributes attrs;
+    XGetWindowAttributes(listbox->app->dpy, (Window)listbox->widget, &attrs);
+    int width = attrs.width;
+    XResizeWindow (w->app->dpy, w->widget, width, 25*(si));
 }
 
 /**

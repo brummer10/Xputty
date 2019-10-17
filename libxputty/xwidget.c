@@ -277,6 +277,7 @@ Widget_t *create_window(Xputty *app, Window win,
     w->func.user_callback = _dummy_callback;
     w->func.mem_free_callback = _dummy_callback;
     w->func.configure_notify_callback = _dummy_callback;
+    w->func.map_notify_callback = _dummy_callback;
 
     childlist_add_child(app->childlist,w);
     //XMapWindow(app->dpy, w->widget);
@@ -384,6 +385,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->func.user_callback = _dummy_callback;
     w->func.mem_free_callback = _dummy_callback;
     w->func.configure_notify_callback = _dummy_callback;
+    w->func.map_notify_callback = _dummy_callback;
 
     childlist_add_child(app->childlist,w);
     //XMapWindow(app->dpy, w->widget);
@@ -398,6 +400,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
  */
 
 void widget_show(Widget_t *w) {
+    w->func.map_notify_callback(w, NULL);
     XMapWindow(w->app->dpy, w->widget);
 }
 
@@ -425,6 +428,7 @@ void widget_show_all(Widget_t *w) {
     if (w->flags & IS_POPUP || w->flags & IS_TOOLTIP) {
         return;
     } else {
+        w->func.map_notify_callback(w, NULL);
         XMapWindow(w->app->dpy, w->widget);
         int i=0;
         for(;i<w->childlist->elem;i++) {
@@ -440,10 +444,55 @@ void widget_show_all(Widget_t *w) {
  */
 
 void pop_widget_show_all(Widget_t *w) {
+    w->func.map_notify_callback(w, NULL);
     XMapWindow(w->app->dpy, w->widget);
     int i=0;
     for(;i<w->childlist->elem;i++) {
         pop_widget_show_all(w->childlist->childs[i]);
+    }
+}
+
+/**
+ * @brief show_tooltip     - check if a Widget_t have a tooltip,
+ * if so, show it. 
+ * @param *wid              - pointer to the Widget_t receiving the event
+ * @return void
+ */
+
+void show_tooltip(Widget_t *wid) {
+    int i = 0;
+    for(;i<wid->childlist->elem;i++) {
+        Widget_t *w = wid->childlist->childs[i];
+        if (w->flags & IS_TOOLTIP) {
+            unsigned int mask;
+            int x, y, rx, ry;
+            Window child, root;
+            XQueryPointer(wid->app->dpy, wid->widget, &root, &child, &rx, &ry, &x, &y, &mask);
+            int x1, y1;
+            XTranslateCoordinates( wid->app->dpy, wid->widget, DefaultRootWindow(wid->app->dpy),
+                                                                       x, y, &x1, &y1, &child );
+            XMoveWindow(w->app->dpy,w->widget,x1+10, y1-10);
+            widget_show(w);
+            break;
+        }
+    }
+}
+
+/**
+ * @brief hide_tooltip     - check if a Widget_t have a tooltip,
+ * if so, hide it. 
+ * @param *wid              - pointer to the Widget_t receiving the event
+ * @return void
+ */
+
+void hide_tooltip(Widget_t *wid) {
+    int i = 0;
+    for(;i<wid->childlist->elem;i++) {
+        Widget_t *w = wid->childlist->childs[i];
+        if (w->flags & IS_TOOLTIP) {
+            widget_hide(w);
+            break;
+        }
     }
 }
 
@@ -533,7 +582,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
         break;
 
         case ButtonPress:
-            if (wid->flags & HAS_TOOLTIP) _hide_tooltip(wid);
+            if (wid->flags & HAS_TOOLTIP) hide_tooltip(wid);
             _button_press(wid, &xev->xbutton, user_data);
             debug_print("Widget_t  ButtonPress %i\n", xev->xbutton.button);
         break;
@@ -565,7 +614,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
                 wid->state = 0;
                 wid->func.leave_callback(w_, user_data);
             }
-            if (wid->flags & HAS_TOOLTIP) _hide_tooltip(wid);
+            if (wid->flags & HAS_TOOLTIP) hide_tooltip(wid);
             debug_print("Widget_t LeaveNotify \n");
         break;
 
@@ -574,7 +623,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
             if(!(xev->xcrossing.state & Button1Mask)) {
                 wid->state = 1;
                 wid->func.enter_callback(w_, user_data);
-                if (wid->flags & HAS_TOOLTIP) _show_tooltip(wid);
+                if (wid->flags & HAS_TOOLTIP) show_tooltip(wid);
                 else _hide_all_tooltips(wid);
             }
             debug_print("Widget_t EnterNotify \n");

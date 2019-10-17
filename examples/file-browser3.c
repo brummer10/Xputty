@@ -82,10 +82,10 @@ static inline int clear(Widget_t *w) {
 }
 
 static int set_files(FileBrowser *filebrowser) {
+    listview_set_list(filebrowser->ft,filebrowser->fp->file_names , (int)filebrowser->fp->n);
     int ret = 0;
     int i = 0;
     for (; i<filebrowser->fp->n; i++) {
-        listbox_add_entry(filebrowser->ft,filebrowser->fp->file_names[i]);
         if(filebrowser->fp->selected_file && strcmp(filebrowser->fp->file_names[i],
           basename(filebrowser->fp->selected_file))==0 )  ret = i;
     }
@@ -108,20 +108,18 @@ static void center_widget(Widget_t *wid, Widget_t *w) {
 }
 
 static void set_selected_file(FileBrowser *filebrowser) {
-    Widget_t* view_port =  filebrowser->ft->childlist->childs[0];
-    if(!childlist_has_child(view_port->childlist)) return ;
-    Widget_t *file = view_port->childlist->childs[(int)adj_get_value(filebrowser->ft->adj)];
+    if(adj_get_value(filebrowser->ft->adj)<0) return;
     Widget_t* menu =  filebrowser->ct->childlist->childs[1];
-    view_port =  menu->childlist->childs[0];
+    Widget_t* view_port =  menu->childlist->childs[0];
     if(!childlist_has_child(view_port->childlist)) return ;
     Widget_t *dir = view_port->childlist->childs[(int)adj_get_value(filebrowser->ct->adj)];
     free(filebrowser->fp->selected_file);
     filebrowser->fp->selected_file = NULL;
-    asprintf(&filebrowser->fp->selected_file, "%s/%s",dir->label, file->label);
+    asprintf(&filebrowser->fp->selected_file, "%s/%s",dir->label, filebrowser->fp->file_names[(int)adj_get_value(filebrowser->ft->adj)]);
     assert(filebrowser->fp->selected_file != NULL);
 }
 
-static void file_released_callback(void *w_, void* button, void* user_data) {
+static void file_released_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileBrowser *filebrowser = w->parent_struct;
     set_selected_file(filebrowser);
@@ -135,12 +133,12 @@ static void file_released_callback(void *w_, void* button, void* user_data) {
 static void reload_file_entrys(FileBrowser *filebrowser) {
     clear(filebrowser->ft);
     fp_get_files(filebrowser->fp,filebrowser->fp->path, 0);
-    filebrowser->ft = add_listbox(filebrowser->w, "", 20, 90, 620, 225);
+    filebrowser->ft = add_listview(filebrowser->w, "", 20, 90, 620, 225);
     filebrowser->ft->parent_struct = filebrowser;
-    filebrowser->ft->func.button_release_callback = file_released_callback;
+    filebrowser->ft->func.value_changed_callback = file_released_callback;
     int set_f = set_files(filebrowser);
     center_widget(filebrowser->w,filebrowser->ft);
-    listbox_set_active_entry(filebrowser->ft, set_f);
+    listview_set_active_entry(filebrowser->ft, set_f);
     widget_show_all(filebrowser->w);
 }
 
@@ -193,14 +191,14 @@ static void reload_all(FileBrowser *filebrowser) {
     center_widget(filebrowser->w,filebrowser->ct);
     filebrowser->ct->parent_struct = filebrowser;
     filebrowser->ct->func.value_changed_callback = combo_response;
-    filebrowser->ft = add_listbox(filebrowser->w, "", 20, 90, 620, 225);
+    filebrowser->ft = add_listview(filebrowser->w, "", 20, 90, 620, 225);
     filebrowser->ft->parent_struct = filebrowser;
-    filebrowser->ft->func.button_release_callback = file_released_callback;
+    filebrowser->ft->func.value_changed_callback = file_released_callback;
     int set_f = set_files(filebrowser);
     center_widget(filebrowser->w,filebrowser->ft);
     set_dirs(filebrowser);
     combobox_set_active_entry(filebrowser->ct, ds);
-    listbox_set_active_entry(filebrowser->ft, set_f);
+    listview_set_active_entry(filebrowser->ft, set_f);
     widget_show_all(filebrowser->w);
 }
 
@@ -274,15 +272,15 @@ int main (int argc, char ** argv)
     add_tooltip(filebrowser.sel_dir,"Open sub-directory's");
     filebrowser.sel_dir->func.value_changed_callback = open_dir_callback;
 
-    filebrowser.ft = add_listbox(filebrowser.w, "", 20, 90, 620, 225);
+    filebrowser.ft = add_listview(filebrowser.w, "", 20, 90, 620, 225);
     filebrowser.ft->parent_struct = &filebrowser;
-    filebrowser.ft->func.button_release_callback = file_released_callback;
+    filebrowser.ft->func.value_changed_callback = file_released_callback;
 
     int ds = fp_get_files(filebrowser.fp,filebrowser.fp->path, 1);   
     int set_f = set_files(&filebrowser); 
     set_dirs(&filebrowser);
     combobox_set_active_entry(filebrowser.ct, ds);
-    listbox_set_active_entry(filebrowser.ft, set_f);
+    listview_set_active_entry(filebrowser.ft, set_f);
 
     filebrowser.w_quit = add_button(filebrowser.w, "\u2620", 580, 350, 60, 60);
     filebrowser.w_quit->parent_struct = &filebrowser;

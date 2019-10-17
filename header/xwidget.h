@@ -79,6 +79,7 @@ typedef struct {
     xevfunc user_callback;
     xevfunc mem_free_callback;
     xevfunc configure_notify_callback;
+    xevfunc map_notify_callback;
 
     evfunc button_press_callback;
     evfunc button_release_callback;
@@ -343,6 +344,24 @@ void widget_hide(Widget_t *w);
  */
 
 void widget_show_all(Widget_t *w);
+
+/**
+ * @brief show_tooltip     - check if a Widget_t have a tooltip,
+ * if so, show it. 
+ * @param *wid              - pointer to the Widget_t receiving the event
+ * @return void
+ */
+
+void show_tooltip(Widget_t *wid);
+
+/**
+ * @brief hide_tooltip     - check if a Widget_t have a tooltip,
+ * if so, hide it. 
+ * @param *wid              - pointer to the Widget_t receiving the event
+ * @return void
+ */
+
+void hide_tooltip(Widget_t *wid);
 
 /**
  * @brief *get_toplevel_widget - get pointer to the top level Widget_t

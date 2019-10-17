@@ -54,6 +54,7 @@ Widget_t* create_listbox_viewport(Widget_t *parent, int elem, int width, int hei
     wid->func.adj_callback = _set_listbox_viewpoint;
     wid->func.expose_callback = _draw_listbox_viewslider;
     wid->func.configure_notify_callback = _reconfigure_listbox_viewport;
+    wid->func.map_notify_callback = _configure_listbox;
     return wid;
 }
 
@@ -90,7 +91,6 @@ Widget_t* listbox_add_entry(Widget_t *listbox, const char * label) {
     Widget_t* view_port =  listbox->childlist->childs[0];
     int width = listbox->scale.init_width;
     int si = childlist_has_child(view_port->childlist);
-    XResizeWindow (view_port->app->dpy, view_port->widget, width, 25*(si+1));
     Widget_t *wid = create_widget(listbox->app, view_port, 0, 25*si, width, 25);
     float max_value = view_port->adj->max_value+1.0;
     set_adjustment(view_port->adj,0.0, 0.0, 0.0, max_value,1.0, CL_VIEWPORT);

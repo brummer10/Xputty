@@ -39,6 +39,7 @@
 #include "xmeter.h"
 #include "xlabel.h"
 #include "xlistbox.h"
+#include "xlistview.h"
 
 
 #endif //XWIDGETS_H_

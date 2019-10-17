@@ -47,6 +47,7 @@
 
 #ifndef DEBUG
 #define DEBUG 0
+#define NDEBUG // switch of assertion checks
 #endif
 
 /**
