@@ -44,6 +44,8 @@
 
 .PHONY : all clean
 
+.NOTPARALLEL:
+
 all:  $(RESOURCEHEADER) libxputty.a
 
 clean:
