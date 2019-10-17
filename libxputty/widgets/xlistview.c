@@ -68,6 +68,7 @@ Widget_t* create_listview_viewport(Widget_t *parent, int elem, int width, int he
     wid->func.motion_callback = _list_motion;
     wid->func.leave_callback = _leave_list;
     wid->func.button_release_callback = _list_entry_released;
+    wid->func.key_press_callback = _list_key_pressed;
     wid->func.expose_callback = _draw_list;
     wid->func.configure_notify_callback = _reconfigure_listview_viewport;
     wid->func.map_notify_callback = _configure_listview;

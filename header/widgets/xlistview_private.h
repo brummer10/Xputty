@@ -56,6 +56,16 @@ void _draw_list(void *w_, void* user_data);
 void _list_motion(void *w_, void* xmotion_, void* user_data);
 
 /**
+ * @brief _list_key_pressed        - move listview or set active entry 
+ * @param *w_                      - void pointer to the Widget_t listview
+ * @param *button_                 - void pointer to the XButtonEvent
+ * @param *user_data               - void pointer to attached user_data
+ * @return void
+ */
+
+void _list_key_pressed(void *w_, void* xkey_, void* user_data);
+
+/**
  * @brief _list_entry_released     - move listview or set active entry 
  * @param *w_                      - void pointer to the Widget_t listview
  * @param *button_                 - void pointer to the XButtonEvent

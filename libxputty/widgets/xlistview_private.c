@@ -53,7 +53,7 @@ void _draw_list(void *w_, void* user_data) {
     int width = attrs.width;
     int height = attrs.height;
     ViewList_t *filelist = (ViewList_t*)w->parent_struct;
-    
+
     use_bg_color_scheme(w, NORMAL_);
     cairo_rectangle(w->crb, 0, 0, width-5 , height);
     cairo_fill (w->crb);
@@ -73,7 +73,6 @@ void _draw_list(void *w_, void* user_data) {
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.0);
         use_bg_color_scheme(w, PRELIGHT_);
-
         cairo_stroke(w->crb); 
         cairo_text_extents_t extents;
         /** show label **/
@@ -121,6 +120,40 @@ void _list_motion(void *w_, void* xmotion_, void* user_data) {
 }
 
 /**
+ * @brief _list_key_pressed        - move listview or set active entry 
+ * @param *w_                      - void pointer to the Widget_t listview
+ * @param *button_                 - void pointer to the XButtonEvent
+ * @param *user_data               - void pointer to attached user_data
+ * @return void
+ */
+
+void _list_key_pressed(void *w_, void* xkey_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    XKeyEvent *xkey = (XKeyEvent*)xkey_;
+    ViewList_t *filelist = (ViewList_t*)w->parent_struct;
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
+    int height = attrs.height;
+    int _items = height/(height/25);
+   // filelist->prelight_item = xkey->y/_items;
+    int nk = key_mapping(w->app->dpy, xkey);
+    if (nk) {
+        switch (nk) {
+            case 3: filelist->prelight_item = (xkey->y+24)/_items;
+            break;
+            case 4: filelist->prelight_item = (xkey->y+24)/_items;
+            break;
+            case 5: filelist->prelight_item = (xkey->y-24)/_items;
+            break;
+            case 6: filelist->prelight_item = (xkey->y-24)/_items;
+            break;
+            default:
+            break;
+        }
+    }
+}
+
+/**
  * @brief _list_entry_released     - move listview or set active entry 
  * @param *w_                      - void pointer to the Widget_t listview
  * @param *button_                 - void pointer to the XButtonEvent
@@ -137,16 +170,20 @@ void _list_entry_released(void *w_, void* button_, void* user_data) {
     int height = attrs.height;
     int _items = height/(height/25);
     int prelight_item = xbutton->y/_items;
-    if(xbutton->button == Button4 || xbutton->button == Button5) {
+    if(xbutton->button == Button4) {
+        prelight_item = (xbutton->y-24)/_items;
         if(prelight_item != filelist->prelight_item) {
             filelist->prelight_item = prelight_item;
-            expose_widget(w);
+        }        
+    } else if (xbutton->button == Button5) {
+        prelight_item = (xbutton->y+24)/_items;
+        if(prelight_item != filelist->prelight_item) {
+            filelist->prelight_item = prelight_item;
         }
     } else if(xbutton->button == Button1) {
         Widget_t* listview = w->parent;
         filelist->active_item = filelist->prelight_item;
         adj_set_value(listview->adj,filelist->active_item);
-        expose_widget(w);
     }
 }
 
