@@ -72,6 +72,7 @@ Widget_t* create_listview_viewport(Widget_t *parent, int elem, int width, int he
     wid->func.expose_callback = _draw_list;
     wid->func.configure_notify_callback = _reconfigure_listview_viewport;
     wid->func.map_notify_callback = _configure_listview;
+    wid->func.mem_free_callback = listview_mem_free;
     return wid;
 }
 
@@ -95,7 +96,6 @@ Widget_t* add_listview(Widget_t *parent, const char * label,
     wid->adj_y = add_adjustment(wid,0.0, 0.0, 0.0, -1.0,1.0, CL_NONE);
     wid->adj = wid->adj_y;
     create_listview_viewport(wid, elem, width, height);
-    wid->func.mem_free_callback = listview_mem_free;
     return wid;
 }
 
