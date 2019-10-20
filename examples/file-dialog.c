@@ -71,6 +71,8 @@ static void dialog_response(void *w_, void* user_data) {
     XDialogExample *xde = p->parent_struct;
     if(user_data !=NULL) {
         fprintf(stderr, "selected file %s\n", *(const char**)user_data);
+        free(xde->filename);
+        xde->filename = NULL;
         xde->filename = strdup(*(const char**)user_data);
         p->label = xde->filename;
         expose_widget(p);
