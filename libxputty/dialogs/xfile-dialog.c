@@ -309,6 +309,8 @@ void fdialog_response(void *w_, void* user_data) {
     FileButton *filebutton = w->parent_struct;
     if(user_data !=NULL) {
         char *tmp = strdup(*(const char**)user_data);
+        free(filebutton->last_path);
+        filebutton->last_path = NULL;
         filebutton->last_path = strdup(dirname(tmp));
         filebutton->path = filebutton->last_path;
         free(tmp);
@@ -333,7 +335,9 @@ void fbutton_mem_free(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileButton *filebutton = w->parent_struct;
     free(filebutton->last_path);
+    filebutton->last_path = NULL;
     free(filebutton);
+    filebutton = NULL;
 }
 
 Widget_t *open_file_button(Widget_t *parent, int x, int y, int width, int height,
