@@ -344,9 +344,10 @@ Widget_t *open_file_button(Widget_t *parent, int x, int y, int width, int height
                            const char *path, const char *filter) {
     FileButton *filebutton = (FileButton*)malloc(sizeof(FileButton));
     filebutton->path = path;
-    filebutton->last_path = NULL;
     filebutton->filter = filter;
-    Widget_t *fbutton = add_image_toggle_button(parent, "", x, y, 60, 60);
+    filebutton->last_path = NULL;
+    filebutton->w = NULL;
+    Widget_t *fbutton = add_image_toggle_button(parent, "", x, y, width, height);
     fbutton->parent_struct = filebutton;
     fbutton->flags |= HAS_MEM;
     widget_get_png(fbutton, LDVAR(directory_open_png));
