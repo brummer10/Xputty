@@ -118,6 +118,7 @@ void destroy_widget(Widget_t * w, Xputty *main) {
         XDestroyWindow(w->app->dpy, w->widget);
         free(w->childlist);
         free(w);
+        w = NULL;
     }
 }
 
@@ -278,6 +279,7 @@ Widget_t *create_window(Xputty *app, Window win,
     w->func.mem_free_callback = _dummy_callback;
     w->func.configure_notify_callback = _dummy_callback;
     w->func.map_notify_callback = _dummy_callback;
+    w->func.dialog_callback = _dummy_callback;
 
     childlist_add_child(app->childlist,w);
     //XMapWindow(app->dpy, w->widget);
@@ -386,6 +388,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->func.mem_free_callback = _dummy_callback;
     w->func.configure_notify_callback = _dummy_callback;
     w->func.map_notify_callback = _dummy_callback;
+    w->func.dialog_callback = _dummy_callback;
 
     childlist_add_child(app->childlist,w);
     //XMapWindow(app->dpy, w->widget);
@@ -570,7 +573,7 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
     switch(xev->type) {
         case ConfigureNotify:
             wid->func.configure_callback(w_, user_data);
-            transparent_draw(w_, user_data);
+            //transparent_draw(w_, user_data);
             debug_print("Widget_t ConfigureNotify \n");
         break;
 

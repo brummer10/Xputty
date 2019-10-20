@@ -88,13 +88,13 @@ void _draw_vslider(void *w_, void* user_data) {
     cairo_set_line_width(w->crb,center);
     cairo_stroke(w->crb);
 
-    use_base_color_scheme(w, get_color_state(w));
+    use_shadow_color_scheme(w, get_color_state(w));
     cairo_move_to (w->crb, center, center);
     cairo_line_to(w->crb,center,height-center-10);
     cairo_set_line_width(w->crb,center/10);
     cairo_stroke(w->crb);
 
-    use_base_color_scheme(w, get_color_state(w));
+    use_shadow_color_scheme(w, get_color_state(w));
     cairo_arc(w->crb,center, (height-center-10) -
         ((height-10-upcenter) * sliderstate), center/2, 0, 2 * M_PI );
     cairo_fill_preserve(w->crb);
@@ -153,13 +153,13 @@ void _draw_hslider(void *w_, void* user_data) {
     cairo_set_line_width(w->crb,center);
     cairo_stroke(w->crb);
 
-    use_base_color_scheme(w, get_color_state(w));
+    use_shadow_color_scheme(w, get_color_state(w));
     cairo_move_to (w->crb, center, center);
     cairo_line_to(w->crb,width-center-10,center);
     cairo_set_line_width(w->crb,center/10);
     cairo_stroke(w->crb);
 
-    use_base_color_scheme(w, get_color_state(w));
+    use_shadow_color_scheme(w, get_color_state(w));
     cairo_arc(w->crb, (center) +
         ((width-10-upcenter) * sliderstate),center, center/2, 0, 2 * M_PI );
     cairo_fill_preserve(w->crb);

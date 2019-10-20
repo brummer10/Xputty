@@ -67,12 +67,13 @@ void _pattern_in(Widget_t *w, Color_state st, int height);
 void _draw_button(void *w_, void* user_data);
 
 /**
- * @brief _button_pressed   - redraw the button and send state via user_callback
- * @param *w_               - void pointer to the Widget_t button
- * @param *button           - void pointer to XEvent.xbutton struct
- * @param *user_data        - void pointer to attached user_data
+ * @brief _draw_ti_button           - internal draw the button to the buffer
+ * @param *w_                    - void pointer to the Widget_t button
+ * @param *user_data             - void pointer to attached user_data
  * @return void
  */
+
+void _draw_ti_button(void *w_, void* user_data);
 
 /**
  * @brief _draw_check_button     - internal draw the button to the buffer
@@ -88,6 +89,14 @@ void _draw_check_button(void *w_, void* user_data);
                             button
 -----------------------------------------------------------------------
 ----------------------------------------------------------------------*/
+
+/**
+ * @brief _button_pressed   - redraw the button and send state via user_callback
+ * @param *w_               - void pointer to the Widget_t button
+ * @param *button           - void pointer to XEvent.xbutton struct
+ * @param *user_data        - void pointer to attached user_data
+ * @return void
+ */
 
 void _button_pressed(void *w_, void* button, void* user_data);
 

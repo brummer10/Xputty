@@ -123,19 +123,19 @@ void _draw_combobox(void *w_, void* user_data) {
 
     if(w->state==0) {
         cairo_set_line_width(w->crb, 1.0);
-        use_base_color_scheme(w, NORMAL_);
+        use_shadow_color_scheme(w, NORMAL_);
         cairo_fill_preserve(w->crb);
-        use_bg_color_scheme(w, PRELIGHT_);
+        use_base_color_scheme(w, NORMAL_);
     } else if(w->state==1) {
-        use_base_color_scheme(w, PRELIGHT_);
+        use_shadow_color_scheme(w, PRELIGHT_);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.5);
-        use_bg_color_scheme(w, PRELIGHT_);
+        use_base_color_scheme(w, NORMAL_);
     } else if(w->state==2) {
-        use_base_color_scheme(w, SELECTED_);
+        use_shadow_color_scheme(w, SELECTED_);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.0);
-        use_bg_color_scheme(w, SELECTED_);
+        use_base_color_scheme(w, SELECTED_);
     }
     cairo_stroke(w->crb); 
 

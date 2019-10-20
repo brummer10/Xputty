@@ -99,7 +99,7 @@ void _draw_check_item(void *w_, void* user_data) {
     } else {
         cairo_rectangle(w->crb, height/6, height/3, height/3 , height/3);
     }
-    use_base_color_scheme(w, get_color_state(w));
+    use_shadow_color_scheme(w, get_color_state(w));
     cairo_fill(w->crb);
     if ((int) w->adj_y->value) {
         if (w->flags & IS_RADIO) {
@@ -133,7 +133,7 @@ void _draw_viewslider(void *w_, void* user_data) {
     use_bg_color_scheme(w, NORMAL_);
     cairo_rectangle(w->crb, width-5,0,5,height);
     cairo_fill_preserve(w->crb);
-    use_base_color_scheme(w, NORMAL_);
+    use_shadow_color_scheme(w, NORMAL_);
     cairo_fill(w->crb);
     use_bg_color_scheme(w, NORMAL_);
     cairo_rectangle(w->crb, width-5,(height-10)*sliderstate,5,10);
@@ -152,7 +152,7 @@ void _draw_viewslider(void *w_, void* user_data) {
 
 void _set_viewpoint(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    int v = (int)adj_get_value(w->adj);
+    int v = (int)max(0,adj_get_value(w->adj));
     XWindowAttributes attrs;
     XGetWindowAttributes(w->app->dpy, (Window)w->childlist->childs[0]->widget, &attrs);
     int height = attrs.height;

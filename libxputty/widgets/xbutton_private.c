@@ -85,18 +85,20 @@ void _pattern_in(Widget_t *w, Color_state st, int height) {
  * @return void
  */
 
-void _draw_image_button(Widget_t *w, int width_t, int height_t) {
+void _draw_image_button(Widget_t *w, int width_t, int height_t, float offset) {
     int width = cairo_xlib_surface_get_width(w->image);
     int height = cairo_xlib_surface_get_height(w->image);
-    double x = (double)width_t/(double)height;
-    double y = (double)height/(double)width_t;
+    double x = (double)width_t/(double)(width*0.5);
+    double y = (double)height_t/(double)height;
+    double x1 = (double)height/(double)height_t;
+    double y1 = (double)(width*0.5)/(double)width_t;
     double buttonstate = adj_get_state(w->adj);
     int findex = (int)(((width/height)-1) * buttonstate);
-    cairo_scale(w->crb, x,x);
-    cairo_set_source_surface (w->crb, w->image, -height*findex, 0);
+    cairo_scale(w->crb, x,y);
+    cairo_set_source_surface (w->crb, w->image, -height*findex+offset, offset);
     cairo_rectangle(w->crb,0, 0, height, height);
     cairo_fill(w->crb);
-    cairo_scale(w->crb, y,y);
+    cairo_scale(w->crb, x1,y1);
     cairo_text_extents_t extents;
     if(w->state==0) {
         use_fg_color_scheme(w, NORMAL_);
@@ -180,7 +182,7 @@ void _draw_button(void *w_, void* user_data) {
     int height = attrs.height-2;
     if (attrs.map_state != IsViewable) return;
     if (w->image) {
-        _draw_image_button(w, width, height);
+        _draw_image_button(w, width, height,0.0);
     } else {
         _draw_button_base(w, width, height);
 
@@ -215,6 +217,37 @@ void _draw_button(void *w_, void* user_data) {
 }
 
 /**
+ * @brief _draw_ti_button           - internal draw the button to the buffer
+ * @param *w_                    - void pointer to the Widget_t button
+ * @param *user_data             - void pointer to attached user_data
+ * @return void
+ */
+
+void _draw_ti_button(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    if (!w) return;
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
+    int width = attrs.width-2;
+    int height = attrs.height-2;
+    if (attrs.map_state != IsViewable) return;
+    _draw_button_base(w, width, height);
+    if (w->image) {
+        float offset = 0.0;
+        if(w->state==1 && ! (int)w->adj_y->value) {
+            offset = 1.0;
+        } else if(w->state==1) {
+            offset = 2.0;
+        } else if(w->state==2) {
+            offset = 2.0;
+        } else if(w->state==3) {
+            offset = 1.0;
+        }
+        
+       _draw_image_button(w, width, height,offset);
+   }
+}
+/**
  * @brief _draw_check_button     - internal draw the button to the buffer
  * @param *w_                    - void pointer to the Widget_t button
  * @param *user_data             - void pointer to attached user_data
@@ -230,7 +263,7 @@ void _draw_check_button(void *w_, void* user_data) {
     int height = attrs.height-2;
     if (attrs.map_state != IsViewable) return;
     if (w->image) {
-        _draw_image_button(w, width, height);
+        _draw_image_button(w, width, height,0.0);
     } else {
         _draw_button_base(w, width, height);
 

@@ -101,7 +101,7 @@ void main_run(Xputty *main) {
                     main->run = false;
                 } else {
                     int i = childlist_find_widget(main->childlist, xev.xclient.window);
-                    if(i>1) quit_widget(main->childlist->childs[i]);
+                    if(i>1) destroy_widget(main->childlist->childs[i],main);
                 }
             break;
         }

@@ -32,26 +32,30 @@ void set_color_scheme(Xputty *main) {
          /* cairo/ r / g / b / a /  */
          /*fg*/{ 0.85, 0.85, 0.85, 1.0},
          /*bg*/{ 0.1, 0.1, 0.1, 1.0},
-         /*base*/{ 0.0, 0.0, 0.0, 0.2},
-         /*text*/{ 0.9, 0.9, 0.9, 1.0}};
+         /*base*/{ 0.0, 0.0, 0.0, 1.0},
+         /*text*/{ 0.9, 0.9, 0.9, 1.0},
+         /*shadow*/{ 0.0, 0.0, 0.0, 0.2}};
 
     main->color_scheme->prelight = (Colors){
         /*fg*/{ 1.0, 1.0, 1.0, 1.0},
         /*bg*/{ 0.25, 0.25, 0.25, 1.0},
-        /*base*/{ 0.1, 0.1, 0.1, 0.4},
-        /*text*/{ 1.0, 1.0, 1.0, 1.0}};
+        /*base*/{ 0.3, 0.3, 0.3, 1.0},
+        /*text*/{ 1.0, 1.0, 1.0, 1.0},
+        /*shadow*/{ 0.1, 0.1, 0.1, 0.4}};
 
     main->color_scheme->selected = (Colors){
         /*fg*/{ 0.9, 0.9, 0.9, 1.0},
         /*bg*/{ 0.2, 0.2, 0.2, 1.0},
-        /*base*/{ 0.8, 0.18, 0.18, 0.2},
-         /*text*/{ 1.0, 1.0, 1.0, 1.0}};
+        /*base*/{ 0.5, 0.18, 0.18, 1.0},
+         /*text*/{ 1.0, 1.0, 1.0, 1.0},
+         /*shadow*/{ 0.8, 0.18, 0.18, 0.2}};
 
     main->color_scheme->active = (Colors){
         /*fg*/{ 1.0, 1.0, 1.0, 1.0},
         /*bg*/{ 0.0, 0.0, 0.0, 1.0},
-        /*base*/{ 0.18, 0.38, 0.38, 0.5},
-        /*text*/{ 0.75, 0.75, 0.75, 1.0}};
+        /*base*/{ 0.18, 0.38, 0.38, 1.0},
+        /*text*/{ 0.75, 0.75, 0.75, 1.0},
+        /*shadow*/{ 0.18, 0.38, 0.38, 0.5}};
 }
 
 /**
@@ -76,6 +80,7 @@ Colors *get_color_scheme(Xputty *main, Color_state st) {
             return &main->color_scheme->active;
         break;
         default:
+            return &main->color_scheme->normal;
         break;
     }
     return NULL;
@@ -137,9 +142,9 @@ void use_bg_color_scheme(Widget_t *w, Color_state st) {
 }
 
 /**
- * @brief use_text_color_scheme  - set text color for Widget_t
+ * @brief use_base_color_scheme  - set base color for Widget_t
  * @param w                      - the Widget_t to send the event to
- * @param st                   - the Color_state to use
+ * @param st                     - the Color_state to use
  * @return void 
  */
 
@@ -153,7 +158,7 @@ void use_base_color_scheme(Widget_t *w, Color_state st) {
 /**
  * @brief use_text_color_scheme  - set text color for Widget_t
  * @param w                      - the Widget_t to send the event to
- * @param st                   - the Color_state to use
+ * @param st                     - the Color_state to use
  * @return void 
  */
 
@@ -162,6 +167,20 @@ void use_text_color_scheme(Widget_t *w, Color_state st) {
     if (!c) return;
     cairo_set_source_rgba(w->cr, c->text[0],  c->text[1], c->text[2],  c->text[3]);
     cairo_set_source_rgba(w->crb, c->text[0],  c->text[1], c->text[2],  c->text[3]);
+}
+
+/**
+ * @brief use_shadow_color_scheme  - set shadow color for Widget_t
+ * @param w                        - the Widget_t to send the event to
+ * @param st                       - the Color_state to use
+ * @return void 
+ */
+
+void use_shadow_color_scheme(Widget_t *w, Color_state st) {
+    Colors *c = get_color_scheme(w->app, st);
+    if (!c) return;
+    cairo_set_source_rgba(w->cr, c->shadow[0],  c->shadow[1], c->shadow[2],  c->shadow[3]);
+    cairo_set_source_rgba(w->crb, c->shadow[0],  c->shadow[1], c->shadow[2],  c->shadow[3]);
 }
 
 /**
@@ -194,7 +213,11 @@ void set_pattern(Widget_t *w, Colors *from, Colors *to, Color_mod mod) {
             col_from = from->text;
             col_to = to->text;
         break;
-    }
+        case SHADOW_:
+            col_from = from->shadow;
+            col_to = to->shadow;
+        break;
+   }
     XWindowAttributes attrs;
     XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width;

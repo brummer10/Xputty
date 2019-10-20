@@ -7,12 +7,14 @@
 	HEADER_DIR := ../header/
 	WIDGET_DIR := $(LIB_DIR)widgets/
 	WIDGET_HEADER_DIR := $(HEADER_DIR)widgets/
+	DIALOG_DIR := $(LIB_DIR)dialogs/
+	DIALOG_HEADER_DIR := $(HEADER_DIR)dialogs/
 	RESOURCES_DIR :=$(LIB_DIR)resources/
 	XDG_DIR := $(LIB_DIR)xdgmime/
 	OBJ_DIR := .
 
 	# include path for library headers
-	INCLUDES := -I. -I$(HEADER_DIR) -I$(WIDGET_HEADER_DIR) -I$(RESOURCES_DIR) -I$(XDG_DIR)
+	INCLUDES := -I. -I$(HEADER_DIR) -I$(WIDGET_HEADER_DIR) -I$(RESOURCES_DIR) -I$(DIALOG_HEADER_DIR) -I$(XDG_DIR)
 	# link flags to dynamic link cairo and X11 (default)
 	LDFLAGS += -fPIC `pkg-config --static --cflags --libs cairo x11` -lm
 	# set link flags to static link cairo and X11
@@ -31,6 +33,9 @@
 
 	WIDGET_SOURCES := $(wildcard $(WIDGET_DIR)*.c)
 	WIDGET_OBJ := $(notdir $(patsubst %.c,%.o,$(WIDGET_SOURCES)))
+
+	DIALOG_SOURCES := $(wildcard $(DIALOG_DIR)*.c)
+	DIALOG_OBJ := $(notdir $(patsubst %.c,%.o,$(DIALOG_SOURCES)))
 
 	RESOURCES := $(wildcard $(RESOURCES_DIR)*.png)
 	RESOURCES_OBJ := $(notdir $(patsubst %.png,%.o,$(RESOURCES)))
@@ -64,6 +69,9 @@ $(XDG_OBJ): $(XDG_SOURCES)
 $(RESOURCES_OBJ): $(RESOURCES)
 	cd $(RESOURCES_DIR) && ld -r -b binary $(patsubst %.o,%.png,$@) -o ../../Build/$@
 
+$(DIALOG_OBJ): $(DIALOG_SOURCES)
+	$(CC) -MMD -Wall -c $(addprefix $(DIALOG_DIR),$(patsubst %.o,%.c,$@)) -o $@ $(INCLUDES) $(LDFLAGS)
+
 $(WIDGET_OBJ): $(WIDGET_SOURCES)
 	$(CC) -MMD -Wall -c $(addprefix $(WIDGET_DIR),$(patsubst %.o,%.c,$@)) -o $@ $(INCLUDES) $(LDFLAGS)
 
@@ -72,11 +80,12 @@ $(LIB_OBJ): $(LIB_SOURCES)
 
 -include $(DEP)
 
-libxputty.a:  $(RESOURCES_OBJ) $(LIB_OBJ) $(WIDGET_OBJ) $(XDG_OBJ)
-	ar rcs libxputty.a $(LIB_OBJ) $(WIDGET_OBJ) $(RESOURCES_OBJ) $(XDG_OBJ)
+libxputty.a:  $(RESOURCES_OBJ) $(LIB_OBJ) $(WIDGET_OBJ) $(DIALOG_OBJ) $(XDG_OBJ)
+	ar rcs libxputty.a $(LIB_OBJ) $(WIDGET_OBJ) $(DIALOG_OBJ) $(RESOURCES_OBJ) $(XDG_OBJ)
 	mkdir -p $(OBJ_DIR)/include/
 	cp $(HEADER_DIR)*.h $(OBJ_DIR)/include/
 	cp $(WIDGET_HEADER_DIR)*.h $(OBJ_DIR)/include/
+	cp $(DIALOG_HEADER_DIR)*.h $(OBJ_DIR)/include/
 	cp $(RESOURCEHEADER) $(OBJ_DIR)/include/
 	cp $(XDG_DIR)*.h $(OBJ_DIR)/include/
 

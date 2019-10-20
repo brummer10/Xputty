@@ -54,9 +54,12 @@ void _draw_list(void *w_, void* user_data) {
     int height = attrs.height;
     ViewList_t *filelist = (ViewList_t*)w->parent_struct;
 
-    use_bg_color_scheme(w, NORMAL_);
-    cairo_rectangle(w->crb, 0, 0, width-5 , height);
+    int v = (int)w->adj->max_value;
+    int sub = (v<=0) ? 0 : 5;
+    use_base_color_scheme(w, NORMAL_);
+    cairo_rectangle(w->crb, 0, 0, width-sub , height);
     cairo_fill (w->crb);
+
     int i = adj_get_value(w->adj);
     int j = filelist->list_size<filelist->show_items+i+1 ? 
       filelist->list_size : filelist->show_items+i+1;
@@ -64,15 +67,15 @@ void _draw_list(void *w_, void* user_data) {
         if(i == filelist->prelight_item && i == filelist->active_item)
             use_base_color_scheme(w, ACTIVE_);
         else if(i == filelist->prelight_item)
-            use_bg_color_scheme(w, PRELIGHT_);
+            use_base_color_scheme(w, PRELIGHT_);
         else if (i == filelist->active_item)
             use_base_color_scheme(w, SELECTED_);
         else
-            use_bg_color_scheme(w,NORMAL_ );
-        cairo_rectangle(w->crb, 0, i*25, width-5 , 25);
+            use_base_color_scheme(w,NORMAL_ );
+        cairo_rectangle(w->crb, 0, i*25, width-sub , 25);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.0);
-        use_bg_color_scheme(w, PRELIGHT_);
+        use_base_color_scheme(w, PRELIGHT_);
         cairo_stroke(w->crb); 
         cairo_text_extents_t extents;
         /** show label **/
@@ -250,7 +253,7 @@ void _configure_listview(void *w_, void* user_data) {
 void _draw_listview_viewslider(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     int v = (int)w->adj->max_value;
-    if (!v) return;
+    if (v<=0) return;
     XWindowAttributes attrs;
     XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     if (attrs.map_state != IsViewable) return;

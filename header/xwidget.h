@@ -80,6 +80,7 @@ typedef struct {
     xevfunc mem_free_callback;
     xevfunc configure_notify_callback;
     xevfunc map_notify_callback;
+    xevfunc dialog_callback;
 
     evfunc button_press_callback;
     evfunc button_release_callback;

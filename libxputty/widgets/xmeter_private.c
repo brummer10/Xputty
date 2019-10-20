@@ -172,11 +172,11 @@ void _create_vertical_meter_image(Widget_t *w, int width, int height) {
     cairo_t *cri = cairo_create (w->image);
 
     cairo_rectangle(cri,0.0, 0.0, width, height);
-    use_base_color_scheme(w, NORMAL_);
+    use_shadow_color_scheme(w, NORMAL_);
     cairo_fill(cri);
 
     cairo_rectangle(cri,width, 0.0, width, height);
-    use_base_color_scheme(w, NORMAL_);
+    use_shadow_color_scheme(w, NORMAL_);
     cairo_fill(cri);
 
     cairo_pattern_t *pat = cairo_pattern_create_linear (0, 0, 0.0, height);
@@ -237,11 +237,11 @@ void _create_horizontal_meter_image(Widget_t *w, int width, int height) {
     cairo_t *cri = cairo_create (w->image);
 
     cairo_rectangle(cri,0.0, 0.0, width, height);
-    use_base_color_scheme(w, NORMAL_);
+    use_shadow_color_scheme(w, NORMAL_);
     cairo_fill(cri);
 
     cairo_rectangle(cri, 0.0, height, width, height);
-    use_base_color_scheme(w, NORMAL_);
+    use_shadow_color_scheme(w, NORMAL_);
     cairo_fill(cri);
 
     cairo_pattern_t *pat = cairo_pattern_create_linear (0, 0, width, 0.0);

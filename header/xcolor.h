@@ -49,6 +49,7 @@ typedef enum {
     BACKGROUND_,
     BASE_,
     TEXT_,
+    SHADOW_,
 } Color_mod;
 
 /**
@@ -64,6 +65,7 @@ typedef struct {
     float bg[4];
     float base[4];
     float text[4];
+    float shadow[4];
 } Colors;
 
 /**
@@ -120,9 +122,9 @@ void use_fg_color_scheme(Widget_t *w, Color_state st);
 void use_bg_color_scheme(Widget_t *w, Color_state st);
 
 /**
- * @brief use_text_color_scheme  - set text color for Widget_t
+ * @brief use_base_color_scheme  - set base color for Widget_t
  * @param w                      - the Widget_t to send the event to
- * @param st                   - the Color_state to use
+ * @param st                     - the Color_state to use
  * @return void 
  */
 
@@ -131,11 +133,20 @@ void use_base_color_scheme(Widget_t *w, Color_state st);
 /**
  * @brief use_text_color_scheme  - set text color for Widget_t
  * @param w                      - the Widget_t to send the event to
- * @param st                   - the Color_state to use
+ * @param st                     - the Color_state to use
  * @return void 
  */
 
 void use_text_color_scheme(Widget_t *w, Color_state st);
+
+/**
+ * @brief use_shadow_color_scheme  - set shadow color for Widget_t
+ * @param w                        - the Widget_t to send the event to
+ * @param st                       - the Color_state to use
+ * @return void 
+ */
+
+void use_shadow_color_scheme(Widget_t *w, Color_state st);
 
 /**
  * @brief set_pattern       - set pattern for the selected colors
