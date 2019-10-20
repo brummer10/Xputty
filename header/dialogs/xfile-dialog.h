@@ -48,6 +48,7 @@ typedef struct {
     char *last_path;
     const char *path;
     const char *filter;
+    bool is_active;
 } FileButton;
 
 Widget_t *open_file_dialog(Widget_t *w, const char *path, const char *filter);

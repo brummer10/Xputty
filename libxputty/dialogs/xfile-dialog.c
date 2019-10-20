@@ -316,7 +316,7 @@ void fdialog_response(void *w_, void* user_data) {
         free(tmp);
     }
     w->func.user_callback(w,user_data);
-    filebutton->w = NULL;
+    filebutton->is_active = false;
     adj_set_value(w->adj,0.0);
 }
 
@@ -325,8 +325,9 @@ void fbutton_callback(void *w_, void* user_data) {
     FileButton *filebutton = w->parent_struct;
     if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
         filebutton->w = open_file_dialog(w,filebutton->path,filebutton->filter);
+        filebutton->is_active = true;
     } else if (w->flags & HAS_POINTER && !adj_get_value(w->adj)){
-        if(filebutton->w)
+        if(filebutton->is_active)
             destroy_widget(filebutton->w,w->app);
     }
 }
@@ -347,6 +348,7 @@ Widget_t *open_file_button(Widget_t *parent, int x, int y, int width, int height
     filebutton->filter = filter;
     filebutton->last_path = NULL;
     filebutton->w = NULL;
+    filebutton->is_active = false;
     Widget_t *fbutton = add_image_toggle_button(parent, "", x, y, width, height);
     fbutton->parent_struct = filebutton;
     fbutton->flags |= HAS_MEM;
