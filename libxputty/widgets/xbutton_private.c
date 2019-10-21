@@ -88,12 +88,13 @@ void _pattern_in(Widget_t *w, Color_state st, int height) {
 void _draw_image_button(Widget_t *w, int width_t, int height_t, float offset) {
     int width = cairo_xlib_surface_get_width(w->image);
     int height = cairo_xlib_surface_get_height(w->image);
-    double x = (double)width_t/(double)(width*0.5);
+    double half_width = (width/height >=2) ? width*0.5 : width;
+    double x = (double)width_t/(double)(half_width);
     double y = (double)height_t/(double)height;
     double x1 = (double)height/(double)height_t;
-    double y1 = (double)(width*0.5)/(double)width_t;
+    double y1 = (double)(half_width)/(double)width_t;
     double buttonstate = adj_get_state(w->adj);
-    int findex = (int)(((width/height)-1) * buttonstate);
+    int findex = (int)(((width/height)-1) * buttonstate) * (width/height >=2);
     cairo_scale(w->crb, x,y);
     cairo_set_source_surface (w->crb, w->image, -height*findex+offset, offset);
     cairo_rectangle(w->crb,0, 0, height, height);
@@ -204,7 +205,7 @@ void _draw_button(void *w_, void* user_data) {
         cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
                                    CAIRO_FONT_WEIGHT_BOLD);
         cairo_text_extents(w->crb,w->label , &extents);
-        if(strlen(w->label)<4) {
+        if(IS_UTF8(w->label[0])) {
             font_size = ((height/1.5 < (width)/1.5) ? height/1.5 : (width)/1.5);
             cairo_set_font_size (w->crb, font_size);
             cairo_text_extents(w->crb,w->label , &extents);

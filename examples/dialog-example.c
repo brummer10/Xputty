@@ -21,11 +21,13 @@
 
 #include "xwidgets.h"
 #include "xfile-dialog.h"
+#include "xmessage-dialog.h"
 
 typedef struct {
     Widget_t *w;
     Widget_t *w_quit;
     Widget_t *filebutton;
+    Widget_t *messagebutton;
     char *filename;
 } XDialogExample;
 
@@ -81,6 +83,55 @@ static void dialog_response(void *w_, void* user_data) {
     }
 }
 
+static void mbutton_callback(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    Widget_t *p = w->parent;
+    if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
+        open_message_dialog(p, INFO_BOX, "", "This is a longer info message\n"
+        "now with double line test\nand now with 3 lines\nand one more");
+    }
+    adj_set_value(w->adj,0.0);
+}
+
+static void wbutton_callback(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    Widget_t *p = w->parent;
+    if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
+        open_message_dialog(p, WARNING_BOX, "", "This is a warning message");
+    }
+    adj_set_value(w->adj,0.0);
+}
+
+static void ebutton_callback(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    Widget_t *p = w->parent;
+    if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
+        open_message_dialog(p, ERROR_BOX, "", "This is a error message");
+    }
+    adj_set_value(w->adj,0.0);
+}
+
+static void qbutton_callback(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    Widget_t *p = w->parent;
+    if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
+        open_message_dialog(p, QUESTION_BOX, "", "This is a question message\n"
+            "Do you like dog's?");
+    }
+    adj_set_value(w->adj,0.0);
+}
+
+static void qbutton_response(void *w_, void* user_data) {
+    if(user_data !=NULL) {
+        int response = *(int*)user_data;
+        if(response)
+            fprintf(stderr, "You select NO\n");
+        else
+            fprintf(stderr, "You select Yes\n");
+    }
+}
+
+
 void mem_free(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     XDialogExample *xde = w->parent_struct;
@@ -95,7 +146,7 @@ int main (int argc, char ** argv)
 
     xde.filename = NULL;
     xde.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 500, 150);
-    XStoreName(app.dpy, xde.w->widget, "Xputty File Dialog example");
+    XStoreName(app.dpy, xde.w->widget, "Xputty Dialog examples");
     xde.w->label = "..";
     xde.w->parent_struct = &xde;
     xde.w->func.expose_callback = draw_window;
@@ -106,16 +157,31 @@ int main (int argc, char ** argv)
     xde.w_quit->scale.gravity = CENTER;
     xde.w_quit->func.value_changed_callback = button_quit_callback;
 
-    xde.filebutton = open_file_button(xde.w, 20, 80, 60, 60, getenv("HOME"), "");
+    xde.filebutton = add_file_button(xde.w, 20, 80, 60, 60, getenv("HOME") ? getenv("HOME") : "/", "");
     xde.filebutton->func.user_callback = dialog_response;
 
+    xde.messagebutton = add_image_toggle_button(xde.w, "", 100, 80, 60, 60);
+    widget_get_png(xde.messagebutton, LDVAR(info_png));
+    xde.messagebutton->func.value_changed_callback = mbutton_callback;
+
+    xde.messagebutton = add_image_toggle_button(xde.w, "", 180, 80, 60, 60);
+    widget_get_png(xde.messagebutton, LDVAR(warning_png));
+    xde.messagebutton->func.value_changed_callback = wbutton_callback;
+
+    xde.messagebutton = add_image_toggle_button(xde.w, "", 260, 80, 60, 60);
+    widget_get_png(xde.messagebutton, LDVAR(error_png));
+    xde.messagebutton->func.value_changed_callback = ebutton_callback;
+
+    xde.messagebutton = add_image_toggle_button(xde.w, "", 340, 80, 60, 60);
+    widget_get_png(xde.messagebutton, LDVAR(question_png));
+    xde.messagebutton->func.value_changed_callback = qbutton_callback;
+    xde.w->func.user_callback = qbutton_response;
+
     widget_show_all(xde.w);
-   
+
     main_run(&app);
-   
+
     main_quit(&app);
 
     return 0;
-    
-    
 }
