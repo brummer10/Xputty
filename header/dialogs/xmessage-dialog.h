@@ -30,7 +30,9 @@ enum {
     INFO_BOX,
     WARNING_BOX,
     ERROR_BOX,
-    QUESTION_BOX
+    QUESTION_BOX,
+    SELECTION_BOX,
+    ENTRY_BOX,
 };
 
 typedef struct {
@@ -39,9 +41,13 @@ typedef struct {
     unsigned int width;
     unsigned int height;
     unsigned int lin;
+    Widget_t *text_entry;
     char **message;
+    unsigned int sel;
+    char **choices;
 } MessageBox;
 
-Widget_t *open_message_dialog(Widget_t *w, int style, const char *title, const char *message);
+Widget_t *open_message_dialog(Widget_t *w, int style, const char *title,
+                              const char *message, const char *choices);
 
 #endif //XMESSAGE_DIALOG_H_

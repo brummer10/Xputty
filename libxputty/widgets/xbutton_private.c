@@ -248,6 +248,7 @@ void _draw_ti_button(void *w_, void* user_data) {
        _draw_image_button(w, width, height,offset);
    }
 }
+
 /**
  * @brief _draw_check_button     - internal draw the button to the buffer
  * @param *w_                    - void pointer to the Widget_t button
@@ -284,6 +285,57 @@ void _draw_check_button(void *w_, void* user_data) {
             cairo_stroke(w->crb);
         }
 
+        cairo_new_path (w->crb);
+    }
+}
+
+/**
+ * @brief _draw_check_box        - internal draw the check box to the buffer
+ * @param *w_                    - void pointer to the Widget_t button
+ * @param *user_data             - void pointer to attached user_data
+ * @return void
+ */
+
+void _draw_check_box(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    if (!w) return;
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
+    int width = attrs.width-2;
+    int height = attrs.height-2;
+    if (attrs.map_state != IsViewable) return;
+    if (w->image) {
+        _draw_image_button(w, height, height,0.0);
+    } else {
+        _draw_button_base(w, height, height);
+
+        if(w->state==3) {
+            use_fg_color_scheme(w, ACTIVE_);
+            float offset = 1.0;
+            int wa = height/1.3;
+            int h = height/2.2;
+            int wa1 = height/2.2;
+            int h1 = height/1.3;
+            int wa2 = height/2.8;
+
+            cairo_set_line_width(w->crb, 2.5);
+            cairo_move_to(w->crb, wa+offset, h+offset);
+            cairo_line_to(w->crb, wa1+offset, h1+offset);
+            cairo_line_to(w->crb, wa2+offset, h+offset);
+            cairo_stroke(w->crb);
+        }
+
+        cairo_new_path (w->crb);
+
+        cairo_text_extents_t extents;
+        use_text_color_scheme(w, get_color_state(w));
+        float font_size = ((height/1.2 < (width*0.5)/3) ? height/1.2 : (width*0.6)/3);
+        cairo_set_font_size (w->crb, font_size);
+        cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
+                                   CAIRO_FONT_WEIGHT_BOLD);
+        cairo_text_extents(w->crb,w->label , &extents);
+        cairo_move_to (w->crb, height+5 , (height+extents.height)*0.5 );
+        cairo_show_text(w->crb, w->label);
         cairo_new_path (w->crb);
     }
 }

@@ -85,38 +85,34 @@ static void dialog_response(void *w_, void* user_data) {
 
 static void mbutton_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    Widget_t *p = w->parent;
     if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
-        open_message_dialog(p, INFO_BOX, "", "This is a longer info message\n"
-        "now with double line test\nand now with 3 lines\nand one more");
+        open_message_dialog(w, INFO_BOX, "", "This is a longer info message\n"
+        "now with double line test\nand now with 3 lines\nand one more", NULL);
     }
     adj_set_value(w->adj,0.0);
 }
 
 static void wbutton_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    Widget_t *p = w->parent;
     if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
-        open_message_dialog(p, WARNING_BOX, "", "This is a warning message");
+        open_message_dialog(w, WARNING_BOX, "", "This is a warning message", NULL);
     }
     adj_set_value(w->adj,0.0);
 }
 
 static void ebutton_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    Widget_t *p = w->parent;
     if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
-        open_message_dialog(p, ERROR_BOX, "", "This is a error message");
+        open_message_dialog(w, ERROR_BOX, "", "This is a error message", NULL);
     }
     adj_set_value(w->adj,0.0);
 }
 
 static void qbutton_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    Widget_t *p = w->parent;
     if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
-        open_message_dialog(p, QUESTION_BOX, "", "This is a question message\n"
-            "Do you like dog's?");
+        open_message_dialog(w, QUESTION_BOX, "", "This is a question message\n"
+            "Do you like dog's?", NULL);
     }
     adj_set_value(w->adj,0.0);
 }
@@ -124,10 +120,44 @@ static void qbutton_callback(void *w_, void* user_data) {
 static void qbutton_response(void *w_, void* user_data) {
     if(user_data !=NULL) {
         int response = *(int*)user_data;
-        if(response)
+        if(response <0)
             fprintf(stderr, "You select NO\n");
-        else
+        else if(response == 0)
             fprintf(stderr, "You select Yes\n");
+    }
+}
+
+static void cbutton_callback(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
+        open_message_dialog(w, SELECTION_BOX, "", "This is a selection question\n"
+            "Please make your choice\nWhat do you like most:", "Dogs\nCats\nFish\nBirds");
+    }
+    adj_set_value(w->adj,0.0);
+}
+
+static void cbutton_response(void *w_, void* user_data) {
+    if(user_data !=NULL) {
+        int response = *(int*)user_data;
+        if(response>0)
+            fprintf(stderr, "You select %i\n", response);
+    }
+}
+
+static void tbutton_callback(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
+        open_message_dialog(w, ENTRY_BOX, "", "This is a text entry\n"
+            "Please enter a name:", NULL);
+    }
+    adj_set_value(w->adj,0.0);
+}
+
+static void tbutton_response(void *w_, void* user_data) {
+    if(user_data !=NULL && strlen(*(const char**)user_data)) {
+        fprintf(stderr, "You enter %s\n", *(const char**)user_data);
+    } else {
+        fprintf(stderr, "You enter nothing!\n");
     }
 }
 
@@ -145,7 +175,7 @@ int main (int argc, char ** argv)
     XDialogExample xde;
 
     xde.filename = NULL;
-    xde.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 500, 150);
+    xde.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 660, 150);
     XStoreName(app.dpy, xde.w->widget, "Xputty Dialog examples");
     xde.w->label = "..";
     xde.w->parent_struct = &xde;
@@ -153,7 +183,7 @@ int main (int argc, char ** argv)
     xde.w->flags |= HAS_MEM;
     xde.w->func.mem_free_callback = mem_free;
 
-    xde.w_quit = add_button(xde.w, "Quit", 420, 80, 60, 60);
+    xde.w_quit = add_button(xde.w, "Quit", 580, 80, 60, 60);
     xde.w_quit->scale.gravity = CENTER;
     xde.w_quit->func.value_changed_callback = button_quit_callback;
 
@@ -175,9 +205,19 @@ int main (int argc, char ** argv)
     xde.messagebutton = add_image_toggle_button(xde.w, "", 340, 80, 60, 60);
     widget_get_png(xde.messagebutton, LDVAR(question_png));
     xde.messagebutton->func.value_changed_callback = qbutton_callback;
-    xde.w->func.user_callback = qbutton_response;
+    xde.messagebutton->func.user_callback = qbutton_response;
 
-    widget_show_all(xde.w);
+    xde.messagebutton = add_image_toggle_button(xde.w, "", 420, 80, 60, 60);
+    widget_get_png(xde.messagebutton, LDVAR(choice_png));
+    xde.messagebutton->func.value_changed_callback = cbutton_callback;
+    xde.messagebutton->func.user_callback = cbutton_response;
+
+    xde.messagebutton = add_image_toggle_button(xde.w, "", 500, 80, 60, 60);
+    widget_get_png(xde.messagebutton, LDVAR(message_png));
+    xde.messagebutton->func.value_changed_callback = tbutton_callback;
+    xde.messagebutton->func.user_callback = tbutton_response;
+
+   widget_show_all(xde.w);
 
     main_run(&app);
 

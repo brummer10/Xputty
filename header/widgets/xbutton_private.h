@@ -84,6 +84,15 @@ void _draw_ti_button(void *w_, void* user_data);
 
 void _draw_check_button(void *w_, void* user_data);
 
+/**
+ * @brief _draw_check_box        - internal draw the check box to the buffer
+ * @param *w_                    - void pointer to the Widget_t button
+ * @param *user_data             - void pointer to attached user_data
+ * @return void
+ */
+
+void _draw_check_box(void *w_, void* user_data);
+
 /*---------------------------------------------------------------------
 -----------------------------------------------------------------------	
                             button
