@@ -75,6 +75,38 @@ void widget_get_png(Widget_t *w, const unsigned char* name) {
     cairo_destroy(cri);
 }
 
+/**
+ * @brief widget_set_icon            - set icon image to Widget_t 
+ * @param *w                         - pointer to the Widget_t which should use the icon
+ * @param *image                     - pointer to the cairo_surface_t to use for the icon
+ * @return void
+ */
+
+void widget_set_icon(Widget_t *w, Pixmap *icon_, cairo_surface_t *image) {
+    int width = cairo_xlib_surface_get_width(image);
+    int height = cairo_xlib_surface_get_height(image);
+    XWindowAttributes atr;
+    XGetWindowAttributes (w->app->dpy, w->widget, &atr);
+    Pixmap icon = XCreatePixmap(w->app->dpy, w->widget, width, height, atr.depth);
+    cairo_surface_t *surface = cairo_xlib_surface_create (w->app->dpy, icon,  
+                  DefaultVisual(w->app->dpy, DefaultScreen(w->app->dpy)), width, height);
+    cairo_t *cri = cairo_create (surface);
+    cairo_set_source_rgb(cri,0.2, 0.2, 0.2);
+    cairo_paint(cri);
+    cairo_set_source_surface (cri, image,0,0);
+    cairo_paint(cri);
+    cairo_surface_destroy(surface);
+    cairo_destroy(cri);
+    icon_ = &icon;
+    
+    XWMHints* win_hints = XAllocWMHints();
+    assert(win_hints);
+    win_hints->flags = IconPixmapHint;
+    win_hints->icon_pixmap = icon;
+    XSetWMHints(w->app->dpy, w->widget, win_hints);
+    XFree(win_hints);
+}
+
 /*
 cairo_surface_t* iamge = cairo_image_surface_create_from_stream( LDVAR(image_name_png));
 */

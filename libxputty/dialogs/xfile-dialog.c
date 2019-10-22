@@ -237,6 +237,10 @@ void set_filter_callback(void *w_, void* user_data) {
 void fd_mem_free(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileDialog *file_dialog = w->parent_struct;
+    if(file_dialog->icon) {
+        XFreePixmap(w->app->dpy, (*file_dialog->icon));
+        file_dialog->icon = NULL;
+    }
     if(file_dialog->send_clear_func)
         file_dialog->parent->func.dialog_callback(file_dialog->parent,NULL);
     fp_free(file_dialog->fp);
@@ -251,6 +255,7 @@ Widget_t *open_file_dialog(Widget_t *w, const char *path, const char *filter) {
     fp_init(file_dialog->fp, strlen(path) ? path : "/");
     file_dialog->parent = w;
     file_dialog->send_clear_func = true;
+    file_dialog->icon = NULL;
 
     file_dialog->w = create_window(w->app, DefaultRootWindow(w->app->dpy), 0, 0, 660, 420);
     file_dialog->w->flags |= HAS_MEM;
@@ -258,6 +263,8 @@ Widget_t *open_file_dialog(Widget_t *w, const char *path, const char *filter) {
     XStoreName(w->app->dpy, file_dialog->w->widget, "File Selector");
     file_dialog->w->func.expose_callback = draw_window;
     file_dialog->w->func.mem_free_callback = fd_mem_free;
+    widget_get_png(file_dialog->w, LDVAR(directory_png));
+    widget_set_icon(file_dialog->w,file_dialog->icon,file_dialog->w->image);
 
     file_dialog->ct = add_combobox(file_dialog->w, "", 20, 40, 580, 30);
     file_dialog->ct->parent_struct = file_dialog;

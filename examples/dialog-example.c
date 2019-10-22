@@ -28,6 +28,7 @@ typedef struct {
     Widget_t *w_quit;
     Widget_t *filebutton;
     Widget_t *messagebutton;
+    Pixmap *icon;
     char *filename;
 } XDialogExample;
 
@@ -165,6 +166,10 @@ static void tbutton_response(void *w_, void* user_data) {
 void mem_free(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     XDialogExample *xde = w->parent_struct;
+    if(xde->icon) {
+        XFreePixmap(w->app->dpy, (*xde->icon));
+        xde->icon = NULL;
+    }
     free(xde->filename);
 }
 
@@ -175,8 +180,11 @@ int main (int argc, char ** argv)
     XDialogExample xde;
 
     xde.filename = NULL;
+    xde.icon = NULL;
     xde.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 660, 150);
     XStoreName(app.dpy, xde.w->widget, "Xputty Dialog examples");
+    widget_get_png(xde.w, LDVAR(xputty_logo_png));
+    widget_set_icon(xde.w,xde.icon,xde.w->image);
     xde.w->label = "..";
     xde.w->parent_struct = &xde;
     xde.w->func.expose_callback = draw_window;

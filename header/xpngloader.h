@@ -101,4 +101,13 @@ cairo_surface_t *cairo_image_surface_create_from_stream ( const unsigned char* n
 
 void widget_get_png(Widget_t *w, const unsigned char* name);
 
+/**
+ * @brief widget_set_icon            - set icon image to Widget_t 
+ * @param *w                         - pointer to the Widget_t which should use the icon
+ * @param *image                     - pointer to the cairo_surface_t to use for the icon
+ * @return void
+ */
+
+void widget_set_icon(Widget_t *w, Pixmap *icon_, cairo_surface_t *image);
+
 #endif //XPNGLOADER_H_

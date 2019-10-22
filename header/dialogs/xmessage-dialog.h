@@ -42,6 +42,7 @@ typedef struct {
     unsigned int height;
     unsigned int lin;
     Widget_t *text_entry;
+    Pixmap *icon;
     char **message;
     unsigned int sel;
     char **choices;

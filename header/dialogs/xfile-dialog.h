@@ -39,6 +39,7 @@ typedef struct {
     Widget_t *w_hidden;
     Widget_t *sel_dir;
     Widget_t *set_filter;
+    Pixmap *icon;
     FilePicker *fp;
     bool send_clear_func;
 } FileDialog;
