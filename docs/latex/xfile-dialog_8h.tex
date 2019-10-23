@@ -1,0 +1,79 @@
+\hypertarget{xfile-dialog_8h}{}\section{xfile-\/dialog.h File Reference}
+\label{xfile-dialog_8h}\index{xfile-\/dialog.\+h@{xfile-\/dialog.\+h}}
+{\ttfamily \#include \char`\"{}xwidgets.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xdgmime.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xasprintf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xfilepicker.\+h\char`\"{}}\newline
+Include dependency graph for xfile-\/dialog.h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xfile-dialog_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{xfile-dialog_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structFileDialog}{File\+Dialog}
+\item 
+struct \hyperlink{structFileButton}{File\+Button}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{xfile-dialog_8h_a31944331b86f03e65b4333fbab0ccc6f}{X\+F\+I\+L\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xfile-dialog_8h_a50f41466d35761802fb415011006c6e6}{open\+\_\+file\+\_\+dialog} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, const char $\ast$path, const char $\ast$filter)
+\begin{DoxyCompactList}\small\item\em open\+\_\+file\+\_\+dialog -\/ open a non blocking dialog window, to select a file. The path to open the file-\/selector could be N\+U\+LL It will open then in \$\+H\+O\+ME. The filter to use could be N\+U\+LL, then the file-\/selector will show all files. \end{DoxyCompactList}\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xfile-dialog_8h_aa38720181c2a046546d345b60eb6b7b0}{add\+\_\+file\+\_\+button} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, int x, int y, int width, int height, const char $\ast$path, const char $\ast$filter)
+\begin{DoxyCompactList}\small\item\em add\+\_\+file\+\_\+button -\/ add a pre-\/defined button which will pop-\/up a file dialog when pressed. path and filter will e hand over to the file selector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{xfile-dialog_8h_a31944331b86f03e65b4333fbab0ccc6f}\label{xfile-dialog_8h_a31944331b86f03e65b4333fbab0ccc6f}} 
+\index{xfile-\/dialog.\+h@{xfile-\/dialog.\+h}!X\+F\+I\+L\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+@{X\+F\+I\+L\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+}}
+\index{X\+F\+I\+L\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+@{X\+F\+I\+L\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+}!xfile-\/dialog.\+h@{xfile-\/dialog.\+h}}
+\subsubsection{\texorpdfstring{X\+F\+I\+L\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+}{XFILE\_DIALOG\_H\_}}
+{\footnotesize\ttfamily \#define X\+F\+I\+L\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xfile-dialog_8h_aa38720181c2a046546d345b60eb6b7b0}\label{xfile-dialog_8h_aa38720181c2a046546d345b60eb6b7b0}} 
+\index{xfile-\/dialog.\+h@{xfile-\/dialog.\+h}!add\+\_\+file\+\_\+button@{add\+\_\+file\+\_\+button}}
+\index{add\+\_\+file\+\_\+button@{add\+\_\+file\+\_\+button}!xfile-\/dialog.\+h@{xfile-\/dialog.\+h}}
+\subsubsection{\texorpdfstring{add\+\_\+file\+\_\+button()}{add\_file\_button()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ add\+\_\+file\+\_\+button (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{const char $\ast$}]{path,  }\item[{const char $\ast$}]{filter }\end{DoxyParamCaption})}
+
+
+
+add\+\_\+file\+\_\+button -\/ add a pre-\/defined button which will pop-\/up a file dialog when pressed. path and filter will e hand over to the file selector. 
+
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xfile-dialog_8h_a50f41466d35761802fb415011006c6e6}\label{xfile-dialog_8h_a50f41466d35761802fb415011006c6e6}} 
+\index{xfile-\/dialog.\+h@{xfile-\/dialog.\+h}!open\+\_\+file\+\_\+dialog@{open\+\_\+file\+\_\+dialog}}
+\index{open\+\_\+file\+\_\+dialog@{open\+\_\+file\+\_\+dialog}!xfile-\/dialog.\+h@{xfile-\/dialog.\+h}}
+\subsubsection{\texorpdfstring{open\+\_\+file\+\_\+dialog()}{open\_file\_dialog()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ open\+\_\+file\+\_\+dialog (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{const char $\ast$}]{path,  }\item[{const char $\ast$}]{filter }\end{DoxyParamCaption})}
+
+
+
+open\+\_\+file\+\_\+dialog -\/ open a non blocking dialog window, to select a file. The path to open the file-\/selector could be N\+U\+LL It will open then in \$\+H\+O\+ME. The filter to use could be N\+U\+LL, then the file-\/selector will show all files. 
+
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
+\end{DoxyReturn}

@@ -101,6 +101,27 @@ void _draw_image_button(Widget_t *w, int width_t, int height_t, float offset) {
     cairo_rectangle(w->crb,0, 0, height, height);
     cairo_fill(w->crb);
     cairo_scale(w->crb, x1,y1);
+}
+
+/**
+ * @brief _draw_image_button_with_label  - internal draw the knob from image
+ * to the buffer
+ * @param *w                             - pointer to the Widget_t knob
+ * @return void
+ */
+
+void _draw_image_button_with_label(Widget_t *w, int width_t, int height_t) {
+    int width = cairo_xlib_surface_get_width(w->image);
+    int height = cairo_xlib_surface_get_height(w->image);
+    double x = (double)width_t/(double)height;
+    double y = (double)height/(double)width_t;
+    double buttonstate = adj_get_state(w->adj);
+    int findex = (int)(((width/height)-1) * buttonstate);
+    cairo_scale(w->crb, x,x);
+    cairo_set_source_surface (w->crb, w->image, -height*findex, 0);
+    cairo_rectangle(w->crb,0, 0, height, height);
+    cairo_fill(w->crb);
+    cairo_scale(w->crb, y,y);
     cairo_text_extents_t extents;
     if(w->state==0) {
         use_fg_color_scheme(w, NORMAL_);
@@ -184,7 +205,11 @@ void _draw_button(void *w_, void* user_data) {
     int height = attrs.height-2;
     if (attrs.map_state != IsViewable) return;
     if (w->image) {
-        _draw_image_button(w, width, height,0.0);
+        if(strlen(w->label)) {
+            _draw_image_button_with_label(w, width, height);
+        } else {
+            _draw_image_button(w, width, height,0.0);
+        }
     } else {
         _draw_button_base(w, width, height);
 

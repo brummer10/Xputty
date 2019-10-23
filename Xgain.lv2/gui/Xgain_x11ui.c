@@ -43,10 +43,8 @@ typedef struct {
 // draw the window
 static void draw_window(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    widget_set_scale(w);
-    cairo_set_source_surface (w->crb, w->image,0,0);
+    set_pattern(w,&w->app->color_scheme->selected,&w->app->color_scheme->normal,BACKGROUND_);
     cairo_paint (w->crb);
-    widget_reset_scale(w);
 }
 
 // if controller value changed send notify to host
@@ -94,8 +92,6 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     main_init(&ui->main);
     // create the toplevel Window on the parentXwindow provided by the host
     ui->win = create_window(&ui->main, (Window)ui->parentXwindow, 0, 0, 230, 200);
-    // setup a background image to use on the toplevel window
-    widget_get_png(ui->win, LDVAR(pedal_png));
     // connect the expose func
     ui->win->func.expose_callback = draw_window;
     // create a toggle button

@@ -1,0 +1,137 @@
+\hypertarget{xlistview_8c}{}\section{xlistview.\+c File Reference}
+\label{xlistview_8c}\index{xlistview.\+c@{xlistview.\+c}}
+{\ttfamily \#include \char`\"{}xlistview.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xlistview\+\_\+private.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xtooltip.\+h\char`\"{}}\newline
+Include dependency graph for xlistview.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xlistview_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{xlistview_8c_a8de19388cedfa4b2c3bc08c0c1b09d10}{listview\+\_\+set\+\_\+active\+\_\+entry} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, int active)
+\begin{DoxyCompactList}\small\item\em listview\+\_\+set\+\_\+active\+\_\+entry -\/ set the active listview entry \end{DoxyCompactList}\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xlistview_8c_a27946247693488a76e71ead5f13e9f1a}{create\+\_\+listview\+\_\+viewport} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, int elem, int width, int height)
+\begin{DoxyCompactList}\small\item\em create\+\_\+listview\+\_\+viewport -\/ create a viewport on a listview to a \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xlistview_8c_a6a89b3685d44e0e82b790c0ec17def9d}{add\+\_\+listview} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, const char $\ast$label, int x, int y, int width, int height)
+\begin{DoxyCompactList}\small\item\em add\+\_\+listview -\/ add a listview to a \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xlistview_8c_aa2e669714c83ddafafc63487729ba7ab}{listview\+\_\+mem\+\_\+free} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em listview\+\_\+mem\+\_\+free -\/ release additional used memory when destroy the \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xlistview_8c_ae8ee00086a7c6467c47e6dadd0afbcd5}{listview\+\_\+set\+\_\+list} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$listview, char $\ast$$\ast$list, int list\+\_\+size)
+\begin{DoxyCompactList}\small\item\em listview\+\_\+set\+\_\+list -\/ set a list to a listview \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xlistview_8c_a6a89b3685d44e0e82b790c0ec17def9d}\label{xlistview_8c_a6a89b3685d44e0e82b790c0ec17def9d}} 
+\index{xlistview.\+c@{xlistview.\+c}!add\+\_\+listview@{add\+\_\+listview}}
+\index{add\+\_\+listview@{add\+\_\+listview}!xlistview.\+c@{xlistview.\+c}}
+\subsubsection{\texorpdfstring{add\+\_\+listview()}{add\_listview()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ add\+\_\+listview (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{const char $\ast$}]{label,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+add\+\_\+listview -\/ add a listview to a \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+add\+\_\+label -\/ add a listview to a \hyperlink{structWidget__t}{Widget\+\_\+t}
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$parent} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} request the listview \\
+\hline
+{\em $\ast$label} & -\/ Label to show on the listview (not used) \\
+\hline
+{\em x,y,width,height} & -\/ the position/geometry to create the listview \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} label struct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xlistview_8c_a27946247693488a76e71ead5f13e9f1a}\label{xlistview_8c_a27946247693488a76e71ead5f13e9f1a}} 
+\index{xlistview.\+c@{xlistview.\+c}!create\+\_\+listview\+\_\+viewport@{create\+\_\+listview\+\_\+viewport}}
+\index{create\+\_\+listview\+\_\+viewport@{create\+\_\+listview\+\_\+viewport}!xlistview.\+c@{xlistview.\+c}}
+\subsubsection{\texorpdfstring{create\+\_\+listview\+\_\+viewport()}{create\_listview\_viewport()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ create\+\_\+listview\+\_\+viewport (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{int}]{elem,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+create\+\_\+listview\+\_\+viewport -\/ create a viewport on a listview to a \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$parent} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} request the viewport \\
+\hline
+{\em width} & -\/ define the width of the viewport \\
+\hline
+{\em height} & -\/ define the height of the viewport \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} viewport 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xlistview_8c_aa2e669714c83ddafafc63487729ba7ab}\label{xlistview_8c_aa2e669714c83ddafafc63487729ba7ab}} 
+\index{xlistview.\+c@{xlistview.\+c}!listview\+\_\+mem\+\_\+free@{listview\+\_\+mem\+\_\+free}}
+\index{listview\+\_\+mem\+\_\+free@{listview\+\_\+mem\+\_\+free}!xlistview.\+c@{xlistview.\+c}}
+\subsubsection{\texorpdfstring{listview\+\_\+mem\+\_\+free()}{listview\_mem\_free()}}
+{\footnotesize\ttfamily void listview\+\_\+mem\+\_\+free (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+listview\+\_\+mem\+\_\+free -\/ release additional used memory when destroy the \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xlistview_8c_a8de19388cedfa4b2c3bc08c0c1b09d10}\label{xlistview_8c_a8de19388cedfa4b2c3bc08c0c1b09d10}} 
+\index{xlistview.\+c@{xlistview.\+c}!listview\+\_\+set\+\_\+active\+\_\+entry@{listview\+\_\+set\+\_\+active\+\_\+entry}}
+\index{listview\+\_\+set\+\_\+active\+\_\+entry@{listview\+\_\+set\+\_\+active\+\_\+entry}!xlistview.\+c@{xlistview.\+c}}
+\subsubsection{\texorpdfstring{listview\+\_\+set\+\_\+active\+\_\+entry()}{listview\_set\_active\_entry()}}
+{\footnotesize\ttfamily void listview\+\_\+set\+\_\+active\+\_\+entry (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{int}]{active }\end{DoxyParamCaption})}
+
+
+
+listview\+\_\+set\+\_\+active\+\_\+entry -\/ set the active listview entry 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} listview \\
+\hline
+{\em active} & -\/ the active entry (int) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xlistview_8c_ae8ee00086a7c6467c47e6dadd0afbcd5}\label{xlistview_8c_ae8ee00086a7c6467c47e6dadd0afbcd5}} 
+\index{xlistview.\+c@{xlistview.\+c}!listview\+\_\+set\+\_\+list@{listview\+\_\+set\+\_\+list}}
+\index{listview\+\_\+set\+\_\+list@{listview\+\_\+set\+\_\+list}!xlistview.\+c@{xlistview.\+c}}
+\subsubsection{\texorpdfstring{listview\+\_\+set\+\_\+list()}{listview\_set\_list()}}
+{\footnotesize\ttfamily void listview\+\_\+set\+\_\+list (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{listview,  }\item[{char $\ast$$\ast$}]{list,  }\item[{int}]{list\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+listview\+\_\+set\+\_\+list -\/ set a list to a listview \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$listview} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} listview which should show the list \\
+\hline
+{\em $\ast$$\ast$list} & -\/ pointer to the list \\
+\hline
+{\em list\+\_\+size} & -\/ how many items contain the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

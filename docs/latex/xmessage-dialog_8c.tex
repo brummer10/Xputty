@@ -1,0 +1,172 @@
+\hypertarget{xmessage-dialog_8c}{}\section{xmessage-\/dialog.c File Reference}
+\label{xmessage-dialog_8c}\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+{\ttfamily \#include \char`\"{}xmessage-\/dialog.\+h\char`\"{}}\newline
+Include dependency graph for xmessage-\/dialog.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xmessage-dialog_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{xmessage-dialog_8c_a13791f31a218820c14db8b2280318e3b}{draw\+\_\+message\+\_\+label} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, int width, int height)
+\item 
+void \hyperlink{xmessage-dialog_8c_a16429962fe3b32e5478777af8e98bc78}{draw\+\_\+message\+\_\+window} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xmessage-dialog_8c_a238c62545e95ade5e387b20b91d8401f}{draw\+\_\+entry} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xmessage-dialog_8c_afe4c5cef3e963dd8e5811a545528d196}{entry\+\_\+add\+\_\+text} (void $\ast$w\+\_\+, void $\ast$label\+\_\+)
+\item 
+void \hyperlink{xmessage-dialog_8c_a67a62d74335197e6e97d67e840922038}{entry\+\_\+clip} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\item 
+void \hyperlink{xmessage-dialog_8c_acfeae33047e0af609881f04cda77ea09}{message\+\_\+okay\+\_\+callback} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xmessage-dialog_8c_a484a58cd0e5f4cf1ab8691930be42048}{message\+\_\+no\+\_\+callback} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xmessage-dialog_8c_ae2414db18fe2e55ea84644a15d1cd8ef}{radio\+\_\+box\+\_\+set\+\_\+active} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\item 
+void \hyperlink{xmessage-dialog_8c_a8df87e5f315fc3bea96542839aa6c083}{radio\+\_\+box\+\_\+button\+\_\+pressed} (void $\ast$w\+\_\+, void $\ast$button\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xmessage-dialog_8c_a6682a31112bb51c4b9e0f151fddcc280}{create\+\_\+checkboxes} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\item 
+void \hyperlink{xmessage-dialog_8c_a57353ef900cad644662db3f519dcbd86}{entry\+\_\+get\+\_\+text} (void $\ast$w\+\_\+, void $\ast$key\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xmessage-dialog_8c_a110c6755de1655565bc5d52f262e082d}{create\+\_\+entry\+\_\+box} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\item 
+void \hyperlink{xmessage-dialog_8c_a77d321e078024c048fd3f96ace5f85fa}{check\+\_\+for\+\_\+message} (\hyperlink{structMessageBox}{Message\+Box} $\ast$mb, const char $\ast$message)
+\item 
+void \hyperlink{xmessage-dialog_8c_ac7c2f9d8b2261cb57aa5ed09c79bb3b3}{check\+\_\+for\+\_\+choices} (\hyperlink{structMessageBox}{Message\+Box} $\ast$mb, const char $\ast$choices)
+\item 
+void \hyperlink{xmessage-dialog_8c_a5e65d7d3b1a5cecf8e1b63e4658fc74f}{check\+\_\+for\+\_\+style} (\hyperlink{structMessageBox}{Message\+Box} $\ast$mb, int style)
+\item 
+void \hyperlink{xmessage-dialog_8c_ab11fa13d22a3d275da2d78458fef8696}{mg\+\_\+mem\+\_\+free} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xmessage-dialog_8c_a41a7ea2ce1732b9afbd1923f68b1d356}{open\+\_\+message\+\_\+dialog} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, int style, const char $\ast$title, const char $\ast$message, const char $\ast$choices)
+\begin{DoxyCompactList}\small\item\em open\+\_\+message\+\_\+dialog -\/ open a non blocking dialog window, lines in message should be set by the newline character \char`\"{}\textbackslash{}n\char`\"{} choices for the S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX should be set as well with the newline character. message and/or choices could be N\+U\+LL when not needed. To fetch the response of a dialog, connect to the dialog\+\_\+callback supported \char`\"{}styles\char`\"{} been ~\newline
+I\+N\+F\+O\+\_\+\+B\+OX -\/ a message dialog display a info text ~\newline
+W\+A\+R\+N\+I\+N\+G\+\_\+\+B\+OX -\/ a message dialog display a warning ~\newline
+E\+R\+R\+O\+R\+\_\+\+B\+OX -\/ a message dialog display a error message ~\newline
+Q\+U\+E\+S\+T\+I\+O\+N\+\_\+\+B\+OX -\/ a no/yes dialog message ~\newline
+S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX -\/ a dialog to select between multiple options ~\newline
+E\+N\+T\+R\+Y\+\_\+\+B\+OX -\/ a dialog to get text input \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xmessage-dialog_8c_ac7c2f9d8b2261cb57aa5ed09c79bb3b3}\label{xmessage-dialog_8c_ac7c2f9d8b2261cb57aa5ed09c79bb3b3}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!check\+\_\+for\+\_\+choices@{check\+\_\+for\+\_\+choices}}
+\index{check\+\_\+for\+\_\+choices@{check\+\_\+for\+\_\+choices}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{check\+\_\+for\+\_\+choices()}{check\_for\_choices()}}
+{\footnotesize\ttfamily void check\+\_\+for\+\_\+choices (\begin{DoxyParamCaption}\item[{\hyperlink{structMessageBox}{Message\+Box} $\ast$}]{mb,  }\item[{const char $\ast$}]{choices }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_a77d321e078024c048fd3f96ace5f85fa}\label{xmessage-dialog_8c_a77d321e078024c048fd3f96ace5f85fa}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!check\+\_\+for\+\_\+message@{check\+\_\+for\+\_\+message}}
+\index{check\+\_\+for\+\_\+message@{check\+\_\+for\+\_\+message}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{check\+\_\+for\+\_\+message()}{check\_for\_message()}}
+{\footnotesize\ttfamily void check\+\_\+for\+\_\+message (\begin{DoxyParamCaption}\item[{\hyperlink{structMessageBox}{Message\+Box} $\ast$}]{mb,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_a5e65d7d3b1a5cecf8e1b63e4658fc74f}\label{xmessage-dialog_8c_a5e65d7d3b1a5cecf8e1b63e4658fc74f}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!check\+\_\+for\+\_\+style@{check\+\_\+for\+\_\+style}}
+\index{check\+\_\+for\+\_\+style@{check\+\_\+for\+\_\+style}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{check\+\_\+for\+\_\+style()}{check\_for\_style()}}
+{\footnotesize\ttfamily void check\+\_\+for\+\_\+style (\begin{DoxyParamCaption}\item[{\hyperlink{structMessageBox}{Message\+Box} $\ast$}]{mb,  }\item[{int}]{style }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_a6682a31112bb51c4b9e0f151fddcc280}\label{xmessage-dialog_8c_a6682a31112bb51c4b9e0f151fddcc280}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!create\+\_\+checkboxes@{create\+\_\+checkboxes}}
+\index{create\+\_\+checkboxes@{create\+\_\+checkboxes}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{create\+\_\+checkboxes()}{create\_checkboxes()}}
+{\footnotesize\ttfamily void create\+\_\+checkboxes (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_a110c6755de1655565bc5d52f262e082d}\label{xmessage-dialog_8c_a110c6755de1655565bc5d52f262e082d}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!create\+\_\+entry\+\_\+box@{create\+\_\+entry\+\_\+box}}
+\index{create\+\_\+entry\+\_\+box@{create\+\_\+entry\+\_\+box}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{create\+\_\+entry\+\_\+box()}{create\_entry\_box()}}
+{\footnotesize\ttfamily void create\+\_\+entry\+\_\+box (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_a238c62545e95ade5e387b20b91d8401f}\label{xmessage-dialog_8c_a238c62545e95ade5e387b20b91d8401f}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!draw\+\_\+entry@{draw\+\_\+entry}}
+\index{draw\+\_\+entry@{draw\+\_\+entry}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{draw\+\_\+entry()}{draw\_entry()}}
+{\footnotesize\ttfamily void draw\+\_\+entry (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_a13791f31a218820c14db8b2280318e3b}\label{xmessage-dialog_8c_a13791f31a218820c14db8b2280318e3b}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!draw\+\_\+message\+\_\+label@{draw\+\_\+message\+\_\+label}}
+\index{draw\+\_\+message\+\_\+label@{draw\+\_\+message\+\_\+label}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{draw\+\_\+message\+\_\+label()}{draw\_message\_label()}}
+{\footnotesize\ttfamily void draw\+\_\+message\+\_\+label (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_a16429962fe3b32e5478777af8e98bc78}\label{xmessage-dialog_8c_a16429962fe3b32e5478777af8e98bc78}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!draw\+\_\+message\+\_\+window@{draw\+\_\+message\+\_\+window}}
+\index{draw\+\_\+message\+\_\+window@{draw\+\_\+message\+\_\+window}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{draw\+\_\+message\+\_\+window()}{draw\_message\_window()}}
+{\footnotesize\ttfamily void draw\+\_\+message\+\_\+window (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_afe4c5cef3e963dd8e5811a545528d196}\label{xmessage-dialog_8c_afe4c5cef3e963dd8e5811a545528d196}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!entry\+\_\+add\+\_\+text@{entry\+\_\+add\+\_\+text}}
+\index{entry\+\_\+add\+\_\+text@{entry\+\_\+add\+\_\+text}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{entry\+\_\+add\+\_\+text()}{entry\_add\_text()}}
+{\footnotesize\ttfamily void entry\+\_\+add\+\_\+text (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{label\+\_\+ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_a67a62d74335197e6e97d67e840922038}\label{xmessage-dialog_8c_a67a62d74335197e6e97d67e840922038}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!entry\+\_\+clip@{entry\+\_\+clip}}
+\index{entry\+\_\+clip@{entry\+\_\+clip}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{entry\+\_\+clip()}{entry\_clip()}}
+{\footnotesize\ttfamily void entry\+\_\+clip (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_a57353ef900cad644662db3f519dcbd86}\label{xmessage-dialog_8c_a57353ef900cad644662db3f519dcbd86}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!entry\+\_\+get\+\_\+text@{entry\+\_\+get\+\_\+text}}
+\index{entry\+\_\+get\+\_\+text@{entry\+\_\+get\+\_\+text}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{entry\+\_\+get\+\_\+text()}{entry\_get\_text()}}
+{\footnotesize\ttfamily void entry\+\_\+get\+\_\+text (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{key\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_a484a58cd0e5f4cf1ab8691930be42048}\label{xmessage-dialog_8c_a484a58cd0e5f4cf1ab8691930be42048}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!message\+\_\+no\+\_\+callback@{message\+\_\+no\+\_\+callback}}
+\index{message\+\_\+no\+\_\+callback@{message\+\_\+no\+\_\+callback}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{message\+\_\+no\+\_\+callback()}{message\_no\_callback()}}
+{\footnotesize\ttfamily void message\+\_\+no\+\_\+callback (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_acfeae33047e0af609881f04cda77ea09}\label{xmessage-dialog_8c_acfeae33047e0af609881f04cda77ea09}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!message\+\_\+okay\+\_\+callback@{message\+\_\+okay\+\_\+callback}}
+\index{message\+\_\+okay\+\_\+callback@{message\+\_\+okay\+\_\+callback}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{message\+\_\+okay\+\_\+callback()}{message\_okay\_callback()}}
+{\footnotesize\ttfamily void message\+\_\+okay\+\_\+callback (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_ab11fa13d22a3d275da2d78458fef8696}\label{xmessage-dialog_8c_ab11fa13d22a3d275da2d78458fef8696}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!mg\+\_\+mem\+\_\+free@{mg\+\_\+mem\+\_\+free}}
+\index{mg\+\_\+mem\+\_\+free@{mg\+\_\+mem\+\_\+free}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{mg\+\_\+mem\+\_\+free()}{mg\_mem\_free()}}
+{\footnotesize\ttfamily void mg\+\_\+mem\+\_\+free (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_a41a7ea2ce1732b9afbd1923f68b1d356}\label{xmessage-dialog_8c_a41a7ea2ce1732b9afbd1923f68b1d356}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!open\+\_\+message\+\_\+dialog@{open\+\_\+message\+\_\+dialog}}
+\index{open\+\_\+message\+\_\+dialog@{open\+\_\+message\+\_\+dialog}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{open\+\_\+message\+\_\+dialog()}{open\_message\_dialog()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ open\+\_\+message\+\_\+dialog (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{int}]{style,  }\item[{const char $\ast$}]{title,  }\item[{const char $\ast$}]{message,  }\item[{const char $\ast$}]{choices }\end{DoxyParamCaption})}
+
+
+
+open\+\_\+message\+\_\+dialog -\/ open a non blocking dialog window, lines in message should be set by the newline character \char`\"{}\textbackslash{}n\char`\"{} choices for the S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX should be set as well with the newline character. message and/or choices could be N\+U\+LL when not needed. To fetch the response of a dialog, connect to the dialog\+\_\+callback supported \char`\"{}styles\char`\"{} been ~\newline
+I\+N\+F\+O\+\_\+\+B\+OX -\/ a message dialog display a info text ~\newline
+W\+A\+R\+N\+I\+N\+G\+\_\+\+B\+OX -\/ a message dialog display a warning ~\newline
+E\+R\+R\+O\+R\+\_\+\+B\+OX -\/ a message dialog display a error message ~\newline
+Q\+U\+E\+S\+T\+I\+O\+N\+\_\+\+B\+OX -\/ a no/yes dialog message ~\newline
+S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX -\/ a dialog to select between multiple options ~\newline
+E\+N\+T\+R\+Y\+\_\+\+B\+OX -\/ a dialog to get text input 
+
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xmessage-dialog_8c_a8df87e5f315fc3bea96542839aa6c083}\label{xmessage-dialog_8c_a8df87e5f315fc3bea96542839aa6c083}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!radio\+\_\+box\+\_\+button\+\_\+pressed@{radio\+\_\+box\+\_\+button\+\_\+pressed}}
+\index{radio\+\_\+box\+\_\+button\+\_\+pressed@{radio\+\_\+box\+\_\+button\+\_\+pressed}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{radio\+\_\+box\+\_\+button\+\_\+pressed()}{radio\_box\_button\_pressed()}}
+{\footnotesize\ttfamily void radio\+\_\+box\+\_\+button\+\_\+pressed (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{button\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xmessage-dialog_8c_ae2414db18fe2e55ea84644a15d1cd8ef}\label{xmessage-dialog_8c_ae2414db18fe2e55ea84644a15d1cd8ef}} 
+\index{xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}!radio\+\_\+box\+\_\+set\+\_\+active@{radio\+\_\+box\+\_\+set\+\_\+active}}
+\index{radio\+\_\+box\+\_\+set\+\_\+active@{radio\+\_\+box\+\_\+set\+\_\+active}!xmessage-\/dialog.\+c@{xmessage-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{radio\+\_\+box\+\_\+set\+\_\+active()}{radio\_box\_set\_active()}}
+{\footnotesize\ttfamily void radio\+\_\+box\+\_\+set\+\_\+active (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+

@@ -1,0 +1,117 @@
+\hypertarget{xmessage-dialog_8h}{}\section{xmessage-\/dialog.h File Reference}
+\label{xmessage-dialog_8h}\index{xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}}
+{\ttfamily \#include \char`\"{}xwidgets.\+h\char`\"{}}\newline
+Include dependency graph for xmessage-\/dialog.h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xmessage-dialog_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{xmessage-dialog_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structMessageBox}{Message\+Box}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{xmessage-dialog_8h_ae6a5fb28cf95e12496905a44e040ce2f}{X\+M\+E\+S\+S\+A\+G\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\hyperlink{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7affbd3707c912e33dec5b6d6d52de3889}{I\+N\+F\+O\+\_\+\+B\+OX}, 
+\hyperlink{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7a1b24044e8b852f37534374fc221b0b94}{W\+A\+R\+N\+I\+N\+G\+\_\+\+B\+OX}, 
+\hyperlink{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7aba33b2d56409150fdd0b80e849b235d7}{E\+R\+R\+O\+R\+\_\+\+B\+OX}, 
+\hyperlink{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7a0434869769df99b596e3c8bd2fc669ab}{Q\+U\+E\+S\+T\+I\+O\+N\+\_\+\+B\+OX}, 
+\newline
+\hyperlink{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7a9b0235899180ac5e5c736b97b2f6baf4}{S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX}, 
+\hyperlink{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7a8dde11ddd04976e94bff0bbe38851983}{E\+N\+T\+R\+Y\+\_\+\+B\+OX}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xmessage-dialog_8h_a41a7ea2ce1732b9afbd1923f68b1d356}{open\+\_\+message\+\_\+dialog} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, int style, const char $\ast$title, const char $\ast$message, const char $\ast$choices)
+\begin{DoxyCompactList}\small\item\em open\+\_\+message\+\_\+dialog -\/ open a non blocking dialog window, lines in message should be set by the newline character \char`\"{}\textbackslash{}n\char`\"{} choices for the S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX should be set as well with the newline character. message and/or choices could be N\+U\+LL when not needed. To fetch the response of a dialog, connect to the dialog\+\_\+callback supported \char`\"{}styles\char`\"{} been ~\newline
+I\+N\+F\+O\+\_\+\+B\+OX -\/ a message dialog display a info text ~\newline
+W\+A\+R\+N\+I\+N\+G\+\_\+\+B\+OX -\/ a message dialog display a warning ~\newline
+E\+R\+R\+O\+R\+\_\+\+B\+OX -\/ a message dialog display a error message ~\newline
+Q\+U\+E\+S\+T\+I\+O\+N\+\_\+\+B\+OX -\/ a no/yes dialog message ~\newline
+S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX -\/ a dialog to select between multiple options ~\newline
+E\+N\+T\+R\+Y\+\_\+\+B\+OX -\/ a dialog to get text input \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{xmessage-dialog_8h_ae6a5fb28cf95e12496905a44e040ce2f}\label{xmessage-dialog_8h_ae6a5fb28cf95e12496905a44e040ce2f}} 
+\index{xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}!X\+M\+E\+S\+S\+A\+G\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+@{X\+M\+E\+S\+S\+A\+G\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+}}
+\index{X\+M\+E\+S\+S\+A\+G\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+@{X\+M\+E\+S\+S\+A\+G\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+}!xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}}
+\subsubsection{\texorpdfstring{X\+M\+E\+S\+S\+A\+G\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+}{XMESSAGE\_DIALOG\_H\_}}
+{\footnotesize\ttfamily \#define X\+M\+E\+S\+S\+A\+G\+E\+\_\+\+D\+I\+A\+L\+O\+G\+\_\+\+H\+\_\+}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7}\label{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+F\+O\+\_\+\+B\+OX@{I\+N\+F\+O\+\_\+\+B\+OX}!xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}}\index{xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}!I\+N\+F\+O\+\_\+\+B\+OX@{I\+N\+F\+O\+\_\+\+B\+OX}}}\mbox{\Hypertarget{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7affbd3707c912e33dec5b6d6d52de3889}\label{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7affbd3707c912e33dec5b6d6d52de3889}} 
+I\+N\+F\+O\+\_\+\+B\+OX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+R\+N\+I\+N\+G\+\_\+\+B\+OX@{W\+A\+R\+N\+I\+N\+G\+\_\+\+B\+OX}!xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}}\index{xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}!W\+A\+R\+N\+I\+N\+G\+\_\+\+B\+OX@{W\+A\+R\+N\+I\+N\+G\+\_\+\+B\+OX}}}\mbox{\Hypertarget{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7a1b24044e8b852f37534374fc221b0b94}\label{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7a1b24044e8b852f37534374fc221b0b94}} 
+W\+A\+R\+N\+I\+N\+G\+\_\+\+B\+OX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+R\+R\+O\+R\+\_\+\+B\+OX@{E\+R\+R\+O\+R\+\_\+\+B\+OX}!xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}}\index{xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}!E\+R\+R\+O\+R\+\_\+\+B\+OX@{E\+R\+R\+O\+R\+\_\+\+B\+OX}}}\mbox{\Hypertarget{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7aba33b2d56409150fdd0b80e849b235d7}\label{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7aba33b2d56409150fdd0b80e849b235d7}} 
+E\+R\+R\+O\+R\+\_\+\+B\+OX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Q\+U\+E\+S\+T\+I\+O\+N\+\_\+\+B\+OX@{Q\+U\+E\+S\+T\+I\+O\+N\+\_\+\+B\+OX}!xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}}\index{xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}!Q\+U\+E\+S\+T\+I\+O\+N\+\_\+\+B\+OX@{Q\+U\+E\+S\+T\+I\+O\+N\+\_\+\+B\+OX}}}\mbox{\Hypertarget{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7a0434869769df99b596e3c8bd2fc669ab}\label{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7a0434869769df99b596e3c8bd2fc669ab}} 
+Q\+U\+E\+S\+T\+I\+O\+N\+\_\+\+B\+OX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX@{S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX}!xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}}\index{xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}!S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX@{S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX}}}\mbox{\Hypertarget{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7a9b0235899180ac5e5c736b97b2f6baf4}\label{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7a9b0235899180ac5e5c736b97b2f6baf4}} 
+S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+N\+T\+R\+Y\+\_\+\+B\+OX@{E\+N\+T\+R\+Y\+\_\+\+B\+OX}!xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}}\index{xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}!E\+N\+T\+R\+Y\+\_\+\+B\+OX@{E\+N\+T\+R\+Y\+\_\+\+B\+OX}}}\mbox{\Hypertarget{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7a8dde11ddd04976e94bff0bbe38851983}\label{xmessage-dialog_8h_adf764cbdea00d65edcd07bb9953ad2b7a8dde11ddd04976e94bff0bbe38851983}} 
+E\+N\+T\+R\+Y\+\_\+\+B\+OX&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xmessage-dialog_8h_a41a7ea2ce1732b9afbd1923f68b1d356}\label{xmessage-dialog_8h_a41a7ea2ce1732b9afbd1923f68b1d356}} 
+\index{xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}!open\+\_\+message\+\_\+dialog@{open\+\_\+message\+\_\+dialog}}
+\index{open\+\_\+message\+\_\+dialog@{open\+\_\+message\+\_\+dialog}!xmessage-\/dialog.\+h@{xmessage-\/dialog.\+h}}
+\subsubsection{\texorpdfstring{open\+\_\+message\+\_\+dialog()}{open\_message\_dialog()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ open\+\_\+message\+\_\+dialog (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{int}]{style,  }\item[{const char $\ast$}]{title,  }\item[{const char $\ast$}]{message,  }\item[{const char $\ast$}]{choices }\end{DoxyParamCaption})}
+
+
+
+open\+\_\+message\+\_\+dialog -\/ open a non blocking dialog window, lines in message should be set by the newline character \char`\"{}\textbackslash{}n\char`\"{} choices for the S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX should be set as well with the newline character. message and/or choices could be N\+U\+LL when not needed. To fetch the response of a dialog, connect to the dialog\+\_\+callback supported \char`\"{}styles\char`\"{} been ~\newline
+I\+N\+F\+O\+\_\+\+B\+OX -\/ a message dialog display a info text ~\newline
+W\+A\+R\+N\+I\+N\+G\+\_\+\+B\+OX -\/ a message dialog display a warning ~\newline
+E\+R\+R\+O\+R\+\_\+\+B\+OX -\/ a message dialog display a error message ~\newline
+Q\+U\+E\+S\+T\+I\+O\+N\+\_\+\+B\+OX -\/ a no/yes dialog message ~\newline
+S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+B\+OX -\/ a dialog to select between multiple options ~\newline
+E\+N\+T\+R\+Y\+\_\+\+B\+OX -\/ a dialog to get text input 
+
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
+\end{DoxyReturn}

@@ -46,7 +46,7 @@
 	# invoke build files
 	OBJECTS = plugin/$(NAME).cpp 
 	GUI_OBJECTS = gui/$(NAME)_x11ui.c
-	RES_OBJECTS = gui/pedal.o gui/pswitch.o gui/knob.o
+	RES_OBJECTS = gui/pswitch.o gui/knob.o
 	## output style (bash colours)
 	BLUE = "\033[1;34m"
 	RED =  "\033[1;31m"
@@ -72,9 +72,8 @@ ifdef ARMCPU
 endif
 
    #@build resource object files
-$(RES_OBJECTS) : gui/pedal.png gui/pswitch.png 
+$(RES_OBJECTS) : gui/knob.png gui/pswitch.png 
 	@echo $(LGREEN)"generate resource files,"$(NONE)
-	-@cd ./gui && ld -r -b binary pedal.png -o pedal.o
 	-@cd ./gui && ld -r -b binary pswitch.png -o pswitch.o
 	-@cd ./gui && ld -r -b binary knob.png -o knob.o
 

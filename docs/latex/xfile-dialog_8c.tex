@@ -1,0 +1,206 @@
+\hypertarget{xfile-dialog_8c}{}\section{xfile-\/dialog.c File Reference}
+\label{xfile-dialog_8c}\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+{\ttfamily \#include $<$dirent.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$libgen.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}xfile-\/dialog.\+h\char`\"{}}\newline
+Include dependency graph for xfile-\/dialog.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xfile-dialog_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{xfile-dialog_8c_ab1219e8c5af9084d5c2846d6d5b31f09}{draw\+\_\+window} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xfile-dialog_8c_a29da3eb623588f5844adaa40bf0f2c6f}{button\+\_\+quit\+\_\+callback} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+int \hyperlink{xfile-dialog_8c_a3a8abfa9334fe02a8ea868b9eb014767}{clear} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\item 
+int \hyperlink{xfile-dialog_8c_a7e6e557ac793b1c7a44df0d7917a5a4c}{set\+\_\+files} (\hyperlink{structFileDialog}{File\+Dialog} $\ast$file\+\_\+dialog)
+\item 
+void \hyperlink{xfile-dialog_8c_a129ae2b7a76afe92cef3da6275c61705}{set\+\_\+dirs} (\hyperlink{structFileDialog}{File\+Dialog} $\ast$file\+\_\+dialog)
+\item 
+void \hyperlink{xfile-dialog_8c_a046328a2cdd03a86fff0e8d92fc48a36}{center\+\_\+widget} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$wid, \hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w)
+\item 
+void \hyperlink{xfile-dialog_8c_a1f8b18285d9b4b0b04a146801c6da011}{set\+\_\+selected\+\_\+file} (\hyperlink{structFileDialog}{File\+Dialog} $\ast$file\+\_\+dialog)
+\item 
+void \hyperlink{xfile-dialog_8c_a64c3c7944341f7cf28d663cce00399a7}{file\+\_\+released\+\_\+callback} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xfile-dialog_8c_ad0362abb358fc6b16f5a8b3db022cd57}{reload\+\_\+file\+\_\+entrys} (\hyperlink{structFileDialog}{File\+Dialog} $\ast$file\+\_\+dialog)
+\item 
+void \hyperlink{xfile-dialog_8c_ade5a2bc859e5d9a498edf28ee32526b8}{combo\+\_\+response} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xfile-dialog_8c_a71fb562e126b4b9ce816344b87564257}{button\+\_\+ok\+\_\+callback} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xfile-dialog_8c_ad0abc7fe3e910dc3b819722fc6e76631}{reload\+\_\+all} (\hyperlink{structFileDialog}{File\+Dialog} $\ast$file\+\_\+dialog)
+\item 
+void \hyperlink{xfile-dialog_8c_af14ecfde3e66108d2a8aa705a087c5e2}{open\+\_\+dir\+\_\+callback} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xfile-dialog_8c_ab93b20c7d062937b7a8735d7fdcb8c4d}{button\+\_\+hidden\+\_\+callback} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xfile-dialog_8c_a23ce582baea0893e64fd3453ede74184}{set\+\_\+filter\+\_\+callback} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xfile-dialog_8c_a9945e3984b2c178bb5315c7741c0aa6d}{fd\+\_\+mem\+\_\+free} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xfile-dialog_8c_a50f41466d35761802fb415011006c6e6}{open\+\_\+file\+\_\+dialog} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, const char $\ast$path, const char $\ast$filter)
+\begin{DoxyCompactList}\small\item\em open\+\_\+file\+\_\+dialog -\/ open a non blocking dialog window, to select a file. The path to open the file-\/selector could be N\+U\+LL It will open then in \$\+H\+O\+ME. The filter to use could be N\+U\+LL, then the file-\/selector will show all files. \end{DoxyCompactList}\item 
+void \hyperlink{xfile-dialog_8c_a24ce32d688a2f17b98603983885a8af8}{fdialog\+\_\+response} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xfile-dialog_8c_a0fd7a004894daf98a93e385f57ed4fab}{fbutton\+\_\+callback} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+void \hyperlink{xfile-dialog_8c_a1fee4b5aa1ec75c4f66b4fa4751f4baf}{fbutton\+\_\+mem\+\_\+free} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\item 
+\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$ \hyperlink{xfile-dialog_8c_aa38720181c2a046546d345b60eb6b7b0}{add\+\_\+file\+\_\+button} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$parent, int x, int y, int width, int height, const char $\ast$path, const char $\ast$filter)
+\begin{DoxyCompactList}\small\item\em add\+\_\+file\+\_\+button -\/ add a pre-\/defined button which will pop-\/up a file dialog when pressed. path and filter will e hand over to the file selector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xfile-dialog_8c_aa38720181c2a046546d345b60eb6b7b0}\label{xfile-dialog_8c_aa38720181c2a046546d345b60eb6b7b0}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!add\+\_\+file\+\_\+button@{add\+\_\+file\+\_\+button}}
+\index{add\+\_\+file\+\_\+button@{add\+\_\+file\+\_\+button}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{add\+\_\+file\+\_\+button()}{add\_file\_button()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ add\+\_\+file\+\_\+button (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{parent,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{const char $\ast$}]{path,  }\item[{const char $\ast$}]{filter }\end{DoxyParamCaption})}
+
+
+
+add\+\_\+file\+\_\+button -\/ add a pre-\/defined button which will pop-\/up a file dialog when pressed. path and filter will e hand over to the file selector. 
+
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xfile-dialog_8c_ab93b20c7d062937b7a8735d7fdcb8c4d}\label{xfile-dialog_8c_ab93b20c7d062937b7a8735d7fdcb8c4d}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!button\+\_\+hidden\+\_\+callback@{button\+\_\+hidden\+\_\+callback}}
+\index{button\+\_\+hidden\+\_\+callback@{button\+\_\+hidden\+\_\+callback}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{button\+\_\+hidden\+\_\+callback()}{button\_hidden\_callback()}}
+{\footnotesize\ttfamily void button\+\_\+hidden\+\_\+callback (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a71fb562e126b4b9ce816344b87564257}\label{xfile-dialog_8c_a71fb562e126b4b9ce816344b87564257}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!button\+\_\+ok\+\_\+callback@{button\+\_\+ok\+\_\+callback}}
+\index{button\+\_\+ok\+\_\+callback@{button\+\_\+ok\+\_\+callback}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{button\+\_\+ok\+\_\+callback()}{button\_ok\_callback()}}
+{\footnotesize\ttfamily void button\+\_\+ok\+\_\+callback (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a29da3eb623588f5844adaa40bf0f2c6f}\label{xfile-dialog_8c_a29da3eb623588f5844adaa40bf0f2c6f}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!button\+\_\+quit\+\_\+callback@{button\+\_\+quit\+\_\+callback}}
+\index{button\+\_\+quit\+\_\+callback@{button\+\_\+quit\+\_\+callback}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{button\+\_\+quit\+\_\+callback()}{button\_quit\_callback()}}
+{\footnotesize\ttfamily void button\+\_\+quit\+\_\+callback (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a046328a2cdd03a86fff0e8d92fc48a36}\label{xfile-dialog_8c_a046328a2cdd03a86fff0e8d92fc48a36}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!center\+\_\+widget@{center\+\_\+widget}}
+\index{center\+\_\+widget@{center\+\_\+widget}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{center\+\_\+widget()}{center\_widget()}}
+{\footnotesize\ttfamily void center\+\_\+widget (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{wid,  }\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a3a8abfa9334fe02a8ea868b9eb014767}\label{xfile-dialog_8c_a3a8abfa9334fe02a8ea868b9eb014767}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!clear@{clear}}
+\index{clear@{clear}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily int clear (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_ade5a2bc859e5d9a498edf28ee32526b8}\label{xfile-dialog_8c_ade5a2bc859e5d9a498edf28ee32526b8}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!combo\+\_\+response@{combo\+\_\+response}}
+\index{combo\+\_\+response@{combo\+\_\+response}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{combo\+\_\+response()}{combo\_response()}}
+{\footnotesize\ttfamily void combo\+\_\+response (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_ab1219e8c5af9084d5c2846d6d5b31f09}\label{xfile-dialog_8c_ab1219e8c5af9084d5c2846d6d5b31f09}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!draw\+\_\+window@{draw\+\_\+window}}
+\index{draw\+\_\+window@{draw\+\_\+window}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{draw\+\_\+window()}{draw\_window()}}
+{\footnotesize\ttfamily void draw\+\_\+window (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a0fd7a004894daf98a93e385f57ed4fab}\label{xfile-dialog_8c_a0fd7a004894daf98a93e385f57ed4fab}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!fbutton\+\_\+callback@{fbutton\+\_\+callback}}
+\index{fbutton\+\_\+callback@{fbutton\+\_\+callback}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{fbutton\+\_\+callback()}{fbutton\_callback()}}
+{\footnotesize\ttfamily void fbutton\+\_\+callback (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a1fee4b5aa1ec75c4f66b4fa4751f4baf}\label{xfile-dialog_8c_a1fee4b5aa1ec75c4f66b4fa4751f4baf}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!fbutton\+\_\+mem\+\_\+free@{fbutton\+\_\+mem\+\_\+free}}
+\index{fbutton\+\_\+mem\+\_\+free@{fbutton\+\_\+mem\+\_\+free}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{fbutton\+\_\+mem\+\_\+free()}{fbutton\_mem\_free()}}
+{\footnotesize\ttfamily void fbutton\+\_\+mem\+\_\+free (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a9945e3984b2c178bb5315c7741c0aa6d}\label{xfile-dialog_8c_a9945e3984b2c178bb5315c7741c0aa6d}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!fd\+\_\+mem\+\_\+free@{fd\+\_\+mem\+\_\+free}}
+\index{fd\+\_\+mem\+\_\+free@{fd\+\_\+mem\+\_\+free}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{fd\+\_\+mem\+\_\+free()}{fd\_mem\_free()}}
+{\footnotesize\ttfamily void fd\+\_\+mem\+\_\+free (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a24ce32d688a2f17b98603983885a8af8}\label{xfile-dialog_8c_a24ce32d688a2f17b98603983885a8af8}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!fdialog\+\_\+response@{fdialog\+\_\+response}}
+\index{fdialog\+\_\+response@{fdialog\+\_\+response}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{fdialog\+\_\+response()}{fdialog\_response()}}
+{\footnotesize\ttfamily void fdialog\+\_\+response (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a64c3c7944341f7cf28d663cce00399a7}\label{xfile-dialog_8c_a64c3c7944341f7cf28d663cce00399a7}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!file\+\_\+released\+\_\+callback@{file\+\_\+released\+\_\+callback}}
+\index{file\+\_\+released\+\_\+callback@{file\+\_\+released\+\_\+callback}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{file\+\_\+released\+\_\+callback()}{file\_released\_callback()}}
+{\footnotesize\ttfamily void file\+\_\+released\+\_\+callback (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_af14ecfde3e66108d2a8aa705a087c5e2}\label{xfile-dialog_8c_af14ecfde3e66108d2a8aa705a087c5e2}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!open\+\_\+dir\+\_\+callback@{open\+\_\+dir\+\_\+callback}}
+\index{open\+\_\+dir\+\_\+callback@{open\+\_\+dir\+\_\+callback}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{open\+\_\+dir\+\_\+callback()}{open\_dir\_callback()}}
+{\footnotesize\ttfamily void open\+\_\+dir\+\_\+callback (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a50f41466d35761802fb415011006c6e6}\label{xfile-dialog_8c_a50f41466d35761802fb415011006c6e6}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!open\+\_\+file\+\_\+dialog@{open\+\_\+file\+\_\+dialog}}
+\index{open\+\_\+file\+\_\+dialog@{open\+\_\+file\+\_\+dialog}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{open\+\_\+file\+\_\+dialog()}{open\_file\_dialog()}}
+{\footnotesize\ttfamily \hyperlink{structWidget__t}{Widget\+\_\+t}$\ast$ open\+\_\+file\+\_\+dialog (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{const char $\ast$}]{path,  }\item[{const char $\ast$}]{filter }\end{DoxyParamCaption})}
+
+
+
+open\+\_\+file\+\_\+dialog -\/ open a non blocking dialog window, to select a file. The path to open the file-\/selector could be N\+U\+LL It will open then in \$\+H\+O\+ME. The filter to use could be N\+U\+LL, then the file-\/selector will show all files. 
+
+\begin{DoxyReturn}{Returns}
+Widget\+\_\+t$\ast$ -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} struct 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xfile-dialog_8c_ad0abc7fe3e910dc3b819722fc6e76631}\label{xfile-dialog_8c_ad0abc7fe3e910dc3b819722fc6e76631}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!reload\+\_\+all@{reload\+\_\+all}}
+\index{reload\+\_\+all@{reload\+\_\+all}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{reload\+\_\+all()}{reload\_all()}}
+{\footnotesize\ttfamily void reload\+\_\+all (\begin{DoxyParamCaption}\item[{\hyperlink{structFileDialog}{File\+Dialog} $\ast$}]{file\+\_\+dialog }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_ad0362abb358fc6b16f5a8b3db022cd57}\label{xfile-dialog_8c_ad0362abb358fc6b16f5a8b3db022cd57}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!reload\+\_\+file\+\_\+entrys@{reload\+\_\+file\+\_\+entrys}}
+\index{reload\+\_\+file\+\_\+entrys@{reload\+\_\+file\+\_\+entrys}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{reload\+\_\+file\+\_\+entrys()}{reload\_file\_entrys()}}
+{\footnotesize\ttfamily void reload\+\_\+file\+\_\+entrys (\begin{DoxyParamCaption}\item[{\hyperlink{structFileDialog}{File\+Dialog} $\ast$}]{file\+\_\+dialog }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a129ae2b7a76afe92cef3da6275c61705}\label{xfile-dialog_8c_a129ae2b7a76afe92cef3da6275c61705}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!set\+\_\+dirs@{set\+\_\+dirs}}
+\index{set\+\_\+dirs@{set\+\_\+dirs}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+dirs()}{set\_dirs()}}
+{\footnotesize\ttfamily void set\+\_\+dirs (\begin{DoxyParamCaption}\item[{\hyperlink{structFileDialog}{File\+Dialog} $\ast$}]{file\+\_\+dialog }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a7e6e557ac793b1c7a44df0d7917a5a4c}\label{xfile-dialog_8c_a7e6e557ac793b1c7a44df0d7917a5a4c}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!set\+\_\+files@{set\+\_\+files}}
+\index{set\+\_\+files@{set\+\_\+files}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+files()}{set\_files()}}
+{\footnotesize\ttfamily int set\+\_\+files (\begin{DoxyParamCaption}\item[{\hyperlink{structFileDialog}{File\+Dialog} $\ast$}]{file\+\_\+dialog }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a23ce582baea0893e64fd3453ede74184}\label{xfile-dialog_8c_a23ce582baea0893e64fd3453ede74184}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!set\+\_\+filter\+\_\+callback@{set\+\_\+filter\+\_\+callback}}
+\index{set\+\_\+filter\+\_\+callback@{set\+\_\+filter\+\_\+callback}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+filter\+\_\+callback()}{set\_filter\_callback()}}
+{\footnotesize\ttfamily void set\+\_\+filter\+\_\+callback (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xfile-dialog_8c_a1f8b18285d9b4b0b04a146801c6da011}\label{xfile-dialog_8c_a1f8b18285d9b4b0b04a146801c6da011}} 
+\index{xfile-\/dialog.\+c@{xfile-\/dialog.\+c}!set\+\_\+selected\+\_\+file@{set\+\_\+selected\+\_\+file}}
+\index{set\+\_\+selected\+\_\+file@{set\+\_\+selected\+\_\+file}!xfile-\/dialog.\+c@{xfile-\/dialog.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+selected\+\_\+file()}{set\_selected\_file()}}
+{\footnotesize\ttfamily void set\+\_\+selected\+\_\+file (\begin{DoxyParamCaption}\item[{\hyperlink{structFileDialog}{File\+Dialog} $\ast$}]{file\+\_\+dialog }\end{DoxyParamCaption})}
+

@@ -1,0 +1,244 @@
+\hypertarget{xlistview__private_8c}{}\section{xlistview\+\_\+private.\+c File Reference}
+\label{xlistview__private_8c}\index{xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}}
+{\ttfamily \#include \char`\"{}xlistview\+\_\+private.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xtooltip.\+h\char`\"{}}\newline
+Include dependency graph for xlistview\+\_\+private.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xlistview__private_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{xlistview__private_8c_aee979f35d1407141c65a0a621c02d56d}{\+\_\+draw\+\_\+listview} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+listview -\/ draw listview on expose call \end{DoxyCompactList}\item 
+void \hyperlink{xlistview__private_8c_a916b49bea119c4ab8f94181d3d561930}{\+\_\+draw\+\_\+list} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+list -\/ draw list on expose call \end{DoxyCompactList}\item 
+void \hyperlink{xlistview__private_8c_a2cfc1cf390c9eedebe33eddd052484cb}{\+\_\+list\+\_\+motion} (void $\ast$w\+\_\+, void $\ast$xmotion\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+list\+\_\+motion -\/ follow mouse pointer to set prelight item \end{DoxyCompactList}\item 
+void \hyperlink{xlistview__private_8c_a0f02370dec26f3a2e0576207199710b0}{\+\_\+list\+\_\+key\+\_\+pressed} (void $\ast$w\+\_\+, void $\ast$xkey\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+list\+\_\+key\+\_\+pressed -\/ move listview or set active entry \end{DoxyCompactList}\item 
+void \hyperlink{xlistview__private_8c_ad4cf15dc84e8c2d66027cee03aa31b83}{\+\_\+list\+\_\+entry\+\_\+released} (void $\ast$w\+\_\+, void $\ast$button\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+list\+\_\+entry\+\_\+released -\/ move listview or set active entry \end{DoxyCompactList}\item 
+void \hyperlink{xlistview__private_8c_a07a508e7e5e3723824f39e3afb535194}{\+\_\+leave\+\_\+list} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+leave\+\_\+list -\/ draw list on pointer leave \end{DoxyCompactList}\item 
+void \hyperlink{xlistview__private_8c_a164d4dfcff45c36da16f8884dd3bbd7d}{\+\_\+reconfigure\+\_\+listview\+\_\+viewport} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+reconfigure\+\_\+listview\+\_\+viewport -\/ reconfigure the viewport adjustment on size changes \end{DoxyCompactList}\item 
+void \hyperlink{xlistview__private_8c_a1e29841fdc62695477104f53e9f39908}{\+\_\+configure\+\_\+listview} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+configure\+\_\+listview -\/ configure the viewport on mapping \end{DoxyCompactList}\item 
+void \hyperlink{xlistview__private_8c_a2e4a2e5b7f9d5d55cd85dcfd0d479fbe}{\+\_\+draw\+\_\+listview\+\_\+viewslider} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+listview\+\_\+viewslider -\/ draw a slider on the viewport to indicate the view point \end{DoxyCompactList}\item 
+void \hyperlink{xlistview__private_8c_ab545a544e854fa19d8146e1e46dfab0c}{\+\_\+set\+\_\+listview\+\_\+viewpoint} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+set\+\_\+listview\+\_\+viewpoint -\/ move the view\+\_\+port to position \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xlistview__private_8c_a1e29841fdc62695477104f53e9f39908}\label{xlistview__private_8c_a1e29841fdc62695477104f53e9f39908}} 
+\index{xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}!\+\_\+configure\+\_\+listview@{\+\_\+configure\+\_\+listview}}
+\index{\+\_\+configure\+\_\+listview@{\+\_\+configure\+\_\+listview}!xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+configure\+\_\+listview()}{\_configure\_listview()}}
+{\footnotesize\ttfamily void \+\_\+configure\+\_\+listview (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+configure\+\_\+listview -\/ configure the viewport on mapping 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to view\+\_\+port \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xlistview__private_8c_a916b49bea119c4ab8f94181d3d561930}\label{xlistview__private_8c_a916b49bea119c4ab8f94181d3d561930}} 
+\index{xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}!\+\_\+draw\+\_\+list@{\+\_\+draw\+\_\+list}}
+\index{\+\_\+draw\+\_\+list@{\+\_\+draw\+\_\+list}!xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+\_\+list()}{\_draw\_list()}}
+{\footnotesize\ttfamily void \+\_\+draw\+\_\+list (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+draw\+\_\+list -\/ draw list on expose call 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to draw \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+show label \mbox{\Hypertarget{xlistview__private_8c_aee979f35d1407141c65a0a621c02d56d}\label{xlistview__private_8c_aee979f35d1407141c65a0a621c02d56d}} 
+\index{xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}!\+\_\+draw\+\_\+listview@{\+\_\+draw\+\_\+listview}}
+\index{\+\_\+draw\+\_\+listview@{\+\_\+draw\+\_\+listview}!xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+\_\+listview()}{\_draw\_listview()}}
+{\footnotesize\ttfamily void \+\_\+draw\+\_\+listview (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+draw\+\_\+listview -\/ draw listview on expose call 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ the listview to draw \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xlistview__private_8c_a2e4a2e5b7f9d5d55cd85dcfd0d479fbe}\label{xlistview__private_8c_a2e4a2e5b7f9d5d55cd85dcfd0d479fbe}} 
+\index{xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}!\+\_\+draw\+\_\+listview\+\_\+viewslider@{\+\_\+draw\+\_\+listview\+\_\+viewslider}}
+\index{\+\_\+draw\+\_\+listview\+\_\+viewslider@{\+\_\+draw\+\_\+listview\+\_\+viewslider}!xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+\_\+listview\+\_\+viewslider()}{\_draw\_listview\_viewslider()}}
+{\footnotesize\ttfamily void \+\_\+draw\+\_\+listview\+\_\+viewslider (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+draw\+\_\+listview\+\_\+viewslider -\/ draw a slider on the viewport to indicate the view point 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to view\+\_\+port \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xlistview__private_8c_a07a508e7e5e3723824f39e3afb535194}\label{xlistview__private_8c_a07a508e7e5e3723824f39e3afb535194}} 
+\index{xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}!\+\_\+leave\+\_\+list@{\+\_\+leave\+\_\+list}}
+\index{\+\_\+leave\+\_\+list@{\+\_\+leave\+\_\+list}!xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+leave\+\_\+list()}{\_leave\_list()}}
+{\footnotesize\ttfamily void \+\_\+leave\+\_\+list (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+leave\+\_\+list -\/ draw list on pointer leave 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to draw \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xlistview__private_8c_ad4cf15dc84e8c2d66027cee03aa31b83}\label{xlistview__private_8c_ad4cf15dc84e8c2d66027cee03aa31b83}} 
+\index{xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}!\+\_\+list\+\_\+entry\+\_\+released@{\+\_\+list\+\_\+entry\+\_\+released}}
+\index{\+\_\+list\+\_\+entry\+\_\+released@{\+\_\+list\+\_\+entry\+\_\+released}!xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+list\+\_\+entry\+\_\+released()}{\_list\_entry\_released()}}
+{\footnotesize\ttfamily void \+\_\+list\+\_\+entry\+\_\+released (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{button\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+list\+\_\+entry\+\_\+released -\/ move listview or set active entry 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} listview \\
+\hline
+{\em $\ast$button\+\_\+} & -\/ void pointer to the X\+Button\+Event \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xlistview__private_8c_a0f02370dec26f3a2e0576207199710b0}\label{xlistview__private_8c_a0f02370dec26f3a2e0576207199710b0}} 
+\index{xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}!\+\_\+list\+\_\+key\+\_\+pressed@{\+\_\+list\+\_\+key\+\_\+pressed}}
+\index{\+\_\+list\+\_\+key\+\_\+pressed@{\+\_\+list\+\_\+key\+\_\+pressed}!xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+list\+\_\+key\+\_\+pressed()}{\_list\_key\_pressed()}}
+{\footnotesize\ttfamily void \+\_\+list\+\_\+key\+\_\+pressed (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{xkey\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+list\+\_\+key\+\_\+pressed -\/ move listview or set active entry 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} listview \\
+\hline
+{\em $\ast$button\+\_\+} & -\/ void pointer to the X\+Button\+Event \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xlistview__private_8c_a2cfc1cf390c9eedebe33eddd052484cb}\label{xlistview__private_8c_a2cfc1cf390c9eedebe33eddd052484cb}} 
+\index{xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}!\+\_\+list\+\_\+motion@{\+\_\+list\+\_\+motion}}
+\index{\+\_\+list\+\_\+motion@{\+\_\+list\+\_\+motion}!xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+list\+\_\+motion()}{\_list\_motion()}}
+{\footnotesize\ttfamily void \+\_\+list\+\_\+motion (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{xmotion\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+list\+\_\+motion -\/ follow mouse pointer to set prelight item 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} listview \\
+\hline
+{\em $\ast$xmotion\+\_\+} & -\/ void pointer to the X\+Motion\+Event \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xlistview__private_8c_a164d4dfcff45c36da16f8884dd3bbd7d}\label{xlistview__private_8c_a164d4dfcff45c36da16f8884dd3bbd7d}} 
+\index{xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}!\+\_\+reconfigure\+\_\+listview\+\_\+viewport@{\+\_\+reconfigure\+\_\+listview\+\_\+viewport}}
+\index{\+\_\+reconfigure\+\_\+listview\+\_\+viewport@{\+\_\+reconfigure\+\_\+listview\+\_\+viewport}!xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+reconfigure\+\_\+listview\+\_\+viewport()}{\_reconfigure\_listview\_viewport()}}
+{\footnotesize\ttfamily void \+\_\+reconfigure\+\_\+listview\+\_\+viewport (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+reconfigure\+\_\+listview\+\_\+viewport -\/ reconfigure the viewport adjustment on size changes 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to view\+\_\+port \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xlistview__private_8c_ab545a544e854fa19d8146e1e46dfab0c}\label{xlistview__private_8c_ab545a544e854fa19d8146e1e46dfab0c}} 
+\index{xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}!\+\_\+set\+\_\+listview\+\_\+viewpoint@{\+\_\+set\+\_\+listview\+\_\+viewpoint}}
+\index{\+\_\+set\+\_\+listview\+\_\+viewpoint@{\+\_\+set\+\_\+listview\+\_\+viewpoint}!xlistview\+\_\+private.\+c@{xlistview\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+\_\+listview\+\_\+viewpoint()}{\_set\_listview\_viewpoint()}}
+{\footnotesize\ttfamily void \+\_\+set\+\_\+listview\+\_\+viewpoint (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+set\+\_\+listview\+\_\+viewpoint -\/ move the view\+\_\+port to position 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to view\+\_\+port \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
