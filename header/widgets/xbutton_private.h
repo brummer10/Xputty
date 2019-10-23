@@ -67,6 +67,15 @@ void _pattern_in(Widget_t *w, Color_state st, int height);
 void _draw_button(void *w_, void* user_data);
 
 /**
+ * @brief _draw_on_off_button    - internal draw the on/off button to the buffer
+ * @param *w_                    - void pointer to the Widget_t button
+ * @param *user_data             - void pointer to attached user_data
+ * @return void
+ */
+
+void _draw_on_off_button(void *w_, void* user_data);
+
+/**
  * @brief _draw_ti_button           - internal draw the button to the buffer
  * @param *w_                    - void pointer to the Widget_t button
  * @param *user_data             - void pointer to attached user_data

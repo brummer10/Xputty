@@ -244,6 +244,59 @@ void _draw_button(void *w_, void* user_data) {
 }
 
 /**
+ * @brief _draw_on_off_button    - internal draw the on/off button to the buffer
+ * @param *w_                    - void pointer to the Widget_t button
+ * @param *user_data             - void pointer to attached user_data
+ * @return void
+ */
+
+void _draw_on_off_button(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    if (!w) return;
+    XWindowAttributes attrs;
+    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
+    int width = attrs.width-2;
+    int height = attrs.height-2;
+    if (attrs.map_state != IsViewable) return;
+
+    _draw_button_base(w, width, height);
+
+    float offset = 0.0;
+    cairo_text_extents_t extents;
+    if(w->state==1 && ! (int)w->adj_y->value) {
+        offset = 1.0;
+    } else if(w->state==1) {
+        offset = 2.0;
+    } else if(w->state==2) {
+        offset = 2.0;
+    } else if(w->state==3) {
+        offset = 1.0;
+    }
+    if((int)w->adj_y->value) {
+        w->label = "On";
+    } else {
+        w->label = "Off";
+    }
+
+    use_text_color_scheme(w, get_color_state(w));
+    float font_size = ((height/2.2 < (width*0.5)/3) ? height/2.2 : (width*0.6)/3);
+    cairo_set_font_size (w->crb, font_size);
+    cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
+                               CAIRO_FONT_WEIGHT_BOLD);
+    cairo_text_extents(w->crb,w->label , &extents);
+    if(IS_UTF8(w->label[0])) {
+        font_size = ((height/1.5 < (width)/1.5) ? height/1.5 : (width)/1.5);
+        cairo_set_font_size (w->crb, font_size);
+        cairo_text_extents(w->crb,w->label , &extents);
+    }
+
+    cairo_move_to (w->crb, (width-extents.width)*0.5 +offset, (height+extents.height)*0.5 +offset);
+    cairo_show_text(w->crb, w->label);
+    cairo_new_path (w->crb);
+
+}
+
+/**
  * @brief _draw_ti_button           - internal draw the button to the buffer
  * @param *w_                    - void pointer to the Widget_t button
  * @param *user_data             - void pointer to attached user_data

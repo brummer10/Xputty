@@ -46,7 +46,6 @@
 	# invoke build files
 	OBJECTS = plugin/$(NAME).cpp 
 	GUI_OBJECTS = gui/$(NAME)_x11ui.c
-	RES_OBJECTS = gui/pswitch.o gui/knob.o
 	## output style (bash colours)
 	BLUE = "\033[1;34m"
 	RED =  "\033[1;31m"
@@ -71,22 +70,14 @@ ifdef ARMCPU
 	@echo $(NONE)
 endif
 
-   #@build resource object files
-$(RES_OBJECTS) : gui/knob.png gui/pswitch.png 
-	@echo $(LGREEN)"generate resource files,"$(NONE)
-	-@cd ./gui && ld -r -b binary pswitch.png -o pswitch.o
-	-@cd ./gui && ld -r -b binary knob.png -o knob.o
-
 clean :
 	@rm -f $(NAME).so
 	@rm -rf ./$(BUNDLE)
-	@rm -rf ./$(RES_OBJECTS)
 	@echo ". ." $(BLUE)", clean up"$(NONE)
 
 dist-clean :
 	@rm -f $(NAME).so
 	@rm -rf ./$(BUNDLE)
-	@rm -rf ./$(RES_OBJECTS)
 	@echo ". ." $(BLUE)", clean up"$(NONE)
 
 install :
@@ -102,13 +93,13 @@ uninstall :
 	@rm -rf $(INSTALL_DIR)/$(BUNDLE)
 	@echo ". ." $(BLUE)", done"$(NONE)
 
-$(NAME) : clean $(RES_OBJECTS)
+$(NAME) :
 	$(CXX) $(CXXFLAGS) $(OBJECTS) $(LDFLAGS) -o $(NAME).so
-	$(CC) $(CXXFLAGS) -Wl,-z,nodelete $(GUI_OBJECTS) $(RES_OBJECTS) $(GUI_LDFLAGS) -o $(NAME)_ui.so
+	$(CC) $(CXXFLAGS) -Wl,-z,nodelete $(GUI_OBJECTS) $(GUI_LDFLAGS) -o $(NAME)_ui.so
 	$(STRIP) -s -x -X -R .note.ABI-tag $(NAME).so
 	$(STRIP) -s -x -X -R .note.ABI-tag $(NAME)_ui.so
 
-nogui : clean
+nogui :
 	$(CXX) $(CXXFLAGS) $(OBJECTS) $(LDFLAGS) -o $(NAME).so
 	$(STRIP) -s -x -X -R .note.ABI-tag $(NAME).so
 

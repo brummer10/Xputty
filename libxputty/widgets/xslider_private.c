@@ -124,6 +124,20 @@ void _draw_vslider(void *w_, void* user_data) {
     cairo_show_text(w->crb, w->label);
     cairo_new_path (w->crb);
 
+    
+    char s[64];
+    const char* format[] = {"%.1f", "%.2f", "%.3f"};
+    if (fabs(w->adj_y->value)>9.99) {
+        snprintf(s, 63,"%d",  (int) w->adj->value);
+    } else if (fabs(w->adj_y->value)>0.99) {
+        snprintf(s, 63, format[1-1], w->adj->value);
+    } else {
+        snprintf(s, 63, format[2-1], w->adj->value);
+    }
+    cairo_text_extents(w->crb,s , &extents);
+    cairo_move_to (w->crb, center-extents.width/2, extents.height );
+    cairo_show_text(w->crb, s);
+    cairo_new_path (w->crb);
 }
 
 /**

@@ -7,11 +7,6 @@
 
 #include "./Xgain.h"
 
-// png's linked in as binarys
-EXTLD(pedal_png)
-EXTLD(pswitch_png)
-EXTLD(knob_png)
-
 /*---------------------------------------------------------------------
 -----------------------------------------------------------------------    
                 define controller numbers
@@ -91,13 +86,11 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     // init Xputty
     main_init(&ui->main);
     // create the toplevel Window on the parentXwindow provided by the host
-    ui->win = create_window(&ui->main, (Window)ui->parentXwindow, 0, 0, 230, 200);
+    ui->win = create_window(&ui->main, (Window)ui->parentXwindow, 0, 0, 100, 500);
     // connect the expose func
     ui->win->func.expose_callback = draw_window;
     // create a toggle button
-    ui->widget[0] = add_toggle_button(ui->win, "Power", 20, 40, 80, 90);
-    // setup a image to use for the toggle button
-    widget_get_png(ui->widget[0], LDVAR(pswitch_png));
+    ui->widget[0] = add_on_off_button(ui->win, "Power", 20, 20, 60, 60);
     // set resize mode for the toggle button to Aspect ratio
     ui->widget[0]->scale.gravity = ASPECT;
     // store the Port Index in the Widget_t data field
@@ -107,9 +100,7 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     // connect the value changed callback with the write_function
     ui->widget[0]->func.value_changed_callback = value_changed;
     // create a knob widget
-    ui->widget[1] = add_knob(ui->win, "Gain", 120, 40, 80, 90);
-    // setup a image to be used for the knob
-    widget_get_png(ui->widget[1], LDVAR(knob_png));
+    ui->widget[1] = add_vslider(ui->win, "Gain", 5, 90, 40, 400);
     // store the port index in the Widget_t data field
     ui->widget[1]->data = GAIN;
     // store a pointer to the X11_UI struct in the parent_struct Widget_t field
@@ -119,7 +110,7 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     // connect the value changed callback with the write_function
     ui->widget[1]->func.value_changed_callback = value_changed;
     // create a meter widget
-    ui->widget[2] = add_hmeter(ui->win, "Meter", true, 20, 140, 190, 10);
+    ui->widget[2] = add_vmeter(ui->win, "Meter", true, 50, 90, 20, 400);
     // store the port index in the Widget_t data field
     ui->widget[2]->data = METER;
     // finally map all Widgets on screen
@@ -129,7 +120,7 @@ static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
     // request to resize the parentXwindow to the size of the toplevel Widget_t
     if (resize){
         ui->resize = resize;
-        resize->ui_resize(resize->handle, 230, 200);
+        resize->ui_resize(resize->handle, 100, 500);
     }
     // store pointer to the host controller
     ui->controller = controller;
