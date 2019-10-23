@@ -260,7 +260,7 @@ int main (int argc, char ** argv)
     filebrowser.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 660, 420);
     filebrowser.w->flags |= HAS_MEM;
     filebrowser.w->parent_struct = &filebrowser;
-    XStoreName(app.dpy, filebrowser.w->widget, "File Selector");
+    widget_set_title(filebrowser.w, "File Selector");
     filebrowser.w->func.expose_callback = draw_window;
     filebrowser.w->func.mem_free_callback = mem_free;
 

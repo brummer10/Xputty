@@ -182,9 +182,9 @@ int main (int argc, char ** argv)
     xde.filename = NULL;
     xde.icon = NULL;
     xde.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 660, 150);
-    XStoreName(app.dpy, xde.w->widget, "Xputty Dialog examples");
+    widget_set_title(xde.w, "Xputty Dialog examples");
     widget_get_png(xde.w, LDVAR(xputty_logo_png));
-    widget_set_icon(xde.w,xde.icon,xde.w->image);
+    widget_set_icon_from_surface(xde.w,xde.icon,xde.w->image);
     xde.w->label = "..";
     xde.w->parent_struct = &xde;
     xde.w->func.expose_callback = draw_window;

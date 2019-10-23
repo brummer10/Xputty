@@ -315,6 +315,15 @@ Widget_t *create_widget(Xputty *app, Widget_t *win,
                           int x, int y, int width, int height);
 
 /**
+ * @brief widget_set_title  - set window title for Widget_t
+ * @param *w                - pointer to the Widget_t to set the title
+ * @param *title            - the title to store
+ * @return void 
+ */
+
+void widget_set_title(Widget_t *w, const char *title);
+
+/**
  * @brief widget_show       - map/show widget
  * @param *w                - pointer to the Widget_t to map
  * @return void 

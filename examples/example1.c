@@ -270,7 +270,7 @@ int main (int argc, char ** argv)
     MyWindow mywindow;
     
     mywindow.w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 200);
-    XStoreName(app.dpy, mywindow.w->widget, "Xputty Text Input");
+    widget_set_title(mywindow.w, "Xputty Text Input");
     mywindow.w->label = "move pointer to text-input and press key:";
     mywindow.w->func.expose_callback = draw_window;
 

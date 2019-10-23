@@ -32,7 +32,7 @@ int main (int argc, char ** argv)
     Xputty app;
     main_init(&app);
     Widget_t *w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 200);
-    XStoreName(app.dpy, w->widget, "Hello world");
+    widget_set_title(w, "Hello world");
     w->func.expose_callback = draw_window;
     widget_show_all(w);
     main_run(&app);

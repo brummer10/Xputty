@@ -82,7 +82,7 @@ int main (int argc, char ** argv)
     Widget_t *w_quit;
     
     w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 200);
-    XStoreName(app.dpy, w->widget, "Xputty Hello world");
+    widget_set_title(w, "Xputty Hello world");
     w->label = "How are you?";
     w->func.expose_callback = draw_window;
 
@@ -97,7 +97,7 @@ int main (int argc, char ** argv)
     widget_show_all(w);
 
     w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 200);
-    XStoreName(app.dpy, w->widget, "Xputty Message Box");
+    widget_set_title(w, "Xputty Message Box");
     w->label = "This is a message";
     w->func.expose_callback = draw_window;
 

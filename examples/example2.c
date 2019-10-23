@@ -136,7 +136,7 @@ int main (int argc, char ** argv)
     Widget_t *b;
 
     w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 330, 240);
-    XStoreName(app.dpy, w->widget, "Xputty Movement");
+    widget_set_title(w, "Xputty Movement");
     w->label = "Press mouse button and move:";
     w->func.expose_callback = draw_window;
     w->adj_x = add_adjustment(w,0.5, 0.5, 0.0, 1.0, 0.01, CL_CONTINUOS);

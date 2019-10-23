@@ -239,7 +239,7 @@ int main (int argc, char ** argv)
     Widget_t *bt;
     Widget_t *ct;
     Widget_t *w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 450);
-    XStoreName(app.dpy, w->widget, "Color-scheme");
+    widget_set_title(w, "Color-scheme");
     XSizeHints* win_size_hints;
     win_size_hints = XAllocSizeHints();
     win_size_hints->flags =  PMinSize;

@@ -357,19 +357,19 @@ Widget_t *open_message_dialog(Widget_t *w, int style, const char *title,
             widget_get_png(wid, LDVAR(info_png));
             alternate_title = "INFO";
             mb->message_type = INFO_BOX;
-            widget_set_icon(wid,mb->icon,wid->image);
+            widget_set_icon_from_surface(wid,mb->icon,wid->image);
         break;
         case WARNING_BOX:
             widget_get_png(wid, LDVAR(warning_png));
             alternate_title = "WARNING";
             mb->message_type = WARNING_BOX;
-            widget_set_icon(wid,mb->icon,wid->image);
+            widget_set_icon_from_surface(wid,mb->icon,wid->image);
         break;
         case ERROR_BOX:
             widget_get_png(wid, LDVAR(error_png));
             alternate_title = "ERROR";
             mb->message_type = ERROR_BOX;
-            widget_set_icon(wid,mb->icon,wid->image);
+            widget_set_icon_from_surface(wid,mb->icon,wid->image);
         break;
         case QUESTION_BOX:
             widget_get_png(wid, LDVAR(question_png));
@@ -379,24 +379,24 @@ Widget_t *open_message_dialog(Widget_t *w, int style, const char *title,
             no->func.value_changed_callback = message_no_callback;
             mb->message_type = QUESTION_BOX;
             button_title = "YES";
-            widget_set_icon(wid,mb->icon,wid->image);
+            widget_set_icon_from_surface(wid,mb->icon,wid->image);
         break;
         case SELECTION_BOX:
             widget_get_png(wid, LDVAR(choice_png));
             alternate_title = "SELECTION";
             mb->message_type = SELECTION_BOX;
             create_checkboxes(wid);
-            widget_set_icon(wid,mb->icon,wid->image);
+            widget_set_icon_from_surface(wid,mb->icon,wid->image);
         break;
         case ENTRY_BOX:
             widget_get_png(wid, LDVAR(message_png));
             alternate_title = "TEXT ENTRY";
             mb->message_type = ENTRY_BOX;
             create_entry_box(wid);
-            widget_set_icon(wid,mb->icon,wid->image);
+            widget_set_icon_from_surface(wid,mb->icon,wid->image);
         break;
     }
-    XStoreName(w->app->dpy, wid->widget, strlen(title)? title : alternate_title);
+    widget_set_title(wid, strlen(title)? title : alternate_title);
 
     Widget_t *okay = add_button(wid, button_title, mb->width-70, mb->height-40, 60, 30);
     okay->scale.gravity = CENTER;

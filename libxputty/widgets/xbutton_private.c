@@ -93,10 +93,11 @@ void _draw_image_button(Widget_t *w, int width_t, int height_t, float offset) {
     double y = (double)height_t/(double)height;
     double x1 = (double)height/(double)height_t;
     double y1 = (double)(half_width)/(double)width_t;
+    double off_set = offset*x1;
     double buttonstate = adj_get_state(w->adj);
     int findex = (int)(((width/height)-1) * buttonstate) * (width/height >=2);
     cairo_scale(w->crb, x,y);
-    cairo_set_source_surface (w->crb, w->image, -height*findex+offset, offset);
+    cairo_set_source_surface (w->crb, w->image, -height*findex+off_set, off_set);
     cairo_rectangle(w->crb,0, 0, height, height);
     cairo_fill(w->crb);
     cairo_scale(w->crb, x1,y1);

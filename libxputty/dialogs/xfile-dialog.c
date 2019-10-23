@@ -260,11 +260,10 @@ Widget_t *open_file_dialog(Widget_t *w, const char *path, const char *filter) {
     file_dialog->w = create_window(w->app, DefaultRootWindow(w->app->dpy), 0, 0, 660, 420);
     file_dialog->w->flags |= HAS_MEM;
     file_dialog->w->parent_struct = file_dialog;
-    XStoreName(w->app->dpy, file_dialog->w->widget, "File Selector");
+    widget_set_title(file_dialog->w, "File Selector");
     file_dialog->w->func.expose_callback = draw_window;
     file_dialog->w->func.mem_free_callback = fd_mem_free;
-    widget_get_png(file_dialog->w, LDVAR(directory_png));
-    widget_set_icon(file_dialog->w,file_dialog->icon,file_dialog->w->image);
+    widget_set_icon_from_png(file_dialog->w,file_dialog->icon,LDVAR(directory_png));
 
     file_dialog->ct = add_combobox(file_dialog->w, "", 20, 40, 580, 30);
     file_dialog->ct->parent_struct = file_dialog;
