@@ -19,6 +19,8 @@ void \hyperlink{xadjustment_8c_ab7188a4bb4294e2a08aea2430975b406}{set\+\_\+adjus
 \begin{DoxyCompactList}\small\item\em $\ast$set\+\_\+adjustment -\/ set a new range to a existing Adjustment \end{DoxyCompactList}\item 
 void $\ast$ \hyperlink{xadjustment_8c_af8186d7e68d37007f6e38814225e6ee3}{delete\+\_\+adjustment} (\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$adj)
 \begin{DoxyCompactList}\small\item\em delete\+\_\+adjustment -\/ freeing the memory of the adjustment \end{DoxyCompactList}\item 
+void \hyperlink{xadjustment_8c_a460c323af951bee5b62081be221a08ba}{adj\+\_\+set\+\_\+state} (\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$adj, float state)
+\begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+state -\/ set the current state of the adjustment \end{DoxyCompactList}\item 
 float \hyperlink{xadjustment_8c_af1f74e9733cffbb287e4912fc8ab37cd}{adj\+\_\+get\+\_\+state} (\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$adj)
 \begin{DoxyCompactList}\small\item\em adj\+\_\+get\+\_\+state -\/ get the current state of the adjustment \end{DoxyCompactList}\item 
 float \hyperlink{xadjustment_8c_a5a78c30051a7a9c3dc0ce84c3482c530}{adj\+\_\+get\+\_\+value} (\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$adj)
@@ -27,8 +29,8 @@ void \hyperlink{xadjustment_8c_afbe410bb3efb6e78941a4f938d1c67ca}{adj\+\_\+set\+
 \begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+value -\/ set the current value of the adjustment \end{DoxyCompactList}\item 
 void \hyperlink{xadjustment_8c_a670e06d916d1d6fd1f2968fb171c29aa}{adj\+\_\+set\+\_\+start\+\_\+value} (void $\ast$w)
 \begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+start\+\_\+value -\/ set start value of the adjustment \end{DoxyCompactList}\item 
-void \hyperlink{xadjustment_8c_aaeeb13f45a95f6e2f585641b212eca11}{adj\+\_\+set\+\_\+state} (void $\ast$w, float x, float y)
-\begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+state -\/ set value/state of the adjustment \end{DoxyCompactList}\item 
+void \hyperlink{xadjustment_8c_a1e198857155b2969afb87fe923d58cb6}{adj\+\_\+set\+\_\+motion\+\_\+state} (void $\ast$w, float x, float y)
+\begin{DoxyCompactList}\small\item\em adj\+\_\+set\+\_\+motion\+\_\+state -\/ set value/state of the adjustment \end{DoxyCompactList}\item 
 void \hyperlink{xadjustment_8c_a1db458f5dc9ea4f3775340b938b3c3bf}{check\+\_\+value\+\_\+changed} (\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$adj, float $\ast$value)
 \begin{DoxyCompactList}\small\item\em check\+\_\+value\+\_\+changed -\/ check if value has changed and send adj\+\_\+callback if so \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -76,7 +78,7 @@ adj\+\_\+get\+\_\+state -\/ get the current state of the adjustment
 
 
 \begin{DoxyParams}{Parameters}
-{\em $\ast$adj} & -\/ pointer to the Adjustment to free \\
+{\em $\ast$adj} & -\/ pointer to the Adjustment \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -94,11 +96,33 @@ adj\+\_\+get\+\_\+value -\/ get the current value of the adjustment
 
 
 \begin{DoxyParams}{Parameters}
-{\em $\ast$adj} & -\/ pointer to the Adjustment to free \\
+{\em $\ast$adj} & -\/ pointer to the Adjustment \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 float -\/ return the adjustment value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xadjustment_8c_a1e198857155b2969afb87fe923d58cb6}\label{xadjustment_8c_a1e198857155b2969afb87fe923d58cb6}} 
+\index{xadjustment.\+c@{xadjustment.\+c}!adj\+\_\+set\+\_\+motion\+\_\+state@{adj\+\_\+set\+\_\+motion\+\_\+state}}
+\index{adj\+\_\+set\+\_\+motion\+\_\+state@{adj\+\_\+set\+\_\+motion\+\_\+state}!xadjustment.\+c@{xadjustment.\+c}}
+\subsubsection{\texorpdfstring{adj\+\_\+set\+\_\+motion\+\_\+state()}{adj\_set\_motion\_state()}}
+{\footnotesize\ttfamily void adj\+\_\+set\+\_\+motion\+\_\+state (\begin{DoxyParamCaption}\item[{void $\ast$}]{w,  }\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+adj\+\_\+set\+\_\+motion\+\_\+state -\/ set value/state of the adjustment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$adj} & -\/ pointer to \hyperlink{structWidget__t}{Widget\+\_\+t} containing the adjustment \\
+\hline
+{\em x} & -\/ value for the xaxis \\
+\hline
+{\em y} & -\/ value for the yaxis \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
 \end{DoxyReturn}
 \mbox{\Hypertarget{xadjustment_8c_a670e06d916d1d6fd1f2968fb171c29aa}\label{xadjustment_8c_a670e06d916d1d6fd1f2968fb171c29aa}} 
 \index{xadjustment.\+c@{xadjustment.\+c}!adj\+\_\+set\+\_\+start\+\_\+value@{adj\+\_\+set\+\_\+start\+\_\+value}}
@@ -118,27 +142,23 @@ adj\+\_\+set\+\_\+start\+\_\+value -\/ set start value of the adjustment
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xadjustment_8c_aaeeb13f45a95f6e2f585641b212eca11}\label{xadjustment_8c_aaeeb13f45a95f6e2f585641b212eca11}} 
+\mbox{\Hypertarget{xadjustment_8c_a460c323af951bee5b62081be221a08ba}\label{xadjustment_8c_a460c323af951bee5b62081be221a08ba}} 
 \index{xadjustment.\+c@{xadjustment.\+c}!adj\+\_\+set\+\_\+state@{adj\+\_\+set\+\_\+state}}
 \index{adj\+\_\+set\+\_\+state@{adj\+\_\+set\+\_\+state}!xadjustment.\+c@{xadjustment.\+c}}
 \subsubsection{\texorpdfstring{adj\+\_\+set\+\_\+state()}{adj\_set\_state()}}
-{\footnotesize\ttfamily void adj\+\_\+set\+\_\+state (\begin{DoxyParamCaption}\item[{void $\ast$}]{w,  }\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void adj\+\_\+set\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structAdjustment__t}{Adjustment\+\_\+t} $\ast$}]{adj,  }\item[{float}]{state }\end{DoxyParamCaption})}
 
 
 
-adj\+\_\+set\+\_\+state -\/ set value/state of the adjustment 
+adj\+\_\+set\+\_\+state -\/ set the current state of the adjustment 
 
 
 \begin{DoxyParams}{Parameters}
-{\em $\ast$adj} & -\/ pointer to \hyperlink{structWidget__t}{Widget\+\_\+t} containing the adjustment \\
-\hline
-{\em x} & -\/ value for the xaxis \\
-\hline
-{\em y} & -\/ value for the yaxis \\
+{\em $\ast$adj} & -\/ pointer to the Adjustment \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-void 
+float -\/ return the adjustment state (0$<$-\/$>$1) 
 \end{DoxyReturn}
 \mbox{\Hypertarget{xadjustment_8c_afbe410bb3efb6e78941a4f938d1c67ca}\label{xadjustment_8c_afbe410bb3efb6e78941a4f938d1c67ca}} 
 \index{xadjustment.\+c@{xadjustment.\+c}!adj\+\_\+set\+\_\+value@{adj\+\_\+set\+\_\+value}}
@@ -152,7 +172,7 @@ adj\+\_\+set\+\_\+value -\/ set the current value of the adjustment
 
 
 \begin{DoxyParams}{Parameters}
-{\em $\ast$adj} & -\/ pointer to the Adjustment to free \\
+{\em $\ast$adj} & -\/ pointer to the Adjustment \\
 \hline
 {\em v} & -\/ value set the Adjustment to \\
 \hline

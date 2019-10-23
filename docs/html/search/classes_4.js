@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resize_5ft',['Resize_t',['../structResize__t.html',1,'']]]
+  ['messagebox',['MessageBox',['../structMessageBox.html',1,'']]]
 ];

@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['use_5fbase_5fcolor_5fscheme',['use_base_color_scheme',['../xcolor_8c.html#af2eeed36f1b19416481687498a6d1ce3',1,'use_base_color_scheme(Widget_t *w, Color_state st):&#160;xcolor.c'],['../xcolor_8h.html#af2eeed36f1b19416481687498a6d1ce3',1,'use_base_color_scheme(Widget_t *w, Color_state st):&#160;xcolor.c']]],
-  ['use_5fbg_5fcolor_5fscheme',['use_bg_color_scheme',['../xcolor_8c.html#a335aed33f3b2fca02beb85375186a5c9',1,'use_bg_color_scheme(Widget_t *w, Color_state st):&#160;xcolor.c'],['../xcolor_8h.html#a335aed33f3b2fca02beb85375186a5c9',1,'use_bg_color_scheme(Widget_t *w, Color_state st):&#160;xcolor.c']]],
-  ['use_5ffg_5fcolor_5fscheme',['use_fg_color_scheme',['../xcolor_8c.html#a389caf2131cd599465c512eead16a6c0',1,'use_fg_color_scheme(Widget_t *w, Color_state st):&#160;xcolor.c'],['../xcolor_8h.html#a389caf2131cd599465c512eead16a6c0',1,'use_fg_color_scheme(Widget_t *w, Color_state st):&#160;xcolor.c']]],
-  ['use_5ftext_5fcolor_5fscheme',['use_text_color_scheme',['../xcolor_8c.html#a082dd5329f6c1e402747b9ecfa1dceae',1,'use_text_color_scheme(Widget_t *w, Color_state st):&#160;xcolor.c'],['../xcolor_8h.html#a082dd5329f6c1e402747b9ecfa1dceae',1,'use_text_color_scheme(Widget_t *w, Color_state st):&#160;xcolor.c']]],
-  ['use_5ftransparency',['USE_TRANSPARENCY',['../xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba382c01f8f5f6b97733d95fecefdbaef6',1,'xwidget.h']]],
-  ['user_5fcallback',['user_callback',['../structFunc__t.html#a1f089cb13a39764a1f980470a51db71b',1,'Func_t']]]
+  ['text',['text',['../structColors.html#aca2846df5e653cda1cb1ca97ea1b3e63',1,'Colors']]],
+  ['text_5f',['TEXT_',['../xcolor_8h.html#a2c1c3c5b8916c211c3fe5f76decb7e1cab956f07f177a1b966ea01967b33a0256',1,'xcolor.h']]],
+  ['text_5fentry',['text_entry',['../structMessageBox.html#a5ff23145e31316fdba295743f9406621',1,'MessageBox']]],
+  ['tooltip_5fset_5ftext',['tooltip_set_text',['../xtooltip_8c.html#a8bbcf0b320636e1ea741dadcdbdd239d',1,'tooltip_set_text(Widget_t *w, const char *label):&#160;xtooltip.c'],['../xtooltip_8h.html#a8bbcf0b320636e1ea741dadcdbdd239d',1,'tooltip_set_text(Widget_t *w, const char *label):&#160;xtooltip.c']]],
+  ['transparent_5fdraw',['transparent_draw',['../xwidget_8c.html#a0e801c1a701cc8526b198371ce2ff692',1,'transparent_draw(void *w_, void *user_data):&#160;xwidget.c'],['../xwidget_8h.html#ab45a54d3dee60783a5afe9c236f54a04',1,'transparent_draw(void *wid, void *user_data):&#160;xwidget.c']]],
+  ['type',['type',['../structAdjustment__t.html#a1ec53b702dc4707522249f3cb5cbf6b3',1,'Adjustment_t']]]
 ];

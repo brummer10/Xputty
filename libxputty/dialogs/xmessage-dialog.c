@@ -159,13 +159,13 @@ void message_okay_callback(void *w_, void* user_data) {
         MessageBox *mb = p->parent_struct;
         if(mb->message_type == QUESTION_BOX || mb->message_type == SELECTION_BOX) {
             Widget_t *pa = (Widget_t*)p->parent;
-            pa->func.user_callback(pa,&mb->response);
+            pa->func.dialog_callback(pa,&mb->response);
         } else if(mb->message_type == ENTRY_BOX) {
             Widget_t *pa = (Widget_t*)p->parent;
             if (strlen( mb->text_entry->input_label))
                 mb->text_entry->input_label[strlen( mb->text_entry->input_label)-1] = 0;
             mb->text_entry->label = mb->text_entry->input_label;
-            pa->func.user_callback(pa,&mb->text_entry->label);
+            pa->func.dialog_callback(pa,&mb->text_entry->label);
         }
         destroy_widget(p, p->app);
     }
@@ -179,7 +179,7 @@ void message_no_callback(void *w_, void* user_data) {
         if(mb->message_type == QUESTION_BOX) {
             Widget_t *pa = (Widget_t*)p->parent;
             mb->response = -1;
-            pa->func.user_callback(pa,&mb->response);
+            pa->func.dialog_callback(pa,&mb->response);
         }
         destroy_widget(p, p->app);
     }
@@ -234,7 +234,7 @@ void entry_get_text(void *w_, void *key_, void *user_data) {
                 if (strlen( mb->text_entry->input_label))
                     mb->text_entry->input_label[strlen( mb->text_entry->input_label)-1] = 0;
                 mb->text_entry->label = mb->text_entry->input_label;
-                pa->func.user_callback(pa,&mb->text_entry->label);
+                pa->func.dialog_callback(pa,&mb->text_entry->label);
 
                 destroy_widget(p, p->app);
                 }
@@ -325,6 +325,28 @@ void mg_mem_free(void *w_, void* user_data) {
     free(mb->choices);
     free(mb);
 }
+
+/**
+ * @brief open_message_dialog  - open a non blocking dialog window,
+ * lines in message should be set by the newline character "\n"
+ * choices for the SELECTION_BOX should be set as well with the newline 
+ * character. message and/or choices could be NULL when not needed.
+ * To fetch the response of a dialog, connect to the dialog_callback 
+ * supported "styles" been
+ * \n
+ * INFO_BOX - a message dialog display a info text
+ * \n
+ * WARNING_BOX - a message dialog display a warning
+ * \n
+ * ERROR_BOX - a message dialog display a error message
+ * \n
+ * QUESTION_BOX - a no/yes dialog message
+ * \n
+ * SELECTION_BOX - a dialog to select between multiple options
+ * \n
+ * ENTRY_BOX - a dialog to get text input
+ * @return Widget_t*           - pointer to the Widget_t struct
+ */
 
 Widget_t *open_message_dialog(Widget_t *w, int style, const char *title,
                               const char *message, const char *choices) {

@@ -4,6 +4,7 @@ var searchData=
   ['cl_5fbutton',['CL_BUTTON',['../xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743abc74a250346d4b52e2fa55dbf4da1ef0',1,'xadjustment.h']]],
   ['cl_5fcontinuos',['CL_CONTINUOS',['../xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a62a789a6ef19826f17aefdceba303647',1,'xadjustment.h']]],
   ['cl_5fenum',['CL_ENUM',['../xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a86ad020137af474591a13badc9e3bf78',1,'xadjustment.h']]],
+  ['cl_5fmeter',['CL_METER',['../xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a590b48f5080da2c2411eaf9fa7e291e6',1,'xadjustment.h']]],
   ['cl_5fnone',['CL_NONE',['../xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a6dc58bda20e0018d54f1cb94df78119e',1,'xadjustment.h']]],
   ['cl_5ftoggle',['CL_TOGGLE',['../xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a08e7c21e78e2617f5f20de6b919b0e6c',1,'xadjustment.h']]],
   ['cl_5fviewport',['CL_VIEWPORT',['../xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a68c34061b429f8842bffca897bdc630c',1,'xadjustment.h']]]

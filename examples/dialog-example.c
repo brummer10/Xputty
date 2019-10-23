@@ -213,17 +213,17 @@ int main (int argc, char ** argv)
     xde.messagebutton = add_image_toggle_button(xde.w, "", 340, 80, 60, 60);
     widget_get_png(xde.messagebutton, LDVAR(question_png));
     xde.messagebutton->func.value_changed_callback = qbutton_callback;
-    xde.messagebutton->func.user_callback = qbutton_response;
+    xde.messagebutton->func.dialog_callback = qbutton_response;
 
     xde.messagebutton = add_image_toggle_button(xde.w, "", 420, 80, 60, 60);
     widget_get_png(xde.messagebutton, LDVAR(choice_png));
     xde.messagebutton->func.value_changed_callback = cbutton_callback;
-    xde.messagebutton->func.user_callback = cbutton_response;
+    xde.messagebutton->func.dialog_callback = cbutton_response;
 
     xde.messagebutton = add_image_toggle_button(xde.w, "", 500, 80, 60, 60);
     widget_get_png(xde.messagebutton, LDVAR(message_png));
     xde.messagebutton->func.value_changed_callback = tbutton_callback;
-    xde.messagebutton->func.user_callback = tbutton_response;
+    xde.messagebutton->func.dialog_callback = tbutton_response;
 
    widget_show_all(xde.w);
 

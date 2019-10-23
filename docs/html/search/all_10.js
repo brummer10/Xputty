@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['radio_5fitem_5fset_5factive',['radio_item_set_active',['../xmenu_8c.html#a3158157d7c7a8c20a22601515443b0c4',1,'radio_item_set_active(Widget_t *w):&#160;xmenu.c'],['../xmenu_8h.html#a3158157d7c7a8c20a22601515443b0c4',1,'radio_item_set_active(Widget_t *w):&#160;xmenu.c']]],
-  ['rcscale_5fx',['rcscale_x',['../structResize__t.html#a10a63bdd75d925ef236c23baf2480a26',1,'Resize_t']]],
-  ['rcscale_5fy',['rcscale_y',['../structResize__t.html#af5d4bf846b37172a1f4285f52d03a6d2',1,'Resize_t']]],
-  ['readme_2emd',['README.md',['../README_8md.html',1,'']]],
-  ['resize_5ft',['Resize_t',['../structResize__t.html',1,'']]],
-  ['run',['run',['../structXputty.html#a3a8e0381e77ae9fae69aab5dda8e7e7a',1,'Xputty']]],
-  ['run_5fembedded',['run_embedded',['../xputty_8c.html#ad265582bb835c54e689b2c354e8dd865',1,'run_embedded(Xputty *main):&#160;xputty.c'],['../xputty_8h.html#ad265582bb835c54e689b2c354e8dd865',1,'run_embedded(Xputty *main):&#160;xputty.c']]]
+  ['question_5fbox',['QUESTION_BOX',['../xmessage-dialog_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a0434869769df99b596e3c8bd2fc669ab',1,'xmessage-dialog.h']]],
+  ['quit',['quit',['../xwidget_8c.html#a4d835af5b56eb13ed7bd4602ce7ccd92',1,'quit(Widget_t *w):&#160;xwidget.c'],['../xwidget_8h.html#a4d835af5b56eb13ed7bd4602ce7ccd92',1,'quit(Widget_t *w):&#160;xwidget.c']]],
+  ['quit_5fwidget',['quit_widget',['../xwidget_8c.html#a1e367c7f3e7dcd71fbbb6125fc1b227a',1,'quit_widget(Widget_t *w):&#160;xwidget.c'],['../xwidget_8h.html#a1e367c7f3e7dcd71fbbb6125fc1b227a',1,'quit_widget(Widget_t *w):&#160;xwidget.c']]]
 ];

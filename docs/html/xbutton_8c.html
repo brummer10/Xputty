@@ -97,6 +97,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a528331e8ac24f1ca7bb0101dad28f962"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xbutton_8c.html#a528331e8ac24f1ca7bb0101dad28f962">add_toggle_button</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *parent, const char *label, int x, int y, int width, int height)</td></tr>
 <tr class="memdesc:a528331e8ac24f1ca7bb0101dad28f962"><td class="mdescLeft">&#160;</td><td class="mdescRight">add_toggle_button - add a button to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> connect to func.value_changed_callback to implement your actions  <a href="#a528331e8ac24f1ca7bb0101dad28f962">More...</a><br /></td></tr>
 <tr class="separator:a528331e8ac24f1ca7bb0101dad28f962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac941c08285f451d0cc12979789348005"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xbutton_8c.html#ac941c08285f451d0cc12979789348005">add_image_toggle_button</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *parent, const char *label, int x, int y, int width, int height)</td></tr>
+<tr class="memdesc:ac941c08285f451d0cc12979789348005"><td class="mdescLeft">&#160;</td><td class="mdescRight">add_image_toggle_button - add a button to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> connect to func.value_changed_callback to implement your actions  <a href="#ac941c08285f451d0cc12979789348005">More...</a><br /></td></tr>
+<tr class="separator:ac941c08285f451d0cc12979789348005"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ae822332f5a4bd6fd58eca4aca49ba0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xbutton_8c.html#a4ae822332f5a4bd6fd58eca4aca49ba0">add_check_button</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *parent, const char *label, int x, int y, int width, int height)</td></tr>
+<tr class="memdesc:a4ae822332f5a4bd6fd58eca4aca49ba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">add_check_button - add a button to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> connect to func.value_changed_callback to implement your actions  <a href="#a4ae822332f5a4bd6fd58eca4aca49ba0">More...</a><br /></td></tr>
+<tr class="separator:a4ae822332f5a4bd6fd58eca4aca49ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a387e1de773af471cd0bacc8a0e838325"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xbutton_8c.html#a387e1de773af471cd0bacc8a0e838325">get_width</a> (const char *label)</td></tr>
+<tr class="memdesc:a387e1de773af471cd0bacc8a0e838325"><td class="mdescLeft">&#160;</td><td class="mdescRight">get_width - get the width of a tooltip text and resize the tooltip widget to match the size  <a href="#a387e1de773af471cd0bacc8a0e838325">More...</a><br /></td></tr>
+<tr class="separator:a387e1de773af471cd0bacc8a0e838325"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a01288c501f82d51b5ceee01dbeb4a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xbutton_8c.html#a9a01288c501f82d51b5ceee01dbeb4a8">add_check_box</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *parent, const char *label, int x, int y, int width, int height)</td></tr>
+<tr class="memdesc:a9a01288c501f82d51b5ceee01dbeb4a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">add_check_box - add a check box to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> connect to func.value_changed_callback to implement your actions  <a href="#a9a01288c501f82d51b5ceee01dbeb4a8">More...</a><br /></td></tr>
+<tr class="separator:a9a01288c501f82d51b5ceee01dbeb4a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a4dbd91e99d5ee97678aee121f8e12587"></a>
@@ -150,6 +162,195 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>add_button - add a button to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> connect to func.value_changed_callback to implement your actions </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*parent</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request the button </td></tr>
+    <tr><td class="paramname">*label</td><td>- Label to show on the button </td></tr>
+    <tr><td class="paramname">x,y,width,height</td><td>- the position/geometry to create the button </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Widget_t* - pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> button struct </dd></dl>
+
+</div>
+</div>
+<a id="a9a01288c501f82d51b5ceee01dbeb4a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a01288c501f82d51b5ceee01dbeb4a8">&#9670;&nbsp;</a></span>add_check_box()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWidget__t.html">Widget_t</a>* add_check_box </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>add_check_box - add a check box to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> connect to func.value_changed_callback to implement your actions </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*parent</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request the button </td></tr>
+    <tr><td class="paramname">*label</td><td>- Label to show on the button </td></tr>
+    <tr><td class="paramname">x,y,width,height</td><td>- the position/geometry to create the button </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Widget_t* - pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> button struct </dd></dl>
+
+</div>
+</div>
+<a id="a4ae822332f5a4bd6fd58eca4aca49ba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ae822332f5a4bd6fd58eca4aca49ba0">&#9670;&nbsp;</a></span>add_check_button()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWidget__t.html">Widget_t</a>* add_check_button </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>add_check_button - add a button to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> connect to func.value_changed_callback to implement your actions </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*parent</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request the button </td></tr>
+    <tr><td class="paramname">*label</td><td>- Label to show on the button </td></tr>
+    <tr><td class="paramname">x,y,width,height</td><td>- the position/geometry to create the button </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Widget_t* - pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> button struct </dd></dl>
+
+</div>
+</div>
+<a id="ac941c08285f451d0cc12979789348005"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac941c08285f451d0cc12979789348005">&#9670;&nbsp;</a></span>add_image_toggle_button()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWidget__t.html">Widget_t</a>* add_image_toggle_button </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>add_image_toggle_button - add a button to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> connect to func.value_changed_callback to implement your actions </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*parent</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request the button </td></tr>
@@ -222,6 +423,33 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Widget_t* - pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> button struct </dd></dl>
+
+</div>
+</div>
+<a id="a387e1de773af471cd0bacc8a0e838325"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a387e1de773af471cd0bacc8a0e838325">&#9670;&nbsp;</a></span>get_width()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_width </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>label</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get_width - get the width of a tooltip text and resize the tooltip widget to match the size </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*w</td><td>- the tooltip <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>

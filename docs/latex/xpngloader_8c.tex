@@ -17,7 +17,11 @@ cairo\+\_\+status\+\_\+t \hyperlink{xpngloader_8c_a2c4f5eaa5ce502eb8ae038bc3c1ba
 cairo\+\_\+surface\+\_\+t $\ast$ \hyperlink{xpngloader_8c_a814ff706695612053b32b7f5b722ad4c}{cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream} (const unsigned char $\ast$name)
 \begin{DoxyCompactList}\small\item\em cairo\+\_\+image\+\_\+surface\+\_\+create\+\_\+from\+\_\+stream -\/ read binary data into cairo surface from stream \end{DoxyCompactList}\item 
 void \hyperlink{xpngloader_8c_a3245e688a0901f7574c58509e72384a6}{widget\+\_\+get\+\_\+png} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, const unsigned char $\ast$name)
-\begin{DoxyCompactList}\small\item\em widget\+\_\+get\+\_\+png -\/ read png into \hyperlink{structWidget__t}{Widget\+\_\+t} xlib surface \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em widget\+\_\+get\+\_\+png -\/ read png into \hyperlink{structWidget__t}{Widget\+\_\+t} xlib surface \end{DoxyCompactList}\item 
+void \hyperlink{xpngloader_8c_ac89aaa4cce84262b821a4d534378f917}{widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+surface} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, Pixmap $\ast$icon\+\_\+, cairo\+\_\+surface\+\_\+t $\ast$image)
+\begin{DoxyCompactList}\small\item\em widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+surface -\/ set icon image from cairo surface to \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xpngloader_8c_ab9bdee850338b94a324b238f34e10c63}{widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+png} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, Pixmap $\ast$icon\+\_\+, const unsigned char $\ast$name)
+\begin{DoxyCompactList}\small\item\em widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+png -\/ set icon image from png binary to \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -74,6 +78,46 @@ widget\+\_\+get\+\_\+png -\/ read png into \hyperlink{structWidget__t}{Widget\+\
 {\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} which should use the png \\
 \hline
 {\em $\ast$name} & -\/ pointer to the binary image data \hyperlink{xpngloader_8h_ad21ced59f46124f67ce89f73e60c2563}{L\+D\+V\+A\+R(name)} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xpngloader_8c_ab9bdee850338b94a324b238f34e10c63}\label{xpngloader_8c_ab9bdee850338b94a324b238f34e10c63}} 
+\index{xpngloader.\+c@{xpngloader.\+c}!widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+png@{widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+png}}
+\index{widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+png@{widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+png}!xpngloader.\+c@{xpngloader.\+c}}
+\subsubsection{\texorpdfstring{widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+png()}{widget\_set\_icon\_from\_png()}}
+{\footnotesize\ttfamily void widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+png (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{Pixmap $\ast$}]{icon\+\_\+,  }\item[{const unsigned char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+png -\/ set icon image from png binary to \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} which should use the icon \\
+\hline
+{\em $\ast$image} & -\/ pointer to the cairo\+\_\+surface\+\_\+t to use for the icon \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xpngloader_8c_ac89aaa4cce84262b821a4d534378f917}\label{xpngloader_8c_ac89aaa4cce84262b821a4d534378f917}} 
+\index{xpngloader.\+c@{xpngloader.\+c}!widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+surface@{widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+surface}}
+\index{widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+surface@{widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+surface}!xpngloader.\+c@{xpngloader.\+c}}
+\subsubsection{\texorpdfstring{widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+surface()}{widget\_set\_icon\_from\_surface()}}
+{\footnotesize\ttfamily void widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+surface (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{Pixmap $\ast$}]{icon\+\_\+,  }\item[{cairo\+\_\+surface\+\_\+t $\ast$}]{image }\end{DoxyParamCaption})}
+
+
+
+widget\+\_\+set\+\_\+icon\+\_\+from\+\_\+surface -\/ set icon image from cairo surface to \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} which should use the icon \\
+\hline
+{\em $\ast$image} & -\/ pointer to the cairo\+\_\+surface\+\_\+t to use for the icon \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

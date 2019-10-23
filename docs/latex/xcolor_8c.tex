@@ -23,9 +23,11 @@ void \hyperlink{xcolor_8c_a389caf2131cd599465c512eead16a6c0}{use\+\_\+fg\+\_\+co
 void \hyperlink{xcolor_8c_a335aed33f3b2fca02beb85375186a5c9}{use\+\_\+bg\+\_\+color\+\_\+scheme} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} st)
 \begin{DoxyCompactList}\small\item\em use\+\_\+bg\+\_\+color\+\_\+scheme -\/ set normal background color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
 void \hyperlink{xcolor_8c_af2eeed36f1b19416481687498a6d1ce3}{use\+\_\+base\+\_\+color\+\_\+scheme} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} st)
-\begin{DoxyCompactList}\small\item\em use\+\_\+text\+\_\+color\+\_\+scheme -\/ set text color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em use\+\_\+base\+\_\+color\+\_\+scheme -\/ set base color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
 void \hyperlink{xcolor_8c_a082dd5329f6c1e402747b9ecfa1dceae}{use\+\_\+text\+\_\+color\+\_\+scheme} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} st)
 \begin{DoxyCompactList}\small\item\em use\+\_\+text\+\_\+color\+\_\+scheme -\/ set text color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
+void \hyperlink{xcolor_8c_adcf0fbad75a168085a6b857a159d6eee}{use\+\_\+shadow\+\_\+color\+\_\+scheme} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} st)
+\begin{DoxyCompactList}\small\item\em use\+\_\+shadow\+\_\+color\+\_\+scheme -\/ set shadow color for \hyperlink{structWidget__t}{Widget\+\_\+t} \end{DoxyCompactList}\item 
 void \hyperlink{xcolor_8c_a3d3d90591511e27e1300f09ac1d82bab}{set\+\_\+pattern} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{structColors}{Colors} $\ast$from, \hyperlink{structColors}{Colors} $\ast$to, \hyperlink{xcolor_8h_a2c1c3c5b8916c211c3fe5f76decb7e1c}{Color\+\_\+mod} mod)
 \begin{DoxyCompactList}\small\item\em set\+\_\+pattern -\/ set pattern for the col\+\_\+fromted colors \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -123,7 +125,7 @@ void
 
 
 
-use\+\_\+text\+\_\+color\+\_\+scheme -\/ set text color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
+use\+\_\+base\+\_\+color\+\_\+scheme -\/ set base color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
 
 
 \begin{DoxyParams}{Parameters}
@@ -164,6 +166,26 @@ void
 
 
 use\+\_\+fg\+\_\+color\+\_\+scheme -\/ set normal forground color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & -\/ the \hyperlink{structWidget__t}{Widget\+\_\+t} to send the event to \\
+\hline
+{\em st} & -\/ the Color\+\_\+state to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xcolor_8c_adcf0fbad75a168085a6b857a159d6eee}\label{xcolor_8c_adcf0fbad75a168085a6b857a159d6eee}} 
+\index{xcolor.\+c@{xcolor.\+c}!use\+\_\+shadow\+\_\+color\+\_\+scheme@{use\+\_\+shadow\+\_\+color\+\_\+scheme}}
+\index{use\+\_\+shadow\+\_\+color\+\_\+scheme@{use\+\_\+shadow\+\_\+color\+\_\+scheme}!xcolor.\+c@{xcolor.\+c}}
+\subsubsection{\texorpdfstring{use\+\_\+shadow\+\_\+color\+\_\+scheme()}{use\_shadow\_color\_scheme()}}
+{\footnotesize\ttfamily void use\+\_\+shadow\+\_\+color\+\_\+scheme (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{\hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state}}]{st }\end{DoxyParamCaption})}
+
+
+
+use\+\_\+shadow\+\_\+color\+\_\+scheme -\/ set shadow color for \hyperlink{structWidget__t}{Widget\+\_\+t} 
 
 
 \begin{DoxyParams}{Parameters}

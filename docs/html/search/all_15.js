@@ -1,14 +1,8 @@
 var searchData=
 [
-  ['w',['w',['../structAdjustment__t.html#a82c03e6ceb092314a75bd10ba918f9d7',1,'Adjustment_t']]],
-  ['widget',['widget',['../structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1',1,'Widget_t']]],
-  ['widget_5fevent_5floop',['widget_event_loop',['../xwidget_8c.html#a4549cfc76e73a5d56b50f0d762287436',1,'widget_event_loop(void *w_, void *event, Xputty *main, void *user_data):&#160;xwidget.c'],['../xwidget_8h.html#a4549cfc76e73a5d56b50f0d762287436',1,'widget_event_loop(void *w_, void *event, Xputty *main, void *user_data):&#160;xwidget.c']]],
-  ['widget_5fget_5fpng',['widget_get_png',['../xpngloader_8c.html#a3245e688a0901f7574c58509e72384a6',1,'widget_get_png(Widget_t *w, const unsigned char *name):&#160;xpngloader.c'],['../xpngloader_8h.html#a3245e688a0901f7574c58509e72384a6',1,'widget_get_png(Widget_t *w, const unsigned char *name):&#160;xpngloader.c']]],
-  ['widget_5fhide',['widget_hide',['../xwidget_8c.html#ab00e7f2485e08237c865e96ba56e63e6',1,'widget_hide(Widget_t *w):&#160;xwidget.c'],['../xwidget_8h.html#ab00e7f2485e08237c865e96ba56e63e6',1,'widget_hide(Widget_t *w):&#160;xwidget.c']]],
-  ['widget_5freset_5fscale',['widget_reset_scale',['../xwidget_8c.html#a73cfd5d35a86fde690c00a74f6e34759',1,'widget_reset_scale(Widget_t *w):&#160;xwidget.c'],['../xwidget_8h.html#a73cfd5d35a86fde690c00a74f6e34759',1,'widget_reset_scale(Widget_t *w):&#160;xwidget.c']]],
-  ['widget_5fset_5fscale',['widget_set_scale',['../xwidget_8c.html#a0e071df83f5642d90f81dc1c246db9e1',1,'widget_set_scale(Widget_t *w):&#160;xwidget.c'],['../xwidget_8h.html#a0e071df83f5642d90f81dc1c246db9e1',1,'widget_set_scale(Widget_t *w):&#160;xwidget.c']]],
-  ['widget_5fshow',['widget_show',['../xwidget_8c.html#a7378f213e6159eb59b98467198844086',1,'widget_show(Widget_t *w):&#160;xwidget.c'],['../xwidget_8h.html#a7378f213e6159eb59b98467198844086',1,'widget_show(Widget_t *w):&#160;xwidget.c']]],
-  ['widget_5fshow_5fall',['widget_show_all',['../xwidget_8c.html#aae228a75c93bb0cb9ad57ffaf4d25922',1,'widget_show_all(Widget_t *w):&#160;xwidget.c'],['../xwidget_8h.html#aae228a75c93bb0cb9ad57ffaf4d25922',1,'widget_show_all(Widget_t *w):&#160;xwidget.c']]],
-  ['widget_5ft',['Widget_t',['../structWidget__t.html',1,'Widget_t'],['../xputty_8h.html#a6b3e8ecb43e49de5de9dc7ab79404014',1,'Widget_t():&#160;xputty.h']]],
-  ['width',['width',['../structWidget__t.html#a3204c88196ed5793250b3530dd719037',1,'Widget_t']]]
+  ['value',['value',['../structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c',1,'Adjustment_t']]],
+  ['value_5fchanged_5fcallback',['value_changed_callback',['../structFunc__t.html#acce396ccf3266886f0a6d28cf45761d3',1,'Func_t']]],
+  ['vasprintf',['vasprintf',['../xasprintf_8c.html#a5ec7fd90ebe6015636bce974c192c86a',1,'vasprintf(char **strp, const char *fmt, va_list ap):&#160;xasprintf.c'],['../xasprintf_8h.html#a5ec7fd90ebe6015636bce974c192c86a',1,'vasprintf(char **strp, const char *fmt, va_list ap):&#160;xasprintf.c']]],
+  ['vfunc',['vfunc',['../xwidget_8h.html#a6423c133fb634585762a77dda34befab',1,'xwidget.h']]],
+  ['viewlist_5ft',['ViewList_t',['../structViewList__t.html',1,'']]]
 ];

@@ -32,7 +32,7 @@ produced by this code\+:
 \textcolor{preprocessor}{#include "\hyperlink{xputty_8h}{xputty.h}"}
 \textcolor{comment}{}
 \textcolor{comment}{/** your own expose function */}
-\textcolor{keyword}{static} \textcolor{keywordtype}{void} draw\_window(\textcolor{keywordtype}{void} *w\_, \textcolor{keywordtype}{void}* user\_data) \{
+\textcolor{keyword}{static} \textcolor{keywordtype}{void} \hyperlink{xfile-dialog_8c_ab1219e8c5af9084d5c2846d6d5b31f09}{draw\_window}(\textcolor{keywordtype}{void} *w\_, \textcolor{keywordtype}{void}* user\_data) \{
     \hyperlink{structWidget__t}{Widget\_t} *w = (\hyperlink{structWidget__t}{Widget\_t}*)w\_;
     cairo\_set\_source\_rgb (w->\hyperlink{structWidget__t_ad98022ee160d4c0906110868fc9e5664}{crb}, 1, 1, 1);
     cairo\_paint (w->\hyperlink{structWidget__t_ad98022ee160d4c0906110868fc9e5664}{crb});
@@ -50,7 +50,7 @@ produced by this code\+:
 \textcolor{comment}{    /** acces Xlib function */}
     XStoreName(app.\hyperlink{structXputty_ab185ae4fd00ee1930c61e0440734878f}{dpy}, w->\hyperlink{structWidget__t_acb2bfb41674371ee1220a9d6a2d89fb1}{widget}, \textcolor{stringliteral}{"Hello world"});\textcolor{comment}{}
 \textcolor{comment}{    /** overwrite event handler with your own */}
-    w->\hyperlink{structWidget__t_a225b9a175e132994a5aa73b59a2911ad}{func}.\hyperlink{structFunc__t_ae4ba307ec29bfea83e1197aa750c1396}{expose\_callback} = draw\_window;\textcolor{comment}{}
+    w->\hyperlink{structWidget__t_a225b9a175e132994a5aa73b59a2911ad}{func}.\hyperlink{structFunc__t_ae4ba307ec29bfea83e1197aa750c1396}{expose\_callback} = \hyperlink{xfile-dialog_8c_ab1219e8c5af9084d5c2846d6d5b31f09}{draw\_window};\textcolor{comment}{}
 \textcolor{comment}{    /** map the Window to display */}
     \hyperlink{xwidget_8c_aae228a75c93bb0cb9ad57ffaf4d25922}{widget\_show\_all}(w);\textcolor{comment}{}
 \textcolor{comment}{    /** run the event loop */}
@@ -60,6 +60,12 @@ produced by this code\+:
     \textcolor{keywordflow}{return} 0;
 \}
 \end{DoxyCode}
+
+
+Here are a bit more advanced examples\+:
+
+
+
 
 
 check out the example folder for more examples.

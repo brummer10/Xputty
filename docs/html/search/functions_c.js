@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['tooltip_5fset_5ftext',['tooltip_set_text',['../xtooltip_8c.html#a8bbcf0b320636e1ea741dadcdbdd239d',1,'tooltip_set_text(Widget_t *w, const char *label):&#160;xtooltip.c'],['../xtooltip_8h.html#a8bbcf0b320636e1ea741dadcdbdd239d',1,'tooltip_set_text(Widget_t *w, const char *label):&#160;xtooltip.c']]],
-  ['transparent_5fdraw',['transparent_draw',['../xwidget_8c.html#a0e801c1a701cc8526b198371ce2ff692',1,'transparent_draw(void *w_, void *user_data):&#160;xwidget.c'],['../xwidget_8h.html#ab45a54d3dee60783a5afe9c236f54a04',1,'transparent_draw(void *wid, void *user_data):&#160;xwidget.c']]]
+  ['open_5fdir_5fcallback',['open_dir_callback',['../xfile-dialog_8c.html#af14ecfde3e66108d2a8aa705a087c5e2',1,'xfile-dialog.c']]],
+  ['open_5ffile_5fdialog',['open_file_dialog',['../xfile-dialog_8c.html#a50f41466d35761802fb415011006c6e6',1,'open_file_dialog(Widget_t *w, const char *path, const char *filter):&#160;xfile-dialog.c'],['../xfile-dialog_8h.html#a50f41466d35761802fb415011006c6e6',1,'open_file_dialog(Widget_t *w, const char *path, const char *filter):&#160;xfile-dialog.c']]],
+  ['open_5fmessage_5fdialog',['open_message_dialog',['../xmessage-dialog_8c.html#a41a7ea2ce1732b9afbd1923f68b1d356',1,'open_message_dialog(Widget_t *w, int style, const char *title, const char *message, const char *choices):&#160;xmessage-dialog.c'],['../xmessage-dialog_8h.html#a41a7ea2ce1732b9afbd1923f68b1d356',1,'open_message_dialog(Widget_t *w, int style, const char *title, const char *message, const char *choices):&#160;xmessage-dialog.c']]]
 ];

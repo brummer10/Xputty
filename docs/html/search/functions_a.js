@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['radio_5fitem_5fset_5factive',['radio_item_set_active',['../xmenu_8c.html#a3158157d7c7a8c20a22601515443b0c4',1,'radio_item_set_active(Widget_t *w):&#160;xmenu.c'],['../xmenu_8h.html#a3158157d7c7a8c20a22601515443b0c4',1,'radio_item_set_active(Widget_t *w):&#160;xmenu.c']]],
-  ['run_5fembedded',['run_embedded',['../xputty_8c.html#ad265582bb835c54e689b2c354e8dd865',1,'run_embedded(Xputty *main):&#160;xputty.c'],['../xputty_8h.html#ad265582bb835c54e689b2c354e8dd865',1,'run_embedded(Xputty *main):&#160;xputty.c']]]
+  ['listbox_5fadd_5fentry',['listbox_add_entry',['../xlistbox_8c.html#a5a491ee34570ce1182a8ae832fdf8547',1,'listbox_add_entry(Widget_t *listbox, const char *label):&#160;xlistbox.c'],['../xlistbox_8h.html#a5a491ee34570ce1182a8ae832fdf8547',1,'listbox_add_entry(Widget_t *listbox, const char *label):&#160;xlistbox.c']]],
+  ['listbox_5fset_5factive_5fentry',['listbox_set_active_entry',['../xlistbox_8c.html#a2727596dc7e095757f042a55d459e8f4',1,'listbox_set_active_entry(Widget_t *w, int active):&#160;xlistbox.c'],['../xlistbox_8h.html#a2727596dc7e095757f042a55d459e8f4',1,'listbox_set_active_entry(Widget_t *w, int active):&#160;xlistbox.c']]],
+  ['listview_5fmem_5ffree',['listview_mem_free',['../xlistview_8c.html#aa2e669714c83ddafafc63487729ba7ab',1,'listview_mem_free(void *w_, void *user_data):&#160;xlistview.c'],['../xlistview_8h.html#aa2e669714c83ddafafc63487729ba7ab',1,'listview_mem_free(void *w_, void *user_data):&#160;xlistview.c']]],
+  ['listview_5fset_5factive_5fentry',['listview_set_active_entry',['../xlistview_8c.html#a8de19388cedfa4b2c3bc08c0c1b09d10',1,'listview_set_active_entry(Widget_t *w, int active):&#160;xlistview.c'],['../xlistview_8h.html#a8de19388cedfa4b2c3bc08c0c1b09d10',1,'listview_set_active_entry(Widget_t *w, int active):&#160;xlistview.c']]],
+  ['listview_5fset_5flist',['listview_set_list',['../xlistview_8c.html#ae8ee00086a7c6467c47e6dadd0afbcd5',1,'listview_set_list(Widget_t *listview, char **list, int list_size):&#160;xlistview.c'],['../xlistview_8h.html#ae8ee00086a7c6467c47e6dadd0afbcd5',1,'listview_set_list(Widget_t *listview, char **list, int list_size):&#160;xlistview.c']]]
 ];

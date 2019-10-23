@@ -18,10 +18,18 @@ void \hyperlink{xbutton__private_8c_a0ea4425c5e10fa1a3f052afa6114d30b}{\+\_\+pat
 \begin{DoxyCompactList}\small\item\em \+\_\+pattern\+\_\+in -\/ a little pattern to make press state more visible \end{DoxyCompactList}\item 
 void \hyperlink{xbutton__private_8c_a7b78e740b4f0797a42a53278bfb3c7d4}{\+\_\+pattern\+\_\+in} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, \hyperlink{xcolor_8h_af6e1bc675d5df2f7fb9e91a8c5820771}{Color\+\_\+state} st, int height)
 \begin{DoxyCompactList}\small\item\em \+\_\+pattern\+\_\+in -\/ a little pattern to make press state more visible \end{DoxyCompactList}\item 
-void \hyperlink{xbutton__private_8c_abd0ba77ea8c342b1c26dfe16dcf9f18e}{\+\_\+draw\+\_\+image\+\_\+button} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, int width\+\_\+t, int height\+\_\+t)
+void \hyperlink{xbutton__private_8c_a6f1d324e2a185fe9fb7d471201417513}{\+\_\+draw\+\_\+image\+\_\+button} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, int width\+\_\+t, int height\+\_\+t, float offset)
 \begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+image\+\_\+button -\/ internal draw the knob from image to the buffer \end{DoxyCompactList}\item 
+void \hyperlink{xbutton__private_8c_a206eb3a472de4ea0a5d6b60add214130}{\+\_\+draw\+\_\+button\+\_\+base} (\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$w, int width, int height)
+\item 
 void \hyperlink{xbutton__private_8c_a555079b56b3d52f2a74c20f6ebd05e29}{\+\_\+draw\+\_\+button} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+button -\/ internal draw the button to the buffer \end{DoxyCompactList}\item 
+void \hyperlink{xbutton__private_8c_abdbb2a0a2e7b10fea4d2147f8ef32248}{\+\_\+draw\+\_\+ti\+\_\+button} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+ti\+\_\+button -\/ internal draw the button to the buffer \end{DoxyCompactList}\item 
+void \hyperlink{xbutton__private_8c_a4b59433c1a0932889318dcd64943a299}{\+\_\+draw\+\_\+check\+\_\+button} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+check\+\_\+button -\/ internal draw the button to the buffer \end{DoxyCompactList}\item 
+void \hyperlink{xbutton__private_8c_a9517adc82343f559ff950b4cd632931d}{\+\_\+draw\+\_\+check\+\_\+box} (void $\ast$w\+\_\+, void $\ast$user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em \+\_\+draw\+\_\+check\+\_\+box -\/ internal draw the check box to the buffer \end{DoxyCompactList}\item 
 void \hyperlink{xbutton__private_8c_a28a4fe06426208c720b93c1fa51aff49}{\+\_\+button\+\_\+pressed} (void $\ast$w\+\_\+, void $\ast$button, void $\ast$user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em \+\_\+button\+\_\+pressed -\/ redraw the button and send state via user\+\_\+callback \end{DoxyCompactList}\item 
 void \hyperlink{xbutton__private_8c_a0168623590cbb3b5f19ae0878ea41a5f}{\+\_\+button\+\_\+released} (void $\ast$w\+\_\+, void $\ast$button\+\_\+, void $\ast$user\+\_\+data)
@@ -97,11 +105,57 @@ void
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\mbox{\Hypertarget{xbutton__private_8c_abd0ba77ea8c342b1c26dfe16dcf9f18e}\label{xbutton__private_8c_abd0ba77ea8c342b1c26dfe16dcf9f18e}} 
+\mbox{\Hypertarget{xbutton__private_8c_a206eb3a472de4ea0a5d6b60add214130}\label{xbutton__private_8c_a206eb3a472de4ea0a5d6b60add214130}} 
+\index{xbutton\+\_\+private.\+c@{xbutton\+\_\+private.\+c}!\+\_\+draw\+\_\+button\+\_\+base@{\+\_\+draw\+\_\+button\+\_\+base}}
+\index{\+\_\+draw\+\_\+button\+\_\+base@{\+\_\+draw\+\_\+button\+\_\+base}!xbutton\+\_\+private.\+c@{xbutton\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+\_\+button\+\_\+base()}{\_draw\_button\_base()}}
+{\footnotesize\ttfamily void \+\_\+draw\+\_\+button\+\_\+base (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{xbutton__private_8c_a9517adc82343f559ff950b4cd632931d}\label{xbutton__private_8c_a9517adc82343f559ff950b4cd632931d}} 
+\index{xbutton\+\_\+private.\+c@{xbutton\+\_\+private.\+c}!\+\_\+draw\+\_\+check\+\_\+box@{\+\_\+draw\+\_\+check\+\_\+box}}
+\index{\+\_\+draw\+\_\+check\+\_\+box@{\+\_\+draw\+\_\+check\+\_\+box}!xbutton\+\_\+private.\+c@{xbutton\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+\_\+check\+\_\+box()}{\_draw\_check\_box()}}
+{\footnotesize\ttfamily void \+\_\+draw\+\_\+check\+\_\+box (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+draw\+\_\+check\+\_\+box -\/ internal draw the check box to the buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} button \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xbutton__private_8c_a4b59433c1a0932889318dcd64943a299}\label{xbutton__private_8c_a4b59433c1a0932889318dcd64943a299}} 
+\index{xbutton\+\_\+private.\+c@{xbutton\+\_\+private.\+c}!\+\_\+draw\+\_\+check\+\_\+button@{\+\_\+draw\+\_\+check\+\_\+button}}
+\index{\+\_\+draw\+\_\+check\+\_\+button@{\+\_\+draw\+\_\+check\+\_\+button}!xbutton\+\_\+private.\+c@{xbutton\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+\_\+check\+\_\+button()}{\_draw\_check\_button()}}
+{\footnotesize\ttfamily void \+\_\+draw\+\_\+check\+\_\+button (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+draw\+\_\+check\+\_\+button -\/ internal draw the button to the buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} button \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xbutton__private_8c_a6f1d324e2a185fe9fb7d471201417513}\label{xbutton__private_8c_a6f1d324e2a185fe9fb7d471201417513}} 
 \index{xbutton\+\_\+private.\+c@{xbutton\+\_\+private.\+c}!\+\_\+draw\+\_\+image\+\_\+button@{\+\_\+draw\+\_\+image\+\_\+button}}
 \index{\+\_\+draw\+\_\+image\+\_\+button@{\+\_\+draw\+\_\+image\+\_\+button}!xbutton\+\_\+private.\+c@{xbutton\+\_\+private.\+c}}
 \subsubsection{\texorpdfstring{\+\_\+draw\+\_\+image\+\_\+button()}{\_draw\_image\_button()}}
-{\footnotesize\ttfamily void \+\_\+draw\+\_\+image\+\_\+button (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{int}]{width\+\_\+t,  }\item[{int}]{height\+\_\+t }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void \+\_\+draw\+\_\+image\+\_\+button (\begin{DoxyParamCaption}\item[{\hyperlink{structWidget__t}{Widget\+\_\+t} $\ast$}]{w,  }\item[{int}]{width\+\_\+t,  }\item[{int}]{height\+\_\+t,  }\item[{float}]{offset }\end{DoxyParamCaption})}
 
 
 
@@ -110,6 +164,26 @@ void
 
 \begin{DoxyParams}{Parameters}
 {\em $\ast$w} & -\/ pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} knob \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{xbutton__private_8c_abdbb2a0a2e7b10fea4d2147f8ef32248}\label{xbutton__private_8c_abdbb2a0a2e7b10fea4d2147f8ef32248}} 
+\index{xbutton\+\_\+private.\+c@{xbutton\+\_\+private.\+c}!\+\_\+draw\+\_\+ti\+\_\+button@{\+\_\+draw\+\_\+ti\+\_\+button}}
+\index{\+\_\+draw\+\_\+ti\+\_\+button@{\+\_\+draw\+\_\+ti\+\_\+button}!xbutton\+\_\+private.\+c@{xbutton\+\_\+private.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+\_\+ti\+\_\+button()}{\_draw\_ti\_button()}}
+{\footnotesize\ttfamily void \+\_\+draw\+\_\+ti\+\_\+button (\begin{DoxyParamCaption}\item[{void $\ast$}]{w\+\_\+,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\+\_\+draw\+\_\+ti\+\_\+button -\/ internal draw the button to the buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$w\+\_\+} & -\/ void pointer to the \hyperlink{structWidget__t}{Widget\+\_\+t} button \\
+\hline
+{\em $\ast$user\+\_\+data} & -\/ void pointer to attached user\+\_\+data \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

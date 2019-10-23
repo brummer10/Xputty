@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['text_5f',['TEXT_',['../xcolor_8h.html#a2c1c3c5b8916c211c3fe5f76decb7e1cab956f07f177a1b966ea01967b33a0256',1,'xcolor.h']]]
+  ['question_5fbox',['QUESTION_BOX',['../xmessage-dialog_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a0434869769df99b596e3c8bd2fc669ab',1,'xmessage-dialog.h']]]
 ];
