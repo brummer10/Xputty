@@ -50,9 +50,9 @@ typedef struct {
 
 /**
  * @brief open_message_dialog  - open a non blocking dialog window,
- * lines in message should be set by the newline character "\n"
- * choices for the SELECTION_BOX should be set as well with the newline 
- * character. message and/or choices could be NULL when not needed.
+ * lines in message chould be separated by the character "|"
+ * choices for the SELECTION_BOX should be separated as well with the
+ * character "|". message and/or choices could be NULL when not needed.
  * To fetch the response of a dialog, connect to the dialog_callback 
  * supported "styles" been
  * \n

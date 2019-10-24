@@ -271,12 +271,12 @@ void check_for_message(MessageBox *mb, const char *message) {
     if(!strlen(message)) return;
     int len = 0;
     char *ms =strdup(message);
-    char * p = strtok (ms, "\n");
+    char * p = strtok (ms, "|");
     while (p) {
         mb->message = realloc (mb->message, sizeof (char*) * ++mb->lin);
         mb->message[mb->lin-1] = strdup(p);
         len = max(len, strlen(mb->message[mb->lin-1]));
-        p = strtok (NULL, "\n");
+        p = strtok (NULL, "|");
     }
     free(ms);
     mb->width = len*12 ;
@@ -288,12 +288,12 @@ void check_for_choices(MessageBox *mb, const char *choices) {
     if(!strlen(choices)) return;
     int len = 0;
     char *ms =strdup(choices);
-    char * p = strtok (ms, "\n");
+    char * p = strtok (ms, "|");
     while (p) {
         mb->choices = realloc (mb->choices, sizeof (char*) * ++mb->sel);
         mb->choices[mb->sel-1] = strdup(p);
         len = max(len, strlen(mb->choices[mb->sel-1]));
-        p = strtok (NULL, "\n");
+        p = strtok (NULL, "|");
     }
     free(ms);
     mb->width = max(len*12,mb->width);
@@ -328,9 +328,9 @@ void mg_mem_free(void *w_, void* user_data) {
 
 /**
  * @brief open_message_dialog  - open a non blocking dialog window,
- * lines in message should be set by the newline character "\n"
- * choices for the SELECTION_BOX should be set as well with the newline 
- * character. message and/or choices could be NULL when not needed.
+ * lines in message chould be separated by the character "|"
+ * choices for the SELECTION_BOX should be separated as well with the
+ * character "|". message and/or choices could be NULL when not needed.
  * To fetch the response of a dialog, connect to the dialog_callback 
  * supported "styles" been
  * \n
@@ -418,7 +418,7 @@ Widget_t *open_message_dialog(Widget_t *w, int style, const char *title,
             widget_set_icon_from_surface(wid,mb->icon,wid->image);
         break;
     }
-    widget_set_title(wid, strlen(title)? title : alternate_title);
+    widget_set_title(wid, (title)? title : alternate_title);
 
     Widget_t *okay = add_button(wid, button_title, mb->width-70, mb->height-40, 60, 30);
     okay->scale.gravity = CENTER;

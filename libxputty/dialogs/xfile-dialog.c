@@ -260,7 +260,7 @@ Widget_t *open_file_dialog(Widget_t *w, const char *path, const char *filter) {
     FileDialog *file_dialog = (FileDialog*)malloc(sizeof(FileDialog));
     
     file_dialog->fp = (FilePicker*)malloc(sizeof(FilePicker));
-    fp_init(file_dialog->fp, strlen(path) ? path : "/");
+    fp_init(file_dialog->fp, (path) ? path : "/");
     file_dialog->parent = w;
     file_dialog->send_clear_func = true;
     file_dialog->icon = NULL;
@@ -315,11 +315,11 @@ Widget_t *open_file_dialog(Widget_t *w, const char *path, const char *filter) {
     combobox_add_entry(file_dialog->set_filter,"text");
     combobox_add_entry(file_dialog->set_filter,"video");
     combobox_add_entry(file_dialog->set_filter,"x-content");
-    if(strlen(filter))
+    if(filter !=NULL && strlen(filter))
         combobox_add_entry(file_dialog->set_filter,filter);
     combobox_set_active_entry(file_dialog->set_filter, 0);
     file_dialog->set_filter->func.value_changed_callback = set_filter_callback;
-    if(strlen(filter))
+    if(filter !=NULL && strlen(filter))
         combobox_set_active_entry(file_dialog->set_filter, 8);
     add_tooltip(file_dialog->set_filter->childlist->childs[0], "File filter type");
 

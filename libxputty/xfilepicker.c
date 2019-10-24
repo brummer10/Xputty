@@ -129,14 +129,20 @@ int fp_prefill_dirbuffer(FilePicker *filepicker, char *path) {
 int fp_get_files(FilePicker *filepicker, char *path, int get_dirs) {
     int ret = 0;
     fp_clear_filebuffer(filepicker);
+
+    DIR *dirp;
+    struct dirent *dp;
+    if((dirp = opendir(path)) == NULL) {
+        path =PATH_SEPARATOR;
+        dirp = opendir(PATH_SEPARATOR);
+        assert(dirp);
+    }
+
     if(get_dirs) {
         fp_clear_dirbuffer(filepicker);
         ret = fp_prefill_dirbuffer(filepicker, path);
     }
 
-    DIR *dirp;
-    struct dirent *dp;
-    dirp = opendir(path);
     while ((dp = readdir(dirp)) != NULL) {
 
         if(dp-> d_type != DT_DIR && strlen(dp->d_name)!=0 && dp->d_type != DT_UNKNOWN

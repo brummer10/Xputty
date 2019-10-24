@@ -87,8 +87,8 @@ static void dialog_response(void *w_, void* user_data) {
 static void mbutton_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
-        open_message_dialog(w, INFO_BOX, "", "This is a longer info message\n"
-        "now with double line test\nand now with 3 lines\nand one more", NULL);
+        open_message_dialog(w, INFO_BOX, "", "This is a longer info message|"
+        "now with double line test|and now with 3 lines|and one more", NULL);
     }
     adj_set_value(w->adj,0.0);
 }
@@ -112,7 +112,7 @@ static void ebutton_callback(void *w_, void* user_data) {
 static void qbutton_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
-        open_message_dialog(w, QUESTION_BOX, "", "This is a question message\n"
+        open_message_dialog(w, QUESTION_BOX, "", "This is a question message|"
             "Do you like dog's?", NULL);
     }
     adj_set_value(w->adj,0.0);
@@ -131,8 +131,8 @@ static void qbutton_response(void *w_, void* user_data) {
 static void cbutton_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
-        open_message_dialog(w, SELECTION_BOX, "", "This is a selection question\n"
-            "Please make your choice\nWhat do you like most:", "Dogs\nCats\nFish\nBirds");
+        open_message_dialog(w, SELECTION_BOX, "", "This is a selection question|"
+            "Please make your choice|What do you like most:", "Dogs|Cats|Fish|Birds");
     }
     adj_set_value(w->adj,0.0);
 }
