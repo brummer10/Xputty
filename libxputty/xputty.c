@@ -44,7 +44,7 @@ void main_init(Xputty *main) {
     childlist_init(main->childlist);
     main->color_scheme = (XColor_t*)malloc(sizeof(XColor_t));
     assert(main->color_scheme);
-    set_color_scheme(main);
+    set_dark_theme(main);
     main->hold_grab = NULL;
     main->run = true;
 }

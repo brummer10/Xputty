@@ -82,12 +82,20 @@ struct XColor_t {
 };
 
 /**
- * @brief set_color_scheme  - init color shema to default values 
+ * @brief set_dark_theme  - init color shema to default values 
  * @param *main             - pointer to the main Xputty struct
  * @return void 
  */
 
-void set_color_scheme(Xputty *main);
+void set_dark_theme(Xputty *main);
+
+/**
+ * @brief set_light_theme  - init color shema to light theme 
+ * @param *main             - pointer to the main Xputty struct
+ * @return void 
+ */
+
+void set_light_theme(Xputty *main);
 
 /**
  * @brief get_color_scheme  - init color shema to default values 

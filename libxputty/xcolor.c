@@ -22,12 +22,12 @@
 
 
 /**
- * @brief set_color_scheme  - init color shema to default values 
+ * @brief set_dark_theme  - init color shema to default values 
  * @param *main             - pointer to the main Xputty struct
  * @return void 
  */
 
-void set_color_scheme(Xputty *main) {
+void set_dark_theme(Xputty *main) {
     main->color_scheme->normal = (Colors){
          /* cairo/ r / g / b / a /  */
          /*fg*/{ 0.85, 0.85, 0.85, 1.0},
@@ -58,6 +58,47 @@ void set_color_scheme(Xputty *main) {
         /*bg*/{ 0.0, 0.0, 0.0, 1.0},
         /*base*/{ 0.18, 0.38, 0.38, 1.0},
         /*text*/{ 0.75, 0.75, 0.75, 1.0},
+        /*shadow*/{ 0.18, 0.38, 0.38, 0.5},
+        /*fame*/{ 0.18, 0.38, 0.38, 1.0}};
+}
+
+/**
+ * @brief set_light_theme  - init color shema to light theme 
+ * @param *main             - pointer to the main Xputty struct
+ * @return void 
+ */
+
+void set_light_theme(Xputty *main) {
+    main->color_scheme->normal = (Colors){
+         /* cairo/ r / g / b / a /  */
+         /*fg*/{ 0.1, 0.1, 0.1, 1.0},
+         /*bg*/{ 0.85, 0.85, 0.85, 1.0},
+         /*base*/{ 0.9, 0.9, 0.9, 1.0},
+         /*text*/{ 0.15, 0.15, 0.15, 1.0},
+         /*shadow*/{ 0.0, 0.0, 0.0, 0.2},
+         /*frame*/{ 0.2, 0.2, 0.2, 1.0}};
+
+    main->color_scheme->prelight = (Colors){
+        /*fg*/{ 0.25, 0.25, 0.25, 1.0},
+        /*bg*/{ 1.0, 1.0, 1.0, 1.0},
+        /*base*/{ 0.75, 0.75, 0.75, 1.0},
+        /*text*/{ 0.15, 0.15, 0.15, 1.0},
+        /*shadow*/{ 0.1, 0.1, 0.1, 0.4},
+        /*fame*/{ 0.3, 0.3, 0.3, 1.0}};
+
+    main->color_scheme->selected = (Colors){
+        /*fg*/{ 0.2, 0.2, 0.2, 1.0},
+        /*bg*/{ 0.9, 0.9, 0.9, 1.0},
+         /*base*/{ 0.0, 0.5, 0.65, 1.0},
+        /*text*/{ 0.8, 0.8, 0.8, 1.0},
+         /*shadow*/{ 0.8, 0.18, 0.18, 0.2},
+        /*frame*/{ 0.5, 0.18, 0.18, 1.0}};
+
+    main->color_scheme->active = (Colors){
+        /*fg*/{ 0.0, 0.0, 0.0, 1.0},
+        /*bg*/{ 1.0, 1.0, 1.0, 1.0},
+        /*base*/{ 0.0, 0.3, 0.65, 1.0},
+        /*text*/{ 0.8, 0.8, 0.8, 1.0},
         /*shadow*/{ 0.18, 0.38, 0.38, 0.5},
         /*fame*/{ 0.18, 0.38, 0.38, 1.0}};
 }

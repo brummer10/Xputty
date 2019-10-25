@@ -39,14 +39,16 @@ static inline int fp_compare_hidden_files_fun (const void *p1, const void *p2) {
     return strcasecmp(*(const char**) p1, *(const char**) p2);
 }
 
-bool fp_show_hidden_files(FilePicker *filepicker, char* file) {
+static inline bool fp_show_hidden_files(FilePicker *filepicker, char* file) {
     return (filepicker->show_hidden) ? strcmp(file,".")!=0 : (file[0] != '.');
 }
 
-bool fp_show_filter_files(FilePicker *filepicker, char* file) {
+static inline bool fp_show_filter_files(FilePicker *filepicker, char* file) {
     if (!filepicker->use_filter) {
         return true;
     } else {
+        if(strstr(filepicker->filter,"."))
+            return strstr(file, filepicker->filter);
 #ifdef __XDG_MIME_H__
         return strstr(xdg_mime_get_mime_type_from_file_name(file), filepicker->filter);
 #else
