@@ -20,7 +20,7 @@
 
 #include "xmessage-dialog.h"
 
-void draw_message_label(Widget_t *w, int width, int height) {
+static void draw_message_label(Widget_t *w, int width, int height) {
     MessageBox *mb = w->parent_struct;
     cairo_text_extents_t extents;
     use_fg_color_scheme(w, NORMAL_);
@@ -36,7 +36,7 @@ void draw_message_label(Widget_t *w, int width, int height) {
     }    
 }
 
-void draw_message_window(void *w_, void* user_data) {
+static void draw_message_window(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     XWindowAttributes attrs;
     XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
@@ -65,7 +65,7 @@ void draw_message_window(void *w_, void* user_data) {
     widget_reset_scale(w);
 }
 
-void draw_entry(void *w_, void* user_data) {
+static void draw_entry(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
     XWindowAttributes attrs;
@@ -89,7 +89,7 @@ void draw_entry(void *w_, void* user_data) {
     cairo_show_text(w->cr, " ");
 }
 
-void entry_add_text(void  *w_, void *label_) {
+static void entry_add_text(void  *w_, void *label_) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
     char *label = (char*)label_;
@@ -118,7 +118,7 @@ void entry_add_text(void  *w_, void *label_) {
 
 }
 
-void entry_clip(Widget_t *w) {
+static void entry_clip(Widget_t *w) {
     draw_entry(w,NULL);
     cairo_text_extents_t extents;
     use_text_color_scheme(w, NORMAL_);
@@ -152,7 +152,7 @@ void entry_clip(Widget_t *w) {
 
 }
 
-void message_okay_callback(void *w_, void* user_data) {
+static void message_okay_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (w->flags & HAS_POINTER && !*(int*)user_data){
         Widget_t *p = (Widget_t*)w->parent;
@@ -171,7 +171,7 @@ void message_okay_callback(void *w_, void* user_data) {
     }
 }
 
-void message_no_callback(void *w_, void* user_data) {
+static void message_no_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (w->flags & HAS_POINTER && !*(int*)user_data){
         Widget_t *p = (Widget_t*)w->parent;
@@ -185,7 +185,7 @@ void message_no_callback(void *w_, void* user_data) {
     }
 }
 
-void radio_box_set_active(Widget_t *w) {
+static void radio_box_set_active(Widget_t *w) {
     Widget_t * p = w->parent;
     MessageBox *mb = p->parent_struct;
     int response = 0;
@@ -200,14 +200,14 @@ void radio_box_set_active(Widget_t *w) {
     }
 }
 
-void radio_box_button_pressed(void *w_, void* button_, void* user_data) {
+static void radio_box_button_pressed(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (w->flags & HAS_FOCUS) {
         radio_box_set_active(w);
     }
 }
 
-void create_checkboxes(Widget_t *w) {
+static void create_checkboxes(Widget_t *w) {
     MessageBox *mb = w->parent_struct;
     int y = (mb->lin + 1) * 24 +12;
     int i = 0;
@@ -218,7 +218,7 @@ void create_checkboxes(Widget_t *w) {
    }
 }
 
-void entry_get_text(void *w_, void *key_, void *user_data) {
+static void entry_get_text(void *w_, void *key_, void *user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
     XKeyEvent *key = (XKeyEvent*)key_;
@@ -255,7 +255,7 @@ void entry_get_text(void *w_, void *key_, void *user_data) {
     }
 }
 
-void create_entry_box(Widget_t *w) {
+static void create_entry_box(Widget_t *w) {
     MessageBox *mb = w->parent_struct;
 
     mb->text_entry = create_widget(w->app, w, 20, mb->height-90, mb->width-40, 40);
@@ -266,7 +266,7 @@ void create_entry_box(Widget_t *w) {
     mb->text_entry->scale.gravity = CENTER;
 }
 
-void check_for_message(MessageBox *mb, const char *message) {
+static void check_for_message(MessageBox *mb, const char *message) {
     if(!message) return;
     if(!strlen(message)) return;
     int len = 0;
@@ -283,7 +283,7 @@ void check_for_message(MessageBox *mb, const char *message) {
     mb->height = mb->lin*12+100;
 }
 
-void check_for_choices(MessageBox *mb, const char *choices) {
+static void check_for_choices(MessageBox *mb, const char *choices) {
     if(!choices) return;
     if(!strlen(choices)) return;
     int len = 0;
@@ -300,14 +300,14 @@ void check_for_choices(MessageBox *mb, const char *choices) {
     mb->height += mb->sel*12+50;
 }
 
-void check_for_style(MessageBox *mb, int style) {
+static void check_for_style(MessageBox *mb, int style) {
     if(style == ENTRY_BOX) {
         mb->width = max(330,mb->width);
         mb->height = max(140,mb->height+60);
     }
 }
 
-void mg_mem_free(void *w_, void* user_data) {
+static void mg_mem_free(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     MessageBox *mb = w->parent_struct;
     if(mb->icon) {

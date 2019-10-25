@@ -21,18 +21,18 @@
 #include "xfilepicker.h"
 
 
-int fp_compare_fun (const void *p1, const void *p2) {
+static inline int fp_compare_fun (const void *p1, const void *p2) {
     return strcasecmp(*(const char**) p1, *(const char**) p2);
 }
 
-int fp_compare_hidden_dirs_fun (const void *p1, const void *p2) {
+static inline int fp_compare_hidden_dirs_fun (const void *p1, const void *p2) {
     if(strstr(*(const char**)p1, PATH_SEPARATOR".") && strstr(*(const char**)p2, PATH_SEPARATOR".")) return 0;
     if(strstr(*(const char**)p1, PATH_SEPARATOR".")) return 1;
     if(strstr(*(const char**)p2, PATH_SEPARATOR".")) return -1;
     return strcasecmp(*(const char**) p1, *(const char**) p2);
 }
 
-int fp_compare_hidden_files_fun (const void *p1, const void *p2) {
+static inline int fp_compare_hidden_files_fun (const void *p1, const void *p2) {
     if(strncmp(*(const char**)p1, ".",1)==0 && strncmp(*(const char**)p2, ".",1)==0) return 0;
     if(strncmp(*(const char**)p1, ".",1)==0 ) return 1;
     if(strncmp(*(const char**)p2, ".",1)==0 ) return -1;
@@ -55,76 +55,85 @@ bool fp_show_filter_files(FilePicker *filepicker, char* file) {
     }
 }
 
-void fp_sort_buffers(FilePicker *filepicker, int get_dirs) {
-    if (filepicker->m>1 && get_dirs) {
-        qsort (filepicker->dir_names, filepicker->m,
+static void fp_sort_buffers(FilePicker *filepicker, int get_dirs) {
+    if (filepicker->dir_counter>1 && get_dirs) {
+        qsort (filepicker->dir_names, filepicker->dir_counter,
           sizeof filepicker->dir_names[0], (filepicker->show_hidden) ?
           fp_compare_hidden_dirs_fun : fp_compare_fun);
     }
-    if (filepicker->n>1) {
-        qsort (filepicker->file_names, filepicker->n,
+    if (filepicker->file_counter>1) {
+        qsort (filepicker->file_names, filepicker->file_counter,
           sizeof filepicker->file_names[0], (filepicker->show_hidden) ?
           fp_compare_hidden_files_fun : fp_compare_fun);
     }
 }
 
-void fp_clear_filebuffer(FilePicker *filepicker) {
+static void fp_clear_filebuffer(FilePicker *filepicker) {
     int j = 0;
-    for(; j<filepicker->n;j++) {
+    for(; j<filepicker->file_counter;j++) {
         free(filepicker->file_names[j]);
         filepicker->file_names[j] = NULL;
     }
-    if(filepicker->n) {
+    if(filepicker->file_counter) {
         free(filepicker->file_names);
         filepicker->file_names = NULL;
-        filepicker->n=0;
+        filepicker->file_counter=0;
     }
 }
 
-void fp_clear_dirbuffer(FilePicker *filepicker) {
+static void fp_clear_dirbuffer(FilePicker *filepicker) {
     int j = 0;
-    for(; j<filepicker->m;j++) {
+    for(; j<filepicker->dir_counter;j++) {
         free(filepicker->dir_names[j]);
         filepicker->dir_names[j] = NULL;
     }
-    if(filepicker->m) {
+    if(filepicker->dir_counter) {
         free(filepicker->dir_names);
         filepicker->dir_names = NULL;
-        filepicker->m=0;
+        filepicker->dir_counter=0;
     }
 }
 
-int fp_prefill_dirbuffer(FilePicker *filepicker, char *path) {
+static inline int fp_prefill_dirbuffer(FilePicker *filepicker, char *path) {
     int ret = 0;
     if (strcmp (path, PATH_SEPARATOR) == 0) {
         filepicker->dir_names = (char **)realloc(filepicker->dir_names,
-          (filepicker->m + 1) * sizeof(char *));
+          (filepicker->dir_counter + 1) * sizeof(char *));
         assert(filepicker->dir_names != NULL);
-        asprintf(&filepicker->dir_names[filepicker->m++], "%s",path);
-        assert(&filepicker->dir_names[filepicker->m] != NULL);
+        asprintf(&filepicker->dir_names[filepicker->dir_counter++], "%s",path);
+        assert(&filepicker->dir_names[filepicker->dir_counter] != NULL);
     } else {
         char *ho;
         asprintf(&ho, "%s",path);
         assert(ho != NULL);
         while (strcmp (ho, PATH_SEPARATOR) != 0) {
             filepicker->dir_names = (char **)realloc(filepicker->dir_names,
-              (filepicker->m + 1) * sizeof(char *));
+              (filepicker->dir_counter + 1) * sizeof(char *));
             assert(filepicker->dir_names != NULL);
-            asprintf(&filepicker->dir_names[filepicker->m++], "%s",dirname(ho));
-            assert(&filepicker->dir_names[filepicker->m] != NULL);
+            asprintf(&filepicker->dir_names[filepicker->dir_counter++], "%s",dirname(ho));
+            assert(&filepicker->dir_names[filepicker->dir_counter] != NULL);
             ret++;
         }
         if (strcmp (path, PATH_SEPARATOR) != 0) {
             filepicker->dir_names = (char **)realloc(filepicker->dir_names,
-              (filepicker->m + 1) * sizeof(char *));
+              (filepicker->dir_counter + 1) * sizeof(char *));
             assert(filepicker->dir_names != NULL);
-            asprintf(&filepicker->dir_names[filepicker->m++], "%s",path);
-            assert(&filepicker->dir_names[filepicker->m] != NULL);
+            asprintf(&filepicker->dir_names[filepicker->dir_counter++], "%s",path);
+            assert(&filepicker->dir_names[filepicker->dir_counter] != NULL);
         }
         free(ho);
     }
     return ret;   
 }
+
+/**
+ * @brief fp_get_files             - fill file_names and dir_names with the
+ * results from readdir path
+ * @param *filepicker              - pointer to the struct holding the list pointers
+ * @param *path                    - the path to read from
+ * @param get_dirs                 - 0 = only read files 1 = refill the directory buffer as well
+ * @return int                     - return the position of the given path in the directory list 
+ */
 
 int fp_get_files(FilePicker *filepicker, char *path, int get_dirs) {
     int ret = 0;
@@ -150,26 +159,32 @@ int fp_get_files(FilePicker *filepicker, char *path, int get_dirs) {
           fp_show_filter_files(filepicker, dp->d_name)) {
 
             filepicker->file_names = (char **)realloc(filepicker->file_names,
-              (filepicker->n + 1) * sizeof(char *));
+              (filepicker->file_counter + 1) * sizeof(char *));
             assert(filepicker->file_names != NULL);
-            asprintf(&filepicker->file_names[filepicker->n++],"%s",dp->d_name);
-            assert(&filepicker->file_names[filepicker->n] != NULL);
+            asprintf(&filepicker->file_names[filepicker->file_counter++],"%s",dp->d_name);
+            assert(&filepicker->file_names[filepicker->file_counter] != NULL);
 
         } else if(get_dirs && dp -> d_type == DT_DIR && strlen(dp->d_name)!=0
           && strcmp(dp->d_name,"..")!=0 && fp_show_hidden_files(filepicker, dp->d_name)) {
 
             filepicker->dir_names = (char **)realloc(filepicker->dir_names,
-              (filepicker->m + 1) * sizeof(char *));
+              (filepicker->dir_counter + 1) * sizeof(char *));
             assert(filepicker->dir_names != NULL);
-            asprintf(&filepicker->dir_names[filepicker->m++], (strcmp(path, PATH_SEPARATOR) != 0) ?
+            asprintf(&filepicker->dir_names[filepicker->dir_counter++], (strcmp(path, PATH_SEPARATOR) != 0) ?
               "%s"PATH_SEPARATOR"%s" : "%s%s" , path,dp->d_name);
-            assert(&filepicker->dir_names[filepicker->m] != NULL);
+            assert(&filepicker->dir_names[filepicker->dir_counter] != NULL);
         }
     }
     closedir(dirp);
     fp_sort_buffers(filepicker, get_dirs);
     return ret;
 }
+
+/**
+ * @brief fp_free                  - release all memory used by the filepicker
+ * @param *filepicker              - pointer to the struct to be released
+ * @return void
+ */
 
 void fp_free(FilePicker *filepicker) {
     fp_clear_filebuffer(filepicker);
@@ -179,9 +194,16 @@ void fp_free(FilePicker *filepicker) {
     free(filepicker->filter);
 }
 
+/**
+ * @brief fp_init                  - set default values used by the filepicker
+ * @param *filepicker              - pointer to the struct to alocate
+ * @param *path                    - the path to read from
+ * @return void
+ */
+
 void fp_init(FilePicker *filepicker, const char *path) {
-    filepicker->n=0;
-    filepicker->m=0;
+    filepicker->file_counter=0;
+    filepicker->dir_counter=0;
     filepicker->use_filter = 0;
     filepicker->show_hidden = false;
     filepicker->file_names = NULL;

@@ -159,22 +159,22 @@ void _draw_button_base(Widget_t *w, int width, int height) {
         cairo_set_line_width(w->crb, 1.0);
         _pattern_out(w, NORMAL_, height);
         cairo_fill_preserve(w->crb);
-        use_bg_color_scheme(w, PRELIGHT_);
+        use_frame_color_scheme(w, PRELIGHT_);
     } else if(w->state==1) {
         _pattern_out(w, PRELIGHT_, height);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.5);
-        use_bg_color_scheme(w, PRELIGHT_);
+        use_frame_color_scheme(w, PRELIGHT_);
     } else if(w->state==2) {
         _pattern_in(w, SELECTED_, height);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.0);
-        use_bg_color_scheme(w, PRELIGHT_);
+        use_frame_color_scheme(w, PRELIGHT_);
     } else if(w->state==3) {
         _pattern_in(w, ACTIVE_, height);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.0);
-        use_bg_color_scheme(w, PRELIGHT_);
+        use_frame_color_scheme(w, PRELIGHT_);
     }
     cairo_stroke(w->crb);
 

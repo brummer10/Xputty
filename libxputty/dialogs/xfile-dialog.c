@@ -36,7 +36,7 @@
 
 #include "xfile-dialog.h"
 
-void draw_window(void *w_, void* user_data) {
+static void draw_window(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     XWindowAttributes attrs;
     XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
@@ -67,7 +67,7 @@ void draw_window(void *w_, void* user_data) {
     widget_reset_scale(w);
 }
 
-void button_quit_callback(void *w_, void* user_data) {
+static void button_quit_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileDialog *file_dialog = w->parent_struct;
    
@@ -78,30 +78,30 @@ void button_quit_callback(void *w_, void* user_data) {
     }
 }
 
-int clear(Widget_t *w) {
+static inline int clear(Widget_t *w) {
     destroy_widget(w,w->app);
     return 0;
 }
 
-int set_files(FileDialog *file_dialog) {
-    listview_set_list(file_dialog->ft,file_dialog->fp->file_names , (int)file_dialog->fp->n);
+static inline int set_files(FileDialog *file_dialog) {
+    listview_set_list(file_dialog->ft,file_dialog->fp->file_names , (int)file_dialog->fp->file_counter);
     int ret = 0;
     int i = 0;
-    for (; i<file_dialog->fp->n; i++) {
+    for (; i<file_dialog->fp->file_counter; i++) {
         if(file_dialog->fp->selected_file && strcmp(file_dialog->fp->file_names[i],
           basename(file_dialog->fp->selected_file))==0 )  ret = i;
     }
     return ret;
 }
 
-void set_dirs(FileDialog *file_dialog) {
+static void set_dirs(FileDialog *file_dialog) {
     int i = 0;
-    for (; i<file_dialog->fp->m; i++) {
+    for (; i<file_dialog->fp->dir_counter; i++) {
         combobox_add_entry(file_dialog->ct,file_dialog->fp->dir_names[i]);
     }
 }
 
-void center_widget(Widget_t *wid, Widget_t *w) {
+static void center_widget(Widget_t *wid, Widget_t *w) {
     XMoveWindow(wid->app->dpy,w->widget,w->scale.init_x /
         wid->scale.cscale_x,w->scale.init_y / wid->scale.cscale_y);
     XResizeWindow (wid->app->dpy, w->widget, max(1,
@@ -109,19 +109,21 @@ void center_widget(Widget_t *wid, Widget_t *w) {
         max(1,w->scale.init_height / (wid->scale.cscale_y)));
 }
 
-void set_selected_file(FileDialog *file_dialog) {
-    if(adj_get_value(file_dialog->ft->adj)<0) return;
+static void set_selected_file(FileDialog *file_dialog) {
+    if(adj_get_value(file_dialog->ft->adj)<0 ||
+        adj_get_value(file_dialog->ft->adj) > file_dialog->fp->file_counter) return;
     Widget_t* menu =  file_dialog->ct->childlist->childs[1];
     Widget_t* view_port =  menu->childlist->childs[0];
     if(!childlist_has_child(view_port->childlist)) return ;
     Widget_t *dir = view_port->childlist->childs[(int)adj_get_value(file_dialog->ct->adj)];
     free(file_dialog->fp->selected_file);
     file_dialog->fp->selected_file = NULL;
-    asprintf(&file_dialog->fp->selected_file, "%s/%s",dir->label, file_dialog->fp->file_names[(int)adj_get_value(file_dialog->ft->adj)]);
+    asprintf(&file_dialog->fp->selected_file, "%s/%s",dir->label,
+        file_dialog->fp->file_names[(int)adj_get_value(file_dialog->ft->adj)]);
     assert(file_dialog->fp->selected_file != NULL);
 }
 
-void file_released_callback(void *w_, void* user_data) {
+static void file_released_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileDialog *file_dialog = w->parent_struct;
     set_selected_file(file_dialog);
@@ -131,7 +133,7 @@ void file_released_callback(void *w_, void* user_data) {
     }
 }
 
-void reload_file_entrys(FileDialog *file_dialog) {
+static void reload_file_entrys(FileDialog *file_dialog) {
     clear(file_dialog->ft);
     fp_get_files(file_dialog->fp,file_dialog->fp->path, 0);
     file_dialog->ft = add_listview(file_dialog->w, "", 20, 90, 620, 225);
@@ -143,7 +145,7 @@ void reload_file_entrys(FileDialog *file_dialog) {
     widget_show_all(file_dialog->w);
 }
 
-void combo_response(void *w_, void* user_data) {
+static void combo_response(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileDialog *file_dialog = w->parent_struct;
     Widget_t* menu =  w->childlist->childs[1];
@@ -157,7 +159,7 @@ void combo_response(void *w_, void* user_data) {
     reload_file_entrys(file_dialog);
 }
 
-void button_ok_callback(void *w_, void* user_data) {
+static void button_ok_callback(void *w_, void* user_data) {
    Widget_t *w = (Widget_t*)w_;
     FileDialog *file_dialog = w->parent_struct;
     if (w->flags & HAS_POINTER && !*(int*)user_data){
@@ -172,7 +174,7 @@ void button_ok_callback(void *w_, void* user_data) {
    }
 }
 
-void reload_all(FileDialog *file_dialog) {
+static void reload_all(FileDialog *file_dialog) {
     Widget_t* menu =  file_dialog->ct->childlist->childs[1];
     Widget_t* view_port =  menu->childlist->childs[0];
     if(!childlist_has_child(view_port->childlist)) return ;
@@ -199,7 +201,7 @@ void reload_all(FileDialog *file_dialog) {
     widget_show_all(file_dialog->w);
 }
 
-void open_dir_callback(void *w_, void* user_data) {
+static void open_dir_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileDialog *file_dialog = w->parent_struct;
     if (w->flags & HAS_POINTER && !*(int*)user_data){
@@ -207,7 +209,7 @@ void open_dir_callback(void *w_, void* user_data) {
     }
 }
 
-void button_hidden_callback(void *w_, void* user_data) {
+static void button_hidden_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileDialog *file_dialog = w->parent_struct;
     if (w->flags & HAS_POINTER) {
@@ -216,7 +218,7 @@ void button_hidden_callback(void *w_, void* user_data) {
     }
 }
 
-void set_filter_callback(void *w_, void* user_data) {
+static void set_filter_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileDialog *file_dialog = w->parent_struct;
     if (file_dialog->fp->use_filter != (int)adj_get_value(w->adj)) {
@@ -234,7 +236,7 @@ void set_filter_callback(void *w_, void* user_data) {
     }
 }
 
-void fd_mem_free(void *w_, void* user_data) {
+static void fd_mem_free(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileDialog *file_dialog = w->parent_struct;
     if(file_dialog->icon) {
@@ -339,7 +341,7 @@ Widget_t *open_file_dialog(Widget_t *w, const char *path, const char *filter) {
 -----------------------------------------------------------------------
 ----------------------------------------------------------------------*/
 
-void fdialog_response(void *w_, void* user_data) {
+static void fdialog_response(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileButton *filebutton = w->parent_struct;
     if(user_data !=NULL) {
@@ -355,7 +357,7 @@ void fdialog_response(void *w_, void* user_data) {
     adj_set_value(w->adj,0.0);
 }
 
-void fbutton_callback(void *w_, void* user_data) {
+static void fbutton_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileButton *filebutton = w->parent_struct;
     if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
@@ -367,7 +369,7 @@ void fbutton_callback(void *w_, void* user_data) {
     }
 }
 
-void fbutton_mem_free(void *w_, void* user_data) {
+static void fbutton_mem_free(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     FileButton *filebutton = w->parent_struct;
     free(filebutton->last_path);

@@ -35,43 +35,43 @@ void _draw_combobox_button(void *w_, void* user_data) {
     XWindowAttributes attrs;
     XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
     int width = attrs.width-2;
-    int height = attrs.height-2;
+    int height = attrs.height-4;
     if (attrs.map_state != IsViewable) return;
     if (!w->state && (int)w->adj_y->value)
         w->state = 3;
 
-    cairo_rectangle(w->crb,2.0, 2.0, width, height);
+    cairo_rectangle(w->crb,2.0, 4.0, width, height);
 
     if(w->state==0) {
         cairo_set_line_width(w->crb, 1.0);
         _pattern_out(w, NORMAL_, height);
         cairo_fill_preserve(w->crb);
-        use_bg_color_scheme(w, PRELIGHT_);
+        use_frame_color_scheme(w, PRELIGHT_);
     } else if(w->state==1) {
         _pattern_out(w, PRELIGHT_, height);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.5);
-        use_bg_color_scheme(w, PRELIGHT_);
+        use_frame_color_scheme(w, PRELIGHT_);
     } else if(w->state==2) {
         _pattern_in(w, SELECTED_, height);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.0);
-        use_bg_color_scheme(w, PRELIGHT_);
+        use_frame_color_scheme(w, PRELIGHT_);
     } else if(w->state==3) {
         _pattern_in(w, ACTIVE_, height);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.0);
-        use_bg_color_scheme(w, PRELIGHT_);
+        use_frame_color_scheme(w, PRELIGHT_);
     }
     cairo_stroke(w->crb); 
 
     if(w->state==2) {
-        cairo_rectangle(w->crb,4.0, 4.0, width, height);
+        cairo_rectangle(w->crb,4.0, 6.0, width, height);
         cairo_stroke(w->crb);
-        cairo_rectangle(w->crb,3.0, 3.0, width, height);
+        cairo_rectangle(w->crb,3.0, 4.0, width, height);
         cairo_stroke(w->crb);
     } else if (w->state==3) {
-        cairo_rectangle(w->crb,3.0, 3.0, width, height);
+        cairo_rectangle(w->crb,3.0, 4.0, width, height);
         cairo_stroke(w->crb);
     }
 
@@ -125,17 +125,17 @@ void _draw_combobox(void *w_, void* user_data) {
         cairo_set_line_width(w->crb, 1.0);
         use_shadow_color_scheme(w, NORMAL_);
         cairo_fill_preserve(w->crb);
-        use_base_color_scheme(w, NORMAL_);
+        use_frame_color_scheme(w, NORMAL_);
     } else if(w->state==1) {
         use_shadow_color_scheme(w, PRELIGHT_);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.5);
-        use_base_color_scheme(w, NORMAL_);
+        use_frame_color_scheme(w, NORMAL_);
     } else if(w->state==2) {
         use_shadow_color_scheme(w, SELECTED_);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.0);
-        use_base_color_scheme(w, SELECTED_);
+        use_frame_color_scheme(w, SELECTED_);
     }
     cairo_stroke(w->crb); 
 

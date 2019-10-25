@@ -125,6 +125,7 @@ float adj_get_value(Adjustment_t *adj) {
 
 void adj_set_value(Adjustment_t *adj, float v) {
     if (!adj) return;
+    v = min(adj->max_value,max(adj->min_value, v));
     check_value_changed(adj, &v);
 }
 

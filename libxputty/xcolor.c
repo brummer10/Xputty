@@ -34,28 +34,32 @@ void set_color_scheme(Xputty *main) {
          /*bg*/{ 0.1, 0.1, 0.1, 1.0},
          /*base*/{ 0.0, 0.0, 0.0, 1.0},
          /*text*/{ 0.9, 0.9, 0.9, 1.0},
-         /*shadow*/{ 0.0, 0.0, 0.0, 0.2}};
+         /*shadow*/{ 0.0, 0.0, 0.0, 0.2},
+         /*frame*/{ 0.0, 0.0, 0.0, 1.0}};
 
     main->color_scheme->prelight = (Colors){
         /*fg*/{ 1.0, 1.0, 1.0, 1.0},
         /*bg*/{ 0.25, 0.25, 0.25, 1.0},
         /*base*/{ 0.3, 0.3, 0.3, 1.0},
         /*text*/{ 1.0, 1.0, 1.0, 1.0},
-        /*shadow*/{ 0.1, 0.1, 0.1, 0.4}};
+        /*shadow*/{ 0.1, 0.1, 0.1, 0.4},
+        /*fame*/{ 0.3, 0.3, 0.3, 1.0}};
 
     main->color_scheme->selected = (Colors){
         /*fg*/{ 0.9, 0.9, 0.9, 1.0},
         /*bg*/{ 0.2, 0.2, 0.2, 1.0},
         /*base*/{ 0.5, 0.18, 0.18, 1.0},
          /*text*/{ 1.0, 1.0, 1.0, 1.0},
-         /*shadow*/{ 0.8, 0.18, 0.18, 0.2}};
+         /*shadow*/{ 0.8, 0.18, 0.18, 0.2},
+        /*frame*/{ 0.5, 0.18, 0.18, 1.0}};
 
     main->color_scheme->active = (Colors){
         /*fg*/{ 1.0, 1.0, 1.0, 1.0},
         /*bg*/{ 0.0, 0.0, 0.0, 1.0},
         /*base*/{ 0.18, 0.38, 0.38, 1.0},
         /*text*/{ 0.75, 0.75, 0.75, 1.0},
-        /*shadow*/{ 0.18, 0.38, 0.38, 0.5}};
+        /*shadow*/{ 0.18, 0.38, 0.38, 0.5},
+        /*fame*/{ 0.18, 0.38, 0.38, 1.0}};
 }
 
 /**
@@ -173,7 +177,7 @@ void use_text_color_scheme(Widget_t *w, Color_state st) {
  * @brief use_shadow_color_scheme  - set shadow color for Widget_t
  * @param w                        - the Widget_t to send the event to
  * @param st                       - the Color_state to use
- * @return void 
+ * @return void
  */
 
 void use_shadow_color_scheme(Widget_t *w, Color_state st) {
@@ -181,6 +185,20 @@ void use_shadow_color_scheme(Widget_t *w, Color_state st) {
     if (!c) return;
     cairo_set_source_rgba(w->cr, c->shadow[0],  c->shadow[1], c->shadow[2],  c->shadow[3]);
     cairo_set_source_rgba(w->crb, c->shadow[0],  c->shadow[1], c->shadow[2],  c->shadow[3]);
+}
+
+/**
+ * @brief use_frame_color_scheme  - set shadow color for Widget_t
+ * @param w                        - the Widget_t to send the event to
+ * @param st                       - the Color_state to use
+ * @return void
+ */
+
+void use_frame_color_scheme(Widget_t *w, Color_state st) {
+    Colors *c = get_color_scheme(w->app, st);
+    if (!c) return;
+    cairo_set_source_rgba(w->cr, c->frame[0],  c->frame[1], c->frame[2],  c->frame[3]);
+    cairo_set_source_rgba(w->crb, c->frame[0],  c->frame[1], c->frame[2],  c->frame[3]);
 }
 
 /**
@@ -216,6 +234,10 @@ void set_pattern(Widget_t *w, Colors *from, Colors *to, Color_mod mod) {
         case SHADOW_:
             col_from = from->shadow;
             col_to = to->shadow;
+        break;
+        case FRAME_:
+            col_from = from->frame;
+            col_to = to->frame;
         break;
    }
     XWindowAttributes attrs;

@@ -82,10 +82,10 @@ static inline int clear(Widget_t *w) {
 }
 
 static int set_files(FileBrowser *filebrowser) {
-    listview_set_list(filebrowser->ft,filebrowser->fp->file_names , (int)filebrowser->fp->n);
+    listview_set_list(filebrowser->ft,filebrowser->fp->file_names , (int)filebrowser->fp->file_counter);
     int ret = 0;
     int i = 0;
-    for (; i<filebrowser->fp->n; i++) {
+    for (; i<filebrowser->fp->file_counter; i++) {
         if(filebrowser->fp->selected_file && strcmp(filebrowser->fp->file_names[i],
           basename(filebrowser->fp->selected_file))==0 )  ret = i;
     }
@@ -94,7 +94,7 @@ static int set_files(FileBrowser *filebrowser) {
 
 static void set_dirs(FileBrowser *filebrowser) {
     int i = 0;
-    for (; i<filebrowser->fp->m; i++) {
+    for (; i<filebrowser->fp->dir_counter; i++) {
         combobox_add_entry(filebrowser->ct,filebrowser->fp->dir_names[i]);
     }
 }

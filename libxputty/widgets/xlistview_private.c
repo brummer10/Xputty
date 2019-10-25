@@ -75,11 +75,18 @@ void _draw_list(void *w_, void* user_data) {
         cairo_rectangle(w->crb, 0, i*25, width-sub , 25);
         cairo_fill_preserve(w->crb);
         cairo_set_line_width(w->crb, 1.0);
-        use_base_color_scheme(w, PRELIGHT_);
+        use_frame_color_scheme(w, PRELIGHT_);
         cairo_stroke(w->crb); 
         cairo_text_extents_t extents;
         /** show label **/
-        use_text_color_scheme(w, get_color_state(w));
+        if(i == filelist->prelight_item && i == filelist->active_item)
+            use_text_color_scheme(w, ACTIVE_);
+        else if(i == filelist->prelight_item)
+            use_text_color_scheme(w, PRELIGHT_);
+        else if (i == filelist->active_item)
+            use_text_color_scheme(w, SELECTED_);
+        else
+            use_text_color_scheme(w,NORMAL_ );
         cairo_set_font_size (w->crb, 12);
         cairo_select_font_face (w->crb, "Sans", CAIRO_FONT_SLANT_NORMAL,
                                    CAIRO_FONT_WEIGHT_BOLD);
@@ -166,27 +173,29 @@ void _list_key_pressed(void *w_, void* xkey_, void* user_data) {
 
 void _list_entry_released(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
-    ViewList_t *filelist = (ViewList_t*)w->parent_struct;
-    XButtonEvent *xbutton = (XButtonEvent*)button_;
-    XWindowAttributes attrs;
-    XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
-    int height = attrs.height;
-    int _items = height/(height/25);
-    int prelight_item = xbutton->y/_items;
-    if(xbutton->button == Button4) {
-        prelight_item = (xbutton->y-24)/_items;
-        if(prelight_item != filelist->prelight_item) {
-            filelist->prelight_item = prelight_item;
-        }        
-    } else if (xbutton->button == Button5) {
-        prelight_item = (xbutton->y+24)/_items;
-        if(prelight_item != filelist->prelight_item) {
-            filelist->prelight_item = prelight_item;
+    if (w->flags & HAS_POINTER) {
+        ViewList_t *filelist = (ViewList_t*)w->parent_struct;
+        XButtonEvent *xbutton = (XButtonEvent*)button_;
+        XWindowAttributes attrs;
+        XGetWindowAttributes(w->app->dpy, (Window)w->widget, &attrs);
+        int height = attrs.height;
+        int _items = height/(height/25);
+        int prelight_item = xbutton->y/_items;
+        if(xbutton->button == Button4) {
+            prelight_item = (xbutton->y-24)/_items;
+            if(prelight_item != filelist->prelight_item) {
+                filelist->prelight_item = prelight_item;
+            }
+        } else if (xbutton->button == Button5) {
+            prelight_item = (xbutton->y+24)/_items;
+            if(prelight_item != filelist->prelight_item) {
+                filelist->prelight_item = prelight_item;
+            }
+        } else if(xbutton->button == Button1) {
+            Widget_t* listview = w->parent;
+            filelist->active_item = filelist->prelight_item;
+            adj_set_value(listview->adj,filelist->active_item);
         }
-    } else if(xbutton->button == Button1) {
-        Widget_t* listview = w->parent;
-        filelist->active_item = filelist->prelight_item;
-        adj_set_value(listview->adj,filelist->active_item);
     }
 }
 

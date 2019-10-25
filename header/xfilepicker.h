@@ -57,8 +57,8 @@
 typedef struct {
     int use_filter;
     bool show_hidden;
-    unsigned int n;
-    unsigned int m;
+    unsigned int file_counter;
+    unsigned int dir_counter;
     char *filter;
     char *path;
     char *selected_file;
@@ -67,27 +67,31 @@ typedef struct {
 } FilePicker;
 
 
-int fp_compare_fun (const void *p1, const void *p2);
-
-int fp_compare_hidden_dirs_fun (const void *p1, const void *p2);
-
-int fp_compare_hidden_files_fun (const void *p1, const void *p2);
-
-bool fp_show_hidden_files(FilePicker *filepicker, char* file);
-
-bool fp_show_filter_files(FilePicker *filepicker, char* file);
-
-void fp_sort_buffers(FilePicker *filepicker, int get_dirs);
-
-void fp_clear_filebuffer(FilePicker *filepicker);
-
-void fp_clear_dirbuffer(FilePicker *filepicker);
-
-int fp_prefill_dirbuffer(FilePicker *filepicker, char *path);
+/**
+ * @brief fp_get_files             - fill file_names and dir_names with the
+ * results from readdir path
+ * @param *filepicker              - pointer to the struct holding the list pointers
+ * @param *path                    - the path to read from
+ * @param get_dirs                 - 0 = only read files 1 = refill the directory buffer as well
+ * @return int                     - return the position of the given path in the directory list 
+ */
 
 int fp_get_files(FilePicker *filepicker, char *path, int get_dirs);
 
+/**
+ * @brief fp_free                  - release all memory used by the filepicker
+ * @param *filepicker              - pointer to the struct to be released
+ * @return void
+ */
+
 void fp_free(FilePicker *filepicker);
+
+/**
+ * @brief fp_init                  - set default values used by the filepicker
+ * @param *filepicker              - pointer to the struct to alocate
+ * @param *path                    - the path to read from
+ * @return void
+ */
 
 void fp_init(FilePicker *filepicker, const char *path);
 
