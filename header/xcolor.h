@@ -35,8 +35,8 @@
 typedef enum {
     NORMAL_,
     PRELIGHT_,
-    ACTIVE_,
     SELECTED_,
+    ACTIVE_,
 } Color_state;
 
 /**
@@ -51,6 +51,7 @@ typedef enum {
     TEXT_,
     SHADOW_,
     FRAME_,
+    LIGHT_,
 } Color_mod;
 
 /**
@@ -62,12 +63,13 @@ typedef enum {
  */
 
 typedef struct {
-    float fg[4];
-    float bg[4];
-    float base[4];
-    float text[4];
-    float shadow[4];
-    float frame[4];
+    double fg[4];
+    double bg[4];
+    double base[4];
+    double text[4];
+    double shadow[4];
+    double frame[4];
+    double light[4];
 } Colors;
 
 /**
@@ -84,7 +86,7 @@ struct XColor_t {
 /**
  * @brief set_dark_theme  - init color shema to default values 
  * @param *main             - pointer to the main Xputty struct
- * @return void 
+ * @return void
  */
 
 void set_dark_theme(Xputty *main);
@@ -92,7 +94,7 @@ void set_dark_theme(Xputty *main);
 /**
  * @brief set_light_theme  - init color shema to light theme 
  * @param *main             - pointer to the main Xputty struct
- * @return void 
+ * @return void
  */
 
 void set_light_theme(Xputty *main);
@@ -100,7 +102,7 @@ void set_light_theme(Xputty *main);
 /**
  * @brief get_color_scheme  - init color shema to default values 
  * @param *st               - the Color state to use
- * @return void 
+ * @return void
  */
 
 Colors *get_color_scheme(Xputty *main, Color_state st);
@@ -117,7 +119,7 @@ Color_state get_color_state(Widget_t *wid);
  * @brief use_fg_color_scheme  - set normal forground color for Widget_t
  * @param w                    - the Widget_t to send the event to
  * @param st                   - the Color_state to use
- * @return void 
+ * @return void
  */
 
 void use_fg_color_scheme(Widget_t *w, Color_state st);
@@ -126,7 +128,7 @@ void use_fg_color_scheme(Widget_t *w, Color_state st);
  * @brief use_bg_color_scheme  - set normal background color for Widget_t
  * @param w                    - the Widget_t to send the event to
  * @param st                   - the Color_state to use
- * @return void 
+ * @return void
  */
 
 void use_bg_color_scheme(Widget_t *w, Color_state st);
@@ -135,7 +137,7 @@ void use_bg_color_scheme(Widget_t *w, Color_state st);
  * @brief use_base_color_scheme  - set base color for Widget_t
  * @param w                      - the Widget_t to send the event to
  * @param st                     - the Color_state to use
- * @return void 
+ * @return void
  */
 
 void use_base_color_scheme(Widget_t *w, Color_state st);
@@ -144,7 +146,7 @@ void use_base_color_scheme(Widget_t *w, Color_state st);
  * @brief use_text_color_scheme  - set text color for Widget_t
  * @param w                      - the Widget_t to send the event to
  * @param st                     - the Color_state to use
- * @return void 
+ * @return void
  */
 
 void use_text_color_scheme(Widget_t *w, Color_state st);
@@ -153,7 +155,7 @@ void use_text_color_scheme(Widget_t *w, Color_state st);
  * @brief use_shadow_color_scheme  - set shadow color for Widget_t
  * @param w                        - the Widget_t to send the event to
  * @param st                       - the Color_state to use
- * @return void 
+ * @return void
  */
 
 void use_shadow_color_scheme(Widget_t *w, Color_state st);
@@ -162,10 +164,19 @@ void use_shadow_color_scheme(Widget_t *w, Color_state st);
  * @brief use_frame_color_scheme   - set frame color for Widget_t
  * @param w                        - the Widget_t to send the event to
  * @param st                       - the Color_state to use
- * @return void 
+ * @return void
  */
 
 void use_frame_color_scheme(Widget_t *w, Color_state st);
+
+/**
+ * @brief use_light_color_scheme   - set light color for Widget_t
+ * @param w                        - the Widget_t to send the event to
+ * @param st                       - the Color_state to use
+ * @return void
+ */
+
+void use_light_color_scheme(Widget_t *w, Color_state st);
 
 /**
  * @brief set_pattern       - set pattern for the selected colors

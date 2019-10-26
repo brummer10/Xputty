@@ -149,7 +149,7 @@ typedef struct Xputty Xputty;
  * \n Xputty store a pointer in the childlist,
  *  to any Widget_t related to this instance of libxputty.
  * \n The first created Widget_t is the toplevel window.
- * \n When the toplevel window call destroy_widget(), Xputty call 
+ * \n When the toplevel window call destroy_widget(), Xputty call
  * destroy_widget() for all remaining Widget_t's in the main childlist.
  * \n So any allocated memory should be released before the
  * toplevel window finaly close.
@@ -174,9 +174,9 @@ struct Xputty{
 };
 
 /**
- * @brief main_init         - open the Display and init the 
+ * @brief main_init         - open the Display and init the
  * main->childlist.
- * \n Set the bool run to true. 
+ * \n Set the bool run to true.
  * \n The bool run is used to terminate the main event loop.
  * \n main_init() should be called directly after the declaration of Xputty
  * before the first Widget_t get created.
@@ -190,18 +190,18 @@ struct Xputty{
  * On main_quit() any remaining Widget_t from the main childlist will be destroyed,
  * to ensure that we leave the memory clean.
  * @param *main             - pointer to the main Xputty struct
- * @return void 
+ * @return void
  */
 
 void main_init(Xputty *main);
 
 /**
  * @brief main_run          - start the main event loop.
- * \n It should be start after your Widget_t's been created. 
+ * \n It should be start after your Widget_t's been created.
  * \n You could create and destroy additional Widget_t's
- * at any time later during run. 
+ * at any time later during run.
  * @param *main             - pointer to the main Xputty struct
- * @return void 
+ * @return void
  */
 
 void main_run(Xputty *main);
@@ -210,9 +210,9 @@ void main_run(Xputty *main);
  * @brief run_embedded      - the main event loop to run embedded UI's.
  * \n It should be start after your Widget_t's been created.
  * \n You could create and destroy additional Widget_t's
- * at any time later during run. 
+ * at any time later during run.
  * @param *main             - pointer to the main Xputty struct
- * @return void 
+ * @return void
  */
 
 void run_embedded(Xputty *main);
@@ -221,10 +221,10 @@ void run_embedded(Xputty *main);
  * @brief main_quit         - destroy all remaining Widget_t's from the
  * main->childlist.
  * \n Free all resources which may be allocated between init
- * and quit. 
+ * and quit.
  * \n It should be called after main_run()/run_embedded();
  * @param *main             - pointer to the main Xputty struct
- * @return void 
+ * @return void
  */
 
 void main_quit(Xputty *main);

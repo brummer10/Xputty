@@ -24,83 +24,99 @@
 /**
  * @brief set_dark_theme  - init color shema to default values 
  * @param *main             - pointer to the main Xputty struct
- * @return void 
+ * @return void
  */
 
 void set_dark_theme(Xputty *main) {
-    main->color_scheme->normal = (Colors){
-         /* cairo/ r / g / b / a /  */
-         /*fg*/{ 0.85, 0.85, 0.85, 1.0},
-         /*bg*/{ 0.1, 0.1, 0.1, 1.0},
-         /*base*/{ 0.0, 0.0, 0.0, 1.0},
-         /*text*/{ 0.9, 0.9, 0.9, 1.0},
-         /*shadow*/{ 0.0, 0.0, 0.0, 0.2},
-         /*frame*/{ 0.0, 0.0, 0.0, 1.0}};
+    main->color_scheme->normal = (Colors) {
+         /* cairo    / r  / g  / b  / a  /  */
+        .fg =       { 0.85, 0.85, 0.85, 1.0},
+        .bg =       { 0.1, 0.1, 0.1, 1.0},
+        .base =     { 0.0, 0.0, 0.0, 1.0},
+        .text =     { 0.9, 0.9, 0.9, 1.0},
+        .shadow =   { 0.0, 0.0, 0.0, 0.2},
+        .frame =    { 0.0, 0.0, 0.0, 1.0},
+        .light =    { 0.1, 0.1, 0.1, 1.0}
+    };
 
-    main->color_scheme->prelight = (Colors){
-        /*fg*/{ 1.0, 1.0, 1.0, 1.0},
-        /*bg*/{ 0.25, 0.25, 0.25, 1.0},
-        /*base*/{ 0.3, 0.3, 0.3, 1.0},
-        /*text*/{ 1.0, 1.0, 1.0, 1.0},
-        /*shadow*/{ 0.1, 0.1, 0.1, 0.4},
-        /*fame*/{ 0.3, 0.3, 0.3, 1.0}};
+    main->color_scheme->prelight = (Colors) {
+        .fg =       { 1.0, 0.0, 1.0, 1.0},
+        .bg =       { 0.25, 0.25, 0.25, 1.0},
+        .base =     { 0.3, 0.3, 0.3, 1.0},
+        .text =     { 1.0, 1.0, 1.0, 1.0},
+        .shadow =   { 0.1, 0.1, 0.1, 0.4},
+        .frame =    { 0.3, 0.3, 0.3, 1.0},
+        .light =    { 0.3, 0.3, 0.3, 1.0}
+    };
 
-    main->color_scheme->selected = (Colors){
-        /*fg*/{ 0.9, 0.9, 0.9, 1.0},
-        /*bg*/{ 0.2, 0.2, 0.2, 1.0},
-        /*base*/{ 0.5, 0.18, 0.18, 1.0},
-         /*text*/{ 1.0, 1.0, 1.0, 1.0},
-         /*shadow*/{ 0.8, 0.18, 0.18, 0.2},
-        /*frame*/{ 0.5, 0.18, 0.18, 1.0}};
+    main->color_scheme->selected = (Colors) {
+        .fg =       { 0.9, 0.9, 0.9, 1.0},
+        .bg =       { 0.2, 0.2, 0.2, 1.0},
+        .base =     { 0.5, 0.18, 0.18, 1.0},
+        .text =     { 1.0, 1.0, 1.0, 1.0},
+        .shadow =   { 0.8, 0.18, 0.18, 0.2},
+        .frame =    { 0.5, 0.18, 0.18, 1.0},
+        .light =    { 0.5, 0.18, 0.18, 1.0}
+    };
 
-    main->color_scheme->active = (Colors){
-        /*fg*/{ 1.0, 1.0, 1.0, 1.0},
-        /*bg*/{ 0.0, 0.0, 0.0, 1.0},
-        /*base*/{ 0.18, 0.38, 0.38, 1.0},
-        /*text*/{ 0.75, 0.75, 0.75, 1.0},
-        /*shadow*/{ 0.18, 0.38, 0.38, 0.5},
-        /*fame*/{ 0.18, 0.38, 0.38, 1.0}};
+    main->color_scheme->active = (Colors) {
+        .fg =       { 0.0, 1.0, 1.0, 1.0},
+        .bg =       { 0.0, 0.0, 0.0, 1.0},
+        .base =     { 0.18, 0.38, 0.38, 1.0},
+        .text =     { 0.75, 0.75, 0.75, 1.0},
+        .shadow =   { 0.18, 0.38, 0.38, 0.5},
+        .frame =    { 0.18, 0.38, 0.38, 1.0},
+        .light =    { 0.18, 0.38, 0.38, 1.0}
+    };
 }
 
 /**
  * @brief set_light_theme  - init color shema to light theme 
  * @param *main             - pointer to the main Xputty struct
- * @return void 
+ * @return void
  */
 
 void set_light_theme(Xputty *main) {
-    main->color_scheme->normal = (Colors){
-         /* cairo/ r / g / b / a /  */
-         /*fg*/{ 0.1, 0.1, 0.1, 1.0},
-         /*bg*/{ 0.85, 0.85, 0.85, 1.0},
-         /*base*/{ 0.9, 0.9, 0.9, 1.0},
-         /*text*/{ 0.15, 0.15, 0.15, 1.0},
-         /*shadow*/{ 0.0, 0.0, 0.0, 0.2},
-         /*frame*/{ 0.2, 0.2, 0.2, 1.0}};
+    main->color_scheme->normal = (Colors) {
+         /* cairo    / r  / g  / b  / a  /  */
+        .fg =       { 0.15, 0.15, 0.15, 1.0},
+        .bg =       { 0.85, 0.85, 0.85, 1.0},
+        .base =     { 0.9, 0.9, 0.9, 1.0},
+        .text =     { 0.25, 0.25, 0.25, 1.0},
+        .shadow =   { 0.0, 0.0, 0.0, 0.2},
+        .frame =    { 0.2, 0.2, 0.2, 1.0},
+        .light =    { 0.9, 0.9, 0.9, 1.0}
+    };
 
-    main->color_scheme->prelight = (Colors){
-        /*fg*/{ 0.25, 0.25, 0.25, 1.0},
-        /*bg*/{ 1.0, 1.0, 1.0, 1.0},
-        /*base*/{ 0.75, 0.75, 0.75, 1.0},
-        /*text*/{ 0.15, 0.15, 0.15, 1.0},
-        /*shadow*/{ 0.1, 0.1, 0.1, 0.4},
-        /*fame*/{ 0.3, 0.3, 0.3, 1.0}};
+    main->color_scheme->prelight = (Colors) {
+        .fg =       { 0.25, 0.25, 0.25, 1.0},
+        .bg =       { 1.0, 1.0, 1.0, 1.0},
+        .base =     { 0.75, 0.75, 0.75, 1.0},
+        .text =     { 0.15, 0.15, 0.15, 1.0},
+        .shadow =   { 0.1, 0.1, 0.1, 0.4},
+        .frame =    { 0.3, 0.3, 0.3, 1.0},
+        .light =    { 0.75, 0.75, 0.75, 1.0}
+    };
 
-    main->color_scheme->selected = (Colors){
-        /*fg*/{ 0.2, 0.2, 0.2, 1.0},
-        /*bg*/{ 0.9, 0.9, 0.9, 1.0},
-         /*base*/{ 0.0, 0.5, 0.65, 1.0},
-        /*text*/{ 0.8, 0.8, 0.8, 1.0},
-         /*shadow*/{ 0.8, 0.18, 0.18, 0.2},
-        /*frame*/{ 0.5, 0.18, 0.18, 1.0}};
+    main->color_scheme->selected = (Colors) {
+        .fg =       { 0.2, 0.2, 0.2, 1.0},
+        .bg =       { 0.9, 0.9, 0.9, 1.0},
+        .base =     { 0.0, 0.5, 0.65, 1.0},
+        .text =     { 0.8, 0.8, 0.8, 1.0},
+        .shadow =   { 0.8, 0.18, 0.18, 0.2},
+        .frame =    { 0.5, 0.18, 0.18, 1.0},
+        .light =    { 0.5, 0.5, 0.5, 1.0}
+    };
 
-    main->color_scheme->active = (Colors){
-        /*fg*/{ 0.0, 0.0, 0.0, 1.0},
-        /*bg*/{ 1.0, 1.0, 1.0, 1.0},
-        /*base*/{ 0.0, 0.3, 0.65, 1.0},
-        /*text*/{ 0.8, 0.8, 0.8, 1.0},
-        /*shadow*/{ 0.18, 0.38, 0.38, 0.5},
-        /*fame*/{ 0.18, 0.38, 0.38, 1.0}};
+    main->color_scheme->active = (Colors) {
+        .fg =       { 0.0, 0.0, 0.0, 1.0},
+        .bg =       { 1.0, 1.0, 1.0, 1.0},
+        .base =     { 0.0, 0.3, 0.65, 1.0},
+        .text =     { 0.8, 0.8, 0.8, 1.0},
+        .shadow =   { 0.18, 0.38, 0.38, 0.5},
+        .frame =    { 0.18, 0.38, 0.38, 1.0},
+        .light =    { 0.3, 0.3, 0.3, 1.0}
+    };
 }
 
 /**
@@ -162,7 +178,7 @@ Color_state get_color_state(Widget_t *wid) {
  * @brief use_fg_color_scheme  - set normal forground color for Widget_t
  * @param w                    - the Widget_t to send the event to
  * @param st                   - the Color_state to use
- * @return void 
+ * @return void
  */
 
 void use_fg_color_scheme(Widget_t *w, Color_state st) {
@@ -176,7 +192,7 @@ void use_fg_color_scheme(Widget_t *w, Color_state st) {
  * @brief use_bg_color_scheme  - set normal background color for Widget_t
  * @param w                    - the Widget_t to send the event to
  * @param st                   - the Color_state to use
- * @return void 
+ * @return void
  */
 
 void use_bg_color_scheme(Widget_t *w, Color_state st) {
@@ -190,7 +206,7 @@ void use_bg_color_scheme(Widget_t *w, Color_state st) {
  * @brief use_base_color_scheme  - set base color for Widget_t
  * @param w                      - the Widget_t to send the event to
  * @param st                     - the Color_state to use
- * @return void 
+ * @return void
  */
 
 void use_base_color_scheme(Widget_t *w, Color_state st) {
@@ -204,7 +220,7 @@ void use_base_color_scheme(Widget_t *w, Color_state st) {
  * @brief use_text_color_scheme  - set text color for Widget_t
  * @param w                      - the Widget_t to send the event to
  * @param st                     - the Color_state to use
- * @return void 
+ * @return void
  */
 
 void use_text_color_scheme(Widget_t *w, Color_state st) {
@@ -243,6 +259,20 @@ void use_frame_color_scheme(Widget_t *w, Color_state st) {
 }
 
 /**
+ * @brief use_light_color_scheme   - set light color for Widget_t
+ * @param w                        - the Widget_t to send the event to
+ * @param st                       - the Color_state to use
+ * @return void
+ */
+
+void use_light_color_scheme(Widget_t *w, Color_state st) {
+    Colors *c = get_color_scheme(w->app, st);
+    if (!c) return;
+    cairo_set_source_rgba(w->cr, c->light[0],  c->light[1], c->light[2],  c->light[3]);
+    cairo_set_source_rgba(w->crb, c->light[0],  c->light[1], c->light[2],  c->light[3]);
+}
+
+/**
  * @brief set_pattern       - set pattern for the col_fromted colors
  * @param *w_               - void pointer to the Widget_t button
  * @param *from             - the Colors set to use from
@@ -253,8 +283,8 @@ void use_frame_color_scheme(Widget_t *w, Color_state st) {
  */
 
 void set_pattern(Widget_t *w, Colors *from, Colors *to, Color_mod mod) {
-    float *col_from;
-    float *col_to;
+    double *col_from = NULL;
+    double *col_to = NULL;
     switch (mod) {
         case FORGROUND_:
             col_from = from->fg;
@@ -279,6 +309,10 @@ void set_pattern(Widget_t *w, Colors *from, Colors *to, Color_mod mod) {
         case FRAME_:
             col_from = from->frame;
             col_to = to->frame;
+        break;
+        case LIGHT_:
+            col_from = from->light;
+            col_to = to->light;
         break;
    }
     XWindowAttributes attrs;
