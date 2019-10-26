@@ -137,7 +137,7 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a41a7ea2ce1732b9afbd1923f68b1d356"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xmessage-dialog_8h.html#a41a7ea2ce1732b9afbd1923f68b1d356">open_message_dialog</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, int style, const char *title, const char *message, const char *choices)</td></tr>
-<tr class="memdesc:a41a7ea2ce1732b9afbd1923f68b1d356"><td class="mdescLeft">&#160;</td><td class="mdescRight">open_message_dialog - open a non blocking dialog window, lines in message should be set by the newline character "\n" choices for the SELECTION_BOX should be set as well with the newline character. message and/or choices could be NULL when not needed. To fetch the response of a dialog, connect to the dialog_callback supported "styles" been <br />
+<tr class="memdesc:a41a7ea2ce1732b9afbd1923f68b1d356"><td class="mdescLeft">&#160;</td><td class="mdescRight">open_message_dialog - open a non blocking dialog window, lines in message chould be separated by the character "|" choices for the SELECTION_BOX should be separated as well with the character "|". message and/or choices could be NULL when not needed. To fetch the response of a dialog, connect to the dialog_callback supported "styles" been <br />
 INFO_BOX - a message dialog display a info text <br />
 WARNING_BOX - a message dialog display a warning <br />
 ERROR_BOX - a message dialog display a error message <br />
@@ -229,7 +229,7 @@ ENTRY_BOX - a dialog to get text input  <a href="#a41a7ea2ce1732b9afbd1923f68b1d
       </table>
 </div><div class="memdoc">
 
-<p>open_message_dialog - open a non blocking dialog window, lines in message should be set by the newline character "\n" choices for the SELECTION_BOX should be set as well with the newline character. message and/or choices could be NULL when not needed. To fetch the response of a dialog, connect to the dialog_callback supported "styles" been <br />
+<p>open_message_dialog - open a non blocking dialog window, lines in message chould be separated by the character "|" choices for the SELECTION_BOX should be separated as well with the character "|". message and/or choices could be NULL when not needed. To fetch the response of a dialog, connect to the dialog_callback supported "styles" been <br />
 INFO_BOX - a message dialog display a info text <br />
 WARNING_BOX - a message dialog display a warning <br />
 ERROR_BOX - a message dialog display a error message <br />

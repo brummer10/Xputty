@@ -94,6 +94,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a4dbd91e99d5ee97678aee121f8e12587"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xbutton_8c.html#a4dbd91e99d5ee97678aee121f8e12587">add_button</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *parent, const char *label, int x, int y, int width, int height)</td></tr>
 <tr class="memdesc:a4dbd91e99d5ee97678aee121f8e12587"><td class="mdescLeft">&#160;</td><td class="mdescRight">add_button - add a button to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> connect to func.value_changed_callback to implement your actions  <a href="#a4dbd91e99d5ee97678aee121f8e12587">More...</a><br /></td></tr>
 <tr class="separator:a4dbd91e99d5ee97678aee121f8e12587"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43014a55d36303a8f38468319c9b2bfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xbutton_8c.html#a43014a55d36303a8f38468319c9b2bfd">add_on_off_button</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *parent, const char *label, int x, int y, int width, int height)</td></tr>
+<tr class="memdesc:a43014a55d36303a8f38468319c9b2bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">add_on_off_button - add a button with default on/off label to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> connect to func.value_changed_callback to implement your actions  <a href="#a43014a55d36303a8f38468319c9b2bfd">More...</a><br /></td></tr>
+<tr class="separator:a43014a55d36303a8f38468319c9b2bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a528331e8ac24f1ca7bb0101dad28f962"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xbutton_8c.html#a528331e8ac24f1ca7bb0101dad28f962">add_toggle_button</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *parent, const char *label, int x, int y, int width, int height)</td></tr>
 <tr class="memdesc:a528331e8ac24f1ca7bb0101dad28f962"><td class="mdescLeft">&#160;</td><td class="mdescRight">add_toggle_button - add a button to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> connect to func.value_changed_callback to implement your actions  <a href="#a528331e8ac24f1ca7bb0101dad28f962">More...</a><br /></td></tr>
 <tr class="separator:a528331e8ac24f1ca7bb0101dad28f962"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -355,6 +358,69 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">*parent</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request the button </td></tr>
     <tr><td class="paramname">*label</td><td>- Label to show on the button </td></tr>
+    <tr><td class="paramname">x,y,width,height</td><td>- the position/geometry to create the button </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Widget_t* - pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> button struct </dd></dl>
+
+</div>
+</div>
+<a id="a43014a55d36303a8f38468319c9b2bfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43014a55d36303a8f38468319c9b2bfd">&#9670;&nbsp;</a></span>add_on_off_button()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structWidget__t.html">Widget_t</a>* add_on_off_button </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structWidget__t.html">Widget_t</a> *&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>add_on_off_button - add a button with default on/off label to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> connect to func.value_changed_callback to implement your actions </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*parent</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request the button </td></tr>
+    <tr><td class="paramname">*label</td><td>- Label (ignored) </td></tr>
     <tr><td class="paramname">x,y,width,height</td><td>- the position/geometry to create the button </td></tr>
   </table>
   </dd>

@@ -68,7 +68,12 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> - the main struct. It should be declared before any other call to a <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> function.  
+<p><a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> - the main struct. <br />
+ It should be declared before any other call to a <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> function. <br />
+ <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> store a pointer in the childlist, to any <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> related to this instance of libxputty. <br />
+ The first created <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is the toplevel window. <br />
+ When the toplevel window call <a class="el" href="xwidget_8c.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget ">destroy_widget()</a>, <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> call <a class="el" href="xwidget_8c.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget ">destroy_widget()</a> for all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s in the main childlist. <br />
+ So any allocated memory should be released before the toplevel window finaly close.  
  <a href="structXputty.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="xputty_8h_source.html">xputty.h</a>&gt;</code></p>
@@ -101,7 +106,12 @@ Data Fields</h2></td></tr>
 <tr class="separator:a3a8e0381e77ae9fae69aab5dda8e7e7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> - the main struct. It should be declared before any other call to a <a class="el" href="structXputty.html" title="Xputty - the main struct. It should be declared before any other call to a Xputty function...">Xputty</a> function. </p>
+<div class="textblock"><p><a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> - the main struct. <br />
+ It should be declared before any other call to a <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> function. <br />
+ <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> store a pointer in the childlist, to any <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> related to this instance of libxputty. <br />
+ The first created <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is the toplevel window. <br />
+ When the toplevel window call <a class="el" href="xwidget_8c.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget ">destroy_widget()</a>, <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> call <a class="el" href="xwidget_8c.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget ">destroy_widget()</a> for all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s in the main childlist. <br />
+ So any allocated memory should be released before the toplevel window finaly close. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*childlist</td><td>- pointer to the main childlist </td></tr>

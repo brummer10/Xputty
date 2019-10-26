@@ -144,8 +144,15 @@ typedef struct Xputty Xputty;
 
 
 /**
- * @brief Xputty             - the main struct. It should be declared
- * before any other call to a Xputty function.
+ * @brief Xputty             - the main struct. 
+ * \n It should be declared before any other call to a Xputty function.
+ * \n Xputty store a pointer in the childlist,
+ *  to any Widget_t related to this instance of libxputty.
+ * \n The first created Widget_t is the toplevel window.
+ * \n When the toplevel window call destroy_widget(), Xputty call 
+ * destroy_widget() for all remaining Widget_t's in the main childlist.
+ * \n So any allocated memory should be released before the
+ * toplevel window finaly close.
  * @param *childlist         - pointer to the main childlist
  * @param *dpy               - pointer to the display in use
  * @param run                - bool to quit the main loop
@@ -168,15 +175,20 @@ struct Xputty{
 
 /**
  * @brief main_init         - open the Display and init the 
- * main->childlist. Also it set the bool run to true. 
- * This one will be used to terminate the main event loop.
- * main_init() should be called directly after declaration of Xputty.
- * Any Widget_t which would be created afterwards will be added to the list.
- * This list is used to check if a Widget_t is valid.
- * When a Widget_t call quit_widget() it will be removed from the list.
- * On main_quit() any remaining Widget_t from this list will be destroyed,
+ * main->childlist.
+ * \n Set the bool run to true. 
+ * \n The bool run is used to terminate the main event loop.
+ * \n main_init() should be called directly after the declaration of Xputty
+ * before the first Widget_t get created.
+ * \n Any Widget_t created afterwards will be added to the main childlist.
+ * \n The main childlist is used to check if a Widget_t is valid.
+ * \n Xputty check if a Widget_t is registerd in the main childlist, and only forward
+ * events when it found the event window in the list.
+ * \n When a Widget_t call destroy_widget() any childs of this Widget_t receive
+ * a call to destroy_widget() to release there memory, they get removed from the main childlist
+ * and finaly the Widget_t itself will be removed from the main childlist as well.
+ * On main_quit() any remaining Widget_t from the main childlist will be destroyed,
  * to ensure that we leave the memory clean.
- * This list is also used to check which Window receive a XEvent.
  * @param *main             - pointer to the main Xputty struct
  * @return void 
  */
@@ -184,8 +196,9 @@ struct Xputty{
 void main_init(Xputty *main);
 
 /**
- * @brief main_run          - the main event loop. It should be start after 
- * your Widget_t's been created. You could create and destroy additional Widget_t's
+ * @brief main_run          - start the main event loop.
+ * \n It should be start after your Widget_t's been created. 
+ * \n You could create and destroy additional Widget_t's
  * at any time later during run. 
  * @param *main             - pointer to the main Xputty struct
  * @return void 
@@ -195,8 +208,8 @@ void main_run(Xputty *main);
 
 /**
  * @brief run_embedded      - the main event loop to run embedded UI's.
- * It should be start after your Widget_t's been created.
- * You could create and destroy additional Widget_t's
+ * \n It should be start after your Widget_t's been created.
+ * \n You could create and destroy additional Widget_t's
  * at any time later during run. 
  * @param *main             - pointer to the main Xputty struct
  * @return void 
@@ -206,8 +219,10 @@ void run_embedded(Xputty *main);
 
 /**
  * @brief main_quit         - destroy all remaining Widget_t's from the
- * main->childlist. Free all resources which may be allocated between init
- * and quit. It should be called after main_run();
+ * main->childlist.
+ * \n Free all resources which may be allocated between init
+ * and quit. 
+ * \n It should be called after main_run()/run_embedded();
  * @param *main             - pointer to the main Xputty struct
  * @return void 
  */

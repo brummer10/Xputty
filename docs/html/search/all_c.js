@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['m',['m',['../structFilePicker.html#a6bec7b4734c7f1d78967c4f4f71906ce',1,'FilePicker']]],
   ['main_5finit',['main_init',['../xputty_8c.html#a484645d624d9e9eff0288f8d5583ff5e',1,'main_init(Xputty *main):&#160;xputty.c'],['../xputty_8h.html#a484645d624d9e9eff0288f8d5583ff5e',1,'main_init(Xputty *main):&#160;xputty.c']]],
   ['main_5fquit',['main_quit',['../xputty_8c.html#a0d4eda902b4de6f7a30e8d869f842fda',1,'main_quit(Xputty *main):&#160;xputty.c'],['../xputty_8h.html#a0d4eda902b4de6f7a30e8d869f842fda',1,'main_quit(Xputty *main):&#160;xputty.c']]],
   ['main_5frun',['main_run',['../xputty_8c.html#abb548ea64f852a7c94473a595e67d69f',1,'main_run(Xputty *main):&#160;xputty.c'],['../xputty_8h.html#abb548ea64f852a7c94473a595e67d69f',1,'main_run(Xputty *main):&#160;xputty.c']]],
@@ -13,11 +12,8 @@ var searchData=
   ['menu_5fadd_5fradio_5fitem',['menu_add_radio_item',['../xmenu_8c.html#a2ccd4d73cf41f29d1c61123ec05ea1f5',1,'menu_add_radio_item(Widget_t *menu, const char *label):&#160;xmenu.c'],['../xmenu_8h.html#a2ccd4d73cf41f29d1c61123ec05ea1f5',1,'menu_add_radio_item(Widget_t *menu, const char *label):&#160;xmenu.c']]],
   ['menuitem',['MENUITEM',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adea6bfb073b2b83d6e1810401f3074c8d46',1,'xwidget.h']]],
   ['message',['message',['../structMessageBox.html#a09d0a258de95ffd4af756ba1b1d477ac',1,'MessageBox']]],
-  ['message_5fno_5fcallback',['message_no_callback',['../xmessage-dialog_8c.html#a484a58cd0e5f4cf1ab8691930be42048',1,'xmessage-dialog.c']]],
-  ['message_5fokay_5fcallback',['message_okay_callback',['../xmessage-dialog_8c.html#acfeae33047e0af609881f04cda77ea09',1,'xmessage-dialog.c']]],
   ['message_5ftype',['message_type',['../structMessageBox.html#a60821a0a02e6ba470c565887ab50c637',1,'MessageBox']]],
   ['messagebox',['MessageBox',['../structMessageBox.html',1,'']]],
-  ['mg_5fmem_5ffree',['mg_mem_free',['../xmessage-dialog_8c.html#ab11fa13d22a3d275da2d78458fef8696',1,'xmessage-dialog.c']]],
   ['min',['min',['../xputty_8h.html#abb702d8b501669a23aa0ab3b281b9384',1,'xputty.h']]],
   ['min_5fvalue',['min_value',['../structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3',1,'Adjustment_t']]],
   ['motion_5fcallback',['motion_callback',['../structFunc__t.html#ac2842c834907f4aeace8f404c6cc7621',1,'Func_t']]]

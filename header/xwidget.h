@@ -172,6 +172,7 @@ typedef struct {
  * @param HAS_FOCUS            - Mouse pointer is above Widget_t
  * @param HAS_POINTER          - Mouse pointer is pressed on Widget_t
  * @param HAS_TOOLTIP          - Widget_t have tooltip
+ * @param HAS_MEM              - Widget_t have mem to be released
  */
 
 enum {
