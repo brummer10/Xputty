@@ -331,6 +331,7 @@ static void draw_keyboard(void *w_, void* user_data) {
 
 static void keyboard_motion(void *w_, void* xmotion_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
+    Widget_t *p = w->parent;
     MidiKeyboard *keys = (MidiKeyboard*)w->parent_struct;
     XMotionEvent *xmotion = (XMotionEvent*)xmotion_;
     XWindowAttributes attrs;
@@ -359,10 +360,10 @@ static void keyboard_motion(void *w_, void* xmotion_, void* user_data) {
                     if(xmotion->state & Button1Mask) {
                         if (keys->active_key != keys->prelight_key) {
                             keys->send_key = keys->active_key;
-                            keys->mk_send_note(&keys->send_key,false);
+                            keys->mk_send_note(p, &keys->send_key,false);
                             keys->active_key = keys->prelight_key;
                             keys->send_key = keys->active_key;
-                            keys->mk_send_note(&keys->send_key,true);
+                            keys->mk_send_note(p, &keys->send_key,true);
                         }
                     }
                     catch = true;
@@ -398,10 +399,10 @@ static void keyboard_motion(void *w_, void* xmotion_, void* user_data) {
                 if(xmotion->state & Button1Mask) {
                     if (keys->active_key != keys->prelight_key) {
                         keys->send_key = keys->active_key;
-                        keys->mk_send_note(&keys->send_key,false);
+                        keys->mk_send_note(p, &keys->send_key,false);
                         keys->active_key = keys->prelight_key;
                         keys->send_key = keys->active_key;
-                        keys->mk_send_note(&keys->send_key,true);
+                        keys->mk_send_note(p, &keys->send_key,true);
                     }
                 }
                 expose_widget(w);
@@ -430,6 +431,7 @@ static void keyboard_motion(void *w_, void* xmotion_, void* user_data) {
 
 static void key_press(void *w_, void *key_, void *user_data) {
     Widget_t *w = (Widget_t*)w_;
+    Widget_t *p = w->parent;
     if (!w) return;
     MidiKeyboard *keys = (MidiKeyboard*)w->parent_struct;
     XKeyEvent *key = (XKeyEvent*)key_;
@@ -450,18 +452,19 @@ static void key_press(void *w_, void *key_, void *user_data) {
     if ((int)outkey && !is_key_in_matrix(keys->key_matrix, (int)outkey+keys->octave)) {
         set_key_in_matrix(keys->key_matrix,(int)outkey+keys->octave,true);
         keys->send_key = (int)outkey+keys->octave;
-        keys->mk_send_note(&keys->send_key,true);
+        keys->mk_send_note(p, &keys->send_key,true);
         expose_widget(w);
     } 
     if (sym == XK_space) {
         clear_key_matrix(&keys->key_matrix[0]);
-        keys->mk_send_all_sound_off(NULL);
+        keys->mk_send_all_sound_off(p, NULL);
         expose_widget(w);
     } 
 }
 
 static void key_release(void *w_, void *key_, void *user_data) {
     Widget_t *w = (Widget_t*)w_;
+    Widget_t *p = w->parent;
     if (!w) return;
     MidiKeyboard *keys = (MidiKeyboard*)w->parent_struct;
     XKeyEvent *key = (XKeyEvent*)key_;
@@ -481,7 +484,7 @@ static void key_release(void *w_, void *key_, void *user_data) {
     if ((int)outkey && is_key_in_matrix(keys->key_matrix, (int)outkey+keys->octave)) {
         set_key_in_matrix(keys->key_matrix,(int)outkey+keys->octave,false);
         keys->send_key = (int)outkey+keys->octave;
-        keys->mk_send_note(&keys->send_key,false);
+        keys->mk_send_note(p,&keys->send_key,false);
         expose_widget(w);
         if(!have_key_in_matrix(keys->key_matrix)) {
       //      adj_changed(w, GATE, 0.0);
@@ -499,13 +502,14 @@ static void leave_keyboard(void *w_, void* user_data) {
 
 static void button_pressed_keyboard(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
+    Widget_t *p = w->parent;
     if (w->flags & HAS_POINTER) {
         MidiKeyboard *keys = (MidiKeyboard*)w->parent_struct;
         XButtonEvent *xbutton = (XButtonEvent*)button_;
         if(xbutton->button == Button1) {
             keys->active_key = keys->prelight_key;
             keys->send_key = keys->active_key;
-            keys->mk_send_note(&keys->send_key,true);
+            keys->mk_send_note(p,&keys->send_key,true);
             expose_widget(w);
         }
     }
@@ -513,12 +517,13 @@ static void button_pressed_keyboard(void *w_, void* button_, void* user_data) {
 
 static void button_released_keyboard(void *w_, void* button_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
+    Widget_t *p = w->parent;
     if (w->flags & HAS_POINTER) {
         MidiKeyboard *keys = (MidiKeyboard*)w->parent_struct;
         XButtonEvent *xbutton = (XButtonEvent*)button_;
         if(xbutton->button == Button1) {
             keys->send_key = keys->active_key;
-            keys->mk_send_note(&keys->send_key,false);
+            keys->mk_send_note(p,&keys->send_key,false);
             keys->active_key = -1;
             expose_widget(w);
         }
@@ -542,17 +547,19 @@ static void layout_callback(void *w_, void* user_data) {
 static void modwheel_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     Widget_t *p = w->parent;
+    Widget_t *pa = p->parent;
     MidiKeyboard *keys = (MidiKeyboard*)p->parent_struct;
     keys->modwheel = (int)adj_get_value(w->adj);
-    keys->mk_send_mod(&keys->modwheel);
+    keys->mk_send_mod(pa, &keys->modwheel);
 }
 
 static void pitchwheel_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     Widget_t *p = w->parent;
+    Widget_t *pa = p->parent;
     MidiKeyboard *keys = (MidiKeyboard*)p->parent_struct;
     keys->pitchwheel = (int)adj_get_value(w->adj);
-    keys->mk_send_pitch(&keys->pitchwheel);
+    keys->mk_send_pitch(pa,&keys->pitchwheel);
 }
 
 static void wheel_key_release(void *w_, void *key_, void *user_data) {
@@ -580,14 +587,14 @@ static void keyboard_mem_free(void *w_, void* user_data) {
     free(keys);
 }
 
-static void key_dummy(int *key, bool on_off) {
+static void key_dummy(Widget_t *w,int *key, bool on_off) {
     //if (on_off)
     //fprintf(stderr, "send note on %i\n",(*key));
     //else
     //fprintf(stderr, "send note off %i\n",(*key));
 }
 
-static void wheel_dummy(int *value) {
+static void wheel_dummy(Widget_t *w,int *value) {
     //fprintf(stderr, "send wheel value %i\n",(*value));
 }
 

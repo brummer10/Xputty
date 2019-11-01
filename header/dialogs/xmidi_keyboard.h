@@ -26,8 +26,8 @@
 
 #include "xwidgets.h"
 
-typedef void (*midikeyfunc)(int *key, bool on_off);
-typedef void (*midiwheelfunc)(int *value);
+typedef void (*midikeyfunc)(Widget_t *w,int *key, bool on_off);
+typedef void (*midiwheelfunc)(Widget_t *w,int *value);
 
 typedef struct {
     int octave;
