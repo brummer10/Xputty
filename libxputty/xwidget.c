@@ -235,6 +235,7 @@ Widget_t *create_window(Xputty *app, Window win,
     w->image = NULL;
 
     w->flags = IS_WINDOW;
+    w->flags &= ~NO_AUTOREPEAT;
     w->app = app;
     w->parent = &win;
     w->parent_struct = NULL;
@@ -343,6 +344,7 @@ Widget_t *create_widget(Xputty *app, Widget_t *parent,
     w->image = NULL;
     
     w->flags = IS_WIDGET | USE_TRANSPARENCY;
+    w->flags &= ~NO_AUTOREPEAT;
     w->app = app;
     w->parent = parent;
     w->parent_struct = NULL;
@@ -619,9 +621,25 @@ void widget_event_loop(void *w_, void* event, Xputty *main, void* user_data) {
             debug_print("Widget_t KeyPress %u\n", xev->xkey.keycode);
         break;
 
-        case KeyRelease:
-            wid->func.key_release_callback(w_, &xev->xkey, user_data);
-            debug_print("Widget_t KeyRelease %u\n", xev->xkey.keycode);
+        case KeyRelease: {
+            unsigned short is_retriggered = 0;
+            if(wid->flags & NO_AUTOREPEAT) {
+                if (XEventsQueued(main->dpy, QueuedAlready)) {
+                    XEvent nev;
+                    XPeekEvent(main->dpy, &nev);
+                    if (nev.type == KeyPress && nev.xkey.time == xev->xkey.time &&
+                        nev.xkey.keycode == xev->xkey.keycode && 
+                        (nev.xkey.keycode > 119 || nev.xkey.keycode < 110)) {
+                        XNextEvent (main->dpy, xev);
+                        is_retriggered = 1;
+                    }
+                }
+            }
+            if (!is_retriggered) {
+                wid->func.key_release_callback(w_, &xev->xkey, user_data);
+                debug_print("Widget_t KeyRelease %u\n", xev->xkey.keycode);
+            }
+        }
         break;
 
         case LeaveNotify:
@@ -746,6 +764,35 @@ void send_button_release_event(Widget_t *w) {
     event.xbutton.button = Button1;
     XSendEvent(w->app->dpy, PointerWindow, True, ButtonReleaseMask, &event);
 
+}
+
+/**
+ * @brief send_systray_message      - request a systray icon for Widget_t
+ * @param *w                        - pointer to the Widget_t to send the notify
+ * @return void 
+ */
+
+void send_systray_message(Widget_t *w) {
+    XEvent event;
+
+    Atom selection_atom = XInternAtom (w->app->dpy,"_NET_SYSTEM_TRAY_S0",False);
+    Window tray = XGetSelectionOwner (w->app->dpy,selection_atom);
+
+    if ( tray != None)
+        XSelectInput (w->app->dpy,tray,StructureNotifyMask);
+
+    memset(&event, 0, sizeof(event));
+    event.xclient.type = ClientMessage;
+    event.xclient.window = tray;
+    event.xclient.message_type = XInternAtom (w->app->dpy, "_NET_SYSTEM_TRAY_OPCODE", False );
+    event.xclient.format = 32;
+    event.xclient.data.l[0] = CurrentTime;
+    event.xclient.data.l[1] = SYSTEM_TRAY_REQUEST_DOCK;
+    event.xclient.data.l[2] = w->widget;
+    event.xclient.data.l[3] = 0;
+    event.xclient.data.l[4] = 0;
+
+    XSendEvent(w->app->dpy, tray, False, NoEventMask, &event);
 }
 
 /**

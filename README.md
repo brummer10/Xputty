@@ -65,6 +65,9 @@ Here are a bit more advanced examples:
 ![Theme-example](https://github.com/brummer10/Xputty/raw/master/examples/Theme-example.png)&nbsp;&nbsp;&nbsp;&nbsp;![xgain](https://github.com/brummer10/Xputty/raw/master/examples/xgain.png)
 
 
+![midikeyboard](https://github.com/brummer10/Xputty/raw/master/examples/midikeyboard.png)
+
+
 ![File-selector](https://github.com/brummer10/Xputty/raw/master/examples/File-selector.png)
 
 

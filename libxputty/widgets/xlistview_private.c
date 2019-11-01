@@ -33,7 +33,7 @@
 void _draw_listview(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (!w) return;
-    use_bg_color_scheme(w, NORMAL_);
+    set_pattern(w,&w->app->color_scheme->normal,&w->app->color_scheme->active,BACKGROUND_);
     cairo_paint (w->cr);
 }
 
@@ -272,7 +272,7 @@ void _draw_listview_viewslider(void *w_, void* user_data) {
     use_bg_color_scheme(w, NORMAL_);
     cairo_rectangle(w->crb, width-5,0,5,height);
     cairo_fill_preserve(w->crb);
-    use_base_color_scheme(w, NORMAL_);
+    use_shadow_color_scheme(w, NORMAL_);
     cairo_fill(w->crb);
     use_bg_color_scheme(w, NORMAL_);
     cairo_rectangle(w->crb, width-5,(height-10)*sliderstate,5,10);

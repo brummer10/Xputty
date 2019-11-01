@@ -32,6 +32,10 @@
 -----------------------------------------------------------------------
 ----------------------------------------------------------------------*/
 
+#define SYSTEM_TRAY_REQUEST_DOCK   0
+#define SYSTEM_TRAY_BEGIN_MESSAGE   1
+#define SYSTEM_TRAY_CANCEL_MESSAGE  2
+
 /**
  * @brief *evfunc     - function pointer to connect Xevents from the widgets
  * @param *widget     - void pointer to the widget
@@ -196,6 +200,8 @@ enum {
     HAS_TOOLTIP       = 1<<8,
     /** Widget_t have mem to be released */
     HAS_MEM           = 1<<9,
+    /** Widget_t didn't receive autorepeated keys */
+    NO_AUTOREPEAT     = 1<<10,
 };
 
 /**
@@ -467,6 +473,14 @@ void send_button_press_event(Widget_t *w);
  */
 
 void send_button_release_event(Widget_t *w);
+
+/**
+ * @brief send_systray_message      - request a systray icon for Widget_t
+ * @param *w                        - pointer to the Widget_t to send the notify
+ * @return void 
+ */
+
+void send_systray_message(Widget_t *w);
 
 /**
  * @brief expose_widgets    - send expose expose event to window

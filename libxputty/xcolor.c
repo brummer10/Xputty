@@ -323,5 +323,6 @@ void set_pattern(Widget_t *w, Colors *from, Colors *to, Color_mod mod) {
     cairo_pattern_add_color_stop_rgba(pat, 0.0, col_from[0], col_from[1], col_from[2], col_from[3]);
     cairo_pattern_add_color_stop_rgba(pat, 1.0, col_to[0], col_to[1], col_to[2], col_to[3]);
     cairo_set_source(w->crb, pat);
+    cairo_set_source(w->cr, pat);
     cairo_pattern_destroy (pat);
 }

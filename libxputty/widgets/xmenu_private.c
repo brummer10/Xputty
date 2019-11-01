@@ -52,22 +52,20 @@ void _draw_item(void *w_, void* user_data) {
     int height = attrs.height;
     if (attrs.map_state != IsViewable) return;
 
-    use_bg_color_scheme(w, get_color_state(w));
+    use_base_color_scheme(w, NORMAL_);
     cairo_rectangle(w->crb, 0, 0, width , height);
-    if(w->state==0) {
-        cairo_set_line_width(w->crb, 1.0);
-        cairo_fill_preserve(w->crb);
-        use_bg_color_scheme(w, PRELIGHT_);
-    } else if(w->state==1) {
-        cairo_fill_preserve(w->crb);
-        cairo_set_line_width(w->crb, 1.5);
-        use_bg_color_scheme(w, PRELIGHT_);
+    if(w->state==1) {
+        use_base_color_scheme(w, PRELIGHT_);
     } else if(w->state==2) {
-        cairo_fill_preserve(w->crb);
-        cairo_set_line_width(w->crb, 1.0);
-        use_bg_color_scheme(w, PRELIGHT_);
+        use_base_color_scheme(w, SELECTED_);
+    } else if(w->state==3) {
+        use_base_color_scheme(w, ACTIVE_);
     }
+    cairo_fill_preserve(w->crb);
+    cairo_set_line_width(w->crb, 1.0);
+    use_frame_color_scheme(w, PRELIGHT_);
     cairo_stroke(w->crb); 
+
     cairo_text_extents_t extents;
     /** show label **/
     use_text_color_scheme(w, get_color_state(w));
