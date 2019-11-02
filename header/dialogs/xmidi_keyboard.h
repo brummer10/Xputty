@@ -45,6 +45,18 @@ typedef struct {
     midiwheelfunc mk_send_all_sound_off;
 } MidiKeyboard;
 
+void keysym_azerty_to_midi_key(long inkey, float *midi_key);
+
+void keysym_qwertz_to_midi_key(long inkey, float *midi_key);
+
+void keysym_qwerty_to_midi_key(unsigned int inkey, float *midi_key);
+
+bool is_key_in_matrix(unsigned long *key_matrix, int key);
+
+bool have_key_in_matrix(unsigned long *key_matrix);
+
+void clear_key_matrix(unsigned long *key_matrix);
+
 Widget_t *open_midi_keyboard(Widget_t *w);
 
 #endif //XMIDI_KEYBOARD_H_

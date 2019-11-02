@@ -21,7 +21,7 @@
 #include "xmidi_keyboard.h"
 
 
-static void keysym_azerty_to_midi_key(long inkey, float *midi_key) {
+void keysym_azerty_to_midi_key(long inkey, float *midi_key) {
     switch(inkey) {
         case(XK_w) : (*midi_key) = 12.0; /* w = C0 */
         break;
@@ -87,7 +87,7 @@ static void keysym_azerty_to_midi_key(long inkey, float *midi_key) {
     }
 }
 
-static void keysym_qwertz_to_midi_key(long inkey, float *midi_key) {
+void keysym_qwertz_to_midi_key(long inkey, float *midi_key) {
     switch(inkey) {
         case(XK_y) : (*midi_key) = 12.0; /* y = C0 */
         break;
@@ -154,7 +154,7 @@ static void keysym_qwertz_to_midi_key(long inkey, float *midi_key) {
     }
 }
 
-static void keysym_qwerty_to_midi_key(unsigned int inkey, float *midi_key) {
+void keysym_qwerty_to_midi_key(unsigned int inkey, float *midi_key) {
     keysym_qwertz_to_midi_key(inkey,midi_key);
     if ((*midi_key) == 12) (*midi_key) = 33;
     else if ((*midi_key) == 33) (*midi_key) = 12;
@@ -180,7 +180,7 @@ static void set_key_in_matrix(unsigned long *key_matrix, int key, bool set) {
     }
 }
 
-static bool is_key_in_matrix(unsigned long *key_matrix, int key) {
+bool is_key_in_matrix(unsigned long *key_matrix, int key) {
     unsigned long *use_matrix = &key_matrix[0];
     
     
@@ -201,7 +201,7 @@ static bool is_key_in_matrix(unsigned long *key_matrix, int key) {
     return ret;
 }
 
-static bool have_key_in_matrix(unsigned long *key_matrix) {
+bool have_key_in_matrix(unsigned long *key_matrix) {
     
     bool ret = false;
     int i = 0;
@@ -217,7 +217,7 @@ static bool have_key_in_matrix(unsigned long *key_matrix) {
     return ret;
 }
 
-static void clear_key_matrix(unsigned long *key_matrix) {
+void clear_key_matrix(unsigned long *key_matrix) {
     int i = 0;
     int j = 0;
     for(;j<4;j++) {
