@@ -212,6 +212,7 @@ bool have_key_in_matrix(unsigned long *key_matrix) {
                 ret = true;
                 break;
             }
+            if(ret) break;
         }
     }
     return ret;
