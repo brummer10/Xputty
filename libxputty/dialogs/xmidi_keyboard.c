@@ -629,6 +629,8 @@ Widget_t *open_midi_keyboard(Widget_t *w) {
     wid->func.key_press_callback = key_press;
     wid->func.key_release_callback = key_release;
     wid->func.mem_free_callback = keyboard_mem_free;
+    widget_set_icon_from_png(wid,keys->icon,LDVAR(midikeyboard_png));
+    widget_set_title(wid, "Midi Keyboard");
     keys->mk_send_note = key_dummy;
     keys->mk_send_pitch = wheel_dummy;
     keys->mk_send_mod = wheel_dummy;
