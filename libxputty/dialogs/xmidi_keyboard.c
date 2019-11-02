@@ -212,8 +212,8 @@ bool have_key_in_matrix(unsigned long *key_matrix) {
                 ret = true;
                 break;
             }
-            if(ret) break;
         }
+        i = 0;
     }
     return ret;
 }
@@ -225,6 +225,7 @@ void clear_key_matrix(unsigned long *key_matrix) {
         for(;i<32;i++) {
             key_matrix[j] &= (~(1 << i));
         }
+        i = 0;
     }
 }
 
