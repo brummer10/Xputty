@@ -250,10 +250,10 @@ static void draw_keyboard(void *w_, void* user_data) {
 
     for(;i<width_t;i++) {
         cairo_rectangle(w->crb,i,height_t*0.3,25,height_t*0.7);
-        if ( k == keys->active_key || is_key_in_matrix(keys->key_matrix,k)) {
+        if ( k+keys->octave == keys->active_key || is_key_in_matrix(keys->key_matrix,k+keys->octave)) {
             use_base_color_scheme(w, ACTIVE_);
             cairo_set_line_width(w->crb, 1.0);
-        } else if ( k == keys->prelight_key) {
+        } else if ( k+keys->octave == keys->prelight_key) {
             use_base_color_scheme(w, PRELIGHT_);
             cairo_set_line_width(w->crb, 2.0);
         } else {
@@ -294,10 +294,10 @@ static void draw_keyboard(void *w_, void* user_data) {
        if (space!=3) {
             cairo_set_line_width(w->crb, 1.0);
             cairo_rectangle(w->crb,i+15,height_t*0.3,20,height_t*0.4);
-            if ( k == keys->active_key || is_key_in_matrix(keys->key_matrix,k)) {
+            if ( k+keys->octave == keys->active_key || is_key_in_matrix(keys->key_matrix,k+keys->octave)) {
                 use_base_color_scheme(w, ACTIVE_);
                 cairo_set_line_width(w->crb, 1.0);
-            } else if ( k == keys->prelight_key) {
+            } else if ( k+keys->octave == keys->prelight_key) {
                 use_base_color_scheme(w, PRELIGHT_);
                 cairo_set_line_width(w->crb, 2.0);
             } else {
@@ -358,7 +358,7 @@ static void keyboard_motion(void *w_, void* xmotion_, void* user_data) {
         for(;i<width;i++) {
             if (space!=3) {
                 if(xmotion->x > i+15 && xmotion->x < i+35) {
-                    keys->prelight_key = set_key;
+                    keys->prelight_key = set_key+keys->octave;
                     if(xmotion->state & Button1Mask) {
                         if (keys->active_key != keys->prelight_key) {
                             keys->send_key = keys->active_key;
@@ -397,7 +397,7 @@ static void keyboard_motion(void *w_, void* xmotion_, void* user_data) {
 
         for(;i<width;i++) {
             if(xmotion->x > i && xmotion->x < i+25) {
-                keys->prelight_key = k;
+                keys->prelight_key = k+keys->octave;
                 if(xmotion->state & Button1Mask) {
                     if (keys->active_key != keys->prelight_key) {
                         keys->send_key = keys->active_key;
@@ -643,7 +643,7 @@ Widget_t *open_midi_keyboard(Widget_t *w) {
 
     Widget_t *b = add_hslider(wid, "Keyboard mapping", 10, 10, 180, 40);
     b->flags |= NO_AUTOREPEAT;
-    set_adjustment(b->adj,0.0, 0.0, -1.0, 4.0, 1.0, CL_CONTINUOS);
+    set_adjustment(b->adj,2.0, 2.0, 0.0, 4.0, 1.0, CL_CONTINUOS);
     b->func.value_changed_callback = octave_callback;
 
     Widget_t *p = add_hslider(wid, "PitchWheel", 200, 10, 180, 40);
