@@ -620,6 +620,7 @@ Widget_t *open_midi_keyboard(Widget_t *w) {
     keys->layout = 0;
     keys->modwheel = 64;
     keys->pitchwheel = 64;
+    keys->icon = NULL;
     int j = 0;
     for(;j<4;j++) {
         keys->key_matrix[j] = 0;
