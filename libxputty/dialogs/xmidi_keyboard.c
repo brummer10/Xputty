@@ -616,7 +616,7 @@ Widget_t *open_midi_keyboard(Widget_t *w) {
     keys->prelight_key = -1;
     keys->active_key = -1;
     keys->send_key = -1;
-    keys->octave = 0;
+    keys->octave = 12*2;
     keys->layout = 0;
     keys->modwheel = 64;
     keys->pitchwheel = 64;
