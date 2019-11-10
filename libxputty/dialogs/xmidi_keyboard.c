@@ -564,6 +564,15 @@ static void pitchwheel_callback(void *w_, void* user_data) {
     keys->mk_send_pitch(pa,&keys->pitchwheel);
 }
 
+static void pitchsensity_callback(void *w_, void* user_data) {
+    Widget_t *w = (Widget_t*)w_;
+    Widget_t *p = w->parent;
+    Widget_t *pa = p->parent;
+    MidiKeyboard *keys = (MidiKeyboard*)p->parent_struct;
+    keys->pitchsensity = (int)adj_get_value(w->adj);
+    keys->mk_send_pitchsensity(pa,&keys->pitchsensity);
+}
+
 static void wheel_key_release(void *w_, void *key_, void *user_data) {
     Widget_t *w = (Widget_t*)w_;
     Widget_t *p = w->parent;
@@ -620,6 +629,7 @@ Widget_t *open_midi_keyboard(Widget_t *w) {
     keys->layout = 0;
     keys->modwheel = 64;
     keys->pitchwheel = 64;
+    keys->pitchsensity = 64;
     keys->icon = NULL;
     int j = 0;
     for(;j<4;j++) {
@@ -638,22 +648,30 @@ Widget_t *open_midi_keyboard(Widget_t *w) {
     widget_set_title(wid, "Midi Keyboard");
     keys->mk_send_note = key_dummy;
     keys->mk_send_pitch = wheel_dummy;
+    keys->mk_send_pitchsensity = wheel_dummy;
     keys->mk_send_mod = wheel_dummy;
     keys->mk_send_all_sound_off = wheel_dummy;
 
-    Widget_t *b = add_hslider(wid, "Keyboard mapping", 10, 10, 180, 40);
+    Widget_t *b = add_hslider(wid, "Keyboard mapping", 10, 10, 160, 40);
     b->flags |= NO_AUTOREPEAT;
     set_adjustment(b->adj,2.0, 2.0, 0.0, 4.0, 1.0, CL_CONTINUOS);
     b->func.value_changed_callback = octave_callback;
 
-    Widget_t *p = add_hslider(wid, "PitchWheel", 200, 10, 180, 40);
+    Widget_t *p = add_hslider(wid, "PitchWheel", 170, 10, 160, 40);
     p->flags |= NO_AUTOREPEAT;
     set_adjustment(p->adj,64.0, 64.0, 0.0, 127.0, 1.0, CL_CONTINUOS);
     p->func.value_changed_callback = pitchwheel_callback;
     p->func.key_press_callback = wheel_key_press;
     p->func.key_release_callback = wheel_key_release;
+    
+    Widget_t *s = add_hslider(wid, "PitchSensity", 330, 12, 90, 35);
+    s->flags |= NO_AUTOREPEAT;
+    set_adjustment(s->adj,64.0, 64.0, 0.0, 127.0, 1.0, CL_CONTINUOS);
+    s->func.value_changed_callback = pitchsensity_callback;
+    s->func.key_press_callback = wheel_key_press;
+    s->func.key_release_callback = wheel_key_release;
 
-    Widget_t *m = add_hslider(wid, "ModWheel", 390, 10, 180, 40);
+    Widget_t *m = add_hslider(wid, "ModWheel", 420, 10, 160, 40);
     m->flags |= NO_AUTOREPEAT;
     set_adjustment(m->adj,64.0, 64.0, 0.0, 127.0, 1.0, CL_CONTINUOS);
     m->func.value_changed_callback = modwheel_callback;
