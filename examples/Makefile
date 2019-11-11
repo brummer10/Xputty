@@ -1,12 +1,12 @@
 
 
-	LIB_DIR := ../Build/
+	LIB_DIR := ../libxputty/
 	HEADER_DIR := $(LIB_DIR)include/
 
 	# include path for library headers
 	INCLUDES := -I. -I$(HEADER_DIR) 
 	# link flags to dynamic link cairo and X11 (default)
-	LDFLAGS += -fPIC `pkg-config --static --cflags --libs cairo x11` -lm
+	LDFLAGS += -fPIC `pkg-config --cflags --libs cairo x11` -lm
 	# set link flags to static link cairo and X11
 	# (you could ignore ld warnings, but the resulting binary is huge
 	# (6.4Mb for x11 and cairo) NOT RECOMMENDED!!
@@ -14,7 +14,7 @@
 	 -lX11 -ldl -lxcb -lpthread -lXau -lXdmcp
 	# debug flags, use this to indicate a problem with libxputty
 	DEBUG_LDFLAGS += -g -D DEBUG  -fPIC\
-	 `pkg-config --static --cflags --libs cairo` \
+	 `pkg-config --cflags --libs cairo` \
 	 -L/usr/X11/lib -lX11 -lm
 
 	BLUE = "\033[1;34m"

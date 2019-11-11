@@ -20,6 +20,7 @@
 
 
 #include "xwidgets.h"
+#include "xmidi_keyboard.h"
 
 static void draw_label(Widget_t *w, int width, int height) {
     cairo_text_extents_t extents;
@@ -68,8 +69,10 @@ static void button_ok_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (w->flags & HAS_POINTER && !*(int*)user_data){
         Widget_t *p = (Widget_t*)w->parent;
-        quit_widget(w);
-        quit_widget(p);
+        Widget_t *m = open_midi_keyboard(p);
+        widget_show_all(m);
+        //quit_widget(w);
+        //quit_widget(p);
     }
 
 }

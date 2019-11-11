@@ -34,7 +34,7 @@
 	BUNDLE = $(NAME).lv2
 	VER = 0.1
 
-	LIB_DIR := ../Build/
+	LIB_DIR := ../libxputty/
 	HEADER_DIR := $(LIB_DIR)include/
 
 	# set compile flags
@@ -42,7 +42,7 @@
 	-ffast-math -fomit-frame-pointer -fstrength-reduce -fdata-sections -Wl,--gc-sections $(SSE_CFLAGS)
 	LDFLAGS += -I. -shared -lm 
 	GUI_LDFLAGS += -I./gui -I$(HEADER_DIR) \
-	-L. $(LIB_DIR)libxputty.a -shared `pkg-config --static --cflags --libs cairo x11` -lm 
+	-L. $(LIB_DIR)libxputty.a -shared `pkg-config --cflags --libs cairo x11` -lm 
 	# invoke build files
 	OBJECTS = plugin/$(NAME).cpp 
 	GUI_OBJECTS = gui/$(NAME)_x11ui.c

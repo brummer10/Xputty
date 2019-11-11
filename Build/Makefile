@@ -3,8 +3,8 @@
 	NAME = Xputty
 	VER = 0.1
 
-	LIB_DIR := ../libxputty/
-	HEADER_DIR := ../header/
+	LIB_DIR := ../xputty/
+	HEADER_DIR := $(LIB_DIR)header/
 	WIDGET_DIR := $(LIB_DIR)widgets/
 	WIDGET_HEADER_DIR := $(HEADER_DIR)widgets/
 	DIALOG_DIR := $(LIB_DIR)dialogs/
@@ -12,6 +12,7 @@
 	RESOURCES_DIR :=$(LIB_DIR)resources/
 	XDG_DIR := $(LIB_DIR)xdgmime/
 	OBJ_DIR := .
+	RELEASE_DIR := ../libxputty/
 
 	# include path for library headers
 	INCLUDES := -I. -I$(HEADER_DIR) -I$(WIDGET_HEADER_DIR) -I$(RESOURCES_DIR) -I$(DIALOG_HEADER_DIR) -I$(XDG_DIR)
@@ -45,7 +46,7 @@
 	XDG_SOURCES :=  $(wildcard $(XDG_DIR)*.c)
 	XDG_OBJ := $(notdir $(patsubst %.c,%.o,$(XDG_SOURCES)))
 
-	DEP = $(LIB_OBJ:%.o=%.d) $(WIDGET_OBJ:%.o=%.d)
+	DEP = $(LIB_OBJ:%.o=%.d) $(WIDGET_OBJ:%.o=%.d) $(DIALOG_OBJ:%.o=%.d) $(XDG_OBJ:%.o=%.d)
 
 .PHONY : all clean
 
@@ -54,8 +55,8 @@
 all:  $(RESOURCEHEADER) libxputty.a
 
 clean:
-	rm -f libxputty.a $(LIB_OBJ) $(WIDGET_OBJ) $(RESOURCES_OBJ)  $(XDG_OBJ) $(DEP) $(RESOURCEHEADER)
-	rm -rf $(OBJ_DIR)/include/
+	rm -f libxputty.a $(LIB_OBJ) $(WIDGET_OBJ) $(RESOURCES_OBJ) $(DIALOG_OBJ) $(XDG_OBJ) $(DEP) $(RESOURCEHEADER)
+	rm -rf $(RELEASE_DIR)
 
 $(RESOURCEHEADER): $(RESOURCES_OBJ) 
 	rm -f $(RESOURCEHEADER)
@@ -82,12 +83,13 @@ $(LIB_OBJ): $(LIB_SOURCES)
 
 libxputty.a:  $(RESOURCES_OBJ) $(LIB_OBJ) $(WIDGET_OBJ) $(DIALOG_OBJ) $(XDG_OBJ)
 	ar rcs libxputty.a $(LIB_OBJ) $(WIDGET_OBJ) $(DIALOG_OBJ) $(RESOURCES_OBJ) $(XDG_OBJ)
-	mkdir -p $(OBJ_DIR)/include/
-	cp $(HEADER_DIR)*.h $(OBJ_DIR)/include/
-	cp $(WIDGET_HEADER_DIR)*.h $(OBJ_DIR)/include/
-	cp $(DIALOG_HEADER_DIR)*.h $(OBJ_DIR)/include/
-	cp $(RESOURCEHEADER) $(OBJ_DIR)/include/
-	cp $(XDG_DIR)*.h $(OBJ_DIR)/include/
+	mkdir -p $(RELEASE_DIR)include/
+	cp $(HEADER_DIR)*.h $(RELEASE_DIR)include/
+	cp $(WIDGET_HEADER_DIR)*.h $(RELEASE_DIR)include/
+	cp $(DIALOG_HEADER_DIR)*.h $(RELEASE_DIR)include/
+	cp $(RESOURCEHEADER) $(RELEASE_DIR)include/
+	cp $(XDG_DIR)*.h $(RELEASE_DIR)include/
+	cp libxputty.a $(RELEASE_DIR)
 
 doc:
 
