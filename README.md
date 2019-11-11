@@ -3,6 +3,10 @@
 
 A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces
 
+This repository contain the examples, to check out libxputty as plain library go to:
+
+[libxputty](https://github.com/brummer10/libxputty)
+
 ## Features
 
 - easy creation of widgets and windows within the xlib windows system
