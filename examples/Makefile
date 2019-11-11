@@ -1,6 +1,6 @@
 
 
-	LIB_DIR := ../libxputty/
+	LIB_DIR := ../libxputty/libxputty/
 	HEADER_DIR := $(LIB_DIR)include/
 
 	# include path for library headers

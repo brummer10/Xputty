@@ -1,17 +1,14 @@
 
-SUBDIR := $(sort $(wildcard */))
-SUBDIR := $(filter-out  xputty/, $(SUBDIR))
-SUBDIR := $(filter-out  header/, $(SUBDIR))
-SUBDIR := $(filter-out  Xgain.lv2/, $(SUBDIR))
-SUBDIR := $(filter-out  examples/, $(SUBDIR))
-SUBDIR := $(filter-out  docs/, $(SUBDIR))
-SUBDIR := $(filter-out  libxputty/, $(SUBDIR))
+SUBDIR := examples Xgain.lv2
 
-.PHONY: $(SUBDIR) recurse
+.PHONY: $(SUBDIR) libxputty recurse
 
 $(MAKECMDGOALS) recurse: $(SUBDIR)
 
-$(SUBDIR):
+libxputty:
+	@exec $(MAKE) -j 1 -C $@ $(MAKECMDGOALS)
+
+$(SUBDIR): libxputty
 	@exec $(MAKE) -C $@ $(MAKECMDGOALS)
 
 doc:
