@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['none',['NONE',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adeac157bdf0b85a40d2619cbc8bc1ae5fe2',1,'xwidget.h']]],
-  ['normal_5f',['NORMAL_',['../xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a13cf30d063febc8581978b53d739f0a6',1,'xcolor.h']]],
-  ['northeast',['NORTHEAST',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adeaa6671505783298e4cb967931c1c1ac5b',1,'xwidget.h']]],
-  ['northwest',['NORTHWEST',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391adeac8aee466c121a3c3c942f58e1d8864d4',1,'xwidget.h']]]
+  ['key_5fpress',['KEY_PRESS',['../xwidget_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa2da84e4fb999951754c859d16c69b145',1,'xwidget.h']]],
+  ['key_5frelease',['KEY_RELEASE',['../xwidget_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa51cb537f8b13f7e65d2c665116f85b91',1,'xwidget.h']]]
 ];

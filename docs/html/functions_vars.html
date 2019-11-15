@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions_vars.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -70,6 +100,9 @@ $(function() {
 <li>active_item
 : <a class="el" href="structViewList__t.html#ab4e818b7f31045935ff0d8f33c504474">ViewList_t</a>
 </li>
+<li>active_key
+: <a class="el" href="structMidiKeyboard.html#ab02f7277918ca45902577f8f2e5a8b6f">MidiKeyboard</a>
+</li>
 <li>adj
 : <a class="el" href="structWidget__t.html#af3fdf65eb9a663016b91ee87a96d75a8">Widget_t</a>
 </li>
@@ -93,10 +126,10 @@ $(function() {
 
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>base
-: <a class="el" href="structColors.html#a9d62f5883a99e0ec03df533d95a77def">Colors</a>
+: <a class="el" href="structColors.html#a5ff89ec07ee327859dfd0a72361c2a6a">Colors</a>
 </li>
 <li>bg
-: <a class="el" href="structColors.html#a38294c28d52e4a10abcaf322dff25a97">Colors</a>
+: <a class="el" href="structColors.html#a18c1326c891e240598e3a6c4adfda699">Colors</a>
 </li>
 <li>buffer
 : <a class="el" href="structWidget__t.html#a84d225e7b261d67daa764b47c8c62107">Widget_t</a>
@@ -189,7 +222,7 @@ $(function() {
 
 <h3><a id="index_f"></a>- f -</h3><ul>
 <li>fg
-: <a class="el" href="structColors.html#afbcf70113bd28d362a23ac5fc6058924">Colors</a>
+: <a class="el" href="structColors.html#ae1a879bcd796f7c095c4e3e1463092a0">Colors</a>
 </li>
 <li>file_counter
 : <a class="el" href="structFilePicker.html#ad7c1e7611c9319eac1493d955d478c61">FilePicker</a>
@@ -208,7 +241,7 @@ $(function() {
 : <a class="el" href="structFileDialog.html#a22cc735bfba009cf73e12b4843f84c30">FileDialog</a>
 </li>
 <li>frame
-: <a class="el" href="structColors.html#a89fbc84e3316a12fb1aeff33ebee990a">Colors</a>
+: <a class="el" href="structColors.html#a37794f33a56647fcb4352334548d8a5b">Colors</a>
 </li>
 <li>ft
 : <a class="el" href="structFileDialog.html#ad15e967663f79ed2fa43c0e01460631c">FileDialog</a>
@@ -241,6 +274,7 @@ $(function() {
 <li>icon
 : <a class="el" href="structFileDialog.html#a1cd92000f92c13e9c35cbdfffe2a0eca">FileDialog</a>
 , <a class="el" href="structMessageBox.html#af2f197bea8f7450d2b0e2cc3c496659a">MessageBox</a>
+, <a class="el" href="structMidiKeyboard.html#a431d52d58bfc873d8eca870694d09905">MidiKeyboard</a>
 </li>
 <li>image
 : <a class="el" href="structWidget__t.html#a4e179b5ae7494b9533c8673ec3642a55">Widget_t</a>
@@ -267,6 +301,9 @@ $(function() {
 
 
 <h3><a id="index_k"></a>- k -</h3><ul>
+<li>key_matrix
+: <a class="el" href="structMidiKeyboard.html#a9ab2ef8eb69c1ae89b10eba00f31dc8a">MidiKeyboard</a>
+</li>
 <li>key_press_callback
 : <a class="el" href="structFunc__t.html#a024ea4919029156d9415f1501cd8b0bf">Func_t</a>
 </li>
@@ -283,8 +320,14 @@ $(function() {
 <li>last_path
 : <a class="el" href="structFileButton.html#a382ea13eda05543ca0e11be7643bb1a0">FileButton</a>
 </li>
+<li>layout
+: <a class="el" href="structMidiKeyboard.html#a0c8514ddd20cd725ebd771ab5d2bf351">MidiKeyboard</a>
+</li>
 <li>leave_callback
 : <a class="el" href="structFunc__t.html#a1801ba902bd7efc706d474312f960d0a">Func_t</a>
+</li>
+<li>light
+: <a class="el" href="structColors.html#a5260e4886442c63dc5e8d35fa081affc">Colors</a>
 </li>
 <li>lin
 : <a class="el" href="structMessageBox.html#a59f5280592910ffa5ef611176a55217c">MessageBox</a>
@@ -317,6 +360,24 @@ $(function() {
 <li>min_value
 : <a class="el" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">Adjustment_t</a>
 </li>
+<li>mk_send_all_sound_off
+: <a class="el" href="structMidiKeyboard.html#a2d66645fc8b3a3b55ec7fb34bf7c6150">MidiKeyboard</a>
+</li>
+<li>mk_send_mod
+: <a class="el" href="structMidiKeyboard.html#a76746243fda68c58358c175c852cf92c">MidiKeyboard</a>
+</li>
+<li>mk_send_note
+: <a class="el" href="structMidiKeyboard.html#a13468fce78f9b086290ff2b936dde79d">MidiKeyboard</a>
+</li>
+<li>mk_send_pitch
+: <a class="el" href="structMidiKeyboard.html#a1b83a310b368ef68e333abb42166d090">MidiKeyboard</a>
+</li>
+<li>mk_send_pitchsensity
+: <a class="el" href="structMidiKeyboard.html#afdbd0cd0116de647306d259867297bab">MidiKeyboard</a>
+</li>
+<li>modwheel
+: <a class="el" href="structMidiKeyboard.html#a22e57dc621b0901bcf7dfbac65d015e3">MidiKeyboard</a>
+</li>
 <li>motion_callback
 : <a class="el" href="structFunc__t.html#ac2842c834907f4aeace8f404c6cc7621">Func_t</a>
 </li>
@@ -326,6 +387,13 @@ $(function() {
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>normal
 : <a class="el" href="structXColor__t.html#a56d55140d2797460ac1d0253163d6f66">XColor_t</a>
+</li>
+</ul>
+
+
+<h3><a id="index_o"></a>- o -</h3><ul>
+<li>octave
+: <a class="el" href="structMidiKeyboard.html#a066fe4d553374a54bed29eb50d66a887">MidiKeyboard</a>
 </li>
 </ul>
 
@@ -342,6 +410,12 @@ $(function() {
 : <a class="el" href="structFileButton.html#aaa44245f847e77d5bf2742c0c4cf88d8">FileButton</a>
 , <a class="el" href="structFilePicker.html#a35302148e7c12050c9696d4368b151c8">FilePicker</a>
 </li>
+<li>pitchsensity
+: <a class="el" href="structMidiKeyboard.html#a112c106ec854128232517f3567702f62">MidiKeyboard</a>
+</li>
+<li>pitchwheel
+: <a class="el" href="structMidiKeyboard.html#a1b99cfe1cb3e4840f1a1f72ff5ae74df">MidiKeyboard</a>
+</li>
 <li>pos_x
 : <a class="el" href="structWidget__t.html#ae2d46ffb30bb2335a043d138fa05e1a3">Widget_t</a>
 </li>
@@ -356,6 +430,9 @@ $(function() {
 </li>
 <li>prelight_item
 : <a class="el" href="structViewList__t.html#acf5c98ddaf6e9ab526f9a3c1faf4e7a2">ViewList_t</a>
+</li>
+<li>prelight_key
+: <a class="el" href="structMidiKeyboard.html#ab74d14c3d836e99deb996e6aa3fe79b4">MidiKeyboard</a>
 </li>
 </ul>
 
@@ -401,11 +478,14 @@ $(function() {
 <li>send_clear_func
 : <a class="el" href="structFileDialog.html#a7406a6392b89039bdebfeaf57981e289">FileDialog</a>
 </li>
+<li>send_key
+: <a class="el" href="structMidiKeyboard.html#ac52a5c105a923a3cb592753f322cb615">MidiKeyboard</a>
+</li>
 <li>set_filter
 : <a class="el" href="structFileDialog.html#a58a21885d0351511b7c3a1aace0472dd">FileDialog</a>
 </li>
 <li>shadow
-: <a class="el" href="structColors.html#a6099f801db8569636b9bf29823c0e03b">Colors</a>
+: <a class="el" href="structColors.html#aac7c4539144f18f14c189097366ce713">Colors</a>
 </li>
 <li>show_hidden
 : <a class="el" href="structFilePicker.html#ab4a445c6af3f5976d68eb686a88da0cb">FilePicker</a>
@@ -436,7 +516,7 @@ $(function() {
 
 <h3><a id="index_t"></a>- t -</h3><ul>
 <li>text
-: <a class="el" href="structColors.html#aca2846df5e653cda1cb1ca97ea1b3e63">Colors</a>
+: <a class="el" href="structColors.html#a0141e911d6d6434c9a76a1f43bd4085c">Colors</a>
 </li>
 <li>text_entry
 : <a class="el" href="structMessageBox.html#a5ff23145e31316fdba295743f9406621">MessageBox</a>
@@ -511,11 +591,14 @@ $(function() {
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -96,20 +96,26 @@ int main (int argc, char ** argv)
 
     w_quit = add_button(w, "Quit", 230, 170, 60, 20);
     w_quit->scale.gravity = SOUTHWEST;
-    w_quit->func.value_changed_callback = button_quit_callback;
+    connect_func(&w_quit->func.value_changed_callback, &button_quit_callback);
     widget_show_all(w);
 
     w = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 200);
     widget_set_title(w, "Xputty Message Box");
     w->label = "This is a message";
-    w->func.expose_callback = draw_window;
+    connect_func(&w->func.expose_callback,&draw_window);
+    double alpha = 0.5;
+    unsigned long opacity = (unsigned long)(0xFFFFFFFFul * alpha);
+    Atom XA_NET_WM_WINDOW_OPACITY = XInternAtom(app.dpy, "_NET_WM_WINDOW_OPACITY", False);
+    XChangeProperty(app.dpy, w->widget, XA_NET_WM_WINDOW_OPACITY, XA_CARDINAL, 32,
+                    PropModeReplace, (unsigned char *)&opacity, 1L);   
 
     w_quit = add_button(w, "OK", 230, 170, 60, 20);
     w_quit->scale.gravity = SOUTHWEST;
-    w_quit->func.value_changed_callback = button_ok_callback;
+    signal_connect_func(w_quit,VALUE_CHANGED,button_ok_callback);
+    //w_quit->func.value_changed_callback = button_ok_callback;
     widget_show_all(w);
     XMoveWindow(w->app->dpy,w->widget,center_x+60, center_y+60);
-   
+
     main_run(&app);
    
     main_quit(&app);

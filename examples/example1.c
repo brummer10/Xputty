@@ -286,7 +286,7 @@ int main (int argc, char ** argv)
     mywindow.w_ok->label = "Ok";
     mywindow.w_ok->func.expose_callback = draw_button;
     mywindow.w_ok->func.enter_callback = draw_button;
-    mywindow.w_ok->func.button_press_callback = button_press;
+    connect_func(&mywindow.w_ok->func.button_press_callback,&button_press);
     mywindow.w_ok->func.button_release_callback = button_release;
     mywindow.w_ok->func.leave_callback = draw_button;
     mywindow.w_ok->scale.gravity = SOUTHWEST;

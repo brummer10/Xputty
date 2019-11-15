@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,15 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('xwidgets_8h.html','');});
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +90,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_1ec98ce50fa6ec55b40b8ffb1df38c3c.html">header</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a>  </div>
@@ -86,22 +112,22 @@ Include dependency graph for xwidgets.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="xwidgets_8h__incl.png" border="0" usemap="#xwidgets_8h" alt=""/></div>
 <map name="xwidgets_8h" id="xwidgets_8h">
-<area shape="rect" id="node2" href="xbutton_8h.html" title="xbutton.h" alt="" coords="631,155,707,181"/>
-<area shape="rect" id="node22" href="xslider_8h.html" title="xslider.h" alt="" coords="731,155,801,181"/>
-<area shape="rect" id="node23" href="xknob_8h.html" title="xknob.h" alt="" coords="825,155,893,181"/>
-<area shape="rect" id="node24" href="xmenu_8h.html" title="xmenu.h" alt="" coords="918,155,990,181"/>
-<area shape="rect" id="node25" href="xcombobox_8h.html" title="xcombobox.h" alt="" coords="920,80,1020,107"/>
-<area shape="rect" id="node26" href="xtooltip_8h.html" title="xtooltip.h" alt="" coords="1065,155,1139,181"/>
-<area shape="rect" id="node27" href="xmeter_8h.html" title="xmeter.h" alt="" coords="1096,80,1169,107"/>
-<area shape="rect" id="node28" href="xlabel_8h.html" title="xlabel.h" alt="" coords="1194,80,1261,107"/>
-<area shape="rect" id="node29" href="xlistbox_8h.html" title="xlistbox.h" alt="" coords="1285,80,1364,107"/>
-<area shape="rect" id="node30" href="xlistview_8h.html" title="xlistview.h" alt="" coords="1388,80,1472,107"/>
-<area shape="rect" id="node3" href="xputty_8h.html" title="xputty.h" alt="" coords="1030,229,1099,256"/>
-<area shape="rect" id="node16" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1203,304,1281,331"/>
-<area shape="rect" id="node17" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="1306,304,1410,331"/>
-<area shape="rect" id="node18" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1435,304,1519,331"/>
-<area shape="rect" id="node19" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1543,304,1611,331"/>
-<area shape="rect" id="node20" href="xpngloader_8h.html" title="xpngloader.h" alt="" coords="1635,304,1731,331"/>
+<area shape="rect" id="node2" href="xbutton_8h.html" title="xbutton.h" alt="" coords="656,155,732,181"/>
+<area shape="rect" id="node23" href="xslider_8h.html" title="xslider.h" alt="" coords="756,155,827,181"/>
+<area shape="rect" id="node24" href="xknob_8h.html" title="xknob.h" alt="" coords="851,155,919,181"/>
+<area shape="rect" id="node25" href="xmenu_8h.html" title="xmenu.h" alt="" coords="943,155,1015,181"/>
+<area shape="rect" id="node26" href="xcombobox_8h.html" title="xcombobox.h" alt="" coords="945,80,1045,107"/>
+<area shape="rect" id="node27" href="xtooltip_8h.html" title="xtooltip.h" alt="" coords="1090,155,1165,181"/>
+<area shape="rect" id="node28" href="xmeter_8h.html" title="xmeter.h" alt="" coords="1121,80,1195,107"/>
+<area shape="rect" id="node29" href="xlabel_8h.html" title="xlabel.h" alt="" coords="1219,80,1286,107"/>
+<area shape="rect" id="node30" href="xlistbox_8h.html" title="xlistbox.h" alt="" coords="1311,80,1389,107"/>
+<area shape="rect" id="node31" href="xlistview_8h.html" title="xlistview.h" alt="" coords="1413,80,1497,107"/>
+<area shape="rect" id="node3" href="xputty_8h.html" title="xputty.h" alt="" coords="1055,229,1125,256"/>
+<area shape="rect" id="node17" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1291,304,1369,331"/>
+<area shape="rect" id="node18" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="1394,304,1498,331"/>
+<area shape="rect" id="node19" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1523,304,1607,331"/>
+<area shape="rect" id="node20" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1631,304,1699,331"/>
+<area shape="rect" id="node21" href="xpngloader_8h.html" title="xpngloader.h" alt="" coords="1723,304,1819,331"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -111,8 +137,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <map name="xwidgets_8hdep" id="xwidgets_8hdep">
 <area shape="rect" id="node2" href="xfile-dialog_8h.html" title="xfile&#45;dialog.h" alt="" coords="5,80,100,107"/>
 <area shape="rect" id="node4" href="xmessage-dialog_8h.html" title="xmessage&#45;dialog.h" alt="" coords="125,80,255,107"/>
+<area shape="rect" id="node6" href="xmidi__keyboard_8h.html" title="xmidi_keyboard.h" alt="" coords="280,80,404,107"/>
 <area shape="rect" id="node3" href="xfile-dialog_8c.html" title="xfile&#45;dialog.c" alt="" coords="5,155,100,181"/>
 <area shape="rect" id="node5" href="xmessage-dialog_8c.html" title="xmessage&#45;dialog.c" alt="" coords="125,155,255,181"/>
+<area shape="rect" id="node7" href="xmidi__keyboard_8c.html" title="xmidi_keyboard.c" alt="" coords="280,155,404,181"/>
 </map>
 </div>
 </div>
@@ -136,14 +164,20 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="xwidgets_8h_source.html#l00024">24</a> of file <a class="el" href="xwidgets_8h_source.html">xwidgets.h</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_e9bbb68c42f81f311d39d9dbaefd3b8c.html">libxputty</a></li><li class="navelem"><a class="el" href="dir_36c8397ee67800846af2ba64e4b44ab7.html">xputty</a></li><li class="navelem"><a class="el" href="dir_6130975627a7ed0ca0cc78db073e0675.html">header</a></li><li class="navelem"><a class="el" href="xwidgets_8h.html">xwidgets.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

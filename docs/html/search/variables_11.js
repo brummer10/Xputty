@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['use_5ffilter',['use_filter',['../structFilePicker.html#a66385fe305358fe8b35d644a635bc7ec',1,'FilePicker']]],
-  ['user_5fcallback',['user_callback',['../structFunc__t.html#a1f089cb13a39764a1f980470a51db71b',1,'Func_t']]]
+  ['text',['text',['../structColors.html#a0141e911d6d6434c9a76a1f43bd4085c',1,'Colors']]],
+  ['text_5fentry',['text_entry',['../structMessageBox.html#a5ff23145e31316fdba295743f9406621',1,'MessageBox']]],
+  ['type',['type',['../structAdjustment__t.html#a1ec53b702dc4707522249f3cb5cbf6b3',1,'Adjustment_t']]]
 ];

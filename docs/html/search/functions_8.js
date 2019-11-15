@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['key_5fmapping',['key_mapping',['../xwidget_8c.html#a1607cf4a642a38ea235a007ea9579403',1,'key_mapping(Display *dpy, XKeyEvent *xkey):&#160;xwidget.c'],['../xwidget_8h.html#a1607cf4a642a38ea235a007ea9579403',1,'key_mapping(Display *dpy, XKeyEvent *xkey):&#160;xwidget.c']]]
+  ['is_5fkey_5fin_5fmatrix',['is_key_in_matrix',['../xmidi__keyboard_8h.html#a359dac3129447cb25d3d46fc4cae2d42',1,'is_key_in_matrix(unsigned long *key_matrix, int key):&#160;xmidi_keyboard.c'],['../xmidi__keyboard_8c.html#a359dac3129447cb25d3d46fc4cae2d42',1,'is_key_in_matrix(unsigned long *key_matrix, int key):&#160;xmidi_keyboard.c']]]
 ];

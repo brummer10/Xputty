@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,15 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('xadjustment_8h.html','');});
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +90,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_1ec98ce50fa6ec55b40b8ffb1df38c3c.html">header</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
@@ -80,11 +106,11 @@ Include dependency graph for xadjustment.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="xadjustment_8h__incl.png" border="0" usemap="#xadjustment_8h" alt=""/></div>
 <map name="xadjustment_8h" id="xadjustment_8h">
-<area shape="rect" id="node2" href="xputty_8h.html" title="xputty.h" alt="" coords="906,80,975,107"/>
-<area shape="rect" id="node15" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1203,155,1281,181"/>
-<area shape="rect" id="node16" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1305,155,1389,181"/>
-<area shape="rect" id="node17" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1413,155,1481,181"/>
-<area shape="rect" id="node18" href="xpngloader_8h.html" title="xpngloader.h" alt="" coords="1506,155,1602,181"/>
+<area shape="rect" id="node2" href="xputty_8h.html" title="xputty.h" alt="" coords="934,80,1003,107"/>
+<area shape="rect" id="node16" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1291,155,1369,181"/>
+<area shape="rect" id="node17" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1393,155,1477,181"/>
+<area shape="rect" id="node18" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1501,155,1569,181"/>
+<area shape="rect" id="node19" href="xpngloader_8h.html" title="xpngloader.h" alt="" coords="1594,155,1690,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -92,55 +118,55 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="xadjustment_8h__dep__incl.png" border="0" usemap="#xadjustment_8hdep" alt=""/></div>
 <map name="xadjustment_8hdep" id="xadjustment_8hdep">
-<area shape="rect" id="node2" href="xadjustment_8c.html" title="xadjustment.c" alt="" coords="5,229,109,256"/>
-<area shape="rect" id="node3" href="xputty_8h.html" title="xputty.h" alt="" coords="989,80,1059,107"/>
-<area shape="rect" id="node4" href="xputty_8c.html" title="xputty.c" alt="" coords="2564,155,2633,181"/>
-<area shape="rect" id="node5" href="xwidget_8h.html" title="xwidget.h" alt="" coords="859,155,938,181"/>
-<area shape="rect" id="node7" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="475,155,559,181"/>
-<area shape="rect" id="node9" href="xcolor_8h.html" title="xcolor.h" alt="" coords="383,155,451,181"/>
-<area shape="rect" id="node11" href="xpngloader_8h.html" title="xpngloader.h" alt="" coords="739,155,835,181"/>
-<area shape="rect" id="node13" href="xadjustment__private_8h.html" title="xadjustment_private.h" alt="" coords="134,155,285,181"/>
-<area shape="rect" id="node15" href="xchildlist__private_8h.html" title="xchildlist_private.h" alt="" coords="584,155,715,181"/>
-<area shape="rect" id="node17" href="xwidget__private_8h.html" title="xwidget_private.h" alt="" coords="962,155,1086,181"/>
-<area shape="rect" id="node19" href="xbutton_8h.html" title="xbutton.h" alt="" coords="1110,155,1186,181"/>
-<area shape="rect" id="node26" href="xcombobox_8h.html" title="xcombobox.h" alt="" coords="1234,229,1334,256"/>
-<area shape="rect" id="node27" href="xmenu_8h.html" title="xmenu.h" alt="" coords="1336,155,1408,181"/>
-<area shape="rect" id="node30" href="xknob_8h.html" title="xknob.h" alt="" coords="1623,155,1691,181"/>
-<area shape="rect" id="node33" href="xlabel_8h.html" title="xlabel.h" alt="" coords="1889,155,1956,181"/>
-<area shape="rect" id="node36" href="xlistbox_8h.html" title="xlistbox.h" alt="" coords="2109,155,2187,181"/>
-<area shape="rect" id="node40" href="xlistview_8h.html" title="xlistview.h" alt="" coords="2263,155,2347,181"/>
-<area shape="rect" id="node44" href="xmeter_8h.html" title="xmeter.h" alt="" coords="2371,155,2445,181"/>
-<area shape="rect" id="node47" href="xslider_8h.html" title="xslider.h" alt="" coords="2469,155,2539,181"/>
-<area shape="rect" id="node50" href="xtooltip_8h.html" title="xtooltip.h" alt="" coords="2537,229,2612,256"/>
-<area shape="rect" id="node6" href="xwidget_8c.html" title="xwidget.c" alt="" coords="785,229,863,256"/>
-<area shape="rect" id="node8" href="xchildlist_8c.html" title="xchildlist.c" alt="" coords="401,229,485,256"/>
-<area shape="rect" id="node10" href="xcolor_8c.html" title="xcolor.c" alt="" coords="309,229,377,256"/>
-<area shape="rect" id="node12" href="xpngloader_8c.html" title="xpngloader.c" alt="" coords="664,229,760,256"/>
-<area shape="rect" id="node14" href="xadjustment__private_8c.html" title="xadjustment_private.c" alt="" coords="134,229,285,256"/>
-<area shape="rect" id="node16" href="xchildlist__private_8c.html" title="xchildlist_private.c" alt="" coords="509,229,640,256"/>
-<area shape="rect" id="node18" href="xwidget__private_8c.html" title="xwidget_private.c" alt="" coords="887,229,1011,256"/>
-<area shape="rect" id="node20" href="xwidgets_8h.html" title="xwidgets.h" alt="" coords="2105,304,2191,331"/>
-<area shape="rect" id="node21" href="xbutton_8c.html" title="xbutton.c" alt="" coords="1061,304,1137,331"/>
-<area shape="rect" id="node22" href="xbutton__private_8h.html" title="xbutton_private.h" alt="" coords="1087,229,1209,256"/>
-<area shape="rect" id="node23" href="xcombobox__private_8h.html" title="xcombobox_private.h" alt="" coords="1211,304,1357,331"/>
-<area shape="rect" id="node24" href="xcombobox_8c.html" title="xcombobox.c" alt="" coords="1289,379,1389,405"/>
-<area shape="rect" id="node25" href="xcombobox__private_8c.html" title="xcombobox_private.c" alt="" coords="1945,379,2092,405"/>
-<area shape="rect" id="node28" href="xmenu_8c.html" title="xmenu.c" alt="" coords="1433,304,1505,331"/>
-<area shape="rect" id="node29" href="xmenu__private_8h.html" title="xmenu_private.h" alt="" coords="1410,229,1529,256"/>
-<area shape="rect" id="node31" href="xknob_8c.html" title="xknob.c" alt="" coords="1625,304,1693,331"/>
-<area shape="rect" id="node32" href="xknob__private_8h.html" title="xknob_private.h" alt="" coords="1553,229,1668,256"/>
-<area shape="rect" id="node34" href="xlabel_8c.html" title="xlabel.c" alt="" coords="1891,304,1957,331"/>
-<area shape="rect" id="node35" href="xlabel__private_8h.html" title="xlabel_private.h" alt="" coords="1743,229,1857,256"/>
-<area shape="rect" id="node37" href="xlistbox_8c.html" title="xlistbox.c" alt="" coords="2274,304,2353,331"/>
-<area shape="rect" id="node38" href="xlistbox__private_8h.html" title="xlistbox_private.h" alt="" coords="2389,229,2513,256"/>
-<area shape="rect" id="node39" href="xlistbox__private_8c.html" title="xlistbox_private.c" alt="" coords="2389,304,2513,331"/>
-<area shape="rect" id="node41" href="xlistview_8c.html" title="xlistview.c" alt="" coords="2743,304,2827,331"/>
-<area shape="rect" id="node42" href="xlistview__private_8h.html" title="xlistview_private.h" alt="" coords="2636,229,2767,256"/>
-<area shape="rect" id="node43" href="xlistview__private_8c.html" title="xlistview_private.c" alt="" coords="2588,304,2719,331"/>
-<area shape="rect" id="node45" href="xmeter_8c.html" title="xmeter.c" alt="" coords="2883,304,2957,331"/>
-<area shape="rect" id="node46" href="xmeter__private_8h.html" title="xmeter_private.h" alt="" coords="2893,229,3011,256"/>
-<area shape="rect" id="node48" href="xslider_8c.html" title="xslider.c" alt="" coords="3062,304,3133,331"/>
-<area shape="rect" id="node49" href="xslider__private_8h.html" title="xslider_private.h" alt="" coords="3087,229,3204,256"/>
+<area shape="rect" id="node2" href="xputty_8h.html" title="xputty.h" alt="" coords="1521,80,1590,107"/>
+<area shape="rect" id="node12" href="xadjustment_8c.html" title="xadjustment.c" alt="" coords="3065,229,3169,256"/>
+<area shape="rect" id="node3" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1516,155,1595,181"/>
+<area shape="rect" id="node5" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1166,155,1250,181"/>
+<area shape="rect" id="node7" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1619,155,1687,181"/>
+<area shape="rect" id="node9" href="xpngloader_8h.html" title="xpngloader.h" alt="" coords="1712,155,1808,181"/>
+<area shape="rect" id="node11" href="xadjustment__private_8h.html" title="xadjustment_private.h" alt="" coords="2890,155,3040,181"/>
+<area shape="rect" id="node14" href="xchildlist__private_8h.html" title="xchildlist_private.h" alt="" coords="1010,155,1141,181"/>
+<area shape="rect" id="node16" href="xwidget__private_8h.html" title="xwidget_private.h" alt="" coords="1368,155,1492,181"/>
+<area shape="rect" id="node18" href="xbutton_8h.html" title="xbutton.h" alt="" coords="1832,155,1908,181"/>
+<area shape="rect" id="node25" href="xcombobox_8h.html" title="xcombobox.h" alt="" coords="2190,229,2290,256"/>
+<area shape="rect" id="node26" href="xmenu_8h.html" title="xmenu.h" alt="" coords="2204,155,2276,181"/>
+<area shape="rect" id="node29" href="xknob_8h.html" title="xknob.h" alt="" coords="2512,155,2580,181"/>
+<area shape="rect" id="node32" href="xlabel_8h.html" title="xlabel.h" alt="" coords="92,155,158,181"/>
+<area shape="rect" id="node35" href="xlistbox_8h.html" title="xlistbox.h" alt="" coords="430,155,508,181"/>
+<area shape="rect" id="node39" href="xlistview_8h.html" title="xlistview.h" alt="" coords="656,155,740,181"/>
+<area shape="rect" id="node42" href="xmeter_8h.html" title="xmeter.h" alt="" coords="908,155,982,181"/>
+<area shape="rect" id="node45" href="xslider_8h.html" title="xslider.h" alt="" coords="2074,155,2144,181"/>
+<area shape="rect" id="node48" href="xtooltip_8h.html" title="xtooltip.h" alt="" coords="566,229,641,256"/>
+<area shape="rect" id="node50" href="xputty_8c.html" title="xputty.c" alt="" coords="1274,155,1344,181"/>
+<area shape="rect" id="node4" href="xwidget_8c.html" title="xwidget.c" alt="" coords="1474,229,1552,256"/>
+<area shape="rect" id="node6" href="xchildlist_8c.html" title="xchildlist.c" alt="" coords="1218,229,1302,256"/>
+<area shape="rect" id="node8" href="xcolor_8c.html" title="xcolor.c" alt="" coords="1576,229,1644,256"/>
+<area shape="rect" id="node10" href="xpngloader_8c.html" title="xpngloader.c" alt="" coords="1669,229,1765,256"/>
+<area shape="rect" id="node13" href="xadjustment__private_8c.html" title="xadjustment_private.c" alt="" coords="2890,229,3040,256"/>
+<area shape="rect" id="node15" href="xchildlist__private_8c.html" title="xchildlist_private.c" alt="" coords="1062,229,1193,256"/>
+<area shape="rect" id="node17" href="xwidget__private_8c.html" title="xwidget_private.c" alt="" coords="1326,229,1450,256"/>
+<area shape="rect" id="node19" href="xwidgets_8h.html" title="xwidgets.h" alt="" coords="1405,304,1490,331"/>
+<area shape="rect" id="node20" href="xbutton__private_8h.html" title="xbutton_private.h" alt="" coords="2042,229,2165,256"/>
+<area shape="rect" id="node24" href="xbutton_8c.html" title="xbutton.c" alt="" coords="1875,304,1951,331"/>
+<area shape="rect" id="node21" href="xcombobox__private_8h.html" title="xcombobox_private.h" alt="" coords="2037,304,2184,331"/>
+<area shape="rect" id="node22" href="xcombobox_8c.html" title="xcombobox.c" alt="" coords="2122,379,2222,405"/>
+<area shape="rect" id="node23" href="xcombobox__private_8c.html" title="xcombobox_private.c" alt="" coords="1361,379,1508,405"/>
+<area shape="rect" id="node27" href="xmenu__private_8h.html" title="xmenu_private.h" alt="" coords="2556,229,2675,256"/>
+<area shape="rect" id="node28" href="xmenu_8c.html" title="xmenu.c" alt="" coords="2530,304,2602,331"/>
+<area shape="rect" id="node30" href="xknob__private_8h.html" title="xknob_private.h" alt="" coords="2700,229,2814,256"/>
+<area shape="rect" id="node31" href="xknob_8c.html" title="xknob.c" alt="" coords="2770,304,2838,331"/>
+<area shape="rect" id="node33" href="xlabel__private_8h.html" title="xlabel_private.h" alt="" coords="23,229,136,256"/>
+<area shape="rect" id="node34" href="xlabel_8c.html" title="xlabel.c" alt="" coords="22,304,89,331"/>
+<area shape="rect" id="node36" href="xlistbox__private_8h.html" title="xlistbox_private.h" alt="" coords="212,229,336,256"/>
+<area shape="rect" id="node37" href="xlistbox_8c.html" title="xlistbox.c" alt="" coords="159,304,238,331"/>
+<area shape="rect" id="node38" href="xlistbox__private_8c.html" title="xlistbox_private.c" alt="" coords="288,304,412,331"/>
+<area shape="rect" id="node40" href="xlistview__private_8h.html" title="xlistview_private.h" alt="" coords="361,229,492,256"/>
+<area shape="rect" id="node41" href="xlistview_8c.html" title="xlistview.c" alt="" coords="460,304,544,331"/>
+<area shape="rect" id="node43" href="xmeter__private_8h.html" title="xmeter_private.h" alt="" coords="767,229,886,256"/>
+<area shape="rect" id="node44" href="xmeter_8c.html" title="xmeter.c" alt="" coords="863,304,936,331"/>
+<area shape="rect" id="node46" href="xslider__private_8h.html" title="xslider_private.h" alt="" coords="2313,229,2430,256"/>
+<area shape="rect" id="node47" href="xslider_8c.html" title="xslider.c" alt="" coords="2384,304,2455,331"/>
+<area shape="rect" id="node49" href="xtooltip__private_8h.html" title="xtooltip_private.h" alt="" coords="568,304,690,331"/>
 </map>
 </div>
 </div>
@@ -169,41 +195,41 @@ Enumerations</h2></td></tr>
 <a class="el" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a68c34061b429f8842bffca897bdc630c">CL_VIEWPORT</a> = 0x0032, 
 <a class="el" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a590b48f5080da2c2411eaf9fa7e291e6">CL_METER</a> = 0x0064
 <br />
- }<tr class="memdesc:aefe5e135b1a0eab4675337a0967a7743"><td class="mdescLeft">&#160;</td><td class="mdescRight">CL_type - enum type of controller adjustment.  <a href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743">More...</a><br /></td></tr>
+ }<tr class="memdesc:aefe5e135b1a0eab4675337a0967a7743"><td class="mdescLeft">&#160;</td><td class="mdescRight">CL_type - define the type of the controller adjustment one of this types must be given when set up a <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> for a Wdiget_t.  <a href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:aefe5e135b1a0eab4675337a0967a7743"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:afd8595365c53be47a55fecec996347a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAdjustment__t.html">Adjustment_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xadjustment_8h.html#afd8595365c53be47a55fecec996347a7">add_adjustment</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, float std_value, float value, float min_value, float max_value, float step, <a class="el" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743">CL_type</a> type)</td></tr>
-<tr class="memdesc:afd8595365c53be47a55fecec996347a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">*add_adjustment - adding a adjustment to the widget  <a href="#afd8595365c53be47a55fecec996347a7">More...</a><br /></td></tr>
+<tr class="memdesc:afd8595365c53be47a55fecec996347a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">*add_adjustment - adding a adjustment to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a>  <a href="#afd8595365c53be47a55fecec996347a7">More...</a><br /></td></tr>
 <tr class="separator:afd8595365c53be47a55fecec996347a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7188a4bb4294e2a08aea2430975b406"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xadjustment_8h.html#ab7188a4bb4294e2a08aea2430975b406">set_adjustment</a> (<a class="el" href="structAdjustment__t.html">Adjustment_t</a> *adj, float std_value, float value, float min_value, float max_value, float step, <a class="el" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743">CL_type</a> type)</td></tr>
-<tr class="memdesc:ab7188a4bb4294e2a08aea2430975b406"><td class="mdescLeft">&#160;</td><td class="mdescRight">*set_adjustment - set a new range to a existing Adjustment  <a href="#ab7188a4bb4294e2a08aea2430975b406">More...</a><br /></td></tr>
+<tr class="memdesc:ab7188a4bb4294e2a08aea2430975b406"><td class="mdescLeft">&#160;</td><td class="mdescRight">*set_adjustment - set a new range to a existing <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> it will be created if it not exsits yet  <a href="#ab7188a4bb4294e2a08aea2430975b406">More...</a><br /></td></tr>
 <tr class="separator:ab7188a4bb4294e2a08aea2430975b406"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8186d7e68d37007f6e38814225e6ee3"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xadjustment_8h.html#af8186d7e68d37007f6e38814225e6ee3">delete_adjustment</a> (<a class="el" href="structAdjustment__t.html">Adjustment_t</a> *adj)</td></tr>
-<tr class="memdesc:af8186d7e68d37007f6e38814225e6ee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete_adjustment - freeing the memory of the adjustment  <a href="#af8186d7e68d37007f6e38814225e6ee3">More...</a><br /></td></tr>
+<tr class="memdesc:af8186d7e68d37007f6e38814225e6ee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete_adjustment - freeing the memory of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> You usually don't need to call this, as it get handled by <a class="el" href="xputty_8h.html#a0d4eda902b4de6f7a30e8d869f842fda" title="main_quit - destroy all remaining Widget_t&#39;s from the main-&gt;childlist.   Free all resources which may...">main_quit()</a> -&gt; <a class="el" href="xwidget_8h.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget   When a Widget_t receive a destroy_widget() call, it will propagate that to all childs in it&#39;s Childlist_t. So all childs get destroyed before the Widget_t itself close. ">destroy_widget()</a>  <a href="#af8186d7e68d37007f6e38814225e6ee3">More...</a><br /></td></tr>
 <tr class="separator:af8186d7e68d37007f6e38814225e6ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1f74e9733cffbb287e4912fc8ab37cd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xadjustment_8h.html#af1f74e9733cffbb287e4912fc8ab37cd">adj_get_state</a> (<a class="el" href="structAdjustment__t.html">Adjustment_t</a> *adj)</td></tr>
-<tr class="memdesc:af1f74e9733cffbb287e4912fc8ab37cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">adj_get_state - get the current state of the adjustment  <a href="#af1f74e9733cffbb287e4912fc8ab37cd">More...</a><br /></td></tr>
+<tr class="memdesc:af1f74e9733cffbb287e4912fc8ab37cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">adj_get_state - get the current state of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a>  <a href="#af1f74e9733cffbb287e4912fc8ab37cd">More...</a><br /></td></tr>
 <tr class="separator:af1f74e9733cffbb287e4912fc8ab37cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a460c323af951bee5b62081be221a08ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xadjustment_8h.html#a460c323af951bee5b62081be221a08ba">adj_set_state</a> (<a class="el" href="structAdjustment__t.html">Adjustment_t</a> *adj, float state)</td></tr>
-<tr class="memdesc:a460c323af951bee5b62081be221a08ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">adj_set_state - set the current state of the adjustment  <a href="#a460c323af951bee5b62081be221a08ba">More...</a><br /></td></tr>
+<tr class="memdesc:a460c323af951bee5b62081be221a08ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">adj_set_state - set the current state of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a>  <a href="#a460c323af951bee5b62081be221a08ba">More...</a><br /></td></tr>
 <tr class="separator:a460c323af951bee5b62081be221a08ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a78c30051a7a9c3dc0ce84c3482c530"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xadjustment_8h.html#a5a78c30051a7a9c3dc0ce84c3482c530">adj_get_value</a> (<a class="el" href="structAdjustment__t.html">Adjustment_t</a> *adj)</td></tr>
-<tr class="memdesc:a5a78c30051a7a9c3dc0ce84c3482c530"><td class="mdescLeft">&#160;</td><td class="mdescRight">adj_get_value - get the current value of the adjustment  <a href="#a5a78c30051a7a9c3dc0ce84c3482c530">More...</a><br /></td></tr>
+<tr class="memdesc:a5a78c30051a7a9c3dc0ce84c3482c530"><td class="mdescLeft">&#160;</td><td class="mdescRight">adj_get_value - get the current value of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a>  <a href="#a5a78c30051a7a9c3dc0ce84c3482c530">More...</a><br /></td></tr>
 <tr class="separator:a5a78c30051a7a9c3dc0ce84c3482c530"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbe410bb3efb6e78941a4f938d1c67ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xadjustment_8h.html#afbe410bb3efb6e78941a4f938d1c67ca">adj_set_value</a> (<a class="el" href="structAdjustment__t.html">Adjustment_t</a> *adj, float v)</td></tr>
-<tr class="memdesc:afbe410bb3efb6e78941a4f938d1c67ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">adj_set_value - set the current value of the adjustment  <a href="#afbe410bb3efb6e78941a4f938d1c67ca">More...</a><br /></td></tr>
-<tr class="separator:afbe410bb3efb6e78941a4f938d1c67ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5692c792f6804883f9fe1746bf3d5432"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xadjustment_8h.html#a5692c792f6804883f9fe1746bf3d5432">adj_set_value</a> (<a class="el" href="structAdjustment__t.html">Adjustment_t</a> *adj, float value)</td></tr>
+<tr class="memdesc:a5692c792f6804883f9fe1746bf3d5432"><td class="mdescLeft">&#160;</td><td class="mdescRight">adj_set_value - set the current value to the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a>  <a href="#a5692c792f6804883f9fe1746bf3d5432">More...</a><br /></td></tr>
+<tr class="separator:a5692c792f6804883f9fe1746bf3d5432"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a670e06d916d1d6fd1f2968fb171c29aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xadjustment_8h.html#a670e06d916d1d6fd1f2968fb171c29aa">adj_set_start_value</a> (void *w)</td></tr>
-<tr class="memdesc:a670e06d916d1d6fd1f2968fb171c29aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">adj_set_start_value - set start value of the adjustment  <a href="#a670e06d916d1d6fd1f2968fb171c29aa">More...</a><br /></td></tr>
+<tr class="memdesc:a670e06d916d1d6fd1f2968fb171c29aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">adj_set_start_value - internal use to store the value when pointer movment starts  <a href="#a670e06d916d1d6fd1f2968fb171c29aa">More...</a><br /></td></tr>
 <tr class="separator:a670e06d916d1d6fd1f2968fb171c29aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e198857155b2969afb87fe923d58cb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xadjustment_8h.html#a1e198857155b2969afb87fe923d58cb6">adj_set_motion_state</a> (void *w, float x, float y)</td></tr>
-<tr class="memdesc:a1e198857155b2969afb87fe923d58cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">adj_set_motion_state - set value/state of the adjustment  <a href="#a1e198857155b2969afb87fe923d58cb6">More...</a><br /></td></tr>
+<tr class="memdesc:a1e198857155b2969afb87fe923d58cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">adj_set_motion_state - internal use to set value and state of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> on mouse pointer movment  <a href="#a1e198857155b2969afb87fe923d58cb6">More...</a><br /></td></tr>
 <tr class="separator:a1e198857155b2969afb87fe923d58cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1db458f5dc9ea4f3775340b938b3c3bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xadjustment_8h.html#a1db458f5dc9ea4f3775340b938b3c3bf">check_value_changed</a> (<a class="el" href="structAdjustment__t.html">Adjustment_t</a> *adj, float *value)</td></tr>
-<tr class="memdesc:a1db458f5dc9ea4f3775340b938b3c3bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">check_value_changed - check if value has changed and send adj_callback if so  <a href="#a1db458f5dc9ea4f3775340b938b3c3bf">More...</a><br /></td></tr>
+<tr class="memdesc:a1db458f5dc9ea4f3775340b938b3c3bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">check_value_changed - check if <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> value have changed and send value_changed_callback (VALUE_CHANGED) and adj_callback (ADJ_INTERN) if so  <a href="#a1db458f5dc9ea4f3775340b938b3c3bf">More...</a><br /></td></tr>
 <tr class="separator:a1db458f5dc9ea4f3775340b938b3c3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -218,6 +244,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="xadjustment_8h_source.html#l00025">25</a> of file <a class="el" href="xadjustment_8h_source.html">xadjustment.h</a>.</p>
 
 </div>
 </div>
@@ -234,34 +262,44 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>CL_type - enum type of controller adjustment. </p>
+<p>CL_type - define the type of the controller adjustment one of this types must be given when set up a <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> for a Wdiget_t. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">CL_NONE</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> didn't request a adjustment </td></tr>
-    <tr><td class="paramname">CL_CONTINUOS</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request a continuos adjustment </td></tr>
-    <tr><td class="paramname">CL_TOGGLE</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request a toggle adjustment </td></tr>
-    <tr><td class="paramname">CL_BUTTON</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request a button adjustment </td></tr>
-    <tr><td class="paramname">CL_ENUM</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request a enum adjustment </td></tr>
+    <tr><td class="paramname">CL_NONE</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> didn't request a adjustment </td></tr>
+    <tr><td class="paramname">CL_CONTINUOS</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> request a continuos adjustment </td></tr>
+    <tr><td class="paramname">CL_TOGGLE</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> request a toggle adjustment </td></tr>
+    <tr><td class="paramname">CL_BUTTON</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> request a button adjustment </td></tr>
+    <tr><td class="paramname">CL_ENUM</td><td>- <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> request a enum adjustment </td></tr>
   </table>
   </dd>
 </dl>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743a6dc58bda20e0018d54f1cb94df78119e"></a>CL_NONE&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> didn't request a adjustment </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743a6dc58bda20e0018d54f1cb94df78119e"></a>CL_NONE&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> didn't request a adjustment </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743a62a789a6ef19826f17aefdceba303647"></a>CL_CONTINUOS&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request a continuos adjustment </p>
+<tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743a62a789a6ef19826f17aefdceba303647"></a>CL_CONTINUOS&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> request a continuos adjustment </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743a08e7c21e78e2617f5f20de6b919b0e6c"></a>CL_TOGGLE&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request a toggle adjustment </p>
+<tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743a08e7c21e78e2617f5f20de6b919b0e6c"></a>CL_TOGGLE&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> request a toggle adjustment </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743abc74a250346d4b52e2fa55dbf4da1ef0"></a>CL_BUTTON&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request a button adjustment </p>
+<tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743abc74a250346d4b52e2fa55dbf4da1ef0"></a>CL_BUTTON&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> request a button adjustment </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743a86ad020137af474591a13badc9e3bf78"></a>CL_ENUM&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request a enum adjustment </p>
+<tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743a86ad020137af474591a13badc9e3bf78"></a>CL_ENUM&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> request a enum adjustment </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743a68c34061b429f8842bffca897bdc630c"></a>CL_VIEWPORT&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request a viewport adjustment </p>
+<tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743a68c34061b429f8842bffca897bdc630c"></a>CL_VIEWPORT&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> request a viewport adjustment </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743a590b48f5080da2c2411eaf9fa7e291e6"></a>CL_METER&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request a viewport adjustment </p>
+<tr><td class="fieldname"><a id="aefe5e135b1a0eab4675337a0967a7743a590b48f5080da2c2411eaf9fa7e291e6"></a>CL_METER&#160;</td><td class="fielddoc"><p><a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> request a viewport adjustment </p>
 </td></tr>
 </table>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8h_source.html#l00041">41</a> of file <a class="el" href="xadjustment_8h_source.html">xadjustment.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;             {<span class="comment"></span></div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/** Widget_t didn&#39;t request a adjustment */</span></div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a6dc58bda20e0018d54f1cb94df78119e">CL_NONE</a>         = 0x0001,<span class="comment"></span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/** Widget_t request a continuos adjustment */</span></div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a62a789a6ef19826f17aefdceba303647">CL_CONTINUOS</a>    = 0x0002,<span class="comment"></span></div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/** Widget_t request a toggle adjustment */</span></div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a08e7c21e78e2617f5f20de6b919b0e6c">CL_TOGGLE</a>       = 0x0004,<span class="comment"></span></div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/** Widget_t request a button adjustment */</span></div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743abc74a250346d4b52e2fa55dbf4da1ef0">CL_BUTTON</a>       = 0x0008,<span class="comment"></span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/** Widget_t request a enum adjustment */</span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a86ad020137af474591a13badc9e3bf78">CL_ENUM</a>         = 0x0016,<span class="comment"></span></div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/** Widget_t request a viewport adjustment */</span></div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a68c34061b429f8842bffca897bdc630c">CL_VIEWPORT</a>     = 0x0032,<span class="comment"></span></div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/** Widget_t request a viewport adjustment */</span></div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a590b48f5080da2c2411eaf9fa7e291e6">CL_METER</a>        = 0x0064,</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}<a class="code" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743">CL_type</a>;</div><div class="ttc" id="xadjustment_8h_html_aefe5e135b1a0eab4675337a0967a7743a86ad020137af474591a13badc9e3bf78"><div class="ttname"><a href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a86ad020137af474591a13badc9e3bf78">CL_ENUM</a></div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00051">xadjustment.h:51</a></div></div>
+<div class="ttc" id="xadjustment_8h_html_aefe5e135b1a0eab4675337a0967a7743abc74a250346d4b52e2fa55dbf4da1ef0"><div class="ttname"><a href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743abc74a250346d4b52e2fa55dbf4da1ef0">CL_BUTTON</a></div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00049">xadjustment.h:49</a></div></div>
+<div class="ttc" id="xadjustment_8h_html_aefe5e135b1a0eab4675337a0967a7743a590b48f5080da2c2411eaf9fa7e291e6"><div class="ttname"><a href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a590b48f5080da2c2411eaf9fa7e291e6">CL_METER</a></div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00055">xadjustment.h:55</a></div></div>
+<div class="ttc" id="xadjustment_8h_html_aefe5e135b1a0eab4675337a0967a7743a08e7c21e78e2617f5f20de6b919b0e6c"><div class="ttname"><a href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a08e7c21e78e2617f5f20de6b919b0e6c">CL_TOGGLE</a></div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00047">xadjustment.h:47</a></div></div>
+<div class="ttc" id="xadjustment_8h_html_aefe5e135b1a0eab4675337a0967a7743a62a789a6ef19826f17aefdceba303647"><div class="ttname"><a href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a62a789a6ef19826f17aefdceba303647">CL_CONTINUOS</a></div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00045">xadjustment.h:45</a></div></div>
+<div class="ttc" id="xadjustment_8h_html_aefe5e135b1a0eab4675337a0967a7743"><div class="ttname"><a href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743">CL_type</a></div><div class="ttdeci">CL_type</div><div class="ttdoc">CL_type - define the type of the controller adjustment one of this types must be given when set up a ...</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00041">xadjustment.h:41</a></div></div>
+<div class="ttc" id="xadjustment_8h_html_aefe5e135b1a0eab4675337a0967a7743a6dc58bda20e0018d54f1cb94df78119e"><div class="ttname"><a href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a6dc58bda20e0018d54f1cb94df78119e">CL_NONE</a></div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00043">xadjustment.h:43</a></div></div>
+<div class="ttc" id="xadjustment_8h_html_aefe5e135b1a0eab4675337a0967a7743a68c34061b429f8842bffca897bdc630c"><div class="ttname"><a href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a68c34061b429f8842bffca897bdc630c">CL_VIEWPORT</a></div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00053">xadjustment.h:53</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
@@ -321,21 +359,27 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>*add_adjustment - adding a adjustment to the widget </p>
+<p>*add_adjustment - adding a adjustment to a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request a adjustment </td></tr>
-    <tr><td class="paramname">std_value</td><td>- standard value of the adjustment </td></tr>
-    <tr><td class="paramname">value</td><td>- current value of the adjustment </td></tr>
-    <tr><td class="paramname">min_value</td><td>- minimum value of the adjustment </td></tr>
-    <tr><td class="paramname">max_value</td><td>- maximal value of the adjustment </td></tr>
-    <tr><td class="paramname">step</td><td>- step to increase/decrease the adjustment </td></tr>
-    <tr><td class="paramname">type</td><td>- set CL_type of adjustment </td></tr>
+    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> request a <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">std_value</td><td>- standard value of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">value</td><td>- current value of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">min_value</td><td>- minimum value of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">max_value</td><td>- maximal value of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">step</td><td>- step to increase/decrease the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">type</td><td>- set CL_type of <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>*adj - pointer to adjustment </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>*adj - pointer to the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8c_source.html#l00025">25</a> of file <a class="el" href="xadjustment_8c_source.html">xadjustment.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xputty_8h_source.html#l00059">debug_print</a>.</p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                                                           {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="structAdjustment__t.html">Adjustment_t</a> *adj = (<a class="code" href="structAdjustment__t.html">Adjustment_t</a>*)malloc(<span class="keyword">sizeof</span>(<a class="code" href="structAdjustment__t.html">Adjustment_t</a>));</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    assert(adj);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    *(adj) = (<a class="code" href="structAdjustment__t.html">Adjustment_t</a>){w, std_value, value, min_value, max_value, step, value, type};</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="xputty_8h.html#ac9e7326b4569847122754061b96c42d0">debug_print</a>(<span class="stringliteral">&quot;Widget_t add adjustment\n&quot;</span>);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> adj;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div><div class="ttc" id="xputty_8h_html_ac9e7326b4569847122754061b96c42d0"><div class="ttname"><a href="xputty_8h.html#ac9e7326b4569847122754061b96c42d0">debug_print</a></div><div class="ttdeci">#define debug_print(...)</div><div class="ttdoc">debug_print - print out state messages when compiled with the -DDEBUG flag </div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00059">xputty.h:59</a></div></div>
+<div class="ttc" id="structAdjustment__t_html"><div class="ttname"><a href="structAdjustment__t.html">Adjustment_t</a></div><div class="ttdoc">Adjustment_t - struct to hold a controller adjustment. </div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00072">xadjustment.h:72</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af1f74e9733cffbb287e4912fc8ab37cd"></a>
@@ -354,15 +398,22 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>adj_get_state - get the current state of the adjustment </p>
+<p>adj_get_state - get the current state of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*adj</td><td>- pointer to the Adjustment </td></tr>
+    <tr><td class="paramname">*adj</td><td>- pointer to the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>float - return the adjustment state (0&lt;-&gt;1) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>float - return the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> state mapped to (0&lt;-&gt;1) </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8c_source.html#l00060">60</a> of file <a class="el" href="xadjustment_8c_source.html">xadjustment.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xadjustment_8h_source.html#l00082">Adjustment_t::max_value</a>, <a class="el" href="xadjustment_8h_source.html#l00080">Adjustment_t::min_value</a>, and <a class="el" href="xadjustment_8h_source.html#l00078">Adjustment_t::value</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                       {</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span> (!adj) <span class="keywordflow">return</span> 0.0;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> (adj-&gt;<a class="code" href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">value</a> - adj-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>) /</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;       (adj-&gt;<a class="code" href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">max_value</a> - adj-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div><div class="ttc" id="structAdjustment__t_html_a3ba8294662db07d7dd7ebd751b01e7a3"><div class="ttname"><a href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">Adjustment_t::min_value</a></div><div class="ttdeci">float min_value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00080">xadjustment.h:80</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_acb1f8fb06d9e505f9f50e9178256215c"><div class="ttname"><a href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">Adjustment_t::value</a></div><div class="ttdeci">float value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00078">xadjustment.h:78</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_a8607f7be566c21036c396201bce07a1a"><div class="ttname"><a href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">Adjustment_t::max_value</a></div><div class="ttdeci">float max_value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00082">xadjustment.h:82</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a5a78c30051a7a9c3dc0ce84c3482c530"></a>
@@ -381,15 +432,20 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>adj_get_value - get the current value of the adjustment </p>
+<p>adj_get_value - get the current value of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*adj</td><td>- pointer to the Adjustment </td></tr>
+    <tr><td class="paramname">*adj</td><td>- pointer to the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>float - return the adjustment value </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>float - return the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> value </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8c_source.html#l00066">66</a> of file <a class="el" href="xadjustment_8c_source.html">xadjustment.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xadjustment_8h_source.html#l00078">Adjustment_t::value</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                       {</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span> (!adj) <span class="keywordflow">return</span> 0.0;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> (adj-&gt;<a class="code" href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">value</a>);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div><div class="ttc" id="structAdjustment__t_html_acb1f8fb06d9e505f9f50e9178256215c"><div class="ttname"><a href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">Adjustment_t::value</a></div><div class="ttdeci">float value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00078">xadjustment.h:78</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1e198857155b2969afb87fe923d58cb6"></a>
@@ -424,17 +480,37 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>adj_set_motion_state - set value/state of the adjustment </p>
+<p>adj_set_motion_state - internal use to set value and state of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> on mouse pointer movment </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*adj</td><td>- pointer to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> containing the adjustment </td></tr>
-    <tr><td class="paramname">x</td><td>- value for the xaxis </td></tr>
-    <tr><td class="paramname">y</td><td>- value for the yaxis </td></tr>
+    <tr><td class="paramname">*w</td><td>- pointer to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> containing <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">x</td><td>- movment on the x-axis </td></tr>
+    <tr><td class="paramname">y</td><td>- movement on the y-axis </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8c_source.html#l00083">83</a> of file <a class="el" href="xadjustment_8c_source.html">xadjustment.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xwidget_8h_source.html#l00313">Widget_t::adj_x</a>, <a class="el" href="xwidget_8h_source.html#l00315">Widget_t::adj_y</a>, <a class="el" href="xadjustment_8c_source.html#l00130">check_value_changed()</a>, <a class="el" href="xadjustment_8h_source.html#l00045">CL_CONTINUOS</a>, <a class="el" href="xadjustment_8h_source.html#l00047">CL_TOGGLE</a>, <a class="el" href="xputty_8h_source.html#l00081">max</a>, <a class="el" href="xadjustment_8h_source.html#l00082">Adjustment_t::max_value</a>, <a class="el" href="xputty_8h_source.html#l00073">min</a>, <a class="el" href="xadjustment_8h_source.html#l00080">Adjustment_t::min_value</a>, <a class="el" href="xwidget_8h_source.html#l00327">Widget_t::pos_x</a>, <a class="el" href="xwidget_8h_source.html#l00329">Widget_t::pos_y</a>, <a class="el" href="xadjustment_8h_source.html#l00086">Adjustment_t::start_value</a>, <a class="el" href="xadjustment_8h_source.html#l00084">Adjustment_t::step</a>, <a class="el" href="xadjustment_8h_source.html#l00088">Adjustment_t::type</a>, and <a class="el" href="xadjustment_8h_source.html#l00078">Adjustment_t::value</a>.</p>
+<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                                     {</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="structWidget__t.html">Widget_t</a> * wid = (<a class="code" href="structWidget__t.html">Widget_t</a>*)w;</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> scaling = 1.0;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">if</span>(wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>) {</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">float</span> value= wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">value</a>;</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">switch</span>(wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#a1ec53b702dc4707522249f3cb5cbf6b3">type</a>) {</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">case</span> (<a class="code" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a62a789a6ef19826f17aefdceba303647">CL_CONTINUOS</a>):</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            {</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keywordtype">float</span> state = (wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#abec8df43db1df5d6fcc6b6619773dbc9">start_value</a> - wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>) / </div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    (wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">max_value</a> - wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>);</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordtype">float</span> nsteps = wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#a0198d0a412f8642b3e8a308f9240d467">step</a> / (wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">max_value</a> - wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>);</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordtype">float</span> nvalue = <a class="code" href="xputty_8h.html#abb702d8b501669a23aa0ab3b281b9384">min</a>(1.0,<a class="code" href="xputty_8h.html#ac39d9cef6a5e030ba8d9e11121054268">max</a>(0.0,state + ((<span class="keywordtype">float</span>)(x - wid-&gt;<a class="code" href="structWidget__t.html#ae2d46ffb30bb2335a043d138fa05e1a3">pos_x</a>)*scaling *nsteps)));</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                value = nvalue * (wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">max_value</a> - wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>) + wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            }</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">case</span> (<a class="code" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a08e7c21e78e2617f5f20de6b919b0e6c">CL_TOGGLE</a>):</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="comment">// dont toggle on motion!</span></div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="comment">// value = wid-&gt;adj_x-&gt;value ? 0.0 : 1.0;</span></div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">default</span>:</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <a class="code" href="xadjustment_8c.html#a1db458f5dc9ea4f3775340b938b3c3bf">check_value_changed</a>(wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>, &amp;value);</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span>(wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>) {</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordtype">float</span> value = wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">value</a>;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">switch</span>(wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#a1ec53b702dc4707522249f3cb5cbf6b3">type</a>) {</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">case</span> (<a class="code" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a62a789a6ef19826f17aefdceba303647">CL_CONTINUOS</a>):</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            {</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordtype">float</span> state = (wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#abec8df43db1df5d6fcc6b6619773dbc9">start_value</a> - wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>) / </div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    (wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">max_value</a> - wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>);</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="keywordtype">float</span> nsteps = wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#a0198d0a412f8642b3e8a308f9240d467">step</a> / (wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">max_value</a> - wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>);</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keywordtype">float</span> nvalue = <a class="code" href="xputty_8h.html#abb702d8b501669a23aa0ab3b281b9384">min</a>(1.0,<a class="code" href="xputty_8h.html#ac39d9cef6a5e030ba8d9e11121054268">max</a>(0.0,state + ((<span class="keywordtype">float</span>)(wid-&gt;<a class="code" href="structWidget__t.html#a9b127ac6b3f017b367351ee673e063c3">pos_y</a> - y)*scaling *nsteps)));</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                value = nvalue * (wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">max_value</a> - wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>) + wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>;</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            }</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">case</span> (<a class="code" href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a08e7c21e78e2617f5f20de6b919b0e6c">CL_TOGGLE</a>):</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="comment">// dont toggle on motion!</span></div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="comment">// value = wid-&gt;adj_y-&gt;value ? 0.0 : 1.0;</span></div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">default</span>:</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <a class="code" href="xadjustment_8c.html#a1db458f5dc9ea4f3775340b938b3c3bf">check_value_changed</a>(wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>, &amp;value);</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div><div class="ttc" id="structWidget__t_html_a9b127ac6b3f017b367351ee673e063c3"><div class="ttname"><a href="structWidget__t.html#a9b127ac6b3f017b367351ee673e063c3">Widget_t::pos_y</a></div><div class="ttdeci">int pos_y</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00329">xwidget.h:329</a></div></div>
+<div class="ttc" id="xadjustment_8c_html_a1db458f5dc9ea4f3775340b938b3c3bf"><div class="ttname"><a href="xadjustment_8c.html#a1db458f5dc9ea4f3775340b938b3c3bf">check_value_changed</a></div><div class="ttdeci">void check_value_changed(Adjustment_t *adj, float *value)</div><div class="ttdoc">check_value_changed - check if Adjustment_t value have changed and send value_changed_callback (VALUE...</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8c_source.html#l00130">xadjustment.c:130</a></div></div>
+<div class="ttc" id="structWidget__t_html_ae2d46ffb30bb2335a043d138fa05e1a3"><div class="ttname"><a href="structWidget__t.html#ae2d46ffb30bb2335a043d138fa05e1a3">Widget_t::pos_x</a></div><div class="ttdeci">int pos_x</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00327">xwidget.h:327</a></div></div>
+<div class="ttc" id="structWidget__t_html"><div class="ttname"><a href="structWidget__t.html">Widget_t</a></div><div class="ttdoc">Widget_t - struct to hold the basic Widget_t info. </div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00281">xwidget.h:281</a></div></div>
+<div class="ttc" id="structWidget__t_html_aabc05e0a46c85d24483fae36127b45dd"><div class="ttname"><a href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">Widget_t::adj_x</a></div><div class="ttdeci">Adjustment_t * adj_x</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00313">xwidget.h:313</a></div></div>
+<div class="ttc" id="xputty_8h_html_abb702d8b501669a23aa0ab3b281b9384"><div class="ttname"><a href="xputty_8h.html#abb702d8b501669a23aa0ab3b281b9384">min</a></div><div class="ttdeci">#define min(x, y)</div><div class="ttdoc">min - set a maximal value (x) as return value </div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00073">xputty.h:73</a></div></div>
+<div class="ttc" id="xadjustment_8h_html_aefe5e135b1a0eab4675337a0967a7743a08e7c21e78e2617f5f20de6b919b0e6c"><div class="ttname"><a href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a08e7c21e78e2617f5f20de6b919b0e6c">CL_TOGGLE</a></div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00047">xadjustment.h:47</a></div></div>
+<div class="ttc" id="structWidget__t_html_abde95d3fb49faff5dd852f16810115e7"><div class="ttname"><a href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">Widget_t::adj_y</a></div><div class="ttdeci">Adjustment_t * adj_y</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00315">xwidget.h:315</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_a1ec53b702dc4707522249f3cb5cbf6b3"><div class="ttname"><a href="structAdjustment__t.html#a1ec53b702dc4707522249f3cb5cbf6b3">Adjustment_t::type</a></div><div class="ttdeci">CL_type type</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00088">xadjustment.h:88</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_abec8df43db1df5d6fcc6b6619773dbc9"><div class="ttname"><a href="structAdjustment__t.html#abec8df43db1df5d6fcc6b6619773dbc9">Adjustment_t::start_value</a></div><div class="ttdeci">float start_value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00086">xadjustment.h:86</a></div></div>
+<div class="ttc" id="xadjustment_8h_html_aefe5e135b1a0eab4675337a0967a7743a62a789a6ef19826f17aefdceba303647"><div class="ttname"><a href="xadjustment_8h.html#aefe5e135b1a0eab4675337a0967a7743a62a789a6ef19826f17aefdceba303647">CL_CONTINUOS</a></div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00045">xadjustment.h:45</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_a3ba8294662db07d7dd7ebd751b01e7a3"><div class="ttname"><a href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">Adjustment_t::min_value</a></div><div class="ttdeci">float min_value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00080">xadjustment.h:80</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_acb1f8fb06d9e505f9f50e9178256215c"><div class="ttname"><a href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">Adjustment_t::value</a></div><div class="ttdeci">float value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00078">xadjustment.h:78</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_a0198d0a412f8642b3e8a308f9240d467"><div class="ttname"><a href="structAdjustment__t.html#a0198d0a412f8642b3e8a308f9240d467">Adjustment_t::step</a></div><div class="ttdeci">float step</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00084">xadjustment.h:84</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_a8607f7be566c21036c396201bce07a1a"><div class="ttname"><a href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">Adjustment_t::max_value</a></div><div class="ttdeci">float max_value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00082">xadjustment.h:82</a></div></div>
+<div class="ttc" id="xputty_8h_html_ac39d9cef6a5e030ba8d9e11121054268"><div class="ttname"><a href="xputty_8h.html#ac39d9cef6a5e030ba8d9e11121054268">max</a></div><div class="ttdeci">#define max(x, y)</div><div class="ttdoc">max - set a minimal value (x) as return value </div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00081">xputty.h:81</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a670e06d916d1d6fd1f2968fb171c29aa"></a>
@@ -453,15 +529,24 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>adj_set_start_value - set start value of the adjustment </p>
+<p>adj_set_start_value - internal use to store the value when pointer movment starts </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*w</td><td>- pointer to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> containing the adjustment </td></tr>
+    <tr><td class="paramname">*w</td><td>- pointer to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> containing the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8c_source.html#l00077">77</a> of file <a class="el" href="xadjustment_8c_source.html">xadjustment.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xwidget_8h_source.html#l00313">Widget_t::adj_x</a>, <a class="el" href="xwidget_8h_source.html#l00315">Widget_t::adj_y</a>, <a class="el" href="xadjustment_8h_source.html#l00086">Adjustment_t::start_value</a>, and <a class="el" href="xadjustment_8h_source.html#l00078">Adjustment_t::value</a>.</p>
+<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                  {</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="structWidget__t.html">Widget_t</a> * wid = (<a class="code" href="structWidget__t.html">Widget_t</a>*)w;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">if</span>(wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>)wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#abec8df43db1df5d6fcc6b6619773dbc9">start_value</a> = wid-&gt;<a class="code" href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">adj_x</a>-&gt;<a class="code" href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">value</a>;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span>(wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>)wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#abec8df43db1df5d6fcc6b6619773dbc9">start_value</a> = wid-&gt;<a class="code" href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">adj_y</a>-&gt;<a class="code" href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">value</a>;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div><div class="ttc" id="structWidget__t_html"><div class="ttname"><a href="structWidget__t.html">Widget_t</a></div><div class="ttdoc">Widget_t - struct to hold the basic Widget_t info. </div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00281">xwidget.h:281</a></div></div>
+<div class="ttc" id="structWidget__t_html_aabc05e0a46c85d24483fae36127b45dd"><div class="ttname"><a href="structWidget__t.html#aabc05e0a46c85d24483fae36127b45dd">Widget_t::adj_x</a></div><div class="ttdeci">Adjustment_t * adj_x</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00313">xwidget.h:313</a></div></div>
+<div class="ttc" id="structWidget__t_html_abde95d3fb49faff5dd852f16810115e7"><div class="ttname"><a href="structWidget__t.html#abde95d3fb49faff5dd852f16810115e7">Widget_t::adj_y</a></div><div class="ttdeci">Adjustment_t * adj_y</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00315">xwidget.h:315</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_abec8df43db1df5d6fcc6b6619773dbc9"><div class="ttname"><a href="structAdjustment__t.html#abec8df43db1df5d6fcc6b6619773dbc9">Adjustment_t::start_value</a></div><div class="ttdeci">float start_value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00086">xadjustment.h:86</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_acb1f8fb06d9e505f9f50e9178256215c"><div class="ttname"><a href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">Adjustment_t::value</a></div><div class="ttdeci">float value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00078">xadjustment.h:78</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a460c323af951bee5b62081be221a08ba"></a>
@@ -490,19 +575,28 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>adj_set_state - set the current state of the adjustment </p>
+<p>adj_set_state - set the current state of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*adj</td><td>- pointer to the Adjustment </td></tr>
+    <tr><td class="paramname">*adj</td><td>- pointer to the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>float - return the adjustment state (0&lt;-&gt;1) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>float - set the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> state mapped to (0&lt;-&gt;1) </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8c_source.html#l00053">53</a> of file <a class="el" href="xadjustment_8c_source.html">xadjustment.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xadjustment_8c_source.html#l00130">check_value_changed()</a>, <a class="el" href="xputty_8h_source.html#l00081">max</a>, <a class="el" href="xadjustment_8h_source.html#l00082">Adjustment_t::max_value</a>, <a class="el" href="xputty_8h_source.html#l00073">min</a>, and <a class="el" href="xadjustment_8h_source.html#l00080">Adjustment_t::min_value</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                   {</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span> (!adj) <span class="keywordflow">return</span>;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">float</span> nvalue = <a class="code" href="xputty_8h.html#abb702d8b501669a23aa0ab3b281b9384">min</a>(1.0,<a class="code" href="xputty_8h.html#ac39d9cef6a5e030ba8d9e11121054268">max</a>(0.0,state));</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">float</span> value = nvalue * (adj-&gt;<a class="code" href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">max_value</a> - adj-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>) + adj-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="xadjustment_8c.html#a1db458f5dc9ea4f3775340b938b3c3bf">check_value_changed</a>(adj, &amp;value);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div><div class="ttc" id="xadjustment_8c_html_a1db458f5dc9ea4f3775340b938b3c3bf"><div class="ttname"><a href="xadjustment_8c.html#a1db458f5dc9ea4f3775340b938b3c3bf">check_value_changed</a></div><div class="ttdeci">void check_value_changed(Adjustment_t *adj, float *value)</div><div class="ttdoc">check_value_changed - check if Adjustment_t value have changed and send value_changed_callback (VALUE...</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8c_source.html#l00130">xadjustment.c:130</a></div></div>
+<div class="ttc" id="xputty_8h_html_abb702d8b501669a23aa0ab3b281b9384"><div class="ttname"><a href="xputty_8h.html#abb702d8b501669a23aa0ab3b281b9384">min</a></div><div class="ttdeci">#define min(x, y)</div><div class="ttdoc">min - set a maximal value (x) as return value </div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00073">xputty.h:73</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_a3ba8294662db07d7dd7ebd751b01e7a3"><div class="ttname"><a href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">Adjustment_t::min_value</a></div><div class="ttdeci">float min_value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00080">xadjustment.h:80</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_a8607f7be566c21036c396201bce07a1a"><div class="ttname"><a href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">Adjustment_t::max_value</a></div><div class="ttdeci">float max_value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00082">xadjustment.h:82</a></div></div>
+<div class="ttc" id="xputty_8h_html_ac39d9cef6a5e030ba8d9e11121054268"><div class="ttname"><a href="xputty_8h.html#ac39d9cef6a5e030ba8d9e11121054268">max</a></div><div class="ttdeci">#define max(x, y)</div><div class="ttdoc">max - set a minimal value (x) as return value </div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00081">xputty.h:81</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
-<a id="afbe410bb3efb6e78941a4f938d1c67ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbe410bb3efb6e78941a4f938d1c67ca">&#9670;&nbsp;</a></span>adj_set_value()</h2>
+<a id="a5692c792f6804883f9fe1746bf3d5432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5692c792f6804883f9fe1746bf3d5432">&#9670;&nbsp;</a></span>adj_set_value()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -517,7 +611,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>v</em>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -527,16 +621,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>adj_set_value - set the current value of the adjustment </p>
+<p>adj_set_value - set the current value to the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*adj</td><td>- pointer to the Adjustment </td></tr>
-    <tr><td class="paramname">v</td><td>- value set the Adjustment to </td></tr>
+    <tr><td class="paramname">*adj</td><td>- pointer to the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">value</td><td>- value to set the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> to </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8c_source.html#l00071">71</a> of file <a class="el" href="xadjustment_8c_source.html">xadjustment.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xadjustment_8c_source.html#l00130">check_value_changed()</a>, <a class="el" href="xputty_8h_source.html#l00081">max</a>, <a class="el" href="xadjustment_8h_source.html#l00082">Adjustment_t::max_value</a>, <a class="el" href="xputty_8h_source.html#l00073">min</a>, and <a class="el" href="xadjustment_8h_source.html#l00080">Adjustment_t::min_value</a>.</p>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                               {</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">if</span> (!adj) <span class="keywordflow">return</span>;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    v = <a class="code" href="xputty_8h.html#abb702d8b501669a23aa0ab3b281b9384">min</a>(adj-&gt;<a class="code" href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">max_value</a>,<a class="code" href="xputty_8h.html#ac39d9cef6a5e030ba8d9e11121054268">max</a>(adj-&gt;<a class="code" href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">min_value</a>, v));</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="xadjustment_8c.html#a1db458f5dc9ea4f3775340b938b3c3bf">check_value_changed</a>(adj, &amp;v);</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div><div class="ttc" id="xadjustment_8c_html_a1db458f5dc9ea4f3775340b938b3c3bf"><div class="ttname"><a href="xadjustment_8c.html#a1db458f5dc9ea4f3775340b938b3c3bf">check_value_changed</a></div><div class="ttdeci">void check_value_changed(Adjustment_t *adj, float *value)</div><div class="ttdoc">check_value_changed - check if Adjustment_t value have changed and send value_changed_callback (VALUE...</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8c_source.html#l00130">xadjustment.c:130</a></div></div>
+<div class="ttc" id="xputty_8h_html_abb702d8b501669a23aa0ab3b281b9384"><div class="ttname"><a href="xputty_8h.html#abb702d8b501669a23aa0ab3b281b9384">min</a></div><div class="ttdeci">#define min(x, y)</div><div class="ttdoc">min - set a maximal value (x) as return value </div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00073">xputty.h:73</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_a3ba8294662db07d7dd7ebd751b01e7a3"><div class="ttname"><a href="structAdjustment__t.html#a3ba8294662db07d7dd7ebd751b01e7a3">Adjustment_t::min_value</a></div><div class="ttdeci">float min_value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00080">xadjustment.h:80</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_a8607f7be566c21036c396201bce07a1a"><div class="ttname"><a href="structAdjustment__t.html#a8607f7be566c21036c396201bce07a1a">Adjustment_t::max_value</a></div><div class="ttdeci">float max_value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00082">xadjustment.h:82</a></div></div>
+<div class="ttc" id="xputty_8h_html_ac39d9cef6a5e030ba8d9e11121054268"><div class="ttname"><a href="xputty_8h.html#ac39d9cef6a5e030ba8d9e11121054268">max</a></div><div class="ttdeci">#define max(x, y)</div><div class="ttdoc">max - set a minimal value (x) as return value </div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00081">xputty.h:81</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1db458f5dc9ea4f3775340b938b3c3bf"></a>
@@ -565,16 +668,26 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>check_value_changed - check if value has changed and send adj_callback if so </p>
+<p>check_value_changed - check if <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> value have changed and send value_changed_callback (VALUE_CHANGED) and adj_callback (ADJ_INTERN) if so </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*adj</td><td>- pointer to the Adjustment </td></tr>
-    <tr><td class="paramname">v</td><td>- value to check </td></tr>
+    <tr><td class="paramname">*adj</td><td>- pointer to the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">value</td><td>- value to check </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8c_source.html#l00130">130</a> of file <a class="el" href="xadjustment_8c_source.html">xadjustment.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xwidget_8h_source.html#l00081">Func_t::adj_callback</a>, <a class="el" href="xputty_8h_source.html#l00059">debug_print</a>, <a class="el" href="xwidget_8h_source.html#l00293">Widget_t::func</a>, <a class="el" href="xadjustment_8h_source.html#l00078">Adjustment_t::value</a>, <a class="el" href="xwidget_8h_source.html#l00082">Func_t::value_changed_callback</a>, and <a class="el" href="xadjustment_8h_source.html#l00074">Adjustment_t::w</a>.</p>
+<div class="fragment"><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                                                          {</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <a class="code" href="xputty_8h.html#ac9e7326b4569847122754061b96c42d0">debug_print</a>(<span class="stringliteral">&quot;Adjustment_t check_value_changed %f\n&quot;</span>, *(value));</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">if</span>(fabs(*(value) - adj-&gt;<a class="code" href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">value</a>)&gt;=0.00001) {</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        adj-&gt;<a class="code" href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">value</a> = *(value);</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        adj-&gt;<a class="code" href="structAdjustment__t.html#a82c03e6ceb092314a75bd10ba918f9d7">w</a>-&gt;<a class="code" href="structWidget__t.html#a225b9a175e132994a5aa73b59a2911ad">func</a>.<a class="code" href="structFunc__t.html#afe804d94b970050a9f85530408169623">adj_callback</a>(adj-&gt;<a class="code" href="structAdjustment__t.html#a82c03e6ceb092314a75bd10ba918f9d7">w</a>, NULL);</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        adj-&gt;<a class="code" href="structAdjustment__t.html#a82c03e6ceb092314a75bd10ba918f9d7">w</a>-&gt;<a class="code" href="structWidget__t.html#a225b9a175e132994a5aa73b59a2911ad">func</a>.<a class="code" href="structFunc__t.html#acce396ccf3266886f0a6d28cf45761d3">value_changed_callback</a>(adj-&gt;<a class="code" href="structAdjustment__t.html#a82c03e6ceb092314a75bd10ba918f9d7">w</a>, value);</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div><div class="ttc" id="structAdjustment__t_html_a82c03e6ceb092314a75bd10ba918f9d7"><div class="ttname"><a href="structAdjustment__t.html#a82c03e6ceb092314a75bd10ba918f9d7">Adjustment_t::w</a></div><div class="ttdeci">Widget_t * w</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00074">xadjustment.h:74</a></div></div>
+<div class="ttc" id="xputty_8h_html_ac9e7326b4569847122754061b96c42d0"><div class="ttname"><a href="xputty_8h.html#ac9e7326b4569847122754061b96c42d0">debug_print</a></div><div class="ttdeci">#define debug_print(...)</div><div class="ttdoc">debug_print - print out state messages when compiled with the -DDEBUG flag </div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00059">xputty.h:59</a></div></div>
+<div class="ttc" id="structFunc__t_html_afe804d94b970050a9f85530408169623"><div class="ttname"><a href="structFunc__t.html#afe804d94b970050a9f85530408169623">Func_t::adj_callback</a></div><div class="ttdeci">xevfunc adj_callback</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00081">xwidget.h:81</a></div></div>
+<div class="ttc" id="structAdjustment__t_html_acb1f8fb06d9e505f9f50e9178256215c"><div class="ttname"><a href="structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c">Adjustment_t::value</a></div><div class="ttdeci">float value</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00078">xadjustment.h:78</a></div></div>
+<div class="ttc" id="structFunc__t_html_acce396ccf3266886f0a6d28cf45761d3"><div class="ttname"><a href="structFunc__t.html#acce396ccf3266886f0a6d28cf45761d3">Func_t::value_changed_callback</a></div><div class="ttdeci">xevfunc value_changed_callback</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00082">xwidget.h:82</a></div></div>
+<div class="ttc" id="structWidget__t_html_a225b9a175e132994a5aa73b59a2911ad"><div class="ttname"><a href="structWidget__t.html#a225b9a175e132994a5aa73b59a2911ad">Widget_t::func</a></div><div class="ttdeci">Func_t func</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00293">xwidget.h:293</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af8186d7e68d37007f6e38814225e6ee3"></a>
@@ -593,15 +706,20 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>delete_adjustment - freeing the memory of the adjustment </p>
+<p>delete_adjustment - freeing the memory of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> You usually don't need to call this, as it get handled by <a class="el" href="xputty_8h.html#a0d4eda902b4de6f7a30e8d869f842fda" title="main_quit - destroy all remaining Widget_t&#39;s from the main-&gt;childlist.   Free all resources which may...">main_quit()</a> -&gt; <a class="el" href="xwidget_8h.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget   When a Widget_t receive a destroy_widget() call, it will propagate that to all childs in it&#39;s Childlist_t. So all childs get destroyed before the Widget_t itself close. ">destroy_widget()</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*adj</td><td>- pointer to the Adjustment to free </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>*void - return NULL </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>*void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8c_source.html#l00045">45</a> of file <a class="el" href="xadjustment_8c_source.html">xadjustment.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xputty_8h_source.html#l00059">debug_print</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                           {</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">if</span>(adj) {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        free(adj);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="xputty_8h.html#ac9e7326b4569847122754061b96c42d0">debug_print</a>(<span class="stringliteral">&quot;Widget_t delete adjustment\n&quot;</span>);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> NULL;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div><div class="ttc" id="xputty_8h_html_ac9e7326b4569847122754061b96c42d0"><div class="ttname"><a href="xputty_8h.html#ac9e7326b4569847122754061b96c42d0">debug_print</a></div><div class="ttdeci">#define debug_print(...)</div><div class="ttdoc">debug_print - print out state messages when compiled with the -DDEBUG flag </div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00059">xputty.h:59</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab7188a4bb4294e2a08aea2430975b406"></a>
@@ -660,29 +778,40 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>*set_adjustment - set a new range to a existing Adjustment </p>
+<p>*set_adjustment - set a new range to a existing <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> it will be created if it not exsits yet </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> request a adjustment </td></tr>
-    <tr><td class="paramname">std_value</td><td>- standard value of the adjustment </td></tr>
-    <tr><td class="paramname">value</td><td>- current value of the adjustment </td></tr>
-    <tr><td class="paramname">min_value</td><td>- minimum value of the adjustment </td></tr>
-    <tr><td class="paramname">max_value</td><td>- maximal value of the adjustment </td></tr>
-    <tr><td class="paramname">step</td><td>- step to increase/decrease the adjustment </td></tr>
-    <tr><td class="paramname">type</td><td>- set CL_type of adjustment </td></tr>
+    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> request a <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">std_value</td><td>- standard value of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">value</td><td>- current value of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">min_value</td><td>- minimum value of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">max_value</td><td>- maximal value of the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">step</td><td>- step to increase/decrease the <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
+    <tr><td class="paramname">type</td><td>- set CL_type of <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>*adj - pointer to adjustment </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>*adj - pointer to <a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8c_source.html#l00035">35</a> of file <a class="el" href="xadjustment_8c_source.html">xadjustment.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xputty_8h_source.html#l00059">debug_print</a>, and <a class="el" href="xadjustment_8h_source.html#l00074">Adjustment_t::w</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                                           {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span> (!adj)</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    adj = (<a class="code" href="structAdjustment__t.html">Adjustment_t</a>*)malloc(<span class="keyword">sizeof</span>(<a class="code" href="structAdjustment__t.html">Adjustment_t</a>));</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    assert(adj);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    *(adj) = (<a class="code" href="structAdjustment__t.html">Adjustment_t</a>){adj-&gt;<a class="code" href="structAdjustment__t.html#a82c03e6ceb092314a75bd10ba918f9d7">w</a>, std_value, value, min_value, max_value, step, value, type};</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="xputty_8h.html#ac9e7326b4569847122754061b96c42d0">debug_print</a>(<span class="stringliteral">&quot;Widget_t set adjustment\n&quot;</span>);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div><div class="ttc" id="structAdjustment__t_html_a82c03e6ceb092314a75bd10ba918f9d7"><div class="ttname"><a href="structAdjustment__t.html#a82c03e6ceb092314a75bd10ba918f9d7">Adjustment_t::w</a></div><div class="ttdeci">Widget_t * w</div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00074">xadjustment.h:74</a></div></div>
+<div class="ttc" id="xputty_8h_html_ac9e7326b4569847122754061b96c42d0"><div class="ttname"><a href="xputty_8h.html#ac9e7326b4569847122754061b96c42d0">debug_print</a></div><div class="ttdeci">#define debug_print(...)</div><div class="ttdoc">debug_print - print out state messages when compiled with the -DDEBUG flag </div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00059">xputty.h:59</a></div></div>
+<div class="ttc" id="structAdjustment__t_html"><div class="ttname"><a href="structAdjustment__t.html">Adjustment_t</a></div><div class="ttdoc">Adjustment_t - struct to hold a controller adjustment. </div><div class="ttdef"><b>Definition:</b> <a href="xadjustment_8h_source.html#l00072">xadjustment.h:72</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_e9bbb68c42f81f311d39d9dbaefd3b8c.html">libxputty</a></li><li class="navelem"><a class="el" href="dir_36c8397ee67800846af2ba64e4b44ab7.html">xputty</a></li><li class="navelem"><a class="el" href="dir_6130975627a7ed0ca0cc78db073e0675.html">header</a></li><li class="navelem"><a class="el" href="xadjustment_8h.html">xadjustment.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

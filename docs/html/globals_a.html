@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('globals_a.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,100 +98,103 @@ $(function() {
 : <a class="el" href="xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a767d5451ce027a7881f351e2961a96a2">xcolor.h</a>
 </li>
 <li>add_adjustment()
-: <a class="el" href="xadjustment_8c.html#afd8595365c53be47a55fecec996347a7">xadjustment.c</a>
-, <a class="el" href="xadjustment_8h.html#afd8595365c53be47a55fecec996347a7">xadjustment.h</a>
+: <a class="el" href="xadjustment_8h.html#afd8595365c53be47a55fecec996347a7">xadjustment.h</a>
+, <a class="el" href="xadjustment_8c.html#afd8595365c53be47a55fecec996347a7">xadjustment.c</a>
 </li>
 <li>add_button()
-: <a class="el" href="xbutton_8c.html#a4dbd91e99d5ee97678aee121f8e12587">xbutton.c</a>
-, <a class="el" href="xbutton_8h.html#a4dbd91e99d5ee97678aee121f8e12587">xbutton.h</a>
+: <a class="el" href="xbutton_8h.html#a4dbd91e99d5ee97678aee121f8e12587">xbutton.h</a>
+, <a class="el" href="xbutton_8c.html#a4dbd91e99d5ee97678aee121f8e12587">xbutton.c</a>
 </li>
 <li>add_check_box()
-: <a class="el" href="xbutton_8c.html#a9a01288c501f82d51b5ceee01dbeb4a8">xbutton.c</a>
-, <a class="el" href="xbutton_8h.html#a9a01288c501f82d51b5ceee01dbeb4a8">xbutton.h</a>
+: <a class="el" href="xbutton_8h.html#a9a01288c501f82d51b5ceee01dbeb4a8">xbutton.h</a>
+, <a class="el" href="xbutton_8c.html#a9a01288c501f82d51b5ceee01dbeb4a8">xbutton.c</a>
 </li>
 <li>add_check_button()
-: <a class="el" href="xbutton_8c.html#a4ae822332f5a4bd6fd58eca4aca49ba0">xbutton.c</a>
-, <a class="el" href="xbutton_8h.html#a4ae822332f5a4bd6fd58eca4aca49ba0">xbutton.h</a>
+: <a class="el" href="xbutton_8h.html#a4ae822332f5a4bd6fd58eca4aca49ba0">xbutton.h</a>
+, <a class="el" href="xbutton_8c.html#a4ae822332f5a4bd6fd58eca4aca49ba0">xbutton.c</a>
 </li>
 <li>add_combobox()
-: <a class="el" href="xcombobox_8c.html#ae26ab3914427e446799f644884841b0f">xcombobox.c</a>
-, <a class="el" href="xcombobox_8h.html#ae26ab3914427e446799f644884841b0f">xcombobox.h</a>
+: <a class="el" href="xcombobox_8h.html#ae26ab3914427e446799f644884841b0f">xcombobox.h</a>
+, <a class="el" href="xcombobox_8c.html#ae26ab3914427e446799f644884841b0f">xcombobox.c</a>
 </li>
 <li>add_file_button()
-: <a class="el" href="xfile-dialog_8c.html#aa38720181c2a046546d345b60eb6b7b0">xfile-dialog.c</a>
-, <a class="el" href="xfile-dialog_8h.html#aa38720181c2a046546d345b60eb6b7b0">xfile-dialog.h</a>
+: <a class="el" href="xfile-dialog_8h.html#aa38720181c2a046546d345b60eb6b7b0">xfile-dialog.h</a>
+, <a class="el" href="xfile-dialog_8c.html#aa38720181c2a046546d345b60eb6b7b0">xfile-dialog.c</a>
 </li>
 <li>add_hmeter()
-: <a class="el" href="xmeter_8c.html#a2fe31b1973bac900441b4279cb60d009">xmeter.c</a>
-, <a class="el" href="xmeter_8h.html#a2fe31b1973bac900441b4279cb60d009">xmeter.h</a>
+: <a class="el" href="xmeter_8h.html#a2fe31b1973bac900441b4279cb60d009">xmeter.h</a>
+, <a class="el" href="xmeter_8c.html#a2fe31b1973bac900441b4279cb60d009">xmeter.c</a>
 </li>
 <li>add_hslider()
-: <a class="el" href="xslider_8c.html#a508d0eea38b9c3a8b1e769b0e502c5bc">xslider.c</a>
-, <a class="el" href="xslider_8h.html#a508d0eea38b9c3a8b1e769b0e502c5bc">xslider.h</a>
+: <a class="el" href="xslider_8h.html#a508d0eea38b9c3a8b1e769b0e502c5bc">xslider.h</a>
+, <a class="el" href="xslider_8c.html#a508d0eea38b9c3a8b1e769b0e502c5bc">xslider.c</a>
 </li>
 <li>add_image_toggle_button()
-: <a class="el" href="xbutton_8c.html#ac941c08285f451d0cc12979789348005">xbutton.c</a>
-, <a class="el" href="xbutton_8h.html#ac941c08285f451d0cc12979789348005">xbutton.h</a>
+: <a class="el" href="xbutton_8h.html#ac941c08285f451d0cc12979789348005">xbutton.h</a>
+, <a class="el" href="xbutton_8c.html#ac941c08285f451d0cc12979789348005">xbutton.c</a>
 </li>
 <li>add_knob()
-: <a class="el" href="xknob_8c.html#a5a495d949d121ea73a7b4099503c6640">xknob.c</a>
-, <a class="el" href="xknob_8h.html#a5a495d949d121ea73a7b4099503c6640">xknob.h</a>
+: <a class="el" href="xknob_8h.html#a5a495d949d121ea73a7b4099503c6640">xknob.h</a>
+, <a class="el" href="xknob_8c.html#a5a495d949d121ea73a7b4099503c6640">xknob.c</a>
 </li>
 <li>add_label()
-: <a class="el" href="xlabel_8c.html#a5ada9d6d1d2eb6485c7bd622fb845aec">xlabel.c</a>
-, <a class="el" href="xlabel_8h.html#a5ada9d6d1d2eb6485c7bd622fb845aec">xlabel.h</a>
+: <a class="el" href="xlabel_8h.html#a5ada9d6d1d2eb6485c7bd622fb845aec">xlabel.h</a>
+, <a class="el" href="xlabel_8c.html#a5ada9d6d1d2eb6485c7bd622fb845aec">xlabel.c</a>
 </li>
 <li>add_listbox()
-: <a class="el" href="xlistbox_8c.html#ad3905b6c57f75934c5586fbfea1b73bd">xlistbox.c</a>
-, <a class="el" href="xlistbox_8h.html#ad3905b6c57f75934c5586fbfea1b73bd">xlistbox.h</a>
+: <a class="el" href="xlistbox_8h.html#ad3905b6c57f75934c5586fbfea1b73bd">xlistbox.h</a>
+, <a class="el" href="xlistbox_8c.html#ad3905b6c57f75934c5586fbfea1b73bd">xlistbox.c</a>
 </li>
 <li>add_listview()
-: <a class="el" href="xlistview_8c.html#a6a89b3685d44e0e82b790c0ec17def9d">xlistview.c</a>
-, <a class="el" href="xlistview_8h.html#a6a89b3685d44e0e82b790c0ec17def9d">xlistview.h</a>
+: <a class="el" href="xlistview_8h.html#a6a89b3685d44e0e82b790c0ec17def9d">xlistview.h</a>
+, <a class="el" href="xlistview_8c.html#a6a89b3685d44e0e82b790c0ec17def9d">xlistview.c</a>
 </li>
 <li>add_on_off_button()
-: <a class="el" href="xbutton_8c.html#a43014a55d36303a8f38468319c9b2bfd">xbutton.c</a>
-, <a class="el" href="xbutton_8h.html#a43014a55d36303a8f38468319c9b2bfd">xbutton.h</a>
+: <a class="el" href="xbutton_8h.html#a43014a55d36303a8f38468319c9b2bfd">xbutton.h</a>
+, <a class="el" href="xbutton_8c.html#a43014a55d36303a8f38468319c9b2bfd">xbutton.c</a>
 </li>
 <li>add_toggle_button()
-: <a class="el" href="xbutton_8h.html#a528331e8ac24f1ca7bb0101dad28f962">xbutton.h</a>
-, <a class="el" href="xbutton_8c.html#a528331e8ac24f1ca7bb0101dad28f962">xbutton.c</a>
+: <a class="el" href="xbutton_8c.html#a528331e8ac24f1ca7bb0101dad28f962">xbutton.c</a>
+, <a class="el" href="xbutton_8h.html#a528331e8ac24f1ca7bb0101dad28f962">xbutton.h</a>
 </li>
 <li>add_tooltip()
-: <a class="el" href="xtooltip_8c.html#aca3c90497b917bbc066ef82b84f6a1c0">xtooltip.c</a>
-, <a class="el" href="xtooltip_8h.html#aca3c90497b917bbc066ef82b84f6a1c0">xtooltip.h</a>
+: <a class="el" href="xtooltip_8h.html#aca3c90497b917bbc066ef82b84f6a1c0">xtooltip.h</a>
+, <a class="el" href="xtooltip_8c.html#aca3c90497b917bbc066ef82b84f6a1c0">xtooltip.c</a>
 </li>
 <li>add_vmeter()
-: <a class="el" href="xmeter_8c.html#ab6d4533ed32dc34a1bc1e279e85e8b2a">xmeter.c</a>
-, <a class="el" href="xmeter_8h.html#ab6d4533ed32dc34a1bc1e279e85e8b2a">xmeter.h</a>
+: <a class="el" href="xmeter_8h.html#ab6d4533ed32dc34a1bc1e279e85e8b2a">xmeter.h</a>
+, <a class="el" href="xmeter_8c.html#ab6d4533ed32dc34a1bc1e279e85e8b2a">xmeter.c</a>
 </li>
 <li>add_vslider()
-: <a class="el" href="xslider_8c.html#a80c7eeb4a1b25c6fcb855d407d959b48">xslider.c</a>
-, <a class="el" href="xslider_8h.html#a80c7eeb4a1b25c6fcb855d407d959b48">xslider.h</a>
+: <a class="el" href="xslider_8h.html#a80c7eeb4a1b25c6fcb855d407d959b48">xslider.h</a>
+, <a class="el" href="xslider_8c.html#a80c7eeb4a1b25c6fcb855d407d959b48">xslider.c</a>
 </li>
 <li>adj_get_state()
-: <a class="el" href="xadjustment_8c.html#af1f74e9733cffbb287e4912fc8ab37cd">xadjustment.c</a>
-, <a class="el" href="xadjustment_8h.html#af1f74e9733cffbb287e4912fc8ab37cd">xadjustment.h</a>
+: <a class="el" href="xadjustment_8h.html#af1f74e9733cffbb287e4912fc8ab37cd">xadjustment.h</a>
+, <a class="el" href="xadjustment_8c.html#af1f74e9733cffbb287e4912fc8ab37cd">xadjustment.c</a>
 </li>
 <li>adj_get_value()
-: <a class="el" href="xadjustment_8c.html#a5a78c30051a7a9c3dc0ce84c3482c530">xadjustment.c</a>
-, <a class="el" href="xadjustment_8h.html#a5a78c30051a7a9c3dc0ce84c3482c530">xadjustment.h</a>
+: <a class="el" href="xadjustment_8h.html#a5a78c30051a7a9c3dc0ce84c3482c530">xadjustment.h</a>
+, <a class="el" href="xadjustment_8c.html#a5a78c30051a7a9c3dc0ce84c3482c530">xadjustment.c</a>
+</li>
+<li>ADJ_INTERN
+: <a class="el" href="xwidget_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa787e2fbca5c1eab7db18773de324b43f">xwidget.h</a>
 </li>
 <li>adj_set_motion_state()
 : <a class="el" href="xadjustment_8c.html#a1e198857155b2969afb87fe923d58cb6">xadjustment.c</a>
 , <a class="el" href="xadjustment_8h.html#a1e198857155b2969afb87fe923d58cb6">xadjustment.h</a>
 </li>
 <li>adj_set_start_value()
-: <a class="el" href="xadjustment_8c.html#a670e06d916d1d6fd1f2968fb171c29aa">xadjustment.c</a>
-, <a class="el" href="xadjustment_8h.html#a670e06d916d1d6fd1f2968fb171c29aa">xadjustment.h</a>
+: <a class="el" href="xadjustment_8h.html#a670e06d916d1d6fd1f2968fb171c29aa">xadjustment.h</a>
+, <a class="el" href="xadjustment_8c.html#a670e06d916d1d6fd1f2968fb171c29aa">xadjustment.c</a>
 </li>
 <li>adj_set_state()
 : <a class="el" href="xadjustment_8h.html#a460c323af951bee5b62081be221a08ba">xadjustment.h</a>
 , <a class="el" href="xadjustment_8c.html#a460c323af951bee5b62081be221a08ba">xadjustment.c</a>
 </li>
 <li>adj_set_value()
-: <a class="el" href="xadjustment_8c.html#afbe410bb3efb6e78941a4f938d1c67ca">xadjustment.c</a>
-, <a class="el" href="xadjustment_8h.html#afbe410bb3efb6e78941a4f938d1c67ca">xadjustment.h</a>
+: <a class="el" href="xadjustment_8h.html#a5692c792f6804883f9fe1746bf3d5432">xadjustment.h</a>
+, <a class="el" href="xadjustment_8c.html#afbe410bb3efb6e78941a4f938d1c67ca">xadjustment.c</a>
 </li>
 <li>Adjustment_t
 : <a class="el" href="xputty_8h.html#a68965e5ced4b615cf52922868c4b159c">xputty.h</a>
@@ -175,11 +208,14 @@ $(function() {
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

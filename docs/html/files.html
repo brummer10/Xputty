@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('files.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,81 +97,86 @@ $(function() {
 <div class="contents">
 <div class="textblock">Here is a list of all files with brief descriptions:</div><div class="directory">
 <table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xadjustment_8c.html" target="_self">xadjustment.c</a></td><td class="desc"></td></tr>
+<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xadjustment_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xadjustment_8c.html" target="_self">xadjustment.c</a></td><td class="desc"></td></tr>
 <tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xadjustment_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xadjustment_8h.html" target="_self">xadjustment.h</a></td><td class="desc"></td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xadjustment__private_8c.html" target="_self">xadjustment_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xadjustment__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xadjustment__private_8c.html" target="_self">xadjustment_private.c</a></td><td class="desc"></td></tr>
 <tr id="row_3_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xadjustment__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xadjustment__private_8h.html" target="_self">xadjustment_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_4_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xasprintf_8c.html" target="_self">xasprintf.c</a></td><td class="desc"></td></tr>
+<tr id="row_4_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xasprintf_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xasprintf_8c.html" target="_self">xasprintf.c</a></td><td class="desc"></td></tr>
 <tr id="row_5_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xasprintf_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xasprintf_8h.html" target="_self">xasprintf.h</a></td><td class="desc"></td></tr>
-<tr id="row_6_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xbutton_8c.html" target="_self">xbutton.c</a></td><td class="desc"></td></tr>
+<tr id="row_6_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xbutton_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xbutton_8c.html" target="_self">xbutton.c</a></td><td class="desc"></td></tr>
 <tr id="row_7_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xbutton_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xbutton_8h.html" target="_self">xbutton.h</a></td><td class="desc"></td></tr>
-<tr id="row_8_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xbutton__private_8c.html" target="_self">xbutton_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_8_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xbutton__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xbutton__private_8c.html" target="_self">xbutton_private.c</a></td><td class="desc"></td></tr>
 <tr id="row_9_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xbutton__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xbutton__private_8h.html" target="_self">xbutton_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_10_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xchildlist_8c.html" target="_self">xchildlist.c</a></td><td class="desc"></td></tr>
+<tr id="row_10_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xchildlist_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xchildlist_8c.html" target="_self">xchildlist.c</a></td><td class="desc"></td></tr>
 <tr id="row_11_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xchildlist_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xchildlist_8h.html" target="_self">xchildlist.h</a></td><td class="desc"></td></tr>
-<tr id="row_12_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xchildlist__private_8c.html" target="_self">xchildlist_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_12_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xchildlist__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xchildlist__private_8c.html" target="_self">xchildlist_private.c</a></td><td class="desc"></td></tr>
 <tr id="row_13_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xchildlist__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xchildlist__private_8h.html" target="_self">xchildlist_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_14_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xcolor_8c.html" target="_self">xcolor.c</a></td><td class="desc"></td></tr>
+<tr id="row_14_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xcolor_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xcolor_8c.html" target="_self">xcolor.c</a></td><td class="desc"></td></tr>
 <tr id="row_15_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xcolor_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xcolor_8h.html" target="_self">xcolor.h</a></td><td class="desc"></td></tr>
-<tr id="row_16_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xcombobox_8c.html" target="_self">xcombobox.c</a></td><td class="desc"></td></tr>
+<tr id="row_16_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xcombobox_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xcombobox_8c.html" target="_self">xcombobox.c</a></td><td class="desc"></td></tr>
 <tr id="row_17_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xcombobox_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xcombobox_8h.html" target="_self">xcombobox.h</a></td><td class="desc"></td></tr>
-<tr id="row_18_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xcombobox__private_8c.html" target="_self">xcombobox_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_18_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xcombobox__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xcombobox__private_8c.html" target="_self">xcombobox_private.c</a></td><td class="desc"></td></tr>
 <tr id="row_19_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xcombobox__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xcombobox__private_8h.html" target="_self">xcombobox_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_20_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xfile-dialog_8c.html" target="_self">xfile-dialog.c</a></td><td class="desc"></td></tr>
+<tr id="row_20_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xfile-dialog_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xfile-dialog_8c.html" target="_self">xfile-dialog.c</a></td><td class="desc"></td></tr>
 <tr id="row_21_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xfile-dialog_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xfile-dialog_8h.html" target="_self">xfile-dialog.h</a></td><td class="desc"></td></tr>
-<tr id="row_22_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xfilepicker_8c.html" target="_self">xfilepicker.c</a></td><td class="desc"></td></tr>
+<tr id="row_22_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xfilepicker_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xfilepicker_8c.html" target="_self">xfilepicker.c</a></td><td class="desc"></td></tr>
 <tr id="row_23_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xfilepicker_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xfilepicker_8h.html" target="_self">xfilepicker.h</a></td><td class="desc"></td></tr>
-<tr id="row_24_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xknob_8c.html" target="_self">xknob.c</a></td><td class="desc"></td></tr>
+<tr id="row_24_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xknob_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xknob_8c.html" target="_self">xknob.c</a></td><td class="desc"></td></tr>
 <tr id="row_25_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xknob_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xknob_8h.html" target="_self">xknob.h</a></td><td class="desc"></td></tr>
-<tr id="row_26_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xknob__private_8c.html" target="_self">xknob_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_26_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xknob__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xknob__private_8c.html" target="_self">xknob_private.c</a></td><td class="desc"></td></tr>
 <tr id="row_27_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xknob__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xknob__private_8h.html" target="_self">xknob_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_28_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xlabel_8c.html" target="_self">xlabel.c</a></td><td class="desc"></td></tr>
+<tr id="row_28_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xlabel_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xlabel_8c.html" target="_self">xlabel.c</a></td><td class="desc"></td></tr>
 <tr id="row_29_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xlabel_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xlabel_8h.html" target="_self">xlabel.h</a></td><td class="desc"></td></tr>
-<tr id="row_30_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xlabel__private_8c.html" target="_self">xlabel_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_30_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xlabel__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xlabel__private_8c.html" target="_self">xlabel_private.c</a></td><td class="desc"></td></tr>
 <tr id="row_31_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xlabel__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xlabel__private_8h.html" target="_self">xlabel_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_32_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xlistbox_8c.html" target="_self">xlistbox.c</a></td><td class="desc"></td></tr>
+<tr id="row_32_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xlistbox_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xlistbox_8c.html" target="_self">xlistbox.c</a></td><td class="desc"></td></tr>
 <tr id="row_33_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xlistbox_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xlistbox_8h.html" target="_self">xlistbox.h</a></td><td class="desc"></td></tr>
-<tr id="row_34_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xlistbox__private_8c.html" target="_self">xlistbox_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_34_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xlistbox__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xlistbox__private_8c.html" target="_self">xlistbox_private.c</a></td><td class="desc"></td></tr>
 <tr id="row_35_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xlistbox__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xlistbox__private_8h.html" target="_self">xlistbox_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_36_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xlistview_8c.html" target="_self">xlistview.c</a></td><td class="desc"></td></tr>
+<tr id="row_36_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xlistview_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xlistview_8c.html" target="_self">xlistview.c</a></td><td class="desc"></td></tr>
 <tr id="row_37_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xlistview_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xlistview_8h.html" target="_self">xlistview.h</a></td><td class="desc"></td></tr>
-<tr id="row_38_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xlistview__private_8c.html" target="_self">xlistview_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_38_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xlistview__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xlistview__private_8c.html" target="_self">xlistview_private.c</a></td><td class="desc"></td></tr>
 <tr id="row_39_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xlistview__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xlistview__private_8h.html" target="_self">xlistview_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_40_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xmenu_8c.html" target="_self">xmenu.c</a></td><td class="desc"></td></tr>
+<tr id="row_40_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xmenu_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xmenu_8c.html" target="_self">xmenu.c</a></td><td class="desc"></td></tr>
 <tr id="row_41_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xmenu_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xmenu_8h.html" target="_self">xmenu.h</a></td><td class="desc"></td></tr>
-<tr id="row_42_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xmenu__private_8c.html" target="_self">xmenu_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_42_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xmenu__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xmenu__private_8c.html" target="_self">xmenu_private.c</a></td><td class="desc"></td></tr>
 <tr id="row_43_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xmenu__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xmenu__private_8h.html" target="_self">xmenu_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_44_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xmessage-dialog_8c.html" target="_self">xmessage-dialog.c</a></td><td class="desc"></td></tr>
+<tr id="row_44_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xmessage-dialog_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xmessage-dialog_8c.html" target="_self">xmessage-dialog.c</a></td><td class="desc"></td></tr>
 <tr id="row_45_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xmessage-dialog_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xmessage-dialog_8h.html" target="_self">xmessage-dialog.h</a></td><td class="desc"></td></tr>
-<tr id="row_46_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xmeter_8c.html" target="_self">xmeter.c</a></td><td class="desc"></td></tr>
+<tr id="row_46_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xmeter_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xmeter_8c.html" target="_self">xmeter.c</a></td><td class="desc"></td></tr>
 <tr id="row_47_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xmeter_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xmeter_8h.html" target="_self">xmeter.h</a></td><td class="desc"></td></tr>
-<tr id="row_48_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xmeter__private_8c.html" target="_self">xmeter_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_48_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xmeter__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xmeter__private_8c.html" target="_self">xmeter_private.c</a></td><td class="desc"></td></tr>
 <tr id="row_49_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xmeter__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xmeter__private_8h.html" target="_self">xmeter_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_50_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xpngloader_8c.html" target="_self">xpngloader.c</a></td><td class="desc"></td></tr>
-<tr id="row_51_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xpngloader_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xpngloader_8h.html" target="_self">xpngloader.h</a></td><td class="desc"></td></tr>
-<tr id="row_52_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xputty_8c.html" target="_self">xputty.c</a></td><td class="desc"></td></tr>
-<tr id="row_53_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xputty_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xputty_8h.html" target="_self">xputty.h</a></td><td class="desc"></td></tr>
-<tr id="row_54_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xslider_8c.html" target="_self">xslider.c</a></td><td class="desc"></td></tr>
-<tr id="row_55_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xslider_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xslider_8h.html" target="_self">xslider.h</a></td><td class="desc"></td></tr>
-<tr id="row_56_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xslider__private_8c.html" target="_self">xslider_private.c</a></td><td class="desc"></td></tr>
-<tr id="row_57_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xslider__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xslider__private_8h.html" target="_self">xslider_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_58_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xtooltip_8c.html" target="_self">xtooltip.c</a></td><td class="desc"></td></tr>
-<tr id="row_59_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xtooltip_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xtooltip_8h.html" target="_self">xtooltip.h</a></td><td class="desc"></td></tr>
-<tr id="row_60_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xtooltip__private_8c.html" target="_self">xtooltip_private.c</a></td><td class="desc"></td></tr>
-<tr id="row_61_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xtooltip__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xtooltip__private_8h.html" target="_self">xtooltip_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_62_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xwidget_8c.html" target="_self">xwidget.c</a></td><td class="desc"></td></tr>
-<tr id="row_63_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xwidget_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xwidget_8h.html" target="_self">xwidget.h</a></td><td class="desc"></td></tr>
-<tr id="row_64_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="xwidget__private_8c.html" target="_self">xwidget_private.c</a></td><td class="desc"></td></tr>
-<tr id="row_65_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xwidget__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xwidget__private_8h.html" target="_self">xwidget_private.h</a></td><td class="desc"></td></tr>
-<tr id="row_66_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xwidgets_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xwidgets_8h.html" target="_self">xwidgets.h</a></td><td class="desc"></td></tr>
+<tr id="row_50_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xmidi__keyboard_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xmidi__keyboard_8c.html" target="_self">xmidi_keyboard.c</a></td><td class="desc"></td></tr>
+<tr id="row_51_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xmidi__keyboard_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xmidi__keyboard_8h.html" target="_self">xmidi_keyboard.h</a></td><td class="desc"></td></tr>
+<tr id="row_52_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xpngloader_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xpngloader_8c.html" target="_self">xpngloader.c</a></td><td class="desc"></td></tr>
+<tr id="row_53_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xpngloader_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xpngloader_8h.html" target="_self">xpngloader.h</a></td><td class="desc"></td></tr>
+<tr id="row_54_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xputty_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xputty_8c.html" target="_self">xputty.c</a></td><td class="desc"></td></tr>
+<tr id="row_55_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xputty_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xputty_8h.html" target="_self">xputty.h</a></td><td class="desc"></td></tr>
+<tr id="row_56_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xslider_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xslider_8c.html" target="_self">xslider.c</a></td><td class="desc"></td></tr>
+<tr id="row_57_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xslider_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xslider_8h.html" target="_self">xslider.h</a></td><td class="desc"></td></tr>
+<tr id="row_58_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xslider__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xslider__private_8c.html" target="_self">xslider_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_59_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xslider__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xslider__private_8h.html" target="_self">xslider_private.h</a></td><td class="desc"></td></tr>
+<tr id="row_60_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xtooltip_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xtooltip_8c.html" target="_self">xtooltip.c</a></td><td class="desc"></td></tr>
+<tr id="row_61_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xtooltip_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xtooltip_8h.html" target="_self">xtooltip.h</a></td><td class="desc"></td></tr>
+<tr id="row_62_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xtooltip__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xtooltip__private_8c.html" target="_self">xtooltip_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_63_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xtooltip__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xtooltip__private_8h.html" target="_self">xtooltip_private.h</a></td><td class="desc"></td></tr>
+<tr id="row_64_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xwidget_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xwidget_8c.html" target="_self">xwidget.c</a></td><td class="desc"></td></tr>
+<tr id="row_65_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xwidget_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xwidget_8h.html" target="_self">xwidget.h</a></td><td class="desc"></td></tr>
+<tr id="row_66_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xwidget__private_8c_source.html"><span class="icondoc"></span></a><a class="el" href="xwidget__private_8c.html" target="_self">xwidget_private.c</a></td><td class="desc"></td></tr>
+<tr id="row_67_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xwidget__private_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xwidget__private_8h.html" target="_self">xwidget_private.h</a></td><td class="desc"></td></tr>
+<tr id="row_68_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="xwidgets_8h_source.html"><span class="icondoc"></span></a><a class="el" href="xwidgets_8h.html" target="_self">xwidgets.h</a></td><td class="desc"></td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

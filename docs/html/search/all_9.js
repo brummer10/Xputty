@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['icon',['icon',['../structFileDialog.html#a1cd92000f92c13e9c35cbdfffe2a0eca',1,'FileDialog::icon()'],['../structMessageBox.html#af2f197bea8f7450d2b0e2cc3c496659a',1,'MessageBox::icon()']]],
+  ['icon',['icon',['../structFileDialog.html#a1cd92000f92c13e9c35cbdfffe2a0eca',1,'FileDialog::icon()'],['../structMessageBox.html#af2f197bea8f7450d2b0e2cc3c496659a',1,'MessageBox::icon()'],['../structMidiKeyboard.html#a431d52d58bfc873d8eca870694d09905',1,'MidiKeyboard::icon()']]],
   ['image',['image',['../structWidget__t.html#a4e179b5ae7494b9533c8673ec3642a55',1,'Widget_t']]],
   ['info_5fbox',['INFO_BOX',['../xmessage-dialog_8h.html#adf764cbdea00d65edcd07bb9953ad2b7affbd3707c912e33dec5b6d6d52de3889',1,'xmessage-dialog.h']]],
   ['init_5fheight',['init_height',['../structResize__t.html#ad3562783d29d76a51cb07dbeb7c6042e',1,'Resize_t']]],
@@ -9,6 +9,7 @@ var searchData=
   ['init_5fy',['init_y',['../structResize__t.html#a2f2c63ce1d407649d6b8daf4d6fbbb98',1,'Resize_t']]],
   ['input_5flabel',['input_label',['../structWidget__t.html#ac5cb454301472edeb16e563ef2149dbb',1,'Widget_t']]],
   ['is_5factive',['is_active',['../structFileButton.html#a2afbb3418ecfdf27adbd8f8022160e93',1,'FileButton']]],
+  ['is_5fkey_5fin_5fmatrix',['is_key_in_matrix',['../xmidi__keyboard_8h.html#a359dac3129447cb25d3d46fc4cae2d42',1,'is_key_in_matrix(unsigned long *key_matrix, int key):&#160;xmidi_keyboard.c'],['../xmidi__keyboard_8c.html#a359dac3129447cb25d3d46fc4cae2d42',1,'is_key_in_matrix(unsigned long *key_matrix, int key):&#160;xmidi_keyboard.c']]],
   ['is_5fpopup',['IS_POPUP',['../xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55bad5eca61d30ac5aa2160dbad35b19c4c3',1,'xwidget.h']]],
   ['is_5fradio',['IS_RADIO',['../xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba7786613892035035d8082fd638fcafd0',1,'xwidget.h']]],
   ['is_5ftooltip',['IS_TOOLTIP',['../xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba01f0a22bef94435eca98f2347e5800e8',1,'xwidget.h']]],

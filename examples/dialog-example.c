@@ -148,7 +148,7 @@ static void cbutton_response(void *w_, void* user_data) {
 static void tbutton_callback(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     if (w->flags & HAS_POINTER && adj_get_value(w->adj)){
-        open_message_dialog(w, ENTRY_BOX, "", "This is a text entry\n"
+        open_message_dialog(w, ENTRY_BOX, "", "This is a text entry|"
             "Please enter a name:", NULL);
     }
     adj_set_value(w->adj,0.0);

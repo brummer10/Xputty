@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,15 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('structXputty.html','');});
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,7 +90,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
@@ -70,9 +100,9 @@ $(function() {
 
 <p><a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> - the main struct. <br />
  It should be declared before any other call to a <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> function. <br />
- <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> store a pointer in the childlist, to any <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> related to this instance of libxputty. <br />
- The first created <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is the toplevel window. <br />
- When the toplevel window call <a class="el" href="xwidget_8c.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget ">destroy_widget()</a>, <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> call <a class="el" href="xwidget_8c.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget ">destroy_widget()</a> for all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s in the main childlist. <br />
+ <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> store a pointer in the childlist, to any <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> related to this instance of libxputty. <br />
+ The first created <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> is the toplevel window. <br />
+ When the toplevel window call <a class="el" href="xwidget_8h.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget   When a Widget_t receive a destroy_widget() call, it will propagate that to all childs in it&#39;s Childlist_t. So all childs get destroyed before the Widget_t itself close. ">destroy_widget()</a>, <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> call <a class="el" href="xwidget_8h.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget   When a Widget_t receive a destroy_widget() call, it will propagate that to all childs in it&#39;s Childlist_t. So all childs get destroyed before the Widget_t itself close. ">destroy_widget()</a> for all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a>'s in the main childlist. <br />
  So any allocated memory should be released before the toplevel window finaly close.  
  <a href="structXputty.html#details">More...</a></p>
 
@@ -82,15 +112,15 @@ Collaboration diagram for Xputty:</div>
 <div class="dyncontent">
 <div class="center"><img src="structXputty__coll__graph.png" border="0" usemap="#Xputty_coll__map" alt="Collaboration graph"/></div>
 <map name="Xputty_coll__map" id="Xputty_coll__map">
-<area shape="rect" id="node3" href="structWidget__t.html" title="Widget_t &#45; struct to hold the basic widget info. " alt="" coords="159,332,234,359"/>
-<area shape="rect" id="node2" href="structChildlist__t.html" title="Childlist_t &#45; struct to hold a Widget_t child list. " alt="" coords="299,451,379,477"/>
+<area shape="rect" id="node3" href="structWidget__t.html" title="Widget_t &#45; struct to hold the basic Widget_t info. " alt="" coords="159,332,234,359"/>
+<area shape="rect" id="node2" href="structChildlist__t.html" title="Childlist_t &#45; struct to hold a Widget_t child list &#160;&#160;Xputty main holds a list of any Widget_t created..." alt="" coords="299,451,379,477"/>
 <area shape="rect" id="node4" href="structAdjustment__t.html" title="Adjustment_t &#45; struct to hold a controller adjustment. " alt="" coords="125,451,223,477"/>
 <area shape="rect" id="node5" href="structFunc__t.html" title="Func_t &#45; struct to hold all supported event callbacks. " alt="" coords="5,228,68,255"/>
 <area shape="rect" id="node6" href="structResize__t.html" title="Resize_t &#45; struct used to resize child widgets. " alt="" coords="93,228,167,255"/>
-<area shape="rect" id="node7" href="structXColor__t.html" title="XColor_t &#45; the Widget_t Color struct. " alt="" coords="283,139,356,165"/>
+<area shape="rect" id="node7" href="structXColor__t.html" title="XColor_t &#45; the Widget_t Color struct &#160;&#160;XColor_t could be used for theming you Widget_t set..." alt="" coords="283,139,356,165"/>
 <area shape="rect" id="node8" href="structColors.html" title="Color_t &#45; struct used to set cairo color for Widget_t. " alt="" coords="289,5,349,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -108,20 +138,22 @@ Data Fields</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> - the main struct. <br />
  It should be declared before any other call to a <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> function. <br />
- <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> store a pointer in the childlist, to any <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> related to this instance of libxputty. <br />
- The first created <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> is the toplevel window. <br />
- When the toplevel window call <a class="el" href="xwidget_8c.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget ">destroy_widget()</a>, <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> call <a class="el" href="xwidget_8c.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget ">destroy_widget()</a> for all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>'s in the main childlist. <br />
+ <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> store a pointer in the childlist, to any <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> related to this instance of libxputty. <br />
+ The first created <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> is the toplevel window. <br />
+ When the toplevel window call <a class="el" href="xwidget_8h.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget   When a Widget_t receive a destroy_widget() call, it will propagate that to all childs in it&#39;s Childlist_t. So all childs get destroyed before the Widget_t itself close. ">destroy_widget()</a>, <a class="el" href="structXputty.html" title="Xputty - the main struct.   It should be declared before any other call to a Xputty function...">Xputty</a> call <a class="el" href="xwidget_8h.html#abdabca284aa8866f1f242b6857312e3b" title="destroy_widget - destroy a widget   When a Widget_t receive a destroy_widget() call, it will propagate that to all childs in it&#39;s Childlist_t. So all childs get destroyed before the Widget_t itself close. ">destroy_widget()</a> for all remaining <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a>'s in the main childlist. <br />
  So any allocated memory should be released before the toplevel window finaly close. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*childlist</td><td>- pointer to the main childlist </td></tr>
     <tr><td class="paramname">*dpy</td><td>- pointer to the display in use </td></tr>
     <tr><td class="paramname">run</td><td>- bool to quit the main loop </td></tr>
-    <tr><td class="paramname">*color_scheme</td><td>- theming scheme for all <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </td></tr>
-    <tr><td class="paramname">*hold_grab</td><td>- pointer to a modal <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </td></tr>
+    <tr><td class="paramname">*color_scheme</td><td>- theming scheme for all <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> </td></tr>
+    <tr><td class="paramname">*hold_grab</td><td>- pointer to a modal <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="xputty_8h_source.html#l00164">164</a> of file <a class="el" href="xputty_8h_source.html">xputty.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a55fafc08d9702ab14137f52f35c4ff19"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a55fafc08d9702ab14137f52f35c4ff19">&#9670;&nbsp;</a></span>childlist</h2>
@@ -136,6 +168,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>pointer to the main childlist </p>
 
+<p class="definition">Definition at line <a class="el" href="xputty_8h_source.html#l00166">166</a> of file <a class="el" href="xputty_8h_source.html">xputty.h</a>.</p>
+
 </div>
 </div>
 <a id="aab9298d9341e315b1aa4ac16188c699e"></a>
@@ -149,7 +183,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>theming scheme for all <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+<p>theming scheme for all <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="xputty_8h_source.html#l00170">170</a> of file <a class="el" href="xputty_8h_source.html">xputty.h</a>.</p>
 
 </div>
 </div>
@@ -166,6 +202,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>pointer to the display in use </p>
 
+<p class="definition">Definition at line <a class="el" href="xputty_8h_source.html#l00168">168</a> of file <a class="el" href="xputty_8h_source.html">xputty.h</a>.</p>
+
 </div>
 </div>
 <a id="a744a6ffdff59d8725c863e7ecddfc0e1"></a>
@@ -179,7 +217,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>pointer to a modal <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+<p>pointer to a modal <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="xputty_8h_source.html#l00172">172</a> of file <a class="el" href="xputty_8h_source.html">xputty.h</a>.</p>
 
 </div>
 </div>
@@ -196,17 +236,23 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>bool to quit the main loop </p>
 
+<p class="definition">Definition at line <a class="el" href="xputty_8h_source.html#l00174">174</a> of file <a class="el" href="xputty_8h_source.html">xputty.h</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="xputty_8h_source.html">xputty.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="structXputty.html">Xputty</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

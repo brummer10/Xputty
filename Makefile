@@ -13,5 +13,5 @@ $(SUBDIR): libxputty
 
 doc:
 	@rm -rf ./docs
-	doxygen Doxyfile
+	doxygen doxyfile
 	cp ./examples/index.html ./docs/

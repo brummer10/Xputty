@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,15 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('xchildlist_8c.html','');});
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +90,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_e9bbb68c42f81f311d39d9dbaefd3b8c.html">libxputty</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -78,38 +104,44 @@ Include dependency graph for xchildlist.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="xchildlist_8c__incl.png" border="0" usemap="#xchildlist_8c" alt=""/></div>
 <map name="xchildlist_8c" id="xchildlist_8c">
-<area shape="rect" id="node2" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="899,80,983,107"/>
-<area shape="rect" id="node21" href="xchildlist__private_8h.html" title="xchildlist_private.h" alt="" coords="1007,80,1138,107"/>
-<area shape="rect" id="node3" href="xputty_8h.html" title="xputty.h" alt="" coords="906,155,975,181"/>
-<area shape="rect" id="node16" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1203,229,1281,256"/>
-<area shape="rect" id="node17" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="1306,229,1410,256"/>
-<area shape="rect" id="node18" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1435,229,1503,256"/>
-<area shape="rect" id="node19" href="xpngloader_8h.html" title="xpngloader.h" alt="" coords="1527,229,1623,256"/>
+<area shape="rect" id="node2" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="927,80,1011,107"/>
+<area shape="rect" id="node22" href="xchildlist__private_8h.html" title="xchildlist_private.h" alt="" coords="1035,80,1166,107"/>
+<area shape="rect" id="node3" href="xputty_8h.html" title="xputty.h" alt="" coords="934,155,1003,181"/>
+<area shape="rect" id="node17" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1291,229,1369,256"/>
+<area shape="rect" id="node18" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="1394,229,1498,256"/>
+<area shape="rect" id="node19" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1523,229,1591,256"/>
+<area shape="rect" id="node20" href="xpngloader_8h.html" title="xpngloader.h" alt="" coords="1615,229,1711,256"/>
 </map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="xchildlist_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad47bf3695fdf0c67bc059e4ce25c4639"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8c.html#ad47bf3695fdf0c67bc059e4ce25c4639">childlist_init</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist)</td></tr>
-<tr class="memdesc:ad47bf3695fdf0c67bc059e4ce25c4639"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_init - allocate the array to min size  <a href="#ad47bf3695fdf0c67bc059e4ce25c4639">More...</a><br /></td></tr>
+<tr class="memdesc:ad47bf3695fdf0c67bc059e4ce25c4639"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_init - internal use to allocate the array to min size <br />
+ You usually didn't need to call this  <a href="#ad47bf3695fdf0c67bc059e4ce25c4639">More...</a><br /></td></tr>
 <tr class="separator:ad47bf3695fdf0c67bc059e4ce25c4639"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57256a97c272561094da1b7ae5c57638"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8c.html#a57256a97c272561094da1b7ae5c57638">childlist_destroy</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist)</td></tr>
-<tr class="memdesc:a57256a97c272561094da1b7ae5c57638"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_destroy - free the childlist  <a href="#a57256a97c272561094da1b7ae5c57638">More...</a><br /></td></tr>
+<tr class="memdesc:a57256a97c272561094da1b7ae5c57638"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_destroy - internal use to free the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> <br />
+ You usually didn't need to call this  <a href="#a57256a97c272561094da1b7ae5c57638">More...</a><br /></td></tr>
 <tr class="separator:a57256a97c272561094da1b7ae5c57638"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4515e80317c76cbfa903c50ddfcfbf58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8c.html#a4515e80317c76cbfa903c50ddfcfbf58">childlist_add_child</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist, <a class="el" href="structWidget__t.html">Widget_t</a> *child)</td></tr>
-<tr class="memdesc:a4515e80317c76cbfa903c50ddfcfbf58"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_add_child - add a child to the childlist  <a href="#a4515e80317c76cbfa903c50ddfcfbf58">More...</a><br /></td></tr>
+<tr class="memdesc:a4515e80317c76cbfa903c50ddfcfbf58"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_add_child - internal use to add a child to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> <br />
+ You usually didn't need to call this  <a href="#a4515e80317c76cbfa903c50ddfcfbf58">More...</a><br /></td></tr>
 <tr class="separator:a4515e80317c76cbfa903c50ddfcfbf58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cdf6afd4fdf75550b6aca31ac42379c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8c.html#a6cdf6afd4fdf75550b6aca31ac42379c">childlist_remove_child</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist, <a class="el" href="structWidget__t.html">Widget_t</a> *child)</td></tr>
-<tr class="memdesc:a6cdf6afd4fdf75550b6aca31ac42379c"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_add_child - remove a child from the childlist  <a href="#a6cdf6afd4fdf75550b6aca31ac42379c">More...</a><br /></td></tr>
+<tr class="memdesc:a6cdf6afd4fdf75550b6aca31ac42379c"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_remove_child - internal use to remove a child from the childlist <br />
+ You usually didn't need to call this  <a href="#a6cdf6afd4fdf75550b6aca31ac42379c">More...</a><br /></td></tr>
 <tr class="separator:a6cdf6afd4fdf75550b6aca31ac42379c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54b8a01a41d48965bd02c5269d0f2103"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8c.html#a54b8a01a41d48965bd02c5269d0f2103">childlist_find_child</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist, <a class="el" href="structWidget__t.html">Widget_t</a> *child)</td></tr>
-<tr class="memdesc:a54b8a01a41d48965bd02c5269d0f2103"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_find_child - find a child in a the childlist  <a href="#a54b8a01a41d48965bd02c5269d0f2103">More...</a><br /></td></tr>
+<tr class="memdesc:a54b8a01a41d48965bd02c5269d0f2103"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_find_child - find a child in a the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> this could be sued to check if a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> is a child of a other <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a>  <a href="#a54b8a01a41d48965bd02c5269d0f2103">More...</a><br /></td></tr>
 <tr class="separator:a54b8a01a41d48965bd02c5269d0f2103"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c893543e51daded2aa5b6a9b252932b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8c.html#a7c893543e51daded2aa5b6a9b252932b">childlist_find_widget</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist, Window child_window)</td></tr>
-<tr class="memdesc:a7c893543e51daded2aa5b6a9b252932b"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_find_widget - find a child <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> in a the childlist  <a href="#a7c893543e51daded2aa5b6a9b252932b">More...</a><br /></td></tr>
+<tr class="memdesc:a7c893543e51daded2aa5b6a9b252932b"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_find_widget - find a child <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> in a the childlist by given the Window id  <a href="#a7c893543e51daded2aa5b6a9b252932b">More...</a><br /></td></tr>
 <tr class="separator:a7c893543e51daded2aa5b6a9b252932b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af130af096a2f8b3a807e7e2dcf0ee6c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist_8c.html#af130af096a2f8b3a807e7e2dcf0ee6c0">childlist_has_child</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist)</td></tr>
-<tr class="memdesc:af130af096a2f8b3a807e7e2dcf0ee6c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_has_child - check if childlist contain a child  <a href="#af130af096a2f8b3a807e7e2dcf0ee6c0">More...</a><br /></td></tr>
+<tr class="memdesc:af130af096a2f8b3a807e7e2dcf0ee6c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">childlist_has_child - check if a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> contain a child  <a href="#af130af096a2f8b3a807e7e2dcf0ee6c0">More...</a><br /></td></tr>
 <tr class="separator:af130af096a2f8b3a807e7e2dcf0ee6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -139,16 +171,32 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>childlist_add_child - add a child to the childlist </p>
+<p>childlist_add_child - internal use to add a child to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> <br />
+ You usually didn't need to call this </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list. ">Childlist_t</a> </td></tr>
+    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> </td></tr>
     <tr><td class="paramname">*child</td><td>- pointer to the child to add </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xchildlist_8c_source.html#l00042">42</a> of file <a class="el" href="xchildlist_8c_source.html">xchildlist.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xchildlist__private_8c_source.html#l00023">_childlist_add_elem()</a>, <a class="el" href="xwidget_8h_source.html#l00283">Widget_t::app</a>, <a class="el" href="xchildlist_8h_source.html#l00052">Childlist_t::cap</a>, <a class="el" href="xchildlist_8c_source.html#l00025">childlist_init()</a>, <a class="el" href="xchildlist_8h_source.html#l00048">Childlist_t::childs</a>, <a class="el" href="xputty_8h_source.html#l00059">debug_print</a>, <a class="el" href="xputty_8h_source.html#l00168">Xputty::dpy</a>, <a class="el" href="xchildlist_8h_source.html#l00054">Childlist_t::elem</a>, <a class="el" href="xwidget_8h_source.html#l00307">Widget_t::flags</a>, <a class="el" href="xwidget_8h_source.html#l00227">IS_WINDOW</a>, and <a class="el" href="xwidget_8h_source.html#l00285">Widget_t::widget</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                                                  {</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">if</span>(!childlist) <a class="code" href="xchildlist_8c.html#ad47bf3695fdf0c67bc059e4ce25c4639">childlist_init</a>(childlist);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> (childlist-&gt;<a class="code" href="structChildlist__t.html#abf81fe823696baae53ff77036227f0c8">cap</a> &lt; childlist-&gt;<a class="code" href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">elem</a>+2) {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;         <a class="code" href="xchildlist__private_8h.html#a4417a26df5d336bfff97d4210e0291fe">_childlist_add_elem</a>(childlist);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;     }</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a>[childlist-&gt;<a class="code" href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">elem</a>] = child;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="xputty_8h.html#ac9e7326b4569847122754061b96c42d0">debug_print</a>(<span class="stringliteral">&quot;Childlist_t  add_child\n&quot;</span>);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">if</span> (child-&gt;<a class="code" href="structWidget__t.html#ada1de5e6a955dc81fa956c9e7f2d2062">flags</a> &amp; <a class="code" href="xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba96d3ce9569e73843f74aa018bd8895a3">IS_WINDOW</a>) {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        Atom WM_DELETE_WINDOW;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        WM_DELETE_WINDOW = XInternAtom(child-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, <span class="stringliteral">&quot;WM_DELETE_WINDOW&quot;</span>, True);</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        XSetWMProtocols(child-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, child-&gt;<a class="code" href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">widget</a>, &amp;WM_DELETE_WINDOW, 1);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    childlist-&gt;<a class="code" href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">elem</a> +=1;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div><div class="ttc" id="structWidget__t_html_acb2bfb41674371ee1220a9d6a2d89fb1"><div class="ttname"><a href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">Widget_t::widget</a></div><div class="ttdeci">Window widget</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00285">xwidget.h:285</a></div></div>
+<div class="ttc" id="structChildlist__t_html_a5d7a8d584c55c0496e5710d9a6f4282f"><div class="ttname"><a href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">Childlist_t::elem</a></div><div class="ttdeci">int elem</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00054">xchildlist.h:54</a></div></div>
+<div class="ttc" id="structChildlist__t_html_a093a27797dc1a2819546ceb857b3db1a"><div class="ttname"><a href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">Childlist_t::childs</a></div><div class="ttdeci">Widget_t ** childs</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00048">xchildlist.h:48</a></div></div>
+<div class="ttc" id="xputty_8h_html_ac9e7326b4569847122754061b96c42d0"><div class="ttname"><a href="xputty_8h.html#ac9e7326b4569847122754061b96c42d0">debug_print</a></div><div class="ttdeci">#define debug_print(...)</div><div class="ttdoc">debug_print - print out state messages when compiled with the -DDEBUG flag </div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00059">xputty.h:59</a></div></div>
+<div class="ttc" id="xchildlist_8c_html_ad47bf3695fdf0c67bc059e4ce25c4639"><div class="ttname"><a href="xchildlist_8c.html#ad47bf3695fdf0c67bc059e4ce25c4639">childlist_init</a></div><div class="ttdeci">void childlist_init(Childlist_t *childlist)</div><div class="ttdoc">childlist_init - internal use to allocate the array to min size   You usually didn&amp;#39;t need to call thi...</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8c_source.html#l00025">xchildlist.c:25</a></div></div>
+<div class="ttc" id="xwidget_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba96d3ce9569e73843f74aa018bd8895a3"><div class="ttname"><a href="xwidget_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba96d3ce9569e73843f74aa018bd8895a3">IS_WINDOW</a></div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00227">xwidget.h:227</a></div></div>
+<div class="ttc" id="xchildlist__private_8h_html_a4417a26df5d336bfff97d4210e0291fe"><div class="ttname"><a href="xchildlist__private_8h.html#a4417a26df5d336bfff97d4210e0291fe">_childlist_add_elem</a></div><div class="ttdeci">void _childlist_add_elem(Childlist_t *childlist)</div><div class="ttdoc">_childlist_add_elem - internal use to reallocate the childlist array to new size   You didn&amp;#39;t need to...</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist__private_8c_source.html#l00023">xchildlist_private.c:23</a></div></div>
+<div class="ttc" id="structWidget__t_html_a06eaa5b134c47983fd965e745cdbaa3b"><div class="ttname"><a href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">Widget_t::app</a></div><div class="ttdeci">Xputty * app</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00283">xwidget.h:283</a></div></div>
+<div class="ttc" id="structWidget__t_html_ada1de5e6a955dc81fa956c9e7f2d2062"><div class="ttname"><a href="structWidget__t.html#ada1de5e6a955dc81fa956c9e7f2d2062">Widget_t::flags</a></div><div class="ttdeci">long int flags</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00307">xwidget.h:307</a></div></div>
+<div class="ttc" id="structChildlist__t_html_abf81fe823696baae53ff77036227f0c8"><div class="ttname"><a href="structChildlist__t.html#abf81fe823696baae53ff77036227f0c8">Childlist_t::cap</a></div><div class="ttdeci">int cap</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00052">xchildlist.h:52</a></div></div>
+<div class="ttc" id="structXputty_html_ab185ae4fd00ee1930c61e0440734878f"><div class="ttname"><a href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">Xputty::dpy</a></div><div class="ttdeci">Display * dpy</div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00168">xputty.h:168</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a57256a97c272561094da1b7ae5c57638"></a>
@@ -167,15 +215,21 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>childlist_destroy - free the childlist </p>
+<p>childlist_destroy - internal use to free the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> <br />
+ You usually didn't need to call this </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list. ">Childlist_t</a> </td></tr>
+    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xchildlist_8c_source.html#l00038">38</a> of file <a class="el" href="xchildlist_8c_source.html">xchildlist.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xchildlist_8h_source.html#l00048">Childlist_t::childs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                               {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span>(childlist) free(childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a>);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div><div class="ttc" id="structChildlist__t_html_a093a27797dc1a2819546ceb857b3db1a"><div class="ttname"><a href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">Childlist_t::childs</a></div><div class="ttdeci">Widget_t ** childs</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00048">xchildlist.h:48</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a54b8a01a41d48965bd02c5269d0f2103"></a>
@@ -204,16 +258,22 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>childlist_find_child - find a child in a the childlist </p>
+<p>childlist_find_child - find a child in a the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> this could be sued to check if a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> is a child of a other <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list. ">Childlist_t</a> </td></tr>
+    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> </td></tr>
     <tr><td class="paramname">*child</td><td>- pointer to the child to find </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>int - return position in childlist or -1 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>int - return position in childlist or -1 when not found </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xchildlist_8c_source.html#l00071">71</a> of file <a class="el" href="xchildlist_8c_source.html">xchildlist.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xchildlist_8h_source.html#l00048">Childlist_t::childs</a>, and <a class="el" href="xchildlist_8h_source.html#l00054">Childlist_t::elem</a>.</p>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                                                  {</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">int</span> i = 0;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">for</span>(;i&lt;childlist-&gt;<a class="code" href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">elem</a>;i++) {</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span>(childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a>[i] == child) {</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">return</span> i;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div><div class="ttc" id="structChildlist__t_html_a5d7a8d584c55c0496e5710d9a6f4282f"><div class="ttname"><a href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">Childlist_t::elem</a></div><div class="ttdeci">int elem</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00054">xchildlist.h:54</a></div></div>
+<div class="ttc" id="structChildlist__t_html_a093a27797dc1a2819546ceb857b3db1a"><div class="ttname"><a href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">Childlist_t::childs</a></div><div class="ttdeci">Widget_t ** childs</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00048">xchildlist.h:48</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a7c893543e51daded2aa5b6a9b252932b"></a>
@@ -242,16 +302,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>childlist_find_widget - find a child <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> in a the childlist </p>
+<p>childlist_find_widget - find a child <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> in a the childlist by given the Window id </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list. ">Childlist_t</a> </td></tr>
-    <tr><td class="paramname">child_window</td><td>- the window to find the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> for </td></tr>
+    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> </td></tr>
+    <tr><td class="paramname">child_window</td><td>- the Window to find the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> for </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Widget_t* - return pointer to WiDget or NULL </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>int - return position in childlist or -1 when not found </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xchildlist_8c_source.html#l00081">81</a> of file <a class="el" href="xchildlist_8c_source.html">xchildlist.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xchildlist_8h_source.html#l00048">Childlist_t::childs</a>, <a class="el" href="xchildlist_8h_source.html#l00054">Childlist_t::elem</a>, and <a class="el" href="xwidget_8h_source.html#l00285">Widget_t::widget</a>.</p>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                                                       {</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">int</span> i = childlist-&gt;<a class="code" href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">elem</a>-1;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">for</span>(;i&gt;-1;i--) {</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">if</span>(childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a>[i]-&gt;<a class="code" href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">widget</a> == child_window) {</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">return</span> i;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div><div class="ttc" id="structWidget__t_html_acb2bfb41674371ee1220a9d6a2d89fb1"><div class="ttname"><a href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">Widget_t::widget</a></div><div class="ttdeci">Window widget</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00285">xwidget.h:285</a></div></div>
+<div class="ttc" id="structChildlist__t_html_a5d7a8d584c55c0496e5710d9a6f4282f"><div class="ttname"><a href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">Childlist_t::elem</a></div><div class="ttdeci">int elem</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00054">xchildlist.h:54</a></div></div>
+<div class="ttc" id="structChildlist__t_html_a093a27797dc1a2819546ceb857b3db1a"><div class="ttname"><a href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">Childlist_t::childs</a></div><div class="ttdeci">Widget_t ** childs</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00048">xchildlist.h:48</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af130af096a2f8b3a807e7e2dcf0ee6c0"></a>
@@ -270,15 +337,20 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>childlist_has_child - check if childlist contain a child </p>
+<p>childlist_has_child - check if a <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> contain a child </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list. ">Childlist_t</a> </td></tr>
+    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>int - return element counter value </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>int - return element counter value 0 when <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> didn't contain a child </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xchildlist_8c_source.html#l00091">91</a> of file <a class="el" href="xchildlist_8c_source.html">xchildlist.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xchildlist_8h_source.html#l00054">Childlist_t::elem</a>.</p>
+<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                {</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> childlist-&gt;<a class="code" href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">elem</a>;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div><div class="ttc" id="structChildlist__t_html_a5d7a8d584c55c0496e5710d9a6f4282f"><div class="ttname"><a href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">Childlist_t::elem</a></div><div class="ttdeci">int elem</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00054">xchildlist.h:54</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad47bf3695fdf0c67bc059e4ce25c4639"></a>
@@ -297,15 +369,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>childlist_init - allocate the array to min size </p>
+<p>childlist_init - internal use to allocate the array to min size <br />
+ You usually didn't need to call this </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list. ">Childlist_t</a> </td></tr>
+    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xchildlist_8c_source.html#l00025">25</a> of file <a class="el" href="xchildlist_8c_source.html">xchildlist.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xchildlist_8h_source.html#l00052">Childlist_t::cap</a>, <a class="el" href="xchildlist_8h_source.html#l00048">Childlist_t::childs</a>, <a class="el" href="xchildlist_8h_source.html#l00054">Childlist_t::elem</a>, and <a class="el" href="xchildlist_8h_source.html#l00050">Childlist_t::size</a>.</p>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                            {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a> = (<a class="code" href="structWidget__t.html">Widget_t</a>**)malloc(<span class="keyword">sizeof</span>(<a class="code" href="structWidget__t.html">Widget_t</a>*) * 4);</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    assert(childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a> != NULL);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    memset(childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a>, 0, 4 * <span class="keyword">sizeof</span>(<a class="code" href="structWidget__t.html">Widget_t</a>*));</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    childlist-&gt;<a class="code" href="structChildlist__t.html#abf81fe823696baae53ff77036227f0c8">cap</a> =4;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    childlist-&gt;<a class="code" href="structChildlist__t.html#a3045339822c393689c6fac8b8a2a4457">size</a> = <span class="keyword">sizeof</span>(childlist);</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    childlist-&gt;<a class="code" href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">elem</a> = 0;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">int</span> i = 0;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">for</span>(;i&lt;childlist-&gt;<a class="code" href="structChildlist__t.html#abf81fe823696baae53ff77036227f0c8">cap</a>;i++) {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a>[i] = NULL;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div><div class="ttc" id="structChildlist__t_html_a5d7a8d584c55c0496e5710d9a6f4282f"><div class="ttname"><a href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">Childlist_t::elem</a></div><div class="ttdeci">int elem</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00054">xchildlist.h:54</a></div></div>
+<div class="ttc" id="structChildlist__t_html_a093a27797dc1a2819546ceb857b3db1a"><div class="ttname"><a href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">Childlist_t::childs</a></div><div class="ttdeci">Widget_t ** childs</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00048">xchildlist.h:48</a></div></div>
+<div class="ttc" id="structWidget__t_html"><div class="ttname"><a href="structWidget__t.html">Widget_t</a></div><div class="ttdoc">Widget_t - struct to hold the basic Widget_t info. </div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00281">xwidget.h:281</a></div></div>
+<div class="ttc" id="structChildlist__t_html_a3045339822c393689c6fac8b8a2a4457"><div class="ttname"><a href="structChildlist__t.html#a3045339822c393689c6fac8b8a2a4457">Childlist_t::size</a></div><div class="ttdeci">size_t size</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00050">xchildlist.h:50</a></div></div>
+<div class="ttc" id="structChildlist__t_html_abf81fe823696baae53ff77036227f0c8"><div class="ttname"><a href="structChildlist__t.html#abf81fe823696baae53ff77036227f0c8">Childlist_t::cap</a></div><div class="ttdeci">int cap</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00052">xchildlist.h:52</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a6cdf6afd4fdf75550b6aca31ac42379c"></a>
@@ -334,24 +416,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>childlist_add_child - remove a child from the childlist </p>
+<p>childlist_remove_child - internal use to remove a child from the childlist <br />
+ You usually didn't need to call this </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list. ">Childlist_t</a> </td></tr>
+    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> </td></tr>
     <tr><td class="paramname">*child</td><td>- pointer to the child to remove </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xchildlist_8c_source.html#l00057">57</a> of file <a class="el" href="xchildlist_8c_source.html">xchildlist.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xchildlist_8c_source.html#l00071">childlist_find_child()</a>, <a class="el" href="xchildlist_8h_source.html#l00048">Childlist_t::childs</a>, and <a class="el" href="xchildlist_8h_source.html#l00054">Childlist_t::elem</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                                     {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (!childlist) <span class="keywordflow">return</span>;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">int</span> it = <a class="code" href="xchildlist_8c.html#a54b8a01a41d48965bd02c5269d0f2103">childlist_find_child</a>(childlist, child);</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span>(it &gt;= 0){</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a>[it] = NULL;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        childlist-&gt;<a class="code" href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">elem</a>--;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">int</span> i = it;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">for</span>(;i&lt;childlist-&gt;<a class="code" href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">elem</a>;i++) {</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a>[i] = childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a>[i+1];</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a>[childlist-&gt;<a class="code" href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">elem</a>+1] = NULL;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div><div class="ttc" id="structChildlist__t_html_a5d7a8d584c55c0496e5710d9a6f4282f"><div class="ttname"><a href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">Childlist_t::elem</a></div><div class="ttdeci">int elem</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00054">xchildlist.h:54</a></div></div>
+<div class="ttc" id="structChildlist__t_html_a093a27797dc1a2819546ceb857b3db1a"><div class="ttname"><a href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">Childlist_t::childs</a></div><div class="ttdeci">Widget_t ** childs</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00048">xchildlist.h:48</a></div></div>
+<div class="ttc" id="xchildlist_8c_html_a54b8a01a41d48965bd02c5269d0f2103"><div class="ttname"><a href="xchildlist_8c.html#a54b8a01a41d48965bd02c5269d0f2103">childlist_find_child</a></div><div class="ttdeci">int childlist_find_child(Childlist_t *childlist, Widget_t *child)</div><div class="ttdoc">childlist_find_child - find a child in a the Childlist_t this could be sued to check if a Widget_t is...</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8c_source.html#l00071">xchildlist.c:71</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_e9bbb68c42f81f311d39d9dbaefd3b8c.html">libxputty</a></li><li class="navelem"><a class="el" href="dir_36c8397ee67800846af2ba64e4b44ab7.html">xputty</a></li><li class="navelem"><a class="el" href="xchildlist_8c.html">xchildlist.c</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

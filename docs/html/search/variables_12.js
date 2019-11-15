@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['value',['value',['../structAdjustment__t.html#acb1f8fb06d9e505f9f50e9178256215c',1,'Adjustment_t']]],
-  ['value_5fchanged_5fcallback',['value_changed_callback',['../structFunc__t.html#acce396ccf3266886f0a6d28cf45761d3',1,'Func_t']]]
+  ['use_5ffilter',['use_filter',['../structFilePicker.html#a66385fe305358fe8b35d644a635bc7ec',1,'FilePicker']]],
+  ['user_5fcallback',['user_callback',['../structFunc__t.html#a1f089cb13a39764a1f980470a51db71b',1,'Func_t']]]
 ];

@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,15 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('xtooltip__private_8h.html','');});
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +90,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_1ec98ce50fa6ec55b40b8ffb1df38c3c.html">header</a></li><li class="navelem"><a class="el" href="dir_094f3e54857e9217bd4fa829cdaa54eb.html">widgets</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
@@ -78,13 +104,13 @@ Include dependency graph for xtooltip_private.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="xtooltip__private_8h__incl.png" border="0" usemap="#xtooltip__private_8h" alt=""/></div>
 <map name="xtooltip__private_8h" id="xtooltip__private_8h">
-<area shape="rect" id="node2" href="xtooltip_8h.html" title="xtooltip.h" alt="" coords="1027,80,1102,107"/>
-<area shape="rect" id="node3" href="xputty_8h.html" title="xputty.h" alt="" coords="1030,155,1099,181"/>
-<area shape="rect" id="node16" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1203,229,1281,256"/>
-<area shape="rect" id="node17" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="1306,229,1410,256"/>
-<area shape="rect" id="node18" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1435,229,1519,256"/>
-<area shape="rect" id="node19" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1543,229,1611,256"/>
-<area shape="rect" id="node20" href="xpngloader_8h.html" title="xpngloader.h" alt="" coords="1635,229,1731,256"/>
+<area shape="rect" id="node2" href="xtooltip_8h.html" title="xtooltip.h" alt="" coords="1053,80,1127,107"/>
+<area shape="rect" id="node3" href="xputty_8h.html" title="xputty.h" alt="" coords="1055,155,1125,181"/>
+<area shape="rect" id="node17" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1291,229,1369,256"/>
+<area shape="rect" id="node18" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="1394,229,1498,256"/>
+<area shape="rect" id="node19" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1523,229,1607,256"/>
+<area shape="rect" id="node20" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1631,229,1699,256"/>
+<area shape="rect" id="node21" href="xpngloader_8h.html" title="xpngloader.h" alt="" coords="1723,229,1819,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -126,6 +152,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="xtooltip__private_8h_source.html#l00025">25</a> of file <a class="el" href="xtooltip__private_8h_source.html">xtooltip_private.h</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
@@ -166,6 +194,19 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <p>show label </p>
 
+<p class="definition">Definition at line <a class="el" href="xtooltip__private_8c_source.html#l00034">34</a> of file <a class="el" href="xtooltip__private_8c_source.html">xtooltip_private.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xwidget_8h_source.html#l00283">Widget_t::app</a>, <a class="el" href="xwidget_8h_source.html#l00301">Widget_t::crb</a>, <a class="el" href="xputty_8h_source.html#l00168">Xputty::dpy</a>, <a class="el" href="xcolor_8c_source.html#l00132">get_color_state()</a>, <a class="el" href="xwidget_8h_source.html#l00309">Widget_t::label</a>, <a class="el" href="xcolor_8c_source.html#l00159">use_bg_color_scheme()</a>, <a class="el" href="xcolor_8c_source.html#l00173">use_text_color_scheme()</a>, and <a class="el" href="xwidget_8h_source.html#l00285">Widget_t::widget</a>.</p>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                              {</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="structWidget__t.html">Widget_t</a> *w = (<a class="code" href="structWidget__t.html">Widget_t</a>*)w_;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (!w) <span class="keywordflow">return</span>;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    XWindowAttributes attrs;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    XGetWindowAttributes(w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, (Window)w-&gt;<a class="code" href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">widget</a>, &amp;attrs);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span> (attrs.map_state != IsViewable) <span class="keywordflow">return</span>;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> width = attrs.width;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">int</span> height = attrs.height;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="xcolor_8h.html#a335aed33f3b2fca02beb85375186a5c9">use_bg_color_scheme</a>(w, <a class="code" href="xcolor_8h.html#a02fe4f3a29af917cc1de5f8b5c4b4171">get_color_state</a>(w));</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    cairo_paint (w-&gt;<a class="code" href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">crb</a>);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    cairo_text_extents_t extents;<span class="comment"></span></div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">    /** show label **/</span></div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="xcolor_8h.html#a082dd5329f6c1e402747b9ecfa1dceae">use_text_color_scheme</a>(w, <a class="code" href="xcolor_8h.html#a02fe4f3a29af917cc1de5f8b5c4b4171">get_color_state</a>(w));</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    cairo_set_font_size (w-&gt;<a class="code" href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">crb</a>, 12);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    cairo_select_font_face (w-&gt;<a class="code" href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">crb</a>, <span class="stringliteral">&quot;Sans&quot;</span>, CAIRO_FONT_SLANT_NORMAL,</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                               CAIRO_FONT_WEIGHT_BOLD);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    cairo_text_extents(w-&gt;<a class="code" href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">crb</a>,w-&gt;<a class="code" href="structWidget__t.html#a952020107ac1f6d9a37b4f978f77b61c">label</a> , &amp;extents);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    cairo_move_to (w-&gt;<a class="code" href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">crb</a>, (width-extents.width)/2., height+5 - extents.height );</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    cairo_show_text(w-&gt;<a class="code" href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">crb</a>, w-&gt;<a class="code" href="structWidget__t.html#a952020107ac1f6d9a37b4f978f77b61c">label</a>);</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    </div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div><div class="ttc" id="structWidget__t_html_acb2bfb41674371ee1220a9d6a2d89fb1"><div class="ttname"><a href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">Widget_t::widget</a></div><div class="ttdeci">Window widget</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00285">xwidget.h:285</a></div></div>
+<div class="ttc" id="structWidget__t_html_a952020107ac1f6d9a37b4f978f77b61c"><div class="ttname"><a href="structWidget__t.html#a952020107ac1f6d9a37b4f978f77b61c">Widget_t::label</a></div><div class="ttdeci">const char * label</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00309">xwidget.h:309</a></div></div>
+<div class="ttc" id="structWidget__t_html"><div class="ttname"><a href="structWidget__t.html">Widget_t</a></div><div class="ttdoc">Widget_t - struct to hold the basic Widget_t info. </div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00281">xwidget.h:281</a></div></div>
+<div class="ttc" id="structWidget__t_html_a06eaa5b134c47983fd965e745cdbaa3b"><div class="ttname"><a href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">Widget_t::app</a></div><div class="ttdeci">Xputty * app</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00283">xwidget.h:283</a></div></div>
+<div class="ttc" id="xcolor_8h_html_a082dd5329f6c1e402747b9ecfa1dceae"><div class="ttname"><a href="xcolor_8h.html#a082dd5329f6c1e402747b9ecfa1dceae">use_text_color_scheme</a></div><div class="ttdeci">void use_text_color_scheme(Widget_t *w, Color_state st)</div><div class="ttdoc">use_text_color_scheme - use text Colors to paint on Widget_t </div><div class="ttdef"><b>Definition:</b> <a href="xcolor_8c_source.html#l00173">xcolor.c:173</a></div></div>
+<div class="ttc" id="xcolor_8h_html_a02fe4f3a29af917cc1de5f8b5c4b4171"><div class="ttname"><a href="xcolor_8h.html#a02fe4f3a29af917cc1de5f8b5c4b4171">get_color_state</a></div><div class="ttdeci">Color_state get_color_state(Widget_t *wid)</div><div class="ttdoc">get_color_state - get the Color_state to use in relation to the Widget_t state </div><div class="ttdef"><b>Definition:</b> <a href="xcolor_8c_source.html#l00132">xcolor.c:132</a></div></div>
+<div class="ttc" id="structWidget__t_html_ad98022ee160d4c0906110868fc9e5664"><div class="ttname"><a href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">Widget_t::crb</a></div><div class="ttdeci">cairo_t * crb</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00301">xwidget.h:301</a></div></div>
+<div class="ttc" id="xcolor_8h_html_a335aed33f3b2fca02beb85375186a5c9"><div class="ttname"><a href="xcolor_8h.html#a335aed33f3b2fca02beb85375186a5c9">use_bg_color_scheme</a></div><div class="ttdeci">void use_bg_color_scheme(Widget_t *w, Color_state st)</div><div class="ttdoc">use_bg_color_scheme - use background Colors to paint on Widget_t </div><div class="ttdef"><b>Definition:</b> <a href="xcolor_8c_source.html#l00159">xcolor.c:159</a></div></div>
+<div class="ttc" id="structXputty_html_ab185ae4fd00ee1930c61e0440734878f"><div class="ttname"><a href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">Xputty::dpy</a></div><div class="ttdeci">Display * dpy</div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00168">xputty.h:168</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a8a83b793f72b2a2fd5c08a57947515b0"></a>
@@ -187,20 +228,34 @@ Functions</h2></td></tr>
 <p>_get_width - get the width of a tooltip text and resize the tooltip widget to match the size </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*w</td><td>- the tooltip <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </td></tr>
+    <tr><td class="paramname">*w</td><td>- the tooltip <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xtooltip__private_8c_source.html#l00025">25</a> of file <a class="el" href="xtooltip__private_8c_source.html">xtooltip_private.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xwidget_8h_source.html#l00283">Widget_t::app</a>, <a class="el" href="xwidget_8h_source.html#l00301">Widget_t::crb</a>, <a class="el" href="xputty_8h_source.html#l00168">Xputty::dpy</a>, <a class="el" href="xwidget_8h_source.html#l00309">Widget_t::label</a>, <a class="el" href="xputty_8h_source.html#l00081">max</a>, and <a class="el" href="xwidget_8h_source.html#l00285">Widget_t::widget</a>.</p>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                             {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    cairo_text_extents_t extents;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    cairo_set_font_size (w-&gt;<a class="code" href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">crb</a>, 12);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    cairo_select_font_face (w-&gt;<a class="code" href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">crb</a>, <span class="stringliteral">&quot;Sans&quot;</span>, CAIRO_FONT_SLANT_NORMAL,</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                               CAIRO_FONT_WEIGHT_BOLD);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    cairo_text_extents(w-&gt;<a class="code" href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">crb</a>,w-&gt;<a class="code" href="structWidget__t.html#a952020107ac1f6d9a37b4f978f77b61c">label</a> , &amp;extents);</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    XResizeWindow (w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, w-&gt;<a class="code" href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">widget</a>, <a class="code" href="xputty_8h.html#ac39d9cef6a5e030ba8d9e11121054268">max</a>(1, (<span class="keywordtype">int</span>)extents.width+40), 25);    </div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div><div class="ttc" id="structWidget__t_html_acb2bfb41674371ee1220a9d6a2d89fb1"><div class="ttname"><a href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">Widget_t::widget</a></div><div class="ttdeci">Window widget</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00285">xwidget.h:285</a></div></div>
+<div class="ttc" id="structWidget__t_html_a952020107ac1f6d9a37b4f978f77b61c"><div class="ttname"><a href="structWidget__t.html#a952020107ac1f6d9a37b4f978f77b61c">Widget_t::label</a></div><div class="ttdeci">const char * label</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00309">xwidget.h:309</a></div></div>
+<div class="ttc" id="structWidget__t_html_a06eaa5b134c47983fd965e745cdbaa3b"><div class="ttname"><a href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">Widget_t::app</a></div><div class="ttdeci">Xputty * app</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00283">xwidget.h:283</a></div></div>
+<div class="ttc" id="structWidget__t_html_ad98022ee160d4c0906110868fc9e5664"><div class="ttname"><a href="structWidget__t.html#ad98022ee160d4c0906110868fc9e5664">Widget_t::crb</a></div><div class="ttdeci">cairo_t * crb</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00301">xwidget.h:301</a></div></div>
+<div class="ttc" id="xputty_8h_html_ac39d9cef6a5e030ba8d9e11121054268"><div class="ttname"><a href="xputty_8h.html#ac39d9cef6a5e030ba8d9e11121054268">max</a></div><div class="ttdeci">#define max(x, y)</div><div class="ttdoc">max - set a minimal value (x) as return value </div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00081">xputty.h:81</a></div></div>
+<div class="ttc" id="structXputty_html_ab185ae4fd00ee1930c61e0440734878f"><div class="ttname"><a href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">Xputty::dpy</a></div><div class="ttdeci">Display * dpy</div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00168">xputty.h:168</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_e9bbb68c42f81f311d39d9dbaefd3b8c.html">libxputty</a></li><li class="navelem"><a class="el" href="dir_36c8397ee67800846af2ba64e4b44ab7.html">xputty</a></li><li class="navelem"><a class="el" href="dir_6130975627a7ed0ca0cc78db073e0675.html">header</a></li><li class="navelem"><a class="el" href="dir_7f5d28ed66971fa1d1183d564fcb7f16.html">widgets</a></li><li class="navelem"><a class="el" href="xtooltip__private_8h.html">xtooltip_private.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('globals_func.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -65,103 +95,103 @@ $(function() {
 
 <h3><a id="index__"></a>- _ -</h3><ul>
 <li>_button_combobox_released()
-: <a class="el" href="xcombobox__private_8c.html#abc0708eea9c0678b957602bcaa0f5aa5">xcombobox_private.c</a>
-, <a class="el" href="xcombobox__private_8h.html#abc0708eea9c0678b957602bcaa0f5aa5">xcombobox_private.h</a>
+: <a class="el" href="xcombobox__private_8h.html#abc0708eea9c0678b957602bcaa0f5aa5">xcombobox_private.h</a>
+, <a class="el" href="xcombobox__private_8c.html#abc0708eea9c0678b957602bcaa0f5aa5">xcombobox_private.c</a>
 </li>
 <li>_button_press()
-: <a class="el" href="xwidget__private_8h.html#a58ae554632b1c9f7afc73aa159a1dc0c">xwidget_private.h</a>
-, <a class="el" href="xwidget__private_8c.html#a58ae554632b1c9f7afc73aa159a1dc0c">xwidget_private.c</a>
+: <a class="el" href="xwidget__private_8c.html#a58ae554632b1c9f7afc73aa159a1dc0c">xwidget_private.c</a>
+, <a class="el" href="xwidget__private_8h.html#a58ae554632b1c9f7afc73aa159a1dc0c">xwidget_private.h</a>
 </li>
 <li>_button_pressed()
-: <a class="el" href="xbutton__private_8c.html#a28a4fe06426208c720b93c1fa51aff49">xbutton_private.c</a>
-, <a class="el" href="xbutton__private_8h.html#a28a4fe06426208c720b93c1fa51aff49">xbutton_private.h</a>
+: <a class="el" href="xbutton__private_8h.html#a28a4fe06426208c720b93c1fa51aff49">xbutton_private.h</a>
+, <a class="el" href="xbutton__private_8c.html#a28a4fe06426208c720b93c1fa51aff49">xbutton_private.c</a>
 </li>
 <li>_button_released()
-: <a class="el" href="xbutton__private_8h.html#a0168623590cbb3b5f19ae0878ea41a5f">xbutton_private.h</a>
-, <a class="el" href="xbutton__private_8c.html#a0168623590cbb3b5f19ae0878ea41a5f">xbutton_private.c</a>
+: <a class="el" href="xbutton__private_8c.html#a0168623590cbb3b5f19ae0878ea41a5f">xbutton_private.c</a>
+, <a class="el" href="xbutton__private_8h.html#a0168623590cbb3b5f19ae0878ea41a5f">xbutton_private.h</a>
 </li>
 <li>_check_enum()
-: <a class="el" href="xwidget__private_8c.html#a3fa824e7c223fab91f65dbdcd3e07f18">xwidget_private.c</a>
-, <a class="el" href="xwidget__private_8h.html#a3fa824e7c223fab91f65dbdcd3e07f18">xwidget_private.h</a>
+: <a class="el" href="xwidget__private_8h.html#a3fa824e7c223fab91f65dbdcd3e07f18">xwidget_private.h</a>
+, <a class="el" href="xwidget__private_8c.html#a3fa824e7c223fab91f65dbdcd3e07f18">xwidget_private.c</a>
 </li>
 <li>_check_grab()
-: <a class="el" href="xwidget__private_8c.html#a4268fe28baeb0a66234a976f14c6975b">xwidget_private.c</a>
-, <a class="el" href="xwidget__private_8h.html#a4268fe28baeb0a66234a976f14c6975b">xwidget_private.h</a>
+: <a class="el" href="xwidget__private_8h.html#a4268fe28baeb0a66234a976f14c6975b">xwidget_private.h</a>
+, <a class="el" href="xwidget__private_8c.html#a4268fe28baeb0a66234a976f14c6975b">xwidget_private.c</a>
 </li>
 <li>_check_item_button_pressed()
-: <a class="el" href="xmenu__private_8c.html#aaa6e146ce3b89710c22d9fd418824eb4">xmenu_private.c</a>
-, <a class="el" href="xmenu__private_8h.html#aaa6e146ce3b89710c22d9fd418824eb4">xmenu_private.h</a>
+: <a class="el" href="xmenu__private_8h.html#aaa6e146ce3b89710c22d9fd418824eb4">xmenu_private.h</a>
+, <a class="el" href="xmenu__private_8c.html#aaa6e146ce3b89710c22d9fd418824eb4">xmenu_private.c</a>
 </li>
 <li>_check_keymap()
-: <a class="el" href="xwidget__private_8h.html#ae2aeefa7b35ff7e10a148e8438a12dc9">xwidget_private.h</a>
-, <a class="el" href="xwidget__private_8c.html#ae2aeefa7b35ff7e10a148e8438a12dc9">xwidget_private.c</a>
+: <a class="el" href="xwidget__private_8c.html#ae2aeefa7b35ff7e10a148e8438a12dc9">xwidget_private.c</a>
+, <a class="el" href="xwidget__private_8h.html#ae2aeefa7b35ff7e10a148e8438a12dc9">xwidget_private.h</a>
 </li>
 <li>_childlist_add_elem()
-: <a class="el" href="xchildlist__private_8c.html#a4417a26df5d336bfff97d4210e0291fe">xchildlist_private.c</a>
-, <a class="el" href="xchildlist__private_8h.html#a4417a26df5d336bfff97d4210e0291fe">xchildlist_private.h</a>
+: <a class="el" href="xchildlist__private_8h.html#a4417a26df5d336bfff97d4210e0291fe">xchildlist_private.h</a>
+, <a class="el" href="xchildlist__private_8c.html#a4417a26df5d336bfff97d4210e0291fe">xchildlist_private.c</a>
 </li>
 <li>_combobox_button_released()
-: <a class="el" href="xcombobox__private_8c.html#a84eda740a4a57c9d54925a18ec85c011">xcombobox_private.c</a>
-, <a class="el" href="xcombobox__private_8h.html#a84eda740a4a57c9d54925a18ec85c011">xcombobox_private.h</a>
+: <a class="el" href="xcombobox__private_8h.html#a84eda740a4a57c9d54925a18ec85c011">xcombobox_private.h</a>
+, <a class="el" href="xcombobox__private_8c.html#a84eda740a4a57c9d54925a18ec85c011">xcombobox_private.c</a>
 </li>
 <li>_configure_listbox()
-: <a class="el" href="xlistbox__private_8c.html#ad64451a6d0a6f7dd5fc84fbccb25ce2e">xlistbox_private.c</a>
-, <a class="el" href="xlistbox__private_8h.html#ad64451a6d0a6f7dd5fc84fbccb25ce2e">xlistbox_private.h</a>
+: <a class="el" href="xlistbox__private_8h.html#ad64451a6d0a6f7dd5fc84fbccb25ce2e">xlistbox_private.h</a>
+, <a class="el" href="xlistbox__private_8c.html#ad64451a6d0a6f7dd5fc84fbccb25ce2e">xlistbox_private.c</a>
 </li>
 <li>_configure_listview()
-: <a class="el" href="xlistview__private_8c.html#a1e29841fdc62695477104f53e9f39908">xlistview_private.c</a>
-, <a class="el" href="xlistview__private_8h.html#a1e29841fdc62695477104f53e9f39908">xlistview_private.h</a>
+: <a class="el" href="xlistview__private_8h.html#a1e29841fdc62695477104f53e9f39908">xlistview_private.h</a>
+, <a class="el" href="xlistview__private_8c.html#a1e29841fdc62695477104f53e9f39908">xlistview_private.c</a>
 </li>
 <li>_configure_menu()
-: <a class="el" href="xmenu__private_8c.html#a395bed5106eb28eca9f522815a83b04d">xmenu_private.c</a>
-, <a class="el" href="xmenu__private_8h.html#a395bed5106eb28eca9f522815a83b04d">xmenu_private.h</a>
+: <a class="el" href="xmenu__private_8h.html#a395bed5106eb28eca9f522815a83b04d">xmenu_private.h</a>
+, <a class="el" href="xmenu__private_8c.html#a395bed5106eb28eca9f522815a83b04d">xmenu_private.c</a>
 </li>
 <li>_create_horizontal_meter_image()
-: <a class="el" href="xmeter__private_8c.html#aee530ee5c40d88eb400cfa56394c551e">xmeter_private.c</a>
-, <a class="el" href="xmeter__private_8h.html#aee530ee5c40d88eb400cfa56394c551e">xmeter_private.h</a>
+: <a class="el" href="xmeter__private_8h.html#aee530ee5c40d88eb400cfa56394c551e">xmeter_private.h</a>
+, <a class="el" href="xmeter__private_8c.html#aee530ee5c40d88eb400cfa56394c551e">xmeter_private.c</a>
 </li>
 <li>_create_vertical_meter_image()
-: <a class="el" href="xmeter__private_8c.html#a49d6084ec5896232fa328afaf71fd531">xmeter_private.c</a>
-, <a class="el" href="xmeter__private_8h.html#a49d6084ec5896232fa328afaf71fd531">xmeter_private.h</a>
+: <a class="el" href="xmeter__private_8h.html#a49d6084ec5896232fa328afaf71fd531">xmeter_private.h</a>
+, <a class="el" href="xmeter__private_8c.html#a49d6084ec5896232fa328afaf71fd531">xmeter_private.c</a>
 </li>
 <li>_draw_button()
-: <a class="el" href="xbutton__private_8h.html#a555079b56b3d52f2a74c20f6ebd05e29">xbutton_private.h</a>
-, <a class="el" href="xbutton__private_8c.html#a555079b56b3d52f2a74c20f6ebd05e29">xbutton_private.c</a>
+: <a class="el" href="xbutton__private_8c.html#a555079b56b3d52f2a74c20f6ebd05e29">xbutton_private.c</a>
+, <a class="el" href="xbutton__private_8h.html#a555079b56b3d52f2a74c20f6ebd05e29">xbutton_private.h</a>
 </li>
 <li>_draw_button_base()
 : <a class="el" href="xbutton__private_8c.html#a206eb3a472de4ea0a5d6b60add214130">xbutton_private.c</a>
 </li>
 <li>_draw_check_box()
-: <a class="el" href="xbutton__private_8c.html#a9517adc82343f559ff950b4cd632931d">xbutton_private.c</a>
-, <a class="el" href="xbutton__private_8h.html#a9517adc82343f559ff950b4cd632931d">xbutton_private.h</a>
+: <a class="el" href="xbutton__private_8h.html#a9517adc82343f559ff950b4cd632931d">xbutton_private.h</a>
+, <a class="el" href="xbutton__private_8c.html#a9517adc82343f559ff950b4cd632931d">xbutton_private.c</a>
 </li>
 <li>_draw_check_button()
-: <a class="el" href="xbutton__private_8c.html#a4b59433c1a0932889318dcd64943a299">xbutton_private.c</a>
-, <a class="el" href="xbutton__private_8h.html#a4b59433c1a0932889318dcd64943a299">xbutton_private.h</a>
+: <a class="el" href="xbutton__private_8h.html#a4b59433c1a0932889318dcd64943a299">xbutton_private.h</a>
+, <a class="el" href="xbutton__private_8c.html#a4b59433c1a0932889318dcd64943a299">xbutton_private.c</a>
 </li>
 <li>_draw_check_item()
-: <a class="el" href="xmenu__private_8c.html#addbe0dd3f9bf221eee2a42364bf84b33">xmenu_private.c</a>
-, <a class="el" href="xmenu__private_8h.html#addbe0dd3f9bf221eee2a42364bf84b33">xmenu_private.h</a>
+: <a class="el" href="xmenu__private_8h.html#addbe0dd3f9bf221eee2a42364bf84b33">xmenu_private.h</a>
+, <a class="el" href="xmenu__private_8c.html#addbe0dd3f9bf221eee2a42364bf84b33">xmenu_private.c</a>
 </li>
 <li>_draw_combobox()
-: <a class="el" href="xcombobox__private_8c.html#a22c8837345e0b5dc1258d7141b2e42a6">xcombobox_private.c</a>
-, <a class="el" href="xcombobox__private_8h.html#a22c8837345e0b5dc1258d7141b2e42a6">xcombobox_private.h</a>
+: <a class="el" href="xcombobox__private_8h.html#a22c8837345e0b5dc1258d7141b2e42a6">xcombobox_private.h</a>
+, <a class="el" href="xcombobox__private_8c.html#a22c8837345e0b5dc1258d7141b2e42a6">xcombobox_private.c</a>
 </li>
 <li>_draw_combobox_button()
-: <a class="el" href="xcombobox__private_8c.html#a8e4721cab99e28a1c86ea35274e6b8a7">xcombobox_private.c</a>
-, <a class="el" href="xcombobox__private_8h.html#a8e4721cab99e28a1c86ea35274e6b8a7">xcombobox_private.h</a>
+: <a class="el" href="xcombobox__private_8h.html#a8e4721cab99e28a1c86ea35274e6b8a7">xcombobox_private.h</a>
+, <a class="el" href="xcombobox__private_8c.html#a8e4721cab99e28a1c86ea35274e6b8a7">xcombobox_private.c</a>
 </li>
 <li>_draw_h_meter()
-: <a class="el" href="xmeter__private_8c.html#a41992842235d5f89fa7563804be8ed5b">xmeter_private.c</a>
-, <a class="el" href="xmeter__private_8h.html#a41992842235d5f89fa7563804be8ed5b">xmeter_private.h</a>
+: <a class="el" href="xmeter__private_8h.html#a41992842235d5f89fa7563804be8ed5b">xmeter_private.h</a>
+, <a class="el" href="xmeter__private_8c.html#a41992842235d5f89fa7563804be8ed5b">xmeter_private.c</a>
 </li>
 <li>_draw_hmeter_scale()
-: <a class="el" href="xmeter__private_8c.html#a2ee549dbd9a9d3e9148feee634ce3243">xmeter_private.c</a>
-, <a class="el" href="xmeter__private_8h.html#a2ee549dbd9a9d3e9148feee634ce3243">xmeter_private.h</a>
+: <a class="el" href="xmeter__private_8h.html#a2ee549dbd9a9d3e9148feee634ce3243">xmeter_private.h</a>
+, <a class="el" href="xmeter__private_8c.html#a2ee549dbd9a9d3e9148feee634ce3243">xmeter_private.c</a>
 </li>
 <li>_draw_hslider()
-: <a class="el" href="xslider__private_8c.html#a65b279b4fc239e85326dfd50e65b6574">xslider_private.c</a>
-, <a class="el" href="xslider__private_8h.html#a65b279b4fc239e85326dfd50e65b6574">xslider_private.h</a>
+: <a class="el" href="xslider__private_8h.html#a65b279b4fc239e85326dfd50e65b6574">xslider_private.h</a>
+, <a class="el" href="xslider__private_8c.html#a65b279b4fc239e85326dfd50e65b6574">xslider_private.c</a>
 </li>
 <li>_draw_image_button()
 : <a class="el" href="xbutton__private_8c.html#a6f1d324e2a185fe9fb7d471201417513">xbutton_private.c</a>
@@ -170,224 +200,227 @@ $(function() {
 : <a class="el" href="xbutton__private_8c.html#af8777941fd2b6aad0242fecd27e77870">xbutton_private.c</a>
 </li>
 <li>_draw_image_knob()
-: <a class="el" href="xknob__private_8c.html#af9a25b071b33bd60b42c8f6c5004ea45">xknob_private.c</a>
-, <a class="el" href="xknob__private_8h.html#af9a25b071b33bd60b42c8f6c5004ea45">xknob_private.h</a>
+: <a class="el" href="xknob__private_8h.html#af9a25b071b33bd60b42c8f6c5004ea45">xknob_private.h</a>
+, <a class="el" href="xknob__private_8c.html#af9a25b071b33bd60b42c8f6c5004ea45">xknob_private.c</a>
 </li>
 <li>_draw_item()
-: <a class="el" href="xmenu__private_8c.html#a648db81750573ec3d553e89aebfe19bf">xmenu_private.c</a>
-, <a class="el" href="xmenu__private_8h.html#a648db81750573ec3d553e89aebfe19bf">xmenu_private.h</a>
+: <a class="el" href="xmenu__private_8h.html#a648db81750573ec3d553e89aebfe19bf">xmenu_private.h</a>
+, <a class="el" href="xmenu__private_8c.html#a648db81750573ec3d553e89aebfe19bf">xmenu_private.c</a>
 </li>
 <li>_draw_knob()
-: <a class="el" href="xknob__private_8c.html#ab48efd3fb7699b427dc5ffdd10b99c6b">xknob_private.c</a>
-, <a class="el" href="xknob__private_8h.html#ab48efd3fb7699b427dc5ffdd10b99c6b">xknob_private.h</a>
+: <a class="el" href="xknob__private_8h.html#ab48efd3fb7699b427dc5ffdd10b99c6b">xknob_private.h</a>
+, <a class="el" href="xknob__private_8c.html#ab48efd3fb7699b427dc5ffdd10b99c6b">xknob_private.c</a>
 </li>
 <li>_draw_label()
-: <a class="el" href="xlabel__private_8c.html#afa30ba9e35ddd3663067fac7a0d40ebd">xlabel_private.c</a>
-, <a class="el" href="xlabel__private_8h.html#afa30ba9e35ddd3663067fac7a0d40ebd">xlabel_private.h</a>
+: <a class="el" href="xlabel__private_8h.html#afa30ba9e35ddd3663067fac7a0d40ebd">xlabel_private.h</a>
+, <a class="el" href="xlabel__private_8c.html#afa30ba9e35ddd3663067fac7a0d40ebd">xlabel_private.c</a>
 </li>
 <li>_draw_list()
-: <a class="el" href="xlistview__private_8c.html#a916b49bea119c4ab8f94181d3d561930">xlistview_private.c</a>
-, <a class="el" href="xlistview__private_8h.html#a916b49bea119c4ab8f94181d3d561930">xlistview_private.h</a>
+: <a class="el" href="xlistview__private_8h.html#a916b49bea119c4ab8f94181d3d561930">xlistview_private.h</a>
+, <a class="el" href="xlistview__private_8c.html#a916b49bea119c4ab8f94181d3d561930">xlistview_private.c</a>
 </li>
 <li>_draw_listbox()
-: <a class="el" href="xlistbox__private_8c.html#a9e1e54875263a12c88b4e18a61bf8585">xlistbox_private.c</a>
-, <a class="el" href="xlistbox__private_8h.html#a9e1e54875263a12c88b4e18a61bf8585">xlistbox_private.h</a>
+: <a class="el" href="xlistbox__private_8h.html#a9e1e54875263a12c88b4e18a61bf8585">xlistbox_private.h</a>
+, <a class="el" href="xlistbox__private_8c.html#a9e1e54875263a12c88b4e18a61bf8585">xlistbox_private.c</a>
 </li>
 <li>_draw_listbox_item()
-: <a class="el" href="xlistbox__private_8c.html#a34e3ac67fd24ab21a1a3d2a7a045e526">xlistbox_private.c</a>
-, <a class="el" href="xlistbox__private_8h.html#a34e3ac67fd24ab21a1a3d2a7a045e526">xlistbox_private.h</a>
+: <a class="el" href="xlistbox__private_8h.html#a34e3ac67fd24ab21a1a3d2a7a045e526">xlistbox_private.h</a>
+, <a class="el" href="xlistbox__private_8c.html#a34e3ac67fd24ab21a1a3d2a7a045e526">xlistbox_private.c</a>
 </li>
 <li>_draw_listbox_viewslider()
-: <a class="el" href="xlistbox__private_8c.html#a1ef516ae0fd7c2c1fd8c85e02daab9db">xlistbox_private.c</a>
-, <a class="el" href="xlistbox__private_8h.html#a1ef516ae0fd7c2c1fd8c85e02daab9db">xlistbox_private.h</a>
+: <a class="el" href="xlistbox__private_8h.html#a1ef516ae0fd7c2c1fd8c85e02daab9db">xlistbox_private.h</a>
+, <a class="el" href="xlistbox__private_8c.html#a1ef516ae0fd7c2c1fd8c85e02daab9db">xlistbox_private.c</a>
 </li>
 <li>_draw_listview()
-: <a class="el" href="xlistview__private_8c.html#aee979f35d1407141c65a0a621c02d56d">xlistview_private.c</a>
-, <a class="el" href="xlistview__private_8h.html#aee979f35d1407141c65a0a621c02d56d">xlistview_private.h</a>
+: <a class="el" href="xlistview__private_8h.html#aee979f35d1407141c65a0a621c02d56d">xlistview_private.h</a>
+, <a class="el" href="xlistview__private_8c.html#aee979f35d1407141c65a0a621c02d56d">xlistview_private.c</a>
 </li>
 <li>_draw_listview_viewslider()
-: <a class="el" href="xlistview__private_8c.html#a2e4a2e5b7f9d5d55cd85dcfd0d479fbe">xlistview_private.c</a>
-, <a class="el" href="xlistview__private_8h.html#a2e4a2e5b7f9d5d55cd85dcfd0d479fbe">xlistview_private.h</a>
+: <a class="el" href="xlistview__private_8h.html#a2e4a2e5b7f9d5d55cd85dcfd0d479fbe">xlistview_private.h</a>
+, <a class="el" href="xlistview__private_8c.html#a2e4a2e5b7f9d5d55cd85dcfd0d479fbe">xlistview_private.c</a>
 </li>
 <li>_draw_menu()
-: <a class="el" href="xmenu__private_8c.html#aecf82ae7946323d071617983c8d83825">xmenu_private.c</a>
-, <a class="el" href="xmenu__private_8h.html#aecf82ae7946323d071617983c8d83825">xmenu_private.h</a>
+: <a class="el" href="xmenu__private_8h.html#aecf82ae7946323d071617983c8d83825">xmenu_private.h</a>
+, <a class="el" href="xmenu__private_8c.html#aecf82ae7946323d071617983c8d83825">xmenu_private.c</a>
 </li>
 <li>_draw_on_off_button()
-: <a class="el" href="xbutton__private_8c.html#a92ba9f75be46be4869ac6439a3c53870">xbutton_private.c</a>
-, <a class="el" href="xbutton__private_8h.html#a92ba9f75be46be4869ac6439a3c53870">xbutton_private.h</a>
+: <a class="el" href="xbutton__private_8h.html#a92ba9f75be46be4869ac6439a3c53870">xbutton_private.h</a>
+, <a class="el" href="xbutton__private_8c.html#a92ba9f75be46be4869ac6439a3c53870">xbutton_private.c</a>
 </li>
 <li>_draw_ti_button()
-: <a class="el" href="xbutton__private_8c.html#abdbb2a0a2e7b10fea4d2147f8ef32248">xbutton_private.c</a>
-, <a class="el" href="xbutton__private_8h.html#abdbb2a0a2e7b10fea4d2147f8ef32248">xbutton_private.h</a>
+: <a class="el" href="xbutton__private_8h.html#abdbb2a0a2e7b10fea4d2147f8ef32248">xbutton_private.h</a>
+, <a class="el" href="xbutton__private_8c.html#abdbb2a0a2e7b10fea4d2147f8ef32248">xbutton_private.c</a>
 </li>
 <li>_draw_tooltip()
-: <a class="el" href="xtooltip__private_8c.html#adedb41fe387638e3c9bd5aff261de993">xtooltip_private.c</a>
-, <a class="el" href="xtooltip__private_8h.html#adedb41fe387638e3c9bd5aff261de993">xtooltip_private.h</a>
+: <a class="el" href="xtooltip__private_8h.html#adedb41fe387638e3c9bd5aff261de993">xtooltip_private.h</a>
+, <a class="el" href="xtooltip__private_8c.html#adedb41fe387638e3c9bd5aff261de993">xtooltip_private.c</a>
 </li>
 <li>_draw_v_meter()
-: <a class="el" href="xmeter__private_8c.html#aeeedf777c5371021a7041d9496c980a8">xmeter_private.c</a>
-, <a class="el" href="xmeter__private_8h.html#aeeedf777c5371021a7041d9496c980a8">xmeter_private.h</a>
+: <a class="el" href="xmeter__private_8h.html#aeeedf777c5371021a7041d9496c980a8">xmeter_private.h</a>
+, <a class="el" href="xmeter__private_8c.html#aeeedf777c5371021a7041d9496c980a8">xmeter_private.c</a>
 </li>
 <li>_draw_viewslider()
-: <a class="el" href="xmenu__private_8c.html#ae306de1c15572cbe282b404b9f81d0b1">xmenu_private.c</a>
-, <a class="el" href="xmenu__private_8h.html#ae306de1c15572cbe282b404b9f81d0b1">xmenu_private.h</a>
+: <a class="el" href="xmenu__private_8h.html#ae306de1c15572cbe282b404b9f81d0b1">xmenu_private.h</a>
+, <a class="el" href="xmenu__private_8c.html#ae306de1c15572cbe282b404b9f81d0b1">xmenu_private.c</a>
 </li>
 <li>_draw_vmeter_scale()
-: <a class="el" href="xmeter__private_8c.html#a1b3c3f2decfbb3c8ab0469b8ea841d1e">xmeter_private.c</a>
-, <a class="el" href="xmeter__private_8h.html#a1b3c3f2decfbb3c8ab0469b8ea841d1e">xmeter_private.h</a>
+: <a class="el" href="xmeter__private_8h.html#a1b3c3f2decfbb3c8ab0469b8ea841d1e">xmeter_private.h</a>
+, <a class="el" href="xmeter__private_8c.html#a1b3c3f2decfbb3c8ab0469b8ea841d1e">xmeter_private.c</a>
 </li>
 <li>_draw_vslider()
-: <a class="el" href="xslider__private_8h.html#a9c331bf737e3d50daa109a4a74585315">xslider_private.h</a>
-, <a class="el" href="xslider__private_8c.html#a9c331bf737e3d50daa109a4a74585315">xslider_private.c</a>
+: <a class="el" href="xslider__private_8c.html#a9c331bf737e3d50daa109a4a74585315">xslider_private.c</a>
+, <a class="el" href="xslider__private_8h.html#a9c331bf737e3d50daa109a4a74585315">xslider_private.h</a>
 </li>
 <li>_dummy1_callback()
-: <a class="el" href="xwidget__private_8c.html#ac337b3d0f61bc649c955c6e5bf14c810">xwidget_private.c</a>
-, <a class="el" href="xwidget__private_8h.html#ac337b3d0f61bc649c955c6e5bf14c810">xwidget_private.h</a>
+: <a class="el" href="xwidget__private_8h.html#ac337b3d0f61bc649c955c6e5bf14c810">xwidget_private.h</a>
+, <a class="el" href="xwidget__private_8c.html#ac337b3d0f61bc649c955c6e5bf14c810">xwidget_private.c</a>
 </li>
 <li>_dummy_callback()
-: <a class="el" href="xwidget__private_8h.html#a70d121b920c02065b3bc096c9b92e83c">xwidget_private.h</a>
-, <a class="el" href="xwidget__private_8c.html#a70d121b920c02065b3bc096c9b92e83c">xwidget_private.c</a>
+: <a class="el" href="xwidget__private_8c.html#a70d121b920c02065b3bc096c9b92e83c">xwidget_private.c</a>
+, <a class="el" href="xwidget__private_8h.html#a70d121b920c02065b3bc096c9b92e83c">xwidget_private.h</a>
 </li>
 <li>_entry_released()
-: <a class="el" href="xcombobox__private_8c.html#ae124a4901cfd989b81bf342d8d934dd2">xcombobox_private.c</a>
-, <a class="el" href="xcombobox__private_8h.html#ae124a4901cfd989b81bf342d8d934dd2">xcombobox_private.h</a>
+: <a class="el" href="xcombobox__private_8h.html#ae124a4901cfd989b81bf342d8d934dd2">xcombobox_private.h</a>
+, <a class="el" href="xcombobox__private_8c.html#ae124a4901cfd989b81bf342d8d934dd2">xcombobox_private.c</a>
 </li>
 <li>_get_width()
-: <a class="el" href="xtooltip__private_8h.html#a8a83b793f72b2a2fd5c08a57947515b0">xtooltip_private.h</a>
-, <a class="el" href="xtooltip__private_8c.html#a8a83b793f72b2a2fd5c08a57947515b0">xtooltip_private.c</a>
+: <a class="el" href="xtooltip__private_8c.html#a8a83b793f72b2a2fd5c08a57947515b0">xtooltip_private.c</a>
+, <a class="el" href="xtooltip__private_8h.html#a8a83b793f72b2a2fd5c08a57947515b0">xtooltip_private.h</a>
 </li>
 <li>_has_pointer()
-: <a class="el" href="xwidget__private_8c.html#ae8d8e0d87f6186d3d19f1372c357edbe">xwidget_private.c</a>
-, <a class="el" href="xwidget__private_8h.html#ae8d8e0d87f6186d3d19f1372c357edbe">xwidget_private.h</a>
+: <a class="el" href="xwidget__private_8h.html#ae8d8e0d87f6186d3d19f1372c357edbe">xwidget_private.h</a>
+, <a class="el" href="xwidget__private_8c.html#ae8d8e0d87f6186d3d19f1372c357edbe">xwidget_private.c</a>
 </li>
 <li>_hide_all_tooltips()
-: <a class="el" href="xwidget__private_8c.html#a3303d77cae03bc9141355e43fc6fe97f">xwidget_private.c</a>
-, <a class="el" href="xwidget__private_8h.html#a3303d77cae03bc9141355e43fc6fe97f">xwidget_private.h</a>
+: <a class="el" href="xwidget__private_8h.html#a3303d77cae03bc9141355e43fc6fe97f">xwidget_private.h</a>
+, <a class="el" href="xwidget__private_8c.html#a3303d77cae03bc9141355e43fc6fe97f">xwidget_private.c</a>
 </li>
 <li>_knob_released()
-: <a class="el" href="xknob__private_8c.html#af3ee3479c54eb1f37a76472c55a49857">xknob_private.c</a>
-, <a class="el" href="xknob__private_8h.html#af3ee3479c54eb1f37a76472c55a49857">xknob_private.h</a>
+: <a class="el" href="xknob__private_8h.html#af3ee3479c54eb1f37a76472c55a49857">xknob_private.h</a>
+, <a class="el" href="xknob__private_8c.html#af3ee3479c54eb1f37a76472c55a49857">xknob_private.c</a>
 </li>
 <li>_leave_list()
-: <a class="el" href="xlistview__private_8c.html#a07a508e7e5e3723824f39e3afb535194">xlistview_private.c</a>
-, <a class="el" href="xlistview__private_8h.html#a07a508e7e5e3723824f39e3afb535194">xlistview_private.h</a>
+: <a class="el" href="xlistview__private_8h.html#a07a508e7e5e3723824f39e3afb535194">xlistview_private.h</a>
+, <a class="el" href="xlistview__private_8c.html#a07a508e7e5e3723824f39e3afb535194">xlistview_private.c</a>
 </li>
 <li>_list_entry_released()
-: <a class="el" href="xlistview__private_8c.html#ad4cf15dc84e8c2d66027cee03aa31b83">xlistview_private.c</a>
-, <a class="el" href="xlistview__private_8h.html#ad4cf15dc84e8c2d66027cee03aa31b83">xlistview_private.h</a>
+: <a class="el" href="xlistview__private_8h.html#ad4cf15dc84e8c2d66027cee03aa31b83">xlistview_private.h</a>
+, <a class="el" href="xlistview__private_8c.html#ad4cf15dc84e8c2d66027cee03aa31b83">xlistview_private.c</a>
 </li>
 <li>_list_key_pressed()
-: <a class="el" href="xlistview__private_8c.html#a0f02370dec26f3a2e0576207199710b0">xlistview_private.c</a>
-, <a class="el" href="xlistview__private_8h.html#a0f02370dec26f3a2e0576207199710b0">xlistview_private.h</a>
+: <a class="el" href="xlistview__private_8h.html#a0f02370dec26f3a2e0576207199710b0">xlistview_private.h</a>
+, <a class="el" href="xlistview__private_8c.html#a0f02370dec26f3a2e0576207199710b0">xlistview_private.c</a>
 </li>
 <li>_list_motion()
-: <a class="el" href="xlistview__private_8h.html#a2cfc1cf390c9eedebe33eddd052484cb">xlistview_private.h</a>
-, <a class="el" href="xlistview__private_8c.html#a2cfc1cf390c9eedebe33eddd052484cb">xlistview_private.c</a>
+: <a class="el" href="xlistview__private_8c.html#a2cfc1cf390c9eedebe33eddd052484cb">xlistview_private.c</a>
+, <a class="el" href="xlistview__private_8h.html#a2cfc1cf390c9eedebe33eddd052484cb">xlistview_private.h</a>
 </li>
 <li>_listbox_entry_released()
-: <a class="el" href="xlistbox__private_8c.html#a4781103c1110827960a3a555b0bed627">xlistbox_private.c</a>
-, <a class="el" href="xlistbox__private_8h.html#a4781103c1110827960a3a555b0bed627">xlistbox_private.h</a>
+: <a class="el" href="xlistbox__private_8h.html#a4781103c1110827960a3a555b0bed627">xlistbox_private.h</a>
+, <a class="el" href="xlistbox__private_8c.html#a4781103c1110827960a3a555b0bed627">xlistbox_private.c</a>
 </li>
 <li>_log_meter()
-: <a class="el" href="xmeter__private_8c.html#a54a4bd17d96393b2c80903ef6a7af60a">xmeter_private.c</a>
-, <a class="el" href="xmeter__private_8h.html#a54a4bd17d96393b2c80903ef6a7af60a">xmeter_private.h</a>
+: <a class="el" href="xmeter__private_8h.html#a54a4bd17d96393b2c80903ef6a7af60a">xmeter_private.h</a>
+, <a class="el" href="xmeter__private_8c.html#a54a4bd17d96393b2c80903ef6a7af60a">xmeter_private.c</a>
 </li>
 <li>_pattern_hslider()
-: <a class="el" href="xslider__private_8h.html#ae0dfcbeb4edf64bd460e8961fc5ca668">xslider_private.h</a>
-, <a class="el" href="xslider__private_8c.html#a9913ca1e7c3e5b83b0b7311b6e101298">xslider_private.c</a>
+: <a class="el" href="xslider__private_8c.html#a9913ca1e7c3e5b83b0b7311b6e101298">xslider_private.c</a>
+, <a class="el" href="xslider__private_8h.html#ae0dfcbeb4edf64bd460e8961fc5ca668">xslider_private.h</a>
 </li>
 <li>_pattern_in()
-: <a class="el" href="xbutton__private_8h.html#a7b78e740b4f0797a42a53278bfb3c7d4">xbutton_private.h</a>
-, <a class="el" href="xbutton__private_8c.html#a7b78e740b4f0797a42a53278bfb3c7d4">xbutton_private.c</a>
+: <a class="el" href="xbutton__private_8c.html#a7b78e740b4f0797a42a53278bfb3c7d4">xbutton_private.c</a>
+, <a class="el" href="xbutton__private_8h.html#a7b78e740b4f0797a42a53278bfb3c7d4">xbutton_private.h</a>
 </li>
 <li>_pattern_out()
-: <a class="el" href="xbutton__private_8h.html#a0ea4425c5e10fa1a3f052afa6114d30b">xbutton_private.h</a>
-, <a class="el" href="xbutton__private_8c.html#a0ea4425c5e10fa1a3f052afa6114d30b">xbutton_private.c</a>
+: <a class="el" href="xbutton__private_8c.html#a0ea4425c5e10fa1a3f052afa6114d30b">xbutton_private.c</a>
+, <a class="el" href="xbutton__private_8h.html#a0ea4425c5e10fa1a3f052afa6114d30b">xbutton_private.h</a>
 </li>
 <li>_pattern_vslider()
-: <a class="el" href="xslider__private_8h.html#afbd00aa98160ecad075c7378e6a53c74">xslider_private.h</a>
-, <a class="el" href="xslider__private_8c.html#afbd00aa98160ecad075c7378e6a53c74">xslider_private.c</a>
+: <a class="el" href="xslider__private_8c.html#afbd00aa98160ecad075c7378e6a53c74">xslider_private.c</a>
+, <a class="el" href="xslider__private_8h.html#afbd00aa98160ecad075c7378e6a53c74">xslider_private.h</a>
 </li>
 <li>_propagate_child_expose()
-: <a class="el" href="xwidget__private_8h.html#aaaac44f0d2bcf2ddc3f76b79e74fb3b6">xwidget_private.h</a>
-, <a class="el" href="xwidget__private_8c.html#aaaac44f0d2bcf2ddc3f76b79e74fb3b6">xwidget_private.c</a>
+: <a class="el" href="xwidget__private_8c.html#aaaac44f0d2bcf2ddc3f76b79e74fb3b6">xwidget_private.c</a>
+, <a class="el" href="xwidget__private_8h.html#aaaac44f0d2bcf2ddc3f76b79e74fb3b6">xwidget_private.h</a>
 </li>
 <li>_radio_item_button_pressed()
-: <a class="el" href="xmenu__private_8h.html#a8c69f235270ee0acf02c3673ed4aca5b">xmenu_private.h</a>
-, <a class="el" href="xmenu__private_8c.html#a8c69f235270ee0acf02c3673ed4aca5b">xmenu_private.c</a>
+: <a class="el" href="xmenu__private_8c.html#a8c69f235270ee0acf02c3673ed4aca5b">xmenu_private.c</a>
+, <a class="el" href="xmenu__private_8h.html#a8c69f235270ee0acf02c3673ed4aca5b">xmenu_private.h</a>
 </li>
 <li>_reconfigure_listbox_viewport()
-: <a class="el" href="xlistbox__private_8c.html#a228c5a659b588d4a5be75c7bb2218757">xlistbox_private.c</a>
-, <a class="el" href="xlistbox__private_8h.html#a228c5a659b588d4a5be75c7bb2218757">xlistbox_private.h</a>
+: <a class="el" href="xlistbox__private_8h.html#a228c5a659b588d4a5be75c7bb2218757">xlistbox_private.h</a>
+, <a class="el" href="xlistbox__private_8c.html#a228c5a659b588d4a5be75c7bb2218757">xlistbox_private.c</a>
 </li>
 <li>_reconfigure_listview_viewport()
-: <a class="el" href="xlistview__private_8c.html#a164d4dfcff45c36da16f8884dd3bbd7d">xlistview_private.c</a>
-, <a class="el" href="xlistview__private_8h.html#a164d4dfcff45c36da16f8884dd3bbd7d">xlistview_private.h</a>
+: <a class="el" href="xlistview__private_8h.html#a164d4dfcff45c36da16f8884dd3bbd7d">xlistview_private.h</a>
+, <a class="el" href="xlistview__private_8c.html#a164d4dfcff45c36da16f8884dd3bbd7d">xlistview_private.c</a>
 </li>
 <li>_resize_childs()
-: <a class="el" href="xwidget__private_8h.html#a211aa2f671aa4c2885bc05e033eef8c4">xwidget_private.h</a>
-, <a class="el" href="xwidget__private_8c.html#a211aa2f671aa4c2885bc05e033eef8c4">xwidget_private.c</a>
+: <a class="el" href="xwidget__private_8c.html#a211aa2f671aa4c2885bc05e033eef8c4">xwidget_private.c</a>
+, <a class="el" href="xwidget__private_8h.html#a211aa2f671aa4c2885bc05e033eef8c4">xwidget_private.h</a>
 </li>
 <li>_resize_surface()
-: <a class="el" href="xwidget__private_8c.html#a114b183c93f55d46f7071c9ef6110b02">xwidget_private.c</a>
-, <a class="el" href="xwidget__private_8h.html#a114b183c93f55d46f7071c9ef6110b02">xwidget_private.h</a>
+: <a class="el" href="xwidget__private_8h.html#a114b183c93f55d46f7071c9ef6110b02">xwidget_private.h</a>
+, <a class="el" href="xwidget__private_8c.html#a114b183c93f55d46f7071c9ef6110b02">xwidget_private.c</a>
 </li>
 <li>_rounded_rectangle()
-: <a class="el" href="xbutton__private_8c.html#ad4e31fc35cac78b036b693d09edfad35">xbutton_private.c</a>
-, <a class="el" href="xbutton__private_8h.html#ad4e31fc35cac78b036b693d09edfad35">xbutton_private.h</a>
+: <a class="el" href="xbutton__private_8h.html#ad4e31fc35cac78b036b693d09edfad35">xbutton_private.h</a>
+, <a class="el" href="xbutton__private_8c.html#ad4e31fc35cac78b036b693d09edfad35">xbutton_private.c</a>
 </li>
 <li>_scroll_event()
-: <a class="el" href="xwidget__private_8c.html#a26c822f013ec5d3d606d0e9648bf1634">xwidget_private.c</a>
-, <a class="el" href="xwidget__private_8h.html#a26c822f013ec5d3d606d0e9648bf1634">xwidget_private.h</a>
+: <a class="el" href="xwidget__private_8h.html#a26c822f013ec5d3d606d0e9648bf1634">xwidget_private.h</a>
+, <a class="el" href="xwidget__private_8c.html#a26c822f013ec5d3d606d0e9648bf1634">xwidget_private.c</a>
 </li>
 <li>_set_adj_value()
-: <a class="el" href="xwidget__private_8c.html#a227521763a2c42146302b62c79e97ac2">xwidget_private.c</a>
-, <a class="el" href="xwidget__private_8h.html#a227521763a2c42146302b62c79e97ac2">xwidget_private.h</a>
+: <a class="el" href="xwidget__private_8h.html#a227521763a2c42146302b62c79e97ac2">xwidget_private.h</a>
+, <a class="el" href="xwidget__private_8c.html#a227521763a2c42146302b62c79e97ac2">xwidget_private.c</a>
 </li>
 <li>_set_entry()
-: <a class="el" href="xcombobox__private_8c.html#afcf88b1d7cf91fb17fb8cf04cba43b60">xcombobox_private.c</a>
-, <a class="el" href="xcombobox__private_8h.html#afcf88b1d7cf91fb17fb8cf04cba43b60">xcombobox_private.h</a>
+: <a class="el" href="xcombobox__private_8h.html#afcf88b1d7cf91fb17fb8cf04cba43b60">xcombobox_private.h</a>
+, <a class="el" href="xcombobox__private_8c.html#afcf88b1d7cf91fb17fb8cf04cba43b60">xcombobox_private.c</a>
 </li>
 <li>_set_listbox_viewpoint()
-: <a class="el" href="xlistbox__private_8c.html#aee814eed43ed5a5cefb8c260a2333969">xlistbox_private.c</a>
-, <a class="el" href="xlistbox__private_8h.html#aee814eed43ed5a5cefb8c260a2333969">xlistbox_private.h</a>
+: <a class="el" href="xlistbox__private_8h.html#aee814eed43ed5a5cefb8c260a2333969">xlistbox_private.h</a>
+, <a class="el" href="xlistbox__private_8c.html#aee814eed43ed5a5cefb8c260a2333969">xlistbox_private.c</a>
 </li>
 <li>_set_listview_viewpoint()
-: <a class="el" href="xlistview__private_8h.html#ab545a544e854fa19d8146e1e46dfab0c">xlistview_private.h</a>
-, <a class="el" href="xlistview__private_8c.html#ab545a544e854fa19d8146e1e46dfab0c">xlistview_private.c</a>
+: <a class="el" href="xlistview__private_8c.html#ab545a544e854fa19d8146e1e46dfab0c">xlistview_private.c</a>
+, <a class="el" href="xlistview__private_8h.html#ab545a544e854fa19d8146e1e46dfab0c">xlistview_private.h</a>
 </li>
 <li>_set_viewpoint()
-: <a class="el" href="xmenu__private_8c.html#ab616d68b1296f29fcbfc079c2fc5c47b">xmenu_private.c</a>
-, <a class="el" href="xmenu__private_8h.html#ab616d68b1296f29fcbfc079c2fc5c47b">xmenu_private.h</a>
+: <a class="el" href="xmenu__private_8h.html#ab616d68b1296f29fcbfc079c2fc5c47b">xmenu_private.h</a>
+, <a class="el" href="xmenu__private_8c.html#ab616d68b1296f29fcbfc079c2fc5c47b">xmenu_private.c</a>
 </li>
 <li>_slider_released()
-: <a class="el" href="xslider__private_8c.html#a15a2fae4b8325b037644afb6131827b5">xslider_private.c</a>
-, <a class="el" href="xslider__private_8h.html#a15a2fae4b8325b037644afb6131827b5">xslider_private.h</a>
+: <a class="el" href="xslider__private_8h.html#a15a2fae4b8325b037644afb6131827b5">xslider_private.h</a>
+, <a class="el" href="xslider__private_8c.html#a15a2fae4b8325b037644afb6131827b5">xslider_private.c</a>
 </li>
 <li>_toggle_button_pressed()
-: <a class="el" href="xbutton__private_8c.html#a31d787399bcdba7f2589a9499d45695f">xbutton_private.c</a>
-, <a class="el" href="xbutton__private_8h.html#a31d787399bcdba7f2589a9499d45695f">xbutton_private.h</a>
+: <a class="el" href="xbutton__private_8h.html#a31d787399bcdba7f2589a9499d45695f">xbutton_private.h</a>
+, <a class="el" href="xbutton__private_8c.html#a31d787399bcdba7f2589a9499d45695f">xbutton_private.c</a>
 </li>
 <li>_toggle_button_released()
-: <a class="el" href="xbutton__private_8c.html#a0aed08450617940038e61344f5d67743">xbutton_private.c</a>
-, <a class="el" href="xbutton__private_8h.html#a0aed08450617940038e61344f5d67743">xbutton_private.h</a>
+: <a class="el" href="xbutton__private_8h.html#a0aed08450617940038e61344f5d67743">xbutton_private.h</a>
+, <a class="el" href="xbutton__private_8c.html#a0aed08450617940038e61344f5d67743">xbutton_private.c</a>
 </li>
 <li>_toggle_event()
-: <a class="el" href="xwidget__private_8c.html#a281115cc04cefd9ff84d2a169515ef69">xwidget_private.c</a>
-, <a class="el" href="xwidget__private_8h.html#a281115cc04cefd9ff84d2a169515ef69">xwidget_private.h</a>
+: <a class="el" href="xwidget__private_8h.html#a281115cc04cefd9ff84d2a169515ef69">xwidget_private.h</a>
+, <a class="el" href="xwidget__private_8c.html#a281115cc04cefd9ff84d2a169515ef69">xwidget_private.c</a>
 </li>
 <li>_vscprintf_so()
-: <a class="el" href="xasprintf_8h.html#afe6a9c3590b857b2efb7a03938a44d5d">xasprintf.h</a>
-, <a class="el" href="xasprintf_8c.html#afe6a9c3590b857b2efb7a03938a44d5d">xasprintf.c</a>
+: <a class="el" href="xasprintf_8c.html#afe6a9c3590b857b2efb7a03938a44d5d">xasprintf.c</a>
+, <a class="el" href="xasprintf_8h.html#afe6a9c3590b857b2efb7a03938a44d5d">xasprintf.h</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

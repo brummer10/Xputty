@@ -1,0 +1,10 @@
+var xchildlist_8c =
+[
+    [ "childlist_add_child", "xchildlist_8c.html#a4515e80317c76cbfa903c50ddfcfbf58", null ],
+    [ "childlist_destroy", "xchildlist_8c.html#a57256a97c272561094da1b7ae5c57638", null ],
+    [ "childlist_find_child", "xchildlist_8c.html#a54b8a01a41d48965bd02c5269d0f2103", null ],
+    [ "childlist_find_widget", "xchildlist_8c.html#a7c893543e51daded2aa5b6a9b252932b", null ],
+    [ "childlist_has_child", "xchildlist_8c.html#af130af096a2f8b3a807e7e2dcf0ee6c0", null ],
+    [ "childlist_init", "xchildlist_8c.html#ad47bf3695fdf0c67bc059e4ce25c4639", null ],
+    [ "childlist_remove_child", "xchildlist_8c.html#a6cdf6afd4fdf75550b6aca31ac42379c", null ]
+];

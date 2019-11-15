@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,15 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('xpngloader_8h.html','');});
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +90,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_1ec98ce50fa6ec55b40b8ffb1df38c3c.html">header</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
@@ -80,11 +106,11 @@ Include dependency graph for xpngloader.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="xpngloader_8h__incl.png" border="0" usemap="#xpngloader_8h" alt=""/></div>
 <map name="xpngloader_8h" id="xpngloader_8h">
-<area shape="rect" id="node2" href="xputty_8h.html" title="xputty.h" alt="" coords="906,80,975,107"/>
-<area shape="rect" id="node15" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1203,155,1281,181"/>
-<area shape="rect" id="node16" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="1306,155,1410,181"/>
-<area shape="rect" id="node17" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1435,155,1519,181"/>
-<area shape="rect" id="node18" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1543,155,1611,181"/>
+<area shape="rect" id="node2" href="xputty_8h.html" title="xputty.h" alt="" coords="934,80,1003,107"/>
+<area shape="rect" id="node16" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1291,155,1369,181"/>
+<area shape="rect" id="node17" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="1394,155,1498,181"/>
+<area shape="rect" id="node18" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1523,155,1607,181"/>
+<area shape="rect" id="node19" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1631,155,1699,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -92,55 +118,55 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="xpngloader_8h__dep__incl.png" border="0" usemap="#xpngloader_8hdep" alt=""/></div>
 <map name="xpngloader_8hdep" id="xpngloader_8hdep">
-<area shape="rect" id="node2" href="xpngloader_8c.html" title="xpngloader.c" alt="" coords="705,80,801,107"/>
-<area shape="rect" id="node3" href="xputty_8h.html" title="xputty.h" alt="" coords="825,80,895,107"/>
-<area shape="rect" id="node4" href="xputty_8c.html" title="xputty.c" alt="" coords="5,155,75,181"/>
-<area shape="rect" id="node5" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="99,155,203,181"/>
-<area shape="rect" id="node7" href="xwidget_8h.html" title="xwidget.h" alt="" coords="758,155,837,181"/>
-<area shape="rect" id="node9" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="494,155,578,181"/>
-<area shape="rect" id="node11" href="xcolor_8h.html" title="xcolor.h" alt="" coords="402,155,470,181"/>
-<area shape="rect" id="node13" href="xadjustment__private_8h.html" title="xadjustment_private.h" alt="" coords="227,155,378,181"/>
-<area shape="rect" id="node15" href="xchildlist__private_8h.html" title="xchildlist_private.h" alt="" coords="603,155,733,181"/>
-<area shape="rect" id="node17" href="xwidget__private_8h.html" title="xwidget_private.h" alt="" coords="861,155,985,181"/>
-<area shape="rect" id="node19" href="xbutton_8h.html" title="xbutton.h" alt="" coords="1027,155,1103,181"/>
-<area shape="rect" id="node26" href="xcombobox_8h.html" title="xcombobox.h" alt="" coords="1170,229,1270,256"/>
-<area shape="rect" id="node27" href="xmenu_8h.html" title="xmenu.h" alt="" coords="1272,155,1344,181"/>
-<area shape="rect" id="node30" href="xknob_8h.html" title="xknob.h" alt="" coords="1539,155,1607,181"/>
-<area shape="rect" id="node33" href="xlabel_8h.html" title="xlabel.h" alt="" coords="1781,155,1848,181"/>
-<area shape="rect" id="node36" href="xlistbox_8h.html" title="xlistbox.h" alt="" coords="2095,155,2174,181"/>
-<area shape="rect" id="node40" href="xlistview_8h.html" title="xlistview.h" alt="" coords="2535,155,2619,181"/>
-<area shape="rect" id="node44" href="xmeter_8h.html" title="xmeter.h" alt="" coords="2747,155,2821,181"/>
-<area shape="rect" id="node47" href="xslider_8h.html" title="xslider.h" alt="" coords="2945,155,3015,181"/>
-<area shape="rect" id="node50" href="xtooltip_8h.html" title="xtooltip.h" alt="" coords="2473,229,2548,256"/>
-<area shape="rect" id="node6" href="xadjustment_8c.html" title="xadjustment.c" alt="" coords="61,229,165,256"/>
-<area shape="rect" id="node8" href="xwidget_8c.html" title="xwidget.c" alt="" coords="721,229,799,256"/>
-<area shape="rect" id="node10" href="xchildlist_8c.html" title="xchildlist.c" alt="" coords="457,229,541,256"/>
-<area shape="rect" id="node12" href="xcolor_8c.html" title="xcolor.c" alt="" coords="365,229,433,256"/>
-<area shape="rect" id="node14" href="xadjustment__private_8c.html" title="xadjustment_private.c" alt="" coords="190,229,341,256"/>
-<area shape="rect" id="node16" href="xchildlist__private_8c.html" title="xchildlist_private.c" alt="" coords="565,229,696,256"/>
-<area shape="rect" id="node18" href="xwidget__private_8c.html" title="xwidget_private.c" alt="" coords="823,229,947,256"/>
-<area shape="rect" id="node20" href="xwidgets_8h.html" title="xwidgets.h" alt="" coords="2019,304,2104,331"/>
-<area shape="rect" id="node21" href="xbutton_8c.html" title="xbutton.c" alt="" coords="997,304,1073,331"/>
-<area shape="rect" id="node22" href="xbutton__private_8h.html" title="xbutton_private.h" alt="" coords="1023,229,1145,256"/>
-<area shape="rect" id="node23" href="xcombobox__private_8h.html" title="xcombobox_private.h" alt="" coords="1147,304,1293,331"/>
-<area shape="rect" id="node24" href="xcombobox_8c.html" title="xcombobox.c" alt="" coords="1225,379,1325,405"/>
-<area shape="rect" id="node25" href="xcombobox__private_8c.html" title="xcombobox_private.c" alt="" coords="1881,379,2028,405"/>
-<area shape="rect" id="node28" href="xmenu_8c.html" title="xmenu.c" alt="" coords="1369,304,1441,331"/>
-<area shape="rect" id="node29" href="xmenu__private_8h.html" title="xmenu_private.h" alt="" coords="1346,229,1465,256"/>
-<area shape="rect" id="node31" href="xknob_8c.html" title="xknob.c" alt="" coords="1561,304,1629,331"/>
-<area shape="rect" id="node32" href="xknob__private_8h.html" title="xknob_private.h" alt="" coords="1489,229,1604,256"/>
-<area shape="rect" id="node34" href="xlabel_8c.html" title="xlabel.c" alt="" coords="1783,304,1849,331"/>
-<area shape="rect" id="node35" href="xlabel__private_8h.html" title="xlabel_private.h" alt="" coords="1882,229,1995,256"/>
-<area shape="rect" id="node37" href="xlistbox_8c.html" title="xlistbox.c" alt="" coords="2210,304,2289,331"/>
-<area shape="rect" id="node38" href="xlistbox__private_8h.html" title="xlistbox_private.h" alt="" coords="2325,229,2449,256"/>
-<area shape="rect" id="node39" href="xlistbox__private_8c.html" title="xlistbox_private.c" alt="" coords="2325,304,2449,331"/>
-<area shape="rect" id="node41" href="xlistview_8c.html" title="xlistview.c" alt="" coords="2679,304,2763,331"/>
-<area shape="rect" id="node42" href="xlistview__private_8h.html" title="xlistview_private.h" alt="" coords="2572,229,2703,256"/>
-<area shape="rect" id="node43" href="xlistview__private_8c.html" title="xlistview_private.c" alt="" coords="2524,304,2655,331"/>
-<area shape="rect" id="node45" href="xmeter_8c.html" title="xmeter.c" alt="" coords="2850,304,2923,331"/>
-<area shape="rect" id="node46" href="xmeter__private_8h.html" title="xmeter_private.h" alt="" coords="2778,229,2897,256"/>
-<area shape="rect" id="node48" href="xslider_8c.html" title="xslider.c" alt="" coords="3043,304,3114,331"/>
-<area shape="rect" id="node49" href="xslider__private_8h.html" title="xslider_private.h" alt="" coords="2972,229,3089,256"/>
+<area shape="rect" id="node2" href="xputty_8h.html" title="xputty.h" alt="" coords="931,80,1000,107"/>
+<area shape="rect" id="node50" href="xpngloader_8c.html" title="xpngloader.c" alt="" coords="1024,80,1120,107"/>
+<area shape="rect" id="node3" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="43,155,147,181"/>
+<area shape="rect" id="node5" href="xwidget_8h.html" title="xwidget.h" alt="" coords="739,155,818,181"/>
+<area shape="rect" id="node7" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="475,155,559,181"/>
+<area shape="rect" id="node9" href="xcolor_8h.html" title="xcolor.h" alt="" coords="383,155,451,181"/>
+<area shape="rect" id="node11" href="xadjustment__private_8h.html" title="xadjustment_private.h" alt="" coords="171,155,322,181"/>
+<area shape="rect" id="node13" href="xchildlist__private_8h.html" title="xchildlist_private.h" alt="" coords="584,155,715,181"/>
+<area shape="rect" id="node15" href="xwidget__private_8h.html" title="xwidget_private.h" alt="" coords="842,155,966,181"/>
+<area shape="rect" id="node17" href="xbutton_8h.html" title="xbutton.h" alt="" coords="990,155,1066,181"/>
+<area shape="rect" id="node24" href="xcombobox_8h.html" title="xcombobox.h" alt="" coords="1114,229,1214,256"/>
+<area shape="rect" id="node25" href="xmenu_8h.html" title="xmenu.h" alt="" coords="1261,155,1333,181"/>
+<area shape="rect" id="node28" href="xknob_8h.html" title="xknob.h" alt="" coords="1458,155,1526,181"/>
+<area shape="rect" id="node31" href="xlabel_8h.html" title="xlabel.h" alt="" coords="1768,155,1835,181"/>
+<area shape="rect" id="node34" href="xlistbox_8h.html" title="xlistbox.h" alt="" coords="1987,155,2066,181"/>
+<area shape="rect" id="node38" href="xlistview_8h.html" title="xlistview.h" alt="" coords="2142,155,2226,181"/>
+<area shape="rect" id="node41" href="xmeter_8h.html" title="xmeter.h" alt="" coords="2250,155,2323,181"/>
+<area shape="rect" id="node44" href="xslider_8h.html" title="xslider.h" alt="" coords="2347,155,2418,181"/>
+<area shape="rect" id="node47" href="xtooltip_8h.html" title="xtooltip.h" alt="" coords="2416,229,2491,256"/>
+<area shape="rect" id="node49" href="xputty_8c.html" title="xputty.c" alt="" coords="2443,155,2512,181"/>
+<area shape="rect" id="node4" href="xadjustment_8c.html" title="xadjustment.c" alt="" coords="5,229,109,256"/>
+<area shape="rect" id="node6" href="xwidget_8c.html" title="xwidget.c" alt="" coords="665,229,743,256"/>
+<area shape="rect" id="node8" href="xchildlist_8c.html" title="xchildlist.c" alt="" coords="401,229,485,256"/>
+<area shape="rect" id="node10" href="xcolor_8c.html" title="xcolor.c" alt="" coords="309,229,377,256"/>
+<area shape="rect" id="node12" href="xadjustment__private_8c.html" title="xadjustment_private.c" alt="" coords="134,229,285,256"/>
+<area shape="rect" id="node14" href="xchildlist__private_8c.html" title="xchildlist_private.c" alt="" coords="509,229,640,256"/>
+<area shape="rect" id="node16" href="xwidget__private_8c.html" title="xwidget_private.c" alt="" coords="767,229,891,256"/>
+<area shape="rect" id="node18" href="xwidgets_8h.html" title="xwidgets.h" alt="" coords="1984,304,2069,331"/>
+<area shape="rect" id="node19" href="xbutton__private_8h.html" title="xbutton_private.h" alt="" coords="967,229,1089,256"/>
+<area shape="rect" id="node23" href="xbutton_8c.html" title="xbutton.c" alt="" coords="941,304,1017,331"/>
+<area shape="rect" id="node20" href="xcombobox__private_8h.html" title="xcombobox_private.h" alt="" coords="1091,304,1237,331"/>
+<area shape="rect" id="node21" href="xcombobox_8c.html" title="xcombobox.c" alt="" coords="1169,379,1269,405"/>
+<area shape="rect" id="node22" href="xcombobox__private_8c.html" title="xcombobox_private.c" alt="" coords="1824,379,1971,405"/>
+<area shape="rect" id="node26" href="xmenu__private_8h.html" title="xmenu_private.h" alt="" coords="1238,229,1357,256"/>
+<area shape="rect" id="node27" href="xmenu_8c.html" title="xmenu.c" alt="" coords="1336,304,1408,331"/>
+<area shape="rect" id="node29" href="xknob__private_8h.html" title="xknob_private.h" alt="" coords="1483,229,1597,256"/>
+<area shape="rect" id="node30" href="xknob_8c.html" title="xknob.c" alt="" coords="1481,304,1549,331"/>
+<area shape="rect" id="node32" href="xlabel__private_8h.html" title="xlabel_private.h" alt="" coords="1622,229,1735,256"/>
+<area shape="rect" id="node33" href="xlabel_8c.html" title="xlabel.c" alt="" coords="1769,304,1836,331"/>
+<area shape="rect" id="node35" href="xlistbox__private_8h.html" title="xlistbox_private.h" alt="" coords="2267,229,2391,256"/>
+<area shape="rect" id="node36" href="xlistbox_8c.html" title="xlistbox.c" alt="" coords="2146,304,2225,331"/>
+<area shape="rect" id="node37" href="xlistbox__private_8c.html" title="xlistbox_private.c" alt="" coords="2261,304,2385,331"/>
+<area shape="rect" id="node39" href="xlistview__private_8h.html" title="xlistview_private.h" alt="" coords="2515,229,2645,256"/>
+<area shape="rect" id="node40" href="xlistview_8c.html" title="xlistview.c" alt="" coords="2606,304,2690,331"/>
+<area shape="rect" id="node42" href="xmeter__private_8h.html" title="xmeter_private.h" alt="" coords="2771,229,2890,256"/>
+<area shape="rect" id="node43" href="xmeter_8c.html" title="xmeter.c" alt="" coords="2758,304,2831,331"/>
+<area shape="rect" id="node45" href="xslider__private_8h.html" title="xslider_private.h" alt="" coords="2965,229,3083,256"/>
+<area shape="rect" id="node46" href="xslider_8c.html" title="xslider.c" alt="" coords="2941,304,3011,331"/>
+<area shape="rect" id="node48" href="xtooltip__private_8h.html" title="xtooltip_private.h" alt="" coords="2461,304,2582,331"/>
 </map>
 </div>
 </div>
@@ -169,13 +195,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:a814ff706695612053b32b7f5b722ad4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">cairo_image_surface_create_from_stream - read binary data into cairo surface from stream  <a href="#a814ff706695612053b32b7f5b722ad4c">More...</a><br /></td></tr>
 <tr class="separator:a814ff706695612053b32b7f5b722ad4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3245e688a0901f7574c58509e72384a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xpngloader_8h.html#a3245e688a0901f7574c58509e72384a6">widget_get_png</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, const unsigned char *name)</td></tr>
-<tr class="memdesc:a3245e688a0901f7574c58509e72384a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget_get_png - read png into <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> xlib surface  <a href="#a3245e688a0901f7574c58509e72384a6">More...</a><br /></td></tr>
+<tr class="memdesc:a3245e688a0901f7574c58509e72384a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget_get_png - read png into <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> xlib surface  <a href="#a3245e688a0901f7574c58509e72384a6">More...</a><br /></td></tr>
 <tr class="separator:a3245e688a0901f7574c58509e72384a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac89aaa4cce84262b821a4d534378f917"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xpngloader_8h.html#ac89aaa4cce84262b821a4d534378f917">widget_set_icon_from_surface</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, Pixmap *icon_, cairo_surface_t *image)</td></tr>
-<tr class="memdesc:ac89aaa4cce84262b821a4d534378f917"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget_set_icon_from_surface - set icon image from cairo surface to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>  <a href="#ac89aaa4cce84262b821a4d534378f917">More...</a><br /></td></tr>
+<tr class="memdesc:ac89aaa4cce84262b821a4d534378f917"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget_set_icon_from_surface - set icon image from cairo surface for <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> those icon will be used in the Window decoration and the toolbar (depending on the Widnow manager)  <a href="#ac89aaa4cce84262b821a4d534378f917">More...</a><br /></td></tr>
 <tr class="separator:ac89aaa4cce84262b821a4d534378f917"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9bdee850338b94a324b238f34e10c63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xpngloader_8h.html#ab9bdee850338b94a324b238f34e10c63">widget_set_icon_from_png</a> (<a class="el" href="structWidget__t.html">Widget_t</a> *w, Pixmap *icon_, const unsigned char *name)</td></tr>
-<tr class="memdesc:ab9bdee850338b94a324b238f34e10c63"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget_set_icon_from_png - set icon image from png binary to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a>  <a href="#ab9bdee850338b94a324b238f34e10c63">More...</a><br /></td></tr>
+<tr class="memdesc:ab9bdee850338b94a324b238f34e10c63"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget_set_icon_from_png - set icon image from png binary to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> those icon will be used in the Window decoration and the toolbar (depending on the Widnow manager)  <a href="#ab9bdee850338b94a324b238f34e10c63">More...</a><br /></td></tr>
 <tr class="separator:ab9bdee850338b94a324b238f34e10c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -196,6 +222,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> _binary_ ## NAME ## _start[]; \</div><div class="line">  extern <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> _binary_ ## NAME ## _end[];</div></div><!-- fragment --><p>define some MACROS to read png data from binary stream png's been converted to object files with ld -r -b binary name.png -o name.o </p>
 
+<p class="definition">Definition at line <a class="el" href="xpngloader_8h_source.html#l00056">56</a> of file <a class="el" href="xpngloader_8h_source.html">xpngloader.h</a>.</p>
+
 </div>
 </div>
 <a id="a9cf4ebd25acb387665f845145d4ed04a"></a>
@@ -213,6 +241,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="xpngloader_8h_source.html#l00061">61</a> of file <a class="el" href="xpngloader_8h_source.html">xpngloader.h</a>.</p>
 
 </div>
 </div>
@@ -232,6 +262,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="xpngloader_8h_source.html#l00059">59</a> of file <a class="el" href="xpngloader_8h_source.html">xpngloader.h</a>.</p>
+
 </div>
 </div>
 <a id="ae1ad145aa2d525b2aa5f308b75cf8b94"></a>
@@ -245,6 +277,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="xpngloader_8h_source.html#l00025">25</a> of file <a class="el" href="xpngloader_8h_source.html">xpngloader.h</a>.</p>
 
 </div>
 </div>
@@ -268,12 +302,20 @@ Functions</h2></td></tr>
 <p>cairo_image_surface_create_from_stream - read binary data into cairo surface from stream </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*name</td><td>- pointer to the binary image data </td></tr>
+    <tr><td class="paramname">*name</td><td>- pointer to the binary image data <a class="el" href="xpngloader_8h.html#ad21ced59f46124f67ce89f73e60c2563">LDVAR(name)</a> </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>cairo_surface_t - the cairo_image_surface </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xpngloader_8c_source.html#l00034">34</a> of file <a class="el" href="xpngloader_8c_source.html">xpngloader.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xpngloader_8h_source.html#l00080">binary_stream::data</a>, <a class="el" href="xpngloader_8c_source.html#l00027">png_stream_reader()</a>, and <a class="el" href="xpngloader_8h_source.html#l00081">binary_stream::position</a>.</p>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                                                                     {</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="structbinary__stream.html">binary_stream</a> png_stream;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    png_stream.<a class="code" href="structbinary__stream.html#ab0be3088382416d88b7b3c5794a189ee">data</a> = name;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    png_stream.<a class="code" href="structbinary__stream.html#ac81f4ba9f676c1bb011642915884ee57">position</a> = 0;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> cairo_image_surface_create_from_png_stream(&amp;<a class="code" href="xpngloader_8c.html#a2c4f5eaa5ce502eb8ae038bc3c1ba0af">png_stream_reader</a>, (<span class="keywordtype">void</span> *)&amp;png_stream);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div><div class="ttc" id="structbinary__stream_html"><div class="ttname"><a href="structbinary__stream.html">binary_stream</a></div><div class="ttdoc">binary_stream - struct definition to read binary data into cairo surface </div><div class="ttdef"><b>Definition:</b> <a href="xpngloader_8h_source.html#l00079">xpngloader.h:79</a></div></div>
+<div class="ttc" id="xpngloader_8c_html_a2c4f5eaa5ce502eb8ae038bc3c1ba0af"><div class="ttname"><a href="xpngloader_8c.html#a2c4f5eaa5ce502eb8ae038bc3c1ba0af">png_stream_reader</a></div><div class="ttdeci">cairo_status_t png_stream_reader(void *_stream, unsigned char *data, unsigned int length)</div><div class="ttdef"><b>Definition:</b> <a href="xpngloader_8c_source.html#l00027">xpngloader.c:27</a></div></div>
+<div class="ttc" id="structbinary__stream_html_ab0be3088382416d88b7b3c5794a189ee"><div class="ttname"><a href="structbinary__stream.html#ab0be3088382416d88b7b3c5794a189ee">binary_stream::data</a></div><div class="ttdeci">const unsigned char * data</div><div class="ttdef"><b>Definition:</b> <a href="xpngloader_8h_source.html#l00080">xpngloader.h:80</a></div></div>
+<div class="ttc" id="structbinary__stream_html_ac81f4ba9f676c1bb011642915884ee57"><div class="ttname"><a href="structbinary__stream.html#ac81f4ba9f676c1bb011642915884ee57">binary_stream::position</a></div><div class="ttdeci">long int position</div><div class="ttdef"><b>Definition:</b> <a href="xpngloader_8h_source.html#l00081">xpngloader.h:81</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a3245e688a0901f7574c58509e72384a6"></a>
@@ -302,16 +344,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>widget_get_png - read png into <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> xlib surface </p>
+<p>widget_get_png - read png into <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> xlib surface </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> which should use the png </td></tr>
+    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> which should use the png </td></tr>
     <tr><td class="paramname">*name</td><td>- pointer to the binary image data <a class="el" href="xpngloader_8h.html#ad21ced59f46124f67ce89f73e60c2563">LDVAR(name)</a> </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xpngloader_8c_source.html#l00041">41</a> of file <a class="el" href="xpngloader_8c_source.html">xpngloader.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xpngloader_8c_source.html#l00034">cairo_image_surface_create_from_stream()</a>, <a class="el" href="xwidget_8h_source.html#l00303">Widget_t::image</a>, and <a class="el" href="xwidget_8h_source.html#l00295">Widget_t::surface</a>.</p>
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                                            {</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    cairo_surface_t *getpng = <a class="code" href="xpngloader_8c.html#a814ff706695612053b32b7f5b722ad4c">cairo_image_surface_create_from_stream</a> (name);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">int</span> width = cairo_image_surface_get_width(getpng);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">int</span> height = cairo_image_surface_get_height(getpng);</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    w-&gt;<a class="code" href="structWidget__t.html#a4e179b5ae7494b9533c8673ec3642a55">image</a> = cairo_surface_create_similar (w-&gt;<a class="code" href="structWidget__t.html#ae9b5979742ea31817ff7d7b34a56f88d">surface</a>, </div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                        CAIRO_CONTENT_COLOR_ALPHA, width, height);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    cairo_t *cri = cairo_create (w-&gt;<a class="code" href="structWidget__t.html#a4e179b5ae7494b9533c8673ec3642a55">image</a>);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    cairo_set_source_surface (cri, getpng,0,0);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    cairo_paint (cri);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    cairo_surface_destroy(getpng);</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    cairo_destroy(cri);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div><div class="ttc" id="xpngloader_8c_html_a814ff706695612053b32b7f5b722ad4c"><div class="ttname"><a href="xpngloader_8c.html#a814ff706695612053b32b7f5b722ad4c">cairo_image_surface_create_from_stream</a></div><div class="ttdeci">cairo_surface_t * cairo_image_surface_create_from_stream(const unsigned char *name)</div><div class="ttdoc">cairo_image_surface_create_from_stream - read binary data into cairo surface from stream ...</div><div class="ttdef"><b>Definition:</b> <a href="xpngloader_8c_source.html#l00034">xpngloader.c:34</a></div></div>
+<div class="ttc" id="structWidget__t_html_ae9b5979742ea31817ff7d7b34a56f88d"><div class="ttname"><a href="structWidget__t.html#ae9b5979742ea31817ff7d7b34a56f88d">Widget_t::surface</a></div><div class="ttdeci">cairo_surface_t * surface</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00295">xwidget.h:295</a></div></div>
+<div class="ttc" id="structWidget__t_html_a4e179b5ae7494b9533c8673ec3642a55"><div class="ttname"><a href="structWidget__t.html#a4e179b5ae7494b9533c8673ec3642a55">Widget_t::image</a></div><div class="ttdeci">cairo_surface_t * image</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00303">xwidget.h:303</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab9bdee850338b94a324b238f34e10c63"></a>
@@ -346,16 +395,28 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>widget_set_icon_from_png - set icon image from png binary to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+<p>widget_set_icon_from_png - set icon image from png binary to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> those icon will be used in the Window decoration and the toolbar (depending on the Widnow manager) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> which should use the icon </td></tr>
-    <tr><td class="paramname">*image</td><td>- pointer to the cairo_surface_t to use for the icon </td></tr>
+    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> which should use the icon </td></tr>
+    <tr><td class="paramname">*name</td><td>- pointer to the binary image data <a class="el" href="xpngloader_8h.html#ad21ced59f46124f67ce89f73e60c2563">LDVAR(name)</a> </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xpngloader_8c_source.html#l00081">81</a> of file <a class="el" href="xpngloader_8c_source.html">xpngloader.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xwidget_8h_source.html#l00283">Widget_t::app</a>, <a class="el" href="xcolor_8h_source.html#l00071">Colors::bg</a>, <a class="el" href="xpngloader_8c_source.html#l00034">cairo_image_surface_create_from_stream()</a>, <a class="el" href="xputty_8h_source.html#l00168">Xputty::dpy</a>, <a class="el" href="xcolor_8c_source.html#l00110">get_color_scheme()</a>, <a class="el" href="xcolor_8h_source.html#l00037">PRELIGHT_</a>, and <a class="el" href="xwidget_8h_source.html#l00285">Widget_t::widget</a>.</p>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                                                                     {</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    cairo_surface_t *image = <a class="code" href="xpngloader_8c.html#a814ff706695612053b32b7f5b722ad4c">cairo_image_surface_create_from_stream</a> (name);</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">int</span> width = cairo_image_surface_get_width(image);</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">int</span> height = cairo_image_surface_get_height(image);</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    XWindowAttributes atr;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    XGetWindowAttributes (w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, w-&gt;<a class="code" href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">widget</a>, &amp;atr);</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    Pixmap icon = XCreatePixmap(w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, w-&gt;<a class="code" href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">widget</a>, width, height, atr.depth);</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    cairo_surface_t *surface = cairo_xlib_surface_create (w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, icon,  </div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                  DefaultVisual(w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, DefaultScreen(w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>)), width, height);</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    cairo_t *cri = cairo_create (surface);</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="structColors.html">Colors</a> *c = <a class="code" href="xcolor_8h.html#acc93257352c04e26189e54ba561ab3f4">get_color_scheme</a>(w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>, <a class="code" href="xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a4e75636632c9a333b0107d31a5078eed">PRELIGHT_</a>);</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    cairo_set_source_rgba(cri, c-&gt;<a class="code" href="structColors.html#a18c1326c891e240598e3a6c4adfda699">bg</a>[0],  c-&gt;<a class="code" href="structColors.html#a18c1326c891e240598e3a6c4adfda699">bg</a>[1], c-&gt;<a class="code" href="structColors.html#a18c1326c891e240598e3a6c4adfda699">bg</a>[2],  c-&gt;<a class="code" href="structColors.html#a18c1326c891e240598e3a6c4adfda699">bg</a>[3]);</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    cairo_paint(cri);</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    cairo_set_source_surface (cri, image,0,0);</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    cairo_paint(cri);</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    cairo_surface_destroy(image);</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    cairo_surface_destroy(surface);</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    cairo_destroy(cri);</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    icon_ = &amp;icon;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    </div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    XWMHints* win_hints = XAllocWMHints();</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    assert(win_hints);</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    win_hints-&gt;flags = IconPixmapHint;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    win_hints-&gt;icon_pixmap = icon;</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    XSetWMHints(w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, w-&gt;<a class="code" href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">widget</a>, win_hints);</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    XFree(win_hints);</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div><div class="ttc" id="xpngloader_8c_html_a814ff706695612053b32b7f5b722ad4c"><div class="ttname"><a href="xpngloader_8c.html#a814ff706695612053b32b7f5b722ad4c">cairo_image_surface_create_from_stream</a></div><div class="ttdeci">cairo_surface_t * cairo_image_surface_create_from_stream(const unsigned char *name)</div><div class="ttdoc">cairo_image_surface_create_from_stream - read binary data into cairo surface from stream ...</div><div class="ttdef"><b>Definition:</b> <a href="xpngloader_8c_source.html#l00034">xpngloader.c:34</a></div></div>
+<div class="ttc" id="structWidget__t_html_acb2bfb41674371ee1220a9d6a2d89fb1"><div class="ttname"><a href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">Widget_t::widget</a></div><div class="ttdeci">Window widget</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00285">xwidget.h:285</a></div></div>
+<div class="ttc" id="xcolor_8h_html_af6e1bc675d5df2f7fb9e91a8c5820771a4e75636632c9a333b0107d31a5078eed"><div class="ttname"><a href="xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a4e75636632c9a333b0107d31a5078eed">PRELIGHT_</a></div><div class="ttdef"><b>Definition:</b> <a href="xcolor_8h_source.html#l00037">xcolor.h:37</a></div></div>
+<div class="ttc" id="xcolor_8h_html_acc93257352c04e26189e54ba561ab3f4"><div class="ttname"><a href="xcolor_8h.html#acc93257352c04e26189e54ba561ab3f4">get_color_scheme</a></div><div class="ttdeci">Colors * get_color_scheme(Xputty *main, Color_state st)</div><div class="ttdoc">get_color_scheme - get pointer to the Colors struct to use in relation to the Color_state ...</div><div class="ttdef"><b>Definition:</b> <a href="xcolor_8c_source.html#l00110">xcolor.c:110</a></div></div>
+<div class="ttc" id="structWidget__t_html_a06eaa5b134c47983fd965e745cdbaa3b"><div class="ttname"><a href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">Widget_t::app</a></div><div class="ttdeci">Xputty * app</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00283">xwidget.h:283</a></div></div>
+<div class="ttc" id="structColors_html"><div class="ttname"><a href="structColors.html">Colors</a></div><div class="ttdoc">Color_t - struct used to set cairo color for Widget_t. </div><div class="ttdef"><b>Definition:</b> <a href="xcolor_8h_source.html#l00069">xcolor.h:69</a></div></div>
+<div class="ttc" id="structColors_html_a18c1326c891e240598e3a6c4adfda699"><div class="ttname"><a href="structColors.html#a18c1326c891e240598e3a6c4adfda699">Colors::bg</a></div><div class="ttdeci">double bg[4]</div><div class="ttdef"><b>Definition:</b> <a href="xcolor_8h_source.html#l00071">xcolor.h:71</a></div></div>
+<div class="ttc" id="structXputty_html_ab185ae4fd00ee1930c61e0440734878f"><div class="ttname"><a href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">Xputty::dpy</a></div><div class="ttdeci">Display * dpy</div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00168">xputty.h:168</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ac89aaa4cce84262b821a4d534378f917"></a>
@@ -390,24 +451,39 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>widget_set_icon_from_surface - set icon image from cairo surface to <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> </p>
+<p>widget_set_icon_from_surface - set icon image from cairo surface for <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> those icon will be used in the Window decoration and the toolbar (depending on the Widnow manager) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> which should use the icon </td></tr>
+    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> which should use the icon </td></tr>
     <tr><td class="paramname">*image</td><td>- pointer to the cairo_surface_t to use for the icon </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xpngloader_8c_source.html#l00055">55</a> of file <a class="el" href="xpngloader_8c_source.html">xpngloader.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xwidget_8h_source.html#l00283">Widget_t::app</a>, <a class="el" href="xcolor_8h_source.html#l00071">Colors::bg</a>, <a class="el" href="xputty_8h_source.html#l00168">Xputty::dpy</a>, <a class="el" href="xcolor_8c_source.html#l00110">get_color_scheme()</a>, <a class="el" href="xcolor_8h_source.html#l00037">PRELIGHT_</a>, and <a class="el" href="xwidget_8h_source.html#l00285">Widget_t::widget</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                                                                      {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">int</span> width = cairo_xlib_surface_get_width(image);</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> height = cairo_xlib_surface_get_height(image);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    XWindowAttributes atr;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    XGetWindowAttributes (w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, w-&gt;<a class="code" href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">widget</a>, &amp;atr);</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    Pixmap icon = XCreatePixmap(w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, w-&gt;<a class="code" href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">widget</a>, width, height, atr.depth);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    cairo_surface_t *surface = cairo_xlib_surface_create (w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, icon,  </div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                  DefaultVisual(w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, DefaultScreen(w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>)), width, height);</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    cairo_t *cri = cairo_create (surface);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="structColors.html">Colors</a> *c = <a class="code" href="xcolor_8h.html#acc93257352c04e26189e54ba561ab3f4">get_color_scheme</a>(w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>, <a class="code" href="xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a4e75636632c9a333b0107d31a5078eed">PRELIGHT_</a>);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    cairo_set_source_rgba(cri, c-&gt;<a class="code" href="structColors.html#a18c1326c891e240598e3a6c4adfda699">bg</a>[0],  c-&gt;<a class="code" href="structColors.html#a18c1326c891e240598e3a6c4adfda699">bg</a>[1], c-&gt;<a class="code" href="structColors.html#a18c1326c891e240598e3a6c4adfda699">bg</a>[2],  c-&gt;<a class="code" href="structColors.html#a18c1326c891e240598e3a6c4adfda699">bg</a>[3]);</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    cairo_paint(cri);</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    cairo_set_source_surface (cri, image,0,0);</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    cairo_paint(cri);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    cairo_surface_destroy(surface);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    cairo_destroy(cri);</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    icon_ = &amp;icon;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    XWMHints* win_hints = XAllocWMHints();</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    assert(win_hints);</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    win_hints-&gt;flags = IconPixmapHint;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    win_hints-&gt;icon_pixmap = icon;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    XSetWMHints(w-&gt;<a class="code" href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">app</a>-&gt;<a class="code" href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">dpy</a>, w-&gt;<a class="code" href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">widget</a>, win_hints);</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    XFree(win_hints);</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div><div class="ttc" id="structWidget__t_html_acb2bfb41674371ee1220a9d6a2d89fb1"><div class="ttname"><a href="structWidget__t.html#acb2bfb41674371ee1220a9d6a2d89fb1">Widget_t::widget</a></div><div class="ttdeci">Window widget</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00285">xwidget.h:285</a></div></div>
+<div class="ttc" id="xcolor_8h_html_af6e1bc675d5df2f7fb9e91a8c5820771a4e75636632c9a333b0107d31a5078eed"><div class="ttname"><a href="xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a4e75636632c9a333b0107d31a5078eed">PRELIGHT_</a></div><div class="ttdef"><b>Definition:</b> <a href="xcolor_8h_source.html#l00037">xcolor.h:37</a></div></div>
+<div class="ttc" id="xcolor_8h_html_acc93257352c04e26189e54ba561ab3f4"><div class="ttname"><a href="xcolor_8h.html#acc93257352c04e26189e54ba561ab3f4">get_color_scheme</a></div><div class="ttdeci">Colors * get_color_scheme(Xputty *main, Color_state st)</div><div class="ttdoc">get_color_scheme - get pointer to the Colors struct to use in relation to the Color_state ...</div><div class="ttdef"><b>Definition:</b> <a href="xcolor_8c_source.html#l00110">xcolor.c:110</a></div></div>
+<div class="ttc" id="structWidget__t_html_a06eaa5b134c47983fd965e745cdbaa3b"><div class="ttname"><a href="structWidget__t.html#a06eaa5b134c47983fd965e745cdbaa3b">Widget_t::app</a></div><div class="ttdeci">Xputty * app</div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00283">xwidget.h:283</a></div></div>
+<div class="ttc" id="structColors_html"><div class="ttname"><a href="structColors.html">Colors</a></div><div class="ttdoc">Color_t - struct used to set cairo color for Widget_t. </div><div class="ttdef"><b>Definition:</b> <a href="xcolor_8h_source.html#l00069">xcolor.h:69</a></div></div>
+<div class="ttc" id="structColors_html_a18c1326c891e240598e3a6c4adfda699"><div class="ttname"><a href="structColors.html#a18c1326c891e240598e3a6c4adfda699">Colors::bg</a></div><div class="ttdeci">double bg[4]</div><div class="ttdef"><b>Definition:</b> <a href="xcolor_8h_source.html#l00071">xcolor.h:71</a></div></div>
+<div class="ttc" id="structXputty_html_ab185ae4fd00ee1930c61e0440734878f"><div class="ttname"><a href="structXputty.html#ab185ae4fd00ee1930c61e0440734878f">Xputty::dpy</a></div><div class="ttdeci">Display * dpy</div><div class="ttdef"><b>Definition:</b> <a href="xputty_8h_source.html#l00168">xputty.h:168</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_e9bbb68c42f81f311d39d9dbaefd3b8c.html">libxputty</a></li><li class="navelem"><a class="el" href="dir_36c8397ee67800846af2ba64e4b44ab7.html">xputty</a></li><li class="navelem"><a class="el" href="dir_6130975627a7ed0ca0cc78db073e0675.html">header</a></li><li class="navelem"><a class="el" href="xpngloader_8h.html">xpngloader.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

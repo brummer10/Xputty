@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,15 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('structAdjustment__t.html','');});
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,7 +90,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
@@ -77,15 +107,15 @@ Collaboration diagram for Adjustment_t:</div>
 <div class="dyncontent">
 <div class="center"><img src="structAdjustment__t__coll__graph.png" border="0" usemap="#Adjustment__t_coll__map" alt="Collaboration graph"/></div>
 <map name="Adjustment__t_coll__map" id="Adjustment__t_coll__map">
-<area shape="rect" id="node2" href="structWidget__t.html" title="Widget_t &#45; struct to hold the basic widget info. " alt="" coords="101,124,176,151"/>
-<area shape="rect" id="node3" href="structChildlist__t.html" title="Childlist_t &#45; struct to hold a Widget_t child list. " alt="" coords="45,259,125,285"/>
+<area shape="rect" id="node2" href="structWidget__t.html" title="Widget_t &#45; struct to hold the basic Widget_t info. " alt="" coords="101,124,176,151"/>
+<area shape="rect" id="node3" href="structChildlist__t.html" title="Childlist_t &#45; struct to hold a Widget_t child list &#160;&#160;Xputty main holds a list of any Widget_t created..." alt="" coords="45,259,125,285"/>
 <area shape="rect" id="node6" href="structXputty.html" title="Xputty &#45; the main struct. &#160;&#160;It should be declared before any other call to a Xputty function..." alt="" coords="198,349,258,376"/>
 <area shape="rect" id="node4" href="structFunc__t.html" title="Func_t &#45; struct to hold all supported event callbacks. " alt="" coords="130,5,193,32"/>
 <area shape="rect" id="node5" href="structResize__t.html" title="Resize_t &#45; struct used to resize child widgets. " alt="" coords="217,5,292,32"/>
-<area shape="rect" id="node7" href="structXColor__t.html" title="XColor_t &#45; the Widget_t Color struct. " alt="" coords="399,259,473,285"/>
+<area shape="rect" id="node7" href="structXColor__t.html" title="XColor_t &#45; the Widget_t Color struct &#160;&#160;XColor_t could be used for theming you Widget_t set..." alt="" coords="399,259,473,285"/>
 <area shape="rect" id="node8" href="structColors.html" title="Color_t &#45; struct used to set cairo color for Widget_t. " alt="" coords="406,124,466,151"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -110,17 +140,19 @@ Data Fields</h2></td></tr>
 <div class="textblock"><p><a class="el" href="structAdjustment__t.html" title="Adjustment_t - struct to hold a controller adjustment. ">Adjustment_t</a> - struct to hold a controller adjustment. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> contain the adjustment </td></tr>
+    <tr><td class="paramname">*w</td><td>- pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> contain the adjustment </td></tr>
     <tr><td class="paramname">std_value</td><td>- the standart value for the adjustment </td></tr>
     <tr><td class="paramname">value</td><td>- the current value of the adjustment </td></tr>
     <tr><td class="paramname">min_value</td><td>- the minimal value of the adjustment </td></tr>
     <tr><td class="paramname">max_value</td><td>- the maximal value of the adjustment </td></tr>
     <tr><td class="paramname">step</td><td>- the step to increase/decrease the adjustment </td></tr>
-    <tr><td class="paramname">start_value</td><td>- the value of init the adjustment with </td></tr>
+    <tr><td class="paramname">start_value</td><td>- internal use to store the current value when pointer movement starts </td></tr>
     <tr><td class="paramname">type</td><td>- should be on of the CL_type </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="xadjustment_8h_source.html#l00072">72</a> of file <a class="el" href="xadjustment_8h_source.html">xadjustment.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a8607f7be566c21036c396201bce07a1a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8607f7be566c21036c396201bce07a1a">&#9670;&nbsp;</a></span>max_value</h2>
@@ -134,6 +166,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>the maximal value of the adjustment </p>
+
+<p class="definition">Definition at line <a class="el" href="xadjustment_8h_source.html#l00082">82</a> of file <a class="el" href="xadjustment_8h_source.html">xadjustment.h</a>.</p>
 
 </div>
 </div>
@@ -150,6 +184,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>the minimal value of the adjustment </p>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8h_source.html#l00080">80</a> of file <a class="el" href="xadjustment_8h_source.html">xadjustment.h</a>.</p>
+
 </div>
 </div>
 <a id="abec8df43db1df5d6fcc6b6619773dbc9"></a>
@@ -163,7 +199,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the value of init the adjustment with </p>
+<p>internal use to store the current value when pointer movement starts </p>
+
+<p class="definition">Definition at line <a class="el" href="xadjustment_8h_source.html#l00086">86</a> of file <a class="el" href="xadjustment_8h_source.html">xadjustment.h</a>.</p>
 
 </div>
 </div>
@@ -180,6 +218,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>the standart value for the adjustment </p>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8h_source.html#l00076">76</a> of file <a class="el" href="xadjustment_8h_source.html">xadjustment.h</a>.</p>
+
 </div>
 </div>
 <a id="a0198d0a412f8642b3e8a308f9240d467"></a>
@@ -194,6 +234,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>the step to increase/decrease the adjustment </p>
+
+<p class="definition">Definition at line <a class="el" href="xadjustment_8h_source.html#l00084">84</a> of file <a class="el" href="xadjustment_8h_source.html">xadjustment.h</a>.</p>
 
 </div>
 </div>
@@ -210,6 +252,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>should be on of the CL_ type </p>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8h_source.html#l00088">88</a> of file <a class="el" href="xadjustment_8h_source.html">xadjustment.h</a>.</p>
+
 </div>
 </div>
 <a id="acb1f8fb06d9e505f9f50e9178256215c"></a>
@@ -225,6 +269,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>the current value of the adjustment </p>
 
+<p class="definition">Definition at line <a class="el" href="xadjustment_8h_source.html#l00078">78</a> of file <a class="el" href="xadjustment_8h_source.html">xadjustment.h</a>.</p>
+
 </div>
 </div>
 <a id="a82c03e6ceb092314a75bd10ba918f9d7"></a>
@@ -238,7 +284,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic widget info. ">Widget_t</a> contain the adjustment </p>
+<p>pointer to the <a class="el" href="structWidget__t.html" title="Widget_t - struct to hold the basic Widget_t info. ">Widget_t</a> contain the adjustment </p>
+
+<p class="definition">Definition at line <a class="el" href="xadjustment_8h_source.html#l00074">74</a> of file <a class="el" href="xadjustment_8h_source.html">xadjustment.h</a>.</p>
 
 </div>
 </div>
@@ -246,11 +294,15 @@ Data Fields</h2></td></tr>
 <li><a class="el" href="xadjustment_8h_source.html">xadjustment.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="structAdjustment__t.html">Adjustment_t</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gravity',['Gravity',['../xwidget_8h.html#a5b77df25933eae1169c9efbc78391ade',1,'xwidget.h']]]
+  ['eventtype',['EventType',['../xwidget_8h.html#a2628ea8d12e8b2563c32f05dc7fff6fa',1,'xwidget.h']]]
 ];

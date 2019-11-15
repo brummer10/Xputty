@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('globals_func_w.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -65,52 +95,55 @@ $(function() {
 
 <h3><a id="index_w"></a>- w -</h3><ul>
 <li>widget_event_loop()
-: <a class="el" href="xwidget_8c.html#a4549cfc76e73a5d56b50f0d762287436">xwidget.c</a>
-, <a class="el" href="xwidget_8h.html#a4549cfc76e73a5d56b50f0d762287436">xwidget.h</a>
+: <a class="el" href="xwidget_8h.html#a4549cfc76e73a5d56b50f0d762287436">xwidget.h</a>
+, <a class="el" href="xwidget_8c.html#a4549cfc76e73a5d56b50f0d762287436">xwidget.c</a>
 </li>
 <li>widget_get_png()
-: <a class="el" href="xpngloader_8h.html#a3245e688a0901f7574c58509e72384a6">xpngloader.h</a>
-, <a class="el" href="xpngloader_8c.html#a3245e688a0901f7574c58509e72384a6">xpngloader.c</a>
+: <a class="el" href="xpngloader_8c.html#a3245e688a0901f7574c58509e72384a6">xpngloader.c</a>
+, <a class="el" href="xpngloader_8h.html#a3245e688a0901f7574c58509e72384a6">xpngloader.h</a>
 </li>
 <li>widget_hide()
-: <a class="el" href="xwidget_8c.html#ab00e7f2485e08237c865e96ba56e63e6">xwidget.c</a>
-, <a class="el" href="xwidget_8h.html#ab00e7f2485e08237c865e96ba56e63e6">xwidget.h</a>
+: <a class="el" href="xwidget_8h.html#ab00e7f2485e08237c865e96ba56e63e6">xwidget.h</a>
+, <a class="el" href="xwidget_8c.html#ab00e7f2485e08237c865e96ba56e63e6">xwidget.c</a>
 </li>
 <li>widget_reset_scale()
-: <a class="el" href="xwidget_8h.html#a73cfd5d35a86fde690c00a74f6e34759">xwidget.h</a>
-, <a class="el" href="xwidget_8c.html#a73cfd5d35a86fde690c00a74f6e34759">xwidget.c</a>
+: <a class="el" href="xwidget_8c.html#a73cfd5d35a86fde690c00a74f6e34759">xwidget.c</a>
+, <a class="el" href="xwidget_8h.html#a73cfd5d35a86fde690c00a74f6e34759">xwidget.h</a>
 </li>
 <li>widget_set_icon_from_png()
-: <a class="el" href="xpngloader_8c.html#ab9bdee850338b94a324b238f34e10c63">xpngloader.c</a>
-, <a class="el" href="xpngloader_8h.html#ab9bdee850338b94a324b238f34e10c63">xpngloader.h</a>
+: <a class="el" href="xpngloader_8h.html#ab9bdee850338b94a324b238f34e10c63">xpngloader.h</a>
+, <a class="el" href="xpngloader_8c.html#ab9bdee850338b94a324b238f34e10c63">xpngloader.c</a>
 </li>
 <li>widget_set_icon_from_surface()
-: <a class="el" href="xpngloader_8c.html#ac89aaa4cce84262b821a4d534378f917">xpngloader.c</a>
-, <a class="el" href="xpngloader_8h.html#ac89aaa4cce84262b821a4d534378f917">xpngloader.h</a>
+: <a class="el" href="xpngloader_8h.html#ac89aaa4cce84262b821a4d534378f917">xpngloader.h</a>
+, <a class="el" href="xpngloader_8c.html#ac89aaa4cce84262b821a4d534378f917">xpngloader.c</a>
 </li>
 <li>widget_set_scale()
-: <a class="el" href="xwidget_8c.html#a0e071df83f5642d90f81dc1c246db9e1">xwidget.c</a>
-, <a class="el" href="xwidget_8h.html#a0e071df83f5642d90f81dc1c246db9e1">xwidget.h</a>
+: <a class="el" href="xwidget_8h.html#a0e071df83f5642d90f81dc1c246db9e1">xwidget.h</a>
+, <a class="el" href="xwidget_8c.html#a0e071df83f5642d90f81dc1c246db9e1">xwidget.c</a>
 </li>
 <li>widget_set_title()
-: <a class="el" href="xwidget_8c.html#a04c6f90717d4ecfef69ca4eaacb61849">xwidget.c</a>
-, <a class="el" href="xwidget_8h.html#a04c6f90717d4ecfef69ca4eaacb61849">xwidget.h</a>
+: <a class="el" href="xwidget_8h.html#a04c6f90717d4ecfef69ca4eaacb61849">xwidget.h</a>
+, <a class="el" href="xwidget_8c.html#a04c6f90717d4ecfef69ca4eaacb61849">xwidget.c</a>
 </li>
 <li>widget_show()
-: <a class="el" href="xwidget_8h.html#a7378f213e6159eb59b98467198844086">xwidget.h</a>
-, <a class="el" href="xwidget_8c.html#a7378f213e6159eb59b98467198844086">xwidget.c</a>
+: <a class="el" href="xwidget_8c.html#a7378f213e6159eb59b98467198844086">xwidget.c</a>
+, <a class="el" href="xwidget_8h.html#a7378f213e6159eb59b98467198844086">xwidget.h</a>
 </li>
 <li>widget_show_all()
-: <a class="el" href="xwidget_8h.html#aae228a75c93bb0cb9ad57ffaf4d25922">xwidget.h</a>
-, <a class="el" href="xwidget_8c.html#aae228a75c93bb0cb9ad57ffaf4d25922">xwidget.c</a>
+: <a class="el" href="xwidget_8c.html#aae228a75c93bb0cb9ad57ffaf4d25922">xwidget.c</a>
+, <a class="el" href="xwidget_8h.html#aae228a75c93bb0cb9ad57ffaf4d25922">xwidget.h</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -27,6 +37,21 @@
    </div>
    <div id="projectbrief">A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,15 +61,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('xchildlist__private_8c.html','');});
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +90,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_e9bbb68c42f81f311d39d9dbaefd3b8c.html">libxputty</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -77,20 +103,23 @@ Include dependency graph for xchildlist_private.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="xchildlist__private_8c__incl.png" border="0" usemap="#xchildlist__private_8c" alt=""/></div>
 <map name="xchildlist__private_8c" id="xchildlist__private_8c">
-<area shape="rect" id="node2" href="xchildlist__private_8h.html" title="xchildlist_private.h" alt="" coords="999,80,1130,107"/>
-<area shape="rect" id="node3" href="xputty_8h.html" title="xputty.h" alt="" coords="1030,155,1099,181"/>
-<area shape="rect" id="node16" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1203,229,1281,256"/>
-<area shape="rect" id="node17" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="1306,229,1410,256"/>
-<area shape="rect" id="node18" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1435,229,1519,256"/>
-<area shape="rect" id="node19" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1543,229,1611,256"/>
-<area shape="rect" id="node20" href="xpngloader_8h.html" title="xpngloader.h" alt="" coords="1635,229,1731,256"/>
+<area shape="rect" id="node2" href="xchildlist__private_8h.html" title="xchildlist_private.h" alt="" coords="1025,80,1155,107"/>
+<area shape="rect" id="node3" href="xputty_8h.html" title="xputty.h" alt="" coords="1055,155,1125,181"/>
+<area shape="rect" id="node17" href="xwidget_8h.html" title="xwidget.h" alt="" coords="1291,229,1369,256"/>
+<area shape="rect" id="node18" href="xadjustment_8h.html" title="xadjustment.h" alt="" coords="1394,229,1498,256"/>
+<area shape="rect" id="node19" href="xchildlist_8h.html" title="xchildlist.h" alt="" coords="1523,229,1607,256"/>
+<area shape="rect" id="node20" href="xcolor_8h.html" title="xcolor.h" alt="" coords="1631,229,1699,256"/>
+<area shape="rect" id="node21" href="xpngloader_8h.html" title="xpngloader.h" alt="" coords="1723,229,1819,256"/>
 </map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="xchildlist__private_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a4417a26df5d336bfff97d4210e0291fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchildlist__private_8c.html#a4417a26df5d336bfff97d4210e0291fe">_childlist_add_elem</a> (<a class="el" href="structChildlist__t.html">Childlist_t</a> *childlist)</td></tr>
-<tr class="memdesc:a4417a26df5d336bfff97d4210e0291fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">_childlist_add_elem - reallocate the childlist array to new size  <a href="#a4417a26df5d336bfff97d4210e0291fe">More...</a><br /></td></tr>
+<tr class="memdesc:a4417a26df5d336bfff97d4210e0291fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">_childlist_add_elem - internal use to reallocate the childlist array to new size <br />
+ You didn't need to call this  <a href="#a4417a26df5d336bfff97d4210e0291fe">More...</a><br /></td></tr>
 <tr class="separator:a4417a26df5d336bfff97d4210e0291fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -110,23 +139,37 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>_childlist_add_elem - reallocate the childlist array to new size </p>
+<p>_childlist_add_elem - internal use to reallocate the childlist array to new size <br />
+ You didn't need to call this </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list. ">Childlist_t</a> </td></tr>
+    <tr><td class="paramname">*childlist</td><td>- pointer to the <a class="el" href="structChildlist__t.html" title="Childlist_t - struct to hold a Widget_t child list   Xputty main holds a list of any Widget_t created...">Childlist_t</a> </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="xchildlist__private_8c_source.html#l00023">23</a> of file <a class="el" href="xchildlist__private_8c_source.html">xchildlist_private.c</a>.</p>
+
+<p class="reference">References <a class="el" href="xchildlist_8h_source.html#l00052">Childlist_t::cap</a>, <a class="el" href="xchildlist_8h_source.html#l00048">Childlist_t::childs</a>, <a class="el" href="xchildlist_8h_source.html#l00054">Childlist_t::elem</a>, and <a class="el" href="xchildlist_8h_source.html#l00050">Childlist_t::size</a>.</p>
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                                 {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a> = realloc(childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a>, <span class="keyword">sizeof</span>(<a class="code" href="structWidget__t.html">Widget_t</a>*) * (4+childlist-&gt;<a class="code" href="structChildlist__t.html#abf81fe823696baae53ff77036227f0c8">cap</a>));</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    assert(childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a> != NULL);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    childlist-&gt;<a class="code" href="structChildlist__t.html#abf81fe823696baae53ff77036227f0c8">cap</a> +=4;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    childlist-&gt;<a class="code" href="structChildlist__t.html#a3045339822c393689c6fac8b8a2a4457">size</a> = <span class="keyword">sizeof</span>(childlist);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> i = childlist-&gt;<a class="code" href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">elem</a>+1;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">for</span>(;i&lt;childlist-&gt;<a class="code" href="structChildlist__t.html#abf81fe823696baae53ff77036227f0c8">cap</a>;i++) {</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        childlist-&gt;<a class="code" href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">childs</a>[i] = NULL;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div><div class="ttc" id="structChildlist__t_html_a5d7a8d584c55c0496e5710d9a6f4282f"><div class="ttname"><a href="structChildlist__t.html#a5d7a8d584c55c0496e5710d9a6f4282f">Childlist_t::elem</a></div><div class="ttdeci">int elem</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00054">xchildlist.h:54</a></div></div>
+<div class="ttc" id="structChildlist__t_html_a093a27797dc1a2819546ceb857b3db1a"><div class="ttname"><a href="structChildlist__t.html#a093a27797dc1a2819546ceb857b3db1a">Childlist_t::childs</a></div><div class="ttdeci">Widget_t ** childs</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00048">xchildlist.h:48</a></div></div>
+<div class="ttc" id="structWidget__t_html"><div class="ttname"><a href="structWidget__t.html">Widget_t</a></div><div class="ttdoc">Widget_t - struct to hold the basic Widget_t info. </div><div class="ttdef"><b>Definition:</b> <a href="xwidget_8h_source.html#l00281">xwidget.h:281</a></div></div>
+<div class="ttc" id="structChildlist__t_html_a3045339822c393689c6fac8b8a2a4457"><div class="ttname"><a href="structChildlist__t.html#a3045339822c393689c6fac8b8a2a4457">Childlist_t::size</a></div><div class="ttdeci">size_t size</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00050">xchildlist.h:50</a></div></div>
+<div class="ttc" id="structChildlist__t_html_abf81fe823696baae53ff77036227f0c8"><div class="ttname"><a href="structChildlist__t.html#abf81fe823696baae53ff77036227f0c8">Childlist_t::cap</a></div><div class="ttdeci">int cap</div><div class="ttdef"><b>Definition:</b> <a href="xchildlist_8h_source.html#l00052">xchildlist.h:52</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_e9bbb68c42f81f311d39d9dbaefd3b8c.html">libxputty</a></li><li class="navelem"><a class="el" href="dir_36c8397ee67800846af2ba64e4b44ab7.html">xputty</a></li><li class="navelem"><a class="el" href="xchildlist__private_8c.html">xchildlist_private.c</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>
