@@ -152,7 +152,7 @@ static void port_event(LV2UI_Handle handle, uint32_t port_index,
     float value = *(float*)buffer;
     int i=0;
     for (;i<CONTROLS;i++) {
-        if (port_index == ui->widget[i]->data) {
+        if (port_index == (uint32_t)ui->widget[i]->data) {
             // prevent event loop between host and plugin
             ui->block_event = (int)port_index;
             // case port is METER, convert value to meter deflection

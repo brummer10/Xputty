@@ -39,10 +39,10 @@
 
 	# set compile flags
 	CXXFLAGS += -I. -I./dsp -I./plugin -fPIC -DPIC -O2 -Wall -funroll-loops \
-	-ffast-math -fomit-frame-pointer -fstrength-reduce -fdata-sections -Wl,--gc-sections $(SSE_CFLAGS)
-	LDFLAGS += -I. -shared -lm 
+	-ffast-math -fomit-frame-pointer -fstrength-reduce -fdata-sections -Wl,--gc-sections -Wl,-z,relro,-z,now -Wl,--exclude-libs,ALL $(SSE_CFLAGS)
+	LDFLAGS += -I. -fvisibility=hidden -shared -lm 
 	GUI_LDFLAGS += -I./gui -I$(HEADER_DIR) \
-	-L. $(LIB_DIR)libxputty.a -shared `pkg-config --cflags --libs cairo x11` -lm 
+	-L. $(LIB_DIR)libxputty.a -fvisibility=hidden -shared `pkg-config --cflags --libs cairo x11` -lm 
 	# invoke build files
 	OBJECTS = plugin/$(NAME).cpp 
 	GUI_OBJECTS = gui/$(NAME)_x11ui.c
@@ -95,7 +95,7 @@ uninstall :
 
 $(NAME) :
 	$(CXX) $(CXXFLAGS) $(OBJECTS) $(LDFLAGS) -o $(NAME).so
-	$(CC) $(CXXFLAGS) -Wl,-z,nodelete $(GUI_OBJECTS) $(GUI_LDFLAGS) -o $(NAME)_ui.so
+	$(CXX) $(CXXFLAGS) -Wl,-z,nodelete $(GUI_OBJECTS) $(GUI_LDFLAGS) -o $(NAME)_ui.so
 	$(STRIP) -s -x -X -R .note.ABI-tag $(NAME).so
 	$(STRIP) -s -x -X -R .note.ABI-tag $(NAME)_ui.so
 

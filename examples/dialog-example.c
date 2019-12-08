@@ -225,7 +225,7 @@ int main (int argc, char ** argv)
     xde.messagebutton->func.value_changed_callback = tbutton_callback;
     xde.messagebutton->func.dialog_callback = tbutton_response;
 
-   widget_show_all(xde.w);
+    widget_show_all(xde.w);
 
     main_run(&app);
 
