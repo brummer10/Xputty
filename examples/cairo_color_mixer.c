@@ -40,10 +40,10 @@ static void draw_window(void *w_, void* user_data) {
     Widget_t *w = (Widget_t*)w_;
     cairo_set_source_rgb (w->crb, 0.95, 0.95, 0.95);
     cairo_paint (w->crb);
-    cairo_rectangle(w->crb,0,300,150,150);
+    cairo_rectangle(w->crb,300,0,150,150);
     cairo_set_source_rgb (w->crb, 0.0, 0.0, 0.0);
     cairo_fill (w->crb);
-    cairo_rectangle(w->crb,150,300,150,150);
+    cairo_rectangle(w->crb,300,150,150,150);
     cairo_set_source_rgb (w->crb, 1.0, 1.0, 1.0);
     cairo_fill (w->crb);
     
@@ -173,7 +173,7 @@ int main (int argc, char ** argv)
     Xputty app;
     main_init(&app);
     Widget_t *sl;
-    Widget_t *win = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 300, 450);
+    Widget_t *win = create_window(&app, DefaultRootWindow(app.dpy), 0, 0, 450, 300);
     widget_set_title(win, "cairo-color-mixer");
     win->func.expose_callback = draw_window;
 
@@ -196,9 +196,10 @@ int main (int argc, char ** argv)
     sl->data = 4;
     sl->func.expose_callback = draw_my_slider;
     sl->func.value_changed_callback = a_callback;
+    adj_set_value(sl->adj,1.0);
 
     sl = add_button(win, "Print", 220, 260, 60, 30);
-    signal_connect_func(sl,VALUE_CHANGED,button_ok_callback);
+    connect_func(&sl->func.value_changed_callback,button_ok_callback);
 
     widget_show_all(win);
     set_color(win);

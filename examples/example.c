@@ -111,7 +111,7 @@ int main (int argc, char ** argv)
 
     w_quit = add_button(w, "OK", 230, 170, 60, 20);
     w_quit->scale.gravity = SOUTHWEST;
-    signal_connect_func(w_quit,VALUE_CHANGED,button_ok_callback);
+    connect_func(&w_quit->func.value_changed_callback,button_ok_callback);
     //w_quit->func.value_changed_callback = button_ok_callback;
     widget_show_all(w);
     XMoveWindow(w->app->dpy,w->widget,center_x+60, center_y+60);
