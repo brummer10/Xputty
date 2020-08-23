@@ -16,7 +16,8 @@ var xcolor_8h =
       [ "NORMAL_", "xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a13cf30d063febc8581978b53d739f0a6", null ],
       [ "PRELIGHT_", "xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a4e75636632c9a333b0107d31a5078eed", null ],
       [ "SELECTED_", "xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a1fecdd77feb70e10d66cc3cff8900cc8", null ],
-      [ "ACTIVE_", "xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a767d5451ce027a7881f351e2961a96a2", null ]
+      [ "ACTIVE_", "xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a767d5451ce027a7881f351e2961a96a2", null ],
+      [ "INSENSITIVE_", "xcolor_8h.html#af6e1bc675d5df2f7fb9e91a8c5820771a1c743bf96747e611605c143e63bf6220", null ]
     ] ],
     [ "get_color_scheme", "xcolor_8h.html#acc93257352c04e26189e54ba561ab3f4", null ],
     [ "get_color_state", "xcolor_8h.html#a02fe4f3a29af917cc1de5f8b5c4b4171", null ],

@@ -14,6 +14,7 @@ var structFunc__t =
     [ "map_notify_callback", "structFunc__t.html#ac9c7609befbb46b122100a10f6984b9f", null ],
     [ "mem_free_callback", "structFunc__t.html#ac0a05a827a9cb6469cb15e7225411f16", null ],
     [ "motion_callback", "structFunc__t.html#ac2842c834907f4aeace8f404c6cc7621", null ],
+    [ "unmap_notify_callback", "structFunc__t.html#a396c8d6caa1650bc50a18935dce09c3d", null ],
     [ "user_callback", "structFunc__t.html#a1f089cb13a39764a1f980470a51db71b", null ],
     [ "value_changed_callback", "structFunc__t.html#acce396ccf3266886f0a6d28cf45761d3", null ]
 ];

@@ -1,18 +1,30 @@
 var structMidiKeyboard =
 [
     [ "active_key", "structMidiKeyboard.html#ab02f7277918ca45902577f8f2e5a8b6f", null ],
+    [ "attack", "structMidiKeyboard.html#ade136be48cfef5da7d050d7dceafef19", null ],
+    [ "detune", "structMidiKeyboard.html#ab72a5df71ec77cfc87727f23b9d87af1", null ],
     [ "icon", "structMidiKeyboard.html#a431d52d58bfc873d8eca870694d09905", null ],
     [ "key_matrix", "structMidiKeyboard.html#a9ab2ef8eb69c1ae89b10eba00f31dc8a", null ],
     [ "layout", "structMidiKeyboard.html#a0c8514ddd20cd725ebd771ab5d2bf351", null ],
     [ "mk_send_all_sound_off", "structMidiKeyboard.html#a2d66645fc8b3a3b55ec7fb34bf7c6150", null ],
+    [ "mk_send_attack", "structMidiKeyboard.html#a8c5e9037567c9c9678ae1d0889bfc978", null ],
+    [ "mk_send_detune", "structMidiKeyboard.html#a8521ef8d388f106eb704c7357c3d7b8e", null ],
     [ "mk_send_mod", "structMidiKeyboard.html#a76746243fda68c58358c175c852cf92c", null ],
     [ "mk_send_note", "structMidiKeyboard.html#a13468fce78f9b086290ff2b936dde79d", null ],
     [ "mk_send_pitch", "structMidiKeyboard.html#a1b83a310b368ef68e333abb42166d090", null ],
     [ "mk_send_pitchsensity", "structMidiKeyboard.html#afdbd0cd0116de647306d259867297bab", null ],
+    [ "mk_send_release", "structMidiKeyboard.html#aafcc40270e90136d5313ab8fa6926a58", null ],
+    [ "mk_send_sustain", "structMidiKeyboard.html#afd2430467d683050042a43d82a76562e", null ],
+    [ "mk_send_velocity", "structMidiKeyboard.html#a69d5150651eeb2f39ecf2e69277d51f9", null ],
+    [ "mk_send_volume", "structMidiKeyboard.html#a090e4fbeca5ac6dfab7e20cade691fab", null ],
     [ "modwheel", "structMidiKeyboard.html#a22e57dc621b0901bcf7dfbac65d015e3", null ],
     [ "octave", "structMidiKeyboard.html#a066fe4d553374a54bed29eb50d66a887", null ],
     [ "pitchsensity", "structMidiKeyboard.html#a112c106ec854128232517f3567702f62", null ],
     [ "pitchwheel", "structMidiKeyboard.html#a1b99cfe1cb3e4840f1a1f72ff5ae74df", null ],
     [ "prelight_key", "structMidiKeyboard.html#ab74d14c3d836e99deb996e6aa3fe79b4", null ],
-    [ "send_key", "structMidiKeyboard.html#ac52a5c105a923a3cb592753f322cb615", null ]
+    [ "release", "structMidiKeyboard.html#a4055e4b4d1570c5d0bee2083ace0e714", null ],
+    [ "send_key", "structMidiKeyboard.html#ac52a5c105a923a3cb592753f322cb615", null ],
+    [ "sustain", "structMidiKeyboard.html#a81d1c38a2ab93ea17c2e46a2a9936e1e", null ],
+    [ "velocity", "structMidiKeyboard.html#a548a2ef5ae315ba494df4120405a498b", null ],
+    [ "volume", "structMidiKeyboard.html#a9f1e3038fb68ecfe09acec50d65cdbb5", null ]
 ];

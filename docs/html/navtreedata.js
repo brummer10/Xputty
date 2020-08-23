@@ -1,3 +1,25 @@
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this file.
+
+Copyright (C) 1997-2019 by Dimitri van Heesch
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of version 2 of the GNU General Public License as published by
+the Free Software Foundation
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+@licend  The above is the entire license notice
+for the JavaScript code in this file
+*/
 var NAVTREE =
 [
   [ "libxputty", "index.html", [
@@ -10,8 +32,8 @@ var NAVTREE =
         [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
-    [ "Files", null, [
-      [ "File List", "files.html", "files" ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", "globals_func" ],
@@ -27,9 +49,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"xadjustment__private_8c.html",
-"xlistview_8c.html#a8de19388cedfa4b2c3bc08c0c1b09d10",
-"xwidget_8c.html#add6f77e7910eea8adf6ff32563bc7904"
+"xadjustment_8c.html#af3c38eff2253ca1412b873863a65421c",
+"xlabel_8h.html#a78fe1d751c550738eac384bbc5f18438",
+"xputty_8c.html#a0d4eda902b4de6f7a30e8d869f842fda"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

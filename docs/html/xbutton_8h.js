@@ -6,5 +6,6 @@ var xbutton_8h =
     [ "add_check_button", "xbutton_8h.html#a4ae822332f5a4bd6fd58eca4aca49ba0", null ],
     [ "add_image_toggle_button", "xbutton_8h.html#ac941c08285f451d0cc12979789348005", null ],
     [ "add_on_off_button", "xbutton_8h.html#a43014a55d36303a8f38468319c9b2bfd", null ],
+    [ "add_switch_image_button", "xbutton_8h.html#a1581fbec51c1b57aa871d3eaf64005b4", null ],
     [ "add_toggle_button", "xbutton_8h.html#a528331e8ac24f1ca7bb0101dad28f962", null ]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['warning_5fbox',['WARNING_BOX',['../xmessage-dialog_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a1b24044e8b852f37534374fc221b0b94',1,'xmessage-dialog.h']]]
+  ['value_5fchanged_1179',['VALUE_CHANGED',['../xwidget_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa6068a25be15a840b4e7dee17cca5dcd1',1,'xwidget.h']]]
 ];

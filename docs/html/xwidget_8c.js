@@ -17,7 +17,6 @@ var xwidget_8c =
     [ "send_configure_event", "xwidget_8c.html#a6f6b3d05aefce9a3f7454a44897aecc0", null ],
     [ "send_systray_message", "xwidget_8c.html#ab7cf80b00c892910d8484e1f2a475c52", null ],
     [ "show_tooltip", "xwidget_8c.html#a50bb0638d0bd2d98923cb05c3bf09f35", null ],
-    [ "signal_connect_func", "xwidget_8c.html#a98e87f9b42f39862d89e84307df6675c", null ],
     [ "transparent_draw", "xwidget_8c.html#a0e801c1a701cc8526b198371ce2ff692", null ],
     [ "widget_event_loop", "xwidget_8c.html#a4549cfc76e73a5d56b50f0d762287436", null ],
     [ "widget_hide", "xwidget_8c.html#ab00e7f2485e08237c865e96ba56e63e6", null ],

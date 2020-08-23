@@ -7,6 +7,7 @@ var xbutton__private_8h =
     [ "_draw_check_box", "xbutton__private_8h.html#a9517adc82343f559ff950b4cd632931d", null ],
     [ "_draw_check_button", "xbutton__private_8h.html#a4b59433c1a0932889318dcd64943a299", null ],
     [ "_draw_on_off_button", "xbutton__private_8h.html#a92ba9f75be46be4869ac6439a3c53870", null ],
+    [ "_draw_switch_image_button", "xbutton__private_8h.html#a03e24ccbb57eddd87b3eb0fc81938509", null ],
     [ "_draw_ti_button", "xbutton__private_8h.html#abdbb2a0a2e7b10fea4d2147f8ef32248", null ],
     [ "_pattern_in", "xbutton__private_8h.html#a7b78e740b4f0797a42a53278bfb3c7d4", null ],
     [ "_pattern_out", "xbutton__private_8h.html#a0ea4425c5e10fa1a3f052afa6114d30b", null ],

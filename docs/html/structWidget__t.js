@@ -10,7 +10,7 @@ var structWidget__t =
     [ "crb", "structWidget__t.html#ad98022ee160d4c0906110868fc9e5664", null ],
     [ "data", "structWidget__t.html#a9dd7b58be77bf31ab021aa627a73186a", null ],
     [ "event_callback", "structWidget__t.html#af0adf855c1991d11f59c5b6f9a2c526a", null ],
-    [ "flags", "structWidget__t.html#ada1de5e6a955dc81fa956c9e7f2d2062", null ],
+    [ "flags", "structWidget__t.html#a04d724b2b6b075e6adfbea0e35a4b081", null ],
     [ "func", "structWidget__t.html#a225b9a175e132994a5aa73b59a2911ad", null ],
     [ "height", "structWidget__t.html#a1def6d2237743e75a0b84ca0c34a6834", null ],
     [ "image", "structWidget__t.html#a4e179b5ae7494b9533c8673ec3642a55", null ],

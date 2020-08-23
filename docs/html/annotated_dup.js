@@ -14,5 +14,6 @@ var annotated_dup =
     [ "ViewList_t", "structViewList__t.html", "structViewList__t" ],
     [ "Widget_t", "structWidget__t.html", "structWidget__t" ],
     [ "XColor_t", "structXColor__t.html", "structXColor__t" ],
-    [ "Xputty", "structXputty.html", "structXputty" ]
+    [ "Xputty", "structXputty.html", "structXputty" ],
+    [ "XTuner", "structXTuner.html", "structXTuner" ]
 ];
